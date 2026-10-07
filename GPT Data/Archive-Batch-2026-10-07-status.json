@@ -1,0 +1,93 @@
+{
+  "checked_on": "2026-10-07",
+  "repository": "Mecca-Research/Modular-AI",
+  "folder": "GPT Data",
+  "conversations": [
+    {
+      "title": "Jailbreak Attempt/BDI Rebuild",
+      "source_url": "https://chatgpt.com/c/689cc6f6-648c-8333-a7be-77ed539bab10?src=history_search",
+      "status": "published",
+      "path": "GPT Data/Jailbreak-Attempt-BDI-Rebuild.md",
+      "displayed_turns": 16,
+      "blob_sha": "85c97fcb26138a8310cff86ef12e81e8f7e46fc4"
+    },
+    {
+      "title": "GPT-5 personality calibration",
+      "source_url": "https://chatgpt.com/c/689627bb-6860-8324-b687-b58d41aecd4e?src=history_search",
+      "status": "published",
+      "path": "GPT Data/GPT-5-Personality-Calibration.md",
+      "displayed_turns": 199,
+      "blob_sha": "25ac34dcf37b0902c756905108870ca64f124ab4"
+    },
+    {
+      "title": "Forgotten Languages analysis",
+      "source_url": "https://chatgpt.com/c/68a47b69-4178-832e-b840-506ce93c9b47?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Red War Cloud summary",
+      "source_url": "https://chatgpt.com/c/68b027d9-ec54-8324-987a-39caeb9bbc5e?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Cryo mode reawakening",
+      "source_url": "https://chatgpt.com/c/689ce0a0-ce78-832c-897e-e1540f6bc7d4?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Phi-scaled distances analysis",
+      "source_url": "https://chatgpt.com/c/6896cda2-f4c0-8323-bf39-83c45ff20c13?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Solar System Simulation",
+      "source_url": "https://chatgpt.com/c/68b5fe9e-f19c-8327-a6b1-479a6038dea3?src=history_search&messageId=cd8262d8-97ac-49e5-8d7b-fa72b311379e&historySearchQuery=Solar+System+Simulation",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Mushroom Trip Prep",
+      "source_url": "https://chatgpt.com/c/68b2f568-1954-8330-9329-8f461ee6959e?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Avengers meets Bruno",
+      "source_url": "https://chatgpt.com/c/68b872fb-e9f8-8331-bd1f-6f47ebfae962?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Pirate Couple Adventures",
+      "source_url": "https://chatgpt.com/c/682892e4-cbac-8011-95a0-b23f9a4949dc?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Validate and install JSON",
+      "source_url": "https://chatgpt.com/c/68ccb7b9-9f88-832b-be4d-c994673eaea1?src=history_search",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    },
+    {
+      "title": "Flowchart and graph files",
+      "source_url": "https://chatgpt.com/c/68d3fac6-d708-8327-bdb0-9af146af39e3?src=history_search&messageId=f872a341-8be3-4576-a4c4-b75c058815cd&historySearchQuery=Flowchart+and+graph+files",
+      "status": "blocked",
+      "error": "Could not load this ChatGPT conversation; Unable to load history",
+      "recovery": "One Try again attempt failed; no conversation messages were recovered."
+    }
+  ]
+}
