@@ -8,6 +8,8 @@ Messages: 199 (101 user; 98 assistant).
 
 Recovery verification: opened the source separately, repeatedly loaded older messages to the opening, and verified the final source message. Overlapping captured batches form one continuous chronological sequence. Message IDs were deduplicated; original wording and errors are retained with formatting reconstructed as Markdown. Attachment binaries and alternate branches are not embedded.
 
+Archive note: The source UI groups some consecutive assistant and automated update messages together. Their text is preserved within the displayed assistant turn.
+
 ---
 
 ## 1. User
