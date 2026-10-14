@@ -11,7 +11,7 @@
 - All message IDs and chronological turn indices verified against the source.
 - Assistant messages copied in full through the source interface; the embedded report exported as Markdown.
 - User text and attachment references retained from the source. Attachment binaries are not embedded.
-- Display equations use fenced math blocks. Inline equations retain their original TeX.
+- Display equations use fenced math blocks. Mathematical notation and operator names are preserved using GitHub-compatible TeX.
 - One source TeX typo in Message 56 was repaired to render the literal phrase “infinity is literally nothing”; the wording is unchanged.
 
 ---
@@ -7909,7 +7909,7 @@ The resulting intensity contains
 =
 |\psi_1|^2+|\psi_2|^2
 +
-2\operatorname{Re}(\psi_1^*\psi_2).
+2\mathrm{Re}(\psi_1^*\psi_2).
 ```
 
 
@@ -12640,7 +12640,7 @@ Then:
 H_k
 =
 \ker\partial_k/
-\operatorname{im}\partial_{k+1}.
+\mathrm{im}\partial_{k+1}.
 }
 ```
 
@@ -12942,7 +12942,7 @@ Then compute:
 ```math
 \beta_k(\omega)
 =
-\operatorname{rank}H_k(G_\omega).
+\mathrm{rank}H_k(G_\omega).
 ```
 
 
@@ -20765,7 +20765,7 @@ This yields the Schrödinger-Robertson relation:
 \boxed{
 (\Delta A)^2(\Delta B)^2
 \geq
-\operatorname{Cov}(A,B)^2
+\mathrm{Cov}(A,B)^2
 +
 \frac14
 |
@@ -32143,7 +32143,7 @@ Together they span the **constraint conormal space**
 ```math
 N_x^*
 =
-\operatorname{span}
+\mathrm{span}
 \{
 dC_1,\ldots,dC_r
 \}
@@ -32262,7 +32262,7 @@ P_W^2=P_W,
 \qquad
 P_W^\dagger=P_W,
 \qquad
-\operatorname{Tr}P_W=k.
+\mathrm{Tr}P_W=k.
 }
 ```
 
@@ -32352,7 +32352,7 @@ Define the energy of a $k$-dimensional channel subspace $W$ as
 \boxed{
 \mathcal E_H(W)
 =
-\operatorname{Tr}(P_WH).
+\mathrm{Tr}(P_WH).
 }
 ```
 
@@ -32390,7 +32390,7 @@ then the Ky Fan variational principle gives:
 ```math
 \boxed{
 \min_{W\in\mathrm{Gr}(k,n)}
-\operatorname{Tr}(P_WH)
+\mathrm{Tr}(P_WH)
 =
 \sum_{i=1}^k\lambda_i.
 }
@@ -32419,7 +32419,7 @@ Likewise if $G$ is a positive conductance operator, maximizing
 
 
 ```math
-\operatorname{Tr}(P_WG)
+\mathrm{Tr}(P_WG)
 ```
 
 
@@ -32521,7 +32521,7 @@ Take a $k$-plane:
 
 
 ```math
-W=\operatorname{span}(v_1,\ldots,v_k).
+W=\mathrm{span}(v_1,\ldots,v_k).
 ```
 
 
@@ -32754,7 +32754,7 @@ Any sufficiently nearby $k$-plane transverse to $W_0^\perp$ can be written uniqu
 \boxed{
 W_A
 =
-\operatorname{graph}(A)
+\mathrm{graph}(A)
 }
 ```
 
@@ -32781,7 +32781,7 @@ Moreover:
 \boxed{
 T_W\mathrm{Gr}(k,V)
 \cong
-\operatorname{Hom}(W,V/W)
+\mathrm{Hom}(W,V/W)
 }
 ```
 
@@ -32794,7 +32794,7 @@ or, with an inner product,
 ```math
 T_W\mathrm{Gr}(k,V)
 \cong
-\operatorname{Hom}(W,W^\perp).
+\mathrm{Hom}(W,W^\perp).
 ```
 
 
@@ -34448,7 +34448,7 @@ going around a loop can produce:
 
 ```math
 \boxed{
-\operatorname{Hol}(\gamma)
+\mathrm{Hol}(\gamma)
 =
 e^{i\oint_\gamma A}.
 }
@@ -35109,7 +35109,7 @@ can become:
 \rightarrow
 \mathscr A
 \rightarrow
-\operatorname{Glue}(\mathscr A_i)
+\mathrm{Glue}(\mathscr A_i)
 \rightarrow
 \mathscr F'.
 }
@@ -35140,7 +35140,7 @@ Then a loop through the system can carry:
 
 
 ```math
-\operatorname{Hol}(\gamma)\neq I.
+\mathrm{Hol}(\gamma)\neq I.
 ```
 
 
@@ -35652,7 +35652,7 @@ The new UTC object should therefore contain two Grassmannian levels:
 \boxed{
 L_\psi
 =
-\operatorname{span}\{\psi\}
+\mathrm{span}\{\psi\}
 \in
 \mathrm{Gr}(1,\mathcal H)
 }
@@ -35904,7 +35904,7 @@ Ordinary interference is:
 +
 |\psi_2|^2
 +
-2\operatorname{Re}
+2\mathrm{Re}
 (\psi_1^*\psi_2).
 }
 ```
@@ -36066,7 +36066,7 @@ If:
 
 
 ```math
-W=\operatorname{span}(v_1,\ldots,v_k),
+W=\mathrm{span}(v_1,\ldots,v_k),
 ```
 
 
@@ -41818,7 +41818,7 @@ The thermal profile is stable if:
 
 ```math
 \boxed{
-\operatorname{Re}\lambda_i(J_F)<0
+\mathrm{Re}\lambda_i(J_F)<0
 }
 ```
 
@@ -42519,7 +42519,7 @@ local variance may collapse:
 
 
 ```math
-\operatorname{Var}(X_i-Z)\rightarrow0.
+\mathrm{Var}(X_i-Z)\rightarrow0.
 ```
 
 
@@ -43423,7 +43423,7 @@ Stability requires:
 
 
 ```math
-\operatorname{Re}\lambda_j
+\mathrm{Re}\lambda_j
 \left(
 D\mathcal F(Y^*)
 \right)
@@ -43443,7 +43443,7 @@ We actually want:
 ```math
 \boxed{
 0<
-\operatorname{Var}(X_i|Z)
+\mathrm{Var}(X_i|Z)
 <
 \infty.
 }
@@ -43456,7 +43456,7 @@ Too little conditional variation:
 
 
 ```math
-\operatorname{Var}(X_i|Z)\rightarrow0
+\mathrm{Var}(X_i|Z)\rightarrow0
 ```
 
 
