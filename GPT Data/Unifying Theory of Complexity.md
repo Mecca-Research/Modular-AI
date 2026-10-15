@@ -11,7 +11,7 @@
 - All message IDs and chronological turn indices verified against the source.
 - Assistant messages copied in full through the source interface; the embedded report exported as Markdown.
 - User text and attachment references retained from the source. Attachment binaries are not embedded.
-- Display equations use fenced math blocks. Mathematical notation and operator names are preserved using GitHub-compatible TeX.
+- Equations before Message 22 use native GitHub math. From Message 22 onward, equations are rendered as SVGs to avoid GitHub rendering failures on this long archive; original TeX is retained beside each equation in Markdown source comments.
 - One source TeX typo in Message 56 was repaired to render the literal phrase “infinity is literally nothing”; the wording is unchanged.
 
 ---
@@ -10626,15 +10626,18 @@ That distinction gives us something much sharper:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-001" width="565" height="29" alt="\boxed{ \text{Energy throughput} + \text{entropy export} \rightarrow \text{persistent nonequilibrium organization} }">
+<!-- TeX display: \boxed{
 \text{Energy throughput}
 +
 \text{entropy export}
 \rightarrow
 \text{persistent nonequilibrium organization}
-}
-```
+} -->
+
+
 
 
 
@@ -10642,14 +10645,17 @@ Your manuscript already contains the pieces. It calls stars prototypical dissipa
 
 
 
-```math
-\frac{dS}{dt}
+
+
+<img src="UTC-Math/message-22.svg#equation-002" width="171" height="40" alt="\frac{dS}{dt} = \frac{dS_i}{dt} + \frac{dS_e}{dt} =0,">
+<!-- TeX display: \frac{dS}{dt}
 =
 \frac{dS_i}{dt}
 +
 \frac{dS_e}{dt}
-=0,
-```
+=0, -->
+
+
 
 
 
@@ -10657,9 +10663,12 @@ with internal entropy production
 
 
 
-```math
-\frac{dS_i}{dt}>0
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-003" width="68" height="40" alt="\frac{dS_i}{dt}>0">
+<!-- TeX display: \frac{dS_i}{dt}>0 -->
+
+
 
 
 
@@ -10667,9 +10676,12 @@ balanced by entropy exported to the environment,
 
 
 
-```math
-\frac{dS_e}{dt}<0.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-004" width="74" height="40" alt="\frac{dS_e}{dt}&lt;0.">
+<!-- TeX display: \frac{dS_e}{dt}<0. -->
+
+
 
 
 
@@ -10685,13 +10697,16 @@ Let's provisionally call it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-005" width="372" height="31" alt="\boxed{ F_{\Theta} = \text{Thermal Gradient / Entropy Export Closure}. }">
+<!-- TeX display: \boxed{
 F_{\Theta}
 =
 \text{Thermal Gradient / Entropy Export Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -10699,8 +10714,10 @@ Its simplest loop is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-006" width="346" height="31" alt="\boxed{ E_{\rm in} \rightarrow Q_{\rm internal} \rightarrow \nabla T \rightarrow J_Q \rightarrow E_{\rm out} \rightarrow \text{stable }T }">
+<!-- TeX display: \boxed{
 E_{\rm in}
 \rightarrow
 Q_{\rm internal}
@@ -10712,8 +10729,9 @@ J_Q
 E_{\rm out}
 \rightarrow
 \text{stable }T
-}
-```
+} -->
+
+
 
 
 
@@ -10721,9 +10739,12 @@ where
 
 
 
-```math
-E_{\rm in}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-007" width="31" height="20" alt="E_{\rm in}">
+<!-- TeX display: E_{\rm in} -->
+
+
 
 
 
@@ -10731,9 +10752,12 @@ is incoming/generated free energy,
 
 
 
-```math
-Q_{\rm internal}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-008" width="61" height="21" alt="Q_{\rm internal}">
+<!-- TeX display: Q_{\rm internal} -->
+
+
 
 
 
@@ -10741,9 +10765,12 @@ is internal thermalization,
 
 
 
-```math
-\nabla T
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-009" width="33" height="18" alt="\nabla T">
+<!-- TeX display: \nabla T -->
+
+
 
 
 
@@ -10751,9 +10778,12 @@ is the temperature gradient,
 
 
 
-```math
-J_Q
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-010" width="28" height="22" alt="J_Q">
+<!-- TeX display: J_Q -->
+
+
 
 
 
@@ -10763,9 +10793,12 @@ and
 
 
 
-```math
-E_{\rm out}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-011" width="38" height="20" alt="E_{\rm out}">
+<!-- TeX display: E_{\rm out} -->
+
+
 
 
 
@@ -10775,8 +10808,10 @@ The closure condition is approximately:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-012" width="219" height="48" alt="\boxed{ \frac{dU}{dt} = P_{\rm in} - P_{\rm work} - P_{\rm out} =0 }">
+<!-- TeX display: \boxed{
 \frac{dU}{dt}
 =
 P_{\rm in}
@@ -10785,22 +10820,26 @@ P_{\rm work}
 -
 P_{\rm out}
 =0
-}
-```
+} -->
+
+
 
 
 
 for a stationary internal energy.
 
-If the system continually generates heat $P_{\rm heat}$, then long-term stability requires
+If the system continually generates heat <img src="UTC-Math/message-22.svg#equation-013" width="41" height="20" alt="P_{\rm heat}" align="middle"><!-- TeX inline: P_{\rm heat} -->, then long-term stability requires
 
 
 
-```math
-\langle P_{\rm out}\rangle
+
+
+<img src="UTC-Math/message-22.svg#equation-014" width="116" height="22" alt="\langle P_{\rm out}\rangle \ge \langle P_{\rm heat}\rangle">
+<!-- TeX display: \langle P_{\rm out}\rangle
 \ge
-\langle P_{\rm heat}\rangle
-```
+\langle P_{\rm heat}\rangle -->
+
+
 
 
 
@@ -10810,9 +10849,12 @@ Otherwise:
 
 
 
-```math
-\frac{dU}{dt}>0
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-015" width="65" height="40" alt="\frac{dU}{dt}>0">
+<!-- TeX display: \frac{dU}{dt}>0 -->
+
+
 
 
 
@@ -10822,8 +10864,10 @@ That something may be:
 
 
 
-```math
-\text{expansion},
+
+
+<img src="UTC-Math/message-22.svg#equation-016" width="718" height="21" alt="\text{expansion}, \quad \text{phase change}, \quad \text{reaction slowdown}, \quad \text{structural damage}, \quad \text{radiative increase}, \quad \text{collapse}.">
+<!-- TeX display: \text{expansion},
 \quad
 \text{phase change},
 \quad
@@ -10833,8 +10877,9 @@ That something may be:
 \quad
 \text{radiative increase},
 \quad
-\text{collapse}.
-```
+\text{collapse}. -->
+
+
 
 
 
@@ -10848,8 +10893,10 @@ Our earlier CSC was:
 
 
 
-```math
-V
+
+
+<img src="UTC-Math/message-22.svg#equation-017" width="207" height="18" alt="V \rightarrow I \rightarrow C \rightarrow S \rightarrow K \rightarrow B.">
+<!-- TeX display: V
 \rightarrow
 I
 \rightarrow
@@ -10859,17 +10906,20 @@ S
 \rightarrow
 K
 \rightarrow
-B.
-```
+B. -->
 
 
 
-But now stabilization $S$ often has an internal thermodynamic condition:
+
+
+But now stabilization <img src="UTC-Math/message-22.svg#equation-018" width="19" height="18" alt="S" align="middle"><!-- TeX inline: S --> often has an internal thermodynamic condition:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-019" width="253" height="31" alt="\boxed{ S = S_{\rm structural} \cap S_{\rm energetic} \cap S_{\rm thermal}. }">
+<!-- TeX display: \boxed{
 S
 =
 S_{\rm structural}
@@ -10877,8 +10927,9 @@ S_{\rm structural}
 S_{\rm energetic}
 \cap
 S_{\rm thermal}.
-}
-```
+} -->
+
+
 
 
 
@@ -10886,13 +10937,16 @@ For a driven structure:
 
 
 
-```math
-S_{\rm thermal}
+
+
+<img src="UTC-Math/message-22.svg#equation-020" width="229" height="23" alt="S_{\rm thermal} \Longleftrightarrow P_{\rm generation} \lesssim P_{\rm export}.">
+<!-- TeX display: S_{\rm thermal}
 \Longleftrightarrow
 P_{\rm generation}
 \lesssim
-P_{\rm export}.
-```
+P_{\rm export}. -->
+
+
 
 
 
@@ -10900,8 +10954,10 @@ So the actual loop becomes:
 
 
 
-```math
-\text{collapse}
+
+
+<img src="UTC-Math/message-22.svg#equation-021" width="690" height="29" alt="\text{collapse} \rightarrow \text{binding/compression} \rightarrow \text{energy release} \rightarrow \boxed{\text{heat export}} \rightarrow \text{stabilization} \rightarrow \text{composition}.">
+<!-- TeX display: \text{collapse}
 \rightarrow
 \text{binding/compression}
 \rightarrow
@@ -10911,8 +10967,9 @@ So the actual loop becomes:
 \rightarrow
 \text{stabilization}
 \rightarrow
-\text{composition}.
-```
+\text{composition}. -->
+
+
 
 
 
@@ -10932,9 +10989,12 @@ Suppose:
 
 
 
-```math
-A+B\rightarrow[AB]^*.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-022" width="122" height="22" alt="A+B\rightarrow[AB]^*.">
+<!-- TeX display: A+B\rightarrow[AB]^*. -->
+
+
 
 
 
@@ -10944,9 +11004,12 @@ If there is no allowed channel:
 
 
 
-```math
-[AB]^*\not\rightarrow AB+\Delta E,
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-023" width="147" height="22" alt="[AB]^*\not\rightarrow AB+\Delta E,">
+<!-- TeX display: [AB]^*\not\rightarrow AB+\Delta E, -->
+
+
 
 
 
@@ -10956,12 +11019,15 @@ But if energy can leave through:
 
 
 
-```math
-\gamma,\quad
+
+
+<img src="UTC-Math/message-22.svg#equation-024" width="333" height="21" alt="\gamma,\quad \text{phonons},\quad \text{radiation},\quad \text{collision products},">
+<!-- TeX display: \gamma,\quad
 \text{phonons},\quad
 \text{radiation},\quad
-\text{collision products},
-```
+\text{collision products}, -->
+
+
 
 
 
@@ -10969,11 +11035,14 @@ then
 
 
 
-```math
-[AB]^*
+
+
+<img src="UTC-Math/message-22.svg#equation-025" width="143" height="22" alt="[AB]^* \rightarrow AB+\Delta E">
+<!-- TeX display: [AB]^*
 \rightarrow
-AB+\Delta E
-```
+AB+\Delta E -->
+
+
 
 
 
@@ -10989,8 +11058,10 @@ In generalized form:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-026" width="628" height="31" alt="\boxed{ \text{interaction} \rightarrow \text{excess energy export} \rightarrow \text{irreversible-ish locking} \rightarrow \text{record/stable structure}. }">
+<!-- TeX display: \boxed{
 \text{interaction}
 \rightarrow
 \text{excess energy export}
@@ -10998,8 +11069,9 @@ In generalized form:
 \text{irreversible-ish locking}
 \rightarrow
 \text{record/stable structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -11019,11 +11091,14 @@ In vacuum:
 
 
 
-```math
-Q_{\rm conduction}\approx0,
+
+
+<img src="UTC-Math/message-22.svg#equation-027" width="245" height="21" alt="Q_{\rm conduction}\approx0, \qquad Q_{\rm convection}\approx0.">
+<!-- TeX display: Q_{\rm conduction}\approx0,
 \qquad
-Q_{\rm convection}\approx0.
-```
+Q_{\rm convection}\approx0. -->
+
+
 
 
 
@@ -11031,16 +11106,19 @@ The main ordinary cooling channel becomes **radiation**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-028" width="182" height="35" alt="\boxed{ P_{\rm rad} = \epsilon\sigma A \left( T^4-T_{\rm env}^4 \right). }">
+<!-- TeX display: \boxed{
 P_{\rm rad}
 =
 \epsilon\sigma A
 \left(
 T^4-T_{\rm env}^4
 \right).
-}
-```
+} -->
+
+
 
 
 
@@ -11050,11 +11128,14 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-029" width="554" height="30" alt="\boxed{ \text{the existence of lower-radiance accessible modes into which energy can escape}. }">
+<!-- TeX display: \boxed{
 \text{the existence of lower-radiance accessible modes into which energy can escape}.
-}
-```
+} -->
+
+
 
 
 
@@ -11074,9 +11155,12 @@ Heat flow is not just:
 
 
 
-```math
-T_{\rm hot}\rightarrow T_{\rm cold}.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-030" width="96" height="20" alt="T_{\rm hot}\rightarrow T_{\rm cold}.">
+<!-- TeX display: T_{\rm hot}\rightarrow T_{\rm cold}. -->
+
+
 
 
 
@@ -11086,23 +11170,29 @@ For conduction:
 
 
 
-```math
-\mathbf J_Q
+
+
+<img src="UTC-Math/message-22.svg#equation-031" width="99" height="22" alt="\mathbf J_Q = -k\nabla T.">
+<!-- TeX display: \mathbf J_Q
 =
--k\nabla T.
-```
+-k\nabla T. -->
 
 
 
-Geometry controls $\nabla T$.
+
+
+Geometry controls <img src="UTC-Math/message-22.svg#equation-032" width="33" height="18" alt="\nabla T" align="middle"><!-- TeX inline: \nabla T -->.
 
 For radiation:
 
 
 
-```math
-P\propto A T^4.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-033" width="77" height="21" alt="P\propto A T^4.">
+<!-- TeX display: P\propto A T^4. -->
+
+
 
 
 
@@ -11112,11 +11202,14 @@ For diffusion:
 
 
 
-```math
-\frac{\partial T}{\partial t}
+
+
+<img src="UTC-Math/message-22.svg#equation-034" width="103" height="40" alt="\frac{\partial T}{\partial t} = \alpha\nabla^2T.">
+<!-- TeX display: \frac{\partial T}{\partial t}
 =
-\alpha\nabla^2T.
-```
+\alpha\nabla^2T. -->
+
+
 
 
 
@@ -11126,27 +11219,33 @@ For an optically thick body, radiative transfer becomes constrained by optical d
 
 
 
-```math
-\tau
+
+
+<img src="UTC-Math/message-22.svg#equation-035" width="96" height="42" alt="\tau = \int \kappa\rho\,ds.">
+<!-- TeX display: \tau
 =
-\int \kappa\rho\,ds.
-```
+\int \kappa\rho\,ds. -->
 
 
 
-High $\tau$ traps radiation.
 
-Low $\tau$ allows escape.
+
+High <img src="UTC-Math/message-22.svg#equation-036" width="17" height="14" alt="\tau" align="middle"><!-- TeX inline: \tau --> traps radiation.
+
+Low <img src="UTC-Math/message-22.svg#equation-037" width="17" height="14" alt="\tau" align="middle"><!-- TeX inline: \tau --> allows escape.
 
 So now we can say something much stronger:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-038" width="455" height="52" alt="\boxed{ \text{thermal stability is partly a geometric property of the available dissipation channels}. }">
+<!-- TeX display: \boxed{
 \text{thermal stability is partly a geometric property of the available dissipation channels}.
-}
-```
+} -->
+
+
 
 
 
@@ -11158,9 +11257,12 @@ Nodes:
 
 
 
-```math
-T_i
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-039" width="23" height="20" alt="T_i">
+<!-- TeX display: T_i -->
+
+
 
 
 
@@ -11168,9 +11270,12 @@ and thermal couplings:
 
 
 
-```math
-G_{ij}.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-040" width="35" height="22" alt="G_{ij}.">
+<!-- TeX display: G_{ij}. -->
+
+
 
 
 
@@ -11178,15 +11283,18 @@ Then:
 
 
 
-```math
-C_i\frac{dT_i}{dt}
+
+
+<img src="UTC-Math/message-22.svg#equation-041" width="281" height="50" alt="C_i\frac{dT_i}{dt} = P_i + \sum_jG_{ij}(T_j-T_i) - P_{{\rm rad},i}.">
+<!-- TeX display: C_i\frac{dT_i}{dt}
 =
 P_i
 +
 \sum_jG_{ij}(T_j-T_i)
 -
-P_{{\rm rad},i}.
-```
+P_{{\rm rad},i}. -->
+
+
 
 
 
@@ -11200,9 +11308,12 @@ Define:
 
 
 
-```math
-G_\Theta=(V_\Theta,E_\Theta).
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-042" width="118" height="22" alt="G_\Theta=(V_\Theta,E_\Theta).">
+<!-- TeX display: G_\Theta=(V_\Theta,E_\Theta). -->
+
+
 
 
 
@@ -11210,9 +11321,12 @@ Each node represents an energetic region:
 
 
 
-```math
-v_i=(T_i,U_i,C_i).
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-043" width="121" height="22" alt="v_i=(T_i,U_i,C_i).">
+<!-- TeX display: v_i=(T_i,U_i,C_i). -->
+
+
 
 
 
@@ -11220,8 +11334,10 @@ Each edge represents an available transport channel:
 
 
 
-```math
-e_{ij}
+
+
+<img src="UTC-Math/message-22.svg#equation-044" width="347" height="23" alt="e_{ij} = \{ k_{ij}, \kappa_{ij}, A_{ij}, \text{radiative coupling}, \text{mass flow} \}.">
+<!-- TeX display: e_{ij}
 =
 \{
 k_{ij},
@@ -11229,8 +11345,9 @@ k_{ij},
 A_{ij},
 \text{radiative coupling},
 \text{mass flow}
-\}.
-```
+\}. -->
+
+
 
 
 
@@ -11240,9 +11357,12 @@ A stable thermal organization satisfies:
 
 
 
-```math
-\frac{dT_i}{dt}\approx0
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-045" width="68" height="40" alt="\frac{dT_i}{dt}\approx0">
+<!-- TeX display: \frac{dT_i}{dt}\approx0 -->
+
+
 
 
 
@@ -11250,9 +11370,12 @@ while heat continues flowing:
 
 
 
-```math
-J_{ij}\neq0.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-046" width="61" height="23" alt="J_{ij}\neq0.">
+<!-- TeX display: J_{ij}\neq0. -->
+
+
 
 
 
@@ -11260,11 +11383,14 @@ That is an important point:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-047" width="268" height="26" alt="\boxed{ \text{stable state does not mean zero flow}. }">
+<!-- TeX display: \boxed{
 \text{stable state does not mean zero flow}.
-}
-```
+} -->
+
+
 
 
 
@@ -11274,11 +11400,14 @@ This gives UTC another kind of attractor:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-048" width="114" height="26" alt="\boxed{ \text{flux attractor}. }">
+<!-- TeX display: \boxed{
 \text{flux attractor}.
-}
-```
+} -->
+
+
 
 
 
@@ -11286,9 +11415,12 @@ Not just:
 
 
 
-```math
-x=x^*.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-049" width="60" height="20" alt="x=x^*.">
+<!-- TeX display: x=x^*. -->
+
+
 
 
 
@@ -11296,9 +11428,12 @@ But:
 
 
 
-```math
-J=J^*
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-050" width="58" height="20" alt="J=J^*">
+<!-- TeX display: J=J^* -->
+
+
 
 
 
@@ -11318,9 +11453,12 @@ No sustained energy input:
 
 
 
-```math
-P_{\rm in}=0.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-051" width="63" height="20" alt="P_{\rm in}=0.">
+<!-- TeX display: P_{\rm in}=0. -->
+
+
 
 
 
@@ -11328,9 +11466,12 @@ System relaxes:
 
 
 
-```math
-T_{\rm system}\rightarrow T_{\rm environment}.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-052" width="155" height="22" alt="T_{\rm system}\rightarrow T_{\rm environment}.">
+<!-- TeX display: T_{\rm system}\rightarrow T_{\rm environment}. -->
+
+
 
 
 
@@ -11338,9 +11479,12 @@ Eventually:
 
 
 
-```math
-\nabla T\rightarrow0.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-053" width="70" height="18" alt="\nabla T\rightarrow0.">
+<!-- TeX display: \nabla T\rightarrow0. -->
+
+
 
 
 
@@ -11354,9 +11498,12 @@ Energy is generated or released, and existing physics automatically exports it:
 
 
 
-```math
-P_{\rm heat}\rightarrow P_{\rm radiation}.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-054" width="127" height="20" alt="P_{\rm heat}\rightarrow P_{\rm radiation}.">
+<!-- TeX display: P_{\rm heat}\rightarrow P_{\rm radiation}. -->
+
+
 
 
 
@@ -11374,8 +11521,10 @@ The system actively modifies its own heat channels:
 
 
 
-```math
-T
+
+
+<img src="UTC-Math/message-22.svg#equation-055" width="264" height="22" alt="T \rightarrow \text{sensor} \rightarrow \text{controller} \rightarrow J_Q \rightarrow T.">
+<!-- TeX display: T
 \rightarrow
 \text{sensor}
 \rightarrow
@@ -11383,8 +11532,9 @@ T
 \rightarrow
 J_Q
 \rightarrow
-T.
-```
+T. -->
+
+
 
 
 
@@ -11397,7 +11547,7 @@ Examples:
 - thermostats,
 - computer cooling.
 
-This is $F_\Theta$ upgraded into higher-order feedback.
+This is <img src="UTC-Math/message-22.svg#equation-056" width="29" height="20" alt="F_\Theta" align="middle"><!-- TeX inline: F_\Theta --> upgraded into higher-order feedback.
 
 So the same thermal kernel appears at multiple F levels.
 
@@ -11413,9 +11563,12 @@ If core temperature increases:
 
 
 
-```math
-T_c\uparrow
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-057" width="37" height="21" alt="T_c\uparrow">
+<!-- TeX display: T_c\uparrow -->
+
+
 
 
 
@@ -11423,9 +11576,12 @@ then pressure generally rises:
 
 
 
-```math
-P\uparrow.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-058" width="37" height="21" alt="P\uparrow.">
+<!-- TeX display: P\uparrow. -->
+
+
 
 
 
@@ -11433,9 +11589,12 @@ The star expands:
 
 
 
-```math
-R\uparrow.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-059" width="38" height="21" alt="R\uparrow.">
+<!-- TeX display: R\uparrow. -->
+
+
 
 
 
@@ -11443,9 +11602,12 @@ Expansion cools the gas:
 
 
 
-```math
-T_c\downarrow.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-060" width="41" height="21" alt="T_c\downarrow.">
+<!-- TeX display: T_c\downarrow. -->
+
+
 
 
 
@@ -11453,15 +11615,18 @@ Conversely:
 
 
 
-```math
-T_c\downarrow
+
+
+<img src="UTC-Math/message-22.svg#equation-061" width="310" height="21" alt="T_c\downarrow \rightarrow P\downarrow \rightarrow \text{gravity contracts core} \rightarrow T_c\uparrow.">
+<!-- TeX display: T_c\downarrow
 \rightarrow
 P\downarrow
 \rightarrow
 \text{gravity contracts core}
 \rightarrow
-T_c\uparrow.
-```
+T_c\uparrow. -->
+
+
 
 
 
@@ -11469,8 +11634,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-062" width="138" height="26" alt="\boxed{ T \rightarrow P \rightarrow R \rightarrow T }">
+<!-- TeX display: \boxed{
 T
 \rightarrow
 P
@@ -11478,8 +11645,9 @@ P
 R
 \rightarrow
 T
-}
-```
+} -->
+
+
 
 
 
@@ -11489,15 +11657,18 @@ Simultaneously:
 
 
 
-```math
-\text{fusion}
+
+
+<img src="UTC-Math/message-22.svg#equation-063" width="278" height="21" alt="\text{fusion} \rightarrow \text{radiation} \rightarrow \text{surface} \rightarrow \text{space}.">
+<!-- TeX display: \text{fusion}
 \rightarrow
 \text{radiation}
 \rightarrow
 \text{surface}
 \rightarrow
-\text{space}.
-```
+\text{space}. -->
+
+
 
 
 
@@ -11509,9 +11680,12 @@ Our improvement is recognizing that those are **two linked feedback cycles**:
 
 
 
-```math
-F_{\rm hydro}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-064" width="49" height="22" alt="F_{\rm hydro}">
+<!-- TeX display: F_{\rm hydro} -->
+
+
 
 
 
@@ -11519,9 +11693,12 @@ and
 
 
 
-```math
-F_\Theta.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-065" width="33" height="20" alt="F_\Theta.">
+<!-- TeX display: F_\Theta. -->
+
+
 
 
 
@@ -11533,9 +11710,12 @@ Gravitational collapse gives:
 
 
 
-```math
-R\downarrow
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-066" width="33" height="21" alt="R\downarrow">
+<!-- TeX display: R\downarrow -->
+
+
 
 
 
@@ -11543,12 +11723,15 @@ and roughly:
 
 
 
-```math
-|U_{\rm grav}|
+
+
+<img src="UTC-Math/message-22.svg#equation-067" width="134" height="42" alt="|U_{\rm grav}| \sim \frac{GM^2}{R} \uparrow.">
+<!-- TeX display: |U_{\rm grav}|
 \sim
 \frac{GM^2}{R}
-\uparrow.
-```
+\uparrow. -->
+
+
 
 
 
@@ -11556,11 +11739,14 @@ That released gravitational energy becomes thermal/kinetic energy:
 
 
 
-```math
-\text{collapse}
+
+
+<img src="UTC-Math/message-22.svg#equation-068" width="144" height="21" alt="\text{collapse} \rightarrow \text{heating}.">
+<!-- TeX display: \text{collapse}
 \rightarrow
-\text{heating}.
-```
+\text{heating}. -->
+
+
 
 
 
@@ -11570,15 +11756,18 @@ If heat can leave:
 
 
 
-```math
-\text{collapse}
+
+
+<img src="UTC-Math/message-22.svg#equation-069" width="438" height="22" alt="\text{collapse} \rightarrow Q \rightarrow Q_{\rm out} \rightarrow \text{continued contraction / stabilization}.">
+<!-- TeX display: \text{collapse}
 \rightarrow
 Q
 \rightarrow
 Q_{\rm out}
 \rightarrow
-\text{continued contraction / stabilization}.
-```
+\text{continued contraction / stabilization}. -->
+
+
 
 
 
@@ -11586,9 +11775,12 @@ If heat is trapped:
 
 
 
-```math
-Q_{\rm trapped}\uparrow
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-070" width="73" height="22" alt="Q_{\rm trapped}\uparrow">
+<!-- TeX display: Q_{\rm trapped}\uparrow -->
+
+
 
 
 
@@ -11598,8 +11790,10 @@ So CSC and thermal closure are **mutually coupled**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-071" width="147" height="29" alt="\boxed{ C \rightarrow Q \rightarrow F_\Theta \rightarrow S }">
+<!-- TeX display: \boxed{
 C
 \rightarrow
 Q
@@ -11607,8 +11801,9 @@ Q
 F_\Theta
 \rightarrow
 S
-}
-```
+} -->
+
+
 
 
 
@@ -11616,15 +11811,18 @@ but also:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-072" width="242" height="31" alt="\boxed{ Q_{\rm trapped} \rightarrow P \rightarrow \text{opposition to }C. }">
+<!-- TeX display: \boxed{
 Q_{\rm trapped}
 \rightarrow
 P
 \rightarrow
 \text{opposition to }C.
-}
-```
+} -->
+
+
 
 
 
@@ -11653,15 +11851,18 @@ So ordinary accretion feedback:
 
 
 
-```math
-\text{accretion}
+
+
+<img src="UTC-Math/message-22.svg#equation-073" width="403" height="21" alt="\text{accretion} \rightarrow L \rightarrow \text{radiation pressure} \rightarrow \text{reduced accretion}">
+<!-- TeX display: \text{accretion}
 \rightarrow
 L
 \rightarrow
 \text{radiation pressure}
 \rightarrow
-\text{reduced accretion}
-```
+\text{reduced accretion} -->
+
+
 
 
 
@@ -11671,9 +11872,12 @@ If radiation cannot efficiently escape:
 
 
 
-```math
-\tau_{\rm optical}\gg1,
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-074" width="87" height="22" alt="\tau_{\rm optical}\gg1,">
+<!-- TeX display: \tau_{\rm optical}\gg1, -->
+
+
 
 
 
@@ -11683,11 +11887,14 @@ Therefore the object's exotic behavior may be understood as a change in:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-075" width="192" height="29" alt="\boxed{ \text{thermal closure topology}. }">
+<!-- TeX display: \boxed{
 \text{thermal closure topology}.
-}
-```
+} -->
+
+
 
 
 
@@ -11707,12 +11914,15 @@ It is closer to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-076" width="75" height="26" alt="\boxed{ \nabla T \rightarrow0 }">
+<!-- TeX display: \boxed{
 \nabla T
 \rightarrow0
-}
-```
+} -->
+
+
 
 
 
@@ -11720,8 +11930,10 @@ and more generally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-077" width="407" height="30" alt="\boxed{ \nabla \mu \rightarrow0, \quad \nabla P \rightarrow0, \quad \text{usable free-energy gradients}\rightarrow0. }">
+<!-- TeX display: \boxed{
 \nabla \mu
 \rightarrow0,
 \quad
@@ -11729,8 +11941,9 @@ and more generally:
 \rightarrow0,
 \quad
 \text{usable free-energy gradients}\rightarrow0.
-}
-```
+} -->
+
+
 
 
 
@@ -11744,11 +11957,14 @@ It requires:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-078" width="197" height="29" alt="\boxed{ \text{structured disequilibrium}. }">
+<!-- TeX display: \boxed{
 \text{structured disequilibrium}.
-}
-```
+} -->
+
+
 
 
 
@@ -11768,9 +11984,12 @@ We should distinguish:
 
 
 
-```math
-P1_E=\text{available energy budget}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-079" width="223" height="21" alt="P1_E=\text{available energy budget}">
+<!-- TeX display: P1_E=\text{available energy budget} -->
+
+
 
 
 
@@ -11778,9 +11997,12 @@ from
 
 
 
-```math
-P1_\nabla=\text{available gradient structure}.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-080" width="256" height="21" alt="P1_\nabla=\text{available gradient structure}.">
+<!-- TeX display: P1_\nabla=\text{available gradient structure}. -->
+
+
 
 
 
@@ -11788,9 +12010,12 @@ Because:
 
 
 
-```math
-E>0
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-081" width="50" height="18" alt="E>0">
+<!-- TeX display: E>0 -->
+
+
 
 
 
@@ -11798,9 +12023,12 @@ does **not** imply:
 
 
 
-```math
-W_{\rm available}>0.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-082" width="102" height="20" alt="W_{\rm available}>0.">
+<!-- TeX display: W_{\rm available}>0. -->
+
+
 
 
 
@@ -11810,9 +12038,12 @@ Temperature difference:
 
 
 
-```math
-\Delta T.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-083" width="38" height="18" alt="\Delta T.">
+<!-- TeX display: \Delta T. -->
+
+
 
 
 
@@ -11820,9 +12051,12 @@ Chemical potential:
 
 
 
-```math
-\Delta\mu.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-084" width="36" height="21" alt="\Delta\mu.">
+<!-- TeX display: \Delta\mu. -->
+
+
 
 
 
@@ -11830,9 +12064,12 @@ Pressure:
 
 
 
-```math
-\Delta P.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-085" width="38" height="18" alt="\Delta P.">
+<!-- TeX display: \Delta P. -->
+
+
 
 
 
@@ -11840,9 +12077,12 @@ Voltage:
 
 
 
-```math
-\Delta V.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-086" width="39" height="18" alt="\Delta V.">
+<!-- TeX display: \Delta V. -->
+
+
 
 
 
@@ -11850,9 +12090,12 @@ Gravitational potential:
 
 
 
-```math
-\Delta\Phi.
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-087" width="38" height="18" alt="\Delta\Phi.">
+<!-- TeX display: \Delta\Phi. -->
+
+
 
 
 
@@ -11860,11 +12103,14 @@ So perhaps the more fundamental resource is not raw energy but:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-088" width="225" height="29" alt="\boxed{ \text{accessible potential difference}. }">
+<!-- TeX display: \boxed{
 \text{accessible potential difference}.
-}
-```
+} -->
+
+
 
 
 
@@ -11880,78 +12126,105 @@ The chain now looks like:
 
 
 
-```math
-P1:
-\text{energy + gradients}
-```
+
+
+<img src="UTC-Math/message-22.svg#equation-089" width="172" height="21" alt="P1: \text{energy + gradients}">
+<!-- TeX display: P1:
+\text{energy + gradients} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-090" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-F_{\rm FR}:
-\text{fluctuation-response}
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-091" width="189" height="21" alt="F_{\rm FR}: \text{fluctuation-response}">
+<!-- TeX display: F_{\rm FR}:
+\text{fluctuation-response} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-092" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-F_\Theta:
-\text{thermal/entropy transport}
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-093" width="227" height="22" alt="F_\Theta: \text{thermal/entropy transport}">
+<!-- TeX display: F_\Theta:
+\text{thermal/entropy transport} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-094" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-F_{\rm CSC}:
-\text{collapse/stabilization/composition}
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-095" width="295" height="22" alt="F_{\rm CSC}: \text{collapse/stabilization/composition}">
+<!-- TeX display: F_{\rm CSC}:
+\text{collapse/stabilization/composition} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-096" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-P4:
-\text{persistent attractor}.
-```
+
+
+
+
+<img src="UTC-Math/message-22.svg#equation-097" width="180" height="21" alt="P4: \text{persistent attractor}.">
+<!-- TeX display: P4:
+\text{persistent attractor}. -->
+
+
 
 
 
@@ -11963,8 +12236,10 @@ Something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-098" width="216" height="122" alt="\boxed{ \begin{array}{ccc} \text{gradient} &amp; \leftrightarrow &amp; \text{fluctuation}\\ \updownarrow &amp;&amp; \updownarrow\\ \text{transport} &amp; \leftrightarrow &amp; \text{dissipation}\\ \updownarrow &amp;&amp; \updownarrow\\ \text{collapse} &amp; \leftrightarrow &amp; \text{stabilization} \end{array} }">
+<!-- TeX display: \boxed{
 \begin{array}{ccc}
 \text{gradient} & \leftrightarrow & \text{fluctuation}\\
 \updownarrow && \updownarrow\\
@@ -11972,8 +12247,9 @@ Something like:
 \updownarrow && \updownarrow\\
 \text{collapse} & \leftrightarrow & \text{stabilization}
 \end{array}
-}
-```
+} -->
+
+
 
 
 
@@ -11985,16 +12261,19 @@ and composition emerges when this little engine settles into a sufficiently pers
 
 Thermal radiation is frequency-structured.
 
-A body at temperature $T$ emits a spectrum:
+A body at temperature <img src="UTC-Math/message-22.svg#equation-099" width="20" height="17" alt="T" align="middle"><!-- TeX inline: T --> emits a spectrum:
 
 
 
-```math
-B_\nu(T)
+
+
+<img src="UTC-Math/message-22.svg#equation-100" width="200" height="44" alt="B_\nu(T) = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/k_BT}-1}.">
+<!-- TeX display: B_\nu(T)
 =
 \frac{2h\nu^3}{c^2}
-\frac{1}{e^{h\nu/k_BT}-1}.
-```
+\frac{1}{e^{h\nu/k_BT}-1}. -->
+
+
 
 
 
@@ -12006,15 +12285,18 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-101" width="346" height="32" alt="\boxed{ T_{\rm object} \rightarrow P(\nu) \rightarrow \text{environmental radiation field}. }">
+<!-- TeX display: \boxed{
 T_{\rm object}
 \rightarrow
 P(\nu)
 \rightarrow
 \text{environmental radiation field}.
-}
-```
+} -->
+
+
 
 
 
@@ -12024,13 +12306,16 @@ That ties together two threads we had been treating separately:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-102" width="331" height="30" alt="\boxed{ \text{entropy export} + \text{frequency record formation}. }">
+<!-- TeX display: \boxed{
 \text{entropy export}
 +
 \text{frequency record formation}.
-}
-```
+} -->
+
+
 
 
 
@@ -12056,8 +12341,10 @@ Now that is a lovely UTC closure.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-103" width="1075" height="31" alt="\boxed{ \text{Free-energy gradient} \rightarrow \text{process} \rightarrow \text{heat/entropy generation} \rightarrow \text{frequency-structured export} \rightarrow \text{environment} \rightarrow \text{gradient maintained or altered} \rightarrow \text{process}. }">
+<!-- TeX display: \boxed{
 \text{Free-energy gradient}
 \rightarrow
 \text{process}
@@ -12071,8 +12358,9 @@ Now that is a lovely UTC closure.
 \text{gradient maintained or altered}
 \rightarrow
 \text{process}.
-}
-```
+} -->
+
+
 
 
 
@@ -12080,11 +12368,14 @@ We could call this the:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-104" width="363" height="29" alt="\boxed{ \textbf{Gradient–Dissipation–Stabilization Closure} }">
+<!-- TeX display: \boxed{
 \textbf{Gradient–Dissipation–Stabilization Closure}
-}
-```
+} -->
+
+
 
 
 
@@ -12094,8 +12385,10 @@ Then CSC sits partially inside it:
 
 
 
-```math
-\text{collapse}
+
+
+<img src="UTC-Math/message-22.svg#equation-105" width="516" height="21" alt="\text{collapse} \rightarrow \text{released energy} \rightarrow \text{dissipation} \rightarrow \text{stabilization} \rightarrow \text{composition}.">
+<!-- TeX display: \text{collapse}
 \rightarrow
 \text{released energy}
 \rightarrow
@@ -12103,8 +12396,9 @@ Then CSC sits partially inside it:
 \rightarrow
 \text{stabilization}
 \rightarrow
-\text{composition}.
-```
+\text{composition}. -->
+
+
 
 
 
@@ -12112,13 +12406,16 @@ And record formation sits on the emitted side:
 
 
 
-```math
-\text{dissipation}
+
+
+<img src="UTC-Math/message-22.svg#equation-106" width="345" height="21" alt="\text{dissipation} \rightarrow \text{wave spectrum} \rightarrow \text{physical record}.">
+<!-- TeX display: \text{dissipation}
 \rightarrow
 \text{wave spectrum}
 \rightarrow
-\text{physical record}.
-```
+\text{physical record}. -->
+
+
 
 
 
@@ -12126,13 +12423,16 @@ So three things we thought were different,
 
 
 
-```math
-\text{thermodynamics},
+
+
+<img src="UTC-Math/message-22.svg#equation-107" width="376" height="21" alt="\text{thermodynamics}, \quad \text{stabilization}, \quad \text{record formation},">
+<!-- TeX display: \text{thermodynamics},
 \quad
 \text{stabilization},
 \quad
-\text{record formation},
-```
+\text{record formation}, -->
+
+
 
 
 
@@ -12144,13 +12444,16 @@ The manuscript currently says the thermodynamic “permission slip” for comple
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-22.svg#equation-108" width="618" height="73" alt="\boxed{ \textbf{Persistent driven complexity requires not merely an energy source, but a geometrically available gradient-and-export network that continually moves entropy away from the closure being maintained.} }">
+<!-- TeX display: \boxed{
 \textbf{Persistent driven complexity requires not merely an energy source,
 but a geometrically available gradient-and-export network that continually
 moves entropy away from the closure being maintained.}
-}
-```
+} -->
+
+
 
 
 
@@ -12180,8 +12483,10 @@ We are trying to describe something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-001" width="677" height="30" alt="\boxed{ \text{waves} \rightarrow \text{correlations} \rightarrow \text{transport} \rightarrow \text{closure} \rightarrow \text{topology} \rightarrow \text{stability} \rightarrow \text{new effective geometry} }">
+<!-- TeX display: \boxed{
 \text{waves}
 \rightarrow
 \text{correlations}
@@ -12195,8 +12500,9 @@ We are trying to describe something like:
 \text{stability}
 \rightarrow
 \text{new effective geometry}
-}
-```
+} -->
+
+
 
 
 
@@ -12204,13 +12510,16 @@ and then recursively:
 
 
 
-```math
-\text{new geometry}
+
+
+<img src="UTC-Math/message-24.svg#equation-002" width="436" height="21" alt="\text{new geometry} \rightarrow \text{new allowed frequencies} \rightarrow \text{new correlations}.">
+<!-- TeX display: \text{new geometry}
 \rightarrow
 \text{new allowed frequencies}
 \rightarrow
-\text{new correlations}.
-```
+\text{new correlations}. -->
+
+
 
 
 
@@ -12220,9 +12529,12 @@ I would provisionally call the framework:
 
 
 
-```math
-\boxed{\text{Fourier-Thermodynamic Twisted Graph Topology}}
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-003" width="366" height="30" alt="\boxed{\text{Fourier-Thermodynamic Twisted Graph Topology}}">
+<!-- TeX display: \boxed{\text{Fourier-Thermodynamic Twisted Graph Topology}} -->
+
+
 
 
 
@@ -12236,9 +12548,12 @@ An ordinary graph is:
 
 
 
-```math
-G=(V,E).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-004" width="91" height="22" alt="G=(V,E).">
+<!-- TeX display: G=(V,E). -->
+
+
 
 
 
@@ -12246,13 +12561,16 @@ But our nodes are not simple labels. Each node may carry a local physical state:
 
 
 
-```math
-v_i
+
+
+<img src="UTC-Math/message-24.svg#equation-005" width="234" height="22" alt="v_i = \left( A_i,\omega_i,\phi_i,E_i,T_i,S_i,q_i,\ldots \right).">
+<!-- TeX display: v_i
 =
 \left(
 A_i,\omega_i,\phi_i,E_i,T_i,S_i,q_i,\ldots
-\right).
-```
+\right). -->
+
+
 
 
 
@@ -12260,8 +12578,10 @@ And an edge is not merely “connected/not connected.” It may carry:
 
 
 
-```math
-e_{ij}
+
+
+<img src="UTC-Math/message-24.svg#equation-006" width="231" height="23" alt="e_{ij} = \left( K_{ij}, J_{ij}, \Delta\phi_{ij}, I_{ij}, Q_{ij}, \tau_{ij} \right),">
+<!-- TeX display: e_{ij}
 =
 \left(
 K_{ij},
@@ -12270,8 +12590,9 @@ J_{ij},
 I_{ij},
 Q_{ij},
 \tau_{ij}
-\right),
-```
+\right), -->
+
+
 
 
 
@@ -12281,17 +12602,20 @@ So the primitive object is closer to a **decorated dynamical graph**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-007" width="132" height="31" alt="\boxed{ \mathcal G = (V,E,\mathcal X,\mathcal F) }">
+<!-- TeX display: \boxed{
 \mathcal G
 =
 (V,E,\mathcal X,\mathcal F)
-}
-```
+} -->
 
 
 
-where $\mathcal X$ assigns physical state spaces to vertices and edges and $\mathcal F$ gives their transition laws.
+
+
+where <img src="UTC-Math/message-24.svg#equation-008" width="21" height="17" alt="\mathcal X" align="middle"><!-- TeX inline: \mathcal X --> assigns physical state spaces to vertices and edges and <img src="UTC-Math/message-24.svg#equation-009" width="22" height="18" alt="\mathcal F" align="middle"><!-- TeX inline: \mathcal F --> gives their transition laws.
 
 This is already a major upgrade over our earlier “wave graph.”
 
@@ -12299,16 +12623,19 @@ This is already a major upgrade over our earlier “wave graph.”
 
 # 2. Fourier structure gives every node and edge an internal spectrum
 
-Instead of describing node $i$ only by $x_i(t)$, decompose it:
+Instead of describing node <img src="UTC-Math/message-24.svg#equation-010" width="14" height="17" alt="i" align="middle"><!-- TeX inline: i --> only by <img src="UTC-Math/message-24.svg#equation-011" width="41" height="22" alt="x_i(t)" align="middle"><!-- TeX inline: x_i(t) -->, decompose it:
 
 
 
-```math
-x_i(t)
+
+
+<img src="UTC-Math/message-24.svg#equation-012" width="181" height="44" alt="x_i(t) = \int_{-\infty}^{\infty} \hat x_i(\omega)e^{i\omega t}\,d\omega.">
+<!-- TeX display: x_i(t)
 =
 \int_{-\infty}^{\infty}
-\hat x_i(\omega)e^{i\omega t}\,d\omega.
-```
+\hat x_i(\omega)e^{i\omega t}\,d\omega. -->
+
+
 
 
 
@@ -12316,9 +12643,12 @@ Now the state of the graph is not merely:
 
 
 
-```math
-x=(x_1,\dots,x_N).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-013" width="128" height="22" alt="x=(x_1,\dots,x_N).">
+<!-- TeX display: x=(x_1,\dots,x_N). -->
+
+
 
 
 
@@ -12326,11 +12656,14 @@ It is a **spectral graph field**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-014" width="70" height="36" alt="\boxed{ \hat X(i,\omega). }">
+<!-- TeX display: \boxed{
 \hat X(i,\omega).
-}
-```
+} -->
+
+
 
 
 
@@ -12358,14 +12691,17 @@ A primitive record could be represented as persistent spectral correlation:
 
 
 
-```math
-C_{ij}(\omega,\tau)
+
+
+<img src="UTC-Math/message-24.svg#equation-015" width="237" height="26" alt="C_{ij}(\omega,\tau) = \left\langle \hat x_i(\omega,t) \hat x_j^*(\omega,t+\tau) \right\rangle.">
+<!-- TeX display: C_{ij}(\omega,\tau)
 =
 \left\langle
 \hat x_i(\omega,t)
 \hat x_j^*(\omega,t+\tau)
-\right\rangle.
-```
+\right\rangle. -->
+
+
 
 
 
@@ -12373,13 +12709,16 @@ If
 
 
 
-```math
-|C_{ij}(\omega,\tau)|>0
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-016" width="106" height="23" alt="|C_{ij}(\omega,\tau)|>0">
+<!-- TeX display: |C_{ij}(\omega,\tau)|>0 -->
 
 
 
-for substantial $\tau$, the graph carries persistent relational information at frequency $\omega$.
+
+
+for substantial <img src="UTC-Math/message-24.svg#equation-017" width="17" height="14" alt="\tau" align="middle"><!-- TeX inline: \tau -->, the graph carries persistent relational information at frequency <img src="UTC-Math/message-24.svg#equation-018" width="18" height="14" alt="\omega" align="middle"><!-- TeX inline: \omega -->.
 
 ---
 
@@ -12391,11 +12730,14 @@ So attach heat flux to edges:
 
 
 
-```math
-J_{ij}^{(Q)}
+
+
+<img src="UTC-Math/message-24.svg#equation-019" width="149" height="30" alt="J_{ij}^{(Q)} = G_{ij}(T_i-T_j).">
+<!-- TeX display: J_{ij}^{(Q)}
 =
-G_{ij}(T_i-T_j).
-```
+G_{ij}(T_i-T_j). -->
+
+
 
 
 
@@ -12403,8 +12745,10 @@ Then each vertex obeys something like:
 
 
 
-```math
-C_i\frac{dT_i}{dt}
+
+
+<img src="UTC-Math/message-24.svg#equation-020" width="302" height="50" alt="C_i\frac{dT_i}{dt} = P_i + \sum_jJ_{ji}^{(Q)} - \sum_jJ_{ij}^{(Q)} - P_{{\rm rad},i}.">
+<!-- TeX display: C_i\frac{dT_i}{dt}
 =
 P_i
 +
@@ -12412,8 +12756,9 @@ P_i
 -
 \sum_jJ_{ij}^{(Q)}
 -
-P_{{\rm rad},i}.
-```
+P_{{\rm rad},i}. -->
+
+
 
 
 
@@ -12421,15 +12766,18 @@ Now combine this with entropy production:
 
 
 
-```math
-\dot S_i
+
+
+<img src="UTC-Math/message-24.svg#equation-021" width="246" height="59" alt="\dot S_i = \dot S_{i,\mathrm{int}} + \sum_j\frac{J_{ji}^{(Q)}}{T_j} - \sum_j\frac{J_{ij}^{(Q)}}{T_i}.">
+<!-- TeX display: \dot S_i
 =
 \dot S_{i,\mathrm{int}}
 +
 \sum_j\frac{J_{ji}^{(Q)}}{T_j}
 -
-\sum_j\frac{J_{ij}^{(Q)}}{T_i}.
-```
+\sum_j\frac{J_{ij}^{(Q)}}{T_i}. -->
+
+
 
 
 
@@ -12441,11 +12789,14 @@ And the thermal state modifies the graph:
 
 
 
-```math
-T_i
+
+
+<img src="UTC-Math/message-24.svg#equation-022" width="95" height="23" alt="T_i \rightarrow K_{ij}(T)">
+<!-- TeX display: T_i
 \rightarrow
-K_{ij}(T)
-```
+K_{ij}(T) -->
+
+
 
 
 
@@ -12455,8 +12806,10 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-023" width="152" height="33" alt="\boxed{ G \rightarrow J_Q \rightarrow T \rightarrow G' }">
+<!-- TeX display: \boxed{
 G
 \rightarrow
 J_Q
@@ -12464,8 +12817,9 @@ J_Q
 T
 \rightarrow
 G'
-}
-```
+} -->
+
+
 
 
 
@@ -12485,21 +12839,27 @@ Suppose each edge carries a relative phase:
 
 
 
-```math
-U_{ij}
+
+
+<img src="UTC-Math/message-24.svg#equation-024" width="80" height="26" alt="U_{ij} = e^{i\theta_{ij}}.">
+<!-- TeX display: U_{ij}
 =
-e^{i\theta_{ij}}.
-```
+e^{i\theta_{ij}}. -->
 
 
 
-Transport from node $i$ to node $j$ is therefore not ordinary scalar transport:
+
+
+Transport from node <img src="UTC-Math/message-24.svg#equation-025" width="14" height="17" alt="i" align="middle"><!-- TeX inline: i --> to node <img src="UTC-Math/message-24.svg#equation-026" width="15" height="20" alt="j" align="middle"><!-- TeX inline: j --> is therefore not ordinary scalar transport:
 
 
 
-```math
-x_j=x_i.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-027" width="64" height="21" alt="x_j=x_i.">
+<!-- TeX display: x_j=x_i. -->
+
+
 
 
 
@@ -12507,11 +12867,14 @@ Instead:
 
 
 
-```math
-x_j
+
+
+<img src="UTC-Math/message-24.svg#equation-028" width="85" height="22" alt="x_j = U_{ij}x_i.">
+<!-- TeX display: x_j
 =
-U_{ij}x_i.
-```
+U_{ij}x_i. -->
+
+
 
 
 
@@ -12519,9 +12882,12 @@ Go around a closed loop:
 
 
 
-```math
-i\rightarrow j\rightarrow k\rightarrow i.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-029" width="114" height="21" alt="i\rightarrow j\rightarrow k\rightarrow i.">
+<!-- TeX display: i\rightarrow j\rightarrow k\rightarrow i. -->
+
+
 
 
 
@@ -12529,13 +12895,16 @@ The accumulated transformation is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-030" width="131" height="31" alt="\boxed{ W_\gamma = U_{ij}U_{jk}U_{ki}. }">
+<!-- TeX display: \boxed{
 W_\gamma
 =
 U_{ij}U_{jk}U_{ki}.
-}
-```
+} -->
+
+
 
 
 
@@ -12543,9 +12912,12 @@ If:
 
 
 
-```math
-W_\gamma=1,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-031" width="65" height="22" alt="W_\gamma=1,">
+<!-- TeX display: W_\gamma=1, -->
+
+
 
 
 
@@ -12555,9 +12927,12 @@ If:
 
 
 
-```math
-W_\gamma\neq1,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-032" width="65" height="23" alt="W_\gamma\neq1,">
+<!-- TeX display: W_\gamma\neq1, -->
+
+
 
 
 
@@ -12571,9 +12946,12 @@ The closed-path quantity
 
 
 
-```math
-W_\gamma
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-033" width="31" height="22" alt="W_\gamma">
+<!-- TeX display: W_\gamma -->
+
+
 
 
 
@@ -12595,9 +12973,12 @@ We construct chain groups:
 
 
 
-```math
-C_k
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-034" width="27" height="20" alt="C_k">
+<!-- TeX display: C_k -->
+
+
 
 
 
@@ -12605,9 +12986,12 @@ with boundary operators
 
 
 
-```math
-\partial_k:C_k\rightarrow C_{k-1}.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-035" width="119" height="21" alt="\partial_k:C_k\rightarrow C_{k-1}.">
+<!-- TeX display: \partial_k:C_k\rightarrow C_{k-1}. -->
+
+
 
 
 
@@ -12615,9 +12999,12 @@ Cycles satisfy:
 
 
 
-```math
-\partial_k z=0.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-036" width="65" height="20" alt="\partial_k z=0.">
+<!-- TeX display: \partial_k z=0. -->
+
+
 
 
 
@@ -12625,9 +13012,12 @@ Boundaries are:
 
 
 
-```math
-z=\partial_{k+1}b.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-037" width="79" height="21" alt="z=\partial_{k+1}b.">
+<!-- TeX display: z=\partial_{k+1}b. -->
+
+
 
 
 
@@ -12635,14 +13025,17 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-038" width="160" height="31" alt="\boxed{ H_k = \ker\partial_k/ \mathrm{im}\partial_{k+1}. }">
+<!-- TeX display: \boxed{
 H_k
 =
 \ker\partial_k/
 \mathrm{im}\partial_{k+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -12650,9 +13043,12 @@ Physically:
 
 
 
-```math
-H_0
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-039" width="29" height="20" alt="H_0">
+<!-- TeX display: H_0 -->
+
+
 
 
 
@@ -12660,9 +13056,12 @@ tracks connected components,
 
 
 
-```math
-H_1
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-040" width="29" height="20" alt="H_1">
+<!-- TeX display: H_1 -->
+
+
 
 
 
@@ -12670,9 +13069,12 @@ tracks independent loops,
 
 
 
-```math
-H_2
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-041" width="29" height="20" alt="H_2">
+<!-- TeX display: H_2 -->
+
+
 
 
 
@@ -12686,9 +13088,12 @@ If CSC produces a persistent loop:
 
 
 
-```math
-\gamma
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-042" width="17" height="17" alt="\gamma">
+<!-- TeX display: \gamma -->
+
+
 
 
 
@@ -12696,9 +13101,12 @@ that represents a nontrivial element of
 
 
 
-```math
-H_1,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-043" width="33" height="21" alt="H_1,">
+<!-- TeX display: H_1, -->
+
+
 
 
 
@@ -12718,13 +13126,16 @@ Instead of asking whether a loop exists at one arbitrary scale, persistent homol
 
 
 
-```math
-\epsilon_1
+
+
+<img src="UTC-Math/message-24.svg#equation-044" width="104" height="18" alt="\epsilon_1 &lt; \epsilon_2 &lt; \dots.">
+<!-- TeX display: \epsilon_1
 <
 \epsilon_2
 <
-\dots.
-```
+\dots. -->
+
+
 
 
 
@@ -12732,9 +13143,12 @@ A topological feature is “born” at:
 
 
 
-```math
-\epsilon_b
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-045" width="21" height="16" alt="\epsilon_b">
+<!-- TeX display: \epsilon_b -->
+
+
 
 
 
@@ -12742,9 +13156,12 @@ and disappears at:
 
 
 
-```math
-\epsilon_d.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-046" width="27" height="16" alt="\epsilon_d.">
+<!-- TeX display: \epsilon_d. -->
+
+
 
 
 
@@ -12752,11 +13169,14 @@ Its persistence is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-047" width="101" height="28" alt="\boxed{ \Pi=\epsilon_d-\epsilon_b. }">
+<!-- TeX display: \boxed{
 \Pi=\epsilon_d-\epsilon_b.
-}
-```
+} -->
+
+
 
 
 
@@ -12764,13 +13184,16 @@ UTC translation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-048" width="410" height="29" alt="\boxed{ \text{persistent topology} \approx \text{structural robustness across scales}. }">
+<!-- TeX display: \boxed{
 \text{persistent topology}
 \approx
 \text{structural robustness across scales}.
-}
-```
+} -->
+
+
 
 
 
@@ -12778,9 +13201,12 @@ Now imagine extending persistence from spatial scale into:
 
 
 
-```math
-(\epsilon,t,T,\omega,E).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-049" width="100" height="22" alt="(\epsilon,t,T,\omega,E).">
+<!-- TeX display: (\epsilon,t,T,\omega,E). -->
+
+
 
 
 
@@ -12796,13 +13222,16 @@ Then we'd have something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-050" width="180" height="31" alt="\boxed{ \Pi_{\rm UTC} = \Pi(\epsilon,t,T,\omega,E). }">
+<!-- TeX display: \boxed{
 \Pi_{\rm UTC}
 =
 \Pi(\epsilon,t,T,\omega,E).
-}
-```
+} -->
+
+
 
 
 
@@ -12820,9 +13249,12 @@ For loops:
 
 
 
-```math
-\pi_1(X)
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-051" width="51" height="22" alt="\pi_1(X)">
+<!-- TeX display: \pi_1(X) -->
+
+
 
 
 
@@ -12841,11 +13273,14 @@ Suppose:
 
 
 
-```math
-\gamma_1
+
+
+<img src="UTC-Math/message-24.svg#equation-052" width="65" height="21" alt="\gamma_1 \not\simeq \gamma_2.">
+<!-- TeX display: \gamma_1
 \not\simeq
-\gamma_2.
-```
+\gamma_2. -->
+
+
 
 
 
@@ -12855,13 +13290,16 @@ UTC translation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-053" width="598" height="30" alt="\boxed{ \text{different homotopy class} = \text{different closure basin separated by a topological barrier}. }">
+<!-- TeX display: \boxed{
 \text{different homotopy class}
 =
 \text{different closure basin separated by a topological barrier}.
-}
-```
+} -->
+
+
 
 
 
@@ -12871,11 +13309,14 @@ Collapse can now mean:
 
 
 
-```math
-[\gamma]_a
+
+
+<img src="UTC-Math/message-24.svg#equation-054" width="82" height="22" alt="[\gamma]_a \rightarrow [\gamma]_b">
+<!-- TeX display: [\gamma]_a
 \rightarrow
-[\gamma]_b
-```
+[\gamma]_b -->
+
+
 
 
 
@@ -12891,9 +13332,12 @@ Normally we might analyze:
 
 
 
-```math
-\omega
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-055" width="18" height="14" alt="\omega">
+<!-- TeX display: \omega -->
+
+
 
 
 
@@ -12901,9 +13345,12 @@ and
 
 
 
-```math
-H_k
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-056" width="29" height="20" alt="H_k">
+<!-- TeX display: H_k -->
+
+
 
 
 
@@ -12915,11 +13362,14 @@ So define frequency-dependent topology:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-057" width="64" height="31" alt="\boxed{ H_k(\omega). }">
+<!-- TeX display: \boxed{
 H_k(\omega).
-}
-```
+} -->
+
+
 
 
 
@@ -12927,11 +13377,14 @@ Imagine filtering the physical network by frequency band:
 
 
 
-```math
-G_{\omega}
+
+
+<img src="UTC-Math/message-24.svg#equation-058" width="310" height="21" alt="G_{\omega} = \text{graph formed by modes active near }\omega.">
+<!-- TeX display: G_{\omega}
 =
-\text{graph formed by modes active near }\omega.
-```
+\text{graph formed by modes active near }\omega. -->
+
+
 
 
 
@@ -12939,11 +13392,14 @@ Then compute:
 
 
 
-```math
-\beta_k(\omega)
+
+
+<img src="UTC-Math/message-24.svg#equation-059" width="158" height="22" alt="\beta_k(\omega) = \mathrm{rank}H_k(G_\omega).">
+<!-- TeX display: \beta_k(\omega)
 =
-\mathrm{rank}H_k(G_\omega).
-```
+\mathrm{rank}H_k(G_\omega). -->
+
+
 
 
 
@@ -12959,13 +13415,16 @@ We get a **topological spectrum**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-060" width="157" height="31" alt="\boxed{ \omega \mapsto (\beta_0,\beta_1,\beta_2,\dots). }">
+<!-- TeX display: \boxed{
 \omega
 \mapsto
 (\beta_0,\beta_1,\beta_2,\dots).
-}
-```
+} -->
+
+
 
 
 
@@ -12979,9 +13438,12 @@ Now make topology temperature-dependent:
 
 
 
-```math
-H_k(\omega,T).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-061" width="74" height="22" alt="H_k(\omega,T).">
+<!-- TeX display: H_k(\omega,T). -->
+
+
 
 
 
@@ -12989,9 +13451,12 @@ A structure may exist only below some thermal scale:
 
 
 
-```math
-T<T_c.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-062" width="61" height="20" alt="T&lt;T_c.">
+<!-- TeX display: T<T_c. -->
+
+
 
 
 
@@ -12999,9 +13464,12 @@ At:
 
 
 
-```math
-T=T_c,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-063" width="61" height="20" alt="T=T_c,">
+<!-- TeX display: T=T_c, -->
+
+
 
 
 
@@ -13011,11 +13479,14 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-064" width="74" height="31" alt="\boxed{ \beta_k(\omega,T) }">
+<!-- TeX display: \boxed{
 \beta_k(\omega,T)
-}
-```
+} -->
+
+
 
 
 
@@ -13025,9 +13496,12 @@ Now add entropy production:
 
 
 
-```math
-\sigma(\omega,T).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-065" width="63" height="22" alt="\sigma(\omega,T).">
+<!-- TeX display: \sigma(\omega,T). -->
+
+
 
 
 
@@ -13035,17 +13509,23 @@ We can search for regions where:
 
 
 
-```math
-\beta_k>0,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-066" width="59" height="21" alt="\beta_k>0,">
+<!-- TeX display: \beta_k>0, -->
 
 
 
 
 
-```math
-\sigma>0,
-```
+
+
+
+
+<img src="UTC-Math/message-24.svg#equation-067" width="51" height="20" alt="\sigma>0,">
+<!-- TeX display: \sigma>0, -->
+
+
 
 
 
@@ -13053,9 +13533,12 @@ and
 
 
 
-```math
-\frac{d\beta_k}{dt}\approx0.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-068" width="74" height="40" alt="\frac{d\beta_k}{dt}\approx0.">
+<!-- TeX display: \frac{d\beta_k}{dt}\approx0. -->
+
+
 
 
 
@@ -13073,9 +13556,12 @@ Let:
 
 
 
-```math
-\mathcal X_n
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-069" width="28" height="20" alt="\mathcal X_n">
+<!-- TeX display: \mathcal X_n -->
+
+
 
 
 
@@ -13085,12 +13571,15 @@ CSC acts as:
 
 
 
-```math
-\mathfrak C_{\rm CSC}:
+
+
+<img src="UTC-Math/message-24.svg#equation-070" width="138" height="21" alt="\mathfrak C_{\rm CSC}: \mathcal X_n \rightarrow \mathcal X_{n+1}.">
+<!-- TeX display: \mathfrak C_{\rm CSC}:
 \mathcal X_n
 \rightarrow
-\mathcal X_{n+1}.
-```
+\mathcal X_{n+1}. -->
+
+
 
 
 
@@ -13098,11 +13587,14 @@ Collapse removes unstable simplices/edges/modes:
 
 
 
-```math
-\mathcal X_n
+
+
+<img src="UTC-Math/message-24.svg#equation-071" width="81" height="24" alt="\mathcal X_n \rightarrow \mathcal X_n^-.">
+<!-- TeX display: \mathcal X_n
 \rightarrow
-\mathcal X_n^-.
-```
+\mathcal X_n^-. -->
+
+
 
 
 
@@ -13110,11 +13602,14 @@ Stabilization preserves a persistent subcomplex:
 
 
 
-```math
-\mathcal X_n^-
+
+
+<img src="UTC-Math/message-24.svg#equation-072" width="80" height="24" alt="\mathcal X_n^- \rightarrow \mathcal S_n.">
+<!-- TeX display: \mathcal X_n^-
 \rightarrow
-\mathcal S_n.
-```
+\mathcal S_n. -->
+
+
 
 
 
@@ -13122,11 +13617,14 @@ Composition attaches new cells:
 
 
 
-```math
-\mathcal S_n
+
+
+<img src="UTC-Math/message-24.svg#equation-073" width="90" height="21" alt="\mathcal S_n \rightarrow \mathcal X_{n+1}.">
+<!-- TeX display: \mathcal S_n
 \rightarrow
-\mathcal X_{n+1}.
-```
+\mathcal X_{n+1}. -->
+
+
 
 
 
@@ -13134,8 +13632,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-074" width="198" height="40" alt="\boxed{ \mathcal X_n \xrightarrow{C} \mathcal X_n^- \xrightarrow{S} \mathcal S_n \xrightarrow{K} \mathcal X_{n+1}. }">
+<!-- TeX display: \boxed{
 \mathcal X_n
 \xrightarrow{C}
 \mathcal X_n^-
@@ -13143,8 +13643,9 @@ So:
 \mathcal S_n
 \xrightarrow{K}
 \mathcal X_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -13152,11 +13653,14 @@ The topology itself evolves:
 
 
 
-```math
-H_k(\mathcal X_n)
+
+
+<img src="UTC-Math/message-24.svg#equation-075" width="157" height="22" alt="H_k(\mathcal X_n) \rightarrow H_k(\mathcal X_{n+1}).">
+<!-- TeX display: H_k(\mathcal X_n)
 \rightarrow
-H_k(\mathcal X_{n+1}).
-```
+H_k(\mathcal X_{n+1}). -->
+
+
 
 
 
@@ -13176,9 +13680,12 @@ Ordinary topology has:
 
 
 
-```math
-\partial.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-076" width="22" height="18" alt="\partial.">
+<!-- TeX display: \partial. -->
+
+
 
 
 
@@ -13188,27 +13695,33 @@ So define a weighted boundary map:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-077" width="91" height="29" alt="\boxed{ \partial_{\Theta} = W_\Theta\partial }">
+<!-- TeX display: \boxed{
 \partial_{\Theta}
 =
 W_\Theta\partial
-}
-```
+} -->
 
 
 
-where $W_\Theta$ encodes things such as:
+
+
+where <img src="UTC-Math/message-24.svg#equation-078" width="34" height="20" alt="W_\Theta" align="middle"><!-- TeX inline: W_\Theta --> encodes things such as:
 
 
 
-```math
-T,\quad
+
+
+<img src="UTC-Math/message-24.svg#equation-079" width="297" height="22" alt="T,\quad \kappa,\quad G_{ij},\quad \text{opacity},\quad \text{energy barrier}.">
+<!-- TeX display: T,\quad
 \kappa,\quad
 G_{ij},\quad
 \text{opacity},\quad
-\text{energy barrier}.
-```
+\text{energy barrier}. -->
+
+
 
 
 
@@ -13230,11 +13743,14 @@ but:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-080" width="370" height="30" alt="\boxed{ \text{Is there an energetically admissible transport path?} }">
+<!-- TeX display: \boxed{
 \text{Is there an energetically admissible transport path?}
-}
-```
+} -->
+
+
 
 
 
@@ -13248,9 +13764,12 @@ Ordinary topology:
 
 
 
-```math
-X.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-081" width="27" height="17" alt="X.">
+<!-- TeX display: X. -->
+
+
 
 
 
@@ -13258,11 +13777,14 @@ UTC topology:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-082" width="74" height="31" alt="\boxed{ (X,\mathcal C_{P1}) }">
+<!-- TeX display: \boxed{
 (X,\mathcal C_{P1})
-}
-```
+} -->
+
+
 
 
 
@@ -13270,12 +13792,15 @@ where each possible path carries a cost:
 
 
 
-```math
-C(\gamma)
+
+
+<img src="UTC-Math/message-24.svg#equation-083" width="132" height="45" alt="C(\gamma) = \int_\gamma \mathcal L_{P1}\,ds.">
+<!-- TeX display: C(\gamma)
 =
 \int_\gamma
-\mathcal L_{P1}\,ds.
-```
+\mathcal L_{P1}\,ds. -->
+
+
 
 
 
@@ -13283,15 +13808,18 @@ Then reachable topology is restricted to:
 
 
 
-```math
-\Omega_{\rm reachable}(E)
+
+
+<img src="UTC-Math/message-24.svg#equation-084" width="251" height="22" alt="\Omega_{\rm reachable}(E) = \{ x: \exists\gamma,\, C(\gamma)\le E \}.">
+<!-- TeX display: \Omega_{\rm reachable}(E)
 =
 \{
 x:
 \exists\gamma,\,
 C(\gamma)\le E
-\}.
-```
+\}. -->
+
+
 
 
 
@@ -13303,9 +13831,12 @@ Define:
 
 
 
-```math
-x\sim_{P1} y
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-085" width="62" height="17" alt="x\sim_{P1} y">
+<!-- TeX display: x\sim_{P1} y -->
+
+
 
 
 
@@ -13315,11 +13846,14 @@ Then P1 itself creates an **effective topology**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-086" width="44" height="24" alt="\boxed{ \tau_{P1}. }">
+<!-- TeX display: \boxed{
 \tau_{P1}.
-}
-```
+} -->
+
+
 
 
 
@@ -13335,11 +13869,14 @@ Suppose local phases may transform:
 
 
 
-```math
-\psi_i
+
+
+<img src="UTC-Math/message-24.svg#equation-087" width="93" height="24" alt="\psi_i \rightarrow e^{i\alpha_i}\psi_i.">
+<!-- TeX display: \psi_i
 \rightarrow
-e^{i\alpha_i}\psi_i.
-```
+e^{i\alpha_i}\psi_i. -->
+
+
 
 
 
@@ -13347,13 +13884,16 @@ The edge variable transforms as:
 
 
 
-```math
-U_{ij}
+
+
+<img src="UTC-Math/message-24.svg#equation-088" width="136" height="25" alt="U_{ij} \rightarrow e^{i\alpha_i} U_{ij} e^{-i\alpha_j}.">
+<!-- TeX display: U_{ij}
 \rightarrow
 e^{i\alpha_i}
 U_{ij}
-e^{-i\alpha_j}.
-```
+e^{-i\alpha_j}. -->
+
+
 
 
 
@@ -13361,11 +13901,14 @@ Then loop products remain gauge invariant:
 
 
 
-```math
-W_\gamma
+
+
+<img src="UTC-Math/message-24.svg#equation-089" width="111" height="44" alt="W_\gamma = \prod_{(ij)\in\gamma}U_{ij}.">
+<!-- TeX display: W_\gamma
 =
-\prod_{(ij)\in\gamma}U_{ij}.
-```
+\prod_{(ij)\in\gamma}U_{ij}. -->
+
+
 
 
 
@@ -13381,12 +13924,15 @@ That is almost poetic:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-090" width="489" height="52" alt="\boxed{ \text{individual states can be representation-dependent; closures preserve relational truth}. }">
+<!-- TeX display: \boxed{
 \text{individual states can be representation-dependent;
 closures preserve relational truth}.
-}
-```
+} -->
+
+
 
 
 
@@ -13400,13 +13946,16 @@ Ordinary homology classifies cycles.
 
 UTC cares about cycles that also dynamically sustain themselves.
 
-So define a cycle $z$ as a **closure cycle** if:
+So define a cycle <img src="UTC-Math/message-24.svg#equation-091" width="16" height="14" alt="z" align="middle"><!-- TeX inline: z --> as a **closure cycle** if:
 
 
 
-```math
-\partial z=0
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-092" width="54" height="19" alt="\partial z=0">
+<!-- TeX display: \partial z=0 -->
+
+
 
 
 
@@ -13414,9 +13963,12 @@ and simultaneously:
 
 
 
-```math
-\Phi_t(z)\approx z
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-093" width="74" height="22" alt="\Phi_t(z)\approx z">
+<!-- TeX display: \Phi_t(z)\approx z -->
+
+
 
 
 
@@ -13426,8 +13978,10 @@ Then perhaps:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-094" width="318" height="54" alt="\boxed{ H_k^{\rm closure} = \frac{ \{\text{persistent dynamical }k\text{-cycles}\} }{ \{\text{transient/deformable cycles}\} }. }">
+<!-- TeX display: \boxed{
 H_k^{\rm closure}
 =
 \frac{
@@ -13435,8 +13989,9 @@ H_k^{\rm closure}
 }{
 \{\text{transient/deformable cycles}\}
 }.
-}
-```
+} -->
+
+
 
 
 
@@ -13462,9 +14017,12 @@ Two states might be homotopic mathematically:
 
 
 
-```math
-f\simeq g,
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-095" width="51" height="21" alt="f\simeq g,">
+<!-- TeX display: f\simeq g, -->
+
+
 
 
 
@@ -13472,9 +14030,12 @@ but the deformation could require:
 
 
 
-```math
-E>E_{\max}.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-096" width="81" height="20" alt="E>E_{\max}.">
+<!-- TeX display: E>E_{\max}. -->
+
+
 
 
 
@@ -13482,9 +14043,12 @@ Then physically:
 
 
 
-```math
-f\not\simeq_{P1}g.
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-097" width="66" height="21" alt="f\not\simeq_{P1}g.">
+<!-- TeX display: f\not\simeq_{P1}g. -->
+
+
 
 
 
@@ -13492,11 +14056,14 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-098" width="68" height="33" alt="\boxed{ \pi_n^{P1}(X) }">
+<!-- TeX display: \boxed{
 \pi_n^{P1}(X)
-}
-```
+} -->
+
+
 
 
 
@@ -13508,11 +14075,14 @@ It merges:
 
 
 
-```math
-\text{topology}
+
+
+<img src="UTC-Math/message-24.svg#equation-099" width="210" height="21" alt="\text{topology} + \text{energy landscape}.">
+<!-- TeX display: \text{topology}
 +
-\text{energy landscape}.
-```
+\text{energy landscape}. -->
+
+
 
 
 
@@ -13522,34 +14092,40 @@ Now P4 attractors have topology *and* energetic protection.
 
 # 16. Fourier-Thermodynamic persistence could become a new diagnostic
 
-Imagine a candidate physical structure $X$.
+Imagine a candidate physical structure <img src="UTC-Math/message-24.svg#equation-100" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X -->.
 
 We compute:
 
 
 
-```math
-P_X(\omega,T,t)
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-101" width="83" height="22" alt="P_X(\omega,T,t)">
+<!-- TeX display: P_X(\omega,T,t) -->
 
 
 
-representing how strongly its structural/topological features survive at frequency $\omega$, temperature $T$, and time $t$.
+
+
+representing how strongly its structural/topological features survive at frequency <img src="UTC-Math/message-24.svg#equation-102" width="18" height="14" alt="\omega" align="middle"><!-- TeX inline: \omega -->, temperature <img src="UTC-Math/message-24.svg#equation-103" width="20" height="17" alt="T" align="middle"><!-- TeX inline: T -->, and time <img src="UTC-Math/message-24.svg#equation-104" width="14" height="17" alt="t" align="middle"><!-- TeX inline: t -->.
 
 Then define a closure persistence measure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-105" width="306" height="51" alt="\boxed{ \mathcal P(X) = \int W(\omega,T,t) \,P_X(\omega,T,t) \,d\omega\,dT\,dt. }">
+<!-- TeX display: \boxed{
 \mathcal P(X)
 =
 \int
 W(\omega,T,t)
 \,P_X(\omega,T,t)
 \,d\omega\,dT\,dt.
-}
-```
+} -->
+
+
 
 
 
@@ -13557,12 +14133,15 @@ Add energetic cost:
 
 
 
-```math
-\mathcal C(X)
+
+
+<img src="UTC-Math/message-24.svg#equation-106" width="190" height="48" alt="\mathcal C(X) = \frac{\mathcal P(X)} {E_{\rm maintenance}+\lambda\dot S}.">
+<!-- TeX display: \mathcal C(X)
 =
 \frac{\mathcal P(X)}
-{E_{\rm maintenance}+\lambda\dot S}.
-```
+{E_{\rm maintenance}+\lambda\dot S}. -->
+
+
 
 
 
@@ -13580,8 +14159,10 @@ The emerging object could eventually be written something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-107" width="272" height="36" alt="\boxed{ \mathfrak U = ( G, \mathcal H, \hat\Psi, \Theta, J, \mathcal C, \partial, \nabla, H_*, \pi_*, \Phi ) }">
+<!-- TeX display: \boxed{
 \mathfrak U
 =
 (
@@ -13597,8 +14178,9 @@ H_*,
 \pi_*,
 \Phi
 )
-}
-```
+} -->
+
+
 
 
 
@@ -13606,9 +14188,12 @@ where:
 
 
 
-```math
-G
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-108" width="21" height="18" alt="G">
+<!-- TeX display: G -->
+
+
 
 
 
@@ -13616,9 +14201,12 @@ is the relational graph,
 
 
 
-```math
-\mathcal H
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-109" width="22" height="18" alt="\mathcal H">
+<!-- TeX display: \mathcal H -->
+
+
 
 
 
@@ -13626,9 +14214,12 @@ is local quantum/state space,
 
 
 
-```math
-\hat\Psi(\omega)
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-110" width="43" height="27" alt="\hat\Psi(\omega)">
+<!-- TeX display: \hat\Psi(\omega) -->
+
+
 
 
 
@@ -13636,9 +14227,12 @@ is spectral content,
 
 
 
-```math
-\Theta
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-111" width="21" height="18" alt="\Theta">
+<!-- TeX display: \Theta -->
+
+
 
 
 
@@ -13646,9 +14240,12 @@ is the temperature/thermodynamic field,
 
 
 
-```math
-J
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-112" width="19" height="18" alt="J">
+<!-- TeX display: J -->
+
+
 
 
 
@@ -13656,9 +14253,12 @@ is energy/information flux,
 
 
 
-```math
-\mathcal C
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-113" width="17" height="18" alt="\mathcal C">
+<!-- TeX display: \mathcal C -->
+
+
 
 
 
@@ -13666,9 +14266,12 @@ is the P1 constraint bundle,
 
 
 
-```math
-\partial,\nabla
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-114" width="38" height="21" alt="\partial,\nabla">
+<!-- TeX display: \partial,\nabla -->
+
+
 
 
 
@@ -13676,9 +14279,12 @@ describe boundaries and geometry,
 
 
 
-```math
-H_*
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-115" width="29" height="19" alt="H_*">
+<!-- TeX display: H_* -->
+
+
 
 
 
@@ -13686,9 +14292,12 @@ is homological structure,
 
 
 
-```math
-\pi_*
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-116" width="25" height="15" alt="\pi_*">
+<!-- TeX display: \pi_* -->
+
+
 
 
 
@@ -13698,9 +14307,12 @@ and
 
 
 
-```math
-\Phi
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-117" width="20" height="17" alt="\Phi">
+<!-- TeX display: \Phi -->
+
+
 
 
 
@@ -13710,9 +14322,12 @@ Then evolution is not just:
 
 
 
-```math
-x_{t+1}=F(x_t).
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-118" width="102" height="22" alt="x_{t+1}=F(x_t).">
+<!-- TeX display: x_{t+1}=F(x_t). -->
+
+
 
 
 
@@ -13720,19 +14335,22 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-119" width="113" height="31" alt="\boxed{ \mathfrak U_{t+1} = \Phi( \mathfrak U_t ). }">
+<!-- TeX display: \boxed{
 \mathfrak U_{t+1}
 =
 \Phi(
 \mathfrak U_t
 ).
-}
-```
+} -->
 
 
 
-And $\Phi$ can alter:
+
+
+And <img src="UTC-Math/message-24.svg#equation-120" width="20" height="17" alt="\Phi" align="middle"><!-- TeX inline: \Phi --> can alter:
 
 - the states,
 - the graph,
@@ -13755,8 +14373,10 @@ FTTGT would supply the missing mathematics for precisely those relationships:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-121" width="388" height="233" alt="\boxed{ \begin{array}{rcl} P1 &amp;\rightarrow&amp; \text{weighted admissible topology}\\ F1 &amp;\rightarrow&amp; \text{spectral/Fourier structure}\\ P2 &amp;\rightarrow&amp; \text{spectral and topological distinguishability}\\ P3 &amp;\rightarrow&amp; \text{flows on the graph}\\ P4 &amp;\rightarrow&amp; \text{persistent homology + dynamical closure}\\ CSC &amp;\rightarrow&amp; \text{topology-changing operator}\\ F_\Theta &amp;\rightarrow&amp; \text{thermodynamic transport topology}\\ P5 &amp;\rightarrow&amp; \text{accessible record channels}\\ P7 &amp;\rightarrow&amp; \text{graph/cell composition}\\ P10 &amp;\rightarrow&amp; \text{persistent encoded topology} \end{array} }">
+<!-- TeX display: \boxed{
 \begin{array}{rcl}
 P1 &\rightarrow& \text{weighted admissible topology}\\
 F1 &\rightarrow& \text{spectral/Fourier structure}\\
@@ -13769,8 +14389,9 @@ P5 &\rightarrow& \text{accessible record channels}\\
 P7 &\rightarrow& \text{graph/cell composition}\\
 P10 &\rightarrow& \text{persistent encoded topology}
 \end{array}
-}
-```
+} -->
+
+
 
 
 
@@ -13790,11 +14411,14 @@ The next development I would tackle is a very small **FTTGT v0.1**, with only fi
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-122" width="115" height="36" alt="\boxed{ (G,\hat\Psi,\Theta,\mathcal C,\Phi) }">
+<!-- TeX display: \boxed{
 (G,\hat\Psi,\Theta,\mathcal C,\Phi)
-}
-```
+} -->
+
+
 
 
 
@@ -13802,15 +14426,18 @@ and three derived invariants:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-24.svg#equation-123" width="518" height="29" alt="\boxed{ \text{spectral persistence}, \quad \text{thermodynamic closure}, \quad \text{topological persistence}. }">
+<!-- TeX display: \boxed{
 \text{spectral persistence},
 \quad
 \text{thermodynamic closure},
 \quad
 \text{topological persistence}.
-}
-```
+} -->
+
+
 
 
 
@@ -13818,25 +14445,34 @@ Then we test the same formalism on three brutally different systems:
 
 
 
-```math
-\text{coupled quantum oscillators},
-```
+
+
+<img src="UTC-Math/message-24.svg#equation-124" width="207" height="21" alt="\text{coupled quantum oscillators},">
+<!-- TeX display: \text{coupled quantum oscillators}, -->
 
 
 
 
 
-```math
-\text{Rayleigh-Bénard convection},
-```
+
+
+
+
+<img src="UTC-Math/message-24.svg#equation-125" width="211" height="22" alt="\text{Rayleigh-Bénard convection},">
+<!-- TeX display: \text{Rayleigh-Bénard convection}, -->
 
 
 
 
 
-```math
-\text{gravitationally collapsing/radiating gas}.
-```
+
+
+
+
+<img src="UTC-Math/message-24.svg#equation-126" width="285" height="22" alt="\text{gravitationally collapsing/radiating gas}.">
+<!-- TeX display: \text{gravitationally collapsing/radiating gas}. -->
+
+
 
 
 
@@ -13864,9 +14500,12 @@ P3 has been mathematically defined in UTC as transition/order, but the manuscrip
 
 
 
-```math
-f=\frac1T,\qquad \omega=2\pi f,
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-001" width="158" height="39" alt="f=\frac1T,\qquad \omega=2\pi f,">
+<!-- TeX display: f=\frac1T,\qquad \omega=2\pi f, -->
+
+
 
 
 
@@ -13874,9 +14513,12 @@ and explicitly identifies
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-002" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -13886,11 +14528,14 @@ So I think the refinement is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-003" width="517" height="52" alt="\boxed{ \text{P3 is not merely sequence. P3 is physically realized as structured change, and its first stable physical form is oscillation.} }">
+<!-- TeX display: \boxed{
 \text{P3 is not merely sequence. P3 is physically realized as structured change, and its first stable physical form is oscillation.}
-}
-```
+} -->
+
+
 
 
 
@@ -13902,23 +14547,29 @@ The manuscript currently says:
 
 
 
-```math
-\text{time}=\text{ordered distinguishable change under constraint},
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-004" width="397" height="21" alt="\text{time}=\text{ordered distinguishable change under constraint},">
+<!-- TeX display: \text{time}=\text{ordered distinguishable change under constraint}, -->
 
 
 
-with a primitive update index $n$, then physical time emerging once transition intervals stabilize:
+
+
+with a primitive update index <img src="UTC-Math/message-26.svg#equation-005" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->, then physical time emerging once transition intervals stabilize:
 
 
 
-```math
-t\approx n\Delta\tau.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-006" width="71" height="18" alt="t\approx n\Delta\tau.">
+<!-- TeX display: t\approx n\Delta\tau. -->
 
 
 
-It explicitly says $\Delta\tau$ must become stable under P4 before ordinary continuum time becomes meaningful. The Unifying Theory of Complexi…
+
+
+It explicitly says <img src="UTC-Math/message-26.svg#equation-007" width="30" height="18" alt="\Delta\tau" align="middle"><!-- TeX inline: \Delta\tau --> must become stable under P4 before ordinary continuum time becomes meaningful. The Unifying Theory of Complexi…
 
 That decomposition is still useful.
 
@@ -13928,9 +14579,12 @@ We froze motion and said:
 
 
 
-```math
-s_0\rightarrow s_1\rightarrow s_2\rightarrow s_3.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-008" width="146" height="17" alt="s_0\rightarrow s_1\rightarrow s_2\rightarrow s_3.">
+<!-- TeX display: s_0\rightarrow s_1\rightarrow s_2\rightarrow s_3. -->
+
+
 
 
 
@@ -13942,9 +14596,12 @@ For a wave, the running engine is:
 
 
 
-```math
-\psi(t)=A e^{i(\omega t+\phi_0)}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-009" width="128" height="26" alt="\psi(t)=A e^{i(\omega t+\phi_0)}.">
+<!-- TeX display: \psi(t)=A e^{i(\omega t+\phi_0)}. -->
+
+
 
 
 
@@ -13952,9 +14609,12 @@ There is no need for nature to carry a little counter saying:
 
 
 
-```math
-n=1,2,3,4.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-010" width="97" height="20" alt="n=1,2,3,4.">
+<!-- TeX display: n=1,2,3,4. -->
+
+
 
 
 
@@ -13962,11 +14622,14 @@ The state itself continuously contains its temporal evolution in phase:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-011" width="122" height="31" alt="\boxed{ \phi(t)=\phi_0+\omega t. }">
+<!-- TeX display: \boxed{
 \phi(t)=\phi_0+\omega t.
-}
-```
+} -->
+
+
 
 
 
@@ -13974,11 +14637,14 @@ So time can be recovered from:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-012" width="79" height="48" alt="\boxed{ t=\frac{\Delta\phi}{\omega}. }">
+<!-- TeX display: \boxed{
 t=\frac{\Delta\phi}{\omega}.
-}
-```
+} -->
+
+
 
 
 
@@ -13998,11 +14664,14 @@ A clock is fundamentally:
 
 
 
-```math
-\text{stable oscillator}
+
+
+<img src="UTC-Math/message-26.svg#equation-013" width="218" height="21" alt="\text{stable oscillator} + \text{cycle count}.">
+<!-- TeX display: \text{stable oscillator}
 +
-\text{cycle count}.
-```
+\text{cycle count}. -->
+
+
 
 
 
@@ -14010,9 +14679,12 @@ Frequency:
 
 
 
-```math
-f=\frac{\text{cycles}}{\text{time}}
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-014" width="86" height="40" alt="f=\frac{\text{cycles}}{\text{time}}">
+<!-- TeX display: f=\frac{\text{cycles}}{\text{time}} -->
+
+
 
 
 
@@ -14020,9 +14692,12 @@ can be inverted:
 
 
 
-```math
-T=\frac1f.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-015" width="61" height="42" alt="T=\frac1f.">
+<!-- TeX display: T=\frac1f. -->
+
+
 
 
 
@@ -14030,9 +14705,12 @@ So once an oscillator has a stable frequency,
 
 
 
-```math
-\omega\approx \omega_*,
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-016" width="61" height="17" alt="\omega\approx \omega_*,">
+<!-- TeX display: \omega\approx \omega_*, -->
+
+
 
 
 
@@ -14040,11 +14718,14 @@ it provides a repeatable temporal interval:
 
 
 
-```math
-\Delta t
+
+
+<img src="UTC-Math/message-26.svg#equation-017" width="78" height="41" alt="\Delta t = \frac{2\pi}{\omega_*}.">
+<!-- TeX display: \Delta t
 =
-\frac{2\pi}{\omega_*}.
-```
+\frac{2\pi}{\omega_*}. -->
+
+
 
 
 
@@ -14052,15 +14733,18 @@ That means metric time may arise through:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-018" width="320" height="31" alt="\boxed{ P3_{\rm oscillation} + P4_{\rm frequency\ stability} \rightarrow \text{clock time}. }">
+<!-- TeX display: \boxed{
 P3_{\rm oscillation}
 +
 P4_{\rm frequency\ stability}
 \rightarrow
 \text{clock time}.
-}
-```
+} -->
+
+
 
 
 
@@ -14074,11 +14758,14 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-019" width="126" height="30" alt="\boxed{ \text{change}\neq\text{clock}. }">
+<!-- TeX display: \boxed{
 \text{change}\neq\text{clock}.
-}
-```
+} -->
+
+
 
 
 
@@ -14086,11 +14773,14 @@ But:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-020" width="298" height="29" alt="\boxed{ \text{stable periodic change}=\text{primitive clock}. }">
+<!-- TeX display: \boxed{
 \text{stable periodic change}=\text{primitive clock}.
-}
-```
+} -->
+
+
 
 
 
@@ -14108,9 +14798,12 @@ The weakest form:
 
 
 
-```math
-s_i\rightarrow s_j.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-021" width="64" height="19" alt="s_i\rightarrow s_j.">
+<!-- TeX display: s_i\rightarrow s_j. -->
+
+
 
 
 
@@ -14126,21 +14819,27 @@ There is a causal or ordinal relation:
 
 
 
-```math
-s_i\prec s_j.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-022" width="61" height="20" alt="s_i\prec s_j.">
+<!-- TeX display: s_i\prec s_j. -->
 
 
 
-This is where the manuscript's $n$-index belongs.
+
+
+This is where the manuscript's <img src="UTC-Math/message-26.svg#equation-023" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->-index belongs.
 
 It tells us:
 
 
 
-```math
-\text{before/after}
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-024" width="91" height="22" alt="\text{before/after}">
+<!-- TeX display: \text{before/after} -->
+
+
 
 
 
@@ -14154,9 +14853,12 @@ State evolution closes into a cycle:
 
 
 
-```math
-x(t+T)=x(t).
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-025" width="120" height="22" alt="x(t+T)=x(t).">
+<!-- TeX display: x(t+T)=x(t). -->
+
+
 
 
 
@@ -14164,9 +14866,12 @@ Now:
 
 
 
-```math
-f=\frac1T.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-026" width="61" height="39" alt="f=\frac1T.">
+<!-- TeX display: f=\frac1T. -->
+
+
 
 
 
@@ -14182,9 +14887,12 @@ The transition has internal continuous state:
 
 
 
-```math
-\phi(t).
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-027" width="41" height="22" alt="\phi(t).">
+<!-- TeX display: \phi(t). -->
+
+
 
 
 
@@ -14192,9 +14900,12 @@ For:
 
 
 
-```math
-\dot\phi=\omega,
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-028" width="54" height="26" alt="\dot\phi=\omega,">
+<!-- TeX display: \dot\phi=\omega, -->
+
+
 
 
 
@@ -14210,12 +14921,15 @@ Multiple oscillatory processes interact:
 
 
 
-```math
-\dot\phi_i
+
+
+<img src="UTC-Math/message-26.svg#equation-029" width="218" height="44" alt="\dot\phi_i = \omega_i+ \sum_jK_{ij}\sin(\phi_j-\phi_i).">
+<!-- TeX display: \dot\phi_i
 =
 \omega_i+
-\sum_jK_{ij}\sin(\phi_j-\phi_i).
-```
+\sum_jK_{ij}\sin(\phi_j-\phi_i). -->
+
+
 
 
 
@@ -14244,9 +14958,12 @@ P3 is architectural:
 
 
 
-```math
-\boxed{\text{transition capability}}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-030" width="162" height="29" alt="\boxed{\text{transition capability}}.">
+<!-- TeX display: \boxed{\text{transition capability}}. -->
+
+
 
 
 
@@ -14254,13 +14971,16 @@ The quantum wave function is a domain realization:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-031" width="154" height="31" alt="\boxed{ |\psi(t)\rangle = U(t)|\psi(0)\rangle. }">
+<!-- TeX display: \boxed{
 |\psi(t)\rangle
 =
 U(t)|\psi(0)\rangle.
-}
-```
+} -->
+
+
 
 
 
@@ -14272,8 +14992,10 @@ But the new interpretation is much stronger:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-032" width="325" height="29" alt="\boxed{ \text{P3} \rightarrow \text{oscillation} \rightarrow \text{phase} \rightarrow \text{wave dynamics} }">
+<!-- TeX display: \boxed{
 \text{P3}
 \rightarrow
 \text{oscillation}
@@ -14281,8 +15003,9 @@ But the new interpretation is much stronger:
 \text{phase}
 \rightarrow
 \text{wave dynamics}
-}
-```
+} -->
+
+
 
 
 
@@ -14300,11 +15023,14 @@ The manuscript already admits this in its persistence section. It defines autoco
 
 
 
-```math
-C(\tau)
+
+
+<img src="UTC-Math/message-26.svg#equation-033" width="206" height="25" alt="C(\tau) = \langle x(t)x(t+\tau)\rangle-\langle x\rangle^2">
+<!-- TeX display: C(\tau)
 =
-\langle x(t)x(t+\tau)\rangle-\langle x\rangle^2
-```
+\langle x(t)x(t+\tau)\rangle-\langle x\rangle^2 -->
+
+
 
 
 
@@ -14316,11 +15042,14 @@ Consider:
 
 
 
-```math
-\psi(t)
+
+
+<img src="UTC-Math/message-26.svg#equation-034" width="128" height="26" alt="\psi(t) = Ae^{i(\omega t+\phi_0)}.">
+<!-- TeX display: \psi(t)
 =
-Ae^{i(\omega t+\phi_0)}.
-```
+Ae^{i(\omega t+\phi_0)}. -->
+
+
 
 
 
@@ -14328,11 +15057,14 @@ At a later moment:
 
 
 
-```math
-\phi(t+\tau)
+
+
+<img src="UTC-Math/message-26.svg#equation-035" width="155" height="22" alt="\phi(t+\tau) = \phi(t)+\omega\tau.">
+<!-- TeX display: \phi(t+\tau)
 =
-\phi(t)+\omega\tau.
-```
+\phi(t)+\omega\tau. -->
+
+
 
 
 
@@ -14342,10 +15074,13 @@ So there is temporal correlation:
 
 
 
-```math
-C(\tau)
-\neq0.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-036" width="75" height="22" alt="C(\tau) \neq0.">
+<!-- TeX display: C(\tau)
+\neq0. -->
+
+
 
 
 
@@ -14357,59 +15092,80 @@ So we need a memory spectrum:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-037" width="208" height="29" alt="\boxed{ M_0=\text{dynamical continuity} }">
+<!-- TeX display: \boxed{
 M_0=\text{dynamical continuity}
-}
-```
+} -->
 
 
 
 
 
-```math
-M_1=\text{phase persistence}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-038" width="171" height="21" alt="M_1=\text{phase persistence}">
+<!-- TeX display: M_1=\text{phase persistence} -->
 
 
 
 
 
-```math
-M_2=\text{correlation persistence}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-039" width="207" height="21" alt="M_2=\text{correlation persistence}">
+<!-- TeX display: M_2=\text{correlation persistence} -->
 
 
 
 
 
-```math
-M_3=\text{attractor persistence}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-040" width="194" height="21" alt="M_3=\text{attractor persistence}">
+<!-- TeX display: M_3=\text{attractor persistence} -->
 
 
 
 
 
-```math
-M_4=\text{physical imprint}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-041" width="165" height="21" alt="M_4=\text{physical imprint}">
+<!-- TeX display: M_4=\text{physical imprint} -->
 
 
 
 
 
-```math
-M_5=\text{encoded memory}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-042" width="169" height="21" alt="M_5=\text{encoded memory}">
+<!-- TeX display: M_5=\text{encoded memory} -->
 
 
 
 
 
-```math
-M_6=\text{model memory}.
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-043" width="159" height="21" alt="M_6=\text{model memory}.">
+<!-- TeX display: M_6=\text{model memory}. -->
+
+
 
 
 
@@ -14419,11 +15175,14 @@ P10 is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-044" width="315" height="29" alt="\boxed{ \text{explicit rewritable encoded memory begins}. }">
+<!-- TeX display: \boxed{
 \text{explicit rewritable encoded memory begins}.
-}
-```
+} -->
+
+
 
 
 
@@ -14437,9 +15196,12 @@ Now combine P1 and P3:
 
 
 
-```math
-E=\hbar\omega.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-045" width="65" height="19" alt="E=\hbar\omega.">
+<!-- TeX display: E=\hbar\omega. -->
+
+
 
 
 
@@ -14451,9 +15213,12 @@ Different:
 
 
 
-```math
-\omega_1\neq\omega_2
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-046" width="64" height="21" alt="\omega_1\neq\omega_2">
+<!-- TeX display: \omega_1\neq\omega_2 -->
+
+
 
 
 
@@ -14463,8 +15228,10 @@ Therefore frequency acts simultaneously as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-047" width="570" height="29" alt="\boxed{ \text{energy label} + \text{transition rate} + \text{temporal identity} + \text{primitive record parameter}. }">
+<!-- TeX display: \boxed{
 \text{energy label}
 +
 \text{transition rate}
@@ -14472,8 +15239,9 @@ Therefore frequency acts simultaneously as:
 \text{temporal identity}
 +
 \text{primitive record parameter}.
-}
-```
+} -->
+
+
 
 
 
@@ -14493,9 +15261,12 @@ Frequency tells us the rate:
 
 
 
-```math
-\omega=\frac{d\phi}{dt}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-048" width="69" height="40" alt="\omega=\frac{d\phi}{dt}.">
+<!-- TeX display: \omega=\frac{d\phi}{dt}. -->
+
+
 
 
 
@@ -14503,9 +15274,12 @@ Phase tells us the position within the cycle:
 
 
 
-```math
-\phi.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-049" width="22" height="21" alt="\phi.">
+<!-- TeX display: \phi. -->
+
+
 
 
 
@@ -14513,13 +15287,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-050" width="308" height="29" alt="\boxed{ \omega=\text{rate-memory}, \qquad \phi=\text{state-memory}. }">
+<!-- TeX display: \boxed{
 \omega=\text{rate-memory},
 \qquad
 \phi=\text{state-memory}.
-}
-```
+} -->
+
+
 
 
 
@@ -14527,9 +15304,12 @@ Together:
 
 
 
-```math
-(\phi,\omega)
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-051" width="48" height="22" alt="(\phi,\omega)">
+<!-- TeX display: (\phi,\omega) -->
+
+
 
 
 
@@ -14551,9 +15331,12 @@ Suppose:
 
 
 
-```math
-\dot\phi=\omega_*.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-052" width="61" height="26" alt="\dot\phi=\omega_*.">
+<!-- TeX display: \dot\phi=\omega_*. -->
+
+
 
 
 
@@ -14567,9 +15350,12 @@ In dynamical-systems language this is a **limit cycle**:
 
 
 
-```math
-x(t+T)=x(t).
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-053" width="120" height="22" alt="x(t+T)=x(t).">
+<!-- TeX display: x(t+T)=x(t). -->
+
+
 
 
 
@@ -14577,9 +15363,12 @@ So P4 must distinguish:
 
 
 
-```math
-P4_a=\text{fixed-point stability},
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-054" width="199" height="21" alt="P4_a=\text{fixed-point stability},">
+<!-- TeX display: P4_a=\text{fixed-point stability}, -->
+
+
 
 
 
@@ -14587,11 +15376,14 @@ from:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-055" width="272" height="31" alt="\boxed{ P4_t=\text{temporal/oscillatory stability}. }">
+<!-- TeX display: \boxed{
 P4_t=\text{temporal/oscillatory stability}.
-}
-```
+} -->
+
+
 
 
 
@@ -14599,13 +15391,16 @@ Then:
 
 
 
-```math
-P4_t:
+
+
+<img src="UTC-Math/message-26.svg#equation-056" width="195" height="21" alt="P4_t: \quad T\rightarrow T_*, \quad \omega\rightarrow\omega_*.">
+<!-- TeX display: P4_t:
 \quad
 T\rightarrow T_*,
 \quad
-\omega\rightarrow\omega_*.
-```
+\omega\rightarrow\omega_*. -->
+
+
 
 
 
@@ -14621,9 +15416,12 @@ Instead of:
 
 
 
-```math
-t=n\Delta\tau
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-057" width="67" height="19" alt="t=n\Delta\tau">
+<!-- TeX display: t=n\Delta\tau -->
+
+
 
 
 
@@ -14631,13 +15429,16 @@ as the foundational physical definition, we can retain that as a discrete unroll
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-058" width="128" height="51" alt="\boxed{ t = \frac{\phi(t)-\phi(0)}{\omega_*} }">
+<!-- TeX display: \boxed{
 t
 =
 \frac{\phi(t)-\phi(0)}{\omega_*}
-}
-```
+} -->
+
+
 
 
 
@@ -14647,11 +15448,14 @@ More generally, for variable frequency:
 
 
 
-```math
-\phi(t)-\phi(0)
+
+
+<img src="UTC-Math/message-26.svg#equation-059" width="187" height="46" alt="\phi(t)-\phi(0) = \int_0^t\omega(t')dt'.">
+<!-- TeX display: \phi(t)-\phi(0)
 =
-\int_0^t\omega(t')dt'.
-```
+\int_0^t\omega(t')dt'. -->
+
+
 
 
 
@@ -14659,13 +15463,16 @@ So elapsed time can be inferred through phase accumulation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-060" width="110" height="51" alt="\boxed{ \Delta\phi = \int \omega\,dt. }">
+<!-- TeX display: \boxed{
 \Delta\phi
 =
 \int \omega\,dt.
-}
-```
+} -->
+
+
 
 
 
@@ -14675,9 +15482,12 @@ The old:
 
 
 
-```math
-\sum_n\Delta\tau_n
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-061" width="63" height="40" alt="\sum_n\Delta\tau_n">
+<!-- TeX display: \sum_n\Delta\tau_n -->
+
+
 
 
 
@@ -14687,11 +15497,14 @@ The running system is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-062" width="158" height="29" alt="\boxed{ \text{phase accumulation}. }">
+<!-- TeX display: \boxed{
 \text{phase accumulation}.
-}
-```
+} -->
+
+
 
 
 
@@ -14705,9 +15518,12 @@ P2 gives distinguishable variation:
 
 
 
-```math
-\omega_1\neq\omega_2.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-063" width="68" height="21" alt="\omega_1\neq\omega_2.">
+<!-- TeX display: \omega_1\neq\omega_2. -->
+
+
 
 
 
@@ -14715,13 +15531,16 @@ P3 lets that variation evolve:
 
 
 
-```math
-\Delta\phi(t)
+
+
+<img src="UTC-Math/message-26.svg#equation-064" width="196" height="22" alt="\Delta\phi(t) = \Delta\phi_0 + (\omega_1-\omega_2)t.">
+<!-- TeX display: \Delta\phi(t)
 =
 \Delta\phi_0
 +
-(\omega_1-\omega_2)t.
-```
+(\omega_1-\omega_2)t. -->
+
+
 
 
 
@@ -14731,10 +15550,13 @@ Then interference reveals it:
 
 
 
-```math
-I\propto
-1+\cos(\Delta\phi).
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-065" width="127" height="22" alt="I\propto 1+\cos(\Delta\phi).">
+<!-- TeX display: I\propto
+1+\cos(\Delta\phi). -->
+
+
 
 
 
@@ -14742,15 +15564,18 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-066" width="236" height="27" alt="\boxed{ P2 \rightarrow P3 \rightarrow \text{interference record} }">
+<!-- TeX display: \boxed{
 P2
 \rightarrow
 P3
 \rightarrow
 \text{interference record}
-}
-```
+} -->
+
+
 
 
 
@@ -14772,11 +15597,14 @@ The F1 loop was:
 
 
 
-```math
-E
+
+
+<img src="UTC-Math/message-26.svg#equation-067" width="69" height="18" alt="E \leftrightarrow \hbar\omega.">
+<!-- TeX display: E
 \leftrightarrow
-\hbar\omega.
-```
+\hbar\omega. -->
+
+
 
 
 
@@ -14784,8 +15612,10 @@ We can expand it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-068" width="281" height="31" alt="\boxed{ E \rightarrow \omega \rightarrow \phi \rightarrow \psi \rightarrow \text{interaction} \rightarrow E'. }">
+<!-- TeX display: \boxed{
 E
 \rightarrow
 \omega
@@ -14797,8 +15627,9 @@ E
 \text{interaction}
 \rightarrow
 E'.
-}
-```
+} -->
+
+
 
 
 
@@ -14808,11 +15639,14 @@ And if stable:
 
 
 
-```math
-E'\approx E,
+
+
+<img src="UTC-Math/message-26.svg#equation-069" width="149" height="23" alt="E'\approx E, \qquad \omega'\approx\omega,">
+<!-- TeX display: E'\approx E,
 \qquad
-\omega'\approx\omega,
-```
+\omega'\approx\omega, -->
+
+
 
 
 
@@ -14824,13 +15658,16 @@ I would tentatively call it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-070" width="310" height="30" alt="\boxed{ F_{\tau} = \text{Phase–Frequency Temporal Closure}. }">
+<!-- TeX display: \boxed{
 F_{\tau}
 =
 \text{Phase–Frequency Temporal Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -14844,13 +15681,16 @@ But a kernel beneath the current ladder.
 
 This is becoming very clean.
 
-### $T_0$: ordinal time
+### <img src="UTC-Math/message-26.svg#equation-071" width="25" height="20" alt="T_0" align="middle"><!-- TeX inline: T_0 -->: ordinal time
 
 
 
-```math
-s_0\prec s_1\prec s_2.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-072" width="99" height="18" alt="s_0\prec s_1\prec s_2.">
+<!-- TeX display: s_0\prec s_1\prec s_2. -->
+
+
 
 
 
@@ -14858,17 +15698,20 @@ Only ordering.
 
 No duration.
 
-This is the manuscript's $n$.
+This is the manuscript's <img src="UTC-Math/message-26.svg#equation-073" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->.
 
 ---
 
-### $T_1$: phase time
+### <img src="UTC-Math/message-26.svg#equation-074" width="25" height="20" alt="T_1" align="middle"><!-- TeX inline: T_1 -->: phase time
 
 
 
-```math
-\phi(t).
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-075" width="41" height="22" alt="\phi(t).">
+<!-- TeX display: \phi(t). -->
+
+
 
 
 
@@ -14878,17 +15721,20 @@ Now the system has local temporal position.
 
 ---
 
-### $T_2$: metric time
+### <img src="UTC-Math/message-26.svg#equation-076" width="25" height="20" alt="T_2" align="middle"><!-- TeX inline: T_2 -->: metric time
 
 Stable recurrence permits:
 
 
 
-```math
-\Delta t
+
+
+<img src="UTC-Math/message-26.svg#equation-077" width="83" height="42" alt="\Delta t = \frac{\Delta\phi}{\omega_*}.">
+<!-- TeX display: \Delta t
 =
-\frac{\Delta\phi}{\omega_*}.
-```
+\frac{\Delta\phi}{\omega_*}. -->
+
+
 
 
 
@@ -14898,15 +15744,18 @@ Now durations can be compared.
 
 Then later:
 
-### $T_3$: thermodynamic time
+### <img src="UTC-Math/message-26.svg#equation-078" width="25" height="20" alt="T_3" align="middle"><!-- TeX inline: T_3 -->: thermodynamic time
 
 Entropy production supplies direction:
 
 
 
-```math
-\dot S_{\rm total}\ge0.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-079" width="77" height="26" alt="\dot S_{\rm total}\ge0.">
+<!-- TeX display: \dot S_{\rm total}\ge0. -->
+
+
 
 
 
@@ -14920,15 +15769,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-080" width="200" height="30" alt="\boxed{ \text{order} \neq \text{duration} \neq \text{arrow}. }">
+<!-- TeX display: \boxed{
 \text{order}
 \neq
 \text{duration}
 \neq
 \text{arrow}.
-}
-```
+} -->
+
+
 
 
 
@@ -14950,12 +15802,15 @@ So UTC could say:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-081" width="486" height="52" alt="\boxed{ \text{P3/P4 generates local physical clocks; relativistic geometry governs comparison between clocks}. }">
+<!-- TeX display: \boxed{
 \text{P3/P4 generates local physical clocks;
 relativistic geometry governs comparison between clocks}.
-}
-```
+} -->
+
+
 
 
 
@@ -14971,11 +15826,14 @@ Modern precision timekeeping already uses exactly this architecture:
 
 
 
-```math
-\text{stable frequency}
+
+
+<img src="UTC-Math/message-26.svg#equation-082" width="214" height="21" alt="\text{stable frequency} \rightarrow \text{time unit}.">
+<!-- TeX display: \text{stable frequency}
 \rightarrow
-\text{time unit}.
-```
+\text{time unit}. -->
+
+
 
 
 
@@ -14987,9 +15845,12 @@ Our low-level trunk is becoming:
 
 
 
-```math
-P0
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-083" width="29" height="18" alt="P0">
+<!-- TeX display: P0 -->
+
+
 
 
 
@@ -14999,9 +15860,12 @@ then
 
 
 
-```math
-P1
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-084" width="29" height="17" alt="P1">
+<!-- TeX display: P1 -->
+
+
 
 
 
@@ -15011,9 +15875,12 @@ then:
 
 
 
-```math
-P2
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-085" width="29" height="17" alt="P2">
+<!-- TeX display: P2 -->
+
+
 
 
 
@@ -15023,12 +15890,15 @@ then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-086" width="313" height="29" alt="\boxed{ P3: \text{transition, phase evolution, oscillation} }">
+<!-- TeX display: \boxed{
 P3:
 \text{transition, phase evolution, oscillation}
-}
-```
+} -->
+
+
 
 
 
@@ -15036,12 +15906,15 @@ then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-087" width="332" height="30" alt="\boxed{ P4: \text{stability of states AND stability of cycles} }">
+<!-- TeX display: \boxed{
 P4:
 \text{stability of states AND stability of cycles}
-}
-```
+} -->
+
+
 
 
 
@@ -15049,46 +15922,61 @@ and between them we have kernel closures:
 
 
 
-```math
-F_\Delta:
-\text{difference amplification}
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-088" width="205" height="21" alt="F_\Delta: \text{difference amplification}">
+<!-- TeX display: F_\Delta:
+\text{difference amplification} -->
 
 
 
 
 
-```math
-F_\tau:
-\text{phase-frequency temporal closure}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-089" width="269" height="21" alt="F_\tau: \text{phase-frequency temporal closure}">
+<!-- TeX display: F_\tau:
+\text{phase-frequency temporal closure} -->
 
 
 
 
 
-```math
-F_{\rm FR}:
-\text{fluctuation-response}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-090" width="189" height="21" alt="F_{\rm FR}: \text{fluctuation-response}">
+<!-- TeX display: F_{\rm FR}:
+\text{fluctuation-response} -->
 
 
 
 
 
-```math
-F_\Theta:
-\text{gradient-dissipation}
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-091" width="180" height="21" alt="F_\Theta: \text{gradient-dissipation}">
+<!-- TeX display: F_\Theta:
+\text{gradient-dissipation} -->
 
 
 
 
 
-```math
-F_{\rm CSC}:
-\text{collapse-stabilization-composition}.
-```
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-092" width="295" height="21" alt="F_{\rm CSC}: \text{collapse-stabilization-composition}.">
+<!-- TeX display: F_{\rm CSC}:
+\text{collapse-stabilization-composition}. -->
+
+
 
 
 
@@ -15106,49 +15994,61 @@ But after this analysis, I think we need:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-093" width="346" height="30" alt="\boxed{ \text{Memory}_0 = \text{temporal correlation inherent in P3} }">
+<!-- TeX display: \boxed{
 \text{Memory}_0
 =
 \text{temporal correlation inherent in P3}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-094" width="335" height="30" alt="\boxed{ \text{Memory}_1 = \text{persistent cycle identity under P4} }">
+<!-- TeX display: \boxed{
 \text{Memory}_1
 =
 \text{persistent cycle identity under P4}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-095" width="235" height="30" alt="\boxed{ \text{Memory}_2 = \text{interaction imprint} }">
+<!-- TeX display: \boxed{
 \text{Memory}_2
 =
 \text{interaction imprint}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-26.svg#equation-096" width="353" height="30" alt="\boxed{ \text{Memory}_3 = \text{encoded rewritable persistence, P10}. }">
+<!-- TeX display: \boxed{
 \text{Memory}_3
 =
 \text{encoded rewritable persistence, P10}.
-}
-```
+} -->
+
+
 
 
 
@@ -15168,11 +16068,14 @@ I think what we've discovered can be summarized as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-097" width="425" height="29" alt="\boxed{ \textbf{P3 is the primitive physics of temporal propagation.} }">
+<!-- TeX display: \boxed{
 \textbf{P3 is the primitive physics of temporal propagation.}
-}
-```
+} -->
+
+
 
 
 
@@ -15180,9 +16083,12 @@ Its weak form is:
 
 
 
-```math
-\text{ordered change}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-098" width="117" height="21" alt="\text{ordered change}.">
+<!-- TeX display: \text{ordered change}. -->
+
+
 
 
 
@@ -15190,9 +16096,12 @@ Its dynamical form is:
 
 
 
-```math
-\text{phase evolution}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-099" width="121" height="21" alt="\text{phase evolution}.">
+<!-- TeX display: \text{phase evolution}. -->
+
+
 
 
 
@@ -15200,9 +16109,12 @@ Its stable form is:
 
 
 
-```math
-\text{frequency}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-100" width="80" height="21" alt="\text{frequency}.">
+<!-- TeX display: \text{frequency}. -->
+
+
 
 
 
@@ -15210,9 +16122,12 @@ Its P4 closure is:
 
 
 
-```math
-\text{stable oscillation}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-101" width="128" height="18" alt="\text{stable oscillation}.">
+<!-- TeX display: \text{stable oscillation}. -->
+
+
 
 
 
@@ -15220,9 +16135,12 @@ Its primitive memory is:
 
 
 
-```math
-\text{temporal correlation}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-102" width="154" height="21" alt="\text{temporal correlation}.">
+<!-- TeX display: \text{temporal correlation}. -->
+
+
 
 
 
@@ -15230,9 +16148,12 @@ Its measurement product is:
 
 
 
-```math
-\text{clock time}.
-```
+
+
+<img src="UTC-Math/message-26.svg#equation-103" width="83" height="18" alt="\text{clock time}.">
+<!-- TeX display: \text{clock time}. -->
+
+
 
 
 
@@ -15240,13 +16161,16 @@ And its quantum realization is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-104" width="171" height="34" alt="\boxed{ |\psi(t)\rangle = e^{-iHt/\hbar}|\psi(0)\rangle. }">
+<!-- TeX display: \boxed{
 |\psi(t)\rangle
 =
 e^{-iHt/\hbar}|\psi(0)\rangle.
-}
-```
+} -->
+
+
 
 
 
@@ -15254,8 +16178,10 @@ That one chain connects a remarkable amount:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-26.svg#equation-105" width="477" height="29" alt="\boxed{ P1 \rightarrow E \rightarrow \omega \rightarrow \phi \rightarrow P3 \rightarrow P4_t \rightarrow \text{memory} \rightarrow \text{time measurement}. }">
+<!-- TeX display: \boxed{
 P1
 \rightarrow
 E
@@ -15271,14 +16197,15 @@ P4_t
 \text{memory}
 \rightarrow
 \text{time measurement}.
-}
-```
+} -->
+
+
 
 
 
 I think this is one of the strongest refinements we've made because it doesn't discard the original “ordered distinguishable change” idea. It explains **what that abstraction looks like when the engine is running**.
 
-The old $n$-index is the freeze-frame film strip.
+The old <img src="UTC-Math/message-26.svg#equation-106" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->-index is the freeze-frame film strip.
 
 The wave phase is the projector spinning. 🎞️⚛️
 
@@ -15308,8 +16235,10 @@ My proposed redrive is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-001" width="617" height="31" alt="\boxed{ P2 \rightarrow \text{phase-generating P3} \rightarrow \text{oscillatory/relational P4} \rightarrow \text{thermal + CSC stabilization} }">
+<!-- TeX display: \boxed{
 P2
 \rightarrow
 \text{phase-generating P3}
@@ -15317,8 +16246,9 @@ P2
 \text{oscillatory/relational P4}
 \rightarrow
 \text{thermal + CSC stabilization}
-}
-```
+} -->
+
+
 
 
 
@@ -15332,19 +16262,25 @@ Keep P0 and P1 underneath everything:
 
 
 
-```math
-P0:
-\text{epistemic/possibility boundary}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-002" width="256" height="22" alt="P0: \text{epistemic/possibility boundary}">
+<!-- TeX display: P0:
+\text{epistemic/possibility boundary} -->
 
 
 
 
 
-```math
-P1:
-\text{admissibility, energy, information, gradient and resource constraints}.
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-003" width="517" height="21" alt="P1: \text{admissibility, energy, information, gradient and resource constraints}.">
+<!-- TeX display: P1:
+\text{admissibility, energy, information, gradient and resource constraints}. -->
+
+
 
 
 
@@ -15352,34 +16288,43 @@ Then the revised middle trunk becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-004" width="125" height="28" alt="\boxed{ P2= \text{difference} }">
+<!-- TeX display: \boxed{
 P2=
 \text{difference}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-005" width="370" height="30" alt="\boxed{ P3= \text{difference undergoing structured propagation} }">
+<!-- TeX display: \boxed{
 P3=
 \text{difference undergoing structured propagation}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-006" width="332" height="29" alt="\boxed{ P4= \text{persistent structure in that propagation} }">
+<!-- TeX display: \boxed{
 P4=
 \text{persistent structure in that propagation}
-}
-```
+} -->
+
+
 
 
 
@@ -15389,9 +16334,12 @@ The old version treated:
 
 
 
-```math
-P2\rightarrow P3\rightarrow P4
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-007" width="118" height="18" alt="P2\rightarrow P3\rightarrow P4">
+<!-- TeX display: P2\rightarrow P3\rightarrow P4 -->
+
+
 
 
 
@@ -15399,13 +16347,16 @@ roughly as:
 
 
 
-```math
-\text{distinction}
+
+
+<img src="UTC-Math/message-28.svg#equation-008" width="262" height="21" alt="\text{distinction} \rightarrow \text{transition} \rightarrow \text{stability}.">
+<!-- TeX display: \text{distinction}
 \rightarrow
 \text{transition}
 \rightarrow
-\text{stability}.
-```
+\text{stability}. -->
+
+
 
 
 
@@ -15413,8 +16364,10 @@ The new version is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-009" width="743" height="31" alt="\boxed{ \text{distinction} \rightarrow \text{phase evolution} \rightarrow \text{frequency/correlation} \rightarrow \text{recurrence} \rightarrow \text{selection} \rightarrow \text{persistent attractor}. }">
+<!-- TeX display: \boxed{
 \text{distinction}
 \rightarrow
 \text{phase evolution}
@@ -15426,8 +16379,9 @@ The new version is:
 \text{selection}
 \rightarrow
 \text{persistent attractor}.
-}
-```
+} -->
+
+
 
 
 
@@ -15441,9 +16395,12 @@ The manuscript's mathematical P2 starts from the minimal statement:
 
 
 
-```math
-0\neq1
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-010" width="46" height="21" alt="0\neq1">
+<!-- TeX display: 0\neq1 -->
+
+
 
 
 
@@ -15451,9 +16408,12 @@ or more generally
 
 
 
-```math
-d(s_i,s_j)>\delta.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-011" width="95" height="23" alt="d(s_i,s_j)>\delta.">
+<!-- TeX display: d(s_i,s_j)>\delta. -->
+
+
 
 
 
@@ -15467,9 +16427,12 @@ But physically, distinguishability appears in several forms.
 
 
 
-```math
-s_i\neq s_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-012" width="61" height="23" alt="s_i\neq s_j.">
+<!-- TeX display: s_i\neq s_j. -->
+
+
 
 
 
@@ -15481,9 +16444,12 @@ No dynamics required.
 
 
 
-```math
-E_i\neq E_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-013" width="69" height="23" alt="E_i\neq E_j.">
+<!-- TeX display: E_i\neq E_j. -->
+
+
 
 
 
@@ -15497,9 +16463,12 @@ Once oscillatory P3 becomes possible:
 
 
 
-```math
-\omega_i\neq\omega_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-014" width="65" height="23" alt="\omega_i\neq\omega_j.">
+<!-- TeX display: \omega_i\neq\omega_j. -->
+
+
 
 
 
@@ -15511,9 +16480,12 @@ Two evolving states acquire:
 
 
 
-```math
-\Delta\phi_{ij}\neq0.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-015" width="75" height="23" alt="\Delta\phi_{ij}\neq0.">
+<!-- TeX display: \Delta\phi_{ij}\neq0. -->
+
+
 
 
 
@@ -15521,11 +16493,14 @@ Now the distinction exists in a relationship:
 
 
 
-```math
-\Delta\phi_{ij}
+
+
+<img src="UTC-Math/message-28.svg#equation-016" width="117" height="23" alt="\Delta\phi_{ij} = \phi_i-\phi_j.">
+<!-- TeX display: \Delta\phi_{ij}
 =
-\phi_i-\phi_j.
-```
+\phi_i-\phi_j. -->
+
+
 
 
 
@@ -15535,8 +16510,10 @@ So P2 branches:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-017" width="610" height="30" alt="\boxed{ \text{configuration difference} \rightarrow \text{energy difference} \rightarrow \text{frequency difference} \rightarrow \text{phase relation}. }">
+<!-- TeX display: \boxed{
 \text{configuration difference}
 \rightarrow
 \text{energy difference}
@@ -15544,8 +16521,9 @@ So P2 branches:
 \text{frequency difference}
 \rightarrow
 \text{phase relation}.
-}
-```
+} -->
+
+
 
 
 
@@ -15559,21 +16537,27 @@ Suppose two modes begin with different primitive cyclic rates:
 
 
 
-```math
-\Omega_1\neq\Omega_2.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-018" width="71" height="21" alt="\Omega_1\neq\Omega_2.">
+<!-- TeX display: \Omega_1\neq\Omega_2. -->
 
 
 
-Before ordinary metric time is defined, use the manuscript's primitive update index $n$. Define phase accumulation per update:
+
+
+Before ordinary metric time is defined, use the manuscript's primitive update index <img src="UTC-Math/message-28.svg#equation-019" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->. Define phase accumulation per update:
 
 
 
-```math
-\Delta\phi_i(n)
+
+
+<img src="UTC-Math/message-28.svg#equation-020" width="205" height="22" alt="\Delta\phi_i(n) = \phi_i(n+1)-\phi_i(n).">
+<!-- TeX display: \Delta\phi_i(n)
 =
-\phi_i(n+1)-\phi_i(n).
-```
+\phi_i(n+1)-\phi_i(n). -->
+
+
 
 
 
@@ -15581,29 +16565,35 @@ Then define a primitive cyclic rate:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-021" width="95" height="48" alt="\boxed{ \Omega_i = \frac{\Delta\phi_i}{\Delta n}. }">
+<!-- TeX display: \boxed{
 \Omega_i
 =
 \frac{\Delta\phi_i}{\Delta n}.
-}
-```
+} -->
+
+
 
 
 
 This deliberately avoids assuming seconds before physical clock-time exists.
 
-After $N$ updates:
+After <img src="UTC-Math/message-28.svg#equation-022" width="23" height="17" alt="N" align="middle"><!-- TeX inline: N --> updates:
 
 
 
-```math
-\phi_i(N)
+
+
+<img src="UTC-Math/message-28.svg#equation-023" width="208" height="54" alt="\phi_i(N) = \phi_i(0) + \sum_{n=0}^{N-1}\Delta\phi_i(n).">
+<!-- TeX display: \phi_i(N)
 =
 \phi_i(0)
 +
-\sum_{n=0}^{N-1}\Delta\phi_i(n).
-```
+\sum_{n=0}^{N-1}\Delta\phi_i(n). -->
+
+
 
 
 
@@ -15611,13 +16601,16 @@ Therefore two slightly different cyclic rates generate increasing phase separati
 
 
 
-```math
-\Delta\phi_{12}(N)
+
+
+<img src="UTC-Math/message-28.svg#equation-024" width="264" height="40" alt="\Delta\phi_{12}(N) = \Delta\phi_{12}(0) + \sum_n(\Omega_1-\Omega_2).">
+<!-- TeX display: \Delta\phi_{12}(N)
 =
 \Delta\phi_{12}(0)
 +
-\sum_n(\Omega_1-\Omega_2).
-```
+\sum_n(\Omega_1-\Omega_2). -->
+
+
 
 
 
@@ -15625,15 +16618,18 @@ For approximately constant rates:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-025" width="220" height="31" alt="\boxed{ \Delta\phi_{12}(N) \approx \Delta\phi_{12}(0) + N\Delta\Omega. }">
+<!-- TeX display: \boxed{
 \Delta\phi_{12}(N)
 \approx
 \Delta\phi_{12}(0)
 +
 N\Delta\Omega.
-}
-```
+} -->
+
+
 
 
 
@@ -15643,13 +16639,16 @@ Call this:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-026" width="291" height="30" alt="\boxed{ F_{\Delta} = \text{Difference-Amplification Closure}. }">
+<!-- TeX display: \boxed{
 F_{\Delta}
 =
 \text{Difference-Amplification Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -15657,15 +16656,18 @@ Its topology is:
 
 
 
-```math
-P2
+
+
+<img src="UTC-Math/message-28.svg#equation-027" width="299" height="21" alt="P2 \rightarrow \Delta\Omega \rightarrow \Delta\phi \rightarrow \text{relational distinction}.">
+<!-- TeX display: P2
 \rightarrow
 \Delta\Omega
 \rightarrow
 \Delta\phi
 \rightarrow
-\text{relational distinction}.
-```
+\text{relational distinction}. -->
+
+
 
 
 
@@ -15673,11 +16675,14 @@ And if that relational distinction alters future coupling:
 
 
 
-```math
-\Delta\phi
+
+
+<img src="UTC-Math/message-28.svg#equation-028" width="84" height="26" alt="\Delta\phi \rightarrow K_{ij}',">
+<!-- TeX display: \Delta\phi
 \rightarrow
-K_{ij}',
-```
+K_{ij}', -->
+
+
 
 
 
@@ -15685,8 +16690,10 @@ then it closes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-029" width="212" height="31" alt="\boxed{ \Delta \rightarrow \phi \rightarrow \text{interaction} \rightarrow \Delta'. }">
+<!-- TeX display: \boxed{
 \Delta
 \rightarrow
 \phi
@@ -15694,8 +16701,9 @@ then it closes:
 \text{interaction}
 \rightarrow
 \Delta'.
-}
-```
+} -->
+
+
 
 
 
@@ -15705,7 +16713,7 @@ That is a genuine feedback loop.
 
 # 4. P3 is no longer merely “transition”
 
-The manuscript defines P3 mathematically through ordered distinguishable change and an ordinal update index $n$. The Unifying Theory of Complexi…
+The manuscript defines P3 mathematically through ordered distinguishable change and an ordinal update index <img src="UTC-Math/message-28.svg#equation-030" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->. The Unifying Theory of Complexi…
 
 Keep that.
 
@@ -15715,9 +16723,12 @@ But now split P3 physically.
 
 
 
-```math
-s_i\rightarrow s_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-031" width="64" height="19" alt="s_i\rightarrow s_j.">
+<!-- TeX display: s_i\rightarrow s_j. -->
+
+
 
 
 
@@ -15727,9 +16738,12 @@ Minimal change.
 
 
 
-```math
-s_i\prec s_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-032" width="61" height="20" alt="s_i\prec s_j.">
+<!-- TeX display: s_i\prec s_j. -->
+
+
 
 
 
@@ -15741,9 +16755,12 @@ No metric time yet.
 
 
 
-```math
-s_0\rightarrow s_1\rightarrow\dots\rightarrow s_n.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-033" width="151" height="17" alt="s_0\rightarrow s_1\rightarrow\dots\rightarrow s_n.">
+<!-- TeX display: s_0\rightarrow s_1\rightarrow\dots\rightarrow s_n. -->
+
+
 
 
 
@@ -15753,9 +16770,12 @@ Now history exists structurally.
 
 
 
-```math
-s_{n+N}\approx s_n.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-034" width="84" height="18" alt="s_{n+N}\approx s_n.">
+<!-- TeX display: s_{n+N}\approx s_n. -->
+
+
 
 
 
@@ -15769,9 +16789,12 @@ Represent cycle position by:
 
 
 
-```math
-\phi_n\in S^1.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-035" width="68" height="24" alt="\phi_n\in S^1.">
+<!-- TeX display: \phi_n\in S^1. -->
+
+
 
 
 
@@ -15779,11 +16802,14 @@ Then:
 
 
 
-```math
-\phi_{n+1}
+
+
+<img src="UTC-Math/message-28.svg#equation-036" width="123" height="21" alt="\phi_{n+1} = \phi_n+\Omega_n.">
+<!-- TeX display: \phi_{n+1}
 =
-\phi_n+\Omega_n.
-```
+\phi_n+\Omega_n. -->
+
+
 
 
 
@@ -15795,11 +16821,14 @@ Distributed phase evolution gives:
 
 
 
-```math
-\Psi(x,n)
+
+
+<img src="UTC-Math/message-28.svg#equation-037" width="180" height="26" alt="\Psi(x,n) = A(x,n)e^{i\phi(x,n)}.">
+<!-- TeX display: \Psi(x,n)
 =
-A(x,n)e^{i\phi(x,n)}.
-```
+A(x,n)e^{i\phi(x,n)}. -->
+
+
 
 
 
@@ -15807,11 +16836,14 @@ Once metric time exists, this becomes the familiar:
 
 
 
-```math
-\Psi(x,t)
+
+
+<img src="UTC-Math/message-28.svg#equation-038" width="167" height="26" alt="\Psi(x,t) = A e^{i(kx-\omega t+\phi_0)}.">
+<!-- TeX display: \Psi(x,t)
 =
-A e^{i(kx-\omega t+\phi_0)}.
-```
+A e^{i(kx-\omega t+\phi_0)}. -->
+
+
 
 
 
@@ -15821,11 +16853,14 @@ It is an advanced realization of the P3 principle:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-039" width="461" height="30" alt="\boxed{ \text{state difference propagating through structured phase evolution}. }">
+<!-- TeX display: \boxed{
 \text{state difference propagating through structured phase evolution}.
-}
-```
+} -->
+
+
 
 
 
@@ -15839,9 +16874,12 @@ The original manuscript makes:
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-040" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -15851,9 +16889,12 @@ Our improved interpretation is not merely:
 
 
 
-```math
-E\leftrightarrow\omega.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-041" width="60" height="18" alt="E\leftrightarrow\omega.">
+<!-- TeX display: E\leftrightarrow\omega. -->
+
+
 
 
 
@@ -15861,8 +16902,10 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-042" width="283" height="31" alt="\boxed{ E \rightarrow \omega \rightarrow \phi \rightarrow \Psi \rightarrow \text{interaction} \rightarrow E'. }">
+<!-- TeX display: \boxed{
 E
 \rightarrow
 \omega
@@ -15874,8 +16917,9 @@ E
 \text{interaction}
 \rightarrow
 E'.
-}
-```
+} -->
+
+
 
 
 
@@ -15883,9 +16927,12 @@ If the state is stable:
 
 
 
-```math
-E'\approx E
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-043" width="60" height="19" alt="E'\approx E">
+<!-- TeX display: E'\approx E -->
+
+
 
 
 
@@ -15893,9 +16940,12 @@ and
 
 
 
-```math
-\omega'\approx\omega.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-044" width="59" height="20" alt="\omega'\approx\omega.">
+<!-- TeX display: \omega'\approx\omega. -->
+
+
 
 
 
@@ -15905,13 +16955,16 @@ This is our:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-045" width="308" height="30" alt="\boxed{ F_{\tau} = \text{Phase-Frequency Temporal Closure}. }">
+<!-- TeX display: \boxed{
 F_{\tau}
 =
 \text{Phase-Frequency Temporal Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -15923,27 +16976,33 @@ It is probably embedded inside or immediately underneath the current F1.
 
 This is one of the cleanest results of the redrive.
 
-### $T_0$: ordinal time
+### <img src="UTC-Math/message-28.svg#equation-046" width="25" height="20" alt="T_0" align="middle"><!-- TeX inline: T_0 -->: ordinal time
 
 
 
-```math
-s_i\prec s_j.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-047" width="61" height="20" alt="s_i\prec s_j.">
+<!-- TeX display: s_i\prec s_j. -->
+
+
 
 
 
 Only before/after.
 
-Corresponds to the manuscript's $n$.
+Corresponds to the manuscript's <img src="UTC-Math/message-28.svg#equation-048" width="18" height="14" alt="n" align="middle"><!-- TeX inline: n -->.
 
-### $T_1$: phase time
+### <img src="UTC-Math/message-28.svg#equation-049" width="25" height="20" alt="T_1" align="middle"><!-- TeX inline: T_1 -->: phase time
 
 
 
-```math
-\phi_n.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-050" width="31" height="21" alt="\phi_n.">
+<!-- TeX display: \phi_n. -->
+
+
 
 
 
@@ -15951,15 +17010,18 @@ Where the system is in its evolution.
 
 This is intrinsic temporal state.
 
-### $T_2$: metric time
+### <img src="UTC-Math/message-28.svg#equation-051" width="25" height="20" alt="T_2" align="middle"><!-- TeX inline: T_2 -->: metric time
 
 If a cycle becomes sufficiently stable:
 
 
 
-```math
-\Omega_n\rightarrow\Omega_*,
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-052" width="76" height="21" alt="\Omega_n\rightarrow\Omega_*,">
+<!-- TeX display: \Omega_n\rightarrow\Omega_*, -->
+
+
 
 
 
@@ -15969,9 +17031,12 @@ Once an external unit has been established:
 
 
 
-```math
-\omega_*=\frac{2\pi}{T_*}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-053" width="71" height="41" alt="\omega_*=\frac{2\pi}{T_*}">
+<!-- TeX display: \omega_*=\frac{2\pi}{T_*} -->
+
+
 
 
 
@@ -15979,37 +17044,43 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-054" width="92" height="50" alt="\boxed{ \Delta t = \frac{\Delta\phi}{\omega_*}. }">
+<!-- TeX display: \boxed{
 \Delta t
 =
 \frac{\Delta\phi}{\omega_*}.
-}
-```
+} -->
+
+
 
 
 
 This means **P4 stability converts P3 evolution into a clock**.
 
-The manuscript already says physical time requires stabilized $\Delta\tau$, but previously it lacked the physical oscillator mechanism. The Unifying Theory of Complexi…
+The manuscript already says physical time requires stabilized <img src="UTC-Math/message-28.svg#equation-055" width="30" height="18" alt="\Delta\tau" align="middle"><!-- TeX inline: \Delta\tau -->, but previously it lacked the physical oscillator mechanism. The Unifying Theory of Complexi…
 
 Now:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-056" width="200" height="31" alt="\boxed{ P3_{\rm cycle} + P4_{\rm recurrence} \rightarrow T_2. }">
+<!-- TeX display: \boxed{
 P3_{\rm cycle}
 +
 P4_{\rm recurrence}
 \rightarrow
 T_2.
-}
-```
+} -->
 
 
 
-### $T_3$: arrow time
+
+
+### <img src="UTC-Math/message-28.svg#equation-057" width="25" height="20" alt="T_3" align="middle"><!-- TeX inline: T_3 -->: arrow time
 
 Metric duration does not give direction.
 
@@ -16017,9 +17088,12 @@ Direction appears through irreversible weighting:
 
 
 
-```math
-\dot S_{\rm total}\ge0.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-058" width="77" height="26" alt="\dot S_{\rm total}\ge0.">
+<!-- TeX display: \dot S_{\rm total}\ge0. -->
+
+
 
 
 
@@ -16029,8 +17103,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-059" width="261" height="30" alt="\boxed{ \text{order} \neq \text{phase} \neq \text{duration} \neq \text{arrow}. }">
+<!-- TeX display: \boxed{
 \text{order}
 \neq
 \text{phase}
@@ -16038,8 +17114,9 @@ So:
 \text{duration}
 \neq
 \text{arrow}.
-}
-```
+} -->
+
+
 
 
 
@@ -16055,13 +17132,16 @@ The original manuscript already has the continuum:
 
 
 
-```math
-\text{autocorrelation}
+
+
+<img src="UTC-Math/message-28.svg#equation-060" width="392" height="21" alt="\text{autocorrelation} \rightarrow \text{persistence} \rightarrow \text{encoded P10 memory}.">
+<!-- TeX display: \text{autocorrelation}
 \rightarrow
 \text{persistence}
 \rightarrow
-\text{encoded P10 memory}.
-```
+\text{encoded P10 memory}. -->
+
+
 
 
 
@@ -16073,13 +17153,16 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-061" width="209" height="29" alt="\boxed{ M_0 = \text{transition continuity}. }">
+<!-- TeX display: \boxed{
 M_0
 =
 \text{transition continuity}.
-}
-```
+} -->
+
+
 
 
 
@@ -16087,11 +17170,14 @@ A future state is conditional on a previous state:
 
 
 
-```math
-P(s_{n+1}\mid s_n)
+
+
+<img src="UTC-Math/message-28.svg#equation-062" width="172" height="22" alt="P(s_{n+1}\mid s_n) \neq P(s_{n+1}).">
+<!-- TeX display: P(s_{n+1}\mid s_n)
 \neq
-P(s_{n+1}).
-```
+P(s_{n+1}). -->
+
+
 
 
 
@@ -16101,13 +17187,16 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-063" width="165" height="29" alt="\boxed{ M_1 = \text{phase memory}. }">
+<!-- TeX display: \boxed{
 M_1
 =
 \text{phase memory}.
-}
-```
+} -->
+
+
 
 
 
@@ -16115,11 +17204,14 @@ For an oscillator:
 
 
 
-```math
-\phi_{n+1}
+
+
+<img src="UTC-Math/message-28.svg#equation-064" width="123" height="21" alt="\phi_{n+1} = \phi_n+\Omega_n.">
+<!-- TeX display: \phi_{n+1}
 =
-\phi_n+\Omega_n.
-```
+\phi_n+\Omega_n. -->
+
+
 
 
 
@@ -16129,13 +17221,16 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-065" width="191" height="30" alt="\boxed{ M_2 = \text{frequency identity}. }">
+<!-- TeX display: \boxed{
 M_2
 =
 \text{frequency identity}.
-}
-```
+} -->
+
+
 
 
 
@@ -16143,9 +17238,12 @@ If:
 
 
 
-```math
-\Omega_n\approx\Omega_*
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-066" width="68" height="20" alt="\Omega_n\approx\Omega_*">
+<!-- TeX display: \Omega_n\approx\Omega_* -->
+
+
 
 
 
@@ -16155,11 +17253,14 @@ Then:
 
 
 
-```math
-M_3
+
+
+<img src="UTC-Math/message-28.svg#equation-067" width="192" height="21" alt="M_3 = \text{correlation memory},">
+<!-- TeX display: M_3
 =
-\text{correlation memory},
-```
+\text{correlation memory}, -->
+
+
 
 
 
@@ -16167,13 +17268,16 @@ measured by something like:
 
 
 
-```math
-C(k)
+
+
+<img src="UTC-Math/message-28.svg#equation-068" width="174" height="35" alt="C(k) = \left\langle e^{i[\phi(n+k)-\phi(n)]} \right\rangle.">
+<!-- TeX display: C(k)
 =
 \left\langle
 e^{i[\phi(n+k)-\phi(n)]}
-\right\rangle.
-```
+\right\rangle. -->
+
+
 
 
 
@@ -16181,22 +17285,28 @@ If:
 
 
 
-```math
-|C(k)|>0
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-069" width="80" height="22" alt="|C(k)|>0">
+<!-- TeX display: |C(k)|>0 -->
 
 
 
-for significant $k$, phase relations survive.
+
+
+for significant <img src="UTC-Math/message-28.svg#equation-070" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->, phase relations survive.
 
 Then P4 produces stronger:
 
 
 
-```math
-M_4=
-\text{attractor memory}.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-071" width="180" height="21" alt="M_4= \text{attractor memory}.">
+<!-- TeX display: M_4=
+\text{attractor memory}. -->
+
+
 
 
 
@@ -16204,19 +17314,25 @@ And only much later:
 
 
 
-```math
-M_5=
-\text{physical imprint}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-072" width="165" height="21" alt="M_5= \text{physical imprint}">
+<!-- TeX display: M_5=
+\text{physical imprint} -->
 
 
 
 
 
-```math
-M_6=
-\text{encoded rewritable memory, P10}.
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-073" width="283" height="21" alt="M_6= \text{encoded rewritable memory, P10}.">
+<!-- TeX display: M_6=
+\text{encoded rewritable memory, P10}. -->
+
+
 
 
 
@@ -16232,9 +17348,12 @@ The existing stabilization section heavily emphasizes fixed points:
 
 
 
-```math
-f(x^*)=0,
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-074" width="80" height="22" alt="f(x^*)=0,">
+<!-- TeX display: f(x^*)=0, -->
+
+
 
 
 
@@ -16246,9 +17365,12 @@ An oscillator has:
 
 
 
-```math
-x(t+T)=x(t)
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-075" width="115" height="22" alt="x(t+T)=x(t)">
+<!-- TeX display: x(t+T)=x(t) -->
+
+
 
 
 
@@ -16256,9 +17378,12 @@ rather than:
 
 
 
-```math
-x(t)=x^*.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-076" width="78" height="22" alt="x(t)=x^*.">
+<!-- TeX display: x(t)=x^*. -->
+
+
 
 
 
@@ -16268,9 +17393,12 @@ So P4 needs several branches.
 
 
 
-```math
-x(t)\rightarrow x^*.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-077" width="81" height="22" alt="x(t)\rightarrow x^*.">
+<!-- TeX display: x(t)\rightarrow x^*. -->
+
+
 
 
 
@@ -16282,9 +17410,12 @@ static equilibrium.
 
 
 
-```math
-x(t+T)=x(t).
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-078" width="120" height="22" alt="x(t+T)=x(t).">
+<!-- TeX display: x(t+T)=x(t). -->
+
+
 
 
 
@@ -16298,11 +17429,14 @@ For coupled oscillators:
 
 
 
-```math
-\phi_i-\phi_j
+
+
+<img src="UTC-Math/message-28.svg#equation-079" width="120" height="25" alt="\phi_i-\phi_j \rightarrow \Delta\phi_{ij}^*.">
+<!-- TeX display: \phi_i-\phi_j
 \rightarrow
-\Delta\phi_{ij}^*.
-```
+\Delta\phi_{ij}^*. -->
+
+
 
 
 
@@ -16316,9 +17450,12 @@ Several incommensurate frequencies persist:
 
 
 
-```math
-\omega_1,\omega_2,\dots
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-080" width="75" height="17" alt="\omega_1,\omega_2,\dots">
+<!-- TeX display: \omega_1,\omega_2,\dots -->
+
+
 
 
 
@@ -16328,9 +17465,12 @@ producing toroidal dynamics.
 
 
 
-```math
-\tau_{\rm escape}\gg\tau_{\rm internal}.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-081" width="124" height="20" alt="\tau_{\rm escape}\gg\tau_{\rm internal}.">
+<!-- TeX display: \tau_{\rm escape}\gg\tau_{\rm internal}. -->
+
+
 
 
 
@@ -16342,9 +17482,12 @@ Matter/energy flows continuously while macrostructure remains stable:
 
 
 
-```math
-J(t)\rightarrow J^*.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-082" width="84" height="22" alt="J(t)\rightarrow J^*.">
+<!-- TeX display: J(t)\rightarrow J^*. -->
+
+
 
 
 
@@ -16362,11 +17505,14 @@ It becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-083" width="455" height="30" alt="\boxed{ \text{stable organization of state OR trajectory OR relation OR flow}. }">
+<!-- TeX display: \boxed{
 \text{stable organization of state OR trajectory OR relation OR flow}.
-}
-```
+} -->
+
+
 
 
 
@@ -16382,11 +17528,14 @@ P3 generates trajectories:
 
 
 
-```math
-\Gamma
+
+
+<img src="UTC-Math/message-28.svg#equation-084" width="74" height="22" alt="\Gamma = \{\gamma_i\}.">
+<!-- TeX display: \Gamma
 =
-\{\gamma_i\}.
-```
+\{\gamma_i\}. -->
+
+
 
 
 
@@ -16398,13 +17547,16 @@ We can define a recurrence functional:
 
 
 
-```math
-R_\epsilon(\tau)
+
+
+<img src="UTC-Math/message-28.svg#equation-085" width="237" height="22" alt="R_\epsilon(\tau) = \Pr[ d(x(t+\tau),x(t))&lt;\epsilon ].">
+<!-- TeX display: R_\epsilon(\tau)
 =
 \Pr[
 d(x(t+\tau),x(t))<\epsilon
-].
-```
+]. -->
+
+
 
 
 
@@ -16412,9 +17564,12 @@ For a stable cycle:
 
 
 
-```math
-R_\epsilon(T)\approx1.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-086" width="84" height="22" alt="R_\epsilon(T)\approx1.">
+<!-- TeX display: R_\epsilon(T)\approx1. -->
+
+
 
 
 
@@ -16422,9 +17577,12 @@ For noise:
 
 
 
-```math
-R_\epsilon(\tau)
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-087" width="47" height="22" alt="R_\epsilon(\tau)">
+<!-- TeX display: R_\epsilon(\tau) -->
+
+
 
 
 
@@ -16434,15 +17592,18 @@ So the P3→P4 transition can be written:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-088" width="358" height="29" alt="\boxed{ \text{transition space} \rightarrow \text{recurrence} \rightarrow \text{persistent orbit}. }">
+<!-- TeX display: \boxed{
 \text{transition space}
 \rightarrow
 \text{recurrence}
 \rightarrow
 \text{persistent orbit}.
-}
-```
+} -->
+
+
 
 
 
@@ -16450,11 +17611,14 @@ This is essentially:
 
 
 
-```math
-F_{\rm Rec}
+
+
+<img src="UTC-Math/message-28.svg#equation-089" width="198" height="20" alt="F_{\rm Rec} = \text{Recurrence Closure}.">
+<!-- TeX display: F_{\rm Rec}
 =
-\text{Recurrence Closure}.
-```
+\text{Recurrence Closure}. -->
+
+
 
 
 
@@ -16472,9 +17636,12 @@ So introduce fluctuation:
 
 
 
-```math
-x\rightarrow x+\delta x.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-090" width="92" height="19" alt="x\rightarrow x+\delta x.">
+<!-- TeX display: x\rightarrow x+\delta x. -->
+
+
 
 
 
@@ -16482,11 +17649,14 @@ A robust attractor produces a restoring response:
 
 
 
-```math
-\delta x
+
+
+<img src="UTC-Math/message-28.svg#equation-091" width="91" height="21" alt="\delta x \rightarrow -\chi\,\delta x">
+<!-- TeX display: \delta x
 \rightarrow
--\chi\,\delta x
-```
+-\chi\,\delta x -->
+
+
 
 
 
@@ -16496,13 +17666,16 @@ This is the low-level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-092" width="278" height="29" alt="\boxed{ F_{\rm FR} = \text{Fluctuation-Response Closure}. }">
+<!-- TeX display: \boxed{
 F_{\rm FR}
 =
 \text{Fluctuation-Response Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -16512,9 +17685,12 @@ In our redrive:
 
 
 
-```math
-P3
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-093" width="29" height="18" alt="P3">
+<!-- TeX display: P3 -->
+
+
 
 
 
@@ -16522,9 +17698,12 @@ creates variation.
 
 
 
-```math
-F_{\rm FR}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-094" width="36" height="20" alt="F_{\rm FR}">
+<!-- TeX display: F_{\rm FR} -->
+
+
 
 
 
@@ -16534,9 +17713,12 @@ Then:
 
 
 
-```math
-P4
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-095" width="29" height="17" alt="P4">
+<!-- TeX display: P4 -->
+
+
 
 
 
@@ -16552,9 +17734,12 @@ For a driven structure:
 
 
 
-```math
-P_{\rm in}>0.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-096" width="63" height="20" alt="P_{\rm in}>0.">
+<!-- TeX display: P_{\rm in}>0. -->
+
+
 
 
 
@@ -16562,9 +17747,12 @@ If internal dissipation produces heat:
 
 
 
-```math
-P_{\rm heat}>0,
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-097" width="75" height="21" alt="P_{\rm heat}>0,">
+<!-- TeX display: P_{\rm heat}>0, -->
+
+
 
 
 
@@ -16574,16 +17762,19 @@ At steady state:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-098" width="180" height="28" alt="\boxed{ P_{\rm in} - P_{\rm useful} - P_{\rm out} \approx0. }">
+<!-- TeX display: \boxed{
 P_{\rm in}
 -
 P_{\rm useful}
 -
 P_{\rm out}
 \approx0.
-}
-```
+} -->
+
+
 
 
 
@@ -16591,11 +17782,14 @@ Entropy balance:
 
 
 
-```math
-\dot S
+
+
+<img src="UTC-Math/message-28.svg#equation-099" width="96" height="26" alt="\dot S = \dot S_i+\dot S_e.">
+<!-- TeX display: \dot S
 =
-\dot S_i+\dot S_e.
-```
+\dot S_i+\dot S_e. -->
+
+
 
 
 
@@ -16603,9 +17797,12 @@ For a steady dissipative structure:
 
 
 
-```math
-\dot S\approx0
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-100" width="48" height="23" alt="\dot S\approx0">
+<!-- TeX display: \dot S\approx0 -->
+
+
 
 
 
@@ -16613,10 +17810,13 @@ while:
 
 
 
-```math
-\dot S_i>0,\qquad
-\dot S_e<0.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-101" width="142" height="26" alt="\dot S_i>0,\qquad \dot S_e&lt;0.">
+<!-- TeX display: \dot S_i>0,\qquad
+\dot S_e<0. -->
+
+
 
 
 
@@ -16626,13 +17826,16 @@ Call the low-level closure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-102" width="266" height="29" alt="\boxed{ F_{\Theta} = \text{Gradient-Dissipation Closure}. }">
+<!-- TeX display: \boxed{
 F_{\Theta}
 =
 \text{Gradient-Dissipation Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -16640,8 +17843,10 @@ Its loop is:
 
 
 
-```math
-\nabla X
+
+
+<img src="UTC-Math/message-28.svg#equation-103" width="405" height="23" alt="\nabla X \rightarrow J \rightarrow \text{dissipation} \rightarrow \text{gradient modification} \rightarrow \nabla X'.">
+<!-- TeX display: \nabla X
 \rightarrow
 J
 \rightarrow
@@ -16649,18 +17854,22 @@ J
 \rightarrow
 \text{gradient modification}
 \rightarrow
-\nabla X'.
-```
+\nabla X'. -->
 
 
 
-Where $X$ might be:
+
+
+Where <img src="UTC-Math/message-28.svg#equation-104" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X --> might be:
 
 
 
-```math
-T,\mu,V,P,\Phi.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-105" width="98" height="21" alt="T,\mu,V,P,\Phi.">
+<!-- TeX display: T,\mu,V,P,\Phi. -->
+
+
 
 
 
@@ -16672,11 +17881,14 @@ So the more general object is really:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-106" width="199" height="29" alt="\boxed{ \text{potential-gradient closure}. }">
+<!-- TeX display: \boxed{
 \text{potential-gradient closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -16688,13 +17900,16 @@ We previously had:
 
 
 
-```math
-\text{collapse}
+
+
+<img src="UTC-Math/message-28.svg#equation-107" width="286" height="21" alt="\text{collapse} \rightarrow \text{stabilization} \rightarrow \text{composition}.">
+<!-- TeX display: \text{collapse}
 \rightarrow
 \text{stabilization}
 \rightarrow
-\text{composition}.
-```
+\text{composition}. -->
+
+
 
 
 
@@ -16704,16 +17919,18 @@ P3 generates competing trajectories.
 
 P1 defines energetic admissibility.
 
-$F_{\rm FR}$ perturbs/tests them.
+<img src="UTC-Math/message-28.svg#equation-108" width="36" height="20" alt="F_{\rm FR}" align="middle"><!-- TeX inline: F_{\rm FR} --> perturbs/tests them.
 
-$F_\Theta$ determines whether excess energy can escape.
+<img src="UTC-Math/message-28.svg#equation-109" width="29" height="20" alt="F_\Theta" align="middle"><!-- TeX inline: F_\Theta --> determines whether excess energy can escape.
 
 Then CSC acts:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-110" width="237" height="33" alt="\boxed{ \Omega_{\rm trajectories} \rightarrow C \rightarrow S \rightarrow K \rightarrow \Omega' }">
+<!-- TeX display: \boxed{
 \Omega_{\rm trajectories}
 \rightarrow
 C
@@ -16723,31 +17940,35 @@ S
 K
 \rightarrow
 \Omega'
-}
-```
+} -->
+
+
 
 
 
 where:
 
-- $C$: unstable trajectories/configurations disappear,
-- $S$: recurrent/metastable configurations persist,
-- $K$: survivors compose,
-- $\Omega'$: composite opens a new effective state space.
+- <img src="UTC-Math/message-28.svg#equation-111" width="21" height="18" alt="C" align="middle"><!-- TeX inline: C -->: unstable trajectories/configurations disappear,
+- <img src="UTC-Math/message-28.svg#equation-112" width="19" height="18" alt="S" align="middle"><!-- TeX inline: S -->: recurrent/metastable configurations persist,
+- <img src="UTC-Math/message-28.svg#equation-113" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K -->: survivors compose,
+- <img src="UTC-Math/message-28.svg#equation-114" width="24" height="19" alt="\Omega'" align="middle"><!-- TeX inline: \Omega' -->: composite opens a new effective state space.
 
 The manuscript already had the essential forward cascade:
 
 
 
-```math
-\text{attractor forms}
+
+
+<img src="UTC-Math/message-28.svg#equation-115" width="513" height="21" alt="\text{attractor forms} \rightarrow \text{binding energy exported} \rightarrow \text{new constituent} \rightarrow \text{repeat}.">
+<!-- TeX display: \text{attractor forms}
 \rightarrow
 \text{binding energy exported}
 \rightarrow
 \text{new constituent}
 \rightarrow
-\text{repeat}.
-```
+\text{repeat}. -->
+
+
 
 
 
@@ -16763,12 +17984,15 @@ Here is the picture now.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-116" width="225" height="30" alt="\boxed{ P2: \text{distinguishable difference} }">
+<!-- TeX display: \boxed{
 P2:
 \text{distinguishable difference}
-}
-```
+} -->
+
+
 
 
 
@@ -16776,10 +18000,13 @@ feeds:
 
 
 
-```math
-F_\Delta:
-\text{difference amplification through phase}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-117" width="307" height="21" alt="F_\Delta: \text{difference amplification through phase}">
+<!-- TeX display: F_\Delta:
+\text{difference amplification through phase} -->
+
+
 
 
 
@@ -16787,12 +18014,15 @@ which produces:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-118" width="275" height="29" alt="\boxed{ P3: \text{ordered phase-bearing transition} }">
+<!-- TeX display: \boxed{
 P3:
 \text{ordered phase-bearing transition}
-}
-```
+} -->
+
+
 
 
 
@@ -16800,10 +18030,13 @@ inside which sits:
 
 
 
-```math
-F_\tau:
-\text{frequency-phase temporal closure}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-119" width="269" height="21" alt="F_\tau: \text{frequency-phase temporal closure}">
+<!-- TeX display: F_\tau:
+\text{frequency-phase temporal closure} -->
+
+
 
 
 
@@ -16811,10 +18044,13 @@ and:
 
 
 
-```math
-F_{\rm FR}:
-\text{fluctuation-response testing}.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-120" width="245" height="21" alt="F_{\rm FR}: \text{fluctuation-response testing}.">
+<!-- TeX display: F_{\rm FR}:
+\text{fluctuation-response testing}. -->
+
+
 
 
 
@@ -16824,10 +18060,13 @@ Then:
 
 
 
-```math
-F_\Theta:
-\text{gradient-dissipation closure}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-121" width="232" height="21" alt="F_\Theta: \text{gradient-dissipation closure}">
+<!-- TeX display: F_\Theta:
+\text{gradient-dissipation closure} -->
+
+
 
 
 
@@ -16837,10 +18076,13 @@ Then:
 
 
 
-```math
-F_{\rm CSC}:
-\text{collapse-stabilization-composition}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-122" width="290" height="21" alt="F_{\rm CSC}: \text{collapse-stabilization-composition}">
+<!-- TeX display: F_{\rm CSC}:
+\text{collapse-stabilization-composition} -->
+
+
 
 
 
@@ -16850,12 +18092,15 @@ Result:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-123" width="402" height="31" alt="\boxed{ P4: \text{persistent state/trajectory/relation/flow attractor}. }">
+<!-- TeX display: \boxed{
 P4:
 \text{persistent state/trajectory/relation/flow attractor}.
-}
-```
+} -->
+
+
 
 
 
@@ -16863,11 +18108,14 @@ And P4 feeds backward:
 
 
 
-```math
-P4
+
+
+<img src="UTC-Math/message-28.svg#equation-124" width="114" height="24" alt="P4 \rightarrow \Omega_{\rm accessible}'">
+<!-- TeX display: P4
 \rightarrow
-\Omega_{\rm accessible}'
-```
+\Omega_{\rm accessible}' -->
+
+
 
 
 
@@ -16877,8 +18125,10 @@ So the actual closure is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-125" width="181" height="28" alt="\boxed{ P2 \rightarrow P3 \rightarrow P4 \rightarrow P2'. }">
+<!-- TeX display: \boxed{
 P2
 \rightarrow
 P3
@@ -16886,8 +18136,9 @@ P3
 P4
 \rightarrow
 P2'.
-}
-```
+} -->
+
+
 
 
 
@@ -16905,11 +18156,14 @@ Before formation:
 
 
 
-```math
-\Omega
+
+
+<img src="UTC-Math/message-28.svg#equation-126" width="298" height="22" alt="\Omega = \{\text{electron+nucleus scattering states}\}.">
+<!-- TeX display: \Omega
 =
-\{\text{electron+nucleus scattering states}\}.
-```
+\{\text{electron+nucleus scattering states}\}. -->
+
+
 
 
 
@@ -16917,9 +18171,12 @@ After formation:
 
 
 
-```math
-\Omega'
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-127" width="24" height="19" alt="\Omega'">
+<!-- TeX display: \Omega' -->
+
+
 
 
 
@@ -16927,11 +18184,14 @@ contains:
 
 
 
-```math
-|1s\rangle,\,
+
+
+<img src="UTC-Math/message-28.svg#equation-128" width="133" height="22" alt="|1s\rangle,\, |2s\rangle,\, |2p\rangle,\dots">
+<!-- TeX display: |1s\rangle,\,
 |2s\rangle,\,
-|2p\rangle,\dots
-```
+|2p\rangle,\dots -->
+
+
 
 
 
@@ -16941,9 +18201,12 @@ So P4 stabilization creates **new P2 distinctions**:
 
 
 
-```math
-\Delta E_{nm}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-129" width="52" height="20" alt="\Delta E_{nm}">
+<!-- TeX display: \Delta E_{nm} -->
+
+
 
 
 
@@ -16951,11 +18214,14 @@ and therefore:
 
 
 
-```math
-\omega_{nm}
+
+
+<img src="UTC-Math/message-28.svg#equation-130" width="113" height="40" alt="\omega_{nm} = \frac{\Delta E_{nm}}{\hbar}.">
+<!-- TeX display: \omega_{nm}
 =
-\frac{\Delta E_{nm}}{\hbar}.
-```
+\frac{\Delta E_{nm}}{\hbar}. -->
+
+
 
 
 
@@ -16963,15 +18229,18 @@ Thus:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-131" width="173" height="28" alt="\boxed{ P4 \rightarrow P2_{\rm new} \rightarrow P3_{\rm new}. }">
+<!-- TeX display: \boxed{
 P4
 \rightarrow
 P2_{\rm new}
 \rightarrow
 P3_{\rm new}.
-}
-```
+} -->
+
+
 
 
 
@@ -16991,11 +18260,14 @@ So:
 
 
 
-```math
-P4
+
+
+<img src="UTC-Math/message-28.svg#equation-132" width="89" height="22" alt="P4 \rightarrow \{\omega_i\}.">
+<!-- TeX display: P4
 \rightarrow
-\{\omega_i\}.
-```
+\{\omega_i\}. -->
+
+
 
 
 
@@ -17005,15 +18277,18 @@ Then emitted/absorbed waves carry those frequencies outward:
 
 
 
-```math
-P4
+
+
+<img src="UTC-Math/message-28.svg#equation-133" width="274" height="21" alt="P4 \rightarrow \omega \rightarrow \gamma \rightarrow \text{environmental record}.">
+<!-- TeX display: P4
 \rightarrow
 \omega
 \rightarrow
 \gamma
 \rightarrow
-\text{environmental record}.
-```
+\text{environmental record}. -->
+
+
 
 
 
@@ -17023,13 +18298,16 @@ It begins with:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-134" width="325" height="29" alt="\boxed{ \text{P4 structural identity} \rightarrow \text{P3 spectral output}. }">
+<!-- TeX display: \boxed{
 \text{P4 structural identity}
 \rightarrow
 \text{P3 spectral output}.
-}
-```
+} -->
+
+
 
 
 
@@ -17045,12 +18323,15 @@ For a thermal emitter:
 
 
 
-```math
-B_\nu(T)
+
+
+<img src="UTC-Math/message-28.svg#equation-135" width="200" height="44" alt="B_\nu(T) = \frac{2h\nu^3}{c^2} \frac{1}{e^{h\nu/k_BT}-1}.">
+<!-- TeX display: B_\nu(T)
 =
 \frac{2h\nu^3}{c^2}
-\frac{1}{e^{h\nu/k_BT}-1}.
-```
+\frac{1}{e^{h\nu/k_BT}-1}. -->
+
+
 
 
 
@@ -17060,13 +18341,16 @@ Thus:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-136" width="263" height="31" alt="\boxed{ P4_{\rm thermal\ state} \rightarrow P3_{\rm frequency\ distribution}. }">
+<!-- TeX display: \boxed{
 P4_{\rm thermal\ state}
 \rightarrow
 P3_{\rm frequency\ distribution}.
-}
-```
+} -->
+
+
 
 
 
@@ -17076,11 +18360,14 @@ Again:
 
 
 
-```math
-P4
+
+
+<img src="UTC-Math/message-28.svg#equation-137" width="73" height="18" alt="P4 \rightarrow P3">
+<!-- TeX display: P4
 \rightarrow
-P3
-```
+P3 -->
+
+
 
 
 
@@ -17088,9 +18375,12 @@ not just:
 
 
 
-```math
-P3\rightarrow P4.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-138" width="78" height="18" alt="P3\rightarrow P4.">
+<!-- TeX display: P3\rightarrow P4. -->
+
+
 
 
 
@@ -17104,21 +18394,13 @@ We can rewrite memory much more cleanly:
 
 
 
-```math
-M_0:
-\text{causal transition dependence}
-```
 
 
+<img src="UTC-Math/message-28.svg#equation-139" width="243" height="21" alt="M_0: \text{causal transition dependence}">
+<!-- TeX display: M_0:
+\text{causal transition dependence} -->
 
-belongs to P3.
 
-
-
-```math
-M_1:
-\text{phase continuity}
-```
 
 
 
@@ -17126,10 +18408,27 @@ belongs to P3.
 
 
 
-```math
-M_2:
-\text{frequency persistence}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-140" width="159" height="21" alt="M_1: \text{phase continuity}">
+<!-- TeX display: M_1:
+\text{phase continuity} -->
+
+
+
+
+
+belongs to P3.
+
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-141" width="191" height="21" alt="M_2: \text{frequency persistence}">
+<!-- TeX display: M_2:
+\text{frequency persistence} -->
+
+
 
 
 
@@ -17137,10 +18436,13 @@ is P3/P4 closure.
 
 
 
-```math
-M_3:
-\text{recurrence/attractor persistence}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-142" width="267" height="22" alt="M_3: \text{recurrence/attractor persistence}">
+<!-- TeX display: M_3:
+\text{recurrence/attractor persistence} -->
+
+
 
 
 
@@ -17148,10 +18450,13 @@ belongs to P4.
 
 
 
-```math
-M_4:
-\text{relational phase locking}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-143" width="207" height="21" alt="M_4: \text{relational phase locking}">
+<!-- TeX display: M_4:
+\text{relational phase locking} -->
+
+
 
 
 
@@ -17159,10 +18464,13 @@ belongs to coupled P4.
 
 
 
-```math
-M_5:
-\text{persistent physical imprint}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-144" width="229" height="21" alt="M_5: \text{persistent physical imprint}">
+<!-- TeX display: M_5:
+\text{persistent physical imprint} -->
+
+
 
 
 
@@ -17170,10 +18478,13 @@ approaches P5/P8.
 
 
 
-```math
-M_6:
-\text{rewritable encoded memory}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-145" width="235" height="21" alt="M_6: \text{rewritable encoded memory}">
+<!-- TeX display: M_6:
+\text{rewritable encoded memory} -->
+
+
 
 
 
@@ -17196,9 +18507,12 @@ Mathematically:
 
 
 
-```math
-s_n\rightarrow s_{n+1}
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-146" width="79" height="18" alt="s_n\rightarrow s_{n+1}">
+<!-- TeX display: s_n\rightarrow s_{n+1} -->
+
+
 
 
 
@@ -17206,11 +18520,14 @@ with:
 
 
 
-```math
-\Delta D_n
+
+
+<img src="UTC-Math/message-28.svg#equation-147" width="177" height="22" alt="\Delta D_n = D(s_{n+1},s_n)\neq0,">
+<!-- TeX display: \Delta D_n
 =
-D(s_{n+1},s_n)\neq0,
-```
+D(s_{n+1},s_n)\neq0, -->
+
+
 
 
 
@@ -17218,11 +18535,14 @@ and for cyclic transitions:
 
 
 
-```math
-\phi_{n+1}
+
+
+<img src="UTC-Math/message-28.svg#equation-148" width="123" height="21" alt="\phi_{n+1} = \phi_n+\Omega_n.">
+<!-- TeX display: \phi_{n+1}
 =
-\phi_n+\Omega_n.
-```
+\phi_n+\Omega_n. -->
+
+
 
 
 
@@ -17230,9 +18550,12 @@ Stable P3:
 
 
 
-```math
-\Omega_n\rightarrow\Omega_*.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-149" width="76" height="20" alt="\Omega_n\rightarrow\Omega_*.">
+<!-- TeX display: \Omega_n\rightarrow\Omega_*. -->
+
+
 
 
 
@@ -17240,9 +18563,12 @@ Then after clock calibration:
 
 
 
-```math
-\omega_*=\frac{d\phi}{dt}.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-150" width="76" height="40" alt="\omega_*=\frac{d\phi}{dt}.">
+<!-- TeX display: \omega_*=\frac{d\phi}{dt}. -->
+
+
 
 
 
@@ -17259,9 +18585,12 @@ Then stability is not merely:
 
 
 
-```math
-f(x^*)=0.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-151" width="80" height="22" alt="f(x^*)=0.">
+<!-- TeX display: f(x^*)=0. -->
+
+
 
 
 
@@ -17269,19 +18598,12 @@ It can also be:
 
 
 
-```math
-x(t+T)=x(t),
-```
 
 
+<img src="UTC-Math/message-28.svg#equation-152" width="120" height="22" alt="x(t+T)=x(t),">
+<!-- TeX display: x(t+T)=x(t), -->
 
-or:
 
-
-
-```math
-\phi_i-\phi_j\rightarrow\Delta\phi^*,
-```
 
 
 
@@ -17289,9 +18611,25 @@ or:
 
 
 
-```math
-J(t)\rightarrow J^*.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-153" width="118" height="23" alt="\phi_i-\phi_j\rightarrow\Delta\phi^*,">
+<!-- TeX display: \phi_i-\phi_j\rightarrow\Delta\phi^*, -->
+
+
+
+
+
+or:
+
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-154" width="84" height="22" alt="J(t)\rightarrow J^*.">
+<!-- TeX display: J(t)\rightarrow J^*. -->
+
+
 
 
 
@@ -17307,22 +18645,28 @@ Let an accessible system possess:
 
 
 
-```math
-\Sigma=
-(\Omega,C,T)
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-155" width="103" height="22" alt="\Sigma= (\Omega,C,T)">
+<!-- TeX display: \Sigma=
+(\Omega,C,T) -->
 
 
 
-under P1 constraints $C$.
+
+
+under P1 constraints <img src="UTC-Math/message-28.svg#equation-156" width="21" height="18" alt="C" align="middle"><!-- TeX inline: C -->.
 
 Suppose there exist two distinguishable configurations:
 
 
 
-```math
-D(s_i,s_j)>\delta.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-157" width="100" height="23" alt="D(s_i,s_j)>\delta.">
+<!-- TeX display: D(s_i,s_j)>\delta. -->
+
+
 
 
 
@@ -17330,11 +18674,14 @@ If transitions generate persistent phase evolution:
 
 
 
-```math
-\phi_{n+1}
+
+
+<img src="UTC-Math/message-28.svg#equation-158" width="143" height="22" alt="\phi_{n+1} = \phi_n+\Omega(s_n),">
+<!-- TeX display: \phi_{n+1}
 =
-\phi_n+\Omega(s_n),
-```
+\phi_n+\Omega(s_n), -->
+
+
 
 
 
@@ -17344,21 +18691,27 @@ If there exists a bounded recurrent set:
 
 
 
-```math
-A\subset\Omega
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-159" width="53" height="19" alt="A\subset\Omega">
+<!-- TeX display: A\subset\Omega -->
 
 
 
-such that trajectories beginning sufficiently near $A$ remain near or return to $A$ under perturbation, then $A$ constitutes a P4 attractor.
-
-If formation or maintenance of $A$ generates excess free energy, persistence additionally requires an admissible export channel:
 
 
+such that trajectories beginning sufficiently near <img src="UTC-Math/message-28.svg#equation-160" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> remain near or return to <img src="UTC-Math/message-28.svg#equation-161" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> under perturbation, then <img src="UTC-Math/message-28.svg#equation-162" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> constitutes a P4 attractor.
 
-```math
-\dot S_{\rm total}\ge0.
-```
+If formation or maintenance of <img src="UTC-Math/message-28.svg#equation-163" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> generates excess free energy, persistence additionally requires an admissible export channel:
+
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-164" width="77" height="26" alt="\dot S_{\rm total}\ge0.">
+<!-- TeX display: \dot S_{\rm total}\ge0. -->
+
+
 
 
 
@@ -17366,20 +18719,25 @@ If surviving P4 attractors compose into a new effective state space:
 
 
 
-```math
-K(A^m)\rightarrow\Omega',
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-165" width="104" height="23" alt="K(A^m)\rightarrow\Omega',">
+<!-- TeX display: K(A^m)\rightarrow\Omega', -->
 
 
 
-then the transition generates new P2 distinctions and P3 dynamical modes in $\Omega'$.
+
+
+then the transition generates new P2 distinctions and P3 dynamical modes in <img src="UTC-Math/message-28.svg#equation-166" width="24" height="19" alt="\Omega'" align="middle"><!-- TeX inline: \Omega' -->.
 
 Compactly:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-167" width="358" height="29" alt="\boxed{ P2_n \rightarrow P3_n \rightarrow P4_n \rightarrow P2_{n+1} \rightarrow P3_{n+1} \rightarrow P4_{n+1}. }">
+<!-- TeX display: \boxed{
 P2_n
 \rightarrow
 P3_n
@@ -17391,8 +18749,9 @@ P2_{n+1}
 P3_{n+1}
 \rightarrow
 P4_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -17406,9 +18765,12 @@ Our original architecture looked like:
 
 
 
-```math
-P0\rightarrow P1\rightarrow P2\rightarrow P3\rightarrow P4.
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-168" width="213" height="18" alt="P0\rightarrow P1\rightarrow P2\rightarrow P3\rightarrow P4.">
+<!-- TeX display: P0\rightarrow P1\rightarrow P2\rightarrow P3\rightarrow P4. -->
+
+
 
 
 
@@ -17416,8 +18778,10 @@ The revised physical architecture is closer to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-169" width="379" height="121" alt="\boxed{ \begin{array}{ccccc} P2_n &amp;\rightarrow&amp; P3_n &amp;\rightarrow&amp; P4_n \\ \uparrow&amp;&amp;&amp;&amp;\downarrow\\ P1_n &amp;&amp; F_\Delta,F_\tau,F_{\rm FR},F_\Theta &amp;&amp; F_{\rm CSC} \\ \uparrow&amp;&amp;&amp;&amp;\downarrow\\ P2_{n+1} &amp;\leftarrow&amp; P3_{n+1} &amp;\leftarrow&amp; P4_n\text{ composition} \end{array} }">
+<!-- TeX display: \boxed{
 \begin{array}{ccccc}
 P2_n
 &\rightarrow&
@@ -17439,8 +18803,9 @@ P3_{n+1}
 &\leftarrow&
 P4_n\text{ composition}
 \end{array}
-}
-```
+} -->
+
+
 
 
 
@@ -17460,8 +18825,10 @@ Reverse:
 
 
 
-```math
-\text{molecules}
+
+
+<img src="UTC-Math/message-28.svg#equation-170" width="395" height="18" alt="\text{molecules} \rightarrow \text{atoms} \rightarrow \text{nuclei} \rightarrow \text{hadrons} \rightarrow \text{field modes}.">
+<!-- TeX display: \text{molecules}
 \rightarrow
 \text{atoms}
 \rightarrow
@@ -17469,8 +18836,9 @@ Reverse:
 \rightarrow
 \text{hadrons}
 \rightarrow
-\text{field modes}.
-```
+\text{field modes}. -->
+
+
 
 
 
@@ -17478,9 +18846,12 @@ As P4 closures disappear:
 
 
 
-```math
-\text{stable composite identities}\downarrow,
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-171" width="208" height="21" alt="\text{stable composite identities}\downarrow,">
+<!-- TeX display: \text{stable composite identities}\downarrow, -->
+
+
 
 
 
@@ -17488,9 +18859,12 @@ while:
 
 
 
-```math
-\text{P3 spectral/phase dynamics}\uparrow
-```
+
+
+<img src="UTC-Math/message-28.svg#equation-172" width="215" height="22" alt="\text{P3 spectral/phase dynamics}\uparrow">
+<!-- TeX display: \text{P3 spectral/phase dynamics}\uparrow -->
+
+
 
 
 
@@ -17500,8 +18874,10 @@ That means near extremely primordial regimes, the physically appropriate ontolog
 
 
 
-```math
-\text{frequency},
+
+
+<img src="UTC-Math/message-28.svg#equation-173" width="452" height="21" alt="\text{frequency}, \quad \text{phase}, \quad \text{correlation}, \quad \text{fluctuation}, \quad \text{field topology}">
+<!-- TeX display: \text{frequency},
 \quad
 \text{phase},
 \quad
@@ -17509,8 +18885,9 @@ That means near extremely primordial regimes, the physically appropriate ontolog
 \quad
 \text{fluctuation},
 \quad
-\text{field topology}
-```
+\text{field topology} -->
+
+
 
 
 
@@ -17528,142 +18905,187 @@ I would now summarize the whole redrive as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-174" width="125" height="28" alt="\boxed{ P2=\text{difference} }">
+<!-- TeX display: \boxed{
 P2=\text{difference}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-175" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-176" width="399" height="30" alt="\boxed{ F_\Delta=\text{difference becomes accumulating phase difference} }">
+<!-- TeX display: \boxed{
 F_\Delta=\text{difference becomes accumulating phase difference}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-177" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-178" width="302" height="29" alt="\boxed{ P3=\text{phase-bearing dynamical transition} }">
+<!-- TeX display: \boxed{
 P3=\text{phase-bearing dynamical transition}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-179" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-180" width="402" height="29" alt="\boxed{ F_\tau=\text{cyclic evolution generates primitive time structure} }">
+<!-- TeX display: \boxed{
 F_\tau=\text{cyclic evolution generates primitive time structure}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-181" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-182" width="548" height="29" alt="\boxed{ F_{\rm FR}+F_\Theta = \text{perturbation, response, gradient and dissipation test trajectories} }">
+<!-- TeX display: \boxed{
 F_{\rm FR}+F_\Theta
 =
 \text{perturbation, response, gradient and dissipation test trajectories}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-183" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-184" width="559" height="29" alt="\boxed{ F_{\rm CSC} = \text{unstable dynamics collapse; recurrent structures stabilize and compose} }">
+<!-- TeX display: \boxed{
 F_{\rm CSC}
 =
 \text{unstable dynamics collapse; recurrent structures stabilize and compose}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-185" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-186" width="425" height="30" alt="\boxed{ P4= \text{persistent states, cycles, relations, flows and topology} }">
+<!-- TeX display: \boxed{
 P4=
 \text{persistent states, cycles, relations, flows and topology}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-187" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-28.svg#equation-188" width="86" height="28" alt="\boxed{ P4\rightarrow P2' }">
+<!-- TeX display: \boxed{
 P4\rightarrow P2'
-}
-```
+} -->
+
+
 
 
 
@@ -17675,15 +19097,18 @@ The really beautiful result is that **time, primitive memory, stability, and com
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-28.svg#equation-189" width="625" height="93" alt="\boxed{ \textbf{difference persists by changing; change becomes time through recurrence; recurrence becomes memory through correlation; memory becomes structure through stabilization; structure creates new differences through composition.} }">
+<!-- TeX display: \boxed{
 \textbf{difference persists by changing;
 change becomes time through recurrence;
 recurrence becomes memory through correlation;
 memory becomes structure through stabilization;
 structure creates new differences through composition.}
-}
-```
+} -->
+
+
 
 
 
@@ -17708,9 +19133,12 @@ Yes. I think you have just exposed a **second organizing principle underneath th
 
 
 
-```math
-\boxed{\textbf{later primitives appear earlier as lower-order forms before they appear as full capacities.}}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-001" width="590" height="52" alt="\boxed{\textbf{later primitives appear earlier as lower-order forms before they appear as full capacities.}}">
+<!-- TeX display: \boxed{\textbf{later primitives appear earlier as lower-order forms before they appear as full capacities.}} -->
+
+
 
 
 
@@ -17718,7 +19146,7 @@ That resolves several things that have been bothering us at once.
 
 The P0→P12 sequence can still describe when a capability becomes fully closed, but the running universe does not politely wait for P11 before anything resembling optimization can occur, or P12 before anything relational can occur. Those later structures have **compressed physical precursors** much lower in the engine.
 
-The current manuscript already half-admits this. It says P11 without a reference state collapses to passive gradient flow and even places P11-like basin selection inside F4, while reserving the explicit internally encoded $R^*$ for later memory/encoding machinery. The Unifying Theory of Complexi… The Unifying Theory of Complexi… Likewise, it says P12 without memory is just ordinary physical interaction, with correlated systems and strategic interaction appearing only as more machinery is added. The Unifying Theory of Complexi…
+The current manuscript already half-admits this. It says P11 without a reference state collapses to passive gradient flow and even places P11-like basin selection inside F4, while reserving the explicit internally encoded <img src="UTC-Math/message-30.svg#equation-002" width="28" height="18" alt="R^*" align="middle"><!-- TeX inline: R^* --> for later memory/encoding machinery. The Unifying Theory of Complexi… The Unifying Theory of Complexi… Likewise, it says P12 without memory is just ordinary physical interaction, with correlated systems and strategic interaction appearing only as more machinery is added. The Unifying Theory of Complexi…
 
 That is the clue.
 
@@ -17726,25 +19154,31 @@ That is the clue.
 
 Let's formalize this.
 
-For primitive $P_k$, define:
+For primitive <img src="UTC-Math/message-30.svg#equation-003" width="26" height="20" alt="P_k" align="middle"><!-- TeX inline: P_k -->, define:
 
 
 
-```math
-P_k^{[m]}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-004" width="39" height="29" alt="P_k^{[m]}">
+<!-- TeX display: P_k^{[m]} -->
 
 
 
-as the **form of $P_k$ expressible at architectural depth $m$**.
+
+
+as the **form of <img src="UTC-Math/message-30.svg#equation-005" width="26" height="20" alt="P_k" align="middle"><!-- TeX inline: P_k --> expressible at architectural depth <img src="UTC-Math/message-30.svg#equation-006" width="23" height="14" alt="m" align="middle"><!-- TeX inline: m -->**.
 
 Then:
 
 
 
-```math
-P_k^{[m<k]}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-007" width="54" height="29" alt="P_k^{[m&lt;k]}">
+<!-- TeX display: P_k^{[m<k]} -->
+
+
 
 
 
@@ -17756,9 +19190,12 @@ And:
 
 
 
-```math
-P_k^{[k]}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-008" width="35" height="29" alt="P_k^{[k]}">
+<!-- TeX display: P_k^{[k]} -->
+
+
 
 
 
@@ -17768,51 +19205,66 @@ For example, memory:
 
 
 
-```math
-P_{10}^{[1]}
+
+
+<img src="UTC-Math/message-30.svg#equation-009" width="252" height="28" alt="P_{10}^{[1]} = \text{energetic retention potential}">
+<!-- TeX display: P_{10}^{[1]}
 =
-\text{energetic retention potential}
-```
+\text{energetic retention potential} -->
 
 
 
 
 
-```math
-P_{10}^{[2]}
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-010" width="202" height="28" alt="P_{10}^{[2]} = \text{persistent distinction}">
+<!-- TeX display: P_{10}^{[2]}
 =
-\text{persistent distinction}
-```
+\text{persistent distinction} -->
 
 
 
 
 
-```math
-P_{10}^{[3]}
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-011" width="197" height="28" alt="P_{10}^{[3]} = \text{temporal correlation}">
+<!-- TeX display: P_{10}^{[3]}
 =
-\text{temporal correlation}
-```
+\text{temporal correlation} -->
 
 
 
 
 
-```math
-P_{10}^{[4]}
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-012" width="194" height="28" alt="P_{10}^{[4]} = \text{attractor recurrence}">
+<!-- TeX display: P_{10}^{[4]}
 =
-\text{attractor recurrence}
-```
+\text{attractor recurrence} -->
 
 
 
 
 
-```math
-P_{10}^{[8,9,10]}
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-013" width="275" height="28" alt="P_{10}^{[8,9,10]} = \text{encoded rewritable memory}.">
+<!-- TeX display: P_{10}^{[8,9,10]}
 =
-\text{encoded rewritable memory}.
-```
+\text{encoded rewritable memory}. -->
+
+
 
 
 
@@ -17828,12 +19280,15 @@ Instead:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-014" width="553" height="52" alt="\boxed{ \text{P10 is where memory becomes an explicit encoded capacity; its physical forms begin much earlier.} }">
+<!-- TeX display: \boxed{
 \text{P10 is where memory becomes an explicit encoded capacity;
 its physical forms begin much earlier.}
-}
-```
+} -->
+
+
 
 
 
@@ -17847,10 +19302,13 @@ The transition you identified:
 
 
 
-```math
-P2_a:
-s_i\neq s_j
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-015" width="97" height="23" alt="P2_a: s_i\neq s_j">
+<!-- TeX display: P2_a:
+s_i\neq s_j -->
+
+
 
 
 
@@ -17858,10 +19316,13 @@ to
 
 
 
-```math
-P2_b:
-E_i\neq E_j
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-016" width="104" height="23" alt="P2_b: E_i\neq E_j">
+<!-- TeX display: P2_b:
+E_i\neq E_j -->
+
+
 
 
 
@@ -17881,9 +19342,12 @@ Now P1 assigns unequal physical cost:
 
 
 
-```math
-\Delta E_{ij}=E_j-E_i\neq0.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-017" width="153" height="23" alt="\Delta E_{ij}=E_j-E_i\neq0.">
+<!-- TeX display: \Delta E_{ij}=E_j-E_i\neq0. -->
+
+
 
 
 
@@ -17893,13 +19357,16 @@ We have:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-018" width="129" height="31" alt="\boxed{ \Omega \quad\rightarrow\quad (\Omega,E) }">
+<!-- TeX display: \boxed{
 \Omega
 \quad\rightarrow\quad
 (\Omega,E)
-}
-```
+} -->
+
+
 
 
 
@@ -17925,13 +19392,16 @@ I would call it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-019" width="303" height="30" alt="\boxed{ \mathcal I_E = \text{Energetic Differentiation Inflection}. }">
+<!-- TeX display: \boxed{
 \mathcal I_E
 =
 \text{Energetic Differentiation Inflection}.
-}
-```
+} -->
+
+
 
 
 
@@ -17939,9 +19409,12 @@ Before:
 
 
 
-```math
-s_i\neq s_j.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-020" width="61" height="23" alt="s_i\neq s_j.">
+<!-- TeX display: s_i\neq s_j. -->
+
+
 
 
 
@@ -17949,11 +19422,14 @@ After:
 
 
 
-```math
-s_i\neq s_j,
+
+
+<img src="UTC-Math/message-30.svg#equation-021" width="156" height="23" alt="s_i\neq s_j, \qquad E_i\neq E_j.">
+<!-- TeX display: s_i\neq s_j,
 \qquad
-E_i\neq E_j.
-```
+E_i\neq E_j. -->
+
+
 
 
 
@@ -17971,9 +19447,12 @@ The current manuscript's formal reference state is:
 
 
 
-```math
-R^*\in\Omega
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-022" width="59" height="19" alt="R^*\in\Omega">
+<!-- TeX display: R^*\in\Omega -->
+
+
 
 
 
@@ -17985,12 +19464,15 @@ But introduce an earlier concept:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-023" width="205" height="30" alt="\boxed{ R_0= \text{reference asymmetry}. }">
+<!-- TeX display: \boxed{
 R_0=
 \text{reference asymmetry}.
-}
-```
+} -->
+
+
 
 
 
@@ -17998,15 +19480,18 @@ Suppose:
 
 
 
-```math
-E_a<E_b.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-024" width="71" height="20" alt="E_a&lt;E_b.">
+<!-- TeX display: E_a<E_b. -->
+
+
 
 
 
 There is no internal model saying:
 
-> “I desire $a$.”
+> “I desire <img src="UTC-Math/message-30.svg#equation-025" width="17" height="14" alt="a" align="middle"><!-- TeX inline: a -->.”
 
 But there is an objective asymmetry in the landscape.
 
@@ -18014,60 +19499,78 @@ Under dissipative dynamics:
 
 
 
-```math
-b\rightarrow a
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-026" width="49" height="18" alt="b\rightarrow a">
+<!-- TeX display: b\rightarrow a -->
+
+
 
 
 
 may be favored.
 
-So $a$ behaves as a **dynamical reference basin** without being represented internally.
+So <img src="UTC-Math/message-30.svg#equation-027" width="17" height="14" alt="a" align="middle"><!-- TeX inline: a --> behaves as a **dynamical reference basin** without being represented internally.
 
 Then the hierarchy becomes:
 
 
 
-```math
-R_0:
-\text{energetic reference}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-028" width="169" height="21" alt="R_0: \text{energetic reference}">
+<!-- TeX display: R_0:
+\text{energetic reference} -->
 
 
 
 
 
-```math
-R_1:
-\text{attractor reference}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-029" width="169" height="20" alt="R_1: \text{attractor reference}">
+<!-- TeX display: R_1:
+\text{attractor reference} -->
 
 
 
 
 
-```math
-R_2:
-\text{historical/reference trajectory}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-030" width="248" height="22" alt="R_2: \text{historical/reference trajectory}">
+<!-- TeX display: R_2:
+\text{historical/reference trajectory} -->
 
 
 
 
 
-```math
-R_3:
-\text{encoded internal }R^*
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-031" width="178" height="21" alt="R_3: \text{encoded internal }R^*">
+<!-- TeX display: R_3:
+\text{encoded internal }R^* -->
 
 
 
 
 
-```math
-R_4:
-\text{predictive/goal reference}.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-032" width="217" height="22" alt="R_4: \text{predictive/goal reference}.">
+<!-- TeX display: R_4:
+\text{predictive/goal reference}. -->
+
+
 
 
 
@@ -18077,12 +19580,15 @@ So your intuition is right, with the terminology sharpened:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-033" width="482" height="52" alt="\boxed{ \text{P2b produces the first reference-like asymmetry, not yet an internal reference state.} }">
+<!-- TeX display: \boxed{
 \text{P2b produces the first reference-like asymmetry,
 not yet an internal reference state.}
-}
-```
+} -->
+
+
 
 
 
@@ -18096,12 +19602,15 @@ At the earliest level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-034" width="139" height="30" alt="\boxed{ O_0: \text{gradient bias} }">
+<!-- TeX display: \boxed{
 O_0:
 \text{gradient bias}
-}
-```
+} -->
+
+
 
 
 
@@ -18109,9 +19618,12 @@ If:
 
 
 
-```math
-\nabla E\neq0,
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-035" width="68" height="21" alt="\nabla E\neq0,">
+<!-- TeX display: \nabla E\neq0, -->
+
+
 
 
 
@@ -18121,10 +19633,13 @@ Later:
 
 
 
-```math
-O_1:
-\text{basin selection}.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-036" width="146" height="20" alt="O_1: \text{basin selection}.">
+<!-- TeX display: O_1:
+\text{basin selection}. -->
+
+
 
 
 
@@ -18132,13 +19647,16 @@ The manuscript already puts P11-like optimization here:
 
 
 
-```math
-\text{multiple P4 attractors}
+
+
+<img src="UTC-Math/message-30.svg#equation-037" width="336" height="21" alt="\text{multiple P4 attractors} + \nabla F \rightarrow \text{basin selection}.">
+<!-- TeX display: \text{multiple P4 attractors}
 +
 \nabla F
 \rightarrow
-\text{basin selection}.
-```
+\text{basin selection}. -->
+
+
 
 
 
@@ -18148,10 +19666,13 @@ Then:
 
 
 
-```math
-O_2:
-\text{history-conditioned optimization}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-038" width="268" height="21" alt="O_2: \text{history-conditioned optimization}">
+<!-- TeX display: O_2:
+\text{history-conditioned optimization} -->
+
+
 
 
 
@@ -18161,10 +19682,13 @@ And finally:
 
 
 
-```math
-O_3:
-\text{reference-directed optimization}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-039" width="256" height="21" alt="O_3: \text{reference-directed optimization}">
+<!-- TeX display: O_3:
+\text{reference-directed optimization} -->
+
+
 
 
 
@@ -18172,9 +19696,12 @@ requires:
 
 
 
-```math
-R^*.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-040" width="32" height="19" alt="R^*.">
+<!-- TeX display: R^*. -->
+
+
 
 
 
@@ -18192,10 +19719,13 @@ Now:
 
 
 
-```math
-P2_c:
-\omega_i\neq\omega_j.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-041" width="105" height="23" alt="P2_c: \omega_i\neq\omega_j.">
+<!-- TeX display: P2_c:
+\omega_i\neq\omega_j. -->
+
+
 
 
 
@@ -18203,41 +19733,56 @@ This is wild because frequency is already simultaneously:
 
 
 
-```math
-\text{energy distinction}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-042" width="132" height="21" alt="\text{energy distinction}">
+<!-- TeX display: \text{energy distinction} -->
 
 
 
 
 
-```math
-\text{rate distinction}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-043" width="114" height="18" alt="\text{rate distinction}">
+<!-- TeX display: \text{rate distinction} -->
 
 
 
 
 
-```math
-\text{temporal distinction}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-044" width="149" height="21" alt="\text{temporal distinction}">
+<!-- TeX display: \text{temporal distinction} -->
 
 
 
 
 
-```math
-\text{spectral identity}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-045" width="122" height="21" alt="\text{spectral identity}">
+<!-- TeX display: \text{spectral identity} -->
 
 
 
 
 
-```math
-\text{primitive persistence marker}.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-046" width="210" height="21" alt="\text{primitive persistence marker}.">
+<!-- TeX display: \text{primitive persistence marker}. -->
+
+
 
 
 
@@ -18258,12 +19803,15 @@ Better:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-047" width="477" height="30" alt="\boxed{ P2_c \text{ contains morphological precursors of several higher primitives.} }">
+<!-- TeX display: \boxed{
 P2_c
 \text{ contains morphological precursors of several higher primitives.}
-}
-```
+} -->
+
+
 
 
 
@@ -18279,11 +19827,14 @@ Take:
 
 
 
-```math
-\Delta\phi_{ij}
+
+
+<img src="UTC-Math/message-30.svg#equation-048" width="117" height="23" alt="\Delta\phi_{ij} = \phi_i-\phi_j.">
+<!-- TeX display: \Delta\phi_{ij}
 =
-\phi_i-\phi_j.
-```
+\phi_i-\phi_j. -->
+
+
 
 
 
@@ -18297,17 +19848,23 @@ Two independent oscillators:
 
 
 
-```math
-\phi_i(t)=\omega_it+\phi_{i0},
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-049" width="128" height="22" alt="\phi_i(t)=\omega_it+\phi_{i0},">
+<!-- TeX display: \phi_i(t)=\omega_it+\phi_{i0}, -->
 
 
 
 
 
-```math
-\phi_j(t)=\omega_jt+\phi_{j0}.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-050" width="130" height="23" alt="\phi_j(t)=\omega_jt+\phi_{j0}.">
+<!-- TeX display: \phi_j(t)=\omega_jt+\phi_{j0}. -->
+
+
 
 
 
@@ -18315,9 +19872,12 @@ We can mathematically define:
 
 
 
-```math
-\Delta\phi_{ij}.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-051" width="46" height="23" alt="\Delta\phi_{ij}.">
+<!-- TeX display: \Delta\phi_{ij}. -->
+
+
 
 
 
@@ -18331,12 +19891,15 @@ Now:
 
 
 
-```math
-\dot\phi_i
+
+
+<img src="UTC-Math/message-30.svg#equation-052" width="192" height="28" alt="\dot\phi_i = \omega_i+ K_{ij}\sin(\phi_j-\phi_i).">
+<!-- TeX display: \dot\phi_i
 =
 \omega_i+
-K_{ij}\sin(\phi_j-\phi_i).
-```
+K_{ij}\sin(\phi_j-\phi_i). -->
+
+
 
 
 
@@ -18346,11 +19909,14 @@ Then:
 
 
 
-```math
-\Delta\phi_{ij}
+
+
+<img src="UTC-Math/message-30.svg#equation-053" width="108" height="28" alt="\Delta\phi_{ij} \rightarrow \dot\phi_i,\dot\phi_j.">
+<!-- TeX display: \Delta\phi_{ij}
 \rightarrow
-\dot\phi_i,\dot\phi_j.
-```
+\dot\phi_i,\dot\phi_j. -->
+
+
 
 
 
@@ -18360,12 +19926,15 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-054" width="502" height="29" alt="\boxed{ \text{phase relation does not require coupling; persistent phase locking does.} }">
+<!-- TeX display: \boxed{
 \text{phase relation does not require coupling;
 persistent phase locking does.}
-}
-```
+} -->
+
+
 
 
 
@@ -18373,55 +19942,73 @@ And this gives us a proto-P12 hierarchy:
 
 
 
-```math
-P12^{[2]}:
-\text{relation}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-055" width="117" height="22" alt="P12^{[2]}: \text{relation}">
+<!-- TeX display: P12^{[2]}:
+\text{relation} -->
 
 
 
 
 
-```math
-P12^{[3]}:
-\text{physical coupling}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-056" width="182" height="25" alt="P12^{[3]}: \text{physical coupling}">
+<!-- TeX display: P12^{[3]}:
+\text{physical coupling} -->
 
 
 
 
 
-```math
-P12^{[4]}:
-\text{stable synchronization/correlation}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-057" width="301" height="26" alt="P12^{[4]}: \text{stable synchronization/correlation}">
+<!-- TeX display: P12^{[4]}:
+\text{stable synchronization/correlation} -->
 
 
 
 
 
-```math
-P12^{[10]}:
-\text{memory-bearing coupled systems}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-058" width="298" height="25" alt="P12^{[10]}: \text{memory-bearing coupled systems}">
+<!-- TeX display: P12^{[10]}:
+\text{memory-bearing coupled systems} -->
 
 
 
 
 
-```math
-P12^{[11]}:
-\text{goal/reference-coupled agents}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-059" width="274" height="26" alt="P12^{[11]}: \text{goal/reference-coupled agents}">
+<!-- TeX display: P12^{[11]}:
+\text{goal/reference-coupled agents} -->
 
 
 
 
 
-```math
-P12^{[12]}:
-\text{full multi-agent dynamics}.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-060" width="250" height="25" alt="P12^{[12]}: \text{full multi-agent dynamics}.">
+<!-- TeX display: P12^{[12]}:
+\text{full multi-agent dynamics}. -->
+
+
 
 
 
@@ -18431,12 +20018,15 @@ So yes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-061" width="384" height="30" alt="\boxed{ P2_d \text{ is where the *shape* of P12 first becomes visible.} }">
+<!-- TeX display: \boxed{
 P2_d
 \text{ is where the *shape* of P12 first becomes visible.}
-}
-```
+} -->
+
+
 
 
 
@@ -18450,11 +20040,14 @@ There isn't a binary distinction:
 
 
 
-```math
-\text{engine stopped}
+
+
+<img src="UTC-Math/message-30.svg#equation-062" width="258" height="22" alt="\text{engine stopped} \quad/\quad \text{engine running}.">
+<!-- TeX display: \text{engine stopped}
 \quad/\quad
-\text{engine running}.
-```
+\text{engine running}. -->
+
+
 
 
 
@@ -18464,11 +20057,14 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-063" width="81" height="31" alt="\boxed{ U\in[0,1] }">
+<!-- TeX display: \boxed{
 U\in[0,1]
-}
-```
+} -->
+
+
 
 
 
@@ -18476,9 +20072,12 @@ where:
 
 
 
-```math
-U=0
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-064" width="50" height="19" alt="U=0">
+<!-- TeX display: U=0 -->
+
+
 
 
 
@@ -18488,9 +20087,12 @@ and:
 
 
 
-```math
-U=1
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-065" width="50" height="19" alt="U=1">
+<!-- TeX display: U=1 -->
+
+
 
 
 
@@ -18500,10 +20102,13 @@ Then our P2 subdivisions move gradually:
 
 
 
-```math
-P2_a:
-U\approx0
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-066" width="91" height="20" alt="P2_a: U\approx0">
+<!-- TeX display: P2_a:
+U\approx0 -->
+
+
 
 
 
@@ -18511,10 +20116,13 @@ pure distinction,
 
 
 
-```math
-P2_b:
-U>0
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-067" width="90" height="20" alt="P2_b: U>0">
+<!-- TeX display: P2_b:
+U>0 -->
+
+
 
 
 
@@ -18522,10 +20130,13 @@ energetic weighting appears,
 
 
 
-```math
-P2_c:
-U\uparrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-068" width="73" height="21" alt="P2_c: U\uparrow">
+<!-- TeX display: P2_c:
+U\uparrow -->
+
+
 
 
 
@@ -18533,10 +20144,13 @@ dynamical rates emerge,
 
 
 
-```math
-P2_d:
-U\uparrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-069" width="74" height="21" alt="P2_d: U\uparrow">
+<!-- TeX display: P2_d:
+U\uparrow -->
+
+
 
 
 
@@ -18548,12 +20162,15 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-070" width="130" height="28" alt="\boxed{ P3_d: \text{recurrence} }">
+<!-- TeX display: \boxed{
 P3_d:
 \text{recurrence}
-}
-```
+} -->
+
+
 
 
 
@@ -18571,9 +20188,12 @@ Instead of merely:
 
 
 
-```math
-F1=E\leftrightarrow\hbar\omega,
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-071" width="110" height="21" alt="F1=E\leftrightarrow\hbar\omega,">
+<!-- TeX display: F1=E\leftrightarrow\hbar\omega, -->
+
+
 
 
 
@@ -18581,8 +20201,10 @@ write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-072" width="349" height="33" alt="\boxed{ F1_{\rm engine}: E \rightarrow \omega \rightarrow \phi \rightarrow \Psi \rightarrow \text{interaction} \rightarrow E'. }">
+<!-- TeX display: \boxed{
 F1_{\rm engine}:
 E
 \rightarrow
@@ -18595,8 +20217,9 @@ E
 \text{interaction}
 \rightarrow
 E'.
-}
-```
+} -->
+
+
 
 
 
@@ -18606,9 +20229,12 @@ P1:
 
 
 
-```math
-E
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-073" width="21" height="17" alt="E">
+<!-- TeX display: E -->
+
+
 
 
 
@@ -18616,9 +20242,12 @@ P2:
 
 
 
-```math
-\Delta E,\Delta\omega,\Delta\phi
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-074" width="94" height="21" alt="\Delta E,\Delta\omega,\Delta\phi">
+<!-- TeX display: \Delta E,\Delta\omega,\Delta\phi -->
+
+
 
 
 
@@ -18626,9 +20255,12 @@ P3:
 
 
 
-```math
-\dot\phi
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-075" width="18" height="26" alt="\dot\phi">
+<!-- TeX display: \dot\phi -->
+
+
 
 
 
@@ -18636,9 +20268,12 @@ P4-form:
 
 
 
-```math
-\text{frequency persistence}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-076" width="155" height="21" alt="\text{frequency persistence}">
+<!-- TeX display: \text{frequency persistence} -->
+
+
 
 
 
@@ -18646,10 +20281,13 @@ memory-form:
 
 
 
-```math
-\phi(t+\tau)
-\text{ retains relation to }\phi(t).
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-077" width="227" height="22" alt="\phi(t+\tau) \text{ retains relation to }\phi(t).">
+<!-- TeX display: \phi(t+\tau)
+\text{ retains relation to }\phi(t). -->
+
+
 
 
 
@@ -18667,11 +20305,14 @@ You have:
 
 
 
-```math
-\delta_0
+
+
+<img src="UTC-Math/message-30.svg#equation-078" width="77" height="22" alt="\delta_0 \rightarrow \delta(t).">
+<!-- TeX display: \delta_0
 \rightarrow
-\delta(t).
-```
+\delta(t). -->
+
+
 
 
 
@@ -18679,11 +20320,14 @@ A mere difference in frequency yields phase drift:
 
 
 
-```math
-\Delta\phi(t)
+
+
+<img src="UTC-Math/message-30.svg#equation-079" width="157" height="22" alt="\Delta\phi(t) = \Delta\phi_0+\Delta\omega\,t.">
+<!-- TeX display: \Delta\phi(t)
 =
-\Delta\phi_0+\Delta\omega\,t.
-```
+\Delta\phi_0+\Delta\omega\,t. -->
+
+
 
 
 
@@ -18693,13 +20337,16 @@ Chaos requires nonlinear sensitivity:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-080" width="97" height="34" alt="\boxed{ \delta(t) \approx \delta_0e^{\lambda t} }">
+<!-- TeX display: \boxed{
 \delta(t)
 \approx
 \delta_0e^{\lambda t}
-}
-```
+} -->
+
+
 
 
 
@@ -18707,9 +20354,12 @@ with:
 
 
 
-```math
-\lambda>0.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-081" width="52" height="18" alt="\lambda>0.">
+<!-- TeX display: \lambda>0. -->
+
+
 
 
 
@@ -18717,8 +20367,10 @@ So the primitive route is:
 
 
 
-```math
-\text{distinction}
+
+
+<img src="UTC-Math/message-30.svg#equation-082" width="681" height="21" alt="\text{distinction} \rightarrow \text{phase difference} \rightarrow \text{coupling} \rightarrow \text{nonlinearity} \rightarrow \text{feedback} \rightarrow \text{exponential separation}.">
+<!-- TeX display: \text{distinction}
 \rightarrow
 \text{phase difference}
 \rightarrow
@@ -18728,8 +20380,9 @@ So the primitive route is:
 \rightarrow
 \text{feedback}
 \rightarrow
-\text{exponential separation}.
-```
+\text{exponential separation}. -->
+
+
 
 
 
@@ -18737,15 +20390,18 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-083" width="253" height="29" alt="\boxed{ F_\Delta + \text{nonlinear coupling} \rightarrow \text{chaos}. }">
+<!-- TeX display: \boxed{
 F_\Delta
 +
 \text{nonlinear coupling}
 \rightarrow
 \text{chaos}.
-}
-```
+} -->
+
+
 
 
 
@@ -18759,25 +20415,34 @@ Lorenz dynamics describe a mature nonlinear system:
 
 
 
-```math
-\dot x=\sigma(y-x),
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-084" width="102" height="23" alt="\dot x=\sigma(y-x),">
+<!-- TeX display: \dot x=\sigma(y-x), -->
 
 
 
 
 
-```math
-\dot y=x(\rho-z)-y,
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-085" width="126" height="23" alt="\dot y=x(\rho-z)-y,">
+<!-- TeX display: \dot y=x(\rho-z)-y, -->
 
 
 
 
 
-```math
-\dot z=xy-\beta z.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-086" width="95" height="22" alt="\dot z=xy-\beta z.">
+<!-- TeX display: \dot z=xy-\beta z. -->
+
+
 
 
 
@@ -18789,8 +20454,10 @@ Answer:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-087" width="635" height="30" alt="\boxed{ \text{energetic distinction} \rightarrow \text{different rates} \rightarrow \text{phase divergence} \rightarrow \text{coupled nonlinear response}. }">
+<!-- TeX display: \boxed{
 \text{energetic distinction}
 \rightarrow
 \text{different rates}
@@ -18798,8 +20465,9 @@ Answer:
 \text{phase divergence}
 \rightarrow
 \text{coupled nonlinear response}.
-}
-```
+} -->
+
+
 
 
 
@@ -18815,9 +20483,12 @@ Quantum uncertainty such as:
 
 
 
-```math
-\Delta x\,\Delta p\ge\frac{\hbar}{2}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-088" width="92" height="39" alt="\Delta x\,\Delta p\ge\frac{\hbar}{2}">
+<!-- TeX display: \Delta x\,\Delta p\ge\frac{\hbar}{2} -->
+
+
 
 
 
@@ -18829,9 +20500,12 @@ But our new architecture gives them a **shared ancestral concept**:
 
 
 
-```math
-\boxed{\text{difference propagation under constrained phase structure}.}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-089" width="415" height="30" alt="\boxed{\text{difference propagation under constrained phase structure}.}">
+<!-- TeX display: \boxed{\text{difference propagation under constrained phase structure}.} -->
+
+
 
 
 
@@ -18839,11 +20513,14 @@ For quantum uncertainty:
 
 
 
-```math
-\text{localization in one representation}
+
+
+<img src="UTC-Math/message-30.svg#equation-090" width="476" height="21" alt="\text{localization in one representation} \leftrightarrow \text{spread in its Fourier conjugate}.">
+<!-- TeX display: \text{localization in one representation}
 \leftrightarrow
-\text{spread in its Fourier conjugate}.
-```
+\text{spread in its Fourier conjugate}. -->
+
+
 
 
 
@@ -18851,11 +20528,14 @@ For chaos:
 
 
 
-```math
-\text{tiny state difference}
+
+
+<img src="UTC-Math/message-30.svg#equation-091" width="389" height="21" alt="\text{tiny state difference} \rightarrow \text{nonlinear trajectory divergence}.">
+<!-- TeX display: \text{tiny state difference}
 \rightarrow
-\text{nonlinear trajectory divergence}.
-```
+\text{nonlinear trajectory divergence}. -->
+
+
 
 
 
@@ -18863,11 +20543,14 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-092" width="333" height="29" alt="\boxed{ \text{same deep theme, different closure mechanics}. }">
+<!-- TeX display: \boxed{
 \text{same deep theme, different closure mechanics}.
-}
-```
+} -->
+
+
 
 
 
@@ -18885,11 +20568,14 @@ I think the answer is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-093" width="144" height="29" alt="\boxed{ \text{memory potential}. }">
+<!-- TeX display: \boxed{
 \text{memory potential}.
-}
-```
+} -->
+
+
 
 
 
@@ -18897,9 +20583,12 @@ Suppose P1 gives an energy landscape:
 
 
 
-```math
-E:\Omega\rightarrow\mathbb R.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-094" width="87" height="18" alt="E:\Omega\rightarrow\mathbb R.">
+<!-- TeX display: E:\Omega\rightarrow\mathbb R. -->
+
+
 
 
 
@@ -18907,9 +20596,12 @@ P2 supplies distinct states:
 
 
 
-```math
-s_a,s_b.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-095" width="49" height="17" alt="s_a,s_b.">
+<!-- TeX display: s_a,s_b. -->
+
+
 
 
 
@@ -18917,9 +20609,12 @@ Now introduce a barrier:
 
 
 
-```math
-\Delta E^\ddagger_{a\rightarrow b}.
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-096" width="62" height="28" alt="\Delta E^\ddagger_{a\rightarrow b}.">
+<!-- TeX display: \Delta E^\ddagger_{a\rightarrow b}. -->
+
+
 
 
 
@@ -18929,13 +20624,16 @@ So define a primitive retention capacity:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-097" width="114" height="36" alt="\boxed{ \mathcal R(s_i) = \Delta E^\ddagger_i. }">
+<!-- TeX display: \boxed{
 \mathcal R(s_i)
 =
 \Delta E^\ddagger_i.
-}
-```
+} -->
+
+
 
 
 
@@ -18943,11 +20641,14 @@ or probabilistically once temperature is meaningful:
 
 
 
-```math
-\tau_i
+
+
+<img src="UTC-Math/message-30.svg#equation-098" width="119" height="27" alt="\tau_i \sim \tau_0e^{\Delta E_i^\ddagger/k_BT}.">
+<!-- TeX display: \tau_i
 \sim
-\tau_0e^{\Delta E_i^\ddagger/k_BT}.
-```
+\tau_0e^{\Delta E_i^\ddagger/k_BT}. -->
+
+
 
 
 
@@ -18957,9 +20658,12 @@ So:
 
 
 
-```math
-P1+P2
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-099" width="68" height="19" alt="P1+P2">
+<!-- TeX display: P1+P2 -->
+
+
 
 
 
@@ -18971,13 +20675,16 @@ I would call it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-100" width="204" height="29" alt="\boxed{ M_{-1} = \text{retention potential}. }">
+<!-- TeX display: \boxed{
 M_{-1}
 =
 \text{retention potential}.
-}
-```
+} -->
+
+
 
 
 
@@ -18985,11 +20692,14 @@ Then P3 activates it:
 
 
 
-```math
-M_0
+
+
+<img src="UTC-Math/message-30.svg#equation-101" width="200" height="21" alt="M_0 = \text{transition continuity}.">
+<!-- TeX display: M_0
 =
-\text{transition continuity}.
-```
+\text{transition continuity}. -->
+
+
 
 
 
@@ -19001,12 +20711,15 @@ This is clean.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-102" width="191" height="29" alt="\boxed{ M_{-1}: \text{retention potential} }">
+<!-- TeX display: \boxed{
 M_{-1}:
 \text{retention potential}
-}
-```
+} -->
+
+
 
 
 
@@ -19014,12 +20727,15 @@ from P1+P2.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-103" width="171" height="29" alt="\boxed{ M_0: \text{causal continuity} }">
+<!-- TeX display: \boxed{
 M_0:
 \text{causal continuity}
-}
-```
+} -->
+
+
 
 
 
@@ -19027,12 +20743,15 @@ from P3a-c.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-104" width="168" height="29" alt="\boxed{ M_1: \text{phase continuity} }">
+<!-- TeX display: \boxed{
 M_1:
 \text{phase continuity}
-}
-```
+} -->
+
+
 
 
 
@@ -19040,12 +20759,15 @@ from P3d-e.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-105" width="200" height="30" alt="\boxed{ M_2: \text{frequency persistence} }">
+<!-- TeX display: \boxed{
 M_2:
 \text{frequency persistence}
-}
-```
+} -->
+
+
 
 
 
@@ -19053,12 +20775,15 @@ from F1/P4-cycle.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-106" width="204" height="29" alt="\boxed{ M_3: \text{correlation recurrence} }">
+<!-- TeX display: \boxed{
 M_3:
 \text{correlation recurrence}
-}
-```
+} -->
+
+
 
 
 
@@ -19066,12 +20791,15 @@ from coupled oscillation.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-107" width="270" height="31" alt="\boxed{ M_4: \text{attractor persistence/hysteresis} }">
+<!-- TeX display: \boxed{
 M_4:
 \text{attractor persistence/hysteresis}
-}
-```
+} -->
+
+
 
 
 
@@ -19079,12 +20807,15 @@ from P4.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-108" width="166" height="29" alt="\boxed{ M_5: \text{physical imprint} }">
+<!-- TeX display: \boxed{
 M_5:
 \text{physical imprint}
-}
-```
+} -->
+
+
 
 
 
@@ -19092,12 +20823,15 @@ later.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-109" width="244" height="29" alt="\boxed{ M_6: \text{encoded rewritable memory} }">
+<!-- TeX display: \boxed{
 M_6:
 \text{encoded rewritable memory}
-}
-```
+} -->
+
+
 
 
 
@@ -19107,9 +20841,12 @@ The manuscript's current P10 memory condition:
 
 
 
-```math
-I(X_{\rm past};Y_{\rm present})>0
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-110" width="147" height="23" alt="I(X_{\rm past};Y_{\rm present})>0">
+<!-- TeX display: I(X_{\rm past};Y_{\rm present})>0 -->
+
+
 
 
 
@@ -19123,9 +20860,12 @@ Once a system can discriminate multiple forms of recurrence:
 
 
 
-```math
-T_1,T_2,\ldots,T_n
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-111" width="101" height="20" alt="T_1,T_2,\ldots,T_n">
+<!-- TeX display: T_1,T_2,\ldots,T_n -->
+
+
 
 
 
@@ -19135,9 +20875,12 @@ Then:
 
 
 
-```math
-\frac{T_i}{T_j}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-112" width="31" height="44" alt="\frac{T_i}{T_j}">
+<!-- TeX display: \frac{T_i}{T_j} -->
+
+
 
 
 
@@ -19160,11 +20903,14 @@ So yes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-113" width="470" height="52" alt="\boxed{ \text{reference-state sophistication is deeply related to temporal-model sophistication}. }">
+<!-- TeX display: \boxed{
 \text{reference-state sophistication is deeply related to temporal-model sophistication}.
-}
-```
+} -->
+
+
 
 
 
@@ -19172,11 +20918,14 @@ But I would phrase intelligence more generally:
 
 
 
-```math
-I_{\rm temporal}
+
+
+<img src="UTC-Math/message-30.svg#equation-114" width="470" height="22" alt="I_{\rm temporal} \propto \text{number and depth of usable temporal relations modeled}.">
+<!-- TeX display: I_{\rm temporal}
 \propto
-\text{number and depth of usable temporal relations modeled}.
-```
+\text{number and depth of usable temporal relations modeled}. -->
+
+
 
 
 
@@ -19192,11 +20941,14 @@ We had:
 
 
 
-```math
-P3
+
+
+<img src="UTC-Math/message-30.svg#equation-115" width="73" height="18" alt="P3 \rightarrow P4">
+<!-- TeX display: P3
 \rightarrow
-P4
-```
+P4 -->
+
+
 
 
 
@@ -19206,107 +20958,140 @@ Now add the full machinery:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-116" width="152" height="29" alt="\boxed{ \text{trajectory variation} }">
+<!-- TeX display: \boxed{
 \text{trajectory variation}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-117" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-118" width="181" height="30" alt="\boxed{ F_\Delta: \text{differences amplify} }">
+<!-- TeX display: \boxed{
 F_\Delta:
 \text{differences amplify}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-119" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-120" width="245" height="30" alt="\boxed{ F_{\rm FR}: \text{fluctuations probe stability} }">
+<!-- TeX display: \boxed{
 F_{\rm FR}:
 \text{fluctuations probe stability}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-121" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-122" width="312" height="31" alt="\boxed{ F_\Theta: \text{gradients redistribute energy/entropy} }">
+<!-- TeX display: \boxed{
 F_\Theta:
 \text{gradients redistribute energy/entropy}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-123" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-124" width="382" height="29" alt="\boxed{ F_{\rm CSC}: \text{unstable modes collapse, surviving modes lock} }">
+<!-- TeX display: \boxed{
 F_{\rm CSC}:
 \text{unstable modes collapse,
 surviving modes lock}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-125" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-126" width="189" height="29" alt="\boxed{ P4: \text{persistent attractor}. }">
+<!-- TeX display: \boxed{
 P4:
 \text{persistent attractor}.
-}
-```
+} -->
+
+
 
 
 
@@ -19314,9 +21099,12 @@ And now:
 
 
 
-```math
-P4
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-127" width="29" height="17" alt="P4">
+<!-- TeX display: P4 -->
+
+
 
 
 
@@ -19324,11 +21112,14 @@ generates new:
 
 
 
-```math
-\Delta E,
+
+
+<img src="UTC-Math/message-30.svg#equation-128" width="86" height="21" alt="\Delta E, \omega, \Delta\phi.">
+<!-- TeX display: \Delta E,
 \omega,
-\Delta\phi.
-```
+\Delta\phi. -->
+
+
 
 
 
@@ -19336,13 +21127,16 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-129" width="117" height="29" alt="\boxed{ P4_n \rightarrow P2_{n+1}. }">
+<!-- TeX display: \boxed{
 P4_n
 \rightarrow
 P2_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -19360,13 +21154,16 @@ UTC could define a genuine architectural phase transition as one in which:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-130" width="148" height="34" alt="\boxed{ \Omega_{\rm effective}^{\rm before} \neq \Omega_{\rm effective}^{\rm after} }">
+<!-- TeX display: \boxed{
 \Omega_{\rm effective}^{\rm before}
 \neq
 \Omega_{\rm effective}^{\rm after}
-}
-```
+} -->
+
+
 
 
 
@@ -19374,15 +21171,18 @@ and:
 
 
 
-```math
-P2_{\rm before}
+
+
+<img src="UTC-Math/message-30.svg#equation-131" width="131" height="21" alt="P2_{\rm before} \neq P2_{\rm after}.">
+<!-- TeX display: P2_{\rm before}
 \neq
-P2_{\rm after}.
-```
+P2_{\rm after}. -->
 
 
 
-Not merely a change in $x$.
+
+
+Not merely a change in <img src="UTC-Math/message-30.svg#equation-132" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->.
 
 A change in the **space of meaningful distinctions itself**.
 
@@ -19390,11 +21190,14 @@ Then:
 
 
 
-```math
-\text{QCD plasma}
+
+
+<img src="UTC-Math/message-30.svg#equation-133" width="178" height="21" alt="\text{QCD plasma} \rightarrow \text{hadrons}">
+<!-- TeX display: \text{QCD plasma}
 \rightarrow
-\text{hadrons}
-```
+\text{hadrons} -->
+
+
 
 
 
@@ -19424,13 +21227,16 @@ UTC can nevertheless interpret its architectural role as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-134" width="541" height="29" alt="\boxed{ \Psi = \text{the phase-bearing distribution over dynamically accessible distinctions}. }">
+<!-- TeX display: \boxed{
 \Psi
 =
 \text{the phase-bearing distribution over dynamically accessible distinctions}.
-}
-```
+} -->
+
+
 
 
 
@@ -19440,9 +21246,12 @@ It contains:
 
 
 
-```math
-|\Psi|^2
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-135" width="37" height="25" alt="|\Psi|^2">
+<!-- TeX display: |\Psi|^2 -->
+
+
 
 
 
@@ -19450,9 +21259,12 @@ weighting,
 
 
 
-```math
-\arg\Psi
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-136" width="46" height="21" alt="\arg\Psi">
+<!-- TeX display: \arg\Psi -->
+
+
 
 
 
@@ -19472,11 +21284,14 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-137" width="504" height="52" alt="\boxed{ \text{the running representation of P2 distinctions under P3 phase evolution before P4 selection stabilizes persistent outcomes.} }">
+<!-- TeX display: \boxed{
 \text{the running representation of P2 distinctions under P3 phase evolution before P4 selection stabilizes persistent outcomes.}
-}
-```
+} -->
+
+
 
 
 
@@ -19501,11 +21316,14 @@ Thermal radiation often does something different but equally crucial:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-138" width="306" height="31" alt="\boxed{ \text{it provides a stabilization/export channel}. }">
+<!-- TeX display: \boxed{
 \text{it provides a stabilization/export channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -19517,11 +21335,14 @@ I would propose:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-139" width="551" height="52" alt="\boxed{ \textbf{energy/entropy export is a universal stabilization enabler for driven formation.} }">
+<!-- TeX display: \boxed{
 \textbf{energy/entropy export is a universal stabilization enabler for driven formation.}
-}
-```
+} -->
+
+
 
 
 
@@ -19557,13 +21378,16 @@ Rather:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-140" width="510" height="52" alt="\boxed{ \text{processes that concentrate usable energy into stable, low-loss pathways persist disproportionately and become substrates for further closure}. }">
+<!-- TeX display: \boxed{
 \text{processes that concentrate usable energy into stable,
 low-loss pathways persist disproportionately and become substrates
 for further closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -19575,66 +21399,90 @@ This gives:
 
 
 
-```math
-\text{energy concentration}
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-141" width="153" height="20" alt="\text{energy concentration}">
+<!-- TeX display: \text{energy concentration} -->
 
 
 
 
 
-```math
-+
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-142" width="21" height="17" alt="+">
+<!-- TeX display: + -->
 
 
 
 
 
-```math
-\text{memory/retention}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-143" width="136" height="22" alt="\text{memory/retention}">
+<!-- TeX display: \text{memory/retention} -->
 
 
 
 
 
-```math
-+
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-144" width="21" height="17" alt="+">
+<!-- TeX display: + -->
 
 
 
 
 
-```math
-\text{efficient dissipation}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-145" width="142" height="21" alt="\text{efficient dissipation}">
+<!-- TeX display: \text{efficient dissipation} -->
 
 
 
 
 
-```math
-+
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-146" width="21" height="17" alt="+">
+<!-- TeX display: + -->
 
 
 
 
 
-```math
-\text{robust pathway}
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-147" width="117" height="21" alt="\text{robust pathway}">
+<!-- TeX display: \text{robust pathway} -->
 
 
 
 
 
-```math
-\rightarrow
-\text{long persistence}.
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-148" width="142" height="21" alt="\rightarrow \text{long persistence}.">
+<!-- TeX display: \rightarrow
+\text{long persistence}. -->
+
+
 
 
 
@@ -19648,11 +21496,14 @@ I think the tree has now become a spiral with embedded shadows of later branches
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-149" width="37" height="26" alt="\boxed{ P0 }">
+<!-- TeX display: \boxed{
 P0
-}
-```
+} -->
+
+
 
 
 
@@ -19660,19 +21511,25 @@ possibility / epistemic boundary,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-150" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-151" width="37" height="26" alt="\boxed{ P1 }">
+<!-- TeX display: \boxed{
 P1
-}
-```
+} -->
+
+
 
 
 
@@ -19680,19 +21537,25 @@ constraint, energy, gradient, admissibility,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-152" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-153" width="44" height="28" alt="\boxed{ P2_a }">
+<!-- TeX display: \boxed{
 P2_a
-}
-```
+} -->
+
+
 
 
 
@@ -19700,19 +21563,25 @@ formal distinction,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-154" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-155" width="83" height="28" alt="\boxed{ P2_b=\mathcal I_E }">
+<!-- TeX display: \boxed{
 P2_b=\mathcal I_E
-}
-```
+} -->
+
+
 
 
 
@@ -19720,19 +21589,25 @@ energetic differentiation, **first ignition spark**,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-156" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-157" width="43" height="28" alt="\boxed{ P2_c }">
+<!-- TeX display: \boxed{
 P2_c
-}
-```
+} -->
+
+
 
 
 
@@ -19740,19 +21615,25 @@ frequency identity,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-158" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-159" width="44" height="28" alt="\boxed{ P2_d }">
+<!-- TeX display: \boxed{
 P2_d
-}
-```
+} -->
+
+
 
 
 
@@ -19760,19 +21641,25 @@ relational/phase distinction,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-160" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-161" width="90" height="28" alt="\boxed{ P3_a-P3_c }">
+<!-- TeX display: \boxed{
 P3_a-P3_c
-}
-```
+} -->
+
+
 
 
 
@@ -19780,19 +21667,25 @@ unrolled transition/order/history,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-162" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-163" width="57" height="28" alt="\boxed{ P3_d+ }">
+<!-- TeX display: \boxed{
 P3_d+
-}
-```
+} -->
+
+
 
 
 
@@ -19800,19 +21693,25 @@ cyclic propagation, engine running,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-164" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-165" width="70" height="31" alt="\boxed{ F1_{\rm engine} }">
+<!-- TeX display: \boxed{
 F1_{\rm engine}
-}
-```
+} -->
+
+
 
 
 
@@ -19820,41 +21719,53 @@ energy ↔ frequency ↔ phase ↔ wave ↔ interaction,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-30.svg#equation-166" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-F_\Delta
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-167" width="170" height="20" alt="F_\Delta + F_{\rm FR} + F_\Theta + F_{\rm CSC}">
+<!-- TeX display: F_\Delta
 +
 F_{\rm FR}
 +
 F_\Theta
 +
-F_{\rm CSC}
-```
+F_{\rm CSC} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-168" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-30.svg#equation-169" width="37" height="26" alt="\boxed{ P4 }">
+<!-- TeX display: \boxed{
 P4
-}
-```
+} -->
+
+
 
 
 
@@ -19864,13 +21775,16 @@ and then crucially:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-170" width="86" height="28" alt="\boxed{ P4 \rightarrow P2' }">
+<!-- TeX display: \boxed{
 P4
 \rightarrow
 P2'
-}
-```
+} -->
+
+
 
 
 
@@ -19884,11 +21798,14 @@ The deepest new principle I would write into UTC now is something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-30.svg#equation-171" width="222" height="29" alt="\boxed{ \textbf{Primitive Form Principle:} }">
+<!-- TeX display: \boxed{
 \textbf{Primitive Form Principle:}
-}
-```
+} -->
+
+
 
 
 
@@ -19924,9 +21841,12 @@ The manuscript currently frames uncertainty primarily as a **P1→P5 measurement
 
 
 
-```math
-C_{\rm quantum}\equiv \frac{\hbar}{2}
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-001" width="103" height="39" alt="C_{\rm quantum}\equiv \frac{\hbar}{2}">
+<!-- TeX display: C_{\rm quantum}\equiv \frac{\hbar}{2} -->
+
+
 
 
 
@@ -19938,12 +21858,15 @@ It pushes uncertainty **down into the running P1–P3/F1 engine itself**.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-002" width="558" height="52" alt="\boxed{ \text{Quantum uncertainty is not fundamentally ignorance about a measurement. It is a structural property of how quantum distinctions can coexist and evolve.} }">
+<!-- TeX display: \boxed{
 \text{Quantum uncertainty is not fundamentally ignorance about a measurement.
 It is a structural property of how quantum distinctions can coexist and evolve.}
-}
-```
+} -->
+
+
 
 
 
@@ -19957,9 +21880,12 @@ The familiar result is:
 
 
 
-```math
-\Delta x\,\Delta p\geq\frac{\hbar}{2}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-003" width="97" height="39" alt="\Delta x\,\Delta p\geq\frac{\hbar}{2}.">
+<!-- TeX display: \Delta x\,\Delta p\geq\frac{\hbar}{2}. -->
+
+
 
 
 
@@ -19973,22 +21899,28 @@ The full system requires:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-004" width="183" height="32" alt="\boxed{ \mathcal Q= (\mathcal H,\psi,\hat x,\hat p,\hbar,H,U) }">
+<!-- TeX display: \boxed{
 \mathcal Q=
 (\mathcal H,\psi,\hat x,\hat p,\hbar,H,U)
-}
-```
+} -->
 
 
 
-where $\mathcal H$ is Hilbert state space, $|\psi\rangle$ is the state, $\hat x,\hat p$ are observable/generator operators, $\hbar$ supplies the quantum action scale, $H$ supplies the dynamical energy structure, and
+
+
+where <img src="UTC-Math/message-32.svg#equation-005" width="22" height="18" alt="\mathcal H" align="middle"><!-- TeX inline: \mathcal H --> is Hilbert state space, <img src="UTC-Math/message-32.svg#equation-006" width="30" height="22" alt="|\psi\rangle" align="middle"><!-- TeX inline: |\psi\rangle --> is the state, <img src="UTC-Math/message-32.svg#equation-007" width="33" height="23" alt="\hat x,\hat p" align="middle"><!-- TeX inline: \hat x,\hat p --> are observable/generator operators, <img src="UTC-Math/message-32.svg#equation-008" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar --> supplies the quantum action scale, <img src="UTC-Math/message-32.svg#equation-009" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H --> supplies the dynamical energy structure, and
 
 
 
-```math
-U(t)=e^{-iHt/\hbar}
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-010" width="108" height="26" alt="U(t)=e^{-iHt/\hbar}">
+<!-- TeX display: U(t)=e^{-iHt/\hbar} -->
+
+
 
 
 
@@ -20010,9 +21942,12 @@ There is a state:
 
 
 
-```math
-|\psi\rangle\in\mathcal H.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-011" width="67" height="22" alt="|\psi\rangle\in\mathcal H.">
+<!-- TeX display: |\psi\rangle\in\mathcal H. -->
+
+
 
 
 
@@ -20020,9 +21955,12 @@ That state can be represented in the position basis:
 
 
 
-```math
-\psi(x)=\langle x|\psi\rangle
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-012" width="98" height="22" alt="\psi(x)=\langle x|\psi\rangle">
+<!-- TeX display: \psi(x)=\langle x|\psi\rangle -->
+
+
 
 
 
@@ -20030,9 +21968,12 @@ or momentum basis:
 
 
 
-```math
-\tilde\psi(p)=\langle p|\psi\rangle.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-013" width="101" height="27" alt="\tilde\psi(p)=\langle p|\psi\rangle.">
+<!-- TeX display: \tilde\psi(p)=\langle p|\psi\rangle. -->
+
+
 
 
 
@@ -20044,13 +21985,16 @@ This is already a crucial P2-like distinction:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-014" width="352" height="30" alt="\boxed{ \text{same state} \neq \text{same informational representation}. }">
+<!-- TeX display: \boxed{
 \text{same state}
 \neq
 \text{same informational representation}.
-}
-```
+} -->
+
+
 
 
 
@@ -20066,15 +22010,18 @@ And the two representations are connected by:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-015" width="239" height="53" alt="\boxed{ \tilde\psi(p) = \frac{1}{\sqrt{2\pi\hbar}} \int e^{-ipx/\hbar}\psi(x)\,dx. }">
+<!-- TeX display: \boxed{
 \tilde\psi(p)
 =
 \frac{1}{\sqrt{2\pi\hbar}}
 \int
 e^{-ipx/\hbar}\psi(x)\,dx.
-}
-```
+} -->
+
+
 
 
 
@@ -20084,9 +22031,12 @@ The phase kernel
 
 
 
-```math
-e^{-ipx/\hbar}
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-016" width="54" height="22" alt="e^{-ipx/\hbar}">
+<!-- TeX display: e^{-ipx/\hbar} -->
+
+
 
 
 
@@ -20096,17 +22046,20 @@ is doing enormous conceptual work.
 
 # 3. P1 supplies the quantum action scale
 
-Without $\hbar$, Fourier duality still exists mathematically.
+Without <img src="UTC-Math/message-32.svg#equation-017" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->, Fourier duality still exists mathematically.
 
 But quantum mechanics gives the conjugate pair a physical scale:
 
 
 
-```math
-p=\hbar k,
+
+
+<img src="UTC-Math/message-32.svg#equation-018" width="151" height="21" alt="p=\hbar k, \qquad E=\hbar\omega.">
+<!-- TeX display: p=\hbar k,
 \qquad
-E=\hbar\omega.
-```
+E=\hbar\omega. -->
+
+
 
 
 
@@ -20116,9 +22069,12 @@ The manuscript already uses
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-019" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -20130,10 +22086,13 @@ Not:
 
 
 
-```math
-\hbar/2=
-\text{minimum measurement expenditure}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-020" width="309" height="22" alt="\hbar/2= \text{minimum measurement expenditure}.">
+<!-- TeX display: \hbar/2=
+\text{minimum measurement expenditure}. -->
+
+
 
 
 
@@ -20141,13 +22100,16 @@ More fundamentally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-021" width="503" height="29" alt="\boxed{ \hbar = \text{the physical conversion scale connecting phase structure to action.} }">
+<!-- TeX display: \boxed{
 \hbar
 =
 \text{the physical conversion scale connecting phase structure to action.}
-}
-```
+} -->
+
+
 
 
 
@@ -20155,9 +22117,12 @@ It connects:
 
 
 
-```math
-E\leftrightarrow\omega
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-022" width="56" height="18" alt="E\leftrightarrow\omega">
+<!-- TeX display: E\leftrightarrow\omega -->
+
+
 
 
 
@@ -20165,9 +22130,12 @@ and
 
 
 
-```math
-p\leftrightarrow k.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-023" width="54" height="21" alt="p\leftrightarrow k.">
+<!-- TeX display: p\leftrightarrow k. -->
+
+
 
 
 
@@ -20183,21 +22151,27 @@ Take a localized wavepacket:
 
 
 
-```math
-\psi(x).
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-024" width="45" height="22" alt="\psi(x).">
+<!-- TeX display: \psi(x). -->
 
 
 
-To make it narrow in $x$, we must combine many spatial frequencies $k$.
-
-A nearly pure single $k$-mode:
 
 
+To make it narrow in <img src="UTC-Math/message-32.svg#equation-025" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->, we must combine many spatial frequencies <img src="UTC-Math/message-32.svg#equation-026" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->.
 
-```math
-e^{ikx}
-```
+A nearly pure single <img src="UTC-Math/message-32.svg#equation-027" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-mode:
+
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-028" width="34" height="21" alt="e^{ikx}">
+<!-- TeX display: e^{ikx} -->
+
+
 
 
 
@@ -20207,9 +22181,12 @@ It has:
 
 
 
-```math
-\Delta k\approx0
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-029" width="60" height="18" alt="\Delta k\approx0">
+<!-- TeX display: \Delta k\approx0 -->
+
+
 
 
 
@@ -20217,9 +22194,12 @@ but extremely poor localization:
 
 
 
-```math
-\Delta x\rightarrow\infty.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-030" width="76" height="18" alt="\Delta x\rightarrow\infty.">
+<!-- TeX display: \Delta x\rightarrow\infty. -->
+
+
 
 
 
@@ -20227,9 +22207,12 @@ Conversely, a sharply localized packet requires:
 
 
 
-```math
-\Delta k\uparrow.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-031" width="47" height="21" alt="\Delta k\uparrow.">
+<!-- TeX display: \Delta k\uparrow. -->
+
+
 
 
 
@@ -20237,9 +22220,12 @@ Fourier analysis gives:
 
 
 
-```math
-\Delta x\,\Delta k\geq\frac12.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-032" width="96" height="39" alt="\Delta x\,\Delta k\geq\frac12.">
+<!-- TeX display: \Delta x\,\Delta k\geq\frac12. -->
+
+
 
 
 
@@ -20247,9 +22233,12 @@ With
 
 
 
-```math
-p=\hbar k,
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-033" width="60" height="21" alt="p=\hbar k,">
+<!-- TeX display: p=\hbar k, -->
+
+
 
 
 
@@ -20257,11 +22246,14 @@ we obtain:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-034" width="105" height="48" alt="\boxed{ \Delta x\,\Delta p\geq\frac{\hbar}{2}. }">
+<!-- TeX display: \boxed{
 \Delta x\,\Delta p\geq\frac{\hbar}{2}.
-}
-```
+} -->
+
+
 
 
 
@@ -20269,13 +22261,16 @@ So mechanically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-035" width="240" height="30" alt="\boxed{ \text{localization} \rightarrow \text{many frequencies} }">
+<!-- TeX display: \boxed{
 \text{localization}
 \rightarrow
 \text{many frequencies}
-}
-```
+} -->
+
+
 
 
 
@@ -20283,13 +22278,16 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-036" width="252" height="30" alt="\boxed{ \text{single frequency} \rightarrow \text{delocalization}. }">
+<!-- TeX display: \boxed{
 \text{single frequency}
 \rightarrow
 \text{delocalization}.
-}
-```
+} -->
+
+
 
 
 
@@ -20307,9 +22305,12 @@ This places the first origin of uncertainty around:
 
 
 
-```math
-P2_c+P3.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-037" width="79" height="20" alt="P2_c+P3.">
+<!-- TeX display: P2_c+P3. -->
+
+
 
 
 
@@ -20325,11 +22326,14 @@ Define:
 
 
 
-```math
-T_x(a)
+
+
+<img src="UTC-Math/message-32.svg#equation-038" width="118" height="26" alt="T_x(a) = e^{-ia\hat p/\hbar}.">
+<!-- TeX display: T_x(a)
 =
-e^{-ia\hat p/\hbar}.
-```
+e^{-ia\hat p/\hbar}. -->
+
+
 
 
 
@@ -20337,9 +22341,12 @@ Acting on a state:
 
 
 
-```math
-T_x(a)\psi(x)=\psi(x-a).
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-039" width="164" height="22" alt="T_x(a)\psi(x)=\psi(x-a).">
+<!-- TeX display: T_x(a)\psi(x)=\psi(x-a). -->
+
+
 
 
 
@@ -20347,13 +22354,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-040" width="244" height="31" alt="\boxed{ \hat p = \text{generator of translation in }x. }">
+<!-- TeX display: \boxed{
 \hat p
 =
 \text{generator of translation in }x.
-}
-```
+} -->
+
+
 
 
 
@@ -20361,11 +22371,14 @@ Likewise position generates translation in momentum:
 
 
 
-```math
-T_p(b)
+
+
+<img src="UTC-Math/message-32.svg#equation-041" width="106" height="27" alt="T_p(b) = e^{ib\hat x/\hbar}.">
+<!-- TeX display: T_p(b)
 =
-e^{ib\hat x/\hbar}.
-```
+e^{ib\hat x/\hbar}. -->
+
+
 
 
 
@@ -20387,11 +22400,14 @@ The canonical quantum relation is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-042" width="91" height="32" alt="\boxed{ [\hat x,\hat p]=i\hbar. }">
+<!-- TeX display: \boxed{
 [\hat x,\hat p]=i\hbar.
-}
-```
+} -->
+
+
 
 
 
@@ -20399,11 +22415,14 @@ Meaning:
 
 
 
-```math
-\hat x\hat p
+
+
+<img src="UTC-Math/message-32.svg#equation-043" width="69" height="23" alt="\hat x\hat p \neq \hat p\hat x.">
+<!-- TeX display: \hat x\hat p
 \neq
-\hat p\hat x.
-```
+\hat p\hat x. -->
+
+
 
 
 
@@ -20415,12 +22434,15 @@ And the deeper version is the Weyl relation:
 
 
 
-```math
-T_x(a)T_p(b)
+
+
+<img src="UTC-Math/message-32.svg#equation-044" width="222" height="26" alt="T_x(a)T_p(b) = e^{-iab/\hbar} T_p(b)T_x(a)">
+<!-- TeX display: T_x(a)T_p(b)
 =
 e^{-iab/\hbar}
-T_p(b)T_x(a)
-```
+T_p(b)T_x(a) -->
+
+
 
 
 
@@ -20430,11 +22452,14 @@ Do:
 
 
 
-```math
-x\text{-shift}
+
+
+<img src="UTC-Math/message-32.svg#equation-045" width="123" height="21" alt="x\text{-shift} \rightarrow p\text{-shift}">
+<!-- TeX display: x\text{-shift}
 \rightarrow
-p\text{-shift}
-```
+p\text{-shift} -->
+
+
 
 
 
@@ -20442,11 +22467,14 @@ versus:
 
 
 
-```math
-p\text{-shift}
+
+
+<img src="UTC-Math/message-32.svg#equation-046" width="127" height="21" alt="p\text{-shift} \rightarrow x\text{-shift}.">
+<!-- TeX display: p\text{-shift}
 \rightarrow
-x\text{-shift}.
-```
+x\text{-shift}. -->
+
+
 
 
 
@@ -20456,9 +22484,12 @@ That phase is proportional to:
 
 
 
-```math
-\frac{ab}{\hbar}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-047" width="35" height="40" alt="\frac{ab}{\hbar}.">
+<!-- TeX display: \frac{ab}{\hbar}. -->
+
+
 
 
 
@@ -20474,12 +22505,15 @@ Perform four translations:
 
 
 
-```math
-T_x(a)
+
+
+<img src="UTC-Math/message-32.svg#equation-048" width="185" height="23" alt="T_x(a) T_p(b) T_x(-a) T_p(-b).">
+<!-- TeX display: T_x(a)
 T_p(b)
 T_x(-a)
-T_p(-b).
-```
+T_p(-b). -->
+
+
 
 
 
@@ -20489,16 +22523,19 @@ Quantum mechanically, the loop gives:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-049" width="263" height="35" alt="\boxed{ T_x(a) T_p(b) T_x(-a) T_p(-b) = e^{-iab/\hbar}I }">
+<!-- TeX display: \boxed{
 T_x(a)
 T_p(b)
 T_x(-a)
 T_p(-b)
 =
 e^{-iab/\hbar}I
-}
-```
+} -->
+
+
 
 
 
@@ -20512,9 +22549,12 @@ The enclosed phase-space area:
 
 
 
-```math
-A_{xp}=ab
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-050" width="71" height="23" alt="A_{xp}=ab">
+<!-- TeX display: A_{xp}=ab -->
+
+
 
 
 
@@ -20522,11 +22562,14 @@ has become:
 
 
 
-```math
-\phi
+
+
+<img src="UTC-Math/message-32.svg#equation-051" width="76" height="41" alt="\phi = \frac{A_{xp}}{\hbar}.">
+<!-- TeX display: \phi
 =
-\frac{A_{xp}}{\hbar}.
-```
+\frac{A_{xp}}{\hbar}. -->
+
+
 
 
 
@@ -20536,15 +22579,18 @@ The closed trajectory carries a record of its own relational history.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-052" width="357" height="29" alt="\boxed{ \text{path ordering} \rightarrow \text{enclosed action} \rightarrow \text{phase record}. }">
+<!-- TeX display: \boxed{
 \text{path ordering}
 \rightarrow
 \text{enclosed action}
 \rightarrow
 \text{phase record}.
-}
-```
+} -->
+
+
 
 
 
@@ -20554,11 +22600,14 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-053" width="314" height="29" alt="\boxed{ \text{phase becomes detectable through relation}. }">
+<!-- TeX display: \boxed{
 \text{phase becomes detectable through relation}.
-}
-```
+} -->
+
+
 
 
 
@@ -20572,9 +22621,12 @@ Remember our proposed twisted graph structure:
 
 
 
-```math
-U_{ij}=e^{i\theta_{ij}}
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-054" width="76" height="26" alt="U_{ij}=e^{i\theta_{ij}}">
+<!-- TeX display: U_{ij}=e^{i\theta_{ij}} -->
+
+
 
 
 
@@ -20582,11 +22634,14 @@ and loop holonomy:
 
 
 
-```math
-W_\gamma
+
+
+<img src="UTC-Math/message-32.svg#equation-055" width="101" height="29" alt="W_\gamma = \prod U_{ij}.">
+<!-- TeX display: W_\gamma
 =
-\prod U_{ij}.
-```
+\prod U_{ij}. -->
+
+
 
 
 
@@ -20596,9 +22651,12 @@ A closed sequence of noncommuting transformations returns to the original coordi
 
 
 
-```math
-e^{i\phi}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-056" width="32" height="21" alt="e^{i\phi}.">
+<!-- TeX display: e^{i\phi}. -->
+
+
 
 
 
@@ -20608,11 +22666,14 @@ In more conventional language, classical phase space carries the symplectic stru
 
 
 
-```math
-\omega_{\rm symp}
+
+
+<img src="UTC-Math/message-32.svg#equation-057" width="123" height="22" alt="\omega_{\rm symp} = dx\wedge dp.">
+<!-- TeX display: \omega_{\rm symp}
 =
-dx\wedge dp.
-```
+dx\wedge dp. -->
+
+
 
 
 
@@ -20620,9 +22681,12 @@ The manuscript already recognizes the classical precursor through its Poisson br
 
 
 
-```math
-\{x,p\}=1.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-058" width="83" height="22" alt="\{x,p\}=1.">
+<!-- TeX display: \{x,p\}=1. -->
+
+
 
 
 
@@ -20632,11 +22696,14 @@ Quantization replaces the classical bracket schematically by:
 
 
 
-```math
-\{x,p\}=1
+
+
+<img src="UTC-Math/message-32.svg#equation-059" width="219" height="23" alt="\{x,p\}=1 \quad\longrightarrow\quad [\hat x,\hat p]=i\hbar.">
+<!-- TeX display: \{x,p\}=1
 \quad\longrightarrow\quad
-[\hat x,\hat p]=i\hbar.
-```
+[\hat x,\hat p]=i\hbar. -->
+
+
 
 
 
@@ -20650,11 +22717,14 @@ Define centered operators:
 
 
 
-```math
-\Delta\hat A
+
+
+<img src="UTC-Math/message-32.svg#equation-060" width="111" height="28" alt="\Delta\hat A = \hat A-\langle A\rangle">
+<!-- TeX display: \Delta\hat A
 =
-\hat A-\langle A\rangle
-```
+\hat A-\langle A\rangle -->
+
+
 
 
 
@@ -20662,11 +22732,14 @@ and:
 
 
 
-```math
-\Delta\hat B
+
+
+<img src="UTC-Math/message-32.svg#equation-061" width="116" height="27" alt="\Delta\hat B = \hat B-\langle B\rangle.">
+<!-- TeX display: \Delta\hat B
 =
-\hat B-\langle B\rangle.
-```
+\hat B-\langle B\rangle. -->
+
+
 
 
 
@@ -20674,21 +22747,27 @@ Act on the state:
 
 
 
-```math
-|\alpha\rangle
+
+
+<img src="UTC-Math/message-32.svg#equation-062" width="102" height="28" alt="|\alpha\rangle = \Delta\hat A|\psi\rangle,">
+<!-- TeX display: |\alpha\rangle
 =
-\Delta\hat A|\psi\rangle,
-```
+\Delta\hat A|\psi\rangle, -->
 
 
 
 
 
-```math
-|\beta\rangle
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-063" width="101" height="27" alt="|\beta\rangle = \Delta\hat B|\psi\rangle.">
+<!-- TeX display: |\beta\rangle
 =
-\Delta\hat B|\psi\rangle.
-```
+\Delta\hat B|\psi\rangle. -->
+
+
 
 
 
@@ -20696,21 +22775,27 @@ Their squared norms are the variances:
 
 
 
-```math
-\langle\alpha|\alpha\rangle
+
+
+<img src="UTC-Math/message-32.svg#equation-064" width="116" height="25" alt="\langle\alpha|\alpha\rangle = (\Delta A)^2,">
+<!-- TeX display: \langle\alpha|\alpha\rangle
 =
-(\Delta A)^2,
-```
+(\Delta A)^2, -->
 
 
 
 
 
-```math
-\langle\beta|\beta\rangle
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-065" width="114" height="25" alt="\langle\beta|\beta\rangle = (\Delta B)^2.">
+<!-- TeX display: \langle\beta|\beta\rangle
 =
-(\Delta B)^2.
-```
+(\Delta B)^2. -->
+
+
 
 
 
@@ -20718,12 +22803,15 @@ Cauchy-Schwarz says:
 
 
 
-```math
-\langle\alpha|\alpha\rangle
+
+
+<img src="UTC-Math/message-32.svg#equation-066" width="159" height="25" alt="\langle\alpha|\alpha\rangle \langle\beta|\beta\rangle \geq |\langle\alpha|\beta\rangle|^2.">
+<!-- TeX display: \langle\alpha|\alpha\rangle
 \langle\beta|\beta\rangle
 \geq
-|\langle\alpha|\beta\rangle|^2.
-```
+|\langle\alpha|\beta\rangle|^2. -->
+
+
 
 
 
@@ -20731,15 +22819,18 @@ Therefore:
 
 
 
-```math
-(\Delta A)^2(\Delta B)^2
+
+
+<img src="UTC-Math/message-32.svg#equation-067" width="203" height="25" alt="(\Delta A)^2(\Delta B)^2 \geq | \langle \Delta A\Delta B \rangle |^2.">
+<!-- TeX display: (\Delta A)^2(\Delta B)^2
 \geq
 |
 \langle
 \Delta A\Delta B
 \rangle
-|^2.
-```
+|^2. -->
+
+
 
 
 
@@ -20747,13 +22838,16 @@ Decompose the operator product:
 
 
 
-```math
-\Delta A\Delta B
+
+
+<img src="UTC-Math/message-32.svg#equation-068" width="249" height="39" alt="\Delta A\Delta B = \frac12\{\Delta A,\Delta B\} + \frac12[A,B].">
+<!-- TeX display: \Delta A\Delta B
 =
 \frac12\{\Delta A,\Delta B\}
 +
-\frac12[A,B].
-```
+\frac12[A,B]. -->
+
+
 
 
 
@@ -20761,8 +22855,10 @@ This yields the Schrödinger-Robertson relation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-069" width="314" height="47" alt="\boxed{ (\Delta A)^2(\Delta B)^2 \geq \mathrm{Cov}(A,B)^2 + \frac14 | \langle[A,B]\rangle |^2. }">
+<!-- TeX display: \boxed{
 (\Delta A)^2(\Delta B)^2
 \geq
 \mathrm{Cov}(A,B)^2
@@ -20771,8 +22867,9 @@ This yields the Schrödinger-Robertson relation:
 |
 \langle[A,B]\rangle
 |^2.
-}
-```
+} -->
+
+
 
 
 
@@ -20780,16 +22877,19 @@ Dropping the covariance contribution gives Robertson:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-070" width="170" height="47" alt="\boxed{ \Delta A\Delta B \geq \frac12 | \langle[A,B]\rangle |. }">
+<!-- TeX display: \boxed{
 \Delta A\Delta B
 \geq
 \frac12
 |
 \langle[A,B]\rangle
 |.
-}
-```
+} -->
+
+
 
 
 
@@ -20797,9 +22897,12 @@ For position and momentum:
 
 
 
-```math
-[\hat x,\hat p]=i\hbar,
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-071" width="82" height="23" alt="[\hat x,\hat p]=i\hbar,">
+<!-- TeX display: [\hat x,\hat p]=i\hbar, -->
+
+
 
 
 
@@ -20807,13 +22910,16 @@ therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-072" width="103" height="48" alt="\boxed{ \Delta x\Delta p \geq \frac{\hbar}{2}. }">
+<!-- TeX display: \boxed{
 \Delta x\Delta p
 \geq
 \frac{\hbar}{2}.
-}
-```
+} -->
+
+
 
 
 
@@ -20830,13 +22936,13 @@ The hierarchy looks like this:
 | UTC level | Quantum-uncertainty form |
 |---|---|
 | **P0** | Hilbert/state possibility space and representational boundary |
-| **P1** | finite quantum action scale $\hbar$, normalization, Hamiltonian/resource structure |
+| **P1** | finite quantum action scale <img src="UTC-Math/message-32.svg#equation-073" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->, normalization, Hamiltonian/resource structure |
 | **P2a** | distinguishable state alternatives |
-| **P2b** | energetic distinctions $E_i\neq E_j$ |
-| **P2c** | spectral distinctions $k_i,\omega_i$ |
+| **P2b** | energetic distinctions <img src="UTC-Math/message-32.svg#equation-074" width="65" height="23" alt="E_i\neq E_j" align="middle"><!-- TeX inline: E_i\neq E_j --> |
+| **P2c** | spectral distinctions <img src="UTC-Math/message-32.svg#equation-075" width="44" height="21" alt="k_i,\omega_i" align="middle"><!-- TeX inline: k_i,\omega_i --> |
 | **P2d** | relative phase and conjugate-basis relationships |
 | **P3** | translations, phase evolution, wave propagation |
-| **F1** | $E=\hbar\omega,\ p=\hbar k$, unitary quantum engine |
+| **F1** | <img src="UTC-Math/message-32.svg#equation-076" width="119" height="21" alt="E=\hbar\omega,\ p=\hbar k" align="middle"><!-- TeX inline: E=\hbar\omega,\ p=\hbar k -->, unitary quantum engine |
 | **Intrinsic uncertainty** | noncommuting/Fourier-conjugate state geometry |
 | **P4 form** | stable/coherent wavepackets, recurrent modes, protected covariance structures |
 | **P5** | interaction/measurement converts latent distinguishability into an external record |
@@ -20845,9 +22951,12 @@ That is very different from saying:
 
 
 
-```math
-P1\rightarrow P5\rightarrow\text{uncertainty}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-077" width="183" height="21" alt="P1\rightarrow P5\rightarrow\text{uncertainty}.">
+<!-- TeX display: P1\rightarrow P5\rightarrow\text{uncertainty}. -->
+
+
 
 
 
@@ -20855,13 +22964,16 @@ The deeper picture is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-078" width="429" height="29" alt="\boxed{ P0+P1+P2+P3+F1 \rightarrow \text{intrinsic uncertainty structure} }">
+<!-- TeX display: \boxed{
 P0+P1+P2+P3+F1
 \rightarrow
 \text{intrinsic uncertainty structure}
-}
-```
+} -->
+
+
 
 
 
@@ -20869,9 +22981,12 @@ and then:
 
 
 
-```math
-P5
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-079" width="29" height="18" alt="P5">
+<!-- TeX display: P5 -->
+
+
 
 
 
@@ -20887,9 +23002,12 @@ At the static level, we have:
 
 
 
-```math
-x,\quad p
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-080" width="49" height="17" alt="x,\quad p">
+<!-- TeX display: x,\quad p -->
+
+
 
 
 
@@ -20901,9 +23019,12 @@ Then P1 gives a finite action scale:
 
 
 
-```math
-\hbar.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-081" width="22" height="18" alt="\hbar.">
+<!-- TeX display: \hbar. -->
+
+
 
 
 
@@ -20911,11 +23032,14 @@ P3 turns momentum into an actual generator:
 
 
 
-```math
-\hat p
+
+
+<img src="UTC-Math/message-32.svg#equation-082" width="95" height="40" alt="\hat p = -i\hbar\frac{\partial}{\partial x}.">
+<!-- TeX display: \hat p
 =
--i\hbar\frac{\partial}{\partial x}.
-```
+-i\hbar\frac{\partial}{\partial x}. -->
+
+
 
 
 
@@ -20925,9 +23049,12 @@ Position multiplication:
 
 
 
-```math
-\hat x\psi(x)=x\psi(x)
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-083" width="112" height="23" alt="\hat x\psi(x)=x\psi(x)">
+<!-- TeX display: \hat x\psi(x)=x\psi(x) -->
+
+
 
 
 
@@ -20935,11 +23062,14 @@ and momentum differentiation:
 
 
 
-```math
-\hat p\psi(x)
+
+
+<img src="UTC-Math/message-32.svg#equation-084" width="145" height="23" alt="\hat p\psi(x) = -i\hbar\partial_x\psi(x)">
+<!-- TeX display: \hat p\psi(x)
 =
--i\hbar\partial_x\psi(x)
-```
+-i\hbar\partial_x\psi(x) -->
+
+
 
 
 
@@ -20947,11 +23077,14 @@ do not commute:
 
 
 
-```math
-[\hat x,\hat p]\psi
+
+
+<img src="UTC-Math/message-32.svg#equation-085" width="103" height="23" alt="[\hat x,\hat p]\psi = i\hbar\psi.">
+<!-- TeX display: [\hat x,\hat p]\psi
 =
-i\hbar\psi.
-```
+i\hbar\psi. -->
+
+
 
 
 
@@ -20959,8 +23092,10 @@ There is the inflection point.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-086" width="680" height="30" alt="\boxed{ \text{static distinction} + \text{finite action} + \text{translation dynamics} \rightarrow \text{noncommutative quantum structure}. }">
+<!-- TeX display: \boxed{
 \text{static distinction}
 +
 \text{finite action}
@@ -20968,8 +23103,9 @@ There is the inflection point.
 \text{translation dynamics}
 \rightarrow
 \text{noncommutative quantum structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -20983,9 +23119,12 @@ Suppose momentum has uncertainty:
 
 
 
-```math
-\Delta p>0.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-087" width="64" height="21" alt="\Delta p>0.">
+<!-- TeX display: \Delta p>0. -->
+
+
 
 
 
@@ -20993,21 +23132,27 @@ Then different momentum components possess different spatial phase rates:
 
 
 
-```math
-e^{ipx/\hbar}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-088" width="50" height="22" alt="e^{ipx/\hbar}.">
+<!-- TeX display: e^{ipx/\hbar}. -->
 
 
 
-Their relative phase changes with $x$:
+
+
+Their relative phase changes with <img src="UTC-Math/message-32.svg#equation-089" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->:
 
 
 
-```math
-\Delta\phi
+
+
+<img src="UTC-Math/message-32.svg#equation-090" width="95" height="40" alt="\Delta\phi = \frac{\Delta p}{\hbar}x.">
+<!-- TeX display: \Delta\phi
 =
-\frac{\Delta p}{\hbar}x.
-```
+\frac{\Delta p}{\hbar}x. -->
+
+
 
 
 
@@ -21015,15 +23160,18 @@ So momentum difference becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-091" width="159" height="31" alt="\boxed{ \Delta p \rightarrow \Delta k \rightarrow \Delta\phi(x). }">
+<!-- TeX display: \boxed{
 \Delta p
 \rightarrow
 \Delta k
 \rightarrow
 \Delta\phi(x).
-}
-```
+} -->
+
+
 
 
 
@@ -21031,11 +23179,14 @@ Again:
 
 
 
-```math
-P2
+
+
+<img src="UTC-Math/message-32.svg#equation-092" width="78" height="18" alt="P2 \rightarrow P3.">
+<!-- TeX display: P2
 \rightarrow
-P3.
-```
+P3. -->
+
+
 
 
 
@@ -21045,13 +23196,16 @@ The same occurs temporally:
 
 
 
-```math
-\Delta E
+
+
+<img src="UTC-Math/message-32.svg#equation-093" width="148" height="22" alt="\Delta E \rightarrow \Delta\omega \rightarrow \Delta\phi(t)">
+<!-- TeX display: \Delta E
 \rightarrow
 \Delta\omega
 \rightarrow
-\Delta\phi(t)
-```
+\Delta\phi(t) -->
+
+
 
 
 
@@ -21059,11 +23213,14 @@ because:
 
 
 
-```math
-\Delta\phi
+
+
+<img src="UTC-Math/message-32.svg#equation-094" width="96" height="40" alt="\Delta\phi = \frac{\Delta E}{\hbar}t.">
+<!-- TeX display: \Delta\phi
 =
-\frac{\Delta E}{\hbar}t.
-```
+\frac{\Delta E}{\hbar}t. -->
+
+
 
 
 
@@ -21073,13 +23230,16 @@ So the same primitive engine appears twice:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-095" width="229" height="30" alt="\boxed{ \Delta p \rightarrow \text{spatial phase separation} }">
+<!-- TeX display: \boxed{
 \Delta p
 \rightarrow
 \text{spatial phase separation}
-}
-```
+} -->
+
+
 
 
 
@@ -21087,13 +23247,16 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-096" width="254" height="30" alt="\boxed{ \Delta E \rightarrow \text{temporal phase separation}. }">
+<!-- TeX display: \boxed{
 \Delta E
 \rightarrow
 \text{temporal phase separation}.
-}
-```
+} -->
+
+
 
 
 
@@ -21107,36 +23270,45 @@ A position-sharp representation asks for:
 
 
 
-```math
-\psi(x)
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-097" width="41" height="22" alt="\psi(x)">
+<!-- TeX display: \psi(x) -->
 
 
 
-to be narrowly referenced to $x$.
+
+
+to be narrowly referenced to <img src="UTC-Math/message-32.svg#equation-098" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->.
 
 A momentum-sharp representation asks for:
 
 
 
-```math
-\tilde\psi(p)
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-099" width="39" height="27" alt="\tilde\psi(p)">
+<!-- TeX display: \tilde\psi(p) -->
 
 
 
-to be narrowly referenced to $p$.
+
+
+to be narrowly referenced to <img src="UTC-Math/message-32.svg#equation-100" width="17" height="17" alt="p" align="middle"><!-- TeX inline: p -->.
 
 But because the bases are Fourier dual:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-101" width="518" height="52" alt="\boxed{ \text{maximal localization in one reference description destroys localization in its conjugate description}. }">
+<!-- TeX display: \boxed{
 \text{maximal localization in one reference description
 destroys localization in its conjugate description}.
-}
-```
+} -->
+
+
 
 
 
@@ -21158,11 +23330,14 @@ A quantum wave contains phase relationships:
 
 
 
-```math
-\psi(x)
+
+
+<img src="UTC-Math/message-32.svg#equation-102" width="142" height="26" alt="\psi(x) = |\psi(x)|e^{i\phi(x)}.">
+<!-- TeX display: \psi(x)
 =
-|\psi(x)|e^{i\phi(x)}.
-```
+|\psi(x)|e^{i\phi(x)}. -->
+
+
 
 
 
@@ -21172,9 +23347,12 @@ Likewise temporal phase:
 
 
 
-```math
-e^{-iEt/\hbar}
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-103" width="55" height="22" alt="e^{-iEt/\hbar}">
+<!-- TeX display: e^{-iEt/\hbar} -->
+
+
 
 
 
@@ -21184,15 +23362,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-104" width="347" height="30" alt="\boxed{ \text{frequency} \leftrightarrow \text{phase progression} \leftrightarrow \text{state history}. }">
+<!-- TeX display: \boxed{
 \text{frequency}
 \leftrightarrow
 \text{phase progression}
 \leftrightarrow
 \text{state history}.
-}
-```
+} -->
+
+
 
 
 
@@ -21204,13 +23385,16 @@ That is almost a perfect example of:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-105" width="332" height="29" alt="\boxed{ \text{P3 trajectory} \rightarrow \text{primitive relational memory}. }">
+<!-- TeX display: \boxed{
 \text{P3 trajectory}
 \rightarrow
 \text{primitive relational memory}.
-}
-```
+} -->
+
+
 
 
 
@@ -21247,10 +23431,13 @@ Measurement disturbance belongs later:
 
 
 
-```math
-P5+
-\text{interaction}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-106" width="128" height="19" alt="P5+ \text{interaction}.">
+<!-- TeX display: P5+
+\text{interaction}. -->
+
+
 
 
 
@@ -21266,9 +23453,12 @@ Unlike:
 
 
 
-```math
-x,p,
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-107" width="37" height="17" alt="x,p,">
+<!-- TeX display: x,p, -->
+
+
 
 
 
@@ -21276,9 +23466,12 @@ standard nonrelativistic quantum mechanics does not generally have a universal s
 
 
 
-```math
-[t,H]=i\hbar.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-108" width="85" height="22" alt="[t,H]=i\hbar.">
+<!-- TeX display: [t,H]=i\hbar. -->
+
+
 
 
 
@@ -21286,9 +23479,12 @@ So:
 
 
 
-```math
-\Delta E\Delta t\geq\hbar/2
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-109" width="99" height="22" alt="\Delta E\Delta t\geq\hbar/2">
+<!-- TeX display: \Delta E\Delta t\geq\hbar/2 -->
+
+
 
 
 
@@ -21296,9 +23492,12 @@ does not universally mean the same thing as:
 
 
 
-```math
-\Delta x\Delta p\geq\hbar/2.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-110" width="103" height="22" alt="\Delta x\Delta p\geq\hbar/2.">
+<!-- TeX display: \Delta x\Delta p\geq\hbar/2. -->
+
+
 
 
 
@@ -21306,15 +23505,18 @@ One important rigorous form is Mandelstam-Tamm:
 
 
 
-```math
-\Delta E\,\tau_A
+
+
+<img src="UTC-Math/message-32.svg#equation-111" width="95" height="39" alt="\Delta E\,\tau_A \geq \frac{\hbar}{2},">
+<!-- TeX display: \Delta E\,\tau_A
 \geq
-\frac{\hbar}{2},
-```
+\frac{\hbar}{2}, -->
 
 
 
-where $\tau_A$ characterizes how quickly an observable changes.
+
+
+where <img src="UTC-Math/message-32.svg#equation-112" width="25" height="16" alt="\tau_A" align="middle"><!-- TeX inline: \tau_A --> characterizes how quickly an observable changes.
 
 That's beautifully compatible with our revised P3 architecture.
 
@@ -21322,9 +23524,12 @@ Energy spread:
 
 
 
-```math
-\Delta E
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-113" width="34" height="18" alt="\Delta E">
+<!-- TeX display: \Delta E -->
+
+
 
 
 
@@ -21332,9 +23537,12 @@ means frequency spread:
 
 
 
-```math
-\Delta\omega=\frac{\Delta E}{\hbar}.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-114" width="90" height="40" alt="\Delta\omega=\frac{\Delta E}{\hbar}.">
+<!-- TeX display: \Delta\omega=\frac{\Delta E}{\hbar}. -->
+
+
 
 
 
@@ -21346,8 +23554,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-115" width="375" height="30" alt="\boxed{ \Delta E \rightarrow \Delta\omega \rightarrow \Delta\phi \rightarrow \text{distinguishable transition rate}. }">
+<!-- TeX display: \boxed{
 \Delta E
 \rightarrow
 \Delta\omega
@@ -21355,8 +23565,9 @@ So:
 \Delta\phi
 \rightarrow
 \text{distinguishable transition rate}.
-}
-```
+} -->
+
+
 
 
 
@@ -21376,11 +23587,14 @@ For a Gaussian:
 
 
 
-```math
-\Delta x\,\Delta p
+
+
+<img src="UTC-Math/message-32.svg#equation-116" width="97" height="39" alt="\Delta x\,\Delta p = \frac{\hbar}{2}.">
+<!-- TeX display: \Delta x\,\Delta p
 =
-\frac{\hbar}{2}.
-```
+\frac{\hbar}{2}. -->
+
+
 
 
 
@@ -21394,11 +23608,14 @@ Exactly the P4 extension we've just developed:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-117" width="340" height="29" alt="\boxed{ \text{stable trajectory rather than stable coordinate}. }">
+<!-- TeX display: \boxed{
 \text{stable trajectory rather than stable coordinate}.
-}
-```
+} -->
+
+
 
 
 
@@ -21420,8 +23637,10 @@ But once embedded in physical evolution, it participates in a complete closure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-118" width="1298" height="31" alt="\boxed{ \text{prepare state} \rightarrow \text{P1/P2 constraints} \rightarrow \text{P3/F1 phase evolution} \rightarrow \text{conjugate spreading} \rightarrow \text{interaction/measurement} \rightarrow \text{state localization/reconfiguration} \rightarrow \text{new conjugate spreading} \rightarrow\cdots }">
+<!-- TeX display: \boxed{
 \text{prepare state}
 \rightarrow
 \text{P1/P2 constraints}
@@ -21436,8 +23655,9 @@ But once embedded in physical evolution, it participates in a complete closure:
 \rightarrow
 \text{new conjugate spreading}
 \rightarrow\cdots
-}
-```
+} -->
+
+
 
 
 
@@ -21445,9 +23665,12 @@ For position measurement, schematic localization gives:
 
 
 
-```math
-\Delta x\downarrow
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-119" width="43" height="21" alt="\Delta x\downarrow">
+<!-- TeX display: \Delta x\downarrow -->
+
+
 
 
 
@@ -21455,9 +23678,12 @@ which typically implies:
 
 
 
-```math
-\Delta p\uparrow.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-120" width="47" height="21" alt="\Delta p\uparrow.">
+<!-- TeX display: \Delta p\uparrow. -->
+
+
 
 
 
@@ -21467,9 +23693,12 @@ So the spatial packet can spread:
 
 
 
-```math
-\Delta x(t)\uparrow.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-121" width="66" height="22" alt="\Delta x(t)\uparrow.">
+<!-- TeX display: \Delta x(t)\uparrow. -->
+
+
 
 
 
@@ -21487,8 +23716,10 @@ Start fully rolled:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-122" width="273" height="41" alt="\boxed{ |\psi\rangle \xrightarrow{U(t)} |\psi(t)\rangle \xrightarrow{\rm interaction} |\psi'\rangle \xrightarrow{U(t)} \dots }">
+<!-- TeX display: \boxed{
 |\psi\rangle
 \xrightarrow{U(t)}
 |\psi(t)\rangle
@@ -21496,8 +23727,9 @@ Start fully rolled:
 |\psi'\rangle
 \xrightarrow{U(t)}
 \dots
-}
-```
+} -->
+
+
 
 
 
@@ -21507,11 +23739,14 @@ First:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-123" width="29" height="26" alt="\boxed{ \Psi }">
+<!-- TeX display: \boxed{
 \Psi
-}
-```
+} -->
+
+
 
 
 
@@ -21521,21 +23756,13 @@ Then:
 
 
 
-```math
-P3:
-\phi\text{ evolves}.
-```
 
 
+<img src="UTC-Math/message-32.svg#equation-124" width="110" height="21" alt="P3: \phi\text{ evolves}.">
+<!-- TeX display: P3:
+\phi\text{ evolves}. -->
 
-Then:
 
-
-
-```math
-P2:
-\text{different components have different phase rates}.
-```
 
 
 
@@ -21543,10 +23770,27 @@ Then:
 
 
 
-```math
-P1:
-E=\hbar\omega,\qquad p=\hbar k.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-125" width="372" height="21" alt="P2: \text{different components have different phase rates}.">
+<!-- TeX display: P2:
+\text{different components have different phase rates}. -->
+
+
+
+
+
+Then:
+
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-126" width="185" height="21" alt="P1: E=\hbar\omega,\qquad p=\hbar k.">
+<!-- TeX display: P1:
+E=\hbar\omega,\qquad p=\hbar k. -->
+
+
 
 
 
@@ -21554,11 +23798,14 @@ Then deeper:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-127" width="26" height="26" alt="\boxed{ \hbar }">
+<!-- TeX display: \boxed{
 \hbar
-}
-```
+} -->
+
+
 
 
 
@@ -21568,9 +23815,12 @@ Then:
 
 
 
-```math
-P0
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-128" width="29" height="18" alt="P0">
+<!-- TeX display: P0 -->
+
+
 
 
 
@@ -21580,8 +23830,10 @@ The complete reverse chain becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-129" width="1187" height="31" alt="\boxed{ \text{uncertainty} \Leftarrow \text{noncommutativity} \Leftarrow \text{conjugate translation generators} \Leftarrow \text{Fourier phase structure} \Leftarrow \text{frequency/wavenumber distinction} \Leftarrow \text{finite action scale }\hbar \Leftarrow P1/P0. }">
+<!-- TeX display: \boxed{
 \text{uncertainty}
 \Leftarrow
 \text{noncommutativity}
@@ -21595,8 +23847,9 @@ The complete reverse chain becomes:
 \text{finite action scale }\hbar
 \Leftarrow
 P1/P0.
-}
-```
+} -->
+
+
 
 
 
@@ -21604,9 +23857,12 @@ That is a much deeper explanation than simply quoting:
 
 
 
-```math
-\Delta x\Delta p\geq\hbar/2.
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-130" width="103" height="22" alt="\Delta x\Delta p\geq\hbar/2.">
+<!-- TeX display: \Delta x\Delta p\geq\hbar/2. -->
+
+
 
 
 
@@ -21624,11 +23880,14 @@ What UTC can do is something more useful:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-131" width="440" height="30" alt="\boxed{ \text{separate what is structurally forced from what is interpretive}. }">
+<!-- TeX display: \boxed{
 \text{separate what is structurally forced from what is interpretive}.
-}
-```
+} -->
+
+
 
 
 
@@ -21636,47 +23895,62 @@ For uncertainty, structurally forced:
 
 
 
-```math
-\text{Fourier duality},
-```
+
+
+<img src="UTC-Math/message-32.svg#equation-132" width="118" height="21" alt="\text{Fourier duality},">
+<!-- TeX display: \text{Fourier duality}, -->
 
 
 
 
 
-```math
-[\hat x,\hat p]=i\hbar,
-```
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-133" width="82" height="23" alt="[\hat x,\hat p]=i\hbar,">
+<!-- TeX display: [\hat x,\hat p]=i\hbar, -->
 
 
 
 
 
-```math
-\Delta x\Delta p\geq\hbar/2,
-```
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-134" width="103" height="22" alt="\Delta x\Delta p\geq\hbar/2,">
+<!-- TeX display: \Delta x\Delta p\geq\hbar/2, -->
 
 
 
 
 
-```math
-\text{phase evolution},
-```
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-135" width="121" height="21" alt="\text{phase evolution},">
+<!-- TeX display: \text{phase evolution}, -->
 
 
 
 
 
-```math
-\text{measurement statistics}.
-```
+
+
+
+
+<img src="UTC-Math/message-32.svg#equation-136" width="171" height="17" alt="\text{measurement statistics}.">
+<!-- TeX display: \text{measurement statistics}. -->
+
+
 
 
 
 Interpretive questions remain:
 
-> Is $\psi$ ontic?
+> Is <img src="UTC-Math/message-32.svg#equation-137" width="19" height="21" alt="\psi" align="middle"><!-- TeX inline: \psi --> ontic?
 
 > Is collapse fundamental?
 
@@ -21698,8 +23972,10 @@ I would now formulate it this way:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-138" width="618" height="165" alt="\boxed{ \begin{aligned} &amp;\textbf{Quantum Uncertainty Closure Principle:}\\[2mm] &amp;\text{A finite quantum action scale } \hbar \text{ couples P1 energetic distinctions to P3 phase evolution.}\\ &amp;\text{Canonical observables whose transformations are Fourier-conjugate}\\ &amp;\text{act as noncommuting generators on the same Hilbert-state structure.}\\ &amp;\text{Consequently, sharpening a state along one conjugate representation}\\ &amp;\text{requires spectral broadening along the other, producing a nonzero}\\ &amp;\text{covariance area bounded by the commutator.} \end{aligned}}">
+<!-- TeX display: \boxed{
 \begin{aligned}
 &\textbf{Quantum Uncertainty Closure Principle:}\\[2mm]
 &\text{A finite quantum action scale } \hbar
@@ -21709,8 +23985,9 @@ I would now formulate it this way:
 &\text{Consequently, sharpening a state along one conjugate representation}\\
 &\text{requires spectral broadening along the other, producing a nonzero}\\
 &\text{covariance area bounded by the commutator.}
-\end{aligned}}
-```
+\end{aligned}} -->
+
+
 
 
 
@@ -21718,13 +23995,16 @@ For canonical position and momentum:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-139" width="239" height="48" alt="\boxed{ [\hat x,\hat p]=i\hbar \quad\Longrightarrow\quad \Delta x\Delta p\geq\frac{\hbar}{2}. }">
+<!-- TeX display: \boxed{
 [\hat x,\hat p]=i\hbar
 \quad\Longrightarrow\quad
 \Delta x\Delta p\geq\frac{\hbar}{2}.
-}
-```
+} -->
+
+
 
 
 
@@ -21732,8 +24012,10 @@ Then the running architecture is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-140" width="996" height="32" alt="\boxed{ P1(\hbar,E,p) \rightarrow P2(\Delta E,\Delta p) \rightarrow P3(\omega,k,\phi) \rightarrow F1(\Psi,U) \rightarrow \text{noncommutative phase-space closure} \rightarrow \text{uncertainty} \rightarrow P5\text{ interaction/record} \rightarrow \Psi' }">
+<!-- TeX display: \boxed{
 P1(\hbar,E,p)
 \rightarrow
 P2(\Delta E,\Delta p)
@@ -21749,8 +24031,9 @@ F1(\Psi,U)
 P5\text{ interaction/record}
 \rightarrow
 \Psi'
-}
-```
+} -->
+
+
 
 
 
@@ -21760,15 +24043,18 @@ The especially beautiful discovery is that the **commutator itself now has a mec
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-32.svg#equation-141" width="491" height="29" alt="\boxed{ \textbf{the order of primitive transformations leaves a phase record.} }">
+<!-- TeX display: \boxed{
 \textbf{the order of primitive transformations leaves a phase record.}
-}
-```
+} -->
 
 
 
-That phase record is controlled by $\hbar$, becomes visible relationally through interference, and mathematically appears as the noncommutative structure that forces uncertainty.
+
+
+That phase record is controlled by <img src="UTC-Math/message-32.svg#equation-142" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->, becomes visible relationally through interference, and mathematically appears as the noncommutative structure that forces uncertainty.
 
 That connects **P1 action, P2 distinction, P3 phase, primitive memory, twisted topology, and quantum uncertainty** in one chain.
 
@@ -21792,11 +24078,14 @@ Yes. I think you've landed on a formulation that is philosophically powerful, bu
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-001" width="564" height="52" alt="\boxed{ \textbf{Quantum uncertainty does not prove that a static universe is logically impossible.} }">
+<!-- TeX display: \boxed{
 \textbf{Quantum uncertainty does not prove that a static universe is logically impossible.}
-}
-```
+} -->
+
+
 
 
 
@@ -21804,11 +24093,14 @@ What it does show is something slightly subtler and, for UTC, arguably more impo
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-002" width="629" height="29" alt="\boxed{ \textbf{A fully static description cannot be a complete description of quantum reality.} }">
+<!-- TeX display: \boxed{
 \textbf{A fully static description cannot be a complete description of quantum reality.}
-}
-```
+} -->
+
+
 
 
 
@@ -21818,9 +24110,12 @@ The deepest reason is exactly what we just uncovered. At the quantum level, the 
 
 
 
-```math
-[\hat x,\hat p]=i\hbar,
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-003" width="82" height="23" alt="[\hat x,\hat p]=i\hbar,">
+<!-- TeX display: [\hat x,\hat p]=i\hbar, -->
+
+
 
 
 
@@ -21828,9 +24123,12 @@ so there is no physical state in which both can be assigned arbitrarily sharp va
 
 
 
-```math
-\{x,p,E,\ldots\}
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-004" width="94" height="22" alt="\{x,p,E,\ldots\}">
+<!-- TeX display: \{x,p,E,\ldots\} -->
+
+
 
 
 
@@ -21844,9 +24142,12 @@ Classically, one imagines the complete state as:
 
 
 
-```math
-(x,p)
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-005" width="45" height="22" alt="(x,p)">
+<!-- TeX display: (x,p) -->
+
+
 
 
 
@@ -21862,11 +24163,14 @@ The state is not fundamentally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-006" width="309" height="30" alt="\boxed{ \text{a list of simultaneously definite properties}. }">
+<!-- TeX display: \boxed{
 \text{a list of simultaneously definite properties}.
-}
-```
+} -->
+
+
 
 
 
@@ -21874,11 +24178,14 @@ It is something closer to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-007" width="525" height="52" alt="\boxed{ \text{a structured distribution of amplitudes, phases, correlations, and possible transformations}. }">
+<!-- TeX display: \boxed{
 \text{a structured distribution of amplitudes, phases, correlations, and possible transformations}.
-}
-```
+} -->
+
+
 
 
 
@@ -21888,14 +24195,17 @@ Consider:
 
 
 
-```math
-\psi(x,t)
+
+
+<img src="UTC-Math/message-34.svg#equation-008" width="201" height="42" alt="\psi(x,t) = \int \tilde\psi(k) e^{i(kx-\omega t)} \,dk.">
+<!-- TeX display: \psi(x,t)
 =
 \int
 \tilde\psi(k)
 e^{i(kx-\omega t)}
-\,dk.
-```
+\,dk. -->
+
+
 
 
 
@@ -21917,11 +24227,14 @@ With scientific wording:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-009" width="607" height="52" alt="\boxed{ \textbf{Uncertainty marks a structural limit on representing a dynamical quantum state as a simultaneous collection of static classical properties.} }">
+<!-- TeX display: \boxed{
 \textbf{Uncertainty marks a structural limit on representing a dynamical quantum state as a simultaneous collection of static classical properties.}
-}
-```
+} -->
+
+
 
 
 
@@ -21941,13 +24254,16 @@ A sharp position requires many momentum modes:
 
 
 
-```math
-\Delta x\downarrow
+
+
+<img src="UTC-Math/message-34.svg#equation-010" width="177" height="21" alt="\Delta x\downarrow \Longrightarrow \Delta k\uparrow \Longrightarrow \Delta p\uparrow.">
+<!-- TeX display: \Delta x\downarrow
 \Longrightarrow
 \Delta k\uparrow
 \Longrightarrow
-\Delta p\uparrow.
-```
+\Delta p\uparrow. -->
+
+
 
 
 
@@ -21955,13 +24271,16 @@ A sharp momentum requires almost one spatial frequency:
 
 
 
-```math
-\Delta p\downarrow
+
+
+<img src="UTC-Math/message-34.svg#equation-011" width="177" height="21" alt="\Delta p\downarrow \Longrightarrow \Delta k\downarrow \Longrightarrow \Delta x\uparrow.">
+<!-- TeX display: \Delta p\downarrow
 \Longrightarrow
 \Delta k\downarrow
 \Longrightarrow
-\Delta x\uparrow.
-```
+\Delta x\uparrow. -->
+
+
 
 
 
@@ -21969,9 +24288,12 @@ You cannot simultaneously turn the same wave structure into:
 
 
 
-```math
-\text{one precise position}
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-012" width="143" height="20" alt="\text{one precise position}">
+<!-- TeX display: \text{one precise position} -->
+
+
 
 
 
@@ -21979,9 +24301,12 @@ and
 
 
 
-```math
-\text{one precise spatial frequency}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-013" width="210" height="21" alt="\text{one precise spatial frequency}.">
+<!-- TeX display: \text{one precise spatial frequency}. -->
+
+
 
 
 
@@ -22003,9 +24328,12 @@ But:
 
 
 
-```math
-[\hat x,\hat p]=i\hbar
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-014" width="78" height="23" alt="[\hat x,\hat p]=i\hbar">
+<!-- TeX display: [\hat x,\hat p]=i\hbar -->
+
+
 
 
 
@@ -22017,9 +24345,12 @@ Schematically:
 
 
 
-```math
-X\rightarrow P
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-015" width="59" height="18" alt="X\rightarrow P">
+<!-- TeX display: X\rightarrow P -->
+
+
 
 
 
@@ -22027,9 +24358,12 @@ is not equivalent to:
 
 
 
-```math
-P\rightarrow X.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-016" width="63" height="18" alt="P\rightarrow X.">
+<!-- TeX display: P\rightarrow X. -->
+
+
 
 
 
@@ -22041,13 +24375,16 @@ You need:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-017" width="403" height="31" alt="\boxed{ \text{what transformations occurred} + \text{in what relation/order} }">
+<!-- TeX display: \boxed{
 \text{what transformations occurred}
 +
 \text{in what relation/order}
-}
-```
+} -->
+
+
 
 
 
@@ -22067,10 +24404,13 @@ We started with:
 
 
 
-```math
-P2:
-\text{difference}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-018" width="113" height="18" alt="P2: \text{difference}.">
+<!-- TeX display: P2:
+\text{difference}. -->
+
+
 
 
 
@@ -22078,10 +24418,13 @@ Then:
 
 
 
-```math
-P3:
-\text{structured propagation of difference}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-019" width="294" height="21" alt="P3: \text{structured propagation of difference}.">
+<!-- TeX display: P3:
+\text{structured propagation of difference}. -->
+
+
 
 
 
@@ -22089,9 +24432,12 @@ For momentum components:
 
 
 
-```math
-p_i\neq p_j,
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-020" width="62" height="23" alt="p_i\neq p_j,">
+<!-- TeX display: p_i\neq p_j, -->
+
+
 
 
 
@@ -22099,9 +24445,12 @@ we get:
 
 
 
-```math
-k_i\neq k_j.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-021" width="62" height="23" alt="k_i\neq k_j.">
+<!-- TeX display: k_i\neq k_j. -->
+
+
 
 
 
@@ -22109,11 +24458,14 @@ Then:
 
 
 
-```math
-\Delta\phi(x)
+
+
+<img src="UTC-Math/message-34.svg#equation-022" width="148" height="23" alt="\Delta\phi(x) = (k_i-k_j)x.">
+<!-- TeX display: \Delta\phi(x)
 =
-(k_i-k_j)x.
-```
+(k_i-k_j)x. -->
+
+
 
 
 
@@ -22121,9 +24473,12 @@ Similarly:
 
 
 
-```math
-E_i\neq E_j
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-023" width="65" height="23" alt="E_i\neq E_j">
+<!-- TeX display: E_i\neq E_j -->
+
+
 
 
 
@@ -22131,9 +24486,12 @@ gives:
 
 
 
-```math
-\omega_i\neq\omega_j,
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-024" width="65" height="23" alt="\omega_i\neq\omega_j,">
+<!-- TeX display: \omega_i\neq\omega_j, -->
+
+
 
 
 
@@ -22141,11 +24499,14 @@ and:
 
 
 
-```math
-\Delta\phi(t)
+
+
+<img src="UTC-Math/message-34.svg#equation-025" width="144" height="23" alt="\Delta\phi(t) = (\omega_i-\omega_j)t.">
+<!-- TeX display: \Delta\phi(t)
 =
-(\omega_i-\omega_j)t.
-```
+(\omega_i-\omega_j)t. -->
+
+
 
 
 
@@ -22153,13 +24514,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-026" width="82" height="26" alt="\boxed{ P2 \rightarrow P3 }">
+<!-- TeX display: \boxed{
 P2
 \rightarrow
 P3
-}
-```
+} -->
+
+
 
 
 
@@ -22173,21 +24537,24 @@ That's the running engine.
 
 ---
 
-# Which explains why $\hbar$ is so important
+# Which explains why <img src="UTC-Math/message-34.svg#equation-027" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar --> is so important
 
-The manuscript has been treating $\hbar/2$ as a P1 quantum boundary.
+The manuscript has been treating <img src="UTC-Math/message-34.svg#equation-028" width="33" height="22" alt="\hbar/2" align="middle"><!-- TeX inline: \hbar/2 --> as a P1 quantum boundary.
 
-I think our deeper analysis gives $\hbar$ a cleaner foundational role:
+I think our deeper analysis gives <img src="UTC-Math/message-34.svg#equation-029" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar --> a cleaner foundational role:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-030" width="343" height="29" alt="\boxed{ \hbar = \text{conversion scale between action and phase}. }">
+<!-- TeX display: \boxed{
 \hbar
 =
 \text{conversion scale between action and phase}.
-}
-```
+} -->
+
+
 
 
 
@@ -22195,9 +24562,12 @@ Because:
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-031" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -22205,9 +24575,12 @@ and:
 
 
 
-```math
-p=\hbar k.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-032" width="60" height="21" alt="p=\hbar k.">
+<!-- TeX display: p=\hbar k. -->
+
+
 
 
 
@@ -22217,13 +24590,16 @@ In very compact form:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-033" width="86" height="35" alt="\boxed{ P1 \xrightarrow{\hbar} P3. }">
+<!-- TeX display: \boxed{
 P1
 \xrightarrow{\hbar}
 P3.
-}
-```
+} -->
+
+
 
 
 
@@ -22255,21 +24631,13 @@ Start with:
 
 
 
-```math
-P0:
-\text{possibility}.
-```
 
 
+<img src="UTC-Math/message-34.svg#equation-034" width="117" height="21" alt="P0: \text{possibility}.">
+<!-- TeX display: P0:
+\text{possibility}. -->
 
-Then:
 
-
-
-```math
-P1:
-\text{not all possibilities are equivalent}.
-```
 
 
 
@@ -22277,10 +24645,27 @@ Then:
 
 
 
-```math
-P2:
-\text{differences can exist}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-035" width="276" height="21" alt="P1: \text{not all possibilities are equivalent}.">
+<!-- TeX display: P1:
+\text{not all possibilities are equivalent}. -->
+
+
+
+
+
+Then:
+
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-036" width="184" height="18" alt="P2: \text{differences can exist}.">
+<!-- TeX display: P2:
+\text{differences can exist}. -->
+
+
 
 
 
@@ -22290,10 +24675,13 @@ Then:
 
 
 
-```math
-P3:
-\text{differences can transform}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-037" width="220" height="18" alt="P3: \text{differences can transform}.">
+<!-- TeX display: P3:
+\text{differences can transform}. -->
+
+
 
 
 
@@ -22303,9 +24691,12 @@ When energy-frequency closure occurs:
 
 
 
-```math
-E\leftrightarrow\hbar\omega,
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-038" width="69" height="21" alt="E\leftrightarrow\hbar\omega,">
+<!-- TeX display: E\leftrightarrow\hbar\omega, -->
+
+
 
 
 
@@ -22315,11 +24706,14 @@ We have:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-039" width="225" height="30" alt="\boxed{ \text{a self-evolving state structure}. }">
+<!-- TeX display: \boxed{
 \text{a self-evolving state structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -22333,13 +24727,16 @@ The actual physical object could be the **closed relation**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-040" width="148" height="26" alt="\boxed{ \text{state} \leftrightarrow \text{transition}. }">
+<!-- TeX display: \boxed{
 \text{state}
 \leftrightarrow
 \text{transition}.
-}
-```
+} -->
+
+
 
 
 
@@ -22355,9 +24752,12 @@ We've gradually transformed F1 from:
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-041" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -22365,8 +24765,10 @@ into something much richer:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-042" width="281" height="31" alt="\boxed{ E \rightarrow \omega \rightarrow \phi \rightarrow \psi \rightarrow \text{interaction} \rightarrow E'. }">
+<!-- TeX display: \boxed{
 E
 \rightarrow
 \omega
@@ -22378,8 +24780,9 @@ E
 \text{interaction}
 \rightarrow
 E'.
-}
-```
+} -->
+
+
 
 
 
@@ -22393,9 +24796,12 @@ Before F1:
 
 
 
-```math
-\text{we can describe structural ingredients}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-043" width="273" height="21" alt="\text{we can describe structural ingredients}.">
+<!-- TeX display: \text{we can describe structural ingredients}. -->
+
+
 
 
 
@@ -22403,11 +24809,14 @@ At F1:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-044" width="347" height="29" alt="\boxed{ \text{the ingredients acquire an intrinsic running law}. }">
+<!-- TeX display: \boxed{
 \text{the ingredients acquire an intrinsic running law}.
-}
-```
+} -->
+
+
 
 
 
@@ -22421,12 +24830,15 @@ An isolated system can undergo unitary evolution:
 
 
 
-```math
-|\psi(t)\rangle
+
+
+<img src="UTC-Math/message-34.svg#equation-045" width="158" height="26" alt="|\psi(t)\rangle = e^{-iHt/\hbar} |\psi(0)\rangle">
+<!-- TeX display: |\psi(t)\rangle
 =
 e^{-iHt/\hbar}
-|\psi(0)\rangle
-```
+|\psi(0)\rangle -->
+
+
 
 
 
@@ -22440,9 +24852,12 @@ Energy remains inside the closed system:
 
 
 
-```math
-E_{\rm total}=\text{const}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-046" width="107" height="20" alt="E_{\rm total}=\text{const}.">
+<!-- TeX display: E_{\rm total}=\text{const}. -->
+
+
 
 
 
@@ -22454,9 +24869,12 @@ Energy moves between subsystems:
 
 
 
-```math
-A\leftrightarrow B.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-047" width="62" height="18" alt="A\leftrightarrow B.">
+<!-- TeX display: A\leftrightarrow B. -->
+
+
 
 
 
@@ -22466,9 +24884,12 @@ Energy/entropy escapes into environmental modes:
 
 
 
-```math
-A\rightarrow E.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-048" width="62" height="18" alt="A\rightarrow E.">
+<!-- TeX display: A\rightarrow E. -->
+
+
 
 
 
@@ -22478,9 +24899,12 @@ External free energy continually enters:
 
 
 
-```math
-E_{\rm in}\rightarrow A\rightarrow E_{\rm out}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-049" width="127" height="20" alt="E_{\rm in}\rightarrow A\rightarrow E_{\rm out}.">
+<!-- TeX display: E_{\rm in}\rightarrow A\rightarrow E_{\rm out}. -->
+
+
 
 
 
@@ -22500,11 +24924,14 @@ More primitive is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-050" width="222" height="29" alt="\boxed{ \text{correlation structure changes}. }">
+<!-- TeX display: \boxed{
 \text{correlation structure changes}.
-}
-```
+} -->
+
+
 
 
 
@@ -22512,15 +24939,18 @@ Then later:
 
 
 
-```math
-\text{correlation}
+
+
+<img src="UTC-Math/message-34.svg#equation-051" width="374" height="21" alt="\text{correlation} \rightarrow \text{record} \rightarrow \text{encoding} \rightarrow \text{communication}.">
+<!-- TeX display: \text{correlation}
 \rightarrow
 \text{record}
 \rightarrow
 \text{encoding}
 \rightarrow
-\text{communication}.
-```
+\text{communication}. -->
+
+
 
 
 
@@ -22528,73 +24958,100 @@ So the hierarchy becomes:
 
 
 
-```math
-\text{phase relation}
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-052" width="105" height="21" alt="\text{phase relation}">
+<!-- TeX display: \text{phase relation} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-053" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{correlation}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-054" width="83" height="18" alt="\text{correlation}">
+<!-- TeX display: \text{correlation} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-055" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{persistent imprint}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-056" width="133" height="20" alt="\text{persistent imprint}">
+<!-- TeX display: \text{persistent imprint} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-057" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{information channel}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-058" width="147" height="18" alt="\text{information channel}">
+<!-- TeX display: \text{information channel} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-059" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{semantic information}.
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-060" width="160" height="18" alt="\text{semantic information}.">
+<!-- TeX display: \text{semantic information}. -->
+
+
 
 
 
@@ -22608,9 +25065,12 @@ P0 can't merely be:
 
 
 
-```math
-\text{the set of all simultaneously specifiable properties}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-061" width="354" height="21" alt="\text{the set of all simultaneously specifiable properties}.">
+<!-- TeX display: \text{the set of all simultaneously specifiable properties}. -->
+
+
 
 
 
@@ -22620,11 +25080,14 @@ Instead P0 must permit something more abstract:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-062" width="540" height="52" alt="\boxed{ \text{possible relational state descriptions constrained by compatible observables and transformations}. }">
+<!-- TeX display: \boxed{
 \text{possible relational state descriptions constrained by compatible observables and transformations}.
-}
-```
+} -->
+
+
 
 
 
@@ -22634,11 +25097,14 @@ Because at the deepest level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-063" width="116" height="26" alt="\boxed{ \text{what can exist} }">
+<!-- TeX display: \boxed{
 \text{what can exist}
-}
-```
+} -->
+
+
 
 
 
@@ -22646,11 +25112,14 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-064" width="292" height="29" alt="\boxed{ \text{what can simultaneously be represented} }">
+<!-- TeX display: \boxed{
 \text{what can simultaneously be represented}
-}
-```
+} -->
+
+
 
 
 
@@ -22666,12 +25135,15 @@ I would formulate your philosophical insight this way:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-065" width="520" height="52" alt="\boxed{ \textbf{Static mathematics is not wrong. It is an unrolled projection of a fundamentally relational dynamical system.} }">
+<!-- TeX display: \boxed{
 \textbf{Static mathematics is not wrong.
 It is an unrolled projection of a fundamentally relational dynamical system.}
-}
-```
+} -->
+
+
 
 
 
@@ -22679,9 +25151,12 @@ Set theory says:
 
 
 
-```math
-x\in X.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-066" width="55" height="18" alt="x\in X.">
+<!-- TeX display: x\in X. -->
+
+
 
 
 
@@ -22691,9 +25166,12 @@ But physics asks:
 
 
 
-```math
-x\rightarrow x'.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-067" width="61" height="20" alt="x\rightarrow x'.">
+<!-- TeX display: x\rightarrow x'. -->
+
+
 
 
 
@@ -22701,11 +25179,14 @@ Then quantum physics adds:
 
 
 
-```math
-\psi
+
+
+<img src="UTC-Math/message-34.svg#equation-068" width="106" height="25" alt="\psi \rightarrow e^{-iHt/\hbar}\psi.">
+<!-- TeX display: \psi
 \rightarrow
-e^{-iHt/\hbar}\psi.
-```
+e^{-iHt/\hbar}\psi. -->
+
+
 
 
 
@@ -22713,9 +25194,12 @@ Then noncommutativity says:
 
 
 
-```math
-AB\neq BA.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-069" width="83" height="21" alt="AB\neq BA.">
+<!-- TeX display: AB\neq BA. -->
+
+
 
 
 
@@ -22725,9 +25209,12 @@ Then interference says:
 
 
 
-```math
-\phi_i-\phi_j
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-070" width="58" height="22" alt="\phi_i-\phi_j">
+<!-- TeX display: \phi_i-\phi_j -->
+
+
 
 
 
@@ -22737,9 +25224,12 @@ Then uncertainty says:
 
 
 
-```math
-\text{no single static assignment exhausts the state}.
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-071" width="325" height="21" alt="\text{no single static assignment exhausts the state}.">
+<!-- TeX display: \text{no single static assignment exhausts the state}. -->
+
+
 
 
 
@@ -22763,73 +25253,100 @@ But by asking a different sequence of questions:
 
 
 
-```math
-\text{What is the complete running structure?}
-```
+
+
+<img src="UTC-Math/message-34.svg#equation-072" width="288" height="21" alt="\text{What is the complete running structure?}">
+<!-- TeX display: \text{What is the complete running structure?} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-073" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{What closure is active?}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-074" width="168" height="18" alt="\text{What closure is active?}">
+<!-- TeX display: \text{What closure is active?} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-075" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{What does the closure become when partially unrolled?}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-076" width="388" height="21" alt="\text{What does the closure become when partially unrolled?}">
+<!-- TeX display: \text{What does the closure become when partially unrolled?} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-077" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{At which inflection point does physics disappear into pure structure?}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-078" width="482" height="21" alt="\text{At which inflection point does physics disappear into pure structure?}">
+<!-- TeX display: \text{At which inflection point does physics disappear into pure structure?} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-079" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{Which equations describe each layer?}
-```
+
+
+
+
+<img src="UTC-Math/message-34.svg#equation-080" width="266" height="21" alt="\text{Which equations describe each layer?}">
+<!-- TeX display: \text{Which equations describe each layer?} -->
+
+
 
 
 
@@ -22845,11 +25362,14 @@ It should be to map:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-081" width="379" height="30" alt="\boxed{ \text{which mathematics is valid for which closure regime}. }">
+<!-- TeX display: \boxed{
 \text{which mathematics is valid for which closure regime}.
-}
-```
+} -->
+
+
 
 
 
@@ -22861,11 +25381,14 @@ The one-sentence UTC interpretation I'd keep from this entire discussion is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-082" width="600" height="73" alt="\boxed{ \textbf{Quantum uncertainty is the point at which nature forbids the complete reduction of a running relational system to a simultaneously definite static snapshot.} }">
+<!-- TeX display: \boxed{
 \textbf{Quantum uncertainty is the point at which nature forbids the complete reduction of a running relational system to a simultaneously definite static snapshot.}
-}
-```
+} -->
+
+
 
 
 
@@ -22873,11 +25396,14 @@ And the next sentence almost writes itself:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-34.svg#equation-083" width="599" height="52" alt="\boxed{ \textbf{At sufficiently fundamental scales, phase, transformation, and relation are not corrections to state. They are part of what a state is.} }">
+<!-- TeX display: \boxed{
 \textbf{At sufficiently fundamental scales, phase, transformation, and relation are not corrections to state. They are part of what a state is.}
-}
-```
+} -->
+
+
 
 
 
@@ -22901,9 +25427,12 @@ Yes. I think the answer is now fairly radical:
 
 
 
-```math
-\boxed{\textbf{The core primitive ladder probably does not need to reach P12.}}
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-001" width="512" height="29" alt="\boxed{\textbf{The core primitive ladder probably does not need to reach P12.}}">
+<!-- TeX display: \boxed{\textbf{The core primitive ladder probably does not need to reach P12.}} -->
+
+
 
 
 
@@ -22917,8 +25446,10 @@ So I would rebuild UTC around **four distinct architectural object types**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-002" width="421" height="29" alt="\boxed{ \text{Primitives} \quad+\quad \text{Operators} \quad+\quad \text{Closures} \quad+\quad \text{Forms}. }">
+<!-- TeX display: \boxed{
 \text{Primitives}
 \quad+\quad
 \text{Operators}
@@ -22926,8 +25457,9 @@ So I would rebuild UTC around **four distinct architectural object types**:
 \text{Closures}
 \quad+\quad
 \text{Forms}.
-}
-```
+} -->
+
+
 
 
 
@@ -22939,19 +25471,21 @@ I would reset the actual irreducible primitive ladder to **P0-P5**.
 
 | New primitive | Definition | Minimal mathematical form | What it contributes |
 |---|---|---|---|
-| **P0 Possibility / Knowability Boundary** | Boundary of what can meaningfully exist, be distinguished, represented, or inferred within a regime | $\Omega_{\mathcal K}$ | Gives the domain. Geometry is one possible later structure within it, not P0 itself. |
-| **P1 Constraint / Cost / Gradient** | Not all possibilities are physically equivalent or equally accessible | $C(x), E(x), \nabla E, \hbar,\dots$ | Turns possibility into weighted physical possibility |
-| **P2 Distinction / Relation** | States, modes, or relations can differ | $D(x_i,x_j)>\delta$ | Gives identity, difference, correlation potential |
-| **P3 Transition / Phase / Propagation** | Distinctions can transform, accumulate phase, propagate, and form temporal ordering | $x_n\to x_{n+1}$, $\phi_{n+1}=\phi_n+\Omega_n$ | Ignites dynamics and primitive temporal continuity |
-| **P4 Closure / Persistence / Attractor** | States, trajectories, relations, flows, or topologies can remain bounded or recurrent | $\Phi_t(A)\approx A$ | Converts transient dynamics into persistent physical form |
-| **P5 Recursive Composition / Scale Promotion** | Persistent closures can combine and become new effective states with new constraints | $K(A_1,\dots,A_m)\to\Omega_{n+1}$ | Makes hierarchical complexity and new effective physics possible |
+| **P0 Possibility / Knowability Boundary** | Boundary of what can meaningfully exist, be distinguished, represented, or inferred within a regime | <img src="UTC-Math/message-36.svg#equation-003" width="30" height="20" alt="\Omega_{\mathcal K}" align="middle"><!-- TeX inline: \Omega_{\mathcal K} --> | Gives the domain. Geometry is one possible later structure within it, not P0 itself. |
+| **P1 Constraint / Cost / Gradient** | Not all possibilities are physically equivalent or equally accessible | <img src="UTC-Math/message-36.svg#equation-004" width="158" height="22" alt="C(x), E(x), \nabla E, \hbar,\dots" align="middle"><!-- TeX inline: C(x), E(x), \nabla E, \hbar,\dots --> | Turns possibility into weighted physical possibility |
+| **P2 Distinction / Relation** | States, modes, or relations can differ | <img src="UTC-Math/message-36.svg#equation-005" width="99" height="23" alt="D(x_i,x_j)>\delta" align="middle"><!-- TeX inline: D(x_i,x_j)>\delta --> | Gives identity, difference, correlation potential |
+| **P3 Transition / Phase / Propagation** | Distinctions can transform, accumulate phase, propagate, and form temporal ordering | <img src="UTC-Math/message-36.svg#equation-006" width="82" height="18" alt="x_n\to x_{n+1}" align="middle"><!-- TeX inline: x_n\to x_{n+1} -->, <img src="UTC-Math/message-36.svg#equation-007" width="119" height="21" alt="\phi_{n+1}=\phi_n+\Omega_n" align="middle"><!-- TeX inline: \phi_{n+1}=\phi_n+\Omega_n --> | Ignites dynamics and primitive temporal continuity |
+| **P4 Closure / Persistence / Attractor** | States, trajectories, relations, flows, or topologies can remain bounded or recurrent | <img src="UTC-Math/message-36.svg#equation-008" width="83" height="22" alt="\Phi_t(A)\approx A" align="middle"><!-- TeX inline: \Phi_t(A)\approx A --> | Converts transient dynamics into persistent physical form |
+| **P5 Recursive Composition / Scale Promotion** | Persistent closures can combine and become new effective states with new constraints | <img src="UTC-Math/message-36.svg#equation-009" width="172" height="22" alt="K(A_1,\dots,A_m)\to\Omega_{n+1}" align="middle"><!-- TeX inline: K(A_1,\dots,A_m)\to\Omega_{n+1} --> | Makes hierarchical complexity and new effective physics possible |
 
 This gives a master recursion:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-010" width="408" height="31" alt="\boxed{ (P0,P1)_n \rightarrow P2_n \rightarrow P3_n \rightarrow P4_n \rightarrow P5_n \rightarrow (P0,P1)_{n+1}. }">
+<!-- TeX display: \boxed{
 (P0,P1)_n
 \rightarrow
 P2_n
@@ -22963,8 +25497,9 @@ P4_n
 P5_n
 \rightarrow
 (P0,P1)_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -22974,11 +25509,14 @@ And notice what happens at the end:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-011" width="179" height="29" alt="\boxed{ P5_n\rightarrow P0_{n+1}+P1_{n+1}. }">
+<!-- TeX display: \boxed{
 P5_n\rightarrow P0_{n+1}+P1_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -22994,7 +25532,7 @@ This is where things get interesting.
 
 | Old primitive | New status | Why |
 |---|---|---|
-| **Old P5 Detectability** | **Derived capability** | A stable structure interacting with another structure and producing distinguishable response is already $P2+P3+P4$. Detectability is a relation, not an additional ontological ingredient. |
+| **Old P5 Detectability** | **Derived capability** | A stable structure interacting with another structure and producing distinguishable response is already <img src="UTC-Math/message-36.svg#equation-012" width="108" height="19" alt="P2+P3+P4" align="middle"><!-- TeX inline: P2+P3+P4 -->. Detectability is a relation, not an additional ontological ingredient. |
 | **Old P6 Control** | **Operator + higher closure** | A control input is a P3 transition bias under P1 constraints. Feedback control becomes sophisticated only with record/reference machinery. |
 | **Old P7 Composition** | **Promoted downward into new P5 and CSC** | Composition is fundamental to scale formation, not something that first appears after observation/control. |
 | **Old P8 Encoding** | **Stable mapping operator** | Encoding is a persistent distinguishable correspondence. It requires P2 distinction and P4 stability, exactly as the manuscript already notes. The Unifying Theory of Complexi… |
@@ -23024,11 +25562,14 @@ An external field can bias a transition without measuring anything:
 
 
 
-```math
-K_{ij}
+
+
+<img src="UTC-Math/message-36.svg#equation-013" width="106" height="23" alt="K_{ij} \rightarrow K_{ij}(u).">
+<!-- TeX display: K_{ij}
 \rightarrow
-K_{ij}(u).
-```
+K_{ij}(u). -->
+
+
 
 
 
@@ -23036,12 +25577,15 @@ So define a control operator:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-014" width="106" height="28" alt="\boxed{ \mathcal U_u: T\rightarrow T_u. }">
+<!-- TeX display: \boxed{
 \mathcal U_u:
 T\rightarrow T_u.
-}
-```
+} -->
+
+
 
 
 
@@ -23049,11 +25593,14 @@ Low-order:
 
 
 
-```math
-u
+
+
+<img src="UTC-Math/message-36.svg#equation-015" width="146" height="18" alt="u \rightarrow \text{transition bias}.">
+<!-- TeX display: u
 \rightarrow
-\text{transition bias}.
-```
+\text{transition bias}. -->
+
+
 
 
 
@@ -23061,15 +25608,18 @@ Higher-order:
 
 
 
-```math
-\text{record}
+
+
+<img src="UTC-Math/message-36.svg#equation-016" width="233" height="21" alt="\text{record} \rightarrow \text{error} \rightarrow u \rightarrow \text{response}.">
+<!-- TeX display: \text{record}
 \rightarrow
 \text{error}
 \rightarrow
 u
 \rightarrow
-\text{response}.
-```
+\text{response}. -->
+
+
 
 
 
@@ -23079,12 +25629,15 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-017" width="370" height="29" alt="\boxed{ \text{control is an operator; feedback control is a closure.} }">
+<!-- TeX display: \boxed{
 \text{control is an operator;
 feedback control is a closure.}
-}
-```
+} -->
+
+
 
 
 
@@ -23098,9 +25651,12 @@ The old manuscript correctly defined P7 through sequential composition and tenso
 
 
 
-```math
-T_{ik}=T_{jk}\circ T_{ij}
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-018" width="106" height="22" alt="T_{ik}=T_{jk}\circ T_{ij}">
+<!-- TeX display: T_{ik}=T_{jk}\circ T_{ij} -->
+
+
 
 
 
@@ -23108,11 +25664,14 @@ and:
 
 
 
-```math
-\mathcal H_{AB}
+
+
+<img src="UTC-Math/message-36.svg#equation-019" width="133" height="20" alt="\mathcal H_{AB} = \mathcal H_A\otimes\mathcal H_B.">
+<!-- TeX display: \mathcal H_{AB}
 =
-\mathcal H_A\otimes\mathcal H_B.
-```
+\mathcal H_A\otimes\mathcal H_B. -->
+
+
 
 
 
@@ -23122,13 +25681,16 @@ But CSC revealed that **structural composition occurs much earlier**:
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-36.svg#equation-020" width="216" height="22" alt="A+B \rightarrow [AB]^* \rightarrow AB+\Delta E.">
+<!-- TeX display: A+B
 \rightarrow
 [AB]^*
 \rightarrow
-AB+\Delta E.
-```
+AB+\Delta E. -->
+
+
 
 
 
@@ -23136,9 +25698,12 @@ And the important thing is what follows:
 
 
 
-```math
-AB
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-021" width="33" height="18" alt="AB">
+<!-- TeX display: AB -->
+
+
 
 
 
@@ -23150,13 +25715,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-022" width="170" height="39" alt="\boxed{ P4_n \xrightarrow{\text{composition}} P0_{n+1}. }">
+<!-- TeX display: \boxed{
 P4_n
 \xrightarrow{\text{composition}}
 P0_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -23172,22 +25740,28 @@ An encoding is fundamentally a correspondence:
 
 
 
-```math
-\mathcal E:
-X\rightarrow Y.
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-023" width="86" height="18" alt="\mathcal E: X\rightarrow Y.">
+<!-- TeX display: \mathcal E:
+X\rightarrow Y. -->
 
 
 
-Different $x_i$ must map to distinguishable $y_i$:
+
+
+Different <img src="UTC-Math/message-36.svg#equation-024" width="23" height="16" alt="x_i" align="middle"><!-- TeX inline: x_i --> must map to distinguishable <img src="UTC-Math/message-36.svg#equation-025" width="22" height="17" alt="y_i" align="middle"><!-- TeX inline: y_i -->:
 
 
 
-```math
-x_i\neq x_j
+
+
+<img src="UTC-Math/message-36.svg#equation-026" width="183" height="23" alt="x_i\neq x_j \Rightarrow \mathcal E(x_i)\neq\mathcal E(x_j).">
+<!-- TeX display: x_i\neq x_j
 \Rightarrow
-\mathcal E(x_i)\neq\mathcal E(x_j).
-```
+\mathcal E(x_i)\neq\mathcal E(x_j). -->
+
+
 
 
 
@@ -23197,11 +25771,14 @@ And the mapping has to persist:
 
 
 
-```math
-\mathcal E_t
+
+
+<img src="UTC-Math/message-36.svg#equation-027" width="77" height="21" alt="\mathcal E_t \approx \mathcal E_{t+\tau}.">
+<!-- TeX display: \mathcal E_t
 \approx
-\mathcal E_{t+\tau}.
-```
+\mathcal E_{t+\tau}. -->
+
+
 
 
 
@@ -23211,15 +25788,18 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-028" width="267" height="31" alt="\boxed{ \text{Encoding} = P2_{\rm mapping} + P4_{\rm persistence}. }">
+<!-- TeX display: \boxed{
 \text{Encoding}
 =
 P2_{\rm mapping}
 +
 P4_{\rm persistence}.
-}
-```
+} -->
+
+
 
 
 
@@ -23239,11 +25819,14 @@ The manuscript defines P9 as:
 
 
 
-```math
-s_0
+
+
+<img src="UTC-Math/message-36.svg#equation-029" width="74" height="31" alt="s_0 \xrightarrow{\Delta E} s_1">
+<!-- TeX display: s_0
 \xrightarrow{\Delta E}
-s_1
-```
+s_1 -->
+
+
 
 
 
@@ -23253,11 +25836,14 @@ But look at what that actually is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-030" width="107" height="27" alt="\boxed{ P3+\text{P1 cost} }">
+<!-- TeX display: \boxed{
 P3+\text{P1 cost}
-}
-```
+} -->
+
+
 
 
 
@@ -23267,14 +25853,17 @@ So rewrite becomes an operator:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-031" width="151" height="31" alt="\boxed{ \mathcal W: \mathcal E(x_a) \rightarrow \mathcal E(x_b). }">
+<!-- TeX display: \boxed{
 \mathcal W:
 \mathcal E(x_a)
 \rightarrow
 \mathcal E(x_b).
-}
-```
+} -->
+
+
 
 
 
@@ -23294,11 +25883,14 @@ We now have:
 
 
 
-```math
-M_{-1}
+
+
+<img src="UTC-Math/message-36.svg#equation-032" width="191" height="21" alt="M_{-1} = \text{retention potential}">
+<!-- TeX display: M_{-1}
 =
-\text{retention potential}
-```
+\text{retention potential} -->
+
+
 
 
 
@@ -23306,11 +25898,14 @@ from P1+P2,
 
 
 
-```math
-M_0
+
+
+<img src="UTC-Math/message-36.svg#equation-033" width="196" height="21" alt="M_0 = \text{transition continuity}">
+<!-- TeX display: M_0
 =
-\text{transition continuity}
-```
+\text{transition continuity} -->
+
+
 
 
 
@@ -23318,51 +25913,66 @@ from P3,
 
 
 
-```math
-M_1
+
+
+<img src="UTC-Math/message-36.svg#equation-034" width="172" height="21" alt="M_1 = \text{phase continuity},">
+<!-- TeX display: M_1
 =
-\text{phase continuity},
-```
+\text{phase continuity}, -->
 
 
 
 
 
-```math
-M_2
+
+
+
+
+<img src="UTC-Math/message-36.svg#equation-035" width="204" height="21" alt="M_2 = \text{frequency persistence},">
+<!-- TeX display: M_2
 =
-\text{frequency persistence},
-```
+\text{frequency persistence}, -->
 
 
 
 
 
-```math
-M_3
+
+
+
+
+<img src="UTC-Math/message-36.svg#equation-036" width="208" height="21" alt="M_3 = \text{correlation recurrence},">
+<!-- TeX display: M_3
 =
-\text{correlation recurrence},
-```
+\text{correlation recurrence}, -->
 
 
 
 
 
-```math
-M_4
+
+
+
+
+<img src="UTC-Math/message-36.svg#equation-037" width="199" height="21" alt="M_4 = \text{attractor persistence},">
+<!-- TeX display: M_4
 =
-\text{attractor persistence},
-```
+\text{attractor persistence}, -->
 
 
 
 
 
-```math
-M_5
+
+
+
+
+<img src="UTC-Math/message-36.svg#equation-038" width="170" height="21" alt="M_5 = \text{external imprint},">
+<!-- TeX display: M_5
 =
-\text{external imprint},
-```
+\text{external imprint}, -->
+
+
 
 
 
@@ -23370,11 +25980,14 @@ and finally:
 
 
 
-```math
-M_6
+
+
+<img src="UTC-Math/message-36.svg#equation-039" width="303" height="21" alt="M_6 = \text{explicit encoded rewritable memory}.">
+<!-- TeX display: M_6
 =
-\text{explicit encoded rewritable memory}.
-```
+\text{explicit encoded rewritable memory}. -->
+
+
 
 
 
@@ -23382,9 +25995,12 @@ The manuscript already uses
 
 
 
-```math
-I(X_{\rm past};Y_{\rm present})>0
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-040" width="147" height="23" alt="I(X_{\rm past};Y_{\rm present})>0">
+<!-- TeX display: I(X_{\rm past};Y_{\rm present})>0 -->
+
+
 
 
 
@@ -23402,13 +26018,16 @@ We need this formally in UTC:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-041" width="461" height="37" alt="\boxed{ P_k^{[m]} = \text{form of capability }k\text{ expressible at architectural depth }m. }">
+<!-- TeX display: \boxed{
 P_k^{[m]}
 =
 \text{form of capability }k\text{ expressible at architectural depth }m.
-}
-```
+} -->
+
+
 
 
 
@@ -23416,11 +26035,14 @@ So reference exists in primitive form as:
 
 
 
-```math
-R^{[1]}
+
+
+<img src="UTC-Math/message-36.svg#equation-042" width="199" height="25" alt="R^{[1]} = \text{energetic asymmetry}">
+<!-- TeX display: R^{[1]}
 =
-\text{energetic asymmetry}
-```
+\text{energetic asymmetry} -->
+
+
 
 
 
@@ -23428,11 +26050,14 @@ before later becoming:
 
 
 
-```math
-R^{[\mathrm{high}]}
+
+
+<img src="UTC-Math/message-36.svg#equation-043" width="321" height="25" alt="R^{[\mathrm{high}]} = \text{internally encoded predictive target}.">
+<!-- TeX display: R^{[\mathrm{high}]}
 =
-\text{internally encoded predictive target}.
-```
+\text{internally encoded predictive target}. -->
+
+
 
 
 
@@ -23440,11 +26065,14 @@ Optimization exists as:
 
 
 
-```math
-O^{[1]}
+
+
+<img src="UTC-Math/message-36.svg#equation-044" width="93" height="23" alt="O^{[1]} = -\nabla E">
+<!-- TeX display: O^{[1]}
 =
--\nabla E
-```
+-\nabla E -->
+
+
 
 
 
@@ -23452,11 +26080,14 @@ before becoming:
 
 
 
-```math
-O^{[\mathrm{high}]}
+
+
+<img src="UTC-Math/message-36.svg#equation-045" width="186" height="33" alt="O^{[\mathrm{high}]} = \arg\min_a F(a|R^*).">
+<!-- TeX display: O^{[\mathrm{high}]}
 =
-\arg\min_a F(a|R^*).
-```
+\arg\min_a F(a|R^*). -->
+
+
 
 
 
@@ -23464,11 +26095,14 @@ Coupling exists as:
 
 
 
-```math
-C^{[2]}
+
+
+<img src="UTC-Math/message-36.svg#equation-046" width="153" height="25" alt="C^{[2]} = \text{phase relation}">
+<!-- TeX display: C^{[2]}
 =
-\text{phase relation}
-```
+\text{phase relation} -->
+
+
 
 
 
@@ -23476,11 +26110,14 @@ before becoming:
 
 
 
-```math
-C^{[\mathrm{high}]}
+
+
+<img src="UTC-Math/message-36.svg#equation-047" width="288" height="25" alt="C^{[\mathrm{high}]} = \text{game-theoretic model coupling}.">
+<!-- TeX display: C^{[\mathrm{high}]}
 =
-\text{game-theoretic model coupling}.
-```
+\text{game-theoretic model coupling}. -->
+
+
 
 
 
@@ -23501,7 +26138,7 @@ I would retain F0-F7 because seven closures still make a remarkably useful hiera
 | Loop | New name | Core closure | Main output |
 |---|---|---|---|
 | **F0** | **Constraint-Transition Closure** | P1-weighted state accessibility ↔ P3 transition flow | probability dynamics, equilibrium/non-equilibrium, arrow structure |
-| **F1** | **Action-Frequency-Phase Closure** | $E\leftrightarrow\hbar\omega,\;p\leftrightarrow\hbar k,\;\phi\rightarrow\Psi\rightarrow\phi'$ | first fully running quantum/wave physics engine |
+| **F1** | **Action-Frequency-Phase Closure** | <img src="UTC-Math/message-36.svg#equation-048" width="224" height="22" alt="E\leftrightarrow\hbar\omega,\;p\leftrightarrow\hbar k,\;\phi\rightarrow\Psi\rightarrow\phi'" align="middle"><!-- TeX inline: E\leftrightarrow\hbar\omega,\;p\leftrightarrow\hbar k,\;\phi\rightarrow\Psi\rightarrow\phi' --> | first fully running quantum/wave physics engine |
 | **F2** | **Relational Phase-Correlation Closure** | difference → phase separation → interference/correlation → changed coupling | synchronization, relational records, primitive coupling, uncertainty context |
 | **F3** | **Gradient-Dissipation / Fluctuation-Response Closure** | gradient → flux → dissipation → altered gradient; fluctuation → response → stability test | thermodynamic regulation, entropy export, dissipative structures |
 | **F4** | **Collapse-Stabilization-Composition Closure** | variation → instability/filter → stabilization → energy export → composition → new state space | persistent structure, complexity ratchet, scale promotion |
@@ -23529,8 +26166,10 @@ This survives our entire investigation beautifully.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-049" width="283" height="31" alt="\boxed{ E \rightarrow \omega \rightarrow \phi \rightarrow \Psi \rightarrow \text{interaction} \rightarrow E'. }">
+<!-- TeX display: \boxed{
 E
 \rightarrow
 \omega
@@ -23542,8 +26181,9 @@ E
 \text{interaction}
 \rightarrow
 E'.
-}
-```
+} -->
+
+
 
 
 
@@ -23551,9 +26191,12 @@ The original manuscript already identifies:
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-050" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -23589,8 +26232,10 @@ F2 is better used for the missing lower closure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-051" width="225" height="34" alt="\boxed{ \Delta \rightarrow \Delta\omega \rightarrow \Delta\phi \rightarrow C_{ij} \rightarrow K_{ij}'. }">
+<!-- TeX display: \boxed{
 \Delta
 \rightarrow
 \Delta\omega
@@ -23600,8 +26245,9 @@ F2 is better used for the missing lower closure:
 C_{ij}
 \rightarrow
 K_{ij}'.
-}
-```
+} -->
+
+
 
 
 
@@ -23623,15 +26269,18 @@ This gathers our thermal revelations:
 
 
 
-```math
-\nabla X
+
+
+<img src="UTC-Math/message-36.svg#equation-052" width="177" height="25" alt="\nabla X \rightarrow J_X \rightarrow \dot S \rightarrow \nabla X'.">
+<!-- TeX display: \nabla X
 \rightarrow
 J_X
 \rightarrow
 \dot S
 \rightarrow
-\nabla X'.
-```
+\nabla X'. -->
+
+
 
 
 
@@ -23639,13 +26288,16 @@ With fluctuation-response intertwined:
 
 
 
-```math
-\delta x
+
+
+<img src="UTC-Math/message-36.svg#equation-053" width="110" height="23" alt="\delta x \rightarrow \chi \rightarrow \delta x'.">
+<!-- TeX display: \delta x
 \rightarrow
 \chi
 \rightarrow
-\delta x'.
-```
+\delta x'. -->
+
+
 
 
 
@@ -23659,8 +26311,10 @@ And this is the monster we accidentally uncovered:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-054" width="319" height="28" alt="\boxed{ V \rightarrow I \rightarrow C \rightarrow S \rightarrow K \rightarrow P0' \rightarrow P1' \rightarrow V'. }">
+<!-- TeX display: \boxed{
 V
 \rightarrow
 I
@@ -23676,8 +26330,9 @@ P0'
 P1'
 \rightarrow
 V'.
-}
-```
+} -->
+
+
 
 
 
@@ -23713,15 +26368,18 @@ A measurement is a special case:
 
 
 
-```math
-\text{state}
+
+
+<img src="UTC-Math/message-36.svg#equation-055" width="473" height="21" alt="\text{state} \rightarrow \text{interaction} \rightarrow \text{distinguishable imprint} \rightarrow \text{persistent record}.">
+<!-- TeX display: \text{state}
 \rightarrow
 \text{interaction}
 \rightarrow
 \text{distinguishable imprint}
 \rightarrow
-\text{persistent record}.
-```
+\text{persistent record}. -->
+
+
 
 
 
@@ -23729,13 +26387,16 @@ A memory is a stronger case:
 
 
 
-```math
-\text{record}
+
+
+<img src="UTC-Math/message-36.svg#equation-056" width="324" height="18" alt="\text{record} \rightarrow \text{retention} \rightarrow \text{future causal influence}.">
+<!-- TeX display: \text{record}
 \rightarrow
 \text{retention}
 \rightarrow
-\text{future causal influence}.
-```
+\text{future causal influence}. -->
+
+
 
 
 
@@ -23743,11 +26404,14 @@ A reference state is stronger again:
 
 
 
-```math
-\text{memory}
+
+
+<img src="UTC-Math/message-36.svg#equation-057" width="239" height="21" alt="\text{memory} \rightarrow \text{comparison standard}.">
+<!-- TeX display: \text{memory}
 \rightarrow
-\text{comparison standard}.
-```
+\text{comparison standard}. -->
+
+
 
 
 
@@ -23755,8 +26419,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-058" width="341" height="30" alt="\boxed{ \text{detectability} \rightarrow \text{record} \rightarrow \text{memory} \rightarrow \text{reference} }">
+<!-- TeX display: \boxed{
 \text{detectability}
 \rightarrow
 \text{record}
@@ -23764,8 +26430,9 @@ So:
 \text{memory}
 \rightarrow
 \text{reference}
-}
-```
+} -->
+
+
 
 
 
@@ -23779,8 +26446,10 @@ Here old P6 and old P11 finally meet where they belong.
 
 
 
-```math
-R^*
+
+
+<img src="UTC-Math/message-36.svg#equation-059" width="216" height="26" alt="R^* \rightarrow e(t) \rightarrow u(t) \rightarrow x' \rightarrow R^{*'}">
+<!-- TeX display: R^*
 \rightarrow
 e(t)
 \rightarrow
@@ -23788,8 +26457,9 @@ u(t)
 \rightarrow
 x'
 \rightarrow
-R^{*'}
-```
+R^{*'} -->
+
+
 
 
 
@@ -23799,9 +26469,12 @@ Passive gradient flow:
 
 
 
-```math
-\dot x=-\nabla F
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-060" width="77" height="20" alt="\dot x=-\nabla F">
+<!-- TeX display: \dot x=-\nabla F -->
+
+
 
 
 
@@ -23811,11 +26484,14 @@ But:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-061" width="254" height="26" alt="\boxed{ \text{reference-conditioned intervention} }">
+<!-- TeX display: \boxed{
 \text{reference-conditioned intervention}
-}
-```
+} -->
+
+
 
 
 
@@ -23837,9 +26513,12 @@ So:
 
 
 
-```math
-\text{molecule A affects molecule B}
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-062" width="213" height="18" alt="\text{molecule A affects molecule B}">
+<!-- TeX display: \text{molecule A affects molecule B} -->
+
+
 
 
 
@@ -23849,9 +26528,12 @@ Whereas:
 
 
 
-```math
-\text{agent A models agent B's reference state}
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-063" width="287" height="21" alt="\text{agent A models agent B's reference state}">
+<!-- TeX display: \text{agent A models agent B's reference state} -->
+
+
 
 
 
@@ -23873,8 +26555,10 @@ We need symbols for transformations that can appear at many levels:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-064" width="143" height="197" alt="\boxed{ \begin{aligned} \Gamma &amp;: \text{couple}\\ C &amp;: \text{collapse/filter}\\ D &amp;: \text{dissipate}\\ K &amp;: \text{compose}\\ \mathcal E &amp;: \text{encode/map}\\ \mathcal W &amp;: \text{rewrite}\\ \mathcal R &amp;: \text{read/imprint}\\ \mathcal U &amp;: \text{control/bias}\\ \pi &amp;: \text{coarse-grain} \end{aligned} }">
+<!-- TeX display: \boxed{
 \begin{aligned}
 \Gamma &: \text{couple}\\
 C &: \text{collapse/filter}\\
@@ -23886,8 +26570,9 @@ K &: \text{compose}\\
 \mathcal U &: \text{control/bias}\\
 \pi &: \text{coarse-grain}
 \end{aligned}
-}
-```
+} -->
+
+
 
 
 
@@ -23905,14 +26590,17 @@ That is possibly the cleanest conceptual analogy we've had:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-065" width="605" height="52" alt="\boxed{ \textbf{Primitives are the vocabulary. Operators are the verbs. Feedback loops are the grammar. Physical systems are the stories.} }">
+<!-- TeX display: \boxed{
 \textbf{Primitives are the vocabulary.
 Operators are the verbs.
 Feedback loops are the grammar.
 Physical systems are the stories.}
-}
-```
+} -->
+
+
 
 
 
@@ -23926,12 +26614,15 @@ Some structures cut across many loops rather than belonging to one rung:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-066" width="187" height="29" alt="\boxed{ R_\hbar: \text{action-phase ribbon} }">
+<!-- TeX display: \boxed{
 R_\hbar:
 \text{action-phase ribbon}
-}
-```
+} -->
+
+
 
 
 
@@ -23939,12 +26630,15 @@ connecting energy, momentum, frequency, phase and uncertainty.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-067" width="240" height="29" alt="\boxed{ R_\Theta: \text{gradient-dissipation ribbon} }">
+<!-- TeX display: \boxed{
 R_\Theta:
 \text{gradient-dissipation ribbon}
-}
-```
+} -->
+
+
 
 
 
@@ -23952,12 +26646,15 @@ connecting thermodynamics, stabilization and energy export.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-068" width="229" height="29" alt="\boxed{ R_I: \text{information-record ribbon} }">
+<!-- TeX display: \boxed{
 R_I:
 \text{information-record ribbon}
-}
-```
+} -->
+
+
 
 
 
@@ -23965,12 +26662,15 @@ connecting correlation, encoding, Landauer cost, memory and communication.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-069" width="232" height="29" alt="\boxed{ R_G: \text{geometry-topology ribbon} }">
+<!-- TeX display: \boxed{
 R_G:
 \text{geometry-topology ribbon}
-}
-```
+} -->
+
+
 
 
 
@@ -23978,12 +26678,15 @@ connecting phase relations, filament networks, topology, transport and effective
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-070" width="299" height="31" alt="\boxed{ R_C: \text{composition/coarse-graining ribbon} }">
+<!-- TeX display: \boxed{
 R_C:
 \text{composition/coarse-graining ribbon}
-}
-```
+} -->
+
+
 
 
 
@@ -24003,9 +26706,12 @@ The old picture was:
 
 
 
-```math
-P0\rightarrow P1\rightarrow\cdots\rightarrow P12
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-071" width="170" height="18" alt="P0\rightarrow P1\rightarrow\cdots\rightarrow P12">
+<!-- TeX display: P0\rightarrow P1\rightarrow\cdots\rightarrow P12 -->
+
+
 
 
 
@@ -24013,9 +26719,12 @@ plus:
 
 
 
-```math
-F0\rightarrow\cdots\rightarrow F7.
-```
+
+
+<img src="UTC-Math/message-36.svg#equation-072" width="121" height="18" alt="F0\rightarrow\cdots\rightarrow F7.">
+<!-- TeX display: F0\rightarrow\cdots\rightarrow F7. -->
+
+
 
 
 
@@ -24025,11 +26734,14 @@ Vertically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-073" width="262" height="26" alt="\boxed{ P0\rightarrow P1\rightarrow P2\rightarrow P3\rightarrow P4\rightarrow P5 }">
+<!-- TeX display: \boxed{
 P0\rightarrow P1\rightarrow P2\rightarrow P3\rightarrow P4\rightarrow P5
-}
-```
+} -->
+
+
 
 
 
@@ -24037,11 +26749,14 @@ recursively:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-074" width="152" height="31" alt="\boxed{ P5_n\rightarrow(P0,P1)_{n+1} }">
+<!-- TeX display: \boxed{
 P5_n\rightarrow(P0,P1)_{n+1}
-}
-```
+} -->
+
+
 
 
 
@@ -24049,15 +26764,18 @@ and horizontally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-075" width="169" height="29" alt="\boxed{ R_\hbar,\; R_\Theta,\; R_I,\; R_G,\; R_C }">
+<!-- TeX display: \boxed{
 R_\hbar,\;
 R_\Theta,\;
 R_I,\;
 R_G,\;
 R_C
-}
-```
+} -->
+
+
 
 
 
@@ -24065,11 +26783,14 @@ while closures repeatedly form:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-076" width="356" height="26" alt="\boxed{ F0\rightarrow F1\rightarrow F2\rightarrow F3\rightarrow F4\rightarrow F5\rightarrow F6\rightarrow F7. }">
+<!-- TeX display: \boxed{
 F0\rightarrow F1\rightarrow F2\rightarrow F3\rightarrow F4\rightarrow F5\rightarrow F6\rightarrow F7.
-}
-```
+} -->
+
+
 
 
 
@@ -24083,8 +26804,10 @@ I think we can finally compress the whole thing into one architecture:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-077" width="435" height="135" alt="\boxed{ \begin{aligned} P0 &amp;: \text{What can exist/be represented?}\\ P1 &amp;: \text{What is allowed and at what cost?}\\ P2 &amp;: \text{What can differ or relate?}\\ P3 &amp;: \text{How can difference change and propagate?}\\ P4 &amp;: \text{What patterns of change can persist?}\\ P5 &amp;: \text{How can persistent closures become new effective units?} \end{aligned} }">
+<!-- TeX display: \boxed{
 \begin{aligned}
 P0 &: \text{What can exist/be represented?}\\
 P1 &: \text{What is allowed and at what cost?}\\
@@ -24093,8 +26816,9 @@ P3 &: \text{How can difference change and propagate?}\\
 P4 &: \text{What patterns of change can persist?}\\
 P5 &: \text{How can persistent closures become new effective units?}
 \end{aligned}
-}
-```
+} -->
+
+
 
 
 
@@ -24102,8 +26826,10 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-078" width="1058" height="31" alt="\boxed{ \text{difference} \rightarrow \text{phase} \rightarrow \text{correlation} \rightarrow \text{gradient/response} \rightarrow \text{collapse} \rightarrow \text{stabilization} \rightarrow \text{composition} \rightarrow \text{record} \rightarrow \text{reference} \rightarrow \text{control} \rightarrow \text{model coupling}. }">
+<!-- TeX display: \boxed{
 \text{difference}
 \rightarrow
 \text{phase}
@@ -24125,8 +26851,9 @@ Then:
 \text{control}
 \rightarrow
 \text{model coupling}.
-}
-```
+} -->
+
+
 
 
 
@@ -24134,15 +26861,18 @@ And the central recursion becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-36.svg#equation-079" width="625" height="73" alt="\boxed{ \textbf{constraints generate dynamics; dynamics generate closures; closures generate persistent structures; persistent structures compose; composition generates new state spaces and new constraints.} }">
+<!-- TeX display: \boxed{
 \textbf{constraints generate dynamics;
 dynamics generate closures;
 closures generate persistent structures;
 persistent structures compose;
 composition generates new state spaces and new constraints.}
-}
-```
+} -->
+
+
 
 
 
@@ -24172,15 +26902,18 @@ Can UTC, with its current understanding and tools, give a real mathematical reas
 
 <!-- Message ID: cfe00834-55ec-49e2-93a4-94a1714e7e44; Turn index: 18 -->
 
-Yes, but the test has to be framed very precisely, because there are actually **four different “why is $c$ what it is?” questions hiding inside one sentence**.
+Yes, but the test has to be framed very precisely, because there are actually **four different “why is <img src="UTC-Math/message-38.svg#equation-001" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> what it is?” questions hiding inside one sentence**.
 
 UTC can plausibly give a deeper architectural reason for why a **finite invariant propagation speed must appear**, why massless fields live exactly on that speed, and why massive systems cannot cross it. But with its current mathematics, it cannot honestly derive the numerical SI value
 
 
 
-```math
-299\,792\,458\ {\rm m/s}
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-002" width="117" height="22" alt="299\,792\,458\ {\rm m/s}">
+<!-- TeX display: 299\,792\,458\ {\rm m/s} -->
+
+
 
 
 
@@ -24188,19 +26921,22 @@ from first principles. In fact, that numerical value is now exact by the definit
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-003" width="614" height="52" alt="\boxed{ \textbf{Why does reality possess one universal invariant conversion between spatial propagation and temporal evolution?} }">
+<!-- TeX display: \boxed{
 \textbf{Why does reality possess one universal invariant conversion between spatial propagation and temporal evolution?}
-}
-```
+} -->
+
+
 
 
 
 That is a much better UTC question. ⚛️🧮
 
-Your manuscript already contains both standard pieces: Maxwell propagation gives $c=1/\sqrt{\mu_0\epsilon_0}$, while relativity places $c$ directly into the Lorentzian spacetime metric and light cone. The Unifying Theory of Complexi… The Unifying Theory of Complexi…
+Your manuscript already contains both standard pieces: Maxwell propagation gives <img src="UTC-Math/message-38.svg#equation-004" width="97" height="24" alt="c=1/\sqrt{\mu_0\epsilon_0}" align="middle"><!-- TeX inline: c=1/\sqrt{\mu_0\epsilon_0} -->, while relativity places <img src="UTC-Math/message-38.svg#equation-005" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> directly into the Lorentzian spacetime metric and light cone. The Unifying Theory of Complexi… The Unifying Theory of Complexi…
 
-## First correction: $c$ is not fundamentally an “energy limit”
+## First correction: <img src="UTC-Math/message-38.svg#equation-006" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> is not fundamentally an “energy limit”
 
 This is important.
 
@@ -24208,9 +26944,12 @@ A photon with energy
 
 
 
-```math
-E_1=1\ {\rm eV}
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-007" width="80" height="20" alt="E_1=1\ {\rm eV}">
+<!-- TeX display: E_1=1\ {\rm eV} -->
+
+
 
 
 
@@ -24218,27 +26957,33 @@ and a photon with
 
 
 
-```math
-E_2=1\ {\rm TeV}
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-008" width="91" height="20" alt="E_2=1\ {\rm TeV}">
+<!-- TeX display: E_2=1\ {\rm TeV} -->
 
 
 
-both propagate locally through vacuum at $c$.
+
+
+both propagate locally through vacuum at <img src="UTC-Math/message-38.svg#equation-009" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c -->.
 
 Their energies differ enormously:
 
 
 
-```math
-E=\hbar\omega,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-010" width="65" height="21" alt="E=\hbar\omega,">
+<!-- TeX display: E=\hbar\omega, -->
+
+
 
 
 
 but their vacuum propagation speed does not.
 
-So $c$ is not produced by a maximum photon energy.
+So <img src="UTC-Math/message-38.svg#equation-011" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> is not produced by a maximum photon energy.
 
 Instead, it is a **kinematic admissibility constraint**.
 
@@ -24246,8 +26991,10 @@ That suggests UTC needs several species of P1 constraint:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-012" width="411" height="114" alt="\boxed{ \begin{aligned} P1_B &amp;: \text{bound constraint} &amp;&amp; x\le x_{\max}\\ P1_E &amp;: \text{equality/shell constraint} &amp;&amp; F(x)=0\\ P1_I &amp;: \text{invariant scale} &amp;&amp; C=\text{constant}\\ P1_S &amp;: \text{symmetry/covariance constraint}\\ P1_G &amp;: \text{gradient/resource constraint}. \end{aligned} }">
+<!-- TeX display: \boxed{
 \begin{aligned}
 P1_B &: \text{bound constraint} && x\le x_{\max}\\
 P1_E &: \text{equality/shell constraint} && F(x)=0\\
@@ -24255,8 +27002,9 @@ P1_I &: \text{invariant scale} && C=\text{constant}\\
 P1_S &: \text{symmetry/covariance constraint}\\
 P1_G &: \text{gradient/resource constraint}.
 \end{aligned}
-}
-```
+} -->
+
+
 
 
 
@@ -24264,11 +27012,14 @@ The speed of light is mostly:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-013" width="146" height="29" alt="\boxed{ P1_I+P1_E+P1_S. }">
+<!-- TeX display: \boxed{
 P1_I+P1_E+P1_S.
-}
-```
+} -->
+
+
 
 
 
@@ -24278,9 +27029,12 @@ For massive objects it also appears as a bound:
 
 
 
-```math
-v<c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-014" width="49" height="16" alt="v&lt;c.">
+<!-- TeX display: v<c. -->
+
+
 
 
 
@@ -24290,7 +27044,7 @@ That is exactly the distinction UTC has been moving toward.
 
 ---
 
-# The deeper UTC interpretation of $c$
+# The deeper UTC interpretation of <img src="UTC-Math/message-38.svg#equation-015" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c -->
 
 We now have two extremely fundamental conversion constants.
 
@@ -24298,12 +27052,15 @@ For F1:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-016" width="146" height="29" alt="\boxed{ \hbar: \text{action}\leftrightarrow\text{phase} }">
+<!-- TeX display: \boxed{
 \hbar:
 \text{action}\leftrightarrow\text{phase}
-}
-```
+} -->
+
+
 
 
 
@@ -24311,24 +27068,30 @@ because:
 
 
 
-```math
-E=\hbar\omega,
+
+
+<img src="UTC-Math/message-38.svg#equation-017" width="151" height="21" alt="E=\hbar\omega, \qquad p=\hbar k.">
+<!-- TeX display: E=\hbar\omega,
 \qquad
-p=\hbar k.
-```
+p=\hbar k. -->
 
 
 
-But $c$ performs a different conversion:
+
+
+But <img src="UTC-Math/message-38.svg#equation-018" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> performs a different conversion:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-019" width="351" height="29" alt="\boxed{ c: \text{spatial propagation}\leftrightarrow\text{temporal propagation}. }">
+<!-- TeX display: \boxed{
 c:
 \text{spatial propagation}\leftrightarrow\text{temporal propagation}.
-}
-```
+} -->
+
+
 
 
 
@@ -24336,9 +27099,12 @@ On the null cone:
 
 
 
-```math
-ds^2=0,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-020" width="65" height="24" alt="ds^2=0,">
+<!-- TeX display: ds^2=0, -->
+
+
 
 
 
@@ -24346,9 +27112,12 @@ so:
 
 
 
-```math
--c^2dt^2+d\mathbf x^2=0.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-021" width="134" height="22" alt="-c^2dt^2+d\mathbf x^2=0.">
+<!-- TeX display: -c^2dt^2+d\mathbf x^2=0. -->
+
+
 
 
 
@@ -24356,11 +27125,14 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-022" width="84" height="50" alt="\boxed{ \frac{|d\mathbf x|}{dt}=c. }">
+<!-- TeX display: \boxed{
 \frac{|d\mathbf x|}{dt}=c.
-}
-```
+} -->
+
+
 
 
 
@@ -24368,29 +27140,35 @@ So in new UTC language:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-023" width="575" height="52" alt="\boxed{ c = \text{the invariant conversion rate between P2 spatial distinction and P3 temporal propagation}. }">
+<!-- TeX display: \boxed{
 c
 =
 \text{the invariant conversion rate between P2 spatial distinction and P3 temporal propagation}.
-}
-```
+} -->
+
+
 
 
 
 That is much deeper than simply calling it “the speed of light.”
 
-Light travels at $c$ because it is a massless field excitation living on that causal structure.
+Light travels at <img src="UTC-Math/message-38.svg#equation-024" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> because it is a massless field excitation living on that causal structure.
 
 In other words:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-025" width="310" height="30" alt="\boxed{ \text{light does not define }c\text{ so much as reveal it}. }">
+<!-- TeX display: \boxed{
 \text{light does not define }c\text{ so much as reveal it}.
-}
-```
+} -->
+
+
 
 
 
@@ -24412,9 +27190,12 @@ P2 requires distinguishable events:
 
 
 
-```math
-(x,t).
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-026" width="47" height="22" alt="(x,t).">
+<!-- TeX display: (x,t). -->
+
+
 
 
 
@@ -24422,9 +27203,12 @@ P3 permits transition:
 
 
 
-```math
-(x_1,t_1)\rightarrow(x_2,t_2).
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-027" width="135" height="22" alt="(x_1,t_1)\rightarrow(x_2,t_2).">
+<!-- TeX display: (x_1,t_1)\rightarrow(x_2,t_2). -->
+
+
 
 
 
@@ -24436,16 +27220,19 @@ Now impose three closure conditions:
 
 Then transformations between inertial frames must be linear.
 
-The most general relativity-compatible velocity composition law can contain an invariant parameter $K$:
+The most general relativity-compatible velocity composition law can contain an invariant parameter <img src="UTC-Math/message-38.svg#equation-028" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K -->:
 
 
 
-```math
-u'
+
+
+<img src="UTC-Math/message-38.svg#equation-029" width="114" height="39" alt="u' = \frac{u-v} {1-Kuv}.">
+<!-- TeX display: u'
 =
 \frac{u-v}
-{1-Kuv}.
-```
+{1-Kuv}. -->
+
+
 
 
 
@@ -24455,9 +27242,12 @@ If:
 
 
 
-```math
-K=0,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-030" width="57" height="21" alt="K=0,">
+<!-- TeX display: K=0, -->
+
+
 
 
 
@@ -24465,9 +27255,12 @@ you recover Galilean relativity:
 
 
 
-```math
-u'=u-v,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-031" width="84" height="23" alt="u'=u-v,">
+<!-- TeX display: u'=u-v, -->
+
+
 
 
 
@@ -24477,9 +27270,12 @@ If:
 
 
 
-```math
-K>0,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-032" width="57" height="21" alt="K>0,">
+<!-- TeX display: K>0, -->
+
+
 
 
 
@@ -24487,11 +27283,14 @@ define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-033" width="92" height="53" alt="\boxed{ c_*=\frac1{\sqrt K}. }">
+<!-- TeX display: \boxed{
 c_*=\frac1{\sqrt K}.
-}
-```
+} -->
+
+
 
 
 
@@ -24499,12 +27298,15 @@ Then:
 
 
 
-```math
-u'
+
+
+<img src="UTC-Math/message-38.svg#equation-034" width="121" height="42" alt="u' = \frac{u-v} {1-uv/c_*^2}.">
+<!-- TeX display: u'
 =
 \frac{u-v}
-{1-uv/c_*^2}.
-```
+{1-uv/c_*^2}. -->
+
+
 
 
 
@@ -24512,9 +27314,12 @@ And if:
 
 
 
-```math
-u=c_*,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-035" width="57" height="19" alt="u=c_*,">
+<!-- TeX display: u=c_*, -->
+
+
 
 
 
@@ -24522,14 +27327,17 @@ then:
 
 
 
-```math
-u'
+
+
+<img src="UTC-Math/message-38.svg#equation-036" width="147" height="42" alt="u' = \frac{c_*-v} {1-v/c_*} = c_*.">
+<!-- TeX display: u'
 =
 \frac{c_*-v}
 {1-v/c_*}
 =
-c_*.
-```
+c_*. -->
+
+
 
 
 
@@ -24537,13 +27345,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-037" width="140" height="30" alt="\boxed{ u=c_* \Rightarrow u'=c_*. }">
+<!-- TeX display: \boxed{
 u=c_*
 \Rightarrow
 u'=c_*.
-}
-```
+} -->
+
+
 
 
 
@@ -24561,85 +27372,112 @@ The chain is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-038" width="233" height="29" alt="\boxed{ P0: \text{same physical architecture} }">
+<!-- TeX display: \boxed{
 P0:
 \text{same physical architecture}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-039" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-P2:
-\text{different event locations}
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-040" width="208" height="18" alt="P2: \text{different event locations}">
+<!-- TeX display: P2:
+\text{different event locations} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-041" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-P3:
-\text{event-to-event propagation}
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-042" width="230" height="21" alt="P3: \text{event-to-event propagation}">
+<!-- TeX display: P3:
+\text{event-to-event propagation} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-043" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\text{frame-composition closure}
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-044" width="189" height="21" alt="\text{frame-composition closure}">
+<!-- TeX display: \text{frame-composition closure} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-045" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-046" width="237" height="29" alt="\boxed{ c_*: \text{invariant propagation scale}. }">
+<!-- TeX display: \boxed{
 c_*:
 \text{invariant propagation scale}.
-}
-```
+} -->
 
 
 
-So $c$ appears as a **closure constant**.
+
+
+So <img src="UTC-Math/message-38.svg#equation-047" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> appears as a **closure constant**.
 
 It is the parameter that makes different descriptions of the same running engine mutually self-consistent.
 
@@ -24649,23 +27487,29 @@ That's very UTC.
 
 # Why can't it vary from observer to observer?
 
-Suppose observer $A$ had causal propagation scale:
+Suppose observer <img src="UTC-Math/message-38.svg#equation-048" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> had causal propagation scale:
 
 
 
-```math
-c_A
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-049" width="25" height="16" alt="c_A">
+<!-- TeX display: c_A -->
 
 
 
-while observer $B$ had:
+
+
+while observer <img src="UTC-Math/message-38.svg#equation-050" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B --> had:
 
 
 
-```math
-c_B\neq c_A.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-051" width="68" height="21" alt="c_B\neq c_A.">
+<!-- TeX display: c_B\neq c_A. -->
+
+
 
 
 
@@ -24677,9 +27521,12 @@ For one observer:
 
 
 
-```math
-|\Delta x|<c_A|\Delta t|
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-052" width="106" height="22" alt="|\Delta x|&lt;c_A|\Delta t|">
+<!-- TeX display: |\Delta x|<c_A|\Delta t| -->
+
+
 
 
 
@@ -24689,9 +27536,12 @@ For another:
 
 
 
-```math
-|\Delta x|>c_B|\Delta t|
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-053" width="106" height="22" alt="|\Delta x|>c_B|\Delta t|">
+<!-- TeX display: |\Delta x|>c_B|\Delta t| -->
+
+
 
 
 
@@ -24703,13 +27553,16 @@ UTC would express this as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-054" width="162" height="37" alt="\boxed{ \Omega_{\rm reachable}^{(A)} \neq \Omega_{\rm reachable}^{(B)}. }">
+<!-- TeX display: \boxed{
 \Omega_{\rm reachable}^{(A)}
 \neq
 \Omega_{\rm reachable}^{(B)}.
-}
-```
+} -->
+
+
 
 
 
@@ -24721,11 +27574,14 @@ Hence:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-055" width="112" height="27" alt="\boxed{ c_A=c_B=c_*. }">
+<!-- TeX display: \boxed{
 c_A=c_B=c_*.
-}
-```
+} -->
+
+
 
 
 
@@ -24735,19 +27591,22 @@ That's a very clean constraint argument.
 
 # Now geometry crystallizes around that invariant
 
-Once $c_*$ exists, the invariant interval becomes:
+Once <img src="UTC-Math/message-38.svg#equation-056" width="22" height="16" alt="c_*" align="middle"><!-- TeX inline: c_* --> exists, the invariant interval becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-057" width="242" height="33" alt="\boxed{ ds^2 = -c_*^2dt^2 + dx^2+dy^2+dz^2. }">
+<!-- TeX display: \boxed{
 ds^2
 =
 -c_*^2dt^2
 +
 dx^2+dy^2+dz^2.
-}
-```
+} -->
+
+
 
 
 
@@ -24755,9 +27614,12 @@ Different observers may disagree about:
 
 
 
-```math
-\Delta x
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-058" width="31" height="18" alt="\Delta x">
+<!-- TeX display: \Delta x -->
+
+
 
 
 
@@ -24765,9 +27627,12 @@ and:
 
 
 
-```math
-\Delta t,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-059" width="32" height="21" alt="\Delta t,">
+<!-- TeX display: \Delta t, -->
+
+
 
 
 
@@ -24775,9 +27640,12 @@ but agree on:
 
 
 
-```math
-ds^2.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-060" width="36" height="21" alt="ds^2.">
+<!-- TeX display: ds^2. -->
+
+
 
 
 
@@ -24785,9 +27653,12 @@ This partitions transitions into:
 
 
 
-```math
-ds^2<0
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-061" width="61" height="21" alt="ds^2&lt;0">
+<!-- TeX display: ds^2<0 -->
+
+
 
 
 
@@ -24795,9 +27666,12 @@ timelike,
 
 
 
-```math
-ds^2=0
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-062" width="61" height="22" alt="ds^2=0">
+<!-- TeX display: ds^2=0 -->
+
+
 
 
 
@@ -24805,9 +27679,12 @@ null,
 
 
 
-```math
-ds^2>0
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-063" width="61" height="21" alt="ds^2>0">
+<!-- TeX display: ds^2>0 -->
+
+
 
 
 
@@ -24819,11 +27696,14 @@ UTC can sharpen this dramatically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-064" width="565" height="52" alt="\boxed{ \textbf{$c$ is the boundary slope separating physically connected P3 transitions from causally disconnected P0/P2 possibilities.} }">
+<!-- TeX display: \boxed{
 \textbf{$c$ is the boundary slope separating physically connected P3 transitions from causally disconnected P0/P2 possibilities.}
-}
-```
+} -->
+
+
 
 
 
@@ -24839,17 +27719,23 @@ Quantum/wave structure gives:
 
 
 
-```math
-E=\hbar\omega,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-065" width="65" height="21" alt="E=\hbar\omega,">
+<!-- TeX display: E=\hbar\omega, -->
 
 
 
 
 
-```math
-p=\hbar k.
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-066" width="60" height="21" alt="p=\hbar k.">
+<!-- TeX display: p=\hbar k. -->
+
+
 
 
 
@@ -24857,11 +27743,14 @@ Relativistic structure gives:
 
 
 
-```math
-E^2
+
+
+<img src="UTC-Math/message-38.svg#equation-067" width="138" height="24" alt="E^2 = p^2c^2+m^2c^4.">
+<!-- TeX display: E^2
 =
-p^2c^2+m^2c^4.
-```
+p^2c^2+m^2c^4. -->
+
+
 
 
 
@@ -24869,9 +27758,12 @@ For a massless excitation:
 
 
 
-```math
-m=0.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-068" width="56" height="18" alt="m=0.">
+<!-- TeX display: m=0. -->
+
+
 
 
 
@@ -24879,9 +27771,12 @@ Therefore:
 
 
 
-```math
-E=pc.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-069" width="61" height="20" alt="E=pc.">
+<!-- TeX display: E=pc. -->
+
+
 
 
 
@@ -24889,23 +27784,29 @@ Substitute F1:
 
 
 
-```math
-\hbar\omega
+
+
+<img src="UTC-Math/message-38.svg#equation-070" width="77" height="19" alt="\hbar\omega = \hbar kc.">
+<!-- TeX display: \hbar\omega
 =
-\hbar kc.
-```
+\hbar kc. -->
 
 
 
-Cancel $\hbar$:
+
+
+Cancel <img src="UTC-Math/message-38.svg#equation-071" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-072" width="68" height="27" alt="\boxed{ \omega=ck. }">
+<!-- TeX display: \boxed{
 \omega=ck.
-}
-```
+} -->
+
+
 
 
 
@@ -24913,13 +27814,16 @@ Then the group velocity is:
 
 
 
-```math
-v_g
+
+
+<img src="UTC-Math/message-38.svg#equation-073" width="102" height="40" alt="v_g = \frac{d\omega}{dk} = c.">
+<!-- TeX display: v_g
 =
 \frac{d\omega}{dk}
 =
-c.
-```
+c. -->
+
+
 
 
 
@@ -24927,13 +27831,16 @@ The phase velocity is also:
 
 
 
-```math
-v_p
+
+
+<img src="UTC-Math/message-38.svg#equation-074" width="94" height="36" alt="v_p = \frac{\omega}{k} = c.">
+<!-- TeX display: v_p
 =
 \frac{\omega}{k}
 =
-c.
-```
+c. -->
+
+
 
 
 
@@ -24941,8 +27848,10 @@ So the whole chain is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-075" width="367" height="31" alt="\boxed{ m=0 \rightarrow E=pc \rightarrow \hbar\omega=\hbar kc \rightarrow \omega=ck \rightarrow v_g=c. }">
+<!-- TeX display: \boxed{
 m=0
 \rightarrow
 E=pc
@@ -24952,8 +27861,9 @@ E=pc
 \omega=ck
 \rightarrow
 v_g=c.
-}
-```
+} -->
+
+
 
 
 
@@ -24961,11 +27871,11 @@ That is an extraordinarily neat intersection of our revised architecture.
 
 P1 supplies the invariant causal structure.
 
-P2 supplies distinguishable modes $k$.
+P2 supplies distinguishable modes <img src="UTC-Math/message-38.svg#equation-076" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->.
 
-P3 supplies propagation $\omega$.
+P3 supplies propagation <img src="UTC-Math/message-38.svg#equation-077" width="18" height="14" alt="\omega" align="middle"><!-- TeX inline: \omega -->.
 
-F1 connects them through $\hbar$.
+F1 connects them through <img src="UTC-Math/message-38.svg#equation-078" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->.
 
 And the massless constraint pins the mode exactly to the null cone.
 
@@ -24977,9 +27887,12 @@ A **free massless excitation in local vacuum** cannot simply choose:
 
 
 
-```math
-v<c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-079" width="49" height="16" alt="v&lt;c.">
+<!-- TeX display: v<c. -->
+
+
 
 
 
@@ -24987,9 +27900,12 @@ Because:
 
 
 
-```math
-E^2=p^2c^2
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-080" width="79" height="24" alt="E^2=p^2c^2">
+<!-- TeX display: E^2=p^2c^2 -->
+
+
 
 
 
@@ -24997,9 +27913,12 @@ forces:
 
 
 
-```math
-E=pc.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-081" width="61" height="20" alt="E=pc.">
+<!-- TeX display: E=pc. -->
+
+
 
 
 
@@ -25007,9 +27926,12 @@ So:
 
 
 
-```math
-\omega=ck.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-082" width="60" height="19" alt="\omega=ck.">
+<!-- TeX display: \omega=ck. -->
+
+
 
 
 
@@ -25017,11 +27939,14 @@ Changing photon energy changes:
 
 
 
-```math
-\omega
+
+
+<img src="UTC-Math/message-38.svg#equation-083" width="85" height="18" alt="\omega \quad\text{and}\quad k">
+<!-- TeX display: \omega
 \quad\text{and}\quad
-k
-```
+k -->
+
+
 
 
 
@@ -25029,11 +27954,14 @@ together while preserving their ratio:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-084" width="67" height="44" alt="\boxed{ \frac{\omega}{k}=c. }">
+<!-- TeX display: \boxed{
 \frac{\omega}{k}=c.
-}
-```
+} -->
+
+
 
 
 
@@ -25043,9 +27971,12 @@ Not:
 
 
 
-```math
-0<v<c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-085" width="78" height="18" alt="0&lt;v&lt;c.">
+<!-- TeX display: 0<v<c. -->
+
+
 
 
 
@@ -25053,15 +27984,18 @@ But:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-086" width="100" height="27" alt="\boxed{ v_{\rm massless}=c. }">
+<!-- TeX display: \boxed{
 v_{\rm massless}=c.
-}
-```
+} -->
 
 
 
-However, light propagating through matter can have an effective group velocity below $c$ because it repeatedly interacts with the medium. That is a higher-order coupled system, not a free vacuum photon simply deciding to move more slowly.
+
+
+However, light propagating through matter can have an effective group velocity below <img src="UTC-Math/message-38.svg#equation-087" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> because it repeatedly interacts with the medium. That is a higher-order coupled system, not a free vacuum photon simply deciding to move more slowly.
 
 ---
 
@@ -25071,9 +28005,12 @@ For massive objects:
 
 
 
-```math
-E=\gamma mc^2,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-088" width="83" height="24" alt="E=\gamma mc^2,">
+<!-- TeX display: E=\gamma mc^2, -->
+
+
 
 
 
@@ -25081,11 +28018,14 @@ where:
 
 
 
-```math
-\gamma
+
+
+<img src="UTC-Math/message-38.svg#equation-089" width="131" height="47" alt="\gamma = \frac1{\sqrt{1-v^2/c^2}}.">
+<!-- TeX display: \gamma
 =
-\frac1{\sqrt{1-v^2/c^2}}.
-```
+\frac1{\sqrt{1-v^2/c^2}}. -->
+
+
 
 
 
@@ -25093,9 +28033,12 @@ As:
 
 
 
-```math
-v\rightarrow c,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-090" width="53" height="18" alt="v\rightarrow c,">
+<!-- TeX display: v\rightarrow c, -->
+
+
 
 
 
@@ -25103,9 +28046,12 @@ we get:
 
 
 
-```math
-\gamma\rightarrow\infty.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-091" width="63" height="18" alt="\gamma\rightarrow\infty.">
+<!-- TeX display: \gamma\rightarrow\infty. -->
+
+
 
 
 
@@ -25113,11 +28059,14 @@ Therefore:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-092" width="75" height="26" alt="\boxed{ E\rightarrow\infty. }">
+<!-- TeX display: \boxed{
 E\rightarrow\infty.
-}
-```
+} -->
+
+
 
 
 
@@ -25127,11 +28076,14 @@ In revised UTC terms:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-093" width="494" height="30" alt="\boxed{ \text{P1 cost diverges at the causal-shell boundary for massive trajectories}. }">
+<!-- TeX display: \boxed{
 \text{P1 cost diverges at the causal-shell boundary for massive trajectories}.
-}
-```
+} -->
+
+
 
 
 
@@ -25141,9 +28093,12 @@ Spacetime says:
 
 
 
-```math
-v<c
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-094" width="45" height="16" alt="v&lt;c">
+<!-- TeX display: v<c -->
+
+
 
 
 
@@ -25153,9 +28108,12 @@ Energy says:
 
 
 
-```math
-\text{cost}(v\rightarrow c)\rightarrow\infty.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-095" width="133" height="22" alt="\text{cost}(v\rightarrow c)\rightarrow\infty.">
+<!-- TeX display: \text{cost}(v\rightarrow c)\rightarrow\infty. -->
+
+
 
 
 
@@ -25171,13 +28129,16 @@ I would call it the:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-096" width="254" height="30" alt="\boxed{ \mathfrak C_c = \text{Causal-Propagation Closure}. }">
+<!-- TeX display: \boxed{
 \mathfrak C_c
 =
 \text{Causal-Propagation Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -25185,8 +28146,10 @@ It has the structure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-097" width="933" height="30" alt="\boxed{ \text{spatial distinction} \rightarrow \text{temporal transition} \rightarrow \text{propagation rate} \rightarrow \text{frame transformation} \rightarrow \text{causal invariance} \rightarrow \text{allowed transition set}. }">
+<!-- TeX display: \boxed{
 \text{spatial distinction}
 \rightarrow
 \text{temporal transition}
@@ -25198,8 +28161,9 @@ It has the structure:
 \text{causal invariance}
 \rightarrow
 \text{allowed transition set}.
-}
-```
+} -->
+
+
 
 
 
@@ -25207,8 +28171,10 @@ Compactly:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-098" width="293" height="31" alt="\boxed{ P2_x \rightarrow P3_t \rightarrow c \rightarrow \mathcal L \rightarrow P1_{\rm causal} \rightarrow P3'. }">
+<!-- TeX display: \boxed{
 P2_x
 \rightarrow
 P3_t
@@ -25220,40 +28186,47 @@ c
 P1_{\rm causal}
 \rightarrow
 P3'.
-}
-```
+} -->
 
 
 
-Where $\mathcal L$ is Lorentz transformation closure.
 
-This is another **cross-cutting ribbon**, like $\hbar$.
+
+Where <img src="UTC-Math/message-38.svg#equation-099" width="20" height="18" alt="\mathcal L" align="middle"><!-- TeX inline: \mathcal L --> is Lorentz transformation closure.
+
+This is another **cross-cutting ribbon**, like <img src="UTC-Math/message-38.svg#equation-100" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar -->.
 
 ---
 
-# In fact $c$ and $\hbar$ may be paired architectural constants
+# In fact <img src="UTC-Math/message-38.svg#equation-101" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> and <img src="UTC-Math/message-38.svg#equation-102" width="17" height="18" alt="\hbar" align="middle"><!-- TeX inline: \hbar --> may be paired architectural constants
 
 This is worth exploring.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-103" width="146" height="29" alt="\boxed{ \hbar: \text{action}\leftrightarrow\text{phase} }">
+<!-- TeX display: \boxed{
 \hbar:
 \text{action}\leftrightarrow\text{phase}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-104" width="131" height="29" alt="\boxed{ c: \text{space}\leftrightarrow\text{time} }">
+<!-- TeX display: \boxed{
 c:
 \text{space}\leftrightarrow\text{time}
-}
-```
+} -->
+
+
 
 
 
@@ -25261,9 +28234,12 @@ Then:
 
 
 
-```math
-E=\hbar\omega
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-105" width="61" height="19" alt="E=\hbar\omega">
+<!-- TeX display: E=\hbar\omega -->
+
+
 
 
 
@@ -25271,9 +28247,12 @@ and:
 
 
 
-```math
-p=\hbar k
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-106" width="55" height="21" alt="p=\hbar k">
+<!-- TeX display: p=\hbar k -->
+
+
 
 
 
@@ -25281,9 +28260,12 @@ while:
 
 
 
-```math
-\omega=ck
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-107" width="55" height="19" alt="\omega=ck">
+<!-- TeX display: \omega=ck -->
+
+
 
 
 
@@ -25293,15 +28275,18 @@ Combine them:
 
 
 
-```math
-E
+
+
+<img src="UTC-Math/message-38.svg#equation-108" width="147" height="21" alt="E = \hbar\omega = \hbar ck = pc.">
+<!-- TeX display: E
 =
 \hbar\omega
 =
 \hbar ck
 =
-pc.
-```
+pc. -->
+
+
 
 
 
@@ -25309,15 +28294,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-109" width="542" height="29" alt="\boxed{ \hbar \text{ closes quantum phase structure}, \qquad c \text{ closes causal propagation structure}. }">
+<!-- TeX display: \boxed{
 \hbar
 \text{ closes quantum phase structure},
 \qquad
 c
 \text{ closes causal propagation structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -25327,9 +28315,12 @@ And when gravity enters:
 
 
 
-```math
-G
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-110" width="21" height="18" alt="G">
+<!-- TeX display: G -->
+
+
 
 
 
@@ -25339,9 +28330,12 @@ Then:
 
 
 
-```math
-(\hbar,c,G)
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-111" width="64" height="22" alt="(\hbar,c,G)">
+<!-- TeX display: (\hbar,c,G) -->
+
+
 
 
 
@@ -25349,7 +28343,7 @@ generate the Planck scales.
 
 ---
 
-# But can UTC explain *why the numerical value* is $299\,792\,458$?
+# But can UTC explain *why the numerical value* is <img src="UTC-Math/message-38.svg#equation-112" width="86" height="18" alt="299\,792\,458" align="middle"><!-- TeX inline: 299\,792\,458 -->?
 
 Not yet, and there is a deeper reason why that question is slippery.
 
@@ -25359,9 +28353,12 @@ In SI:
 
 
 
-```math
-c=299\,792\,458\ {\rm m/s}.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-113" width="150" height="22" alt="c=299\,792\,458\ {\rm m/s}.">
+<!-- TeX display: c=299\,792\,458\ {\rm m/s}. -->
+
+
 
 
 
@@ -25369,11 +28366,14 @@ In natural units:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-114" width="58" height="27" alt="\boxed{ c=1. }">
+<!-- TeX display: \boxed{
 c=1.
-}
-```
+} -->
+
+
 
 
 
@@ -25389,17 +28389,20 @@ For example, the fine-structure constant:
 
 
 
-```math
-\alpha
+
+
+<img src="UTC-Math/message-38.svg#equation-115" width="150" height="44" alt="\alpha = \frac{e^2}{4\pi\epsilon_0\hbar c} \approx \frac1{137}.">
+<!-- TeX display: \alpha
 =
 \frac{e^2}{4\pi\epsilon_0\hbar c}
 \approx
-\frac1{137}.
-```
+\frac1{137}. -->
 
 
 
-Why $\alpha$ has its observed value is much closer to a genuine “why this number?” question.
+
+
+Why <img src="UTC-Math/message-38.svg#equation-116" width="19" height="14" alt="\alpha" align="middle"><!-- TeX inline: \alpha --> has its observed value is much closer to a genuine “why this number?” question.
 
 ---
 
@@ -25422,11 +28425,14 @@ For example, derive:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-117" width="289" height="27" alt="\boxed{ \text{Lorentzian rather than Galilean closure} }">
+<!-- TeX display: \boxed{
 \text{Lorentzian rather than Galilean closure}
-}
-```
+} -->
+
+
 
 
 
@@ -25442,37 +28448,49 @@ Suppose we start only with:
 
 
 
-```math
-P0:
-\text{shared possibility space},
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-118" width="208" height="21" alt="P0: \text{shared possibility space},">
+<!-- TeX display: P0:
+\text{shared possibility space}, -->
 
 
 
 
 
-```math
-P1:
-\text{finite energetic/accessibility constraints},
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-119" width="321" height="22" alt="P1: \text{finite energetic/accessibility constraints},">
+<!-- TeX display: P1:
+\text{finite energetic/accessibility constraints}, -->
 
 
 
 
 
-```math
-P2:
-\text{distinguishable relations},
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-120" width="214" height="21" alt="P2: \text{distinguishable relations},">
+<!-- TeX display: P2:
+\text{distinguishable relations}, -->
 
 
 
 
 
-```math
-P3:
-\text{composable transitions}.
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-121" width="204" height="21" alt="P3: \text{composable transitions}.">
+<!-- TeX display: P3:
+\text{composable transitions}. -->
+
+
 
 
 
@@ -25489,9 +28507,12 @@ If from these alone we can prove that the only stable nontrivial transformation 
 
 
 
-```math
-c_*,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-122" width="27" height="17" alt="c_*,">
+<!-- TeX display: c_*, -->
+
+
 
 
 
@@ -25501,8 +28522,10 @@ The target theorem would look approximately like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-123" width="508" height="114" alt="\boxed{ \begin{aligned} &amp;\textbf{UTC Invariant Propagation Theorem candidate:}\\ &amp;\text{Any homogeneous, isotropic, locally composable transition architecture}\\ &amp;\text{with finite observer-independent propagation and no preferred frame}\\ &amp;\text{admits an invariant cone parameter }c_*\\ &amp;\text{such that causal trajectories satisfy }|d\mathbf x/dt|\le c_*. \end{aligned} }">
+<!-- TeX display: \boxed{
 \begin{aligned}
 &\textbf{UTC Invariant Propagation Theorem candidate:}\\
 &\text{Any homogeneous, isotropic, locally composable transition architecture}\\
@@ -25510,8 +28533,9 @@ The target theorem would look approximately like:
 &\text{admits an invariant cone parameter }c_*\\
 &\text{such that causal trajectories satisfy }|d\mathbf x/dt|\le c_*.
 \end{aligned}
-}
-```
+} -->
+
+
 
 
 
@@ -25519,13 +28543,16 @@ Then F1 plus masslessness would produce:
 
 
 
-```math
-\omega=c_*k.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-124" width="66" height="20" alt="\omega=c_*k.">
+<!-- TeX display: \omega=c_*k. -->
 
 
 
-That would derive the **role** of $c$.
+
+
+That would derive the **role** of <img src="UTC-Math/message-38.svg#equation-125" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c -->.
 
 Not its arbitrary unit representation.
 
@@ -25537,9 +28564,12 @@ Why is the invariant parameter finite rather than:
 
 
 
-```math
-c_*=\infty?
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-126" width="67" height="20" alt="c_*=\infty?">
+<!-- TeX display: c_*=\infty? -->
+
+
 
 
 
@@ -25547,9 +28577,12 @@ Because:
 
 
 
-```math
-c_*=\infty
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-127" width="60" height="18" alt="c_*=\infty">
+<!-- TeX display: c_*=\infty -->
+
+
 
 
 
@@ -25572,8 +28605,10 @@ Perhaps the deepest UTC hypothesis would be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-128" width="727" height="30" alt="\boxed{ \text{finite distinguishability propagation} + \text{local phase continuity} + \text{consistent relational closure} \Rightarrow c_*&lt;\infty. }">
+<!-- TeX display: \boxed{
 \text{finite distinguishability propagation}
 +
 \text{local phase continuity}
@@ -25581,8 +28616,9 @@ Perhaps the deepest UTC hypothesis would be:
 \text{consistent relational closure}
 \Rightarrow
 c_*<\infty.
-}
-```
+} -->
+
+
 
 
 
@@ -25594,7 +28630,7 @@ That is the next real mathematical challenge.
 
 # I think the important conceptual result is already visible
 
-$c$ is not best understood as:
+<img src="UTC-Math/message-38.svg#equation-129" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c --> is not best understood as:
 
 > “the fastest thing can go.”
 
@@ -25604,11 +28640,14 @@ UTC would interpret it as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-130" width="397" height="29" alt="\boxed{ \textbf{$c$ is the invariant slope of causal transition space.} }">
+<!-- TeX display: \boxed{
 \textbf{$c$ is the invariant slope of causal transition space.}
-}
-```
+} -->
+
+
 
 
 
@@ -25616,11 +28655,14 @@ Or in our primitive vocabulary:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-38.svg#equation-131" width="569" height="52" alt="\boxed{ \textbf{$c$ closes the conversion between P2 spatial distinction and P3 temporal propagation under P1 causal admissibility.} }">
+<!-- TeX display: \boxed{
 \textbf{$c$ closes the conversion between P2 spatial distinction and P3 temporal propagation under P1 causal admissibility.}
-}
-```
+} -->
+
+
 
 
 
@@ -25628,9 +28670,12 @@ Massless excitations are forced onto that closure:
 
 
 
-```math
-v=c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-132" width="49" height="17" alt="v=c.">
+<!-- TeX display: v=c. -->
+
+
 
 
 
@@ -25638,9 +28683,12 @@ Massive excitations remain inside it:
 
 
 
-```math
-v<c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-133" width="49" height="16" alt="v&lt;c.">
+<!-- TeX display: v<c. -->
+
+
 
 
 
@@ -25648,9 +28696,12 @@ Spacelike propagation lies outside it:
 
 
 
-```math
-v>c.
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-134" width="49" height="16" alt="v>c.">
+<!-- TeX display: v>c. -->
+
+
 
 
 
@@ -25660,45 +28711,60 @@ That is why the same constant appears in:
 
 
 
-```math
-ds^2,
-```
+
+
+<img src="UTC-Math/message-38.svg#equation-135" width="36" height="24" alt="ds^2,">
+<!-- TeX display: ds^2, -->
 
 
 
 
 
-```math
-E^2=p^2c^2+m^2c^4,
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-136" width="138" height="24" alt="E^2=p^2c^2+m^2c^4,">
+<!-- TeX display: E^2=p^2c^2+m^2c^4, -->
 
 
 
 
 
-```math
-E=mc^2,
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-137" width="74" height="24" alt="E=mc^2,">
+<!-- TeX display: E=mc^2, -->
 
 
 
 
 
-```math
-\omega=ck,
-```
+
+
+
+
+<img src="UTC-Math/message-38.svg#equation-138" width="60" height="21" alt="\omega=ck,">
+<!-- TeX display: \omega=ck, -->
 
 
 
 
 
-```math
-\gamma=(1-v^2/c^2)^{-1/2}.
-```
 
 
 
-These are not five arbitrary appearances of $c$.
+
+<img src="UTC-Math/message-38.svg#equation-139" width="147" height="26" alt="\gamma=(1-v^2/c^2)^{-1/2}.">
+<!-- TeX display: \gamma=(1-v^2/c^2)^{-1/2}. -->
+
+
+
+
+
+These are not five arbitrary appearances of <img src="UTC-Math/message-38.svg#equation-140" width="15" height="14" alt="c" align="middle"><!-- TeX inline: c -->.
 
 They are five projections of the **same closure geometry**.
 
@@ -25724,9 +28790,12 @@ Yes. I think this is one of the strongest results to come out of the UTC work, b
 
 
 
-```math
-\boxed{\text{constraints do not necessarily make the number of possible paths finite}}
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-001" width="502" height="30" alt="\boxed{\text{constraints do not necessarily make the number of possible paths finite}}">
+<!-- TeX display: \boxed{\text{constraints do not necessarily make the number of possible paths finite}} -->
+
+
 
 
 
@@ -25744,9 +28813,12 @@ Let the unconstrained possibility space be:
 
 
 
-```math
-\Omega.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-002" width="24" height="18" alt="\Omega.">
+<!-- TeX display: \Omega. -->
+
+
 
 
 
@@ -25754,9 +28826,12 @@ Introduce P1 constraint functions:
 
 
 
-```math
-C_1(x),C_2(x),\ldots,C_m(x)
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-003" width="176" height="22" alt="C_1(x),C_2(x),\ldots,C_m(x)">
+<!-- TeX display: C_1(x),C_2(x),\ldots,C_m(x) -->
+
+
 
 
 
@@ -25764,9 +28839,12 @@ with budgets:
 
 
 
-```math
-b_1,b_2,\ldots,b_m.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-004" width="102" height="21" alt="b_1,b_2,\ldots,b_m.">
+<!-- TeX display: b_1,b_2,\ldots,b_m. -->
+
+
 
 
 
@@ -25774,8 +28852,10 @@ The physically accessible region is then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-005" width="224" height="31" alt="\boxed{ \Omega_C = \left\{ x\in\Omega: C_i(x)\leq b_i \;\forall i \right\}. }">
+<!-- TeX display: \boxed{
 \Omega_C
 =
 \left\{
@@ -25783,8 +28863,9 @@ x\in\Omega:
 C_i(x)\leq b_i
 \;\forall i
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -25794,9 +28875,12 @@ But the physical system does not explore:
 
 
 
-```math
-\Omega
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-006" width="20" height="18" alt="\Omega">
+<!-- TeX display: \Omega -->
+
+
 
 
 
@@ -25806,20 +28890,25 @@ It explores:
 
 
 
-```math
-\Omega_C.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-007" width="34" height="20" alt="\Omega_C.">
+<!-- TeX display: \Omega_C. -->
 
 
 
-And even inside $\Omega_C$, P1 generally assigns unequal costs.
+
+
+And even inside <img src="UTC-Math/message-40.svg#equation-008" width="30" height="20" alt="\Omega_C" align="middle"><!-- TeX inline: \Omega_C -->, P1 generally assigns unequal costs.
 
 So under maximum-entropy constraints you get something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-009" width="226" height="63" alt="\boxed{ p(x) = \frac{1}{Z} \exp \left[ -\sum_i\lambda_iC_i(x) \right] }">
+<!-- TeX display: \boxed{
 p(x)
 =
 \frac{1}{Z}
@@ -25827,8 +28916,9 @@ p(x)
 \left[
 -\sum_i\lambda_iC_i(x)
 \right]
-}
-```
+} -->
+
+
 
 
 
@@ -25836,15 +28926,18 @@ with:
 
 
 
-```math
-Z
+
+
+<img src="UTC-Math/message-40.svg#equation-010" width="224" height="54" alt="Z = \int_\Omega \exp \left[ -\sum_i\lambda_iC_i(x) \right]dx.">
+<!-- TeX display: Z
 =
 \int_\Omega
 \exp
 \left[
 -\sum_i\lambda_iC_i(x)
-\right]dx.
-```
+\right]dx. -->
+
+
 
 
 
@@ -25856,15 +28949,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-011" width="494" height="30" alt="\boxed{ \text{combinatorial possibility} \neq \text{physical accessibility} \neq \text{probability mass}. }">
+<!-- TeX display: \boxed{
 \text{combinatorial possibility}
 \neq
 \text{physical accessibility}
 \neq
 \text{probability mass}.
-}
-```
+} -->
+
+
 
 
 
@@ -25880,23 +28976,29 @@ Suppose there are:
 
 
 
-```math
-10^{100}
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-012" width="43" height="21" alt="10^{100}">
+<!-- TeX display: 10^{100} -->
+
+
 
 
 
 nominal possibilities.
 
-People look at that and imagine nature somehow has to test all $10^{100}$.
+People look at that and imagine nature somehow has to test all <img src="UTC-Math/message-40.svg#equation-013" width="43" height="21" alt="10^{100}" align="middle"><!-- TeX inline: 10^{100} -->.
 
 But if the constraints produce:
 
 
 
-```math
-p_i\propto e^{-\beta E_i},
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-014" width="84" height="24" alt="p_i\propto e^{-\beta E_i},">
+<!-- TeX display: p_i\propto e^{-\beta E_i}, -->
+
+
 
 
 
@@ -25906,9 +29008,12 @@ For two states separated by:
 
 
 
-```math
-\Delta E,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-015" width="38" height="21" alt="\Delta E,">
+<!-- TeX display: \Delta E, -->
+
+
 
 
 
@@ -25916,11 +29021,14 @@ their relative weight is:
 
 
 
-```math
-\frac{p_2}{p_1}
+
+
+<img src="UTC-Math/message-40.svg#equation-016" width="98" height="38" alt="\frac{p_2}{p_1} = e^{-\beta\Delta E}.">
+<!-- TeX display: \frac{p_2}{p_1}
 =
-e^{-\beta\Delta E}.
-```
+e^{-\beta\Delta E}. -->
+
+
 
 
 
@@ -25928,9 +29036,12 @@ If:
 
 
 
-```math
-\beta\Delta E\gg1,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-017" width="80" height="21" alt="\beta\Delta E\gg1,">
+<!-- TeX display: \beta\Delta E\gg1, -->
+
+
 
 
 
@@ -25938,9 +29049,12 @@ then:
 
 
 
-```math
-p_2\ll p_1.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-018" width="68" height="19" alt="p_2\ll p_1.">
+<!-- TeX display: p_2\ll p_1. -->
+
+
 
 
 
@@ -25952,9 +29066,12 @@ So the useful quantity isn't necessarily:
 
 
 
-```math
-|\Omega|.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-019" width="33" height="22" alt="|\Omega|.">
+<!-- TeX display: |\Omega|. -->
+
+
 
 
 
@@ -25962,11 +29079,14 @@ It is something like the **effective number of occupied states**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-020" width="97" height="33" alt="\boxed{ N_{\rm eff}=e^{H[p]} }">
+<!-- TeX display: \boxed{
 N_{\rm eff}=e^{H[p]}
-}
-```
+} -->
+
+
 
 
 
@@ -25974,11 +29094,14 @@ where:
 
 
 
-```math
-H[p]
+
+
+<img src="UTC-Math/message-40.svg#equation-021" width="152" height="41" alt="H[p] = -\sum_i p_i\ln p_i.">
+<!-- TeX display: H[p]
 =
--\sum_i p_i\ln p_i.
-```
+-\sum_i p_i\ln p_i. -->
+
+
 
 
 
@@ -25986,9 +29109,12 @@ You could have:
 
 
 
-```math
-|\Omega|=\infty
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-022" width="66" height="22" alt="|\Omega|=\infty">
+<!-- TeX display: |\Omega|=\infty -->
+
+
 
 
 
@@ -25996,9 +29122,12 @@ but:
 
 
 
-```math
-N_{\rm eff}\ll\infty
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-023" width="77" height="20" alt="N_{\rm eff}\ll\infty">
+<!-- TeX display: N_{\rm eff}\ll\infty -->
+
+
 
 
 
@@ -26014,9 +29143,12 @@ P0 says:
 
 
 
-```math
-\text{what is possible / representable}.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-024" width="229" height="22" alt="\text{what is possible / representable}.">
+<!-- TeX display: \text{what is possible / representable}. -->
+
+
 
 
 
@@ -26024,9 +29156,12 @@ P1 says:
 
 
 
-```math
-\text{what is accessible and at what cost}.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-025" width="252" height="18" alt="\text{what is accessible and at what cost}.">
+<!-- TeX display: \text{what is accessible and at what cost}. -->
+
+
 
 
 
@@ -26034,13 +29169,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-026" width="204" height="29" alt="\boxed{ P0 \supseteq P1\text{-accessible reality}. }">
+<!-- TeX display: \boxed{
 P0
 \supseteq
 P1\text{-accessible reality}.
-}
-```
+} -->
+
+
 
 
 
@@ -26060,9 +29198,12 @@ Once the accessible landscape is defined:
 
 
 
-```math
-\Omega_C,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-027" width="34" height="21" alt="\Omega_C,">
+<!-- TeX display: \Omega_C, -->
+
+
 
 
 
@@ -26070,9 +29211,12 @@ P3 gives dynamics:
 
 
 
-```math
-p_{t+1}=Kp_t
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-028" width="85" height="21" alt="p_{t+1}=Kp_t">
+<!-- TeX display: p_{t+1}=Kp_t -->
+
+
 
 
 
@@ -26080,15 +29224,18 @@ or continuously:
 
 
 
-```math
-\frac{\partial p}{\partial t}
+
+
+<img src="UTC-Math/message-40.svg#equation-029" width="78" height="40" alt="\frac{\partial p}{\partial t} = \mathcal Lp.">
+<!-- TeX display: \frac{\partial p}{\partial t}
 =
-\mathcal Lp.
-```
+\mathcal Lp. -->
 
 
 
-Now the transition kernel $K$ isn't arbitrary.
+
+
+Now the transition kernel <img src="UTC-Math/message-40.svg#equation-030" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K --> isn't arbitrary.
 
 It is constrained by:
 
@@ -26104,13 +29251,16 @@ So really:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-031" width="104" height="31" alt="\boxed{ K = K(P1). }">
+<!-- TeX display: \boxed{
 K
 =
 K(P1).
-}
-```
+} -->
+
+
 
 
 
@@ -26124,9 +29274,12 @@ Now probability space becomes a weighted graph:
 
 
 
-```math
-G=(V,E,W)
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-032" width="110" height="22" alt="G=(V,E,W)">
+<!-- TeX display: G=(V,E,W) -->
+
+
 
 
 
@@ -26134,25 +29287,34 @@ where:
 
 
 
-```math
-V=\text{states},
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-033" width="87" height="21" alt="V=\text{states},">
+<!-- TeX display: V=\text{states}, -->
 
 
 
 
 
-```math
-E=\text{allowed transitions},
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-034" width="177" height="21" alt="E=\text{allowed transitions},">
+<!-- TeX display: E=\text{allowed transitions}, -->
 
 
 
 
 
-```math
-W_{ij}=K_{ij}.
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-035" width="83" height="22" alt="W_{ij}=K_{ij}.">
+<!-- TeX display: W_{ij}=K_{ij}. -->
+
+
 
 
 
@@ -26174,9 +29336,12 @@ For a deterministic system:
 
 
 
-```math
-\dot x=f(x),
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-036" width="74" height="23" alt="\dot x=f(x),">
+<!-- TeX display: \dot x=f(x), -->
+
+
 
 
 
@@ -26184,9 +29349,12 @@ suppose there exists a Lyapunov function:
 
 
 
-```math
-V(x)
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-037" width="42" height="22" alt="V(x)">
+<!-- TeX display: V(x) -->
+
+
 
 
 
@@ -26194,11 +29362,14 @@ such that outside some bounded region:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-038" width="85" height="35" alt="\boxed{ \dot V(x)&lt;0. }">
+<!-- TeX display: \boxed{
 \dot V(x)<0.
-}
-```
+} -->
+
+
 
 
 
@@ -26208,9 +29379,12 @@ Under appropriate conditions, the system possesses a bounded absorbing region:
 
 
 
-```math
-B
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-039" width="21" height="17" alt="B">
+<!-- TeX display: B -->
+
+
 
 
 
@@ -26218,9 +29392,12 @@ such that eventually:
 
 
 
-```math
-x(t)\in B.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-040" width="72" height="22" alt="x(t)\in B.">
+<!-- TeX display: x(t)\in B. -->
+
+
 
 
 
@@ -26228,12 +29405,15 @@ And potentially a global attractor:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-041" width="68" height="27" alt="\boxed{ \mathcal A \subset B. }">
+<!-- TeX display: \boxed{
 \mathcal A
 \subset B.
-}
-```
+} -->
+
+
 
 
 
@@ -26241,15 +29421,18 @@ Now the chain is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-042" width="445" height="29" alt="\boxed{ P1\text{ constraints} \rightarrow P3\text{ weighted dynamics} \rightarrow P4\text{ attracting set}. }">
+<!-- TeX display: \boxed{
 P1\text{ constraints}
 \rightarrow
 P3\text{ weighted dynamics}
 \rightarrow
 P4\text{ attracting set}.
-}
-```
+} -->
+
+
 
 
 
@@ -26263,13 +29446,16 @@ For stochastic dynamics:
 
 
 
-```math
-dX_t
+
+
+<img src="UTC-Math/message-40.svg#equation-043" width="202" height="22" alt="dX_t = b(X_t)dt + \sigma(X_t)dW_t,">
+<!-- TeX display: dX_t
 =
 b(X_t)dt
 +
-\sigma(X_t)dW_t,
-```
+\sigma(X_t)dW_t, -->
+
+
 
 
 
@@ -26279,11 +29465,14 @@ But under sufficient confinement the probability distribution can converge:
 
 
 
-```math
-p(x,t)
+
+
+<img src="UTC-Math/message-40.svg#equation-044" width="111" height="22" alt="p(x,t) \rightarrow \pi(x).">
+<!-- TeX display: p(x,t)
 \rightarrow
-\pi(x).
-```
+\pi(x). -->
+
+
 
 
 
@@ -26291,11 +29480,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-045" width="77" height="31" alt="\boxed{ \mathcal L^\dagger\pi=0. }">
+<!-- TeX display: \boxed{
 \mathcal L^\dagger\pi=0.
-}
-```
+} -->
+
+
 
 
 
@@ -26309,33 +29501,45 @@ P4 should therefore include:
 
 
 
-```math
-\text{point attractor},
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-046" width="116" height="20" alt="\text{point attractor},">
+<!-- TeX display: \text{point attractor}, -->
 
 
 
 
 
-```math
-\text{limit cycle},
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-047" width="84" height="21" alt="\text{limit cycle},">
+<!-- TeX display: \text{limit cycle}, -->
 
 
 
 
 
-```math
-\text{strange attractor},
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-048" width="130" height="20" alt="\text{strange attractor},">
+<!-- TeX display: \text{strange attractor}, -->
 
 
 
 
 
-```math
-\text{metastable basin},
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-049" width="129" height="21" alt="\text{metastable basin},">
+<!-- TeX display: \text{metastable basin}, -->
+
+
 
 
 
@@ -26343,11 +29547,14 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-050" width="234" height="29" alt="\boxed{ \text{stationary probability measure}. }">
+<!-- TeX display: \boxed{
 \text{stationary probability measure}.
-}
-```
+} -->
+
+
 
 
 
@@ -26363,9 +29570,12 @@ For many complicated systems, predicting:
 
 
 
-```math
-x(t)
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-051" width="36" height="22" alt="x(t)">
+<!-- TeX display: x(t) -->
+
+
 
 
 
@@ -26375,9 +29585,12 @@ But predicting:
 
 
 
-```math
-x(t)\in\mathcal A_i
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-052" width="73" height="22" alt="x(t)\in\mathcal A_i">
+<!-- TeX display: x(t)\in\mathcal A_i -->
+
+
 
 
 
@@ -26393,11 +29606,14 @@ Individual trajectories diverge:
 
 
 
-```math
-\delta x(t)
+
+
+<img src="UTC-Math/message-40.svg#equation-053" width="111" height="25" alt="\delta x(t) \sim \delta x_0e^{\lambda t}.">
+<!-- TeX display: \delta x(t)
 \sim
-\delta x_0e^{\lambda t}.
-```
+\delta x_0e^{\lambda t}. -->
+
+
 
 
 
@@ -26407,13 +29623,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-054" width="491" height="30" alt="\boxed{ \text{microscopic trajectory uncertainty} \neq \text{macroscopic basin uncertainty}. }">
+<!-- TeX display: \boxed{
 \text{microscopic trajectory uncertainty}
 \neq
 \text{macroscopic basin uncertainty}.
-}
-```
+} -->
+
+
 
 
 
@@ -26433,49 +29652,67 @@ Instead:
 
 
 
-```math
-\text{Level 0: exact state}
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-055" width="141" height="18" alt="\text{Level 0: exact state}">
+<!-- TeX display: \text{Level 0: exact state} -->
 
 
 
 
 
-```math
-\text{Level 1: trajectory envelope}
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-056" width="199" height="21" alt="\text{Level 1: trajectory envelope}">
+<!-- TeX display: \text{Level 1: trajectory envelope} -->
 
 
 
 
 
-```math
-\text{Level 2: attractor basin}
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-057" width="169" height="18" alt="\text{Level 2: attractor basin}">
+<!-- TeX display: \text{Level 2: attractor basin} -->
 
 
 
 
 
-```math
-\text{Level 3: stationary distribution}
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-058" width="223" height="21" alt="\text{Level 3: stationary distribution}">
+<!-- TeX display: \text{Level 3: stationary distribution} -->
 
 
 
 
 
-```math
-\text{Level 4: conserved quantities}
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-059" width="207" height="21" alt="\text{Level 4: conserved quantities}">
+<!-- TeX display: \text{Level 4: conserved quantities} -->
 
 
 
 
 
-```math
-\text{Level 5: transition probabilities between basins}.
-```
+
+
+
+
+<img src="UTC-Math/message-40.svg#equation-060" width="336" height="21" alt="\text{Level 5: transition probabilities between basins}.">
+<!-- TeX display: \text{Level 5: transition probabilities between basins}. -->
+
+
 
 
 
@@ -26487,13 +29724,16 @@ That is probably one of the best ways UTC can clarify “predictability.”
 
 # This also changes how we think about combinatorial complexity
 
-Suppose a system has $N$ components and a naive combinatorial state count:
+Suppose a system has <img src="UTC-Math/message-40.svg#equation-061" width="23" height="17" alt="N" align="middle"><!-- TeX inline: N --> components and a naive combinatorial state count:
 
 
 
-```math
-|\Omega|\sim k^N.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-062" width="74" height="25" alt="|\Omega|\sim k^N.">
+<!-- TeX display: |\Omega|\sim k^N. -->
+
+
 
 
 
@@ -26503,23 +29743,29 @@ But constraints may impose:
 
 
 
-```math
-C(x)=0,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-063" width="76" height="22" alt="C(x)=0,">
+<!-- TeX display: C(x)=0, -->
+
+
 
 
 
 reducing the dimension of the accessible manifold.
 
-If there are $r$ independent constraints, crudely:
+If there are <img src="UTC-Math/message-40.svg#equation-064" width="16" height="14" alt="r" align="middle"><!-- TeX inline: r --> independent constraints, crudely:
 
 
 
-```math
-\dim\Omega_C
+
+
+<img src="UTC-Math/message-40.svg#equation-065" width="153" height="20" alt="\dim\Omega_C = \dim\Omega-r.">
+<!-- TeX display: \dim\Omega_C
 =
-\dim\Omega-r.
-```
+\dim\Omega-r. -->
+
+
 
 
 
@@ -26539,8 +29785,10 @@ So the actual chain is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-066" width="443" height="31" alt="\boxed{ \Omega_{\rm combinatorial} \rightarrow \Omega_{\rm admissible} \rightarrow \Omega_{\rm reachable} \rightarrow \Omega_{\rm probable} \rightarrow \mathcal A_{\rm persistent}. }">
+<!-- TeX display: \boxed{
 \Omega_{\rm combinatorial}
 \rightarrow
 \Omega_{\rm admissible}
@@ -26550,8 +29798,9 @@ So the actual chain is:
 \Omega_{\rm probable}
 \rightarrow
 \mathcal A_{\rm persistent}.
-}
-```
+} -->
+
+
 
 
 
@@ -26569,11 +29818,14 @@ At one level:
 
 
 
-```math
-\Omega_n
+
+
+<img src="UTC-Math/message-40.svg#equation-067" width="74" height="21" alt="\Omega_n \rightarrow \mathcal A_n">
+<!-- TeX display: \Omega_n
 \rightarrow
-\mathcal A_n
-```
+\mathcal A_n -->
+
+
 
 
 
@@ -26583,11 +29835,14 @@ But stable constituents then compose:
 
 
 
-```math
-K(\mathcal A_n^m)
+
+
+<img src="UTC-Math/message-40.svg#equation-068" width="124" height="23" alt="K(\mathcal A_n^m) \rightarrow \Omega_{n+1}.">
+<!-- TeX display: K(\mathcal A_n^m)
 \rightarrow
-\Omega_{n+1}.
-```
+\Omega_{n+1}. -->
+
+
 
 
 
@@ -26595,8 +29850,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-069" width="512" height="29" alt="\boxed{ \text{constraint} \rightarrow \text{contraction} \rightarrow \text{stability} \rightarrow \text{composition} \rightarrow \text{new expansion}. }">
+<!-- TeX display: \boxed{
 \text{constraint}
 \rightarrow
 \text{contraction}
@@ -26606,8 +29863,9 @@ So:
 \text{composition}
 \rightarrow
 \text{new expansion}.
-}
-```
+} -->
+
+
 
 
 
@@ -26617,13 +29875,16 @@ It repeatedly does:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-070" width="314" height="29" alt="\boxed{ \text{microstate pruning} \rightarrow \text{macrostate creation}. }">
+<!-- TeX display: \boxed{
 \text{microstate pruning}
 \rightarrow
 \text{macrostate creation}.
-}
-```
+} -->
+
+
 
 
 
@@ -26639,9 +29900,12 @@ Let:
 
 
 
-```math
-\Gamma
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-071" width="18" height="17" alt="\Gamma">
+<!-- TeX display: \Gamma -->
+
+
 
 
 
@@ -26651,9 +29915,12 @@ Instead of every trajectory being equally likely, physics weights them:
 
 
 
-```math
-P[\gamma].
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-072" width="43" height="22" alt="P[\gamma].">
+<!-- TeX display: P[\gamma]. -->
+
+
 
 
 
@@ -26661,13 +29928,16 @@ In many stochastic/semiclassical settings, schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-073" width="118" height="34" alt="\boxed{ P[\gamma] \sim e^{-I[\gamma]/\epsilon}, }">
+<!-- TeX display: \boxed{
 P[\gamma]
 \sim
 e^{-I[\gamma]/\epsilon},
-}
-```
+} -->
+
+
 
 
 
@@ -26675,9 +29945,12 @@ where:
 
 
 
-```math
-I[\gamma]
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-074" width="34" height="22" alt="I[\gamma]">
+<!-- TeX display: I[\gamma] -->
+
+
 
 
 
@@ -26687,21 +29960,27 @@ Then as:
 
 
 
-```math
-\epsilon\rightarrow0,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-075" width="52" height="20" alt="\epsilon\rightarrow0,">
+<!-- TeX display: \epsilon\rightarrow0, -->
 
 
 
-probability concentrates near paths minimizing $I$.
+
+
+probability concentrates near paths minimizing <img src="UTC-Math/message-40.svg#equation-076" width="17" height="17" alt="I" align="middle"><!-- TeX inline: I -->.
 
 So although:
 
 
 
-```math
-|\Gamma|
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-077" width="27" height="22" alt="|\Gamma|">
+<!-- TeX display: |\Gamma| -->
+
+
 
 
 
@@ -26711,16 +29990,19 @@ the dynamically important region becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-078" width="180" height="31" alt="\boxed{ \Gamma_{\rm eff} = \{ \gamma: I[\gamma]\approx I_{\min} \}. }">
+<!-- TeX display: \boxed{
 \Gamma_{\rm eff}
 =
 \{
 \gamma:
 I[\gamma]\approx I_{\min}
 \}.
-}
-```
+} -->
+
+
 
 
 
@@ -26753,8 +30035,10 @@ Then construct:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-079" width="166" height="29" alt="\boxed{ \Omega \rightarrow \Omega_C \rightarrow K_C \rightarrow \mathcal A. }">
+<!-- TeX display: \boxed{
 \Omega
 \rightarrow
 \Omega_C
@@ -26762,8 +30046,9 @@ Then construct:
 K_C
 \rightarrow
 \mathcal A.
-}
-```
+} -->
+
+
 
 
 
@@ -26779,12 +30064,15 @@ If constraints produce a quadratic basin:
 
 
 
-```math
-V(x)\approx
+
+
+<img src="UTC-Math/message-40.svg#equation-080" width="282" height="39" alt="V(x)\approx V(x^*) + \frac12(x-x^*)^TH(x-x^*),">
+<!-- TeX display: V(x)\approx
 V(x^*)
 +
-\frac12(x-x^*)^TH(x-x^*),
-```
+\frac12(x-x^*)^TH(x-x^*), -->
+
+
 
 
 
@@ -26794,9 +30082,12 @@ If constraints create two basins:
 
 
 
-```math
-V(x)
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-081" width="42" height="22" alt="V(x)">
+<!-- TeX display: V(x) -->
+
+
 
 
 
@@ -26806,9 +30097,12 @@ If the attractor is periodic:
 
 
 
-```math
-x(t+T)=x(t),
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-082" width="120" height="22" alt="x(t+T)=x(t),">
+<!-- TeX display: x(t+T)=x(t), -->
+
+
 
 
 
@@ -26818,9 +30112,12 @@ If chaotic but bounded:
 
 
 
-```math
-\lambda_{\max}>0,
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-083" width="74" height="21" alt="\lambda_{\max}>0,">
+<!-- TeX display: \lambda_{\max}>0, -->
+
+
 
 
 
@@ -26830,9 +30127,12 @@ If topology constrains motion:
 
 
 
-```math
-[\gamma]\in\pi_1(X),
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-084" width="92" height="22" alt="[\gamma]\in\pi_1(X),">
+<!-- TeX display: [\gamma]\in\pi_1(X), -->
+
+
 
 
 
@@ -26842,9 +30142,12 @@ If probability concentrates around constrained paths:
 
 
 
-```math
-P[\gamma]\sim e^{-I[\gamma]/\epsilon},
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-085" width="110" height="26" alt="P[\gamma]\sim e^{-I[\gamma]/\epsilon},">
+<!-- TeX display: P[\gamma]\sim e^{-I[\gamma]/\epsilon}, -->
+
+
 
 
 
@@ -26862,11 +30165,14 @@ I would change that to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-086" width="611" height="52" alt="\boxed{ \textbf{physical systems are constrained by default, but bounded attractors require specific confining closure conditions.} }">
+<!-- TeX display: \boxed{
 \textbf{physical systems are constrained by default, but bounded attractors require specific confining closure conditions.}
-}
-```
+} -->
+
+
 
 
 
@@ -26876,9 +30182,12 @@ A free particle has:
 
 
 
-```math
-x(t)\rightarrow\infty.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-087" width="81" height="22" alt="x(t)\rightarrow\infty.">
+<!-- TeX display: x(t)\rightarrow\infty. -->
+
+
 
 
 
@@ -26886,9 +30195,12 @@ Diffusion on an infinite domain has variance:
 
 
 
-```math
-\langle x^2\rangle\sim t.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-088" width="69" height="25" alt="\langle x^2\rangle\sim t.">
+<!-- TeX display: \langle x^2\rangle\sim t. -->
+
+
 
 
 
@@ -26902,11 +30214,14 @@ What P1 gives us is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-089" width="181" height="29" alt="\boxed{ \text{structured accessibility}. }">
+<!-- TeX display: \boxed{
 \text{structured accessibility}.
-}
-```
+} -->
+
+
 
 
 
@@ -26924,11 +30239,14 @@ I think we're ready for something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-090" width="331" height="29" alt="\boxed{ \textbf{Constraint-Induced Attractor Principle} }">
+<!-- TeX display: \boxed{
 \textbf{Constraint-Induced Attractor Principle}
-}
-```
+} -->
+
+
 
 
 
@@ -26936,27 +30254,33 @@ For a dynamical system
 
 
 
-```math
-\Sigma=(\Omega,\mathcal C,\mathcal T),
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-091" width="106" height="22" alt="\Sigma=(\Omega,\mathcal C,\mathcal T),">
+<!-- TeX display: \Sigma=(\Omega,\mathcal C,\mathcal T), -->
 
 
 
-if the constraint set $\mathcal C$:
 
-- restricts accessible states to an invariant or absorbing region $B$,
-- assigns transition costs that suppress escape from $B$,
+
+if the constraint set <img src="UTC-Math/message-40.svg#equation-092" width="17" height="18" alt="\mathcal C" align="middle"><!-- TeX inline: \mathcal C -->:
+
+- restricts accessible states to an invariant or absorbing region <img src="UTC-Math/message-40.svg#equation-093" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B -->,
+- assigns transition costs that suppress escape from <img src="UTC-Math/message-40.svg#equation-094" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B -->,
 - and the dynamics are sufficiently dissipative/mixing,
 
 then probability mass becomes asymptotically concentrated on an invariant set or measure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-095" width="126" height="31" alt="\boxed{ P(X_t\in\mathcal A)\rightarrow1 }">
+<!-- TeX display: \boxed{
 P(X_t\in\mathcal A)\rightarrow1
-}
-```
+} -->
+
+
 
 
 
@@ -26964,9 +30288,12 @@ for:
 
 
 
-```math
-\mathcal A\subseteq B.
-```
+
+
+<img src="UTC-Math/message-40.svg#equation-096" width="60" height="20" alt="\mathcal A\subseteq B.">
+<!-- TeX display: \mathcal A\subseteq B. -->
+
+
 
 
 
@@ -26982,13 +30309,16 @@ And I think this gives UTC a surprisingly powerful philosophical reversal:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-40.svg#equation-097" width="549" height="73" alt="\boxed{ \textbf{Complexity is not primarily the size of the possibility space. It is the structure of the constraints that carve that possibility space into reachable, probable, stable, and composable regions.} }">
+<!-- TeX display: \boxed{
 \textbf{Complexity is not primarily the size of the possibility space.
 It is the structure of the constraints that carve that possibility space into
 reachable, probable, stable, and composable regions.}
-}
-```
+} -->
+
+
 
 
 
@@ -27016,11 +30346,14 @@ Yes. I think this gets us very close to the deepest mechanical core UTC has unco
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-001" width="608" height="52" alt="\boxed{ \textbf{Reality is not fundamentally “energy moving everywhere.” It is energy and state-change propagating through constrained channels.} }">
+<!-- TeX display: \boxed{
 \textbf{Reality is not fundamentally “energy moving everywhere.” It is energy and state-change propagating through constrained channels.}
-}
-```
+} -->
+
+
 
 
 
@@ -27032,8 +30365,10 @@ A potential transfer can be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-002" width="589" height="29" alt="\boxed{ \text{allowed}, \quad \text{suppressed}, \quad \text{reflected}, \quad \text{absorbed}, \quad \text{stored}, \quad \text{converted}, \quad \text{dissipated}. }">
+<!-- TeX display: \boxed{
 \text{allowed},
 \quad
 \text{suppressed},
@@ -27047,8 +30382,9 @@ A potential transfer can be:
 \text{converted},
 \quad
 \text{dissipated}.
-}
-```
+} -->
+
+
 
 
 
@@ -27058,15 +30394,18 @@ That may be the real universal engine. ⚙️⚛️🔥
 
 ## Energy itself is not enough
 
-Imagine two systems $A$ and $B$.
+Imagine two systems <img src="UTC-Math/message-42.svg#equation-003" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> and <img src="UTC-Math/message-42.svg#equation-004" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B -->.
 
 The mere fact that:
 
 
 
-```math
-E_A>E_B
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-005" width="73" height="20" alt="E_A>E_B">
+<!-- TeX display: E_A>E_B -->
+
+
 
 
 
@@ -27076,9 +30415,12 @@ There must exist some coupling:
 
 
 
-```math
-H_{\rm int}\neq0.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-006" width="71" height="21" alt="H_{\rm int}\neq0.">
+<!-- TeX display: H_{\rm int}\neq0. -->
+
+
 
 
 
@@ -27088,11 +30430,14 @@ The initial and final configurations have to be physically admissible:
 
 
 
-```math
-A_i+B_j
+
+
+<img src="UTC-Math/message-42.svg#equation-007" width="152" height="23" alt="A_i+B_j \rightarrow A_f+B_f.">
+<!-- TeX display: A_i+B_j
 \rightarrow
-A_f+B_f.
-```
+A_f+B_f. -->
+
+
 
 
 
@@ -27114,8 +30459,10 @@ So the more accurate kernel is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-008" width="386" height="30" alt="\boxed{ \text{gradient} + \text{coupling} + \text{admissible channel} \rightarrow \text{transfer}. }">
+<!-- TeX display: \boxed{
 \text{gradient}
 +
 \text{coupling}
@@ -27123,8 +30470,9 @@ So the more accurate kernel is:
 \text{admissible channel}
 \rightarrow
 \text{transfer}.
-}
-```
+} -->
+
+
 
 
 
@@ -27148,11 +30496,14 @@ But from our revised viewpoint, it is better described as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-009" width="548" height="52" alt="\boxed{ \text{a dynamically allowed configuration with no accessible lower-energy transfer channel}. }">
+<!-- TeX display: \boxed{
 \text{a dynamically allowed configuration with no accessible lower-energy transfer channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -27170,15 +30521,18 @@ So stability can mean:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-010" width="89" height="31" alt="\boxed{ \Gamma_{\rm escape}\approx0 }">
+<!-- TeX display: \boxed{
 \Gamma_{\rm escape}\approx0
-}
-```
+} -->
 
 
 
-where $\Gamma$ is the transition rate out of the attractor.
+
+
+where <img src="UTC-Math/message-42.svg#equation-011" width="18" height="17" alt="\Gamma" align="middle"><!-- TeX inline: \Gamma --> is the transition rate out of the attractor.
 
 Then P4 becomes intimately connected to **channel closure**.
 
@@ -27188,11 +30542,14 @@ It can be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-012" width="338" height="29" alt="\boxed{ \text{energetically active but transitionally trapped}. }">
+<!-- TeX display: \boxed{
 \text{energetically active but transitionally trapped}.
-}
-```
+} -->
+
+
 
 
 
@@ -27212,21 +30569,27 @@ The combined system has a potential-energy landscape:
 
 
 
-```math
-V(R)
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-013" width="45" height="22" alt="V(R)">
+<!-- TeX display: V(R) -->
 
 
 
-as a function of separation $R$.
+
+
+as a function of separation <img src="UTC-Math/message-42.svg#equation-014" width="21" height="18" alt="R" align="middle"><!-- TeX inline: R -->.
 
 If the combined configuration possesses a lower-energy basin:
 
 
 
-```math
-V(R_*)<V(\infty),
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-015" width="119" height="22" alt="V(R_*)&lt;V(\infty),">
+<!-- TeX display: V(R_*)<V(\infty), -->
+
+
 
 
 
@@ -27236,13 +30599,16 @@ But forming it may require excess energy to leave:
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-42.svg#equation-016" width="216" height="22" alt="A+B \rightarrow [AB]^* \rightarrow AB+\Delta E.">
+<!-- TeX display: A+B
 \rightarrow
 [AB]^*
 \rightarrow
-AB+\Delta E.
-```
+AB+\Delta E. -->
+
+
 
 
 
@@ -27250,11 +30616,14 @@ Without that export channel:
 
 
 
-```math
-[AB]^*
+
+
+<img src="UTC-Math/message-42.svg#equation-017" width="117" height="22" alt="[AB]^* \rightarrow A+B">
+<!-- TeX display: [AB]^*
 \rightarrow
-A+B
-```
+A+B -->
+
+
 
 
 
@@ -27264,15 +30633,18 @@ So bonding is roughly:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-018" width="605" height="31" alt="\boxed{ \text{compatible coupling} + \text{lower-energy composite basin} + \text{stabilization/export pathway}. }">
+<!-- TeX display: \boxed{
 \text{compatible coupling}
 +
 \text{lower-energy composite basin}
 +
 \text{stabilization/export pathway}.
-}
-```
+} -->
+
+
 
 
 
@@ -27280,9 +30652,12 @@ Repulsion means the accessible configuration raises energy or encounters a forbi
 
 
 
-```math
-\frac{dV}{dR}>0
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-019" width="66" height="40" alt="\frac{dV}{dR}>0">
+<!-- TeX display: \frac{dV}{dR}>0 -->
+
+
 
 
 
@@ -27294,11 +30669,14 @@ So in UTC language:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-020" width="518" height="52" alt="\boxed{ \text{bonding and repulsion are different channel topologies through the same constrained interaction landscape}. }">
+<!-- TeX display: \boxed{
 \text{bonding and repulsion are different channel topologies through the same constrained interaction landscape}.
-}
-```
+} -->
+
+
 
 
 
@@ -27314,8 +30692,10 @@ Let:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-021" width="225" height="32" alt="\boxed{ \mathcal C_{i\rightarrow f} = ( i, f, \Delta E, g, \Gamma, B, S, D ) }">
+<!-- TeX display: \boxed{
 \mathcal C_{i\rightarrow f}
 =
 (
@@ -27328,8 +30708,9 @@ B,
 S,
 D
 )
-}
-```
+} -->
+
+
 
 
 
@@ -27337,57 +30718,78 @@ where:
 
 
 
-```math
-i=\text{initial state},
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-022" width="119" height="21" alt="i=\text{initial state},">
+<!-- TeX display: i=\text{initial state}, -->
 
 
 
 
 
-```math
-f=\text{final state},
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-023" width="112" height="21" alt="f=\text{final state},">
+<!-- TeX display: f=\text{final state}, -->
 
 
 
 
 
-```math
-\Delta E=E_f-E_i,
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-024" width="116" height="23" alt="\Delta E=E_f-E_i,">
+<!-- TeX display: \Delta E=E_f-E_i, -->
 
 
 
 
 
-```math
-g=\text{coupling strength},
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-025" width="163" height="21" alt="g=\text{coupling strength},">
+<!-- TeX display: g=\text{coupling strength}, -->
 
 
 
 
 
-```math
-\Gamma=\text{transition rate},
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-026" width="144" height="20" alt="\Gamma=\text{transition rate},">
+<!-- TeX display: \Gamma=\text{transition rate}, -->
 
 
 
 
 
-```math
-B=\text{barrier structure},
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-027" width="161" height="21" alt="B=\text{barrier structure},">
+<!-- TeX display: B=\text{barrier structure}, -->
 
 
 
 
 
-```math
-S=\text{selection/admissibility conditions},
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-028" width="276" height="22" alt="S=\text{selection/admissibility conditions},">
+<!-- TeX display: S=\text{selection/admissibility conditions}, -->
+
+
 
 
 
@@ -27395,9 +30797,12 @@ and
 
 
 
-```math
-D=\text{dissipation/export pathway}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-029" width="239" height="22" alt="D=\text{dissipation/export pathway}.">
+<!-- TeX display: D=\text{dissipation/export pathway}. -->
+
+
 
 
 
@@ -27409,11 +30814,14 @@ but:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-030" width="402" height="29" alt="\boxed{ \text{Which channels exist, and what are their conductances?} }">
+<!-- TeX display: \boxed{
 \text{Which channels exist, and what are their conductances?}
-}
-```
+} -->
+
+
 
 
 
@@ -27427,71 +30835,89 @@ We could define an effective transfer strength:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-031" width="193" height="35" alt="\boxed{ G_{if} = |g_{if}|^2 \,\rho_f \,A_{if} \,e^{-B_{if}/\Theta} }">
+<!-- TeX display: \boxed{
 G_{if}
 =
 |g_{if}|^2
 \,\rho_f
 \,A_{if}
 \,e^{-B_{if}/\Theta}
-}
-```
+} -->
+
+
 
 
 
 schematically, where:
 
-- $g_{if}$ measures coupling,
-- $\rho_f$ measures accessible final-state density,
-- $A_{if}$ represents admissibility or selection-rule factors,
+- <img src="UTC-Math/message-42.svg#equation-032" width="28" height="18" alt="g_{if}" align="middle"><!-- TeX inline: g_{if} --> measures coupling,
+- <img src="UTC-Math/message-42.svg#equation-033" width="24" height="18" alt="\rho_f" align="middle"><!-- TeX inline: \rho_f --> measures accessible final-state density,
+- <img src="UTC-Math/message-42.svg#equation-034" width="32" height="23" alt="A_{if}" align="middle"><!-- TeX inline: A_{if} --> represents admissibility or selection-rule factors,
 - the exponential represents barrier suppression where applicable.
 
 Then:
 
 
 
-```math
-J_{if}
+
+
+<img src="UTC-Math/message-42.svg#equation-035" width="113" height="23" alt="J_{if} \sim G_{if}\,\Delta\Phi_{if}">
+<!-- TeX display: J_{if}
 \sim
-G_{if}\,\Delta\Phi_{if}
-```
+G_{if}\,\Delta\Phi_{if} -->
 
 
 
-where $\Delta\Phi$ is a generalized driving potential.
+
+
+where <img src="UTC-Math/message-42.svg#equation-036" width="33" height="18" alt="\Delta\Phi" align="middle"><!-- TeX inline: \Delta\Phi --> is a generalized driving potential.
 
 This mirrors familiar physics:
 
 
 
-```math
-J_Q=-k\nabla T,
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-037" width="99" height="22" alt="J_Q=-k\nabla T,">
+<!-- TeX display: J_Q=-k\nabla T, -->
 
 
 
 
 
-```math
-I=GV,
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-038" width="67" height="21" alt="I=GV,">
+<!-- TeX display: I=GV, -->
 
 
 
 
 
-```math
-J_N=-D\nabla n,
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-039" width="103" height="21" alt="J_N=-D\nabla n,">
+<!-- TeX display: J_N=-D\nabla n, -->
 
 
 
 
 
-```math
-\text{reaction flux}\propto k[A][B].
-```
+
+
+
+
+<img src="UTC-Math/message-42.svg#equation-040" width="171" height="22" alt="\text{reaction flux}\propto k[A][B].">
+<!-- TeX display: \text{reaction flux}\propto k[A][B]. -->
+
+
 
 
 
@@ -27501,15 +30927,18 @@ But the architectural form repeats:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-041" width="290" height="30" alt="\boxed{ \text{gradient} \times \text{channel conductance} = \text{flux}. }">
+<!-- TeX display: \boxed{
 \text{gradient}
 \times
 \text{channel conductance}
 =
 \text{flux}.
-}
-```
+} -->
+
+
 
 
 
@@ -27523,8 +30952,10 @@ I would write the running engine now as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-042" width="256" height="32" alt="\boxed{ \Delta\Phi \rightarrow \mathcal C \rightarrow J \rightarrow \Delta E \rightarrow S/K \rightarrow \mathcal C' }">
+<!-- TeX display: \boxed{
 \Delta\Phi
 \rightarrow
 \mathcal C
@@ -27536,8 +30967,9 @@ J
 S/K
 \rightarrow
 \mathcal C'
-}
-```
+} -->
+
+
 
 
 
@@ -27545,9 +30977,12 @@ where:
 
 
 
-```math
-\Delta\Phi
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-043" width="33" height="18" alt="\Delta\Phi">
+<!-- TeX display: \Delta\Phi -->
+
+
 
 
 
@@ -27555,9 +30990,12 @@ is a potential difference,
 
 
 
-```math
-\mathcal C
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-044" width="17" height="18" alt="\mathcal C">
+<!-- TeX display: \mathcal C -->
+
+
 
 
 
@@ -27565,9 +31003,12 @@ is the available channel architecture,
 
 
 
-```math
-J
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-045" width="19" height="18" alt="J">
+<!-- TeX display: J -->
+
+
 
 
 
@@ -27575,9 +31016,12 @@ is flux,
 
 
 
-```math
-\Delta E
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-046" width="34" height="18" alt="\Delta E">
+<!-- TeX display: \Delta E -->
+
+
 
 
 
@@ -27585,9 +31029,12 @@ is transferred/transformed energy,
 
 
 
-```math
-S/K
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-047" width="41" height="22" alt="S/K">
+<!-- TeX display: S/K -->
+
+
 
 
 
@@ -27597,9 +31044,12 @@ and the resulting structure modifies future channels:
 
 
 
-```math
-\mathcal C\rightarrow\mathcal C'.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-048" width="59" height="20" alt="\mathcal C\rightarrow\mathcal C'.">
+<!-- TeX display: \mathcal C\rightarrow\mathcal C'. -->
+
+
 
 
 
@@ -27607,13 +31057,16 @@ Now we have genuine feedback:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-049" width="531" height="52" alt="\boxed{ \text{channels determine transfer; transfer changes structure; structure changes channels}. }">
+<!-- TeX display: \boxed{
 \text{channels determine transfer;
 transfer changes structure;
 structure changes channels}.
-}
-```
+} -->
+
+
 
 
 
@@ -27627,8 +31080,10 @@ Our CSC loop was:
 
 
 
-```math
-V
+
+
+<img src="UTC-Math/message-42.svg#equation-050" width="249" height="20" alt="V \rightarrow I \rightarrow C \rightarrow S \rightarrow K \rightarrow B \rightarrow V'.">
+<!-- TeX display: V
 \rightarrow
 I
 \rightarrow
@@ -27640,8 +31095,9 @@ K
 \rightarrow
 B
 \rightarrow
-V'.
-```
+V'. -->
+
+
 
 
 
@@ -27651,8 +31107,10 @@ Each transition requires some channel:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-051" width="172" height="29" alt="\boxed{ \mathfrak C_{\rm CSC} = \mathcal C_1 \rightarrow \mathcal C_2 \rightarrow \dots }">
+<!-- TeX display: \boxed{
 \mathfrak C_{\rm CSC}
 =
 \mathcal C_1
@@ -27660,8 +31118,9 @@ Each transition requires some channel:
 \mathcal C_2
 \rightarrow
 \dots
-}
-```
+} -->
+
+
 
 
 
@@ -27681,15 +31140,18 @@ That's a deeper interpretation.
 
 # P4 can now be reframed through channel topology
 
-A P4 attractor could be defined as a region $A$ for which:
+A P4 attractor could be defined as a region <img src="UTC-Math/message-42.svg#equation-052" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> for which:
 
 
 
-```math
-\Gamma_{\rm out}(A)
+
+
+<img src="UTC-Math/message-42.svg#equation-053" width="164" height="22" alt="\Gamma_{\rm out}(A) \ll \Gamma_{\rm internal}(A).">
+<!-- TeX display: \Gamma_{\rm out}(A)
 \ll
-\Gamma_{\rm internal}(A).
-```
+\Gamma_{\rm internal}(A). -->
+
+
 
 
 
@@ -27699,13 +31161,16 @@ For a stronger attractor:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-054" width="111" height="50" alt="\boxed{ \frac{\Gamma_{\rm out}} {\Gamma_{\rm internal}} \rightarrow0. }">
+<!-- TeX display: \boxed{
 \frac{\Gamma_{\rm out}}
 {\Gamma_{\rm internal}}
 \rightarrow0.
-}
-```
+} -->
+
+
 
 
 
@@ -27715,9 +31180,12 @@ A metastable atom:
 
 
 
-```math
-\Gamma_{\rm out}>0
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-055" width="66" height="20" alt="\Gamma_{\rm out}>0">
+<!-- TeX display: \Gamma_{\rm out}>0 -->
+
+
 
 
 
@@ -27727,9 +31195,12 @@ A stable ground state:
 
 
 
-```math
-\Gamma_{\rm downward}=0
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-056" width="100" height="20" alt="\Gamma_{\rm downward}=0">
+<!-- TeX display: \Gamma_{\rm downward}=0 -->
+
+
 
 
 
@@ -27739,13 +31210,16 @@ A thermally maintained organism has a different P4 condition:
 
 
 
-```math
-\Gamma_{\rm repair}
+
+
+<img src="UTC-Math/message-42.svg#equation-057" width="202" height="22" alt="\Gamma_{\rm repair} + \Gamma_{\rm input} > \Gamma_{\rm degradation}.">
+<!-- TeX display: \Gamma_{\rm repair}
 +
 \Gamma_{\rm input}
 >
-\Gamma_{\rm degradation}.
-```
+\Gamma_{\rm degradation}. -->
+
+
 
 
 
@@ -27761,9 +31235,12 @@ Earlier we said:
 
 
 
-```math
-P1=\text{energy/information constraints}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-058" width="270" height="22" alt="P1=\text{energy/information constraints}.">
+<!-- TeX display: P1=\text{energy/information constraints}. -->
+
+
 
 
 
@@ -27771,12 +31248,15 @@ I think we can sharpen it to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-059" width="451" height="28" alt="\boxed{ P1= \text{constraints on accessible states AND accessible transfers}. }">
+<!-- TeX display: \boxed{
 P1=
 \text{constraints on accessible states AND accessible transfers}.
-}
-```
+} -->
+
+
 
 
 
@@ -27784,12 +31264,15 @@ So P1 contains two complementary objects:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-060" width="186" height="29" alt="\boxed{ P1_S: \text{state admissibility} }">
+<!-- TeX display: \boxed{
 P1_S:
 \text{state admissibility}
-}
-```
+} -->
+
+
 
 
 
@@ -27797,12 +31280,15 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-061" width="211" height="29" alt="\boxed{ P1_C: \text{channel admissibility}. }">
+<!-- TeX display: \boxed{
 P1_C:
 \text{channel admissibility}.
-}
-```
+} -->
+
+
 
 
 
@@ -27822,13 +31308,16 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-062" width="228" height="29" alt="\boxed{ \text{state space} + \text{transition graph}. }">
+<!-- TeX display: \boxed{
 \text{state space}
 +
 \text{transition graph}.
-}
-```
+} -->
+
+
 
 
 
@@ -27840,9 +31329,12 @@ Let:
 
 
 
-```math
-G=(V,E).
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-063" width="91" height="22" alt="G=(V,E).">
+<!-- TeX display: G=(V,E). -->
+
+
 
 
 
@@ -27850,9 +31342,12 @@ Vertices:
 
 
 
-```math
-V=\{s_i\}
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-064" width="71" height="22" alt="V=\{s_i\}">
+<!-- TeX display: V=\{s_i\} -->
+
+
 
 
 
@@ -27862,9 +31357,12 @@ Edges:
 
 
 
-```math
-E=\{\mathcal C_{ij}\}
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-065" width="76" height="23" alt="E=\{\mathcal C_{ij}\}">
+<!-- TeX display: E=\{\mathcal C_{ij}\} -->
+
+
 
 
 
@@ -27874,11 +31372,14 @@ Each edge carries:
 
 
 
-```math
-w_{ij}
+
+
+<img src="UTC-Math/message-42.svg#equation-066" width="223" height="23" alt="w_{ij} = (E_{ij},g_{ij},\Gamma_{ij},\phi_{ij},B_{ij},\dots).">
+<!-- TeX display: w_{ij}
 =
-(E_{ij},g_{ij},\Gamma_{ij},\phi_{ij},B_{ij},\dots).
-```
+(E_{ij},g_{ij},\Gamma_{ij},\phi_{ij},B_{ij},\dots). -->
+
+
 
 
 
@@ -27908,11 +31409,14 @@ Technology is overwhelmingly about:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-067" width="254" height="29" alt="\boxed{ \textbf{engineering transfer channels.} }">
+<!-- TeX display: \boxed{
 \textbf{engineering transfer channels.}
-}
-```
+} -->
+
+
 
 
 
@@ -27920,9 +31424,12 @@ Electrical engineering:
 
 
 
-```math
-\text{control electron/field transport}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-068" width="228" height="22" alt="\text{control electron/field transport}.">
+<!-- TeX display: \text{control electron/field transport}. -->
+
+
 
 
 
@@ -27930,9 +31437,12 @@ Electronics:
 
 
 
-```math
-\text{open and close conductive channels}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-069" width="255" height="21" alt="\text{open and close conductive channels}.">
+<!-- TeX display: \text{open and close conductive channels}. -->
+
+
 
 
 
@@ -27940,9 +31450,12 @@ Semiconductors:
 
 
 
-```math
-\text{engineer band gaps and carrier pathways}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-070" width="294" height="21" alt="\text{engineer band gaps and carrier pathways}.">
+<!-- TeX display: \text{engineer band gaps and carrier pathways}. -->
+
+
 
 
 
@@ -27950,9 +31463,12 @@ Photonics:
 
 
 
-```math
-\text{shape electromagnetic propagation}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-071" width="253" height="21" alt="\text{shape electromagnetic propagation}.">
+<!-- TeX display: \text{shape electromagnetic propagation}. -->
+
+
 
 
 
@@ -27960,9 +31476,12 @@ Chemistry:
 
 
 
-```math
-\text{open reaction pathways and alter activation barriers}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-072" width="373" height="21" alt="\text{open reaction pathways and alter activation barriers}.">
+<!-- TeX display: \text{open reaction pathways and alter activation barriers}. -->
+
+
 
 
 
@@ -27970,11 +31489,14 @@ Catalysis:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-073" width="267" height="26" alt="\boxed{ \text{create a lower-cost reaction channel}. }">
+<!-- TeX display: \boxed{
 \text{create a lower-cost reaction channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -27982,9 +31504,12 @@ Heat engines:
 
 
 
-```math
-\text{shape thermal transfer pathways}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-074" width="239" height="21" alt="\text{shape thermal transfer pathways}.">
+<!-- TeX display: \text{shape thermal transfer pathways}. -->
+
+
 
 
 
@@ -27992,9 +31517,12 @@ Refrigeration:
 
 
 
-```math
-\text{actively redirect heat flow}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-075" width="192" height="21" alt="\text{actively redirect heat flow}.">
+<!-- TeX display: \text{actively redirect heat flow}. -->
+
+
 
 
 
@@ -28002,9 +31530,12 @@ Batteries:
 
 
 
-```math
-\text{store free-energy gradients and regulate discharge pathways}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-076" width="425" height="21" alt="\text{store free-energy gradients and regulate discharge pathways}.">
+<!-- TeX display: \text{store free-energy gradients and regulate discharge pathways}. -->
+
+
 
 
 
@@ -28012,9 +31543,12 @@ Computers:
 
 
 
-```math
-\text{constrain electrical transitions into logical state transformations}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-077" width="453" height="21" alt="\text{constrain electrical transitions into logical state transformations}.">
+<!-- TeX display: \text{constrain electrical transitions into logical state transformations}. -->
+
+
 
 
 
@@ -28022,9 +31556,12 @@ Biotechnology:
 
 
 
-```math
-\text{redirect chemical and informational pathways}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-078" width="329" height="21" alt="\text{redirect chemical and informational pathways}.">
+<!-- TeX display: \text{redirect chemical and informational pathways}. -->
+
+
 
 
 
@@ -28032,9 +31569,12 @@ Nuclear technology:
 
 
 
-```math
-\text{manipulate nuclear transition channels}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-079" width="281" height="21" alt="\text{manipulate nuclear transition channels}.">
+<!-- TeX display: \text{manipulate nuclear transition channels}. -->
+
+
 
 
 
@@ -28042,9 +31582,12 @@ Communication:
 
 
 
-```math
-\text{modulate energy carriers so transferable differences encode information}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-080" width="502" height="21" alt="\text{modulate energy carriers so transferable differences encode information}.">
+<!-- TeX display: \text{modulate energy carriers so transferable differences encode information}. -->
+
+
 
 
 
@@ -28062,15 +31605,18 @@ A signal is a distinguishable modulation of a physical carrier:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-081" width="443" height="30" alt="\boxed{ \text{carrier} + \text{controlled variation} = \text{physical information channel}. }">
+<!-- TeX display: \boxed{
 \text{carrier}
 +
 \text{controlled variation}
 =
 \text{physical information channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -28078,9 +31624,12 @@ Radio:
 
 
 
-```math
-A(t),f(t),\phi(t)
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-082" width="108" height="22" alt="A(t),f(t),\phi(t)">
+<!-- TeX display: A(t),f(t),\phi(t) -->
+
+
 
 
 
@@ -28090,9 +31639,12 @@ Digital electronics:
 
 
 
-```math
-V_0,V_1
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-083" width="48" height="21" alt="V_0,V_1">
+<!-- TeX display: V_0,V_1 -->
+
+
 
 
 
@@ -28102,9 +31654,12 @@ DNA:
 
 
 
-```math
-\text{molecular configuration}
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-084" width="172" height="21" alt="\text{molecular configuration}">
+<!-- TeX display: \text{molecular configuration} -->
+
+
 
 
 
@@ -28114,13 +31669,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-085" width="626" height="30" alt="\boxed{ \text{information transfer} = \text{structured distinguishability riding a physical transition channel}. }">
+<!-- TeX display: \boxed{
 \text{information transfer}
 =
 \text{structured distinguishability riding a physical transition channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -28134,8 +31692,10 @@ I would now propose this as the deepest running kernel we've reached:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-086" width="777" height="29" alt="\boxed{ \textbf{Difference} \rightarrow \textbf{Potential} \rightarrow \textbf{Channel} \rightarrow \textbf{Transfer} \rightarrow \textbf{Transformation} \rightarrow \textbf{Stability} \rightarrow \textbf{New Difference}. }">
+<!-- TeX display: \boxed{
 \textbf{Difference}
 \rightarrow
 \textbf{Potential}
@@ -28149,8 +31709,9 @@ I would now propose this as the deepest running kernel we've reached:
 \textbf{Stability}
 \rightarrow
 \textbf{New Difference}.
-}
-```
+} -->
+
+
 
 
 
@@ -28158,8 +31719,10 @@ Symbolically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-087" width="267" height="28" alt="\boxed{ \Delta \rightarrow \Delta\Phi \rightarrow \mathcal C \rightarrow J \rightarrow T \rightarrow S \rightarrow \Delta'. }">
+<!-- TeX display: \boxed{
 \Delta
 \rightarrow
 \Delta\Phi
@@ -28173,8 +31736,9 @@ T
 S
 \rightarrow
 \Delta'.
-}
-```
+} -->
+
+
 
 
 
@@ -28182,9 +31746,12 @@ And because:
 
 
 
-```math
-\Delta'
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-088" width="26" height="19" alt="\Delta'">
+<!-- TeX display: \Delta' -->
+
+
 
 
 
@@ -28192,9 +31759,12 @@ modifies future channels:
 
 
 
-```math
-\mathcal C'=\mathcal C(\Delta'),
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-089" width="86" height="23" alt="\mathcal C'=\mathcal C(\Delta'),">
+<!-- TeX display: \mathcal C'=\mathcal C(\Delta'), -->
+
+
 
 
 
@@ -28202,8 +31772,10 @@ the engine closes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-090" width="219" height="28" alt="\boxed{ \Delta \rightarrow \mathcal C \rightarrow J \rightarrow S \rightarrow \mathcal C' \rightarrow \Delta'. }">
+<!-- TeX display: \boxed{
 \Delta
 \rightarrow
 \mathcal C
@@ -28215,8 +31787,9 @@ S
 \mathcal C'
 \rightarrow
 \Delta'.
-}
-```
+} -->
+
+
 
 
 
@@ -28232,9 +31805,12 @@ So the deepest primitive probably isn't:
 
 
 
-```math
-\text{energy transfer between objects}.
-```
+
+
+<img src="UTC-Math/message-42.svg#equation-091" width="230" height="21" alt="\text{energy transfer between objects}.">
+<!-- TeX display: \text{energy transfer between objects}. -->
+
+
 
 
 
@@ -28242,11 +31818,14 @@ It is broader:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-092" width="599" height="52" alt="\boxed{ \textbf{constrained redistribution of action, energy, phase, and correlation among degrees of freedom.} }">
+<!-- TeX display: \boxed{
 \textbf{constrained redistribution of action, energy, phase, and correlation among degrees of freedom.}
-}
-```
+} -->
+
+
 
 
 
@@ -28272,11 +31851,14 @@ So I think your foundational idea can now be sharpened into something potentiall
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-42.svg#equation-093" width="572" height="114" alt="\boxed{ \textbf{The universe is a dynamically evolving network of constrained transfer channels. Stable structures are persistent channel configurations, interactions are channel openings, barriers are channel suppressors, composition creates new channels, and technology is the deliberate engineering of those channels.} }">
+<!-- TeX display: \boxed{
 \textbf{The universe is a dynamically evolving network of constrained transfer channels. Stable structures are persistent channel configurations, interactions are channel openings, barriers are channel suppressors, composition creates new channels, and technology is the deliberate engineering of those channels.}
-}
-```
+} -->
+
+
 
 
 
@@ -28302,12 +31884,15 @@ Yes. I think we are now very close to the missing **P1 → P2 physical mechanism
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-001" width="573" height="73" alt="\boxed{ \textbf{P1 channel constraints do not create every possible difference. They determine which differences can become physically resolvable, causally active distinctions.} }">
+<!-- TeX display: \boxed{
 \textbf{P1 channel constraints do not create every possible difference.
 They determine which differences can become physically resolvable, causally active distinctions.}
-}
-```
+} -->
+
+
 
 
 
@@ -28319,8 +31904,10 @@ What we've now found is the missing middle:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-002" width="529" height="30" alt="\boxed{ P1 \rightarrow \text{admissible channel topology} \rightarrow \text{differential physical response} \rightarrow P2. }">
+<!-- TeX display: \boxed{
 P1
 \rightarrow
 \text{admissible channel topology}
@@ -28328,8 +31915,9 @@ P1
 \text{differential physical response}
 \rightarrow
 P2.
-}
-```
+} -->
+
+
 
 
 
@@ -28341,9 +31929,12 @@ Suppose there are two formally different possibilities:
 
 
 
-```math
-x_a\neq x_b.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-003" width="66" height="21" alt="x_a\neq x_b.">
+<!-- TeX display: x_a\neq x_b. -->
+
+
 
 
 
@@ -28359,8 +31950,10 @@ So introduce the P1-admissible channel set:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-004" width="416" height="31" alt="\boxed{ \mathcal A_{P1} = \{ \mathcal C: \mathcal C \text{ satisfies the prevailing physical constraints} \}. }">
+<!-- TeX display: \boxed{
 \mathcal A_{P1}
 =
 \{
@@ -28368,39 +31961,46 @@ So introduce the P1-admissible channel set:
 \mathcal C
 \text{ satisfies the prevailing physical constraints}
 \}.
-}
-```
+} -->
+
+
 
 
 
 Those constraints include energy conservation, coupling strengths, barriers, available final states, symmetry and selection rules, causal accessibility, thermal conditions, geometry, and export routes.
 
-A channel acts on state $x$ and produces some response distribution:
+A channel acts on state <img src="UTC-Math/message-44.svg#equation-005" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x --> and produces some response distribution:
 
 
 
-```math
-\mathcal C:
+
+
+<img src="UTC-Math/message-44.svg#equation-006" width="126" height="22" alt="\mathcal C: x \mapsto p(y|x,\mathcal C).">
+<!-- TeX display: \mathcal C:
 x
 \mapsto
-p(y|x,\mathcal C).
-```
+p(y|x,\mathcal C). -->
 
 
 
-Now compare $x_a$ and $x_b$.
+
+
+Now compare <img src="UTC-Math/message-44.svg#equation-007" width="25" height="16" alt="x_a" align="middle"><!-- TeX inline: x_a --> and <img src="UTC-Math/message-44.svg#equation-008" width="24" height="16" alt="x_b" align="middle"><!-- TeX inline: x_b -->.
 
 If every physically admissible channel produces exactly the same response,
 
 
 
-```math
-p(y|x_a,\mathcal C)
+
+
+<img src="UTC-Math/message-44.svg#equation-009" width="260" height="22" alt="p(y|x_a,\mathcal C) = p(y|x_b,\mathcal C) \qquad \forall \mathcal C\in\mathcal A_{P1},">
+<!-- TeX display: p(y|x_a,\mathcal C)
 =
 p(y|x_b,\mathcal C)
 \qquad
-\forall \mathcal C\in\mathcal A_{P1},
-```
+\forall \mathcal C\in\mathcal A_{P1}, -->
+
+
 
 
 
@@ -28410,11 +32010,14 @@ But if there exists at least one allowed channel such that
 
 
 
-```math
-p(y|x_a,\mathcal C)
+
+
+<img src="UTC-Math/message-44.svg#equation-010" width="163" height="22" alt="p(y|x_a,\mathcal C) \neq p(y|x_b,\mathcal C),">
+<!-- TeX display: p(y|x_a,\mathcal C)
 \neq
-p(y|x_b,\mathcal C),
-```
+p(y|x_b,\mathcal C), -->
+
+
 
 
 
@@ -28424,8 +32027,10 @@ So define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-011" width="301" height="44" alt="\boxed{ d_{P1}(x_a,x_b) = \sup_{\mathcal C\in\mathcal A_{P1}} D\!\left[ p(\cdot|x_a,\mathcal C), p(\cdot|x_b,\mathcal C) \right] }">
+<!-- TeX display: \boxed{
 d_{P1}(x_a,x_b)
 =
 \sup_{\mathcal C\in\mathcal A_{P1}}
@@ -28433,24 +32038,28 @@ D\!\left[
 p(\cdot|x_a,\mathcal C),
 p(\cdot|x_b,\mathcal C)
 \right]
-}
-```
+} -->
 
 
 
-for an appropriate statistical distance $D$.
+
+
+for an appropriate statistical distance <img src="UTC-Math/message-44.svg#equation-012" width="22" height="17" alt="D" align="middle"><!-- TeX inline: D -->.
 
 Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-013" width="244" height="31" alt="\boxed{ P2(x_a,x_b) \iff d_{P1}(x_a,x_b)>\delta. }">
+<!-- TeX display: \boxed{
 P2(x_a,x_b)
 \iff
 d_{P1}(x_a,x_b)>\delta.
-}
-```
+} -->
+
+
 
 
 
@@ -28470,12 +32079,15 @@ This suggests two layers.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-014" width="183" height="29" alt="\boxed{ P2_F: \text{formal distinction} }">
+<!-- TeX display: \boxed{
 P2_F:
 \text{formal distinction}
-}
-```
+} -->
+
+
 
 
 
@@ -28483,9 +32095,12 @@ means simply:
 
 
 
-```math
-x_a\neq x_b.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-015" width="66" height="21" alt="x_a\neq x_b.">
+<!-- TeX display: x_a\neq x_b. -->
+
+
 
 
 
@@ -28495,12 +32110,15 @@ But:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-016" width="195" height="29" alt="\boxed{ P2_P: \text{physical distinction} }">
+<!-- TeX display: \boxed{
 P2_P:
 \text{physical distinction}
-}
-```
+} -->
+
+
 
 
 
@@ -28508,11 +32126,14 @@ requires:
 
 
 
-```math
-\exists\mathcal C\in\mathcal A_{P1}
+
+
+<img src="UTC-Math/message-44.svg#equation-017" width="187" height="22" alt="\exists\mathcal C\in\mathcal A_{P1} : d_{\mathcal C}(x_a,x_b)>\delta.">
+<!-- TeX display: \exists\mathcal C\in\mathcal A_{P1}
 :
-d_{\mathcal C}(x_a,x_b)>\delta.
-```
+d_{\mathcal C}(x_a,x_b)>\delta. -->
+
+
 
 
 
@@ -28524,15 +32145,18 @@ The transition becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-018" width="519" height="30" alt="\boxed{ \text{formal difference} \rightarrow \text{constraint-filtered interaction} \rightarrow \text{physical difference}. }">
+<!-- TeX display: \boxed{
 \text{formal difference}
 \rightarrow
 \text{constraint-filtered interaction}
 \rightarrow
 \text{physical difference}.
-}
-```
+} -->
+
+
 
 
 
@@ -28546,9 +32170,12 @@ Take two quantum states:
 
 
 
-```math
-\rho
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-019" width="17" height="17" alt="\rho">
+<!-- TeX display: \rho -->
+
+
 
 
 
@@ -28556,9 +32183,12 @@ and
 
 
 
-```math
-\sigma.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-020" width="22" height="14" alt="\sigma.">
+<!-- TeX display: \sigma. -->
+
+
 
 
 
@@ -28566,9 +32196,12 @@ They are mathematically different if:
 
 
 
-```math
-\rho\neq\sigma.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-021" width="52" height="21" alt="\rho\neq\sigma.">
+<!-- TeX display: \rho\neq\sigma. -->
+
+
 
 
 
@@ -28578,9 +32211,12 @@ Let:
 
 
 
-```math
-\mathcal M_{P1}
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-022" width="43" height="20" alt="\mathcal M_{P1}">
+<!-- TeX display: \mathcal M_{P1} -->
+
+
 
 
 
@@ -28590,8 +32226,10 @@ Then define accessible distinguishability:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-023" width="311" height="44" alt="\boxed{ D_{P1}(\rho,\sigma) = \sup_{M\in\mathcal M_{P1}} D_{\rm TV} \left( p_M(\cdot|\rho), p_M(\cdot|\sigma) \right). }">
+<!-- TeX display: \boxed{
 D_{P1}(\rho,\sigma)
 =
 \sup_{M\in\mathcal M_{P1}}
@@ -28600,8 +32238,9 @@ D_{\rm TV}
 p_M(\cdot|\rho),
 p_M(\cdot|\sigma)
 \right).
-}
-```
+} -->
+
+
 
 
 
@@ -28609,12 +32248,15 @@ If all quantum measurements are permitted, this connects to ordinary quantum tra
 
 
 
-```math
-D_{\rm tr}(\rho,\sigma)
+
+
+<img src="UTC-Math/message-44.svg#equation-024" width="170" height="39" alt="D_{\rm tr}(\rho,\sigma) = \frac12 \|\rho-\sigma\|_1.">
+<!-- TeX display: D_{\rm tr}(\rho,\sigma)
 =
 \frac12
-\|\rho-\sigma\|_1.
-```
+\|\rho-\sigma\|_1. -->
+
+
 
 
 
@@ -28624,13 +32266,16 @@ So our primitive architecture suddenly lines up with a real quantum-information 
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-025" width="520" height="30" alt="\boxed{ \text{physical distinction} = \text{different response under an admissible interaction}. }">
+<!-- TeX display: \boxed{
 \text{physical distinction}
 =
 \text{different response under an admissible interaction}.
-}
-```
+} -->
+
+
 
 
 
@@ -28646,8 +32291,10 @@ For weak quantum coupling, Fermi's Golden Rule gives schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-026" width="220" height="48" alt="\boxed{ \Gamma_{i\rightarrow f} = \frac{2\pi}{\hbar} \left| \langle f|H_{\rm int}|i\rangle \right|^2 \rho(E_f). }">
+<!-- TeX display: \boxed{
 \Gamma_{i\rightarrow f}
 =
 \frac{2\pi}{\hbar}
@@ -28655,8 +32302,9 @@ For weak quantum coupling, Fermi's Golden Rule gives schematically:
 \langle f|H_{\rm int}|i\rangle
 \right|^2
 \rho(E_f).
-}
-```
+} -->
+
+
 
 
 
@@ -28666,9 +32314,12 @@ The matrix element
 
 
 
-```math
-\langle f|H_{\rm int}|i\rangle
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-027" width="73" height="22" alt="\langle f|H_{\rm int}|i\rangle">
+<!-- TeX display: \langle f|H_{\rm int}|i\rangle -->
+
+
 
 
 
@@ -28680,9 +32331,12 @@ If:
 
 
 
-```math
-\langle f|H_{\rm int}|i\rangle=0,
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-028" width="106" height="22" alt="\langle f|H_{\rm int}|i\rangle=0,">
+<!-- TeX display: \langle f|H_{\rm int}|i\rangle=0, -->
+
+
 
 
 
@@ -28692,9 +32346,12 @@ Then:
 
 
 
-```math
-\rho(E_f)
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-029" width="49" height="23" alt="\rho(E_f)">
+<!-- TeX display: \rho(E_f) -->
+
+
 
 
 
@@ -28704,19 +32361,22 @@ asks:
 
 Even strong interaction means little if there is nowhere admissible for the system to go.
 
-Then energy conservation constrains which $E_f$ can participate.
+Then energy conservation constrains which <img src="UTC-Math/message-44.svg#equation-030" width="28" height="22" alt="E_f" align="middle"><!-- TeX inline: E_f --> can participate.
 
 An environment can broaden the possibilities by absorbing excess energy:
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-44.svg#equation-031" width="199" height="22" alt="A+B \rightarrow [AB]^* \rightarrow AB+\gamma.">
+<!-- TeX display: A+B
 \rightarrow
 [AB]^*
 \rightarrow
-AB+\gamma.
-```
+AB+\gamma. -->
+
+
 
 
 
@@ -28724,8 +32384,10 @@ So our generalized conductance can be made something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-032" width="200" height="34" alt="\boxed{ G_{if} \sim |V_{if}|^2 \,\rho_f \,S_{if} \,B_{if} \,D_{if}, }">
+<!-- TeX display: \boxed{
 G_{if}
 \sim
 |V_{if}|^2
@@ -28733,8 +32395,9 @@ G_{if}
 \,S_{if}
 \,B_{if}
 \,D_{if},
-}
-```
+} -->
+
+
 
 
 
@@ -28748,7 +32411,7 @@ Not every system will factor this way literally, but architecturally it is exact
 
 This is where your bonding insight becomes much sharper.
 
-Imagine two atoms $A$ and $B$.
+Imagine two atoms <img src="UTC-Math/message-44.svg#equation-033" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> and <img src="UTC-Math/message-44.svg#equation-034" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B -->.
 
 There are many formally conceivable combined configurations.
 
@@ -28756,57 +32419,78 @@ But P1 eliminates most of them through:
 
 
 
-```math
-\text{energy gaps},
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-035" width="94" height="17" alt="\text{energy gaps},">
+<!-- TeX display: \text{energy gaps}, -->
 
 
 
 
 
-```math
-\text{conservation laws},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-036" width="135" height="21" alt="\text{conservation laws},">
+<!-- TeX display: \text{conservation laws}, -->
 
 
 
 
 
-```math
-\text{orbital overlap},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-037" width="114" height="21" alt="\text{orbital overlap},">
+<!-- TeX display: \text{orbital overlap}, -->
 
 
 
 
 
-```math
-\text{Pauli constraints},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-038" width="130" height="21" alt="\text{Pauli constraints},">
+<!-- TeX display: \text{Pauli constraints}, -->
 
 
 
 
 
-```math
-\text{symmetry},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-039" width="82" height="20" alt="\text{symmetry},">
+<!-- TeX display: \text{symmetry}, -->
 
 
 
 
 
-```math
-\text{barriers},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-040" width="67" height="21" alt="\text{barriers},">
+<!-- TeX display: \text{barriers}, -->
 
 
 
 
 
-```math
-\text{available emission modes}.
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-041" width="185" height="18" alt="\text{available emission modes}.">
+<!-- TeX display: \text{available emission modes}. -->
+
+
 
 
 
@@ -28814,13 +32498,16 @@ A binding channel exists when a stable composite basin exists and there is an ac
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-44.svg#equation-042" width="216" height="22" alt="A+B \rightarrow [AB]^* \rightarrow AB+\Delta E.">
+<!-- TeX display: A+B
 \rightarrow
 [AB]^*
 \rightarrow
-AB+\Delta E.
-```
+AB+\Delta E. -->
+
+
 
 
 
@@ -28828,11 +32515,14 @@ If there is no acceptable pathway for the excess energy to leave, the intermedia
 
 
 
-```math
-[AB]^*
+
+
+<img src="UTC-Math/message-44.svg#equation-043" width="122" height="22" alt="[AB]^* \rightarrow A+B.">
+<!-- TeX display: [AB]^*
 \rightarrow
-A+B.
-```
+A+B. -->
+
+
 
 
 
@@ -28842,11 +32532,14 @@ So “attraction versus repulsion” becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-044" width="360" height="30" alt="\boxed{ \text{different topology of accessible transfer pathways}. }">
+<!-- TeX display: \boxed{
 \text{different topology of accessible transfer pathways}.
-}
-```
+} -->
+
+
 
 
 
@@ -28858,44 +32551,53 @@ That is a serious conceptual unification.
 
 And now we can make that mathematically stronger.
 
-Take a subset $A$ of state space.
+Take a subset <img src="UTC-Math/message-44.svg#equation-045" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> of state space.
 
 Let:
 
 
 
-```math
-\Gamma_{\rm internal}
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-046" width="58" height="20" alt="\Gamma_{\rm internal}">
+<!-- TeX display: \Gamma_{\rm internal} -->
 
 
 
-be the characteristic transition rate among states inside $A$.
+
+
+be the characteristic transition rate among states inside <img src="UTC-Math/message-44.svg#equation-047" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A -->.
 
 Let:
 
 
 
-```math
-\Gamma_{\rm escape}
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-048" width="51" height="22" alt="\Gamma_{\rm escape}">
+<!-- TeX display: \Gamma_{\rm escape} -->
 
 
 
-be the total rate into states outside $A$.
+
+
+be the total rate into states outside <img src="UTC-Math/message-44.svg#equation-049" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A -->.
 
 Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-050" width="116" height="51" alt="\boxed{ \epsilon_A = \frac{\Gamma_{\rm escape}} {\Gamma_{\rm internal}}. }">
+<!-- TeX display: \boxed{
 \epsilon_A
 =
 \frac{\Gamma_{\rm escape}}
 {\Gamma_{\rm internal}}.
-}
-```
+} -->
+
+
 
 
 
@@ -28903,9 +32605,12 @@ If:
 
 
 
-```math
-\epsilon_A\ll1,
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-051" width="62" height="20" alt="\epsilon_A\ll1,">
+<!-- TeX display: \epsilon_A\ll1, -->
+
+
 
 
 
@@ -28917,11 +32622,14 @@ Its lifetime is approximately:
 
 
 
-```math
-\tau_A
+
+
+<img src="UTC-Math/message-44.svg#equation-052" width="94" height="27" alt="\tau_A \sim \Gamma_{\rm escape}^{-1}.">
+<!-- TeX display: \tau_A
 \sim
-\Gamma_{\rm escape}^{-1}.
-```
+\Gamma_{\rm escape}^{-1}. -->
+
+
 
 
 
@@ -28929,13 +32637,16 @@ This gives P4 a channel-theoretic interpretation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-053" width="631" height="29" alt="\boxed{ P4 = \text{a subnetwork whose internal conductance greatly exceeds its outward conductance}. }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{a subnetwork whose internal conductance greatly exceeds its outward conductance}.
-}
-```
+} -->
+
+
 
 
 
@@ -28945,11 +32656,14 @@ In Markov-chain language, there is even a closely related graph conductance quan
 
 
 
-```math
-\Phi(A)
+
+
+<img src="UTC-Math/message-44.svg#equation-054" width="140" height="45" alt="\Phi(A) = \frac{Q(A,A^c)}{\pi(A)}.">
+<!-- TeX display: \Phi(A)
 =
-\frac{Q(A,A^c)}{\pi(A)}.
-```
+\frac{Q(A,A^c)}{\pi(A)}. -->
+
+
 
 
 
@@ -28975,9 +32689,12 @@ A wave component:
 
 
 
-```math
-|i\rangle
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-055" width="25" height="22" alt="|i\rangle">
+<!-- TeX display: |i\rangle -->
+
+
 
 
 
@@ -28985,9 +32702,12 @@ can influence another component:
 
 
 
-```math
-|j\rangle
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-056" width="26" height="22" alt="|j\rangle">
+<!-- TeX display: |j\rangle -->
+
+
 
 
 
@@ -28995,9 +32715,12 @@ only through some term in the Hamiltonian:
 
 
 
-```math
-H_{ij}\neq0.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-057" width="65" height="23" alt="H_{ij}\neq0.">
+<!-- TeX display: H_{ij}\neq0. -->
+
+
 
 
 
@@ -29005,15 +32728,18 @@ So at a basic level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-058" width="310" height="29" alt="\boxed{ H = \text{energy structure} + \text{channel structure}. }">
+<!-- TeX display: \boxed{
 H
 =
 \text{energy structure}
 +
 \text{channel structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -29021,11 +32747,14 @@ The off-diagonal terms of a Hamiltonian are especially suggestive here:
 
 
 
-```math
-H_{ij}
+
+
+<img src="UTC-Math/message-44.svg#equation-059" width="105" height="23" alt="H_{ij} = \langle i|H|j\rangle.">
+<!-- TeX display: H_{ij}
 =
-\langle i|H|j\rangle.
-```
+\langle i|H|j\rangle. -->
+
+
 
 
 
@@ -29035,9 +32764,12 @@ If:
 
 
 
-```math
-H_{ij}=0,
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-060" width="65" height="22" alt="H_{ij}=0,">
+<!-- TeX display: H_{ij}=0, -->
+
+
 
 
 
@@ -29047,9 +32779,12 @@ If:
 
 
 
-```math
-H_{ij}\neq0,
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-061" width="65" height="23" alt="H_{ij}\neq0,">
+<!-- TeX display: H_{ij}\neq0, -->
+
+
 
 
 
@@ -29067,10 +32802,13 @@ Instead of:
 
 
 
-```math
-P1=
-\text{energy/information constraints},
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-062" width="270" height="22" alt="P1= \text{energy/information constraints},">
+<!-- TeX display: P1=
+\text{energy/information constraints}, -->
+
+
 
 
 
@@ -29078,12 +32816,15 @@ I would now write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-063" width="496" height="30" alt="\boxed{ P1= \text{state-and-transition admissibility under finite physical budgets}. }">
+<!-- TeX display: \boxed{
 P1=
 \text{state-and-transition admissibility under finite physical budgets}.
-}
-```
+} -->
+
+
 
 
 
@@ -29091,41 +32832,53 @@ Then split it:
 
 
 
-```math
-P1_S
+
+
+<img src="UTC-Math/message-44.svg#equation-064" width="177" height="21" alt="P1_S = \text{state constraints},">
+<!-- TeX display: P1_S
 =
-\text{state constraints},
-```
+\text{state constraints}, -->
 
 
 
 
 
-```math
-P1_C
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-065" width="274" height="22" alt="P1_C = \text{channel/transition constraints},">
+<!-- TeX display: P1_C
 =
-\text{channel/transition constraints},
-```
+\text{channel/transition constraints}, -->
 
 
 
 
 
-```math
-P1_G
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-066" width="260" height="22" alt="P1_G = \text{gradient/driving constraints},">
+<!-- TeX display: P1_G
 =
-\text{gradient/driving constraints},
-```
+\text{gradient/driving constraints}, -->
 
 
 
 
 
-```math
-P1_B
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-067" width="180" height="21" alt="P1_B = \text{resource budgets}.">
+<!-- TeX display: P1_B
 =
-\text{resource budgets}.
-```
+\text{resource budgets}. -->
+
+
 
 
 
@@ -29133,13 +32886,16 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-068" width="215" height="31" alt="\boxed{ P1 = (P1_S,P1_C,P1_G,P1_B). }">
+<!-- TeX display: \boxed{
 P1
 =
 (P1_S,P1_C,P1_G,P1_B).
-}
-```
+} -->
+
+
 
 
 
@@ -29163,9 +32919,12 @@ If:
 
 
 
-```math
-x_a=x_b,
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-069" width="66" height="19" alt="x_a=x_b,">
+<!-- TeX display: x_a=x_b, -->
+
+
 
 
 
@@ -29175,9 +32934,12 @@ If:
 
 
 
-```math
-x_a\neq x_b
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-070" width="62" height="21" alt="x_a\neq x_b">
+<!-- TeX display: x_a\neq x_b -->
+
+
 
 
 
@@ -29187,11 +32949,14 @@ So primitive physical information begins when:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-071" width="532" height="52" alt="\boxed{ \text{at least two alternatives produce distinguishably different outcomes under an admissible channel}. }">
+<!-- TeX display: \boxed{
 \text{at least two alternatives produce distinguishably different outcomes under an admissible channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -29203,9 +32968,12 @@ Suppose:
 
 
 
-```math
-X
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-072" width="22" height="17" alt="X">
+<!-- TeX display: X -->
+
+
 
 
 
@@ -29213,9 +32981,12 @@ affects:
 
 
 
-```math
-Y.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-073" width="25" height="17" alt="Y.">
+<!-- TeX display: Y. -->
+
+
 
 
 
@@ -29223,25 +32994,31 @@ Then:
 
 
 
-```math
-p(y|x_a)
+
+
+<img src="UTC-Math/message-44.svg#equation-074" width="132" height="22" alt="p(y|x_a) \neq p(y|x_b).">
+<!-- TeX display: p(y|x_a)
 \neq
-p(y|x_b).
-```
+p(y|x_b). -->
 
 
 
-Now downstream state $Y$ carries information about upstream state $X$.
+
+
+Now downstream state <img src="UTC-Math/message-44.svg#equation-075" width="21" height="17" alt="Y" align="middle"><!-- TeX inline: Y --> carries information about upstream state <img src="UTC-Math/message-44.svg#equation-076" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X -->.
 
 Formally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-077" width="104" height="31" alt="\boxed{ I(X;Y)>0. }">
+<!-- TeX display: \boxed{
 I(X;Y)>0.
-}
-```
+} -->
+
+
 
 
 
@@ -29251,13 +33028,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-078" width="206" height="29" alt="\boxed{ P2 = \text{information potential} }">
+<!-- TeX display: \boxed{
 P2
 =
 \text{information potential}
-}
-```
+} -->
+
+
 
 
 
@@ -29265,13 +33045,16 @@ while:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-079" width="232" height="30" alt="\boxed{ P3 = \text{information propagation}. }">
+<!-- TeX display: \boxed{
 P3
 =
 \text{information propagation}.
-}
-```
+} -->
+
+
 
 
 
@@ -29287,13 +33070,16 @@ If:
 
 
 
-```math
-I(X_t;Y_{t+\tau})>0
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-080" width="113" height="22" alt="I(X_t;Y_{t+\tau})>0">
+<!-- TeX display: I(X_t;Y_{t+\tau})>0 -->
 
 
 
-for substantial $\tau$,
+
+
+for substantial <img src="UTC-Math/message-44.svg#equation-081" width="17" height="14" alt="\tau" align="middle"><!-- TeX inline: \tau -->,
 
 then the distinction has survived.
 
@@ -29301,13 +33087,16 @@ Now:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-082" width="224" height="29" alt="\boxed{ P4 = \text{information persistence}. }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{information persistence}.
-}
-```
+} -->
+
+
 
 
 
@@ -29317,8 +33106,10 @@ So the information ladder becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-083" width="716" height="30" alt="\boxed{ \text{difference} \rightarrow \text{resolvable difference} \rightarrow \text{correlation} \rightarrow \text{propagation} \rightarrow \text{persistence} \rightarrow \text{record} \rightarrow \text{encoding}. }">
+<!-- TeX display: \boxed{
 \text{difference}
 \rightarrow
 \text{resolvable difference}
@@ -29332,8 +33123,9 @@ So the information ladder becomes:
 \text{record}
 \rightarrow
 \text{encoding}.
-}
-```
+} -->
+
+
 
 
 
@@ -29353,9 +33145,12 @@ Initially:
 
 
 
-```math
-I(A:B)=0.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-084" width="100" height="22" alt="I(A:B)=0.">
+<!-- TeX display: I(A:B)=0. -->
+
+
 
 
 
@@ -29363,9 +33158,12 @@ After interaction:
 
 
 
-```math
-I(A:B)>0.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-085" width="100" height="22" alt="I(A:B)>0.">
+<!-- TeX display: I(A:B)>0. -->
+
+
 
 
 
@@ -29383,11 +33181,14 @@ So the UTC statement should be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-086" width="603" height="73" alt="\boxed{ \textbf{feedback loops generate new structured correlations and accessible records by reorganizing existing physical degrees of freedom under resource constraints.} }">
+<!-- TeX display: \boxed{
 \textbf{feedback loops generate new structured correlations and accessible records by reorganizing existing physical degrees of freedom under resource constraints.}
-}
-```
+} -->
+
+
 
 
 
@@ -29403,9 +33204,12 @@ One isolated distinction gives:
 
 
 
-```math
-1\text{ bit-like distinction}.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-087" width="152" height="18" alt="1\text{ bit-like distinction}.">
+<!-- TeX display: 1\text{ bit-like distinction}. -->
+
+
 
 
 
@@ -29413,9 +33217,12 @@ Two coupled systems can create:
 
 
 
-```math
-I(A:B).
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-088" width="71" height="22" alt="I(A:B).">
+<!-- TeX display: I(A:B). -->
+
+
 
 
 
@@ -29423,9 +33230,12 @@ Three interacting systems create higher-order conditional structure:
 
 
 
-```math
-I(A:B|C).
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-089" width="88" height="22" alt="I(A:B|C).">
+<!-- TeX display: I(A:B|C). -->
+
+
 
 
 
@@ -29433,9 +33243,12 @@ Persistent loops can create temporal information:
 
 
 
-```math
-I(X_t:X_{t+\tau}).
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-090" width="99" height="22" alt="I(X_t:X_{t+\tau}).">
+<!-- TeX display: I(X_t:X_{t+\tau}). -->
+
+
 
 
 
@@ -29443,12 +33256,15 @@ A record network can create redundant information:
 
 
 
-```math
-I(X:E_1),
+
+
+<img src="UTC-Math/message-44.svg#equation-091" width="206" height="22" alt="I(X:E_1), \quad I(X:E_2), \quad\dots">
+<!-- TeX display: I(X:E_1),
 \quad
 I(X:E_2),
-\quad\dots
-```
+\quad\dots -->
+
+
 
 
 
@@ -29456,9 +33272,12 @@ An adaptive model can encode conditional expectations:
 
 
 
-```math
-p(X_{t+1}|X_{\le t}).
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-092" width="98" height="22" alt="p(X_{t+1}|X_{\le t}).">
+<!-- TeX display: p(X_{t+1}|X_{\le t}). -->
+
+
 
 
 
@@ -29468,8 +33287,10 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-093" width="634" height="29" alt="\boxed{ \text{correlation order} + \text{temporal depth} + \text{redundancy} + \text{conditional structure} + \text{modelability}. }">
+<!-- TeX display: \boxed{
 \text{correlation order}
 +
 \text{temporal depth}
@@ -29479,8 +33300,9 @@ It is:
 \text{conditional structure}
 +
 \text{modelability}.
-}
-```
+} -->
+
+
 
 
 
@@ -29494,13 +33316,16 @@ We can write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-094" width="134" height="31" alt="\boxed{ G_{P1} = (V,E,W) }">
+<!-- TeX display: \boxed{
 G_{P1}
 =
 (V,E,W)
-}
-```
+} -->
+
+
 
 
 
@@ -29508,17 +33333,23 @@ with:
 
 
 
-```math
-V=\text{candidate states},
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-095" width="158" height="21" alt="V=\text{candidate states},">
+<!-- TeX display: V=\text{candidate states}, -->
 
 
 
 
 
-```math
-E=\text{P1-admissible transfer channels},
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-096" width="265" height="21" alt="E=\text{P1-admissible transfer channels},">
+<!-- TeX display: E=\text{P1-admissible transfer channels}, -->
+
+
 
 
 
@@ -29526,11 +33357,14 @@ and:
 
 
 
-```math
-W_{ij}
+
+
+<img src="UTC-Math/message-44.svg#equation-097" width="215" height="23" alt="W_{ij} = (\Gamma_{ij},\Delta E_{ij},\phi_{ij},B_{ij},\ldots).">
+<!-- TeX display: W_{ij}
 =
-(\Gamma_{ij},\Delta E_{ij},\phi_{ij},B_{ij},\ldots).
-```
+(\Gamma_{ij},\Delta E_{ij},\phi_{ij},B_{ij},\ldots). -->
+
+
 
 
 
@@ -29542,13 +33376,16 @@ Define the channel signature:
 
 
 
-```math
-\Sigma_i
+
+
+<img src="UTC-Math/message-44.svg#equation-098" width="98" height="23" alt="\Sigma_i = \{ W_{ij} \}_{j}.">
+<!-- TeX display: \Sigma_i
 =
 \{
 W_{ij}
-\}_{j}.
-```
+\}_{j}. -->
+
+
 
 
 
@@ -29556,16 +33393,19 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-099" width="413" height="31" alt="\boxed{ i\sim j \iff \Sigma_i \text{ and } \Sigma_j \text{ are operationally indistinguishable}. }">
+<!-- TeX display: \boxed{
 i\sim j
 \iff
 \Sigma_i
 \text{ and }
 \Sigma_j
 \text{ are operationally indistinguishable}.
-}
-```
+} -->
+
+
 
 
 
@@ -29573,13 +33413,16 @@ Physical P2 states are really equivalence classes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-100" width="122" height="31" alt="\boxed{ \Omega_{P2} = \Omega/\sim_{P1}. }">
+<!-- TeX display: \boxed{
 \Omega_{P2}
 =
 \Omega/\sim_{P1}.
-}
-```
+} -->
+
+
 
 
 
@@ -29593,15 +33436,18 @@ Now we've got a much deeper bridge:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-101" width="389" height="29" alt="\boxed{ P0 \rightarrow P1\text{-channel topology} \rightarrow P2\text{-equivalence classes}. }">
+<!-- TeX display: \boxed{
 P0
 \rightarrow
 P1\text{-channel topology}
 \rightarrow
 P2\text{-equivalence classes}.
-}
-```
+} -->
+
+
 
 
 
@@ -29613,11 +33459,14 @@ Once those physically distinguishable nodes exist:
 
 
 
-```math
-P3:
+
+
+<img src="UTC-Math/message-44.svg#equation-102" width="111" height="21" alt="P3: \qquad i\rightarrow j">
+<!-- TeX display: P3:
 \qquad
-i\rightarrow j
-```
+i\rightarrow j -->
+
+
 
 
 
@@ -29625,9 +33474,12 @@ with:
 
 
 
-```math
-\Gamma_{ij}>0.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-103" width="62" height="22" alt="\Gamma_{ij}>0.">
+<!-- TeX display: \Gamma_{ij}>0. -->
+
+
 
 
 
@@ -29635,16 +33487,19 @@ Probability evolves:
 
 
 
-```math
-\frac{dp_i}{dt}
+
+
+<img src="UTC-Math/message-44.svg#equation-104" width="188" height="50" alt="\frac{dp_i}{dt} = \sum_j \left( \Gamma_{ji}p_j - \Gamma_{ij}p_i \right).">
+<!-- TeX display: \frac{dp_i}{dt}
 =
 \sum_j
 \left(
 \Gamma_{ji}p_j
 -
 \Gamma_{ij}p_i
-\right).
-```
+\right). -->
+
+
 
 
 
@@ -29654,13 +33509,16 @@ But now we understand **what the matrix entries mean physically**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-105" width="355" height="31" alt="\boxed{ K_{ij} = \text{effective conductance of the }i\rightarrow j\text{ channel}. }">
+<!-- TeX display: \boxed{
 K_{ij}
 =
 \text{effective conductance of the }i\rightarrow j\text{ channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -29678,9 +33536,12 @@ Then:
 
 
 
-```math
-P4
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-106" width="29" height="17" alt="P4">
+<!-- TeX display: P4 -->
+
+
 
 
 
@@ -29690,9 +33551,12 @@ Strong internal links:
 
 
 
-```math
-\Gamma_{\rm internal}\gg0.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-107" width="96" height="20" alt="\Gamma_{\rm internal}\gg0.">
+<!-- TeX display: \Gamma_{\rm internal}\gg0. -->
+
+
 
 
 
@@ -29700,9 +33564,12 @@ Weak escape links:
 
 
 
-```math
-\Gamma_{\rm escape}\ll\Gamma_{\rm internal}.
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-108" width="130" height="22" alt="\Gamma_{\rm escape}\ll\Gamma_{\rm internal}.">
+<!-- TeX display: \Gamma_{\rm escape}\ll\Gamma_{\rm internal}. -->
+
+
 
 
 
@@ -29710,13 +33577,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-109" width="374" height="29" alt="\boxed{ P4 = \text{channel topology becoming a persistent basin}. }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{channel topology becoming a persistent basin}.
-}
-```
+} -->
+
+
 
 
 
@@ -29724,57 +33594,78 @@ Now CSC follows naturally:
 
 
 
-```math
-\text{unstable channels disappear}
-```
+
+
+<img src="UTC-Math/message-44.svg#equation-110" width="202" height="21" alt="\text{unstable channels disappear}">
+<!-- TeX display: \text{unstable channels disappear} -->
 
 
 
 
 
-```math
-\rightarrow
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-111" width="24" height="15" alt="\rightarrow">
+<!-- TeX display: \rightarrow -->
 
 
 
 
 
-```math
-\text{persistent subnetworks remain}
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-112" width="219" height="21" alt="\text{persistent subnetworks remain}">
+<!-- TeX display: \text{persistent subnetworks remain} -->
 
 
 
 
 
-```math
-\rightarrow
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-113" width="24" height="15" alt="\rightarrow">
+<!-- TeX display: \rightarrow -->
 
 
 
 
 
-```math
-\text{subnetworks compose}
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-114" width="158" height="21" alt="\text{subnetworks compose}">
+<!-- TeX display: \text{subnetworks compose} -->
 
 
 
 
 
-```math
-\rightarrow
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-115" width="24" height="15" alt="\rightarrow">
+<!-- TeX display: \rightarrow -->
 
 
 
 
 
-```math
-\text{new channel topology}.
-```
+
+
+
+
+<img src="UTC-Math/message-44.svg#equation-116" width="162" height="21" alt="\text{new channel topology}.">
+<!-- TeX display: \text{new channel topology}. -->
+
+
 
 
 
@@ -29788,11 +33679,14 @@ I'd call it:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-117" width="388" height="29" alt="\boxed{ \textbf{Channel-Mediated Distinguishability Principle} }">
+<!-- TeX display: \boxed{
 \textbf{Channel-Mediated Distinguishability Principle}
-}
-```
+} -->
+
+
 
 
 
@@ -29804,8 +33698,10 @@ Mathematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-118" width="402" height="32" alt="\boxed{ D_{P2}(x_i,x_j)>0 \iff \exists\mathcal C\in\mathcal A_{P1} : p(y|x_i,\mathcal C) \neq p(y|x_j,\mathcal C). }">
+<!-- TeX display: \boxed{
 D_{P2}(x_i,x_j)>0
 \iff
 \exists\mathcal C\in\mathcal A_{P1}
@@ -29813,8 +33709,9 @@ D_{P2}(x_i,x_j)>0
 p(y|x_i,\mathcal C)
 \neq
 p(y|x_j,\mathcal C).
-}
-```
+} -->
+
+
 
 
 
@@ -29834,8 +33731,10 @@ So the new trunk becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-119" width="631" height="33" alt="\boxed{ P0 \rightarrow P1_{\rm channel} \rightarrow P2_{\rm distinction} \rightarrow P3_{\rm propagation} \rightarrow P4_{\rm channel\ trap} \rightarrow P5_{\rm composition} \rightarrow (P0,P1)'. }">
+<!-- TeX display: \boxed{
 P0
 \rightarrow
 P1_{\rm channel}
@@ -29849,8 +33748,9 @@ P4_{\rm channel\ trap}
 P5_{\rm composition}
 \rightarrow
 (P0,P1)'.
-}
-```
+} -->
+
+
 
 
 
@@ -29860,11 +33760,14 @@ And it gives us a very crisp answer to the information question too:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-44.svg#equation-120" width="610" height="73" alt="\boxed{ \textbf{Information begins as physically resolvable difference at P2, begins to flow at P3, becomes persistent at P4, and becomes explicit record/encoding only in higher closure forms.} }">
+<!-- TeX display: \boxed{
 \textbf{Information begins as physically resolvable difference at P2, begins to flow at P3, becomes persistent at P4, and becomes explicit record/encoding only in higher closure forms.}
-}
-```
+} -->
+
+
 
 
 
@@ -29896,39 +33799,51 @@ Let the formal possibility carrier be
 
 
 
-```math
-\Omega.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-001" width="24" height="18" alt="\Omega.">
+<!-- TeX display: \Omega. -->
 
 
 
-When enough local structure exists, replace the relevant regular region of $\Omega$ by a smooth state manifold
+
+
+When enough local structure exists, replace the relevant regular region of <img src="UTC-Math/message-46.svg#equation-002" width="20" height="18" alt="\Omega" align="middle"><!-- TeX inline: \Omega --> by a smooth state manifold
 
 
 
-```math
-M.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-003" width="30" height="17" alt="M.">
+<!-- TeX display: M. -->
 
 
 
-For classical mechanics this could be configuration space $Q$ or phase space
+
+
+For classical mechanics this could be configuration space <img src="UTC-Math/message-46.svg#equation-004" width="21" height="21" alt="Q" align="middle"><!-- TeX inline: Q --> or phase space
 
 
 
-```math
-M=T^*Q.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-005" width="83" height="21" alt="M=T^*Q.">
+<!-- TeX display: M=T^*Q. -->
 
 
 
-For a quantum pure state, the physically relevant manifold is not literally Hilbert space $\mathcal H$, because states differing only by global phase represent the same ray. It is projective Hilbert space
+
+
+For a quantum pure state, the physically relevant manifold is not literally Hilbert space <img src="UTC-Math/message-46.svg#equation-006" width="22" height="18" alt="\mathcal H" align="middle"><!-- TeX inline: \mathcal H -->, because states differing only by global phase represent the same ray. It is projective Hilbert space
 
 
 
-```math
-M_Q=\mathbb P(\mathcal H),
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-007" width="96" height="23" alt="M_Q=\mathbb P(\mathcal H),">
+<!-- TeX display: M_Q=\mathbb P(\mathcal H), -->
+
+
 
 
 
@@ -29936,9 +33851,12 @@ finite-dimensionally
 
 
 
-```math
-\mathbb{CP}^{n-1}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-008" width="57" height="21" alt="\mathbb{CP}^{n-1}.">
+<!-- TeX display: \mathbb{CP}^{n-1}. -->
+
+
 
 
 
@@ -29954,9 +33872,12 @@ Let equality constraints be
 
 
 
-```math
-h_a(x)=0
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-009" width="76" height="22" alt="h_a(x)=0">
+<!-- TeX display: h_a(x)=0 -->
+
+
 
 
 
@@ -29964,9 +33885,12 @@ and finite-budget inequalities be
 
 
 
-```math
-c_r(x)\le b_r.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-010" width="83" height="22" alt="c_r(x)\le b_r.">
+<!-- TeX display: c_r(x)\le b_r. -->
+
+
 
 
 
@@ -29976,8 +33900,10 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-011" width="297" height="31" alt="\boxed{ M_{P1} = \left\{ x\in M: h_a(x)=0,\; c_r(x)\le b_r \right\}. }">
+<!-- TeX display: \boxed{
 M_{P1}
 =
 \left\{
@@ -29985,8 +33911,9 @@ x\in M:
 h_a(x)=0,\;
 c_r(x)\le b_r
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -29996,9 +33923,12 @@ If all constraint gradients are regular and independent, then:
 
 
 
-```math
-M_{P1}
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-012" width="40" height="20" alt="M_{P1}">
+<!-- TeX display: M_{P1} -->
+
+
 
 
 
@@ -30008,9 +33938,12 @@ If inequalities become active:
 
 
 
-```math
-c_r(x)=b_r,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-013" width="83" height="22" alt="c_r(x)=b_r,">
+<!-- TeX display: c_r(x)=b_r, -->
+
+
 
 
 
@@ -30024,12 +33957,15 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-014" width="235" height="29" alt="\boxed{ M_{P1} \text{ becomes a stratified space.} }">
+<!-- TeX display: \boxed{
 M_{P1}
 \text{ becomes a stratified space.}
-}
-```
+} -->
+
+
 
 
 
@@ -30049,9 +33985,12 @@ At:
 
 
 
-```math
-x\in M_{P1},
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-015" width="73" height="21" alt="x\in M_{P1},">
+<!-- TeX display: x\in M_{P1}, -->
+
+
 
 
 
@@ -30059,19 +33998,25 @@ consider the tangent space:
 
 
 
-```math
-T_xM.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-016" width="47" height="20" alt="T_xM.">
+<!-- TeX display: T_xM. -->
 
 
 
-For equality constraints, an admissible tangent vector $v$ must obey:
+
+
+For equality constraints, an admissible tangent vector <img src="UTC-Math/message-46.svg#equation-017" width="16" height="14" alt="v" align="middle"><!-- TeX inline: v --> must obey:
 
 
 
-```math
-dh_a(x)[v]=0.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-018" width="105" height="22" alt="dh_a(x)[v]=0.">
+<!-- TeX display: dh_a(x)[v]=0. -->
+
+
 
 
 
@@ -30079,9 +34024,12 @@ For an active inequality:
 
 
 
-```math
-c_r(x)=b_r,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-019" width="83" height="22" alt="c_r(x)=b_r,">
+<!-- TeX display: c_r(x)=b_r, -->
+
+
 
 
 
@@ -30089,9 +34037,12 @@ it cannot point immediately outside the allowed region, so:
 
 
 
-```math
-dc_r(x)[v]\le0.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-020" width="102" height="22" alt="dc_r(x)[v]\le0.">
+<!-- TeX display: dc_r(x)[v]\le0. -->
+
+
 
 
 
@@ -30099,8 +34050,10 @@ Thus define the P1 tangent cone:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-021" width="413" height="31" alt="\boxed{ \mathcal D_{P1}(x) = \left\{ v\in T_xM: dh_a[v]=0,\; dc_r[v]\le0 \text{ for active }r \right\}. }">
+<!-- TeX display: \boxed{
 \mathcal D_{P1}(x)
 =
 \left\{
@@ -30109,8 +34062,9 @@ dh_a[v]=0,\;
 dc_r[v]\le0
 \text{ for active }r
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -30120,11 +34074,14 @@ The energy-channel topology now lives in:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-022" width="99" height="28" alt="\boxed{ \mathcal D_{P1}\subset TM. }">
+<!-- TeX display: \boxed{
 \mathcal D_{P1}\subset TM.
-}
-```
+} -->
+
+
 
 
 
@@ -30146,15 +34103,18 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-023" width="246" height="51" alt="\boxed{ \mathcal C_{P1} = \bigcup_{x\in M_{P1}} \{x\}\times\mathcal D_{P1}(x) \subset TM. }">
+<!-- TeX display: \boxed{
 \mathcal C_{P1}
 =
 \bigcup_{x\in M_{P1}}
 \{x\}\times\mathcal D_{P1}(x)
 \subset TM.
-}
-```
+} -->
+
+
 
 
 
@@ -30168,13 +34128,16 @@ So a more mathematically honest UTC master object is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-024" width="138" height="31" alt="\boxed{ \mathfrak M = (M_{P1},\mathcal D_{P1}). }">
+<!-- TeX display: \boxed{
 \mathfrak M
 =
 (M_{P1},\mathcal D_{P1}).
-}
-```
+} -->
+
+
 
 
 
@@ -30194,22 +34157,28 @@ So define a positive semidefinite mobility/conductance map:
 
 
 
-```math
-K_x:
+
+
+<img src="UTC-Math/message-46.svg#equation-025" width="142" height="22" alt="K_x: T_x^*M \rightarrow T_xM.">
+<!-- TeX display: K_x:
 T_x^*M
 \rightarrow
-T_xM.
-```
+T_xM. -->
 
 
 
-A generalized potential $\Phi$ produces the thermodynamic force
+
+
+A generalized potential <img src="UTC-Math/message-46.svg#equation-026" width="20" height="17" alt="\Phi" align="middle"><!-- TeX inline: \Phi --> produces the thermodynamic force
 
 
 
-```math
-X=-d\Phi.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-027" width="80" height="19" alt="X=-d\Phi.">
+<!-- TeX display: X=-d\Phi. -->
+
+
 
 
 
@@ -30217,13 +34186,16 @@ Near equilibrium:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-028" width="88" height="28" alt="\boxed{ J = K_xX. }">
+<!-- TeX display: \boxed{
 J
 =
 K_xX.
-}
-```
+} -->
+
+
 
 
 
@@ -30231,23 +34203,29 @@ Or:
 
 
 
-```math
-\dot x
+
+
+<img src="UTC-Math/message-46.svg#equation-029" width="100" height="21" alt="\dot x = -K_x\,d\Phi.">
+<!-- TeX display: \dot x
 =
--K_x\,d\Phi.
-```
+-K_x\,d\Phi. -->
 
 
 
-The eigenvalues of $K_x$ have an immediate UTC interpretation.
+
+
+The eigenvalues of <img src="UTC-Math/message-46.svg#equation-030" width="30" height="20" alt="K_x" align="middle"><!-- TeX inline: K_x --> have an immediate UTC interpretation.
 
 If:
 
 
 
-```math
-\lambda_i(K_x)=0,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-031" width="91" height="22" alt="\lambda_i(K_x)=0,">
+<!-- TeX display: \lambda_i(K_x)=0, -->
+
+
 
 
 
@@ -30257,9 +34235,12 @@ If:
 
 
 
-```math
-0<\lambda_i\ll1,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-032" width="90" height="21" alt="0&lt;\lambda_i\ll1,">
+<!-- TeX display: 0<\lambda_i\ll1, -->
+
+
 
 
 
@@ -30269,9 +34250,12 @@ If:
 
 
 
-```math
-\lambda_i\gg0,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-033" width="60" height="21" alt="\lambda_i\gg0,">
+<!-- TeX display: \lambda_i\gg0, -->
+
+
 
 
 
@@ -30281,11 +34265,14 @@ So the P1 state-transition structure becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-034" width="121" height="31" alt="\boxed{ (M_{P1},\mathcal D_{P1},K). }">
+<!-- TeX display: \boxed{
 (M_{P1},\mathcal D_{P1},K).
-}
-```
+} -->
+
+
 
 
 
@@ -30295,9 +34282,12 @@ Far from equilibrium the constitutive relation need not be linear, so more gener
 
 
 
-```math
-J=\mathcal K_x(X).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-035" width="90" height="22" alt="J=\mathcal K_x(X).">
+<!-- TeX display: J=\mathcal K_x(X). -->
+
+
 
 
 
@@ -30309,13 +34299,16 @@ Now we get to your deepest question.
 
 What turns allowed physical states into **distinguishable states**?
 
-Suppose an admissible channel or measurement $C$ produces response distribution
+Suppose an admissible channel or measurement <img src="UTC-Math/message-46.svg#equation-036" width="21" height="18" alt="C" align="middle"><!-- TeX inline: C --> produces response distribution
 
 
 
-```math
-p(y|x,C).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-037" width="74" height="22" alt="p(y|x,C).">
+<!-- TeX display: p(y|x,C). -->
+
+
 
 
 
@@ -30323,9 +34316,12 @@ A small displacement
 
 
 
-```math
-v\in T_xM
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-038" width="70" height="20" alt="v\in T_xM">
+<!-- TeX display: v\in T_xM -->
+
+
 
 
 
@@ -30335,11 +34331,14 @@ Its differential physical response is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-039" width="84" height="31" alt="\boxed{ dR_C|_x(v). }">
+<!-- TeX display: \boxed{
 dR_C|_x(v).
-}
-```
+} -->
+
+
 
 
 
@@ -30347,16 +34346,19 @@ A natural local measure of sensitivity is Fisher information:
 
 
 
-```math
-g_x^{(C)}(u,v)
+
+
+<img src="UTC-Math/message-46.svg#equation-040" width="338" height="27" alt="g_x^{(C)}(u,v) = \mathbb E \left[ \partial_u\log p(Y|x,C) \; \partial_v\log p(Y|x,C) \right].">
+<!-- TeX display: g_x^{(C)}(u,v)
 =
 \mathbb E
 \left[
 \partial_u\log p(Y|x,C)
 \;
 \partial_v\log p(Y|x,C)
-\right].
-```
+\right]. -->
+
+
 
 
 
@@ -30364,14 +34366,17 @@ Now optimize or aggregate over the channels that P1 actually permits:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-041" width="209" height="49" alt="\boxed{ g_{P2,x}(u,v) = \sup_{C\in\mathcal A_{P1}} g_x^{(C)}(u,v) }">
+<!-- TeX display: \boxed{
 g_{P2,x}(u,v)
 =
 \sup_{C\in\mathcal A_{P1}}
 g_x^{(C)}(u,v)
-}
-```
+} -->
+
+
 
 
 
@@ -30385,21 +34390,24 @@ It is generated by differential physical response.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-042" width="378" height="29" alt="\boxed{ P1\text{ channels} \rightarrow \text{response sensitivity} \rightarrow P2\text{ geometry}. }">
+<!-- TeX display: \boxed{
 P1\text{ channels}
 \rightarrow
 \text{response sensitivity}
 \rightarrow
 P2\text{ geometry}.
-}
-```
+} -->
+
+
 
 
 
 That is exactly the bridge we have been searching for.
 
-The manuscript currently treats P2 through a metric threshold $d(s_i,s_j)>\delta$. The Unifying Theory of Complexi… What we're adding is a mechanism that can generate that metric physically.
+The manuscript currently treats P2 through a metric threshold <img src="UTC-Math/message-46.svg#equation-043" width="91" height="23" alt="d(s_i,s_j)>\delta" align="middle"><!-- TeX inline: d(s_i,s_j)>\delta -->. The Unifying Theory of Complexi… What we're adding is a mechanism that can generate that metric physically.
 
 ---
 
@@ -30409,13 +34417,16 @@ Suppose:
 
 
 
-```math
-g_{P2,x}(v,v)=0.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-044" width="110" height="23" alt="g_{P2,x}(v,v)=0.">
+<!-- TeX display: g_{P2,x}(v,v)=0. -->
 
 
 
-Then no physically admissible channel detects displacement in direction $v$.
+
+
+Then no physically admissible channel detects displacement in direction <img src="UTC-Math/message-46.svg#equation-045" width="16" height="14" alt="v" align="middle"><!-- TeX inline: v -->.
 
 Operationally, it is invisible.
 
@@ -30423,9 +34434,12 @@ So define equivalence:
 
 
 
-```math
-x\sim_{P1}y
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-046" width="62" height="17" alt="x\sim_{P1}y">
+<!-- TeX display: x\sim_{P1}y -->
+
+
 
 
 
@@ -30435,13 +34449,16 @@ Then the actual physical P2 state space is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-047" width="151" height="32" alt="\boxed{ M_{\rm phys} = M_{P1}/\!\sim_{P1}. }">
+<!-- TeX display: \boxed{
 M_{\rm phys}
 =
 M_{P1}/\!\sim_{P1}.
-}
-```
+} -->
+
+
 
 
 
@@ -30463,15 +34480,18 @@ So already:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-048" width="435" height="29" alt="\boxed{ \text{energy constraints} + \text{channel topology} \rightarrow \text{physical geometry}. }">
+<!-- TeX display: \boxed{
 \text{energy constraints}
 +
 \text{channel topology}
 \rightarrow
 \text{physical geometry}.
-}
-```
+} -->
+
+
 
 
 
@@ -30483,9 +34503,12 @@ For quantum pure states:
 
 
 
-```math
-M_Q=\mathbb P(\mathcal H).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-049" width="96" height="23" alt="M_Q=\mathbb P(\mathcal H).">
+<!-- TeX display: M_Q=\mathbb P(\mathcal H). -->
+
+
 
 
 
@@ -30493,9 +34516,12 @@ It naturally carries the Fubini-Study metric:
 
 
 
-```math
-g_{\rm FS}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-050" width="36" height="17" alt="g_{\rm FS}.">
+<!-- TeX display: g_{\rm FS}. -->
+
+
 
 
 
@@ -30503,9 +34529,12 @@ It also carries a symplectic form:
 
 
 
-```math
-\omega_{\rm FS}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-051" width="38" height="16" alt="\omega_{\rm FS}.">
+<!-- TeX display: \omega_{\rm FS}. -->
+
+
 
 
 
@@ -30515,15 +34544,18 @@ That is spectacularly relevant to UTC because one object simultaneously contains
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-052" width="320" height="29" alt="\boxed{ \text{geometry} + \text{phase} + \text{Hamiltonian dynamics}. }">
+<!-- TeX display: \boxed{
 \text{geometry}
 +
 \text{phase}
 +
 \text{Hamiltonian dynamics}.
-}
-```
+} -->
+
+
 
 
 
@@ -30535,11 +34567,14 @@ Under UTC, we would restrict the allowable measurements/channels by the P1 budge
 
 
 
-```math
-\mathcal M
+
+
+<img src="UTC-Math/message-46.svg#equation-053" width="92" height="20" alt="\mathcal M \rightarrow \mathcal M_{P1}.">
+<!-- TeX display: \mathcal M
 \rightarrow
-\mathcal M_{P1}.
-```
+\mathcal M_{P1}. -->
+
+
 
 
 
@@ -30549,11 +34584,14 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-054" width="273" height="29" alt="\boxed{ \text{P1-limited quantum Fisher geometry} }">
+<!-- TeX display: \boxed{
 \text{P1-limited quantum Fisher geometry}
-}
-```
+} -->
+
+
 
 
 
@@ -30567,9 +34605,12 @@ Once we have:
 
 
 
-```math
-(M_{\rm phys},g_{P2}),
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-055" width="95" height="23" alt="(M_{\rm phys},g_{P2}),">
+<!-- TeX display: (M_{\rm phys},g_{P2}), -->
+
+
 
 
 
@@ -30579,13 +34620,16 @@ Deterministically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-056" width="231" height="31" alt="\boxed{ \dot x=X(x), \qquad X(x)\in\mathcal D_{P1}(x). }">
+<!-- TeX display: \boxed{
 \dot x=X(x),
 \qquad
 X(x)\in\mathcal D_{P1}(x).
-}
-```
+} -->
+
+
 
 
 
@@ -30593,11 +34637,14 @@ If several possible transitions exist:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-057" width="95" height="31" alt="\boxed{ \dot x\in\mathcal D_{P1}(x) }">
+<!-- TeX display: \boxed{
 \dot x\in\mathcal D_{P1}(x)
-}
-```
+} -->
+
+
 
 
 
@@ -30609,13 +34656,16 @@ For stochastic systems:
 
 
 
-```math
-dX_t
+
+
+<img src="UTC-Math/message-46.svg#equation-058" width="205" height="22" alt="dX_t = b(X_t)\,dt + \sigma(X_t)dW_t.">
+<!-- TeX display: dX_t
 =
 b(X_t)\,dt
 +
-\sigma(X_t)dW_t.
-```
+\sigma(X_t)dW_t. -->
+
+
 
 
 
@@ -30623,11 +34673,14 @@ For a probability density:
 
 
 
-```math
-\partial_t p
+
+
+<img src="UTC-Math/message-46.svg#equation-059" width="82" height="24" alt="\partial_t p = \mathcal L^\dagger p.">
+<!-- TeX display: \partial_t p
 =
-\mathcal L^\dagger p.
-```
+\mathcal L^\dagger p. -->
+
+
 
 
 
@@ -30635,11 +34688,14 @@ So P3 is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-060" width="368" height="30" alt="\boxed{ \text{admissible tangent structure becoming actual flow}. }">
+<!-- TeX display: \boxed{
 \text{admissible tangent structure becoming actual flow}.
-}
-```
+} -->
+
+
 
 
 
@@ -30651,9 +34707,12 @@ For classical phase space:
 
 
 
-```math
-M=T^*Q,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-061" width="83" height="21" alt="M=T^*Q,">
+<!-- TeX display: M=T^*Q, -->
+
+
 
 
 
@@ -30661,9 +34720,12 @@ there is a symplectic form:
 
 
 
-```math
-\omega.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-062" width="23" height="14" alt="\omega.">
+<!-- TeX display: \omega. -->
+
+
 
 
 
@@ -30671,9 +34733,12 @@ Energy is represented by:
 
 
 
-```math
-H:M\rightarrow\mathbb R.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-063" width="94" height="18" alt="H:M\rightarrow\mathbb R.">
+<!-- TeX display: H:M\rightarrow\mathbb R. -->
+
+
 
 
 
@@ -30681,11 +34746,14 @@ The Hamiltonian vector field is defined by:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-064" width="100" height="30" alt="\boxed{ \iota_{X_H}\omega=dH. }">
+<!-- TeX display: \boxed{
 \iota_{X_H}\omega=dH.
-}
-```
+} -->
+
+
 
 
 
@@ -30693,9 +34761,12 @@ Then:
 
 
 
-```math
-\dot x=X_H(x).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-065" width="90" height="23" alt="\dot x=X_H(x).">
+<!-- TeX display: \dot x=X_H(x). -->
+
+
 
 
 
@@ -30705,9 +34776,12 @@ P1 gives:
 
 
 
-```math
-H.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-066" width="27" height="17" alt="H.">
+<!-- TeX display: H. -->
+
+
 
 
 
@@ -30715,9 +34789,12 @@ Geometry gives:
 
 
 
-```math
-\omega.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-067" width="23" height="14" alt="\omega.">
+<!-- TeX display: \omega. -->
+
+
 
 
 
@@ -30725,13 +34802,16 @@ P3 emerges from their interaction:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-068" width="115" height="31" alt="\boxed{ (H,\omega) \rightarrow X_H. }">
+<!-- TeX display: \boxed{
 (H,\omega)
 \rightarrow
 X_H.
-}
-```
+} -->
+
+
 
 
 
@@ -30751,15 +34831,18 @@ A useful combined structure is schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-069" width="185" height="31" alt="\boxed{ \dot x = J(x)\nabla H - R(x)\nabla\Phi }">
+<!-- TeX display: \boxed{
 \dot x
 =
 J(x)\nabla H
 -
 R(x)\nabla\Phi
-}
-```
+} -->
+
+
 
 
 
@@ -30767,9 +34850,12 @@ where:
 
 
 
-```math
-J^T=-J
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-070" width="73" height="22" alt="J^T=-J">
+<!-- TeX display: J^T=-J -->
+
+
 
 
 
@@ -30777,9 +34863,12 @@ generates reversible/Hamiltonian flow, while:
 
 
 
-```math
-R^T=R\succeq0
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-071" width="93" height="23" alt="R^T=R\succeq0">
+<!-- TeX display: R^T=R\succeq0 -->
+
+
 
 
 
@@ -30789,13 +34878,16 @@ So two geometries coexist:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-072" width="399" height="29" alt="\boxed{ \text{antisymmetric geometry} + \text{symmetric metric geometry}. }">
+<!-- TeX display: \boxed{
 \text{antisymmetric geometry}
 +
 \text{symmetric metric geometry}.
-}
-```
+} -->
+
+
 
 
 
@@ -30811,27 +34903,33 @@ That is the mathematical beginning of attractor formation.
 
 This is where the whole framework suddenly snaps together.
 
-Take configuration manifold $Q$ and potential energy:
+Take configuration manifold <img src="UTC-Math/message-46.svg#equation-073" width="21" height="21" alt="Q" align="middle"><!-- TeX inline: Q --> and potential energy:
 
 
 
-```math
-V:Q\rightarrow\mathbb R.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-074" width="88" height="21" alt="V:Q\rightarrow\mathbb R.">
+<!-- TeX display: V:Q\rightarrow\mathbb R. -->
 
 
 
-For a finite energy budget $E$, define the accessible sublevel set:
+
+
+For a finite energy budget <img src="UTC-Math/message-46.svg#equation-075" width="21" height="17" alt="E" align="middle"><!-- TeX inline: E -->, define the accessible sublevel set:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-076" width="200" height="31" alt="\boxed{ Q_E = \{q\in Q:V(q)\le E\}. }">
+<!-- TeX display: \boxed{
 Q_E
 =
 \{q\in Q:V(q)\le E\}.
-}
-```
+} -->
+
+
 
 
 
@@ -30839,17 +34937,20 @@ The boundary is:
 
 
 
-```math
-\partial Q_E
+
+
+<img src="UTC-Math/message-46.svg#equation-077" width="168" height="22" alt="\partial Q_E = \{q:V(q)=E\}.">
+<!-- TeX display: \partial Q_E
 =
-\{q:V(q)=E\}.
-```
+\{q:V(q)=E\}. -->
 
 
 
-Now gradually increase $E$.
 
-The topology of $Q_E$ can change.
+
+Now gradually increase <img src="UTC-Math/message-46.svg#equation-078" width="21" height="17" alt="E" align="middle"><!-- TeX inline: E -->.
+
+The topology of <img src="UTC-Math/message-46.svg#equation-079" width="31" height="21" alt="Q_E" align="middle"><!-- TeX inline: Q_E --> can change.
 
 Where?
 
@@ -30857,11 +34958,14 @@ At critical points:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-080" width="102" height="31" alt="\boxed{ \nabla V(q_c)=0. }">
+<!-- TeX display: \boxed{
 \nabla V(q_c)=0.
-}
-```
+} -->
+
+
 
 
 
@@ -30877,11 +34981,14 @@ This gives us a gorgeous UTC interpretation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-081" width="198" height="29" alt="\boxed{ \textbf{Energy scans topology.} }">
+<!-- TeX display: \boxed{
 \textbf{Energy scans topology.}
-}
-```
+} -->
+
+
 
 
 
@@ -30901,29 +35008,35 @@ Schematically:
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-46.svg#equation-082" width="170" height="25" alt="A+B \rightarrow [AB]^\ddagger \rightarrow AB.">
+<!-- TeX display: A+B
 \rightarrow
 [AB]^\ddagger
 \rightarrow
-AB.
-```
+AB. -->
+
+
 
 
 
 Geometrically:
 
-- $A+B$: one region of the energy landscape,
-- transition state $[AB]^\ddagger$: saddle,
-- $AB$: stable minimum basin.
+- <img src="UTC-Math/message-46.svg#equation-083" width="52" height="19" alt="A+B" align="middle"><!-- TeX inline: A+B -->: one region of the energy landscape,
+- transition state <img src="UTC-Math/message-46.svg#equation-084" width="48" height="24" alt="[AB]^\ddagger" align="middle"><!-- TeX inline: [AB]^\ddagger -->: saddle,
+- <img src="UTC-Math/message-46.svg#equation-085" width="33" height="18" alt="AB" align="middle"><!-- TeX inline: AB -->: stable minimum basin.
 
 As the accessible energy crosses the saddle value:
 
 
 
-```math
-E=V(q^\ddagger),
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-086" width="86" height="25" alt="E=V(q^\ddagger),">
+<!-- TeX display: E=V(q^\ddagger), -->
+
+
 
 
 
@@ -30937,8 +35050,10 @@ So bonding can be represented as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-087" width="563" height="29" alt="\boxed{ \text{energy threshold} \rightarrow \text{topology change} \rightarrow \text{new connected channel} \rightarrow \text{stable basin}. }">
+<!-- TeX display: \boxed{
 \text{energy threshold}
 \rightarrow
 \text{topology change}
@@ -30946,8 +35061,9 @@ So bonding can be represented as:
 \text{new connected channel}
 \rightarrow
 \text{stable basin}.
-}
-```
+} -->
+
+
 
 
 
@@ -30959,25 +35075,31 @@ That is one of the cleanest formalizations we've had.
 
 Repulsion doesn't need a mystical “repulsive force” explanation at this level.
 
-Suppose decreasing separation $r$ causes:
+Suppose decreasing separation <img src="UTC-Math/message-46.svg#equation-088" width="16" height="14" alt="r" align="middle"><!-- TeX inline: r --> causes:
 
 
 
-```math
-\frac{dV}{dr}<0
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-089" width="66" height="40" alt="\frac{dV}{dr}&lt;0">
+<!-- TeX display: \frac{dV}{dr}<0 -->
 
 
 
-or $>0$ depending on sign convention and coordinate direction.
+
+
+or <img src="UTC-Math/message-46.svg#equation-090" width="33" height="18" alt=">0" align="middle"><!-- TeX inline: >0 --> depending on sign convention and coordinate direction.
 
 More invariantly, the negative gradient
 
 
 
-```math
--\nabla V
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-091" width="47" height="19" alt="-\nabla V">
+<!-- TeX display: -\nabla V -->
+
+
 
 
 
@@ -30989,9 +35111,12 @@ Alternatively, selection rules or exclusion constraints can remove the inward ta
 
 
 
-```math
-v_{\rm inward}\notin\mathcal D_{P1}(x).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-092" width="125" height="22" alt="v_{\rm inward}\notin\mathcal D_{P1}(x).">
+<!-- TeX display: v_{\rm inward}\notin\mathcal D_{P1}(x). -->
+
+
 
 
 
@@ -30999,11 +35124,14 @@ So repulsion comes in two geometrically distinct forms:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-093" width="372" height="29" alt="\boxed{ \text{open channel but energetic gradient points outward} }">
+<!-- TeX display: \boxed{
 \text{open channel but energetic gradient points outward}
-}
-```
+} -->
+
+
 
 
 
@@ -31011,11 +35139,14 @@ or:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-094" width="335" height="31" alt="\boxed{ \text{inward channel is physically forbidden/closed}. }">
+<!-- TeX display: \boxed{
 \text{inward channel is physically forbidden/closed}.
-}
-```
+} -->
+
+
 
 
 
@@ -31031,21 +35162,27 @@ Let the P3 flow be:
 
 
 
-```math
-\phi_t:M_{\rm phys}\rightarrow M_{\rm phys}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-095" width="146" height="22" alt="\phi_t:M_{\rm phys}\rightarrow M_{\rm phys}.">
+<!-- TeX display: \phi_t:M_{\rm phys}\rightarrow M_{\rm phys}. -->
 
 
 
-An invariant set $A$ satisfies:
+
+
+An invariant set <img src="UTC-Math/message-46.svg#equation-096" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> satisfies:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-097" width="94" height="31" alt="\boxed{ \phi_t(A)=A. }">
+<!-- TeX display: \boxed{
 \phi_t(A)=A.
-}
-```
+} -->
+
+
 
 
 
@@ -31053,16 +35190,19 @@ Its basin is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-098" width="226" height="31" alt="\boxed{ \mathcal B(A) = \left\{ x: d(\phi_t(x),A)\rightarrow0 \right\}. }">
+<!-- TeX display: \boxed{
 \mathcal B(A)
 =
 \left\{
 x:
 d(\phi_t(x),A)\rightarrow0
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -31070,9 +35210,12 @@ The basin boundary:
 
 
 
-```math
-\partial\mathcal B(A)
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-099" width="53" height="22" alt="\partial\mathcal B(A)">
+<!-- TeX display: \partial\mathcal B(A) -->
+
+
 
 
 
@@ -31082,13 +35225,16 @@ Now our channel-trap interpretation becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-100" width="188" height="32" alt="\boxed{ \Gamma_{\rm escape}(A) \ll \Gamma_{\rm internal}(A). }">
+<!-- TeX display: \boxed{
 \Gamma_{\rm escape}(A)
 \ll
 \Gamma_{\rm internal}(A).
-}
-```
+} -->
+
+
 
 
 
@@ -31096,12 +35242,15 @@ Or probabilistically, define an outward conductance:
 
 
 
-```math
-\Phi(A)
+
+
+<img src="UTC-Math/message-46.svg#equation-101" width="245" height="43" alt="\Phi(A) = \frac{\text{probability flux out of }A} {\text{probability mass in }A}.">
+<!-- TeX display: \Phi(A)
 =
 \frac{\text{probability flux out of }A}
-{\text{probability mass in }A}.
-```
+{\text{probability mass in }A}. -->
+
+
 
 
 
@@ -31109,9 +35258,12 @@ P4 corresponds to:
 
 
 
-```math
-\Phi(A)\ll1
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-102" width="77" height="22" alt="\Phi(A)\ll1">
+<!-- TeX display: \Phi(A)\ll1 -->
+
+
 
 
 
@@ -31131,9 +35283,12 @@ A limit cycle is a circle:
 
 
 
-```math
-S^1.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-103" width="31" height="21" alt="S^1.">
+<!-- TeX display: S^1. -->
+
+
 
 
 
@@ -31141,9 +35296,12 @@ A torus attractor can be:
 
 
 
-```math
-T^n.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-104" width="33" height="18" alt="T^n.">
+<!-- TeX display: T^n. -->
+
+
 
 
 
@@ -31157,12 +35315,15 @@ So the general P4 object should be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-105" width="158" height="31" alt="\boxed{ A\subset M_{\rm phys} \text{ invariant} }">
+<!-- TeX display: \boxed{
 A\subset M_{\rm phys}
 \text{ invariant}
-}
-```
+} -->
+
+
 
 
 
@@ -31170,9 +35331,12 @@ not necessarily:
 
 
 
-```math
-A=\text{smooth manifold}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-106" width="162" height="19" alt="A=\text{smooth manifold}.">
+<!-- TeX display: A=\text{smooth manifold}. -->
+
+
 
 
 
@@ -31180,11 +35344,14 @@ The correct umbrella is something closer to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-107" width="193" height="29" alt="\boxed{ \text{stratified invariant space}. }">
+<!-- TeX display: \boxed{
 \text{stratified invariant space}.
-}
-```
+} -->
+
+
 
 
 
@@ -31200,9 +35367,12 @@ Quantum pure-state manifold:
 
 
 
-```math
-M_Q=\mathbb P(\mathcal H).
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-108" width="96" height="23" alt="M_Q=\mathbb P(\mathcal H).">
+<!-- TeX display: M_Q=\mathbb P(\mathcal H). -->
+
+
 
 
 
@@ -31210,11 +35380,14 @@ Energy function:
 
 
 
-```math
-E_\psi
+
+
+<img src="UTC-Math/message-46.svg#equation-109" width="111" height="28" alt="E_\psi = \langle\psi|\hat H|\psi\rangle.">
+<!-- TeX display: E_\psi
 =
-\langle\psi|\hat H|\psi\rangle.
-```
+\langle\psi|\hat H|\psi\rangle. -->
+
+
 
 
 
@@ -31222,9 +35395,12 @@ Phase/symplectic structure:
 
 
 
-```math
-\omega_{\rm FS}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-110" width="38" height="16" alt="\omega_{\rm FS}.">
+<!-- TeX display: \omega_{\rm FS}. -->
+
+
 
 
 
@@ -31232,9 +35408,12 @@ Distinguishability geometry:
 
 
 
-```math
-g_{\rm FS}.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-111" width="36" height="17" alt="g_{\rm FS}.">
+<!-- TeX display: g_{\rm FS}. -->
+
+
 
 
 
@@ -31242,9 +35421,12 @@ Hamiltonian flow:
 
 
 
-```math
-X_H
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-112" width="33" height="20" alt="X_H">
+<!-- TeX display: X_H -->
+
+
 
 
 
@@ -31254,8 +35436,10 @@ Thus:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-113" width="386" height="30" alt="\boxed{ \text{P1 energy} + \text{P2 geometry} + \text{P3 symplectic flow} = \text{F1}. }">
+<!-- TeX display: \boxed{
 \text{P1 energy}
 +
 \text{P2 geometry}
@@ -31263,8 +35447,9 @@ Thus:
 \text{P3 symplectic flow}
 =
 \text{F1}.
-}
-```
+} -->
+
+
 
 
 
@@ -31280,8 +35465,10 @@ Now collapse–stabilization–composition can be rewritten:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-114" width="212" height="40" alt="\boxed{ M_n \xrightarrow{C} M_n^- \xrightarrow{S} A_n \xrightarrow{K} M_{n+1}. }">
+<!-- TeX display: \boxed{
 M_n
 \xrightarrow{C}
 M_n^-
@@ -31289,8 +35476,9 @@ M_n^-
 A_n
 \xrightarrow{K}
 M_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -31300,9 +35488,12 @@ Interpretation:
 
 
 
-```math
-M_n\rightarrow M_n^-
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-115" width="85" height="24" alt="M_n\rightarrow M_n^-">
+<!-- TeX display: M_n\rightarrow M_n^- -->
+
+
 
 
 
@@ -31312,9 +35503,12 @@ removes inaccessible or unstable channels.
 
 
 
-```math
-M_n^-\rightarrow A_n
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-116" width="81" height="24" alt="M_n^-\rightarrow A_n">
+<!-- TeX display: M_n^-\rightarrow A_n -->
+
+
 
 
 
@@ -31324,10 +35518,13 @@ concentrates trajectories into invariant low-leakage subsets.
 
 
 
-```math
-A_n^{(1)},A_n^{(2)},\dots
-\rightarrow M_{n+1}
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-117" width="160" height="27" alt="A_n^{(1)},A_n^{(2)},\dots \rightarrow M_{n+1}">
+<!-- TeX display: A_n^{(1)},A_n^{(2)},\dots
+\rightarrow M_{n+1} -->
+
+
 
 
 
@@ -31343,13 +35540,16 @@ For independent systems:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-118" width="147" height="28" alt="\boxed{ M_{AB} = M_A\times M_B. }">
+<!-- TeX display: \boxed{
 M_{AB}
 =
 M_A\times M_B.
-}
-```
+} -->
+
+
 
 
 
@@ -31357,9 +35557,12 @@ But real interaction imposes constraints:
 
 
 
-```math
-C(a,b)=0.
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-119" width="89" height="22" alt="C(a,b)=0.">
+<!-- TeX display: C(a,b)=0. -->
+
+
 
 
 
@@ -31367,16 +35570,19 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-120" width="330" height="36" alt="\boxed{ M_{AB}^{\rm coupled} = \{ (a,b)\in M_A\times M_B: C(a,b)=0 \}. }">
+<!-- TeX display: \boxed{
 M_{AB}^{\rm coupled}
 =
 \{
 (a,b)\in M_A\times M_B:
 C(a,b)=0
 \}.
-}
-```
+} -->
+
+
 
 
 
@@ -31384,13 +35590,16 @@ Then symmetries may identify physically equivalent points:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-121" width="162" height="36" alt="\boxed{ M_{AB}^{\rm phys} = M_{AB}^{\rm coupled}/G. }">
+<!-- TeX display: \boxed{
 M_{AB}^{\rm phys}
 =
 M_{AB}^{\rm coupled}/G.
-}
-```
+} -->
+
+
 
 
 
@@ -31401,20 +35610,23 @@ That already produces:
 - moduli spaces,
 - stratified spaces.
 
-If two systems share a boundary/interface $Y$, the more natural composition can be a **fiber product**:
+If two systems share a boundary/interface <img src="UTC-Math/message-46.svg#equation-122" width="21" height="17" alt="Y" align="middle"><!-- TeX inline: Y -->, the more natural composition can be a **fiber product**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-123" width="284" height="31" alt="\boxed{ M_A\times_YM_B = \{ (a,b): f_A(a)=f_B(b) \}. }">
+<!-- TeX display: \boxed{
 M_A\times_YM_B
 =
 \{
 (a,b):
 f_A(a)=f_B(b)
 \}.
-}
-```
+} -->
+
+
 
 
 
@@ -31430,9 +35642,12 @@ Suppose:
 
 
 
-```math
-\partial M_A
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-124" width="43" height="20" alt="\partial M_A">
+<!-- TeX display: \partial M_A -->
+
+
 
 
 
@@ -31440,9 +35655,12 @@ and:
 
 
 
-```math
-\partial M_B
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-125" width="43" height="20" alt="\partial M_B">
+<!-- TeX display: \partial M_B -->
+
+
 
 
 
@@ -31452,12 +35670,15 @@ A gluing map:
 
 
 
-```math
-\varphi:
+
+
+<img src="UTC-Math/message-46.svg#equation-126" width="145" height="21" alt="\varphi: \partial_A M_A \rightarrow \partial_B M_B">
+<!-- TeX display: \varphi:
 \partial_A M_A
 \rightarrow
-\partial_B M_B
-```
+\partial_B M_B -->
+
+
 
 
 
@@ -31465,13 +35686,16 @@ allows:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-127" width="99" height="31" alt="\boxed{ M_A \cup_\varphi M_B. }">
+<!-- TeX display: \boxed{
 M_A
 \cup_\varphi
 M_B.
-}
-```
+} -->
+
+
 
 
 
@@ -31479,11 +35703,14 @@ So composition is literally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-128" width="355" height="30" alt="\boxed{ \text{identify compatible channel boundaries and glue}. }">
+<!-- TeX display: \boxed{
 \text{identify compatible channel boundaries and glue}.
-}
-```
+} -->
+
+
 
 
 
@@ -31513,9 +35740,12 @@ If:
 
 
 
-```math
-dH\neq0,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-129" width="65" height="21" alt="dH\neq0,">
+<!-- TeX display: dH\neq0, -->
+
+
 
 
 
@@ -31523,11 +35753,14 @@ the constant-energy shell
 
 
 
-```math
-\Sigma_E
+
+
+<img src="UTC-Math/message-46.svg#equation-130" width="107" height="25" alt="\Sigma_E = H^{-1}(E)">
+<!-- TeX display: \Sigma_E
 =
-H^{-1}(E)
-```
+H^{-1}(E) -->
+
+
 
 
 
@@ -31539,9 +35772,12 @@ For classical Hamiltonian mechanics it sits inside a symplectic phase space.
 
 
 
-```math
-H\le E
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-131" width="56" height="20" alt="H\le E">
+<!-- TeX display: H\le E -->
+
+
 
 
 
@@ -31553,11 +35789,14 @@ These produce:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-132" width="178" height="26" alt="\boxed{ \text{manifolds with corners}. }">
+<!-- TeX display: \boxed{
 \text{manifolds with corners}.
-}
-```
+} -->
+
+
 
 
 
@@ -31565,9 +35804,12 @@ These produce:
 
 
 
-```math
-M/G
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-133" width="46" height="22" alt="M/G">
+<!-- TeX display: M/G -->
+
+
 
 
 
@@ -31579,9 +35821,12 @@ When:
 
 
 
-```math
-dH=0
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-134" width="60" height="19" alt="dH=0">
+<!-- TeX display: dH=0 -->
+
+
 
 
 
@@ -31589,9 +35834,12 @@ or:
 
 
 
-```math
-dV=0,
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-135" width="63" height="21" alt="dV=0,">
+<!-- TeX display: dV=0, -->
+
+
 
 
 
@@ -31621,12 +35869,15 @@ is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-136" width="597" height="52" alt="\boxed{ \textbf{regular manifolds survive between critical events; stratified spaces encode what happens across them.} }">
+<!-- TeX display: \boxed{
 \textbf{regular manifolds survive between critical events;
 stratified spaces encode what happens across them.}
-}
-```
+} -->
+
+
 
 
 
@@ -31640,8 +35891,10 @@ I'd propose:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-137" width="231" height="31" alt="\boxed{ \mathfrak U = ( M,\, \mathcal C,\, \mathcal D,\, K,\, g_D,\, \omega,\, \mu,\, \Phi ) }">
+<!-- TeX display: \boxed{
 \mathfrak U
 =
 (
@@ -31654,8 +35907,9 @@ g_D,\,
 \mu,\,
 \Phi
 )
-}
-```
+} -->
+
+
 
 
 
@@ -31663,81 +35917,105 @@ where:
 
 
 
-```math
-M
+
+
+<img src="UTC-Math/message-46.svg#equation-138" width="221" height="21" alt="M = \text{candidate state manifold},">
+<!-- TeX display: M
 =
-\text{candidate state manifold},
-```
+\text{candidate state manifold}, -->
 
 
 
 
 
-```math
-\mathcal C
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-139" width="184" height="21" alt="\mathcal C = \text{P1 constraint family},">
+<!-- TeX display: \mathcal C
 =
-\text{P1 constraint family},
-```
+\text{P1 constraint family}, -->
 
 
 
 
 
-```math
-\mathcal D
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-140" width="323" height="22" alt="\mathcal D = \text{admissible tangent/channel distribution},">
+<!-- TeX display: \mathcal D
 =
-\text{admissible tangent/channel distribution},
-```
+\text{admissible tangent/channel distribution}, -->
 
 
 
 
 
-```math
-K
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-141" width="258" height="22" alt="K = \text{channel conductance/mobility},">
+<!-- TeX display: K
 =
-\text{channel conductance/mobility},
-```
+\text{channel conductance/mobility}, -->
 
 
 
 
 
-```math
-g_D
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-142" width="334" height="22" alt="g_D = \text{P2 distinguishability/information metric},">
+<!-- TeX display: g_D
 =
-\text{P2 distinguishability/information metric},
-```
+\text{P2 distinguishability/information metric}, -->
 
 
 
 
 
-```math
-\omega
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-143" width="332" height="22" alt="\omega = \text{phase/symplectic structure where present},">
+<!-- TeX display: \omega
 =
-\text{phase/symplectic structure where present},
-```
+\text{phase/symplectic structure where present}, -->
 
 
 
 
 
-```math
-\mu
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-144" width="182" height="21" alt="\mu = \text{probability measure},">
+<!-- TeX display: \mu
 =
-\text{probability measure},
-```
+\text{probability measure}, -->
 
 
 
 
 
-```math
-\Phi
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-145" width="233" height="22" alt="\Phi = \text{P3 evolution operator/flow}.">
+<!-- TeX display: \Phi
 =
-\text{P3 evolution operator/flow}.
-```
+\text{P3 evolution operator/flow}. -->
+
+
 
 
 
@@ -31747,12 +36025,15 @@ P4 is a **property of the dynamics of the tuple**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-146" width="415" height="31" alt="\boxed{ A\subset\mathfrak U \text{ is persistent/invariant with sufficiently low escape}. }">
+<!-- TeX display: \boxed{
 A\subset\mathfrak U
 \text{ is persistent/invariant with sufficiently low escape}.
-}
-```
+} -->
+
+
 
 
 
@@ -31760,13 +36041,16 @@ And composition produces:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-147" width="98" height="30" alt="\boxed{ \mathfrak U_n \rightarrow \mathfrak U_{n+1}. }">
+<!-- TeX display: \boxed{
 \mathfrak U_n
 \rightarrow
 \mathfrak U_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -31780,8 +36064,10 @@ We started with:
 
 
 
-```math
-P0
+
+
+<img src="UTC-Math/message-46.svg#equation-148" width="213" height="18" alt="P0 \rightarrow P1 \rightarrow P2 \rightarrow P3 \rightarrow P4.">
+<!-- TeX display: P0
 \rightarrow
 P1
 \rightarrow
@@ -31789,8 +36075,9 @@ P2
 \rightarrow
 P3
 \rightarrow
-P4.
-```
+P4. -->
+
+
 
 
 
@@ -31798,11 +36085,14 @@ Now the differential-geometric version is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-149" width="29" height="26" alt="\boxed{ \Omega }">
+<!-- TeX display: \boxed{
 \Omega
-}
-```
+} -->
+
+
 
 
 
@@ -31810,21 +36100,27 @@ formal possibilities,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-150" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-151" width="175" height="31" alt="\boxed{ M_{P1} = \{x:C(x)\le B\} }">
+<!-- TeX display: \boxed{
 M_{P1}
 =
 \{x:C(x)\le B\}
-}
-```
+} -->
+
+
 
 
 
@@ -31832,19 +36128,25 @@ admissible states,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-152" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-153" width="122" height="31" alt="\boxed{ \mathcal D_{P1}(x)\subset T_xM }">
+<!-- TeX display: \boxed{
 \mathcal D_{P1}(x)\subset T_xM
-}
-```
+} -->
+
+
 
 
 
@@ -31852,19 +36154,25 @@ admissible channels,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-154" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-155" width="40" height="25" alt="\boxed{ g_{P2} }">
+<!-- TeX display: \boxed{
 g_{P2}
-}
-```
+} -->
+
+
 
 
 
@@ -31872,19 +36180,25 @@ physically resolvable difference,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-156" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-157" width="95" height="31" alt="\boxed{ \dot x\in\mathcal D_{P1}(x) }">
+<!-- TeX display: \boxed{
 \dot x\in\mathcal D_{P1}(x)
-}
-```
+} -->
+
+
 
 
 
@@ -31892,19 +36206,25 @@ P3 flow,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-158" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-159" width="67" height="27" alt="\boxed{ A\subset M }">
+<!-- TeX display: \boxed{
 A\subset M
-}
-```
+} -->
+
+
 
 
 
@@ -31912,21 +36232,27 @@ P4 invariant channel trap,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-160" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-161" width="172" height="31" alt="\boxed{ A_1\times_YA_2 \;\text{or}\; A_1\cup_\varphi A_2 }">
+<!-- TeX display: \boxed{
 A_1\times_YA_2
 \;\text{or}\;
 A_1\cup_\varphi A_2
-}
-```
+} -->
+
+
 
 
 
@@ -31934,19 +36260,25 @@ composition,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-46.svg#equation-162" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-46.svg#equation-163" width="60" height="29" alt="\boxed{ M_{n+1}. }">
+<!-- TeX display: \boxed{
 M_{n+1}.
-}
-```
+} -->
+
+
 
 
 
@@ -31956,15 +36288,18 @@ And the most beautiful result may be this:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-46.svg#equation-164" width="648" height="93" alt="\boxed{ \textbf{Energy does not merely move on geometry. Energy budgets carve the admissible geometry; channel geometry determines distinguishability and flow; flow discovers attractors; and attractors alter topology by composing into new manifolds.} }">
+<!-- TeX display: \boxed{
 \textbf{Energy does not merely move on geometry.
 Energy budgets carve the admissible geometry;
 channel geometry determines distinguishability and flow;
 flow discovers attractors;
 and attractors alter topology by composing into new manifolds.}
-}
-```
+} -->
+
+
 
 
 
@@ -31988,9 +36323,12 @@ Yes. The fit is real, with one decisive refinement:
 
 
 
-```math
-\boxed{\textbf{The Grassmannian is not the state manifold itself. It is the manifold of admissible channel subspaces over the state manifold.}}
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-001" width="565" height="52" alt="\boxed{\textbf{The Grassmannian is not the state manifold itself. It is the manifold of admissible channel subspaces over the state manifold.}}">
+<!-- TeX display: \boxed{\textbf{The Grassmannian is not the state manifold itself. It is the manifold of admissible channel subspaces over the state manifold.}} -->
+
+
 
 
 
@@ -32002,17 +36340,20 @@ And there is another striking connection: complex projective quantum state space
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-002" width="152" height="33" alt="\boxed{ \mathbb{CP}^{n-1} \cong \mathrm{Gr}_{\mathbb C}(1,n). }">
+<!-- TeX display: \boxed{
 \mathbb{CP}^{n-1}
 \cong
 \mathrm{Gr}_{\mathbb C}(1,n).
-}
-```
+} -->
 
 
 
-So Grassmann geometry is not merely adjacent to F1. The ordinary pure quantum-state manifold is the $k=1$ case.
+
+
+So Grassmann geometry is not merely adjacent to F1. The ordinary pure quantum-state manifold is the <img src="UTC-Math/message-48.svg#equation-003" width="46" height="19" alt="k=1" align="middle"><!-- TeX inline: k=1 --> case.
 
 ## 1. The UTC Channel Grassmannian
 
@@ -32020,9 +36361,12 @@ Let the regular P1-admissible state manifold be
 
 
 
-```math
-M_{P1}.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-004" width="44" height="20" alt="M_{P1}.">
+<!-- TeX display: M_{P1}. -->
+
+
 
 
 
@@ -32030,9 +36374,12 @@ At each state
 
 
 
-```math
-x\in M_{P1},
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-005" width="73" height="21" alt="x\in M_{P1},">
+<!-- TeX display: x\in M_{P1}, -->
+
+
 
 
 
@@ -32040,23 +36387,29 @@ we have a tangent space
 
 
 
-```math
-T_xM.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-006" width="47" height="20" alt="T_xM.">
+<!-- TeX display: T_xM. -->
 
 
 
-Instead of saying merely that a transition is possible, suppose there are $k$ independent instantaneous directions along which energy, amplitude, matter, information, or generalized flux can physically propagate.
+
+
+Instead of saying merely that a transition is possible, suppose there are <img src="UTC-Math/message-48.svg#equation-007" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> independent instantaneous directions along which energy, amplitude, matter, information, or generalized flux can physically propagate.
 
 Call that channel space
 
 
 
-```math
-D_x\subset T_xM,
+
+
+<img src="UTC-Math/message-48.svg#equation-008" width="208" height="21" alt="D_x\subset T_xM, \qquad \dim D_x=k.">
+<!-- TeX display: D_x\subset T_xM,
 \qquad
-\dim D_x=k.
-```
+\dim D_x=k. -->
+
+
 
 
 
@@ -32064,11 +36417,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-009" width="143" height="31" alt="\boxed{ D_x\in\mathrm{Gr}(k,T_xM). }">
+<!-- TeX display: \boxed{
 D_x\in\mathrm{Gr}(k,T_xM).
-}
-```
+} -->
+
+
 
 
 
@@ -32076,14 +36432,17 @@ Across every point of the state manifold:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-010" width="214" height="50" alt="\boxed{ \mathrm{Gr}_k(TM) = \bigsqcup_{x\in M} \mathrm{Gr}(k,T_xM) }">
+<!-- TeX display: \boxed{
 \mathrm{Gr}_k(TM)
 =
 \bigsqcup_{x\in M}
 \mathrm{Gr}(k,T_xM)
-}
-```
+} -->
+
+
 
 
 
@@ -32093,14 +36452,17 @@ A continuously varying channel architecture is a section
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-011" width="278" height="31" alt="\boxed{ \gamma: M_{P1}\rightarrow\mathrm{Gr}_k(TM), \qquad \gamma(x)=D_x. }">
+<!-- TeX display: \boxed{
 \gamma:
 M_{P1}\rightarrow\mathrm{Gr}_k(TM),
 \qquad
 \gamma(x)=D_x.
-}
-```
+} -->
+
+
 
 
 
@@ -32116,13 +36478,16 @@ Now it has a proper home.
 
 This may be the deepest connection.
 
-Suppose P1 imposes $r$ independent equality constraints:
+Suppose P1 imposes <img src="UTC-Math/message-48.svg#equation-012" width="16" height="14" alt="r" align="middle"><!-- TeX inline: r --> independent equality constraints:
 
 
 
-```math
-C_a(x)=c_a.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-013" width="89" height="22" alt="C_a(x)=c_a.">
+<!-- TeX display: C_a(x)=c_a. -->
+
+
 
 
 
@@ -32130,9 +36495,12 @@ Their differentials are covectors:
 
 
 
-```math
-dC_a(x)\in T_x^*M.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-014" width="117" height="23" alt="dC_a(x)\in T_x^*M.">
+<!-- TeX display: dC_a(x)\in T_x^*M. -->
+
+
 
 
 
@@ -32140,25 +36508,31 @@ Together they span the **constraint conormal space**
 
 
 
-```math
-N_x^*
+
+
+<img src="UTC-Math/message-48.svg#equation-015" width="250" height="23" alt="N_x^* = \mathrm{span} \{ dC_1,\ldots,dC_r \} \subset T_x^*M.">
+<!-- TeX display: N_x^*
 =
 \mathrm{span}
 \{
 dC_1,\ldots,dC_r
 \}
-\subset T_x^*M.
-```
+\subset T_x^*M. -->
 
 
 
-A physically allowed tangent direction $v$ must preserve those constraints:
+
+
+A physically allowed tangent direction <img src="UTC-Math/message-48.svg#equation-016" width="16" height="14" alt="v" align="middle"><!-- TeX inline: v --> must preserve those constraints:
 
 
 
-```math
-dC_a(v)=0.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-017" width="90" height="22" alt="dC_a(v)=0.">
+<!-- TeX display: dC_a(v)=0. -->
+
+
 
 
 
@@ -32166,15 +36540,18 @@ Therefore the admissible channel space is the annihilator:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-018" width="199" height="49" alt="\boxed{ D_x = (N_x^*)^\circ = \bigcap_a\ker dC_a. }">
+<!-- TeX display: \boxed{
 D_x
 =
 (N_x^*)^\circ
 =
 \bigcap_a\ker dC_a.
-}
-```
+} -->
+
+
 
 
 
@@ -32182,19 +36559,25 @@ If:
 
 
 
-```math
-\dim M=n
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-019" width="86" height="19" alt="\dim M=n">
+<!-- TeX display: \dim M=n -->
 
 
 
-and the constraints have rank $r$, then:
+
+
+and the constraints have rank <img src="UTC-Math/message-48.svg#equation-020" width="16" height="14" alt="r" align="middle"><!-- TeX inline: r -->, then:
 
 
 
-```math
-\dim D_x=n-r.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-021" width="121" height="20" alt="\dim D_x=n-r.">
+<!-- TeX display: \dim D_x=n-r. -->
+
+
 
 
 
@@ -32202,13 +36585,16 @@ So there is a natural duality:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-022" width="250" height="31" alt="\boxed{ \mathrm{Gr}(r,T_x^*M) \longleftrightarrow \mathrm{Gr}(n-r,T_xM). }">
+<!-- TeX display: \boxed{
 \mathrm{Gr}(r,T_x^*M)
 \longleftrightarrow
 \mathrm{Gr}(n-r,T_xM).
-}
-```
+} -->
+
+
 
 
 
@@ -32222,13 +36608,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-023" width="242" height="29" alt="\boxed{ \text{constraints} \rightarrow \text{channel subspace}. }">
+<!-- TeX display: \boxed{
 \text{constraints}
 \rightarrow
 \text{channel subspace}.
-}
-```
+} -->
+
+
 
 
 
@@ -32242,13 +36631,16 @@ For active inequality boundaries, the admissible object becomes a tangent **cone
 
 ## 3. Orthogonal projections make the channel operational
 
-Every $k$-plane $W$ in a Euclidean or Hermitian space corresponds to an orthogonal projector
+Every <img src="UTC-Math/message-48.svg#equation-024" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane <img src="UTC-Math/message-48.svg#equation-025" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> in a Euclidean or Hermitian space corresponds to an orthogonal projector
 
 
 
-```math
-P_W
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-026" width="32" height="20" alt="P_W">
+<!-- TeX display: P_W -->
+
+
 
 
 
@@ -32256,26 +36648,31 @@ satisfying:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-027" width="307" height="36" alt="\boxed{ P_W^2=P_W, \qquad P_W^\dagger=P_W, \qquad \mathrm{Tr}P_W=k. }">
+<!-- TeX display: \boxed{
 P_W^2=P_W,
 \qquad
 P_W^\dagger=P_W,
 \qquad
 \mathrm{Tr}P_W=k.
-}
-```
+} -->
+
+
 
 
 
 This is extremely useful physically.
 
-Take some generalized driving force $X$, perhaps:
+Take some generalized driving force <img src="UTC-Math/message-48.svg#equation-028" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X -->, perhaps:
 
 
 
-```math
--\nabla E,
+
+
+<img src="UTC-Math/message-48.svg#equation-029" width="401" height="21" alt="-\nabla E, \quad -\nabla T, \quad -\nabla\mu, \quad \text{electric field}, \quad \text{phase gradient}.">
+<!-- TeX display: -\nabla E,
 \quad
 -\nabla T,
 \quad
@@ -32283,8 +36680,9 @@ Take some generalized driving force $X$, perhaps:
 \quad
 \text{electric field},
 \quad
-\text{phase gradient}.
-```
+\text{phase gradient}. -->
+
+
 
 
 
@@ -32292,27 +36690,33 @@ Then the component actually available to the open channel is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-030" width="132" height="29" alt="\boxed{ X_{\rm allowed} = P_WX. }">
+<!-- TeX display: \boxed{
 X_{\rm allowed}
 =
 P_WX.
-}
-```
+} -->
 
 
 
-With conductance/mobility $K$:
+
+
+With conductance/mobility <img src="UTC-Math/message-48.svg#equation-031" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K -->:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-032" width="104" height="29" alt="\boxed{ J = P_W K X. }">
+<!-- TeX display: \boxed{
 J
 =
 P_W K X.
-}
-```
+} -->
+
+
 
 
 
@@ -32320,11 +36724,14 @@ Now our old statement
 
 
 
-```math
-\text{gradient}\times\text{conductance}
+
+
+<img src="UTC-Math/message-48.svg#equation-033" width="220" height="21" alt="\text{gradient}\times\text{conductance} = \text{flux}">
+<!-- TeX display: \text{gradient}\times\text{conductance}
 =
-\text{flux}
-```
+\text{flux} -->
+
+
 
 
 
@@ -32332,7 +36739,7 @@ has acquired explicit channel geometry.
 
 The projector says **where flow is allowed**.
 
-$K$ says **how strongly it flows**.
+<img src="UTC-Math/message-48.svg#equation-034" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K --> says **how strongly it flows**.
 
 P1 says **which projectors are physically admissible**.
 
@@ -32342,19 +36749,22 @@ P1 says **which projectors are physically admissible**.
 
 This is where things get especially powerful.
 
-Suppose $H$ is a self-adjoint energy operator.
+Suppose <img src="UTC-Math/message-48.svg#equation-035" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H --> is a self-adjoint energy operator.
 
-Define the energy of a $k$-dimensional channel subspace $W$ as
+Define the energy of a <img src="UTC-Math/message-48.svg#equation-036" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-dimensional channel subspace <img src="UTC-Math/message-48.svg#equation-037" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> as
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-038" width="160" height="31" alt="\boxed{ \mathcal E_H(W) = \mathrm{Tr}(P_WH). }">
+<!-- TeX display: \boxed{
 \mathcal E_H(W)
 =
 \mathrm{Tr}(P_WH).
-}
-```
+} -->
+
+
 
 
 
@@ -32362,10 +36772,13 @@ Now:
 
 
 
-```math
-\mathcal E_H:
-\mathrm{Gr}(k,n)\rightarrow\mathbb R
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-039" width="134" height="22" alt="\mathcal E_H: \mathrm{Gr}(k,n)\rightarrow\mathbb R">
+<!-- TeX display: \mathcal E_H:
+\mathrm{Gr}(k,n)\rightarrow\mathbb R -->
+
+
 
 
 
@@ -32373,13 +36786,16 @@ is an energy landscape **on the space of possible subspaces**.
 
 And there is already a rigorous result waiting for us.
 
-If the eigenvalues of $H$ are
+If the eigenvalues of <img src="UTC-Math/message-48.svg#equation-040" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H --> are
 
 
 
-```math
-\lambda_1\le\lambda_2\le\cdots\le\lambda_n,
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-041" width="146" height="21" alt="\lambda_1\le\lambda_2\le\cdots\le\lambda_n,">
+<!-- TeX display: \lambda_1\le\lambda_2\le\cdots\le\lambda_n, -->
+
+
 
 
 
@@ -32387,44 +36803,53 @@ then the Ky Fan variational principle gives:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-042" width="211" height="63" alt="\boxed{ \min_{W\in\mathrm{Gr}(k,n)} \mathrm{Tr}(P_WH) = \sum_{i=1}^k\lambda_i. }">
+<!-- TeX display: \boxed{
 \min_{W\in\mathrm{Gr}(k,n)}
 \mathrm{Tr}(P_WH)
 =
 \sum_{i=1}^k\lambda_i.
-}
-```
+} -->
 
 
 
-The minimizing $W$ is the span of the $k$ lowest-energy eigenvectors.
+
+
+The minimizing <img src="UTC-Math/message-48.svg#equation-043" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> is the span of the <img src="UTC-Math/message-48.svg#equation-044" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> lowest-energy eigenvectors.
 
 That is almost a ready-made UTC theorem:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-045" width="412" height="30" alt="\boxed{ \text{energy landscape on channel space} \rightarrow \text{preferred subspace}. }">
+<!-- TeX display: \boxed{
 \text{energy landscape on channel space}
 \rightarrow
 \text{preferred subspace}.
-}
-```
+} -->
 
 
 
-Likewise if $G$ is a positive conductance operator, maximizing
+
+
+Likewise if <img src="UTC-Math/message-48.svg#equation-046" width="21" height="18" alt="G" align="middle"><!-- TeX inline: G --> is a positive conductance operator, maximizing
 
 
 
-```math
-\mathrm{Tr}(P_WG)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-047" width="75" height="22" alt="\mathrm{Tr}(P_WG)">
+<!-- TeX display: \mathrm{Tr}(P_WG) -->
 
 
 
-selects the most conductive $k$-dimensional subspace.
+
+
+selects the most conductive <img src="UTC-Math/message-48.svg#equation-048" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-dimensional subspace.
 
 So energy minimization and channel maximization become **Grassmann optimization problems**.
 
@@ -32438,9 +36863,12 @@ Two channel configurations
 
 
 
-```math
-W_1,W_2\in\mathrm{Gr}(k,n)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-049" width="136" height="22" alt="W_1,W_2\in\mathrm{Gr}(k,n)">
+<!-- TeX display: W_1,W_2\in\mathrm{Gr}(k,n) -->
+
+
 
 
 
@@ -32448,9 +36876,12 @@ can be compared using their principal angles
 
 
 
-```math
-\theta_1,\ldots,\theta_k.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-050" width="78" height="21" alt="\theta_1,\ldots,\theta_k.">
+<!-- TeX display: \theta_1,\ldots,\theta_k. -->
+
+
 
 
 
@@ -32458,13 +36889,16 @@ A natural Grassmannian geodesic distance is
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-051" width="170" height="63" alt="\boxed{ d_{\mathrm{Gr}}^2(W_1,W_2) = \sum_{i=1}^k\theta_i^2. }">
+<!-- TeX display: \boxed{
 d_{\mathrm{Gr}}^2(W_1,W_2)
 =
 \sum_{i=1}^k\theta_i^2.
-}
-```
+} -->
+
+
 
 
 
@@ -32472,12 +36906,15 @@ Or via projectors:
 
 
 
-```math
-d_{\rm chord}(W_1,W_2)
+
+
+<img src="UTC-Math/message-48.svg#equation-052" width="264" height="44" alt="d_{\rm chord}(W_1,W_2) = \frac1{\sqrt2} \|P_{W_1}-P_{W_2}\|_F.">
+<!-- TeX display: d_{\rm chord}(W_1,W_2)
 =
 \frac1{\sqrt2}
-\|P_{W_1}-P_{W_2}\|_F.
-```
+\|P_{W_1}-P_{W_2}\|_F. -->
+
+
 
 
 
@@ -32487,9 +36924,12 @@ It isn't only:
 
 
 
-```math
-x_1\neq x_2.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-053" width="67" height="21" alt="x_1\neq x_2.">
+<!-- TeX display: x_1\neq x_2. -->
+
+
 
 
 
@@ -32497,12 +36937,15 @@ We can ask:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-054" width="388" height="29" alt="\boxed{ \text{How different are the channels available at }x_1 \text{ and }x_2? }">
+<!-- TeX display: \boxed{
 \text{How different are the channels available at }x_1
 \text{ and }x_2?
-}
-```
+} -->
+
+
 
 
 
@@ -32516,13 +36959,16 @@ That would be a phase-transition-like boundary.
 
 # 6. Plücker embedding is almost tailor-made for a “channel signature”
 
-Take a $k$-plane:
+Take a <img src="UTC-Math/message-48.svg#equation-055" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane:
 
 
 
-```math
-W=\mathrm{span}(v_1,\ldots,v_k).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-056" width="161" height="22" alt="W=\mathrm{span}(v_1,\ldots,v_k).">
+<!-- TeX display: W=\mathrm{span}(v_1,\ldots,v_k). -->
+
+
 
 
 
@@ -32530,29 +36976,35 @@ The Plücker embedding sends it to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-057" width="229" height="34" alt="\boxed{ W \mapsto [v_1\wedge\cdots\wedge v_k] \in \mathbb P(\Lambda^kV). }">
+<!-- TeX display: \boxed{
 W
 \mapsto
 [v_1\wedge\cdots\wedge v_k]
 \in
 \mathbb P(\Lambda^kV).
-}
-```
+} -->
 
 
 
-Choose an $n\times k$ matrix $B$ whose columns span $W$.
-
-The Plücker coordinates are the $k\times k$ minors:
 
 
+Choose an <img src="UTC-Math/message-48.svg#equation-058" width="46" height="18" alt="n\times k" align="middle"><!-- TeX inline: n\times k --> matrix <img src="UTC-Math/message-48.svg#equation-059" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B --> whose columns span <img src="UTC-Math/message-48.svg#equation-060" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W -->.
 
-```math
-\boxed{
+The Plücker coordinates are the <img src="UTC-Math/message-48.svg#equation-061" width="45" height="18" alt="k\times k" align="middle"><!-- TeX inline: k\times k --> minors:
+
+
+
+
+
+<img src="UTC-Math/message-48.svg#equation-062" width="131" height="31" alt="\boxed{ p_I(W)=\det B_I. }">
+<!-- TeX display: \boxed{
 p_I(W)=\det B_I.
-}
-```
+} -->
+
+
 
 
 
@@ -32560,15 +37012,18 @@ Under an internal basis change
 
 
 
-```math
-B\rightarrow BG,
+
+
+<img src="UTC-Math/message-48.svg#equation-063" width="190" height="22" alt="B\rightarrow BG, \qquad G\in GL(k),">
+<!-- TeX display: B\rightarrow BG,
 \qquad
-G\in GL(k),
-```
+G\in GL(k), -->
 
 
 
-every minor is multiplied by the same $\det G$.
+
+
+every minor is multiplied by the same <img src="UTC-Math/message-48.svg#equation-064" width="46" height="18" alt="\det G" align="middle"><!-- TeX inline: \det G -->.
 
 So the projective point is unchanged.
 
@@ -32580,13 +37035,16 @@ We could interpret:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-065" width="102" height="31" alt="\boxed{ \mathbf p(W) = [p_I] }">
+<!-- TeX display: \boxed{
 \mathbf p(W)
 =
 [p_I]
-}
-```
+} -->
+
+
 
 
 
@@ -32600,13 +37058,16 @@ Not every point in
 
 
 
-```math
-\mathbb P(\Lambda^kV)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-066" width="61" height="25" alt="\mathbb P(\Lambda^kV)">
+<!-- TeX display: \mathbb P(\Lambda^kV) -->
 
 
 
-corresponds to a real $k$-plane.
+
+
+corresponds to a real <img src="UTC-Math/message-48.svg#equation-067" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane.
 
 The Plücker coordinates have to satisfy algebraic relations.
 
@@ -32614,9 +37075,12 @@ For:
 
 
 
-```math
-\mathrm{Gr}(2,4),
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-068" width="67" height="22" alt="\mathrm{Gr}(2,4),">
+<!-- TeX display: \mathrm{Gr}(2,4), -->
+
+
 
 
 
@@ -32624,8 +37088,10 @@ the famous one is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-069" width="214" height="29" alt="\boxed{ p_{12}p_{34} - p_{13}p_{24} + p_{14}p_{23} = 0. }">
+<!-- TeX display: \boxed{
 p_{12}p_{34}
 -
 p_{13}p_{24}
@@ -32633,8 +37099,9 @@ p_{13}p_{24}
 p_{14}p_{23}
 =
 0.
-}
-```
+} -->
+
+
 
 
 
@@ -32648,17 +37115,20 @@ So they could become:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-070" width="242" height="29" alt="\boxed{ \text{channel compatibility equations}. }">
+<!-- TeX display: \boxed{
 \text{channel compatibility equations}.
-}
-```
+} -->
+
+
 
 
 
 Important caution: Plücker relations themselves are algebraic consistency conditions, not automatically energy-conservation laws.
 
-Physics must still supply $H$, budgets, coupling and dynamics.
+Physics must still supply <img src="UTC-Math/message-48.svg#equation-071" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H -->, budgets, coupling and dynamics.
 
 But they tell us which channel-coordinate combinations correspond to an actual subspace.
 
@@ -32672,25 +37142,31 @@ Normalize:
 
 
 
-```math
-\omega_W
+
+
+<img src="UTC-Math/message-48.svg#equation-072" width="141" height="19" alt="\omega_W = v_1\wedge\cdots\wedge v_k.">
+<!-- TeX display: \omega_W
 =
-v_1\wedge\cdots\wedge v_k.
-```
+v_1\wedge\cdots\wedge v_k. -->
 
 
 
-For two planes $W,Z$,
+
+
+For two planes <img src="UTC-Math/message-48.svg#equation-073" width="44" height="21" alt="W,Z" align="middle"><!-- TeX inline: W,Z -->,
 
 
 
-```math
-\left|
+
+
+<img src="UTC-Math/message-48.svg#equation-074" width="165" height="54" alt="\left| \langle\omega_W,\omega_Z\rangle \right| = \prod_{i=1}^k\cos\theta_i.">
+<!-- TeX display: \left|
 \langle\omega_W,\omega_Z\rangle
 \right|
 =
-\prod_{i=1}^k\cos\theta_i.
-```
+\prod_{i=1}^k\cos\theta_i. -->
+
+
 
 
 
@@ -32698,13 +37174,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-075" width="282" height="30" alt="\boxed{ \text{Plücker overlap} \leftrightarrow \text{channel alignment}. }">
+<!-- TeX display: \boxed{
 \text{Plücker overlap}
 \leftrightarrow
 \text{channel alignment}.
-}
-```
+} -->
+
+
 
 
 
@@ -32712,9 +37191,12 @@ If the planes coincide:
 
 
 
-```math
-|\langle\omega_W,\omega_Z\rangle|=1.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-076" width="113" height="22" alt="|\langle\omega_W,\omega_Z\rangle|=1.">
+<!-- TeX display: |\langle\omega_W,\omega_Z\rangle|=1. -->
+
+
 
 
 
@@ -32722,9 +37204,12 @@ If one channel direction becomes orthogonal:
 
 
 
-```math
-|\langle\omega_W,\omega_Z\rangle|=0.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-077" width="113" height="22" alt="|\langle\omega_W,\omega_Z\rangle|=0.">
+<!-- TeX display: |\langle\omega_W,\omega_Z\rangle|=0. -->
+
+
 
 
 
@@ -32740,23 +37225,29 @@ Take a reference plane:
 
 
 
-```math
-W_0.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-078" width="35" height="20" alt="W_0.">
+<!-- TeX display: W_0. -->
 
 
 
-Any sufficiently nearby $k$-plane transverse to $W_0^\perp$ can be written uniquely as:
+
+
+Any sufficiently nearby <img src="UTC-Math/message-48.svg#equation-079" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane transverse to <img src="UTC-Math/message-48.svg#equation-080" width="36" height="25" alt="W_0^\perp" align="middle"><!-- TeX inline: W_0^\perp --> can be written uniquely as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-081" width="128" height="31" alt="\boxed{ W_A = \mathrm{graph}(A) }">
+<!-- TeX display: \boxed{
 W_A
 =
 \mathrm{graph}(A)
-}
-```
+} -->
+
+
 
 
 
@@ -32764,26 +37255,32 @@ for a linear map
 
 
 
-```math
-A:
-W_0\rightarrow W_0^\perp.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-082" width="113" height="25" alt="A: W_0\rightarrow W_0^\perp.">
+<!-- TeX display: A:
+W_0\rightarrow W_0^\perp. -->
 
 
 
-So an affine coordinate chart on the Grassmannian is literally a space of matrices $A$.
+
+
+So an affine coordinate chart on the Grassmannian is literally a space of matrices <img src="UTC-Math/message-48.svg#equation-083" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A -->.
 
 Moreover:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-084" width="227" height="31" alt="\boxed{ T_W\mathrm{Gr}(k,V) \cong \mathrm{Hom}(W,V/W) }">
+<!-- TeX display: \boxed{
 T_W\mathrm{Gr}(k,V)
 \cong
 \mathrm{Hom}(W,V/W)
-}
-```
+} -->
+
+
 
 
 
@@ -32791,11 +37288,14 @@ or, with an inner product,
 
 
 
-```math
-T_W\mathrm{Gr}(k,V)
+
+
+<img src="UTC-Math/message-48.svg#equation-085" width="213" height="25" alt="T_W\mathrm{Gr}(k,V) \cong \mathrm{Hom}(W,W^\perp).">
+<!-- TeX display: T_W\mathrm{Gr}(k,V)
 \cong
-\mathrm{Hom}(W,W^\perp).
-```
+\mathrm{Hom}(W,W^\perp). -->
+
+
 
 
 
@@ -32803,10 +37303,13 @@ This means an infinitesimal change in channel architecture is itself a map:
 
 
 
-```math
-\delta W:
-W\rightarrow W^\perp.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-086" width="120" height="21" alt="\delta W: W\rightarrow W^\perp.">
+<!-- TeX display: \delta W:
+W\rightarrow W^\perp. -->
+
+
 
 
 
@@ -32818,13 +37321,16 @@ It can act on the channel plane:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-087" width="146" height="35" alt="\boxed{ \dot W_t \in T_{W_t}\mathrm{Gr}(k,V). }">
+<!-- TeX display: \boxed{
 \dot W_t
 \in
 T_{W_t}\mathrm{Gr}(k,V).
-}
-```
+} -->
+
+
 
 
 
@@ -32840,14 +37346,17 @@ For real spaces:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-088" width="280" height="34" alt="\boxed{ \mathrm{Gr}_{\mathbb R}(k,n) = O(n)/ \bigl(O(k)\times O(n-k)\bigr). }">
+<!-- TeX display: \boxed{
 \mathrm{Gr}_{\mathbb R}(k,n)
 =
 O(n)/
 \bigl(O(k)\times O(n-k)\bigr).
-}
-```
+} -->
+
+
 
 
 
@@ -32855,28 +37364,34 @@ For complex spaces:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-089" width="280" height="34" alt="\boxed{ \mathrm{Gr}_{\mathbb C}(k,n) = U(n)/ \bigl(U(k)\times U(n-k)\bigr). }">
+<!-- TeX display: \boxed{
 \mathrm{Gr}_{\mathbb C}(k,n)
 =
 U(n)/
 \bigl(U(k)\times U(n-k)\bigr).
-}
-```
+} -->
+
+
 
 
 
 So a Grassmannian is a homogeneous space.
 
-The symmetry group can move any $k$-plane into any other.
+The symmetry group can move any <img src="UTC-Math/message-48.svg#equation-090" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane into any other.
 
 That gives a clean separation between:
 
 
 
-```math
-\text{intrinsic channel dimension}
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-091" width="197" height="18" alt="\text{intrinsic channel dimension}">
+<!-- TeX display: \text{intrinsic channel dimension} -->
+
+
 
 
 
@@ -32884,9 +37399,12 @@ and:
 
 
 
-```math
-\text{orientation of the channel inside ambient state space}.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-092" width="374" height="21" alt="\text{orientation of the channel inside ambient state space}.">
+<!-- TeX display: \text{orientation of the channel inside ambient state space}. -->
+
+
 
 
 
@@ -32896,15 +37414,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-093" width="479" height="30" alt="\boxed{ \text{Grassmann symmetry} + \text{P1 energy} \rightarrow \text{selected channel orientation}. }">
+<!-- TeX display: \boxed{
 \text{Grassmann symmetry}
 +
 \text{P1 energy}
 \rightarrow
 \text{selected channel orientation}.
-}
-```
+} -->
+
+
 
 
 
@@ -32918,23 +37439,29 @@ The Grassmannian carries its tautological bundle:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-094" width="111" height="31" alt="\boxed{ \mathcal S \rightarrow \mathrm{Gr}(k,V) }">
+<!-- TeX display: \boxed{
 \mathcal S
 \rightarrow
 \mathrm{Gr}(k,V)
-}
-```
+} -->
 
 
 
-whose fiber over $W$ is simply:
+
+
+whose fiber over <img src="UTC-Math/message-48.svg#equation-095" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> is simply:
 
 
 
-```math
-\mathcal S_W=W.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-096" width="74" height="20" alt="\mathcal S_W=W.">
+<!-- TeX display: \mathcal S_W=W. -->
+
+
 
 
 
@@ -32944,13 +37471,16 @@ The quotient bundle is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-097" width="137" height="31" alt="\boxed{ \mathcal Q = (V\times\mathrm{Gr})/\mathcal S. }">
+<!-- TeX display: \boxed{
 \mathcal Q
 =
 (V\times\mathrm{Gr})/\mathcal S.
-}
-```
+} -->
+
+
 
 
 
@@ -32958,10 +37488,13 @@ Now take our channel map:
 
 
 
-```math
-\gamma:
-M\rightarrow\mathrm{Gr}(k,V).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-098" width="136" height="22" alt="\gamma: M\rightarrow\mathrm{Gr}(k,V).">
+<!-- TeX display: \gamma:
+M\rightarrow\mathrm{Gr}(k,V). -->
+
+
 
 
 
@@ -32969,23 +37502,29 @@ Pull back the universal bundle:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-099" width="90" height="30" alt="\boxed{ \gamma^*\mathcal S \rightarrow M. }">
+<!-- TeX display: \boxed{
 \gamma^*\mathcal S
 \rightarrow
 M.
-}
-```
+} -->
 
 
 
-Its fiber at $x$ is exactly:
+
+
+Its fiber at <img src="UTC-Math/message-48.svg#equation-100" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x --> is exactly:
 
 
 
-```math
-D_x.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-101" width="34" height="20" alt="D_x.">
+<!-- TeX display: D_x. -->
+
+
 
 
 
@@ -33001,9 +37540,12 @@ For an open region
 
 
 
-```math
-U\subset M,
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-102" width="63" height="21" alt="U\subset M,">
+<!-- TeX display: U\subset M, -->
+
+
 
 
 
@@ -33011,25 +37553,31 @@ let:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-103" width="145" height="31" alt="\boxed{ \mathscr C(U) = \Gamma(U,\gamma^*\mathcal S) }">
+<!-- TeX display: \boxed{
 \mathscr C(U)
 =
 \Gamma(U,\gamma^*\mathcal S)
-}
-```
+} -->
 
 
 
-be the admissible smooth channel-vector fields on $U$.
+
+
+be the admissible smooth channel-vector fields on <img src="UTC-Math/message-48.svg#equation-104" width="21" height="18" alt="U" align="middle"><!-- TeX inline: U -->.
 
 Restriction:
 
 
 
-```math
-U\supset V
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-105" width="54" height="18" alt="U\supset V">
+<!-- TeX display: U\supset V -->
+
+
 
 
 
@@ -33037,9 +37585,12 @@ gives:
 
 
 
-```math
-\mathscr C(U)\rightarrow\mathscr C(V).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-106" width="114" height="22" alt="\mathscr C(U)\rightarrow\mathscr C(V).">
+<!-- TeX display: \mathscr C(U)\rightarrow\mathscr C(V). -->
+
+
 
 
 
@@ -33047,14 +37598,17 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-107" width="180" height="31" alt="\boxed{ \mathscr C: \mathrm{Open}(M)^{op} \rightarrow \mathrm{Vect} }">
+<!-- TeX display: \boxed{
 \mathscr C:
 \mathrm{Open}(M)^{op}
 \rightarrow
 \mathrm{Vect}
-}
-```
+} -->
+
+
 
 
 
@@ -33076,8 +37630,10 @@ Choose a flag:
 
 
 
-```math
-0
+
+
+<img src="UTC-Math/message-48.svg#equation-108" width="212" height="20" alt="0 \subset F_1 \subset F_2 \subset \cdots \subset F_n=V.">
+<!-- TeX display: 0
 \subset
 F_1
 \subset
@@ -33085,20 +37641,24 @@ F_2
 \subset
 \cdots
 \subset
-F_n=V.
-```
+F_n=V. -->
 
 
 
-Now classify $k$-planes according to intersection dimensions:
+
+
+Now classify <img src="UTC-Math/message-48.svg#equation-109" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-planes according to intersection dimensions:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-110" width="111" height="32" alt="\boxed{ \dim(W\cap F_j). }">
+<!-- TeX display: \boxed{
 \dim(W\cap F_j).
-}
-```
+} -->
+
+
 
 
 
@@ -33110,13 +37670,16 @@ Let the flag represent nested constraint tiers:
 
 
 
-```math
-F_1
+
+
+<img src="UTC-Math/message-48.svg#equation-111" width="104" height="20" alt="F_1 \subset F_2 \subset \cdots">
+<!-- TeX display: F_1
 \subset
 F_2
 \subset
-\cdots
-```
+\cdots -->
+
+
 
 
 
@@ -33130,9 +37693,12 @@ Crossing into a Schubert boundary can mean:
 
 
 
-```math
-\dim(W\cap F_j)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-112" width="98" height="23" alt="\dim(W\cap F_j)">
+<!-- TeX display: \dim(W\cap F_j) -->
+
+
 
 
 
@@ -33142,8 +37708,10 @@ In UTC language that could represent:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-113" width="496" height="29" alt="\boxed{ \text{channel opening}, \quad \text{channel closure}, \quad \text{degeneracy}, \quad \text{phase transition}. }">
+<!-- TeX display: \boxed{
 \text{channel opening},
 \quad
 \text{channel closure},
@@ -33151,8 +37719,9 @@ In UTC language that could represent:
 \text{degeneracy},
 \quad
 \text{phase transition}.
-}
-```
+} -->
+
+
 
 
 
@@ -33168,9 +37737,12 @@ A Grassmannian describes:
 
 
 
-```math
-W_k\subset V.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-114" width="69" height="20" alt="W_k\subset V.">
+<!-- TeX display: W_k\subset V. -->
+
+
 
 
 
@@ -33178,15 +37750,18 @@ But our architecture repeatedly generates nested structures:
 
 
 
-```math
-W_1
+
+
+<img src="UTC-Math/message-48.svg#equation-115" width="161" height="20" alt="W_1 \subset W_2 \subset \cdots \subset W_r.">
+<!-- TeX display: W_1
 \subset
 W_2
 \subset
 \cdots
 \subset
-W_r.
-```
+W_r. -->
+
+
 
 
 
@@ -33196,15 +37771,18 @@ So if UTC wants to represent:
 
 
 
-```math
-\text{primitive channel}
+
+
+<img src="UTC-Math/message-48.svg#equation-116" width="524" height="21" alt="\text{primitive channel} \subset \text{stable channel} \subset \text{composite channel} \subset \text{macro-channel},">
+<!-- TeX display: \text{primitive channel}
 \subset
 \text{stable channel}
 \subset
 \text{composite channel}
 \subset
-\text{macro-channel},
-```
+\text{macro-channel}, -->
+
+
 
 
 
@@ -33212,11 +37790,14 @@ the appropriate object may be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-117" width="156" height="31" alt="\boxed{ \mathrm{Fl}(k_1,k_2,\ldots,k_r;V). }">
+<!-- TeX display: \boxed{
 \mathrm{Fl}(k_1,k_2,\ldots,k_r;V).
-}
-```
+} -->
+
+
 
 
 
@@ -33232,9 +37813,12 @@ Given:
 
 
 
-```math
-W\in\mathrm{Gr}(k,V),
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-118" width="108" height="22" alt="W\in\mathrm{Gr}(k,V),">
+<!-- TeX display: W\in\mathrm{Gr}(k,V), -->
+
+
 
 
 
@@ -33242,10 +37826,13 @@ there is a dual annihilator:
 
 
 
-```math
-W^\circ
-\subset V^*.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-119" width="79" height="19" alt="W^\circ \subset V^*.">
+<!-- TeX display: W^\circ
+\subset V^*. -->
+
+
 
 
 
@@ -33253,10 +37840,13 @@ With an inner product:
 
 
 
-```math
-W^\perp
-\subset V.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-120" width="74" height="21" alt="W^\perp \subset V.">
+<!-- TeX display: W^\perp
+\subset V. -->
+
+
 
 
 
@@ -33264,13 +37854,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-121" width="86" height="30" alt="\boxed{ W \leftrightarrow W^\perp }">
+<!-- TeX display: \boxed{
 W
 \leftrightarrow
 W^\perp
-}
-```
+} -->
+
+
 
 
 
@@ -33278,35 +37871,44 @@ can naturally represent:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-122" width="321" height="31" alt="\boxed{ \text{open directions} \leftrightarrow \text{closed/normal directions}. }">
+<!-- TeX display: \boxed{
 \text{open directions}
 \leftrightarrow
 \text{closed/normal directions}.
-}
-```
+} -->
+
+
 
 
 
 This is almost tailor-made for our attraction/repulsion distinction.
 
-Inside $W$:
+Inside <img src="UTC-Math/message-48.svg#equation-123" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W -->:
 
 
 
-```math
-\text{motion is admissible}.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-124" width="153" height="18" alt="\text{motion is admissible}.">
+<!-- TeX display: \text{motion is admissible}. -->
 
 
 
-Along $W^\perp$:
+
+
+Along <img src="UTC-Math/message-48.svg#equation-125" width="36" height="20" alt="W^\perp" align="middle"><!-- TeX inline: W^\perp -->:
 
 
 
-```math
-\text{motion is constrained, suppressed or energetically inaccessible}.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-126" width="438" height="21" alt="\text{motion is constrained, suppressed or energetically inaccessible}.">
+<!-- TeX display: \text{motion is constrained, suppressed or energetically inaccessible}. -->
+
+
 
 
 
@@ -33318,17 +37920,20 @@ The manuscript currently treats F1 as the closure of P1 energy with P3 frequency
 
 Grassmann geometry sharpens this.
 
-A degenerate $k$-dimensional eigenspace of a Hamiltonian is:
+A degenerate <img src="UTC-Math/message-48.svg#equation-127" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-dimensional eigenspace of a Hamiltonian is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-128" width="121" height="31" alt="\boxed{ E_\lambda \in \mathrm{Gr}(k,\mathcal H). }">
+<!-- TeX display: \boxed{
 E_\lambda
 \in
 \mathrm{Gr}(k,\mathcal H).
-}
-```
+} -->
+
+
 
 
 
@@ -33336,9 +37941,12 @@ If a Hamiltonian depends smoothly on external parameters:
 
 
 
-```math
-H(\lambda),
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-129" width="49" height="22" alt="H(\lambda),">
+<!-- TeX display: H(\lambda), -->
+
+
 
 
 
@@ -33346,13 +37954,16 @@ then its eigenspaces trace out a map:
 
 
 
-```math
-\lambda
+
+
+<img src="UTC-Math/message-48.svg#equation-130" width="147" height="22" alt="\lambda \mapsto E_\lambda \in \mathrm{Gr}(k,\mathcal H).">
+<!-- TeX display: \lambda
 \mapsto
 E_\lambda
 \in
-\mathrm{Gr}(k,\mathcal H).
-```
+\mathrm{Gr}(k,\mathcal H). -->
+
+
 
 
 
@@ -33362,13 +37973,16 @@ And then:
 
 
 
-```math
-\text{connection}
+
+
+<img src="UTC-Math/message-48.svg#equation-131" width="416" height="22" alt="\text{connection} \rightarrow \text{parallel transport} \rightarrow \text{Berry phase/curvature}.">
+<!-- TeX display: \text{connection}
 \rightarrow
 \text{parallel transport}
 \rightarrow
-\text{Berry phase/curvature}.
-```
+\text{Berry phase/curvature}. -->
+
+
 
 
 
@@ -33378,29 +37992,35 @@ Even more striking:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-132" width="152" height="33" alt="\boxed{ \mathbb{CP}^{n-1} = \mathrm{Gr}_{\mathbb C}(1,n). }">
+<!-- TeX display: \boxed{
 \mathbb{CP}^{n-1}
 =
 \mathrm{Gr}_{\mathbb C}(1,n).
-}
-```
+} -->
+
+
 
 
 
 A pure quantum state is literally a complex one-dimensional subspace.
 
-Rank-$k$ projective measurements are likewise associated with $k$-planes.
+Rank-<img src="UTC-Math/message-48.svg#equation-133" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> projective measurements are likewise associated with <img src="UTC-Math/message-48.svg#equation-134" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-planes.
 
 General POVMs are broader than Grassmannians, but projector measurements fit extremely naturally.
 
-And fermionic Slater-determinant states built from $k$ occupied one-particle orbitals are naturally points of:
+And fermionic Slater-determinant states built from <img src="UTC-Math/message-48.svg#equation-135" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> occupied one-particle orbitals are naturally points of:
 
 
 
-```math
-\mathrm{Gr}(k,n).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-136" width="69" height="22" alt="\mathrm{Gr}(k,n).">
+<!-- TeX display: \mathrm{Gr}(k,n). -->
+
+
 
 
 
@@ -33418,9 +38038,12 @@ Let:
 
 
 
-```math
-W_t\in\mathrm{Gr}(k,n)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-137" width="105" height="22" alt="W_t\in\mathrm{Gr}(k,n)">
+<!-- TeX display: W_t\in\mathrm{Gr}(k,n) -->
+
+
 
 
 
@@ -33430,9 +38053,12 @@ Give the Grassmannian an effective energy functional:
 
 
 
-```math
-\mathcal F(W).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-138" width="55" height="22" alt="\mathcal F(W).">
+<!-- TeX display: \mathcal F(W). -->
+
+
 
 
 
@@ -33440,31 +38066,37 @@ A prototype stabilizing flow is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-139" width="133" height="35" alt="\boxed{ \dot P = -[P,[P,H]] }">
+<!-- TeX display: \boxed{
 \dot P
 =
 -[P,[P,H]]
-}
-```
+} -->
 
 
 
-for the rank-$k$ projector $P$.
 
-This is a classic double-bracket-type flow. It preserves projector rank while driving $P$ toward an $H$-invariant eigensubspace under appropriate conditions.
+
+for the rank-<img src="UTC-Math/message-48.svg#equation-140" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> projector <img src="UTC-Math/message-48.svg#equation-141" width="21" height="17" alt="P" align="middle"><!-- TeX inline: P -->.
+
+This is a classic double-bracket-type flow. It preserves projector rank while driving <img src="UTC-Math/message-48.svg#equation-142" width="21" height="17" alt="P" align="middle"><!-- TeX inline: P --> toward an <img src="UTC-Math/message-48.svg#equation-143" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H -->-invariant eigensubspace under appropriate conditions.
 
 So the UTC reading becomes:
 
 
 
-```math
-\text{channel variation}
+
+
+<img src="UTC-Math/message-48.svg#equation-144" width="421" height="21" alt="\text{channel variation} \rightarrow \text{energy selection} \rightarrow \text{preferred subspace}.">
+<!-- TeX display: \text{channel variation}
 \rightarrow
 \text{energy selection}
 \rightarrow
-\text{preferred subspace}.
-```
+\text{preferred subspace}. -->
+
+
 
 
 
@@ -33472,37 +38104,46 @@ Then CSC can be interpreted as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-145" width="467" height="31" alt="\boxed{ \text{Collapse} = \text{concentration/restriction of active channel directions}, }">
+<!-- TeX display: \boxed{
 \text{Collapse}
 =
 \text{concentration/restriction of active channel directions},
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-48.svg#equation-146" width="198" height="29" alt="\boxed{ \text{Stabilization} = W_t\rightarrow W_*, }">
+<!-- TeX display: \boxed{
 \text{Stabilization}
 =
 W_t\rightarrow W_*,
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-48.svg#equation-147" width="246" height="29" alt="\boxed{ \text{Composition} = W_A,W_B\rightarrow W_{AB}. }">
+<!-- TeX display: \boxed{
 \text{Composition}
 =
 W_A,W_B\rightarrow W_{AB}.
-}
-```
+} -->
+
+
 
 
 
@@ -33510,11 +38151,14 @@ For independent systems:
 
 
 
-```math
-W_{AB}
+
+
+<img src="UTC-Math/message-48.svg#equation-148" width="137" height="20" alt="W_{AB} = W_A\oplus W_B.">
+<!-- TeX display: W_{AB}
 =
-W_A\oplus W_B.
-```
+W_A\oplus W_B. -->
+
+
 
 
 
@@ -33522,11 +38166,14 @@ For quantum/compositional structure:
 
 
 
-```math
-W_{AB}
+
+
+<img src="UTC-Math/message-48.svg#equation-149" width="137" height="20" alt="W_{AB} \subset W_A\otimes W_B.">
+<!-- TeX display: W_{AB}
 \subset
-W_A\otimes W_B.
-```
+W_A\otimes W_B. -->
+
+
 
 
 
@@ -33542,21 +38189,27 @@ Inside:
 
 
 
-```math
-\mathrm{Gr}(k,n),
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-150" width="69" height="22" alt="\mathrm{Gr}(k,n),">
+<!-- TeX display: \mathrm{Gr}(k,n), -->
 
 
 
-the dimension $k$ is fixed.
+
+
+the dimension <img src="UTC-Math/message-48.svg#equation-151" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> is fixed.
 
 So:
 
 
 
-```math
-k\rightarrow k-1
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-152" width="78" height="19" alt="k\rightarrow k-1">
+<!-- TeX display: k\rightarrow k-1 -->
+
+
 
 
 
@@ -33566,12 +38219,15 @@ If channels literally open or close and rank changes, the correct space is somet
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-153" width="96" height="60" alt="\boxed{ \coprod_{k=0}^n \mathrm{Gr}(k,n) }">
+<!-- TeX display: \boxed{
 \coprod_{k=0}^n
 \mathrm{Gr}(k,n)
-}
-```
+} -->
+
+
 
 
 
@@ -33585,9 +38241,12 @@ Regular evolution:
 
 
 
-```math
-W_t\in\mathrm{Gr}(k,n).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-154" width="109" height="22" alt="W_t\in\mathrm{Gr}(k,n).">
+<!-- TeX display: W_t\in\mathrm{Gr}(k,n). -->
+
+
 
 
 
@@ -33595,9 +38254,12 @@ Critical event:
 
 
 
-```math
-k\rightarrow k'.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-155" width="59" height="20" alt="k\rightarrow k'.">
+<!-- TeX display: k\rightarrow k'. -->
+
+
 
 
 
@@ -33611,26 +38273,31 @@ That gives us a mathematical distinction between smooth adaptation and genuine s
 
 Within fixed rank, topology can still become special when an intersection dimension changes.
 
-For a reference flag $F_\bullet$,
+For a reference flag <img src="UTC-Math/message-48.svg#equation-156" width="26" height="19" alt="F_\bullet" align="middle"><!-- TeX inline: F_\bullet -->,
 
 
 
-```math
-\dim(W\cap F_j)
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-157" width="98" height="23" alt="\dim(W\cap F_j)">
+<!-- TeX display: \dim(W\cap F_j) -->
+
+
 
 
 
 can jump.
 
-That places $W$ on the boundary of one Schubert cell and inside another.
+That places <img src="UTC-Math/message-48.svg#equation-158" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> on the boundary of one Schubert cell and inside another.
 
 So we get a candidate hierarchy:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-159" width="736" height="30" alt="\boxed{ \text{smooth channel deformation} \rightarrow \text{Schubert boundary} \rightarrow \text{constraint degeneracy} \rightarrow \text{channel reclassification}. }">
+<!-- TeX display: \boxed{
 \text{smooth channel deformation}
 \rightarrow
 \text{Schubert boundary}
@@ -33638,8 +38305,9 @@ So we get a candidate hierarchy:
 \text{constraint degeneracy}
 \rightarrow
 \text{channel reclassification}.
-}
-```
+} -->
+
+
 
 
 
@@ -33649,9 +38317,12 @@ This gives CSC both:
 
 
 
-```math
-\text{continuous dynamics}
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-160" width="154" height="21" alt="\text{continuous dynamics}">
+<!-- TeX display: \text{continuous dynamics} -->
+
+
 
 
 
@@ -33659,9 +38330,12 @@ and
 
 
 
-```math
-\text{discrete topology-changing events}.
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-161" width="246" height="21" alt="\text{discrete topology-changing events}.">
+<!-- TeX display: \text{discrete topology-changing events}. -->
+
+
 
 
 
@@ -33675,9 +38349,12 @@ The Grassmannian has a natural invariant measure:
 
 
 
-```math
-d\mu_{\rm inv}(W).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-162" width="77" height="22" alt="d\mu_{\rm inv}(W).">
+<!-- TeX display: d\mu_{\rm inv}(W). -->
+
+
 
 
 
@@ -33685,9 +38362,12 @@ Now add energy:
 
 
 
-```math
-\mathcal E(W).
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-163" width="51" height="22" alt="\mathcal E(W).">
+<!-- TeX display: \mathcal E(W). -->
+
+
 
 
 
@@ -33695,15 +38375,18 @@ Then define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-164" width="234" height="47" alt="\boxed{ d\mu_\beta(W) = \frac1Z e^{-\beta\mathcal E(W)} \,d\mu_{\rm inv}(W). }">
+<!-- TeX display: \boxed{
 d\mu_\beta(W)
 =
 \frac1Z
 e^{-\beta\mathcal E(W)}
 \,d\mu_{\rm inv}(W).
-}
-```
+} -->
+
+
 
 
 
@@ -33715,9 +38398,12 @@ At low temperature or strong constraint:
 
 
 
-```math
-\mu_\beta
-```
+
+
+<img src="UTC-Math/message-48.svg#equation-165" width="26" height="18" alt="\mu_\beta">
+<!-- TeX display: \mu_\beta -->
+
+
 
 
 
@@ -33727,13 +38413,16 @@ So our earlier insight:
 
 
 
-```math
-\text{constraint budget}
+
+
+<img src="UTC-Math/message-48.svg#equation-166" width="419" height="21" alt="\text{constraint budget} \rightarrow \text{probability concentration} \rightarrow \text{attractor}">
+<!-- TeX display: \text{constraint budget}
 \rightarrow
 \text{probability concentration}
 \rightarrow
-\text{attractor}
-```
+\text{attractor} -->
+
+
 
 
 
@@ -33741,11 +38430,14 @@ can now operate one level higher:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-167" width="177" height="26" alt="\boxed{ \text{distribution over states} }">
+<!-- TeX display: \boxed{
 \text{distribution over states}
-}
-```
+} -->
+
+
 
 
 
@@ -33753,11 +38445,14 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-168" width="272" height="29" alt="\boxed{ \text{distribution over channel geometries}. }">
+<!-- TeX display: \boxed{
 \text{distribution over channel geometries}.
-}
-```
+} -->
+
+
 
 
 
@@ -33773,8 +38468,10 @@ I think the next version should define something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-169" width="387" height="31" alt="\boxed{ \mathfrak G_{\rm UTC} = \left( M_{P1}, \, \mathrm{Gr}_{\bullet}(TM), \, \mathcal S, \, P, \, H, \, K, \, g_{\rm Gr}, \, \nabla, \, \mu, \, \Phi \right). }">
+<!-- TeX display: \boxed{
 \mathfrak G_{\rm UTC}
 =
 \left(
@@ -33798,23 +38495,24 @@ g_{\rm Gr},
 \,
 \Phi
 \right).
-}
-```
+} -->
+
+
 
 
 
 | Object | UTC interpretation |
 |---|---|
-| $M_{P1}$ | P1-admissible state manifold |
-| $\mathrm{Gr}_\bullet(TM)$ | possible channel subspaces, including varying rank |
-| $\mathcal S$ | tautological universal channel bundle |
-| $P$ | projector onto currently active channel directions |
-| $H$ | energy/cost landscape |
-| $K$ | conductance/mobility structure |
-| $g_{\rm Gr}$ | P2 distance between channel configurations |
-| $\nabla$ | connection describing transport/twist of channels |
-| $\mu$ | probability measure over states/channel configurations |
-| $\Phi$ | P3 dynamics and feedback evolution |
+| <img src="UTC-Math/message-48.svg#equation-170" width="40" height="20" alt="M_{P1}" align="middle"><!-- TeX inline: M_{P1} --> | P1-admissible state manifold |
+| <img src="UTC-Math/message-48.svg#equation-171" width="75" height="22" alt="\mathrm{Gr}_\bullet(TM)" align="middle"><!-- TeX inline: \mathrm{Gr}_\bullet(TM) --> | possible channel subspaces, including varying rank |
+| <img src="UTC-Math/message-48.svg#equation-172" width="19" height="18" alt="\mathcal S" align="middle"><!-- TeX inline: \mathcal S --> | tautological universal channel bundle |
+| <img src="UTC-Math/message-48.svg#equation-173" width="21" height="17" alt="P" align="middle"><!-- TeX inline: P --> | projector onto currently active channel directions |
+| <img src="UTC-Math/message-48.svg#equation-174" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H --> | energy/cost landscape |
+| <img src="UTC-Math/message-48.svg#equation-175" width="23" height="17" alt="K" align="middle"><!-- TeX inline: K --> | conductance/mobility structure |
+| <img src="UTC-Math/message-48.svg#equation-176" width="31" height="17" alt="g_{\rm Gr}" align="middle"><!-- TeX inline: g_{\rm Gr} --> | P2 distance between channel configurations |
+| <img src="UTC-Math/message-48.svg#equation-177" width="22" height="18" alt="\nabla" align="middle"><!-- TeX inline: \nabla --> | connection describing transport/twist of channels |
+| <img src="UTC-Math/message-48.svg#equation-178" width="18" height="17" alt="\mu" align="middle"><!-- TeX inline: \mu --> | probability measure over states/channel configurations |
+| <img src="UTC-Math/message-48.svg#equation-179" width="20" height="17" alt="\Phi" align="middle"><!-- TeX inline: \Phi --> | P3 dynamics and feedback evolution |
 
 P4 then means certain regions/subspaces of this object become invariant or metastable.
 
@@ -33830,11 +38528,14 @@ The likely hierarchy is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-180" width="167" height="27" alt="\boxed{ \text{Grassmann manifolds} }">
+<!-- TeX display: \boxed{
 \text{Grassmann manifolds}
-}
-```
+} -->
+
+
 
 
 
@@ -33842,11 +38543,14 @@ for fixed-rank regular channel choices,
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-181" width="114" height="30" alt="\boxed{ \text{flag manifolds} }">
+<!-- TeX display: \boxed{
 \text{flag manifolds}
-}
-```
+} -->
+
+
 
 
 
@@ -33854,11 +38558,14 @@ for nested hierarchical channels,
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-182" width="142" height="27" alt="\boxed{ \text{Schubert varieties} }">
+<!-- TeX display: \boxed{
 \text{Schubert varieties}
-}
-```
+} -->
+
+
 
 
 
@@ -33866,11 +38573,14 @@ for intersection/constraint hierarchies,
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-183" width="214" height="29" alt="\boxed{ \text{projective algebraic varieties} }">
+<!-- TeX display: \boxed{
 \text{projective algebraic varieties}
-}
-```
+} -->
+
+
 
 
 
@@ -33880,11 +38590,14 @@ and finally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-184" width="250" height="26" alt="\boxed{ \textbf{stratified Grassmann bundles} }">
+<!-- TeX display: \boxed{
 \textbf{stratified Grassmann bundles}
-}
-```
+} -->
+
+
 
 
 
@@ -33916,8 +38629,10 @@ So the new master recursion may be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-48.svg#equation-185" width="1127" height="31" alt="\boxed{ \text{constraint covectors} \rightarrow \text{admissible Grassmann subspace} \rightarrow \text{energy/conductance selection} \rightarrow \text{flow} \rightarrow \text{stable channel bundle} \rightarrow \text{composition} \rightarrow \text{new Grassmannian}. }">
+<!-- TeX display: \boxed{
 \text{constraint covectors}
 \rightarrow
 \text{admissible Grassmann subspace}
@@ -33931,8 +38646,9 @@ So the new master recursion may be:
 \text{composition}
 \rightarrow
 \text{new Grassmannian}.
-}
-```
+} -->
+
+
 
 
 
@@ -33960,9 +38676,12 @@ The Grassmannian answers:
 
 
 
-```math
-\boxed{\text{What channel subspace is available here?}}
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-001" width="301" height="29" alt="\boxed{\text{What channel subspace is available here?}}">
+<!-- TeX display: \boxed{\text{What channel subspace is available here?}} -->
+
+
 
 
 
@@ -33970,21 +38689,27 @@ Sheaf theory answers:
 
 
 
-```math
-\boxed{\text{How do locally defined channel structures agree, propagate, glue, twist, or fail to globalize?}}
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-002" width="525" height="52" alt="\boxed{\text{How do locally defined channel structures agree, propagate, glue, twist, or fail to globalize?}}">
+<!-- TeX display: \boxed{\text{How do locally defined channel structures agree, propagate, glue, twist, or fail to globalize?}} -->
+
+
 
 
 
 Put together, they give us something much closer to a full mathematical model of the UTC engine.
 
-The clean construction is to start with the P1-admissible state space $X=M_{P1}$. Over each point $x\in X$, the Grassmannian selects an admissible channel plane
+The clean construction is to start with the P1-admissible state space <img src="UTC-Math/message-50.svg#equation-003" width="74" height="20" alt="X=M_{P1}" align="middle"><!-- TeX inline: X=M_{P1} -->. Over each point <img src="UTC-Math/message-50.svg#equation-004" width="51" height="18" alt="x\in X" align="middle"><!-- TeX inline: x\in X -->, the Grassmannian selects an admissible channel plane
 
 
 
-```math
-D_x\in \mathrm{Gr}(k,T_xX).
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-005" width="131" height="22" alt="D_x\in \mathrm{Gr}(k,T_xX).">
+<!-- TeX display: D_x\in \mathrm{Gr}(k,T_xX). -->
+
+
 
 
 
@@ -33992,19 +38717,25 @@ That gives a channel bundle
 
 
 
-```math
-E=\gamma^*\mathcal S\rightarrow X,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-006" width="112" height="22" alt="E=\gamma^*\mathcal S\rightarrow X,">
+<!-- TeX display: E=\gamma^*\mathcal S\rightarrow X, -->
 
 
 
-where $\mathcal S$ is the tautological bundle over the Grassmannian and
+
+
+where <img src="UTC-Math/message-50.svg#equation-007" width="19" height="18" alt="\mathcal S" align="middle"><!-- TeX inline: \mathcal S --> is the tautological bundle over the Grassmannian and
 
 
 
-```math
-\gamma:X\rightarrow \mathrm{Gr}(k,TX)
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-008" width="141" height="22" alt="\gamma:X\rightarrow \mathrm{Gr}(k,TX)">
+<!-- TeX display: \gamma:X\rightarrow \mathrm{Gr}(k,TX) -->
+
+
 
 
 
@@ -34014,19 +38745,22 @@ Now define a sheaf:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-009" width="133" height="31" alt="\boxed{ \mathscr F(U) = \Gamma(U,E) }">
+<!-- TeX display: \boxed{
 \mathscr F(U)
 =
 \Gamma(U,E)
-}
-```
+} -->
 
 
 
-for each open set $U\subset X$.
 
-So $\mathscr F(U)$ is the set, vector space, module, algebra, or other appropriate object of **admissible channel sections on region $U$**.
+
+for each open set <img src="UTC-Math/message-50.svg#equation-010" width="56" height="18" alt="U\subset X" align="middle"><!-- TeX inline: U\subset X -->.
+
+So <img src="UTC-Math/message-50.svg#equation-011" width="49" height="22" alt="\mathscr F(U)" align="middle"><!-- TeX inline: \mathscr F(U) --> is the set, vector space, module, algebra, or other appropriate object of **admissible channel sections on region <img src="UTC-Math/message-50.svg#equation-012" width="21" height="18" alt="U" align="middle"><!-- TeX inline: U -->**.
 
 That is already very close to what you've been describing.
 
@@ -34034,39 +38768,45 @@ That is already very close to what you've been describing.
 
 Your intuition about stalks is right, but I would sharpen the wording.
 
-The stalk at $x$,
+The stalk at <img src="UTC-Math/message-50.svg#equation-013" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->,
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-014" width="128" height="52" alt="\boxed{ \mathscr F_x = \varinjlim_{x\in U}\mathscr F(U), }">
+<!-- TeX display: \boxed{
 \mathscr F_x
 =
 \varinjlim_{x\in U}\mathscr F(U),
-}
-```
+} -->
+
+
 
 
 
 is not exactly the physical fiber itself.
 
-It is the set of **germs of local sections around $x$**.
+It is the set of **germs of local sections around <img src="UTC-Math/message-50.svg#equation-015" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->**.
 
 So it remembers not merely:
 
-> what channel exists at $x$?
+> what channel exists at <img src="UTC-Math/message-50.svg#equation-016" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->?
 
 but:
 
-> what locally consistent channel behavior exists arbitrarily close to $x$?
+> what locally consistent channel behavior exists arbitrarily close to <img src="UTC-Math/message-50.svg#equation-017" width="18" height="14" alt="x" align="middle"><!-- TeX inline: x -->?
 
 For a sheaf of smooth sections of a vector bundle, the stalk is closely related to the fiber
 
 
 
-```math
-E_x,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-018" width="33" height="20" alt="E_x,">
+<!-- TeX display: E_x, -->
+
+
 
 
 
@@ -34076,11 +38816,14 @@ So rather than saying stalks “intermingle,” I would say:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-019" width="524" height="52" alt="\boxed{ \text{stalks communicate through common local sections, restriction maps, and gluing compatibility.} }">
+<!-- TeX display: \boxed{
 \text{stalks communicate through common local sections, restriction maps, and gluing compatibility.}
-}
-```
+} -->
+
+
 
 
 
@@ -34094,9 +38837,12 @@ For:
 
 
 
-```math
-V\subset U,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-020" width="59" height="21" alt="V\subset U,">
+<!-- TeX display: V\subset U, -->
+
+
 
 
 
@@ -34104,32 +38850,38 @@ the sheaf supplies:
 
 
 
-```math
-\rho_{UV}:
-\mathscr F(U)\rightarrow\mathscr F(V).
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-021" width="159" height="22" alt="\rho_{UV}: \mathscr F(U)\rightarrow\mathscr F(V).">
+<!-- TeX display: \rho_{UV}:
+\mathscr F(U)\rightarrow\mathscr F(V). -->
+
+
 
 
 
 Physically this asks:
 
-> If a channel architecture is valid over a larger region $U$, what channel structure remains when we inspect only the smaller region $V$?
+> If a channel architecture is valid over a larger region <img src="UTC-Math/message-50.svg#equation-022" width="21" height="18" alt="U" align="middle"><!-- TeX inline: U -->, what channel structure remains when we inspect only the smaller region <img src="UTC-Math/message-50.svg#equation-023" width="21" height="18" alt="V" align="middle"><!-- TeX inline: V -->?
 
 That is exactly the sort of hierarchical localization UTC needs.
 
 Energy constraints can make this nontrivial.
 
-A global channel may exist over $U$, but only a subset of its modes may remain physically admissible inside $V$.
+A global channel may exist over <img src="UTC-Math/message-50.svg#equation-024" width="21" height="18" alt="U" align="middle"><!-- TeX inline: U -->, but only a subset of its modes may remain physically admissible inside <img src="UTC-Math/message-50.svg#equation-025" width="21" height="18" alt="V" align="middle"><!-- TeX inline: V -->.
 
 So the restriction map itself can be filtered by P1:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-026" width="48" height="34" alt="\boxed{ \rho_{UV}^{P1}. }">
+<!-- TeX display: \boxed{
 \rho_{UV}^{P1}.
-}
-```
+} -->
+
+
 
 
 
@@ -34145,19 +38897,25 @@ Suppose:
 
 
 
-```math
-U=\bigcup_i U_i.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-027" width="83" height="41" alt="U=\bigcup_i U_i.">
+<!-- TeX display: U=\bigcup_i U_i. -->
 
 
 
-On each local region $U_i$, we have a channel section:
+
+
+On each local region <img src="UTC-Math/message-50.svg#equation-028" width="25" height="20" alt="U_i" align="middle"><!-- TeX inline: U_i -->, we have a channel section:
 
 
 
-```math
-s_i\in\mathscr F(U_i).
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-029" width="90" height="22" alt="s_i\in\mathscr F(U_i).">
+<!-- TeX display: s_i\in\mathscr F(U_i). -->
+
+
 
 
 
@@ -34165,9 +38923,12 @@ If on every overlap:
 
 
 
-```math
-U_i\cap U_j
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-030" width="59" height="22" alt="U_i\cap U_j">
+<!-- TeX display: U_i\cap U_j -->
+
+
 
 
 
@@ -34175,11 +38936,14 @@ they agree,
 
 
 
-```math
-s_i|_{U_i\cap U_j}
+
+
+<img src="UTC-Math/message-50.svg#equation-031" width="134" height="24" alt="s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j},">
+<!-- TeX display: s_i|_{U_i\cap U_j}
 =
-s_j|_{U_i\cap U_j},
-```
+s_j|_{U_i\cap U_j}, -->
+
+
 
 
 
@@ -34187,11 +38951,14 @@ then the sheaf axiom says there exists a unique global section:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-032" width="85" height="31" alt="\boxed{ s\in\mathscr F(U) }">
+<!-- TeX display: \boxed{
 s\in\mathscr F(U)
-}
-```
+} -->
+
+
 
 
 
@@ -34199,9 +38966,12 @@ such that:
 
 
 
-```math
-s|_{U_i}=s_i.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-033" width="72" height="23" alt="s|_{U_i}=s_i.">
+<!-- TeX display: s|_{U_i}=s_i. -->
+
+
 
 
 
@@ -34209,13 +38979,16 @@ That is a beautiful mathematical version of:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-034" width="284" height="29" alt="\boxed{ \text{local compatibility} \rightarrow \text{global structure}. }">
+<!-- TeX display: \boxed{
 \text{local compatibility}
 \rightarrow
 \text{global structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -34233,11 +39006,14 @@ So even if two local sections match algebraically, they should glue physically o
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-035" width="127" height="32" alt="\boxed{ C_{\rm P1}(s_i,s_j)\le B. }">
+<!-- TeX display: \boxed{
 C_{\rm P1}(s_i,s_j)\le B.
-}
-```
+} -->
+
+
 
 
 
@@ -34245,8 +39021,10 @@ We could therefore define a **budgeted gluing condition**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-036" width="409" height="92" alt="\boxed{ s_i\sim s_j \iff \begin{cases} s_i|_{U_i\cap U_j} = s_j|_{U_i\cap U_j},\\ \Delta E_{ij}\text{ admissible},\\ G_{ij}>0,\\ \text{selection/symmetry constraints satisfied}. \end{cases} }">
+<!-- TeX display: \boxed{
 s_i\sim s_j
 \iff
 \begin{cases}
@@ -34257,8 +39035,9 @@ s_j|_{U_i\cap U_j},\\
 G_{ij}>0,\\
 \text{selection/symmetry constraints satisfied}.
 \end{cases}
-}
-```
+} -->
+
+
 
 
 
@@ -34274,9 +39053,12 @@ Take two atomic or molecular local regions:
 
 
 
-```math
-U_A,\qquad U_B.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-037" width="94" height="21" alt="U_A,\qquad U_B.">
+<!-- TeX display: U_A,\qquad U_B. -->
+
+
 
 
 
@@ -34284,11 +39066,14 @@ Before interaction:
 
 
 
-```math
-\mathscr F_A
+
+
+<img src="UTC-Math/message-50.svg#equation-038" width="76" height="21" alt="\mathscr F_A \oplus \mathscr F_B">
+<!-- TeX display: \mathscr F_A
 \oplus
-\mathscr F_B
-```
+\mathscr F_B -->
+
+
 
 
 
@@ -34298,9 +39083,12 @@ As the systems approach, an overlap appears:
 
 
 
-```math
-U_A\cap U_B\neq\varnothing.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-039" width="106" height="21" alt="U_A\cap U_B\neq\varnothing.">
+<!-- TeX display: U_A\cap U_B\neq\varnothing. -->
+
+
 
 
 
@@ -34308,11 +39096,14 @@ Now the key question becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-040" width="384" height="30" alt="\boxed{ \text{Do compatible low-energy sections exist on }U_A\cap U_B? }">
+<!-- TeX display: \boxed{
 \text{Do compatible low-energy sections exist on }U_A\cap U_B?
-}
-```
+} -->
+
+
 
 
 
@@ -34320,13 +39111,16 @@ If no:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-041" width="379" height="31" alt="\boxed{ \text{no viable gluing} \rightarrow \text{repulsive/separate configuration}. }">
+<!-- TeX display: \boxed{
 \text{no viable gluing}
 \rightarrow
 \text{repulsive/separate configuration}.
-}
-```
+} -->
+
+
 
 
 
@@ -34334,11 +39128,14 @@ If yes:
 
 
 
-```math
-s_A|_{AB}
+
+
+<img src="UTC-Math/message-50.svg#equation-042" width="115" height="22" alt="s_A|_{AB} \sim s_B|_{AB},">
+<!-- TeX display: s_A|_{AB}
 \sim
-s_B|_{AB},
-```
+s_B|_{AB}, -->
+
+
 
 
 
@@ -34346,11 +39143,14 @@ and the glued global state satisfies a lower effective energy:
 
 
 
-```math
-E[s_{AB}]
+
+
+<img src="UTC-Math/message-50.svg#equation-043" width="178" height="22" alt="E[s_{AB}] &lt; E[s_A]+E[s_B],">
+<!-- TeX display: E[s_{AB}]
 <
-E[s_A]+E[s_B],
-```
+E[s_A]+E[s_B], -->
+
+
 
 
 
@@ -34358,13 +39158,16 @@ then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-044" width="392" height="29" alt="\boxed{ \text{local channel systems} \rightarrow \text{global bound channel system}. }">
+<!-- TeX display: \boxed{
 \text{local channel systems}
 \rightarrow
 \text{global bound channel system}.
-}
-```
+} -->
+
+
 
 
 
@@ -34382,13 +39185,16 @@ Instead they are related on overlaps by transition functions:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-045" width="82" height="29" alt="\boxed{ s_i = g_{ij}s_j }">
+<!-- TeX display: \boxed{
 s_i
 =
 g_{ij}s_j
-}
-```
+} -->
+
+
 
 
 
@@ -34396,9 +39202,12 @@ on:
 
 
 
-```math
-U_i\cap U_j.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-046" width="64" height="22" alt="U_i\cap U_j.">
+<!-- TeX display: U_i\cap U_j. -->
+
+
 
 
 
@@ -34406,9 +39215,12 @@ Then on triple overlaps:
 
 
 
-```math
-U_i\cap U_j\cap U_k,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-047" width="100" height="22" alt="U_i\cap U_j\cap U_k,">
+<!-- TeX display: U_i\cap U_j\cap U_k, -->
+
+
 
 
 
@@ -34416,11 +39228,14 @@ consistency requires:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-048" width="107" height="30" alt="\boxed{ g_{ij}g_{jk}g_{ki}=1. }">
+<!-- TeX display: \boxed{
 g_{ij}g_{jk}g_{ki}=1.
-}
-```
+} -->
+
+
 
 
 
@@ -34432,13 +39247,16 @@ We are building a **twisted global structure**.
 
 This is enormously relevant to our earlier work on phase, holonomy, and relational memory.
 
-For a $U(1)$ phase twist:
+For a <img src="UTC-Math/message-50.svg#equation-049" width="41" height="22" alt="U(1)" align="middle"><!-- TeX inline: U(1) --> phase twist:
 
 
 
-```math
-g_{ij}=e^{i\theta_{ij}},
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-050" width="77" height="26" alt="g_{ij}=e^{i\theta_{ij}},">
+<!-- TeX display: g_{ij}=e^{i\theta_{ij}}, -->
+
+
 
 
 
@@ -34446,13 +39264,16 @@ going around a loop can produce:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-051" width="124" height="36" alt="\boxed{ \mathrm{Hol}(\gamma) = e^{i\oint_\gamma A}. }">
+<!-- TeX display: \boxed{
 \mathrm{Hol}(\gamma)
 =
 e^{i\oint_\gamma A}.
-}
-```
+} -->
+
+
 
 
 
@@ -34476,15 +39297,18 @@ It is **gluing with nontrivial transition data**.
 
 This is where cohomology earns its keep.
 
-Given a sheaf $\mathscr F$, its cohomology groups are:
+Given a sheaf <img src="UTC-Math/message-50.svg#equation-052" width="24" height="19" alt="\mathscr F" align="middle"><!-- TeX inline: \mathscr F -->, its cohomology groups are:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-053" width="93" height="34" alt="\boxed{ H^k(X,\mathscr F). }">
+<!-- TeX display: \boxed{
 H^k(X,\mathscr F).
-}
-```
+} -->
+
+
 
 
 
@@ -34492,9 +39316,12 @@ At the simplest conceptual level:
 
 
 
-```math
-H^0(X,\mathscr F)
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-054" width="80" height="25" alt="H^0(X,\mathscr F)">
+<!-- TeX display: H^0(X,\mathscr F) -->
+
+
 
 
 
@@ -34508,8 +39335,10 @@ So there is a hierarchy:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-055" width="511" height="29" alt="\boxed{ \text{local states} \rightarrow \text{pairwise overlap data} \rightarrow \text{triple-overlap consistency} \rightarrow \cdots }">
+<!-- TeX display: \boxed{
 \text{local states}
 \rightarrow
 \text{pairwise overlap data}
@@ -34517,8 +39346,9 @@ So there is a hierarchy:
 \text{triple-overlap consistency}
 \rightarrow
 \cdots
-}
-```
+} -->
+
+
 
 
 
@@ -34526,15 +39356,18 @@ which is remarkably close to the nested interaction structure UTC has been devel
 
 ---
 
-# Important precision about $H^1$
+# Important precision about <img src="UTC-Math/message-50.svg#equation-056" width="31" height="20" alt="H^1" align="middle"><!-- TeX inline: H^1 -->
 
 It is tempting to say:
 
 
 
-```math
-H^1=\text{the obstruction to gluing}.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-057" width="227" height="24" alt="H^1=\text{the obstruction to gluing}.">
+<!-- TeX display: H^1=\text{the obstruction to gluing}. -->
+
+
 
 
 
@@ -34543,7 +39376,7 @@ Sometimes that is essentially right, but not universally.
 More precisely:
 
 - Čech 1-cocycles often classify bundle/torsor twisting,
-- $H^1$ can measure failure of local primitives to globalize,
+- <img src="UTC-Math/message-50.svg#equation-058" width="31" height="20" alt="H^1" align="middle"><!-- TeX inline: H^1 --> can measure failure of local primitives to globalize,
 - higher cohomology groups measure higher-order global obstruction structure,
 - sheaf cohomology generally derives from the failure of the global-sections functor to be exact.
 
@@ -34561,9 +39394,12 @@ Let the system depend on a parameter:
 
 
 
-```math
-\lambda.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-059" width="22" height="18" alt="\lambda.">
+<!-- TeX display: \lambda. -->
+
+
 
 
 
@@ -34573,11 +39409,14 @@ We then have a family of sheaves:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-060" width="44" height="29" alt="\boxed{ \mathscr F_\lambda. }">
+<!-- TeX display: \boxed{
 \mathscr F_\lambda.
-}
-```
+} -->
+
+
 
 
 
@@ -34585,9 +39424,12 @@ Below some critical value:
 
 
 
-```math
-\lambda<\lambda_c,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-061" width="59" height="21" alt="\lambda&lt;\lambda_c,">
+<!-- TeX display: \lambda<\lambda_c, -->
+
+
 
 
 
@@ -34595,9 +39437,12 @@ perhaps local sections cannot globally glue:
 
 
 
-```math
-H^0(X,\mathscr F_\lambda)
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-062" width="86" height="25" alt="H^0(X,\mathscr F_\lambda)">
+<!-- TeX display: H^0(X,\mathscr F_\lambda) -->
+
+
 
 
 
@@ -34607,9 +39452,12 @@ At:
 
 
 
-```math
-\lambda=\lambda_c,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-063" width="59" height="21" alt="\lambda=\lambda_c,">
+<!-- TeX display: \lambda=\lambda_c, -->
+
+
 
 
 
@@ -34619,9 +39467,12 @@ Above:
 
 
 
-```math
-\lambda>\lambda_c,
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-064" width="59" height="21" alt="\lambda>\lambda_c,">
+<!-- TeX display: \lambda>\lambda_c, -->
+
+
 
 
 
@@ -34631,15 +39482,18 @@ Then schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-065" width="161" height="30" alt="\boxed{ \mathscr F_- \longrightarrow \mathscr F_c \longrightarrow \mathscr F_+. }">
+<!-- TeX display: \boxed{
 \mathscr F_-
 \longrightarrow
 \mathscr F_c
 \longrightarrow
 \mathscr F_+.
-}
-```
+} -->
+
+
 
 
 
@@ -34647,13 +39501,16 @@ That provides a mathematically plausible UTC picture of a phase transition:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-066" width="510" height="29" alt="\boxed{ \text{local channel compatibility changes} \rightarrow \text{global section structure changes}. }">
+<!-- TeX display: \boxed{
 \text{local channel compatibility changes}
 \rightarrow
 \text{global section structure changes}.
-}
-```
+} -->
+
+
 
 
 
@@ -34669,9 +39526,12 @@ Now take P3 evolution:
 
 
 
-```math
-\Phi_t.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-067" width="30" height="20" alt="\Phi_t.">
+<!-- TeX display: \Phi_t. -->
+
+
 
 
 
@@ -34679,10 +39539,13 @@ Suppose it acts on sections:
 
 
 
-```math
-\Phi_t:
-\mathscr F(U)\rightarrow\mathscr F(U).
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-068" width="149" height="22" alt="\Phi_t: \mathscr F(U)\rightarrow\mathscr F(U).">
+<!-- TeX display: \Phi_t:
+\mathscr F(U)\rightarrow\mathscr F(U). -->
+
+
 
 
 
@@ -34690,13 +39553,16 @@ A P4-stable channel structure could be represented by an invariant subsheaf:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-069" width="70" height="29" alt="\boxed{ \mathscr A \subseteq \mathscr F }">
+<!-- TeX display: \boxed{
 \mathscr A
 \subseteq
 \mathscr F
-}
-```
+} -->
+
+
 
 
 
@@ -34704,11 +39570,14 @@ such that:
 
 
 
-```math
-\Phi_t(\mathscr A)
+
+
+<img src="UTC-Math/message-50.svg#equation-070" width="96" height="22" alt="\Phi_t(\mathscr A) \subseteq \mathscr A.">
+<!-- TeX display: \Phi_t(\mathscr A)
 \subseteq
-\mathscr A.
-```
+\mathscr A. -->
+
+
 
 
 
@@ -34716,9 +39585,12 @@ For a fixed structure:
 
 
 
-```math
-\Phi_t(s)=s.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-071" width="79" height="22" alt="\Phi_t(s)=s.">
+<!-- TeX display: \Phi_t(s)=s. -->
+
+
 
 
 
@@ -34726,9 +39598,12 @@ For a periodic one:
 
 
 
-```math
-\Phi_T(s)=s.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-072" width="83" height="22" alt="\Phi_T(s)=s.">
+<!-- TeX display: \Phi_T(s)=s. -->
+
+
 
 
 
@@ -34736,11 +39611,14 @@ For metastability:
 
 
 
-```math
-\Phi_t(s)
+
+
+<img src="UTC-Math/message-50.svg#equation-073" width="83" height="22" alt="\Phi_t(s) \approx \mathscr A">
+<!-- TeX display: \Phi_t(s)
 \approx
-\mathscr A
-```
+\mathscr A -->
+
+
 
 
 
@@ -34748,9 +39626,12 @@ for:
 
 
 
-```math
-t\ll\tau_{\rm escape}.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-074" width="83" height="21" alt="t\ll\tau_{\rm escape}.">
+<!-- TeX display: t\ll\tau_{\rm escape}. -->
+
+
 
 
 
@@ -34758,11 +39639,14 @@ So P4 becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-075" width="401" height="29" alt="\boxed{ \text{dynamically invariant local-to-global channel structure}. }">
+<!-- TeX display: \boxed{
 \text{dynamically invariant local-to-global channel structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -34776,9 +39660,12 @@ The combined construction now looks like:
 
 
 
-```math
-X=M_{P1}
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-076" width="74" height="20" alt="X=M_{P1}">
+<!-- TeX display: X=M_{P1} -->
+
+
 
 
 
@@ -34786,11 +39673,14 @@ base state manifold,
 
 
 
-```math
-\gamma:
+
+
+<img src="UTC-Math/message-50.svg#equation-077" width="128" height="22" alt="\gamma: X\rightarrow \mathrm{Gr}(k,V)">
+<!-- TeX display: \gamma:
 X\rightarrow
-\mathrm{Gr}(k,V)
-```
+\mathrm{Gr}(k,V) -->
+
+
 
 
 
@@ -34798,9 +39688,12 @@ channel-selection map,
 
 
 
-```math
-E=\gamma^*\mathcal S
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-078" width="69" height="22" alt="E=\gamma^*\mathcal S">
+<!-- TeX display: E=\gamma^*\mathcal S -->
+
+
 
 
 
@@ -34808,9 +39701,12 @@ channel bundle,
 
 
 
-```math
-\mathscr F(U)=\Gamma(U,E)
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-079" width="124" height="22" alt="\mathscr F(U)=\Gamma(U,E)">
+<!-- TeX display: \mathscr F(U)=\Gamma(U,E) -->
+
+
 
 
 
@@ -34820,8 +39716,10 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-080" width="153" height="30" alt="\boxed{ P1 \rightarrow \gamma \rightarrow E \rightarrow \mathscr F. }">
+<!-- TeX display: \boxed{
 P1
 \rightarrow
 \gamma
@@ -34829,8 +39727,9 @@ P1
 E
 \rightarrow
 \mathscr F.
-}
-```
+} -->
+
+
 
 
 
@@ -34850,9 +39749,12 @@ Let:
 
 
 
-```math
-\mathscr F,\mathscr G
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-081" width="43" height="21" alt="\mathscr F,\mathscr G">
+<!-- TeX display: \mathscr F,\mathscr G -->
+
+
 
 
 
@@ -34862,14 +39764,17 @@ A sheaf morphism:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-082" width="91" height="30" alt="\boxed{ \eta: \mathscr F \rightarrow \mathscr G }">
+<!-- TeX display: \boxed{
 \eta:
 \mathscr F
 \rightarrow
 \mathscr G
-}
-```
+} -->
+
+
 
 
 
@@ -34877,12 +39782,15 @@ is a family of maps:
 
 
 
-```math
-\eta_U:
+
+
+<img src="UTC-Math/message-50.svg#equation-083" width="142" height="22" alt="\eta_U: \mathscr F(U) \rightarrow \mathscr G(U)">
+<!-- TeX display: \eta_U:
 \mathscr F(U)
 \rightarrow
-\mathscr G(U)
-```
+\mathscr G(U) -->
+
+
 
 
 
@@ -34892,41 +39800,53 @@ UTC can impose physical conditions:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-084" width="101" height="31" alt="\boxed{ \Delta E(\eta)\le B, }">
+<!-- TeX display: \boxed{
 \Delta E(\eta)\le B,
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-085" width="108" height="31" alt="\boxed{ \eta(\mathcal D_F)\subseteq\mathcal D_G, }">
+<!-- TeX display: \boxed{
 \eta(\mathcal D_F)\subseteq\mathcal D_G,
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-086" width="214" height="29" alt="\boxed{ \text{conservation laws preserved}, }">
+<!-- TeX display: \boxed{
 \text{conservation laws preserved},
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-087" width="166" height="26" alt="\boxed{ \text{conductance nonzero}. }">
+<!-- TeX display: \boxed{
 \text{conductance nonzero}.
-}
-```
+} -->
+
+
 
 
 
@@ -34944,9 +39864,12 @@ If:
 
 
 
-```math
-f:X\rightarrow Y
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-088" width="81" height="21" alt="f:X\rightarrow Y">
+<!-- TeX display: f:X\rightarrow Y -->
+
+
 
 
 
@@ -34954,9 +39877,12 @@ is continuous, then sheaf theory gives natural constructions such as:
 
 
 
-```math
-f^{-1}\mathscr G
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-089" width="46" height="24" alt="f^{-1}\mathscr G">
+<!-- TeX display: f^{-1}\mathscr G -->
+
+
 
 
 
@@ -34964,16 +39890,19 @@ and:
 
 
 
-```math
-f_*\mathscr F.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-090" width="44" height="22" alt="f_*\mathscr F.">
+<!-- TeX display: f_*\mathscr F. -->
+
+
 
 
 
 In UTC language:
 
-- **pullback** asks how a channel structure on $Y$ appears when viewed from $X$,
-- **pushforward** asks how local channel information on $X$ is represented over $Y$.
+- **pullback** asks how a channel structure on <img src="UTC-Math/message-50.svg#equation-091" width="21" height="17" alt="Y" align="middle"><!-- TeX inline: Y --> appears when viewed from <img src="UTC-Math/message-50.svg#equation-092" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X -->,
+- **pushforward** asks how local channel information on <img src="UTC-Math/message-50.svg#equation-093" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X --> is represented over <img src="UTC-Math/message-50.svg#equation-094" width="21" height="17" alt="Y" align="middle"><!-- TeX inline: Y -->.
 
 That could become very useful in coarse-graining.
 
@@ -34981,12 +39910,15 @@ For example:
 
 
 
-```math
-\pi:
+
+
+<img src="UTC-Math/message-50.svg#equation-095" width="147" height="20" alt="\pi: X_{\rm micro} \rightarrow X_{\rm macro}.">
+<!-- TeX display: \pi:
 X_{\rm micro}
 \rightarrow
-X_{\rm macro}.
-```
+X_{\rm macro}. -->
+
+
 
 
 
@@ -34994,11 +39926,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-096" width="76" height="29" alt="\boxed{ \pi_*\mathscr F_{\rm micro} }">
+<!-- TeX display: \boxed{
 \pi_*\mathscr F_{\rm micro}
-}
-```
+} -->
+
+
 
 
 
@@ -35014,13 +39949,16 @@ We had:
 
 
 
-```math
-P4_n
+
+
+<img src="UTC-Math/message-50.svg#equation-097" width="162" height="21" alt="P4_n \rightarrow P5_n \rightarrow P0_{n+1}.">
+<!-- TeX display: P4_n
 \rightarrow
 P5_n
 \rightarrow
-P0_{n+1}.
-```
+P0_{n+1}. -->
+
+
 
 
 
@@ -35028,12 +39966,15 @@ Now suppose:
 
 
 
-```math
-\pi_n:
+
+
+<img src="UTC-Math/message-50.svg#equation-098" width="121" height="21" alt="\pi_n: X_n \rightarrow X_{n+1}">
+<!-- TeX display: \pi_n:
 X_n
 \rightarrow
-X_{n+1}
-```
+X_{n+1} -->
+
+
 
 
 
@@ -35043,9 +39984,12 @@ The micro-channel sheaf:
 
 
 
-```math
-\mathscr F_n
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-099" width="31" height="21" alt="\mathscr F_n">
+<!-- TeX display: \mathscr F_n -->
+
+
 
 
 
@@ -35053,13 +39997,16 @@ can induce:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-100" width="134" height="31" alt="\boxed{ \mathscr F_{n+1} = (\pi_n)_*\mathscr F_n }">
+<!-- TeX display: \boxed{
 \mathscr F_{n+1}
 =
 (\pi_n)_*\mathscr F_n
-}
-```
+} -->
+
+
 
 
 
@@ -35081,8 +40028,10 @@ The old loop:
 
 
 
-```math
-V
+
+
+<img src="UTC-Math/message-50.svg#equation-101" width="208" height="20" alt="V \rightarrow I \rightarrow C \rightarrow S \rightarrow K \rightarrow V'">
+<!-- TeX display: V
 \rightarrow
 I
 \rightarrow
@@ -35092,8 +40041,9 @@ S
 \rightarrow
 K
 \rightarrow
-V'
-```
+V' -->
+
+
 
 
 
@@ -35101,8 +40051,10 @@ can become:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-102" width="300" height="32" alt="\boxed{ \mathscr F \rightarrow \mathscr F_{\rm restricted} \rightarrow \mathscr A \rightarrow \mathrm{Glue}(\mathscr A_i) \rightarrow \mathscr F'. }">
+<!-- TeX display: \boxed{
 \mathscr F
 \rightarrow
 \mathscr F_{\rm restricted}
@@ -35112,8 +40064,9 @@ can become:
 \mathrm{Glue}(\mathscr A_i)
 \rightarrow
 \mathscr F'.
-}
-```
+} -->
+
+
 
 
 
@@ -35139,9 +40092,12 @@ Then a loop through the system can carry:
 
 
 
-```math
-\mathrm{Hol}(\gamma)\neq I.
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-103" width="88" height="22" alt="\mathrm{Hol}(\gamma)\neq I.">
+<!-- TeX display: \mathrm{Hol}(\gamma)\neq I. -->
+
+
 
 
 
@@ -35151,13 +40107,16 @@ But we should maintain our earlier distinction:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-104" width="310" height="31" alt="\boxed{ \text{twist/holonomy} \neq \text{memory automatically}. }">
+<!-- TeX display: \boxed{
 \text{twist/holonomy}
 \neq
 \text{memory automatically}.
-}
-```
+} -->
+
+
 
 
 
@@ -35167,13 +40126,16 @@ So:
 
 
 
-```math
-\text{twisting}
+
+
+<img src="UTC-Math/message-50.svg#equation-105" width="406" height="21" alt="\text{twisting} \rightarrow \text{persistent topological sector} \rightarrow \text{proto-memory}">
+<!-- TeX display: \text{twisting}
 \rightarrow
 \text{persistent topological sector}
 \rightarrow
-\text{proto-memory}
-```
+\text{proto-memory} -->
+
+
 
 
 
@@ -35187,11 +40149,14 @@ I think this is the cleanest synthesis:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-106" width="50" height="26" alt="\boxed{ \text{stalk} }">
+<!-- TeX display: \boxed{
 \text{stalk}
-}
-```
+} -->
+
+
 
 
 
@@ -35199,19 +40164,25 @@ local germ of possible channel behavior,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-107" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-108" width="65" height="26" alt="\boxed{ \text{section} }">
+<!-- TeX display: \boxed{
 \text{section}
-}
-```
+} -->
+
+
 
 
 
@@ -35219,19 +40190,25 @@ channel behavior over a region,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-109" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-110" width="88" height="26" alt="\boxed{ \text{restriction} }">
+<!-- TeX display: \boxed{
 \text{restriction}
-}
-```
+} -->
+
+
 
 
 
@@ -35239,19 +40216,25 @@ how behavior survives localization,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-111" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-112" width="68" height="29" alt="\boxed{ \text{overlap} }">
+<!-- TeX display: \boxed{
 \text{overlap}
-}
-```
+} -->
+
+
 
 
 
@@ -35259,19 +40242,25 @@ where independent local channel structures meet,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-113" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-114" width="146" height="26" alt="\boxed{ \text{transition function} }">
+<!-- TeX display: \boxed{
 \text{transition function}
-}
-```
+} -->
+
+
 
 
 
@@ -35279,19 +40268,25 @@ how their descriptions transform,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-115" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-116" width="60" height="29" alt="\boxed{ \text{gluing} }">
+<!-- TeX display: \boxed{
 \text{gluing}
-}
-```
+} -->
+
+
 
 
 
@@ -35299,19 +40294,25 @@ formation of global structure,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-117" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-118" width="99" height="29" alt="\boxed{ \text{cohomology} }">
+<!-- TeX display: \boxed{
 \text{cohomology}
-}
-```
+} -->
+
+
 
 
 
@@ -35319,19 +40320,25 @@ classification/obstruction of global compatibility,
 
 
 
-```math
-\downarrow
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-119" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-50.svg#equation-120" width="183" height="29" alt="\boxed{ \text{persistent global section} }">
+<!-- TeX display: \boxed{
 \text{persistent global section}
-}
-```
+} -->
+
+
 
 
 
@@ -35347,8 +40354,10 @@ I would now define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-121" width="261" height="31" alt="\boxed{ \mathfrak S_{\rm UTC} = ( X, \gamma, E, \mathscr F, \nabla, K, H, \mu, \Phi ) }">
+<!-- TeX display: \boxed{
 \mathfrak S_{\rm UTC}
 =
 (
@@ -35362,8 +40371,9 @@ H,
 \mu,
 \Phi
 )
-}
-```
+} -->
+
+
 
 
 
@@ -35371,9 +40381,12 @@ where:
 
 
 
-```math
-X=M_{P1}
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-122" width="74" height="20" alt="X=M_{P1}">
+<!-- TeX display: X=M_{P1} -->
+
+
 
 
 
@@ -35381,9 +40394,12 @@ is the constrained base space,
 
 
 
-```math
-\gamma:X\to\mathrm{Gr}_\bullet(V)
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-123" width="120" height="22" alt="\gamma:X\to\mathrm{Gr}_\bullet(V)">
+<!-- TeX display: \gamma:X\to\mathrm{Gr}_\bullet(V) -->
+
+
 
 
 
@@ -35391,9 +40407,12 @@ selects local channel subspaces,
 
 
 
-```math
-E=\gamma^*\mathcal S
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-124" width="69" height="22" alt="E=\gamma^*\mathcal S">
+<!-- TeX display: E=\gamma^*\mathcal S -->
+
+
 
 
 
@@ -35401,9 +40420,12 @@ is the channel bundle,
 
 
 
-```math
-\mathscr F
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-125" width="24" height="19" alt="\mathscr F">
+<!-- TeX display: \mathscr F -->
+
+
 
 
 
@@ -35411,9 +40433,12 @@ is the sheaf of admissible local sections,
 
 
 
-```math
-\nabla
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-126" width="22" height="18" alt="\nabla">
+<!-- TeX display: \nabla -->
+
+
 
 
 
@@ -35421,9 +40446,12 @@ controls parallel transport/twisting,
 
 
 
-```math
-K
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-127" width="23" height="17" alt="K">
+<!-- TeX display: K -->
+
+
 
 
 
@@ -35431,9 +40459,12 @@ gives conductance,
 
 
 
-```math
-H
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-128" width="23" height="17" alt="H">
+<!-- TeX display: H -->
+
+
 
 
 
@@ -35441,9 +40472,12 @@ gives energetic cost,
 
 
 
-```math
-\mu
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-129" width="18" height="17" alt="\mu">
+<!-- TeX display: \mu -->
+
+
 
 
 
@@ -35453,9 +40487,12 @@ and:
 
 
 
-```math
-\Phi
-```
+
+
+<img src="UTC-Math/message-50.svg#equation-130" width="20" height="17" alt="\Phi">
+<!-- TeX display: \Phi -->
+
+
 
 
 
@@ -35465,13 +40502,16 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-131" width="426" height="31" alt="\boxed{ P4 = \text{invariant/persistent global organization inside }\mathfrak S_{\rm UTC}. }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{invariant/persistent global organization inside }\mathfrak S_{\rm UTC}.
-}
-```
+} -->
+
+
 
 
 
@@ -35479,13 +40519,16 @@ And CSC becomes a transformation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-132" width="130" height="37" alt="\boxed{ \mathfrak S_{\rm UTC}^{(n)} \rightarrow \mathfrak S_{\rm UTC}^{(n+1)}. }">
+<!-- TeX display: \boxed{
 \mathfrak S_{\rm UTC}^{(n)}
 \rightarrow
 \mathfrak S_{\rm UTC}^{(n+1)}.
-}
-```
+} -->
+
+
 
 
 
@@ -35495,11 +40538,14 @@ The particularly strong idea here is not merely “use sheaves because they are 
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-50.svg#equation-133" width="582" height="52" alt="\boxed{ \textbf{Grassmannians parameterize the local possibilities for channels; sheaves govern how those local channels become global physics.} }">
+<!-- TeX display: \boxed{
 \textbf{Grassmannians parameterize the local possibilities for channels; sheaves govern how those local channels become global physics.}
-}
-```
+} -->
+
+
 
 
 
@@ -35513,7 +40559,7 @@ That feels like the correct division of labor between the two mathematical frame
 
 I was having a casual physics discussion with Gemini and without full context of our work, only understanding some ideas she came up with this analysis... lets refine the analysis based on our complete comprehensive background on the subject: 
 "Applying this Grassmannian channeling model directly to a single wavefunction shifts the paradigm completely.
-In traditional quantum mechanics, a wavefunction $\psi$ is treated as a probability amplitude evolving linearly via the Schrödinger equation. But in your model, the wavefunction is a self-organizing fluidic structure—a localized, non-linear feedback loop where the wave *creates its own geometric constraints*, channels itself through them, and achieves a topological closure.
+In traditional quantum mechanics, a wavefunction <img src="UTC-Math/message-51.svg#equation-001" width="19" height="21" alt="\psi" align="middle"><!-- TeX inline: \psi --> is treated as a probability amplitude evolving linearly via the Schrödinger equation. But in your model, the wavefunction is a self-organizing fluidic structure—a localized, non-linear feedback loop where the wave *creates its own geometric constraints*, channels itself through them, and achieves a topological closure.
 By treating the wavefunction as a dynamic network of channels and attractor basins on a Grassmannian manifold, we can decode quantum interference as topological intersections, leading directly to a new blueprint for energy-efficient technologies.
 ***
 ## 🕸️ The Wavefunction as a Topological Network
@@ -35529,8 +40575,8 @@ Instead of visualizing a wave as a fuzzy probability cloud, your model maps it a
  [ Topological Closure ] ──► Generates ───────► [ Stable Discrete Particle State ]
 ## 1. The Wave is the Channel, Phase is the Constraint
 A single wavefunction possesses amplitude and phase. In your model, the phase variations act as local topological constraints, while the amplitude maps the energy density flowing through those channels.
-- To model this on the Grassmannian $G(k, n)$, we treat the wavefunction not as a single vector, but as a wedge product of sub-component states ($\psi_1 \wedge \psi_2 \wedge \dots \wedge \psi_k$).
-- The wavefunction is a single point on the Grassmannian, representing an entire stable $k$-dimensional subspace of energy. The complex phase relations are the explicit geometric coordinates keeping that subspace bound together.
+- To model this on the Grassmannian <img src="UTC-Math/message-51.svg#equation-002" width="59" height="22" alt="G(k, n)" align="middle"><!-- TeX inline: G(k, n) -->, we treat the wavefunction not as a single vector, but as a wedge product of sub-component states (<img src="UTC-Math/message-51.svg#equation-003" width="133" height="21" alt="\psi_1 \wedge \psi_2 \wedge \dots \wedge \psi_k" align="middle"><!-- TeX inline: \psi_1 \wedge \psi_2 \wedge \dots \wedge \psi_k -->).
+- The wavefunction is a single point on the Grassmannian, representing an entire stable <img src="UTC-Math/message-51.svg#equation-004" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-dimensional subspace of energy. The complex phase relations are the explicit geometric coordinates keeping that subspace bound together.
 
 ## 2. Interference Patterns as Intersection Varieties
 In quantum mechanics, when waves interfere, they create bright fringes (constructive) and dark regions (destructive).
@@ -35580,11 +40626,14 @@ The central correction is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-001" width="604" height="52" alt="\boxed{ \textbf{A wavefunction is not generically a nonlinear self-generated Grassmannian attractor.} }">
+<!-- TeX display: \boxed{
 \textbf{A wavefunction is not generically a nonlinear self-generated Grassmannian attractor.}
-}
-```
+} -->
+
+
 
 
 
@@ -35592,17 +40641,20 @@ The stronger UTC construction is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-002" width="618" height="52" alt="\boxed{ \textbf{the quantum state lives on one geometry, while its admissible energy-transfer channels live on a Grassmannian bundle over that geometry.} }">
+<!-- TeX display: \boxed{
 \textbf{the quantum state lives on one geometry, while its admissible energy-transfer channels live on a Grassmannian bundle over that geometry.}
-}
-```
+} -->
+
+
 
 
 
 That is actually richer than the Gemini version.
 
-The manuscript's present F1 explicitly requires linear superposition and Hamiltonian-generated evolution for a closed quantum state. The Unifying Theory of Complexi… So if UTC wants state-dependent nonlinear feedback, it either has to derive an effective nonlinear/open-system regime or propose genuinely new quantum dynamics. We should not silently build nonlinearity into $\psi$.
+The manuscript's present F1 explicitly requires linear superposition and Hamiltonian-generated evolution for a closed quantum state. The Unifying Theory of Complexi… So if UTC wants state-dependent nonlinear feedback, it either has to derive an effective nonlinear/open-system regime or propose genuinely new quantum dynamics. We should not silently build nonlinearity into <img src="UTC-Math/message-52.svg#equation-003" width="19" height="21" alt="\psi" align="middle"><!-- TeX inline: \psi -->.
 
 ## The corrected Grassmannian wave architecture
 
@@ -35610,9 +40662,12 @@ For a finite-dimensional pure quantum state, the physical state is a ray:
 
 
 
-```math
-[\psi]\in\mathbb P(\mathcal H).
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-004" width="88" height="22" alt="[\psi]\in\mathbb P(\mathcal H).">
+<!-- TeX display: [\psi]\in\mathbb P(\mathcal H). -->
+
+
 
 
 
@@ -35620,43 +40675,52 @@ And:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-005" width="148" height="31" alt="\boxed{ \mathbb P(\mathcal H) \cong \mathrm{Gr}_{\mathbb C}(1,\mathcal H). }">
+<!-- TeX display: \boxed{
 \mathbb P(\mathcal H)
 \cong
 \mathrm{Gr}_{\mathbb C}(1,\mathcal H).
-}
-```
+} -->
 
 
 
-So a **single pure state already is the $k=1$ Grassmannian case**.
+
+
+So a **single pure state already is the <img src="UTC-Math/message-52.svg#equation-006" width="46" height="19" alt="k=1" align="middle"><!-- TeX inline: k=1 --> Grassmannian case**.
 
 But this is different from saying:
 
 
 
-```math
-\psi=\psi_1\wedge\cdots\wedge\psi_k.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-007" width="134" height="21" alt="\psi=\psi_1\wedge\cdots\wedge\psi_k.">
+<!-- TeX display: \psi=\psi_1\wedge\cdots\wedge\psi_k. -->
 
 
 
-That wedge describes a decomposable $k$-vector and naturally represents a $k$-dimensional subspace, especially things such as occupied fermionic subspaces or Slater determinants. A generic single-particle wavefunction does not need $k>1$.
+
+
+That wedge describes a decomposable <img src="UTC-Math/message-52.svg#equation-008" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-vector and naturally represents a <img src="UTC-Math/message-52.svg#equation-009" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-dimensional subspace, especially things such as occupied fermionic subspaces or Slater determinants. A generic single-particle wavefunction does not need <img src="UTC-Math/message-52.svg#equation-010" width="46" height="18" alt="k>1" align="middle"><!-- TeX inline: k>1 -->.
 
 The new UTC object should therefore contain two Grassmannian levels:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-011" width="196" height="32" alt="\boxed{ L_\psi = \mathrm{span}\{\psi\} \in \mathrm{Gr}(1,\mathcal H) }">
+<!-- TeX display: \boxed{
 L_\psi
 =
 \mathrm{span}\{\psi\}
 \in
 \mathrm{Gr}(1,\mathcal H)
-}
-```
+} -->
+
+
 
 
 
@@ -35664,16 +40728,19 @@ for the quantum state itself, and
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-012" width="170" height="34" alt="\boxed{ D_\psi \in \mathrm{Gr} \left( k,T_{[\psi]}\mathbb P(\mathcal H) \right) }">
+<!-- TeX display: \boxed{
 D_\psi
 \in
 \mathrm{Gr}
 \left(
 k,T_{[\psi]}\mathbb P(\mathcal H)
 \right)
-}
-```
+} -->
+
+
 
 
 
@@ -35685,8 +40752,10 @@ So the architecture becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-013" width="347" height="33" alt="\boxed{ [\psi] \longrightarrow D_\psi \longrightarrow P_{D_\psi} \longrightarrow \text{allowed quantum flow}. }">
+<!-- TeX display: \boxed{
 [\psi]
 \longrightarrow
 D_\psi
@@ -35694,12 +40763,13 @@ D_\psi
 P_{D_\psi}
 \longrightarrow
 \text{allowed quantum flow}.
-}
-```
+} -->
 
 
 
-$P_{D_\psi}$ is the orthogonal projector onto the allowed channel plane.
+
+
+<img src="UTC-Math/message-52.svg#equation-014" width="36" height="23" alt="P_{D_\psi}" align="middle"><!-- TeX inline: P_{D_\psi} --> is the orthogonal projector onto the allowed channel plane.
 
 That is substantially cleaner.
 
@@ -35715,45 +40785,54 @@ We should keep:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-015" width="130" height="30" alt="\boxed{ \text{state} \neq \text{channel}. }">
+<!-- TeX display: \boxed{
 \text{state}
 \neq
 \text{channel}.
-}
-```
+} -->
+
+
 
 
 
 They interact.
 
-Let $H$ be the Hamiltonian, $D_\psi$ the P1-admissible channel subspace, and $K_\psi$ the corresponding conductance/mobility structure.
+Let <img src="UTC-Math/message-52.svg#equation-016" width="23" height="17" alt="H" align="middle"><!-- TeX inline: H --> be the Hamiltonian, <img src="UTC-Math/message-52.svg#equation-017" width="30" height="22" alt="D_\psi" align="middle"><!-- TeX inline: D_\psi --> the P1-admissible channel subspace, and <img src="UTC-Math/message-52.svg#equation-018" width="31" height="22" alt="K_\psi" align="middle"><!-- TeX inline: K_\psi --> the corresponding conductance/mobility structure.
 
 Then a general UTC schematic might be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-019" width="132" height="32" alt="\boxed{ J_\psi = K_\psi P_{D_\psi}X_\psi, }">
+<!-- TeX display: \boxed{
 J_\psi
 =
 K_\psi P_{D_\psi}X_\psi,
-}
-```
+} -->
 
 
 
-where $X_\psi$ is the generalized driving field generated by energy, phase, chemical potential, environment, etc.
+
+
+where <img src="UTC-Math/message-52.svg#equation-020" width="30" height="22" alt="X_\psi" align="middle"><!-- TeX inline: X_\psi --> is the generalized driving field generated by energy, phase, chemical potential, environment, etc.
 
 In ordinary closed quantum mechanics, the Hamiltonian component remains unitary:
 
 
 
-```math
-\dot\rho
+
+
+<img src="UTC-Math/message-52.svg#equation-021" width="110" height="39" alt="\dot\rho = -\frac{i}{\hbar}[H,\rho].">
+<!-- TeX display: \dot\rho
 =
--\frac{i}{\hbar}[H,\rho].
-```
+-\frac{i}{\hbar}[H,\rho]. -->
+
+
 
 
 
@@ -35761,8 +40840,10 @@ For an open quantum system, environmental channels can add Lindblad dynamics:
 
 
 
-```math
-\dot\rho
+
+
+<img src="UTC-Math/message-52.svg#equation-022" width="326" height="48" alt="\dot\rho = -\frac{i}{\hbar}[H,\rho] + \sum_a \left( L_a\rho L_a^\dagger - \frac12 \{L_a^\dagger L_a,\rho\} \right).">
+<!-- TeX display: \dot\rho
 =
 -\frac{i}{\hbar}[H,\rho]
 +
@@ -35772,8 +40853,9 @@ L_a\rho L_a^\dagger
 -
 \frac12
 \{L_a^\dagger L_a,\rho\}
-\right).
-```
+\right). -->
+
+
 
 
 
@@ -35783,8 +40865,10 @@ So the revised interpretation is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-023" width="665" height="31" alt="\boxed{ \text{wave state} + \text{channel geometry} + \text{coupling/conductance} + \text{environment} \rightarrow \text{physical evolution}. }">
+<!-- TeX display: \boxed{
 \text{wave state}
 +
 \text{channel geometry}
@@ -35794,8 +40878,9 @@ So the revised interpretation is:
 \text{environment}
 \rightarrow
 \text{physical evolution}.
-}
-```
+} -->
+
+
 
 
 
@@ -35809,21 +40894,27 @@ Write:
 
 
 
-```math
-\psi(x)=A(x)e^{i\phi(x)}.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-024" width="135" height="26" alt="\psi(x)=A(x)e^{i\phi(x)}.">
+<!-- TeX display: \psi(x)=A(x)e^{i\phi(x)}. -->
 
 
 
-Then $A$ controls probability amplitude. It is not generically energy density.
+
+
+Then <img src="UTC-Math/message-52.svg#equation-025" width="20" height="18" alt="A" align="middle"><!-- TeX inline: A --> controls probability amplitude. It is not generically energy density.
 
 And:
 
 
 
-```math
-\phi
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-026" width="18" height="21" alt="\phi">
+<!-- TeX display: \phi -->
+
+
 
 
 
@@ -35833,9 +40924,12 @@ Its gradients can influence current. For the ordinary Schrödinger particle, wri
 
 
 
-```math
-\psi=\sqrt{\rho}\,e^{iS/\hbar}
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-027" width="97" height="26" alt="\psi=\sqrt{\rho}\,e^{iS/\hbar}">
+<!-- TeX display: \psi=\sqrt{\rho}\,e^{iS/\hbar} -->
+
+
 
 
 
@@ -35843,9 +40937,12 @@ gives a probability current containing
 
 
 
-```math
-\nabla S.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-028" width="37" height="18" alt="\nabla S.">
+<!-- TeX display: \nabla S. -->
+
+
 
 
 
@@ -35855,34 +40952,43 @@ That suggests:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-029" width="191" height="26" alt="\boxed{ P1: \text{which channels exist} }">
+<!-- TeX display: \boxed{
 P1:
 \text{which channels exist}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-030" width="337" height="31" alt="\boxed{ P2: \text{which states/channels are distinguishable} }">
+<!-- TeX display: \boxed{
 P2:
 \text{which states/channels are distinguishable}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-031" width="370" height="29" alt="\boxed{ P3: \text{phase and amplitude propagate through them}. }">
+<!-- TeX display: \boxed{
 P3:
 \text{phase and amplitude propagate through them}.
-}
-```
+} -->
+
+
 
 
 
@@ -35896,8 +41002,10 @@ Ordinary interference is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-032" width="293" height="33" alt="\boxed{ |\psi_1+\psi_2|^2 = |\psi_1|^2 + |\psi_2|^2 + 2\mathrm{Re} (\psi_1^*\psi_2). }">
+<!-- TeX display: \boxed{
 |\psi_1+\psi_2|^2
 =
 |\psi_1|^2
@@ -35906,8 +41014,9 @@ Ordinary interference is:
 +
 2\mathrm{Re}
 (\psi_1^*\psi_2).
-}
-```
+} -->
+
+
 
 
 
@@ -35929,9 +41038,12 @@ For two channel subspaces:
 
 
 
-```math
-W_1,W_2\in\mathrm{Gr}(k,n),
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-033" width="140" height="22" alt="W_1,W_2\in\mathrm{Gr}(k,n),">
+<!-- TeX display: W_1,W_2\in\mathrm{Gr}(k,n), -->
+
+
 
 
 
@@ -35939,9 +41051,12 @@ their relationship can be described through principal angles
 
 
 
-```math
-\theta_1,\ldots,\theta_k.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-034" width="78" height="21" alt="\theta_1,\ldots,\theta_k.">
+<!-- TeX display: \theta_1,\ldots,\theta_k. -->
+
+
 
 
 
@@ -35949,10 +41064,13 @@ For normalized decomposable Plücker representatives:
 
 
 
-```math
-\omega_1,
-\omega_2,
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-035" width="54" height="17" alt="\omega_1, \omega_2,">
+<!-- TeX display: \omega_1,
+\omega_2, -->
+
+
 
 
 
@@ -35960,13 +41078,16 @@ their overlap satisfies:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-036" width="166" height="64" alt="\boxed{ |\langle\omega_1,\omega_2\rangle| = \prod_{j=1}^k\cos\theta_j. }">
+<!-- TeX display: \boxed{
 |\langle\omega_1,\omega_2\rangle|
 =
 \prod_{j=1}^k\cos\theta_j.
-}
-```
+} -->
+
+
 
 
 
@@ -35974,13 +41095,16 @@ So we can distinguish:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-037" width="441" height="29" alt="\boxed{ \text{quantum interference} = \text{relative complex phase of amplitudes} }">
+<!-- TeX display: \boxed{
 \text{quantum interference}
 =
 \text{relative complex phase of amplitudes}
-}
-```
+} -->
+
+
 
 
 
@@ -35988,13 +41112,16 @@ from:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-038" width="503" height="31" alt="\boxed{ \text{channel compatibility} = \text{relative orientation/intersection of subspaces}. }">
+<!-- TeX display: \boxed{
 \text{channel compatibility}
 =
 \text{relative orientation/intersection of subspaces}.
-}
-```
+} -->
+
+
 
 
 
@@ -36010,9 +41137,12 @@ Schubert geometry becomes useful when we specify a reference flag:
 
 
 
-```math
-0\subset F_1\subset F_2\subset\cdots\subset F_n.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-039" width="178" height="20" alt="0\subset F_1\subset F_2\subset\cdots\subset F_n.">
+<!-- TeX display: 0\subset F_1\subset F_2\subset\cdots\subset F_n. -->
+
+
 
 
 
@@ -36020,9 +41150,12 @@ Then conditions such as
 
 
 
-```math
-\dim(W\cap F_j)\ge r
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-040" width="127" height="23" alt="\dim(W\cap F_j)\ge r">
+<!-- TeX display: \dim(W\cap F_j)\ge r -->
+
+
 
 
 
@@ -36032,16 +41165,19 @@ In UTC, the flag could represent nested P1 restrictions:
 
 
 
-```math
-\text{causal}
+
+
+<img src="UTC-Math/message-52.svg#equation-041" width="483" height="21" alt="\text{causal} \subset \text{energetic} \subset \text{symmetry-allowed} \subset \text{thermally accessible} \subset\cdots">
+<!-- TeX display: \text{causal}
 \subset
 \text{energetic}
 \subset
 \text{symmetry-allowed}
 \subset
 \text{thermally accessible}
-\subset\cdots
-```
+\subset\cdots -->
+
+
 
 
 
@@ -36065,9 +41201,12 @@ If:
 
 
 
-```math
-W=\mathrm{span}(v_1,\ldots,v_k),
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-042" width="161" height="22" alt="W=\mathrm{span}(v_1,\ldots,v_k),">
+<!-- TeX display: W=\mathrm{span}(v_1,\ldots,v_k), -->
+
+
 
 
 
@@ -36075,29 +41214,35 @@ the Plücker embedding represents it by:
 
 
 
-```math
-[v_1\wedge\cdots\wedge v_k]
+
+
+<img src="UTC-Math/message-52.svg#equation-043" width="178" height="25" alt="[v_1\wedge\cdots\wedge v_k] \in \mathbb P(\Lambda^kV).">
+<!-- TeX display: [v_1\wedge\cdots\wedge v_k]
 \in
-\mathbb P(\Lambda^kV).
-```
+\mathbb P(\Lambda^kV). -->
 
 
 
-The quadratic Plücker relations tell us whether a multivector is actually **decomposable**, meaning whether it genuinely corresponds to a $k$-plane.
-
-For example, in $\mathrm{Gr}(2,4)$:
 
 
+The quadratic Plücker relations tell us whether a multivector is actually **decomposable**, meaning whether it genuinely corresponds to a <img src="UTC-Math/message-52.svg#equation-044" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-plane.
 
-```math
-p_{12}p_{34}
+For example, in <img src="UTC-Math/message-52.svg#equation-045" width="63" height="22" alt="\mathrm{Gr}(2,4)" align="middle"><!-- TeX inline: \mathrm{Gr}(2,4) -->:
+
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-046" width="206" height="20" alt="p_{12}p_{34} - p_{13}p_{24} + p_{14}p_{23} = 0.">
+<!-- TeX display: p_{12}p_{34}
 -
 p_{13}p_{24}
 +
 p_{14}p_{23}
 =
-0.
-```
+0. -->
+
+
 
 
 
@@ -36109,9 +41254,12 @@ And for:
 
 
 
-```math
-k=1,
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-047" width="51" height="21" alt="k=1,">
+<!-- TeX display: k=1, -->
+
+
 
 
 
@@ -36121,13 +41269,16 @@ So the Gemini step
 
 
 
-```math
-\text{self-interference}
+
+
+<img src="UTC-Math/message-52.svg#equation-048" width="332" height="22" alt="\text{self-interference} \rightarrow \text{Plücker relation} \rightarrow \text{particle}">
+<!-- TeX display: \text{self-interference}
 \rightarrow
 \text{Plücker relation}
 \rightarrow
-\text{particle}
-```
+\text{particle} -->
+
+
 
 
 
@@ -36145,41 +41296,53 @@ A particle-like structure can correspond to several different physical things de
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-049" width="169" height="29" alt="\boxed{ \text{stable field excitation}, }">
+<!-- TeX display: \boxed{
 \text{stable field excitation},
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-050" width="133" height="29" alt="\boxed{ \text{mass-shell mode}, }">
+<!-- TeX display: \boxed{
 \text{mass-shell mode},
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-051" width="181" height="29" alt="\boxed{ \text{bound-state eigenmode}, }">
+<!-- TeX display: \boxed{
 \text{bound-state eigenmode},
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-052" width="166" height="29" alt="\boxed{ \text{localized wavepacket}, }">
+<!-- TeX display: \boxed{
 \text{localized wavepacket},
-}
-```
+} -->
+
+
 
 
 
@@ -36187,11 +41350,14 @@ or:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-053" width="169" height="26" alt="\boxed{ \text{metastable resonance}. }">
+<!-- TeX display: \boxed{
 \text{metastable resonance}.
-}
-```
+} -->
+
+
 
 
 
@@ -36203,13 +41369,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-054" width="424" height="30" alt="\boxed{ \text{particle-like persistence} \neq \text{generic Grassmannian attractor}. }">
+<!-- TeX display: \boxed{
 \text{particle-like persistence}
 \neq
 \text{generic Grassmannian attractor}.
-}
-```
+} -->
+
+
 
 
 
@@ -36225,10 +41394,13 @@ Not:
 
 
 
-```math
-\psi
-\text{ nonlinearly creates its own geometry}
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-055" width="275" height="21" alt="\psi \text{ nonlinearly creates its own geometry}">
+<!-- TeX display: \psi
+\text{ nonlinearly creates its own geometry} -->
+
+
 
 
 
@@ -36238,8 +41410,10 @@ Instead:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-056" width="354" height="33" alt="\boxed{ (\psi,E) \rightarrow D_{\psi,E} \rightarrow \text{evolution} \rightarrow (\psi',E') \rightarrow D_{\psi',E'}. }">
+<!-- TeX display: \boxed{
 (\psi,E)
 \rightarrow
 D_{\psi,E}
@@ -36249,12 +41423,13 @@ D_{\psi,E}
 (\psi',E')
 \rightarrow
 D_{\psi',E'}.
-}
-```
+} -->
 
 
 
-Here $E$ is environment/context.
+
+
+Here <img src="UTC-Math/message-52.svg#equation-057" width="21" height="17" alt="E" align="middle"><!-- TeX inline: E --> is environment/context.
 
 The state and environment alter which channel subspaces are available, and those channels alter future evolution.
 
@@ -36262,8 +41437,10 @@ That is genuine feedback:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-058" width="315" height="30" alt="\boxed{ \text{state} \rightarrow \text{channel geometry} \rightarrow \text{flow} \rightarrow \text{state}. }">
+<!-- TeX display: \boxed{
 \text{state}
 \rightarrow
 \text{channel geometry}
@@ -36271,8 +41448,9 @@ That is genuine feedback:
 \text{flow}
 \rightarrow
 \text{state}.
-}
-```
+} -->
+
+
 
 
 
@@ -36284,17 +41462,20 @@ That is the safer and more powerful formulation.
 
 # Sheaves improve the picture another step
 
-Now put the Grassmannian construction over a base space $X$, which might be physical space, parameter space, configuration space, or the P1-admissible state manifold.
+Now put the Grassmannian construction over a base space <img src="UTC-Math/message-52.svg#equation-059" width="22" height="17" alt="X" align="middle"><!-- TeX inline: X -->, which might be physical space, parameter space, configuration space, or the P1-admissible state manifold.
 
 The local channel selection is:
 
 
 
-```math
-\gamma:
+
+
+<img src="UTC-Math/message-52.svg#equation-060" width="124" height="22" alt="\gamma: X\rightarrow \mathrm{Gr}_\bullet(V).">
+<!-- TeX display: \gamma:
 X\rightarrow
-\mathrm{Gr}_\bullet(V).
-```
+\mathrm{Gr}_\bullet(V). -->
+
+
 
 
 
@@ -36302,11 +41483,14 @@ Pull back the tautological bundle:
 
 
 
-```math
-E_{\rm ch}
+
+
+<img src="UTC-Math/message-52.svg#equation-061" width="85" height="22" alt="E_{\rm ch} = \gamma^*\mathcal S.">
+<!-- TeX display: E_{\rm ch}
 =
-\gamma^*\mathcal S.
-```
+\gamma^*\mathcal S. -->
+
+
 
 
 
@@ -36314,13 +41498,16 @@ Then define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-062" width="147" height="31" alt="\boxed{ \mathscr C(U) = \Gamma(U,E_{\rm ch}). }">
+<!-- TeX display: \boxed{
 \mathscr C(U)
 =
 \Gamma(U,E_{\rm ch}).
-}
-```
+} -->
+
+
 
 
 
@@ -36330,9 +41517,12 @@ On overlapping regions:
 
 
 
-```math
-U_i\cap U_j,
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-063" width="64" height="22" alt="U_i\cap U_j,">
+<!-- TeX display: U_i\cap U_j, -->
+
+
 
 
 
@@ -36340,9 +41530,12 @@ transition functions can include phase twists:
 
 
 
-```math
-g_{ij}=e^{i\theta_{ij}}.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-064" width="77" height="26" alt="g_{ij}=e^{i\theta_{ij}}.">
+<!-- TeX display: g_{ij}=e^{i\theta_{ij}}. -->
+
+
 
 
 
@@ -36356,11 +41549,14 @@ we can say:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-065" width="621" height="52" alt="\boxed{ \textbf{interference probes phase relations carried by locally glued quantum-channel structures.} }">
+<!-- TeX display: \boxed{
 \textbf{interference probes phase relations carried by locally glued quantum-channel structures.}
-}
-```
+} -->
+
+
 
 
 
@@ -36374,54 +41570,69 @@ I would replace Gemini's diagram with:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-066" width="125" height="31" alt="\boxed{ [\psi] \in \mathrm{Gr}_{\mathbb C}(1,\mathcal H) }">
+<!-- TeX display: \boxed{
 [\psi]
 \in
 \mathrm{Gr}_{\mathbb C}(1,\mathcal H)
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow\quad P1
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-067" width="57" height="21" alt="\downarrow\quad P1">
+<!-- TeX display: \downarrow\quad P1 -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-068" width="177" height="34" alt="\boxed{ D_{[\psi]} \in \mathrm{Gr} \left( k,T_{[\psi]}\mathbb P(\mathcal H) \right) }">
+<!-- TeX display: \boxed{
 D_{[\psi]}
 \in
 \mathrm{Gr}
 \left(
 k,T_{[\psi]}\mathbb P(\mathcal H)
 \right)
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-069" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-070" width="114" height="31" alt="\boxed{ (P_D,K,H,\nabla) }">
+<!-- TeX display: \boxed{
 (P_D,K,H,\nabla)
-}
-```
+} -->
+
+
 
 
 
@@ -36429,90 +41640,119 @@ allowed directions, conductance, energetic weighting and phase transport,
 
 
 
-```math
-\downarrow\quad P3/F1
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-071" width="85" height="22" alt="\downarrow\quad P3/F1">
+<!-- TeX display: \downarrow\quad P3/F1 -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-072" width="244" height="31" alt="\boxed{ \text{unitary/open quantum evolution} }">
+<!-- TeX display: \boxed{
 \text{unitary/open quantum evolution}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-073" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-074" width="435" height="29" alt="\boxed{ \text{interference} = \text{relative phase + amplitude + channel overlap} }">
+<!-- TeX display: \boxed{
 \text{interference}
 =
 \text{relative phase + amplitude + channel overlap}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-075" width="16" height="21" alt="\downarrow">
+<!-- TeX display: \downarrow -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-076" width="357" height="31" alt="\boxed{ \text{environmental selection / dissipation / relaxation} }">
+<!-- TeX display: \boxed{
 \text{environmental selection / dissipation / relaxation}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow\quad P4
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-077" width="57" height="21" alt="\downarrow\quad P4">
+<!-- TeX display: \downarrow\quad P4 -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-078" width="342" height="26" alt="\boxed{ \text{invariant or metastable channel-state structure} }">
+<!-- TeX display: \boxed{
 \text{invariant or metastable channel-state structure}
-}
-```
+} -->
 
 
 
 
 
-```math
-\downarrow\quad CSC
-```
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-079" width="72" height="21" alt="\downarrow\quad CSC">
+<!-- TeX display: \downarrow\quad CSC -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-080" width="548" height="29" alt="\boxed{ \text{restriction} \rightarrow \text{stabilization} \rightarrow \text{composition} \rightarrow \text{new effective channel manifold}. }">
+<!-- TeX display: \boxed{
 \text{restriction}
 \rightarrow
 \text{stabilization}
@@ -36520,8 +41760,9 @@ allowed directions, conductance, energetic weighting and phase transport,
 \text{composition}
 \rightarrow
 \text{new effective channel manifold}.
-}
-```
+} -->
+
+
 
 
 
@@ -36533,17 +41774,19 @@ That is much closer to the UTC we have actually built.
 
 | Gemini claim | Refined status |
 |---|---|
-| Wavefunction is a point on a Grassmannian | **Yes for $k=1$**: pure states are rays, $\mathrm{Gr}_{\mathbb C}(1,n)=\mathbb{CP}^{n-1}$. For $k>1$, usually describing a subspace, not one generic wavefunction. |
-| $\psi_1\wedge\dots\wedge\psi_k$ represents the wavefunction | **Only special cases**, notably decomposable $k$-vectors / occupied fermionic subspaces. |
+| Wavefunction is a point on a Grassmannian | **Yes for <img src="UTC-Math/message-52.svg#equation-081" width="46" height="19" alt="k=1" align="middle"><!-- TeX inline: k=1 -->**: pure states are rays, <img src="UTC-Math/message-52.svg#equation-082" width="139" height="25" alt="\mathrm{Gr}_{\mathbb C}(1,n)=\mathbb{CP}^{n-1}" align="middle"><!-- TeX inline: \mathrm{Gr}_{\mathbb C}(1,n)=\mathbb{CP}^{n-1} -->. For <img src="UTC-Math/message-52.svg#equation-083" width="46" height="18" alt="k>1" align="middle"><!-- TeX inline: k>1 -->, usually describing a subspace, not one generic wavefunction. |
+| <img src="UTC-Math/message-52.svg#equation-084" width="98" height="21" alt="\psi_1\wedge\dots\wedge\psi_k" align="middle"><!-- TeX inline: \psi_1\wedge\dots\wedge\psi_k --> represents the wavefunction | **Only special cases**, notably decomposable <img src="UTC-Math/message-52.svg#equation-085" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-vectors / occupied fermionic subspaces. |
 | Phase variations are constraints | **Better:** phase supplies relational/connection structure and helps orient flow. |
-| Amplitude is energy density | **Generally false.** $|\psi|^2$ is probability density in ordinary position representation. |
+| Amplitude is energy density | **Generally false.** <img src="UTC-Math/message-52.svg#equation-086" width="35" height="24" alt="&#124;\psi&#124;^2" align="middle"> is probability density in ordinary position representation. |
 | Destructive interference is topological repulsion | **No.** It is amplitude cancellation from relative phase; topology may constrain available modes separately. |
 | Constructive interference is a Schubert intersection | **Not generally.** Schubert varieties can classify channel-incidence conditions. |
-| Plücker relations cause closure/quantization | **No.** They characterize decomposable $k$-planes. |
+| Plücker relations cause closure/quantization | **No.** They characterize decomposable <img src="UTC-Math/message-52.svg#equation-087" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k -->-planes. |
 | Particle = discrete Schubert-cell attractor | **Not established.** Better model particles/bound states as persistent spectral or field structures. |
 | Grassmannian channels feed CSC | **Yes, promising.** Especially if channel planes themselves evolve or change rank. |
 | Sheaf gluing can represent local-to-global phase/channel organization | **Yes, very promising.** |
-| Rank-changing transitions require one Grassmannian | **No.** Need $\coprod_k\mathrm{Gr}(k,n)$, flag/incidence structures or a stratified Grassmannian space. |
+| Rank-changing transitions require one Grassmannian | **No.** Need <img src="UTC-Math/message-52.svg#equation-088" width="90" height="23" alt="\coprod_k\mathrm{Gr}(k,n)" align="middle"><!-- TeX inline: \coprod_k\mathrm{Gr}(k,n) -->, flag/incidence structures or a stratified Grassmannian space. |
+
+<!-- TeX inline (message-52.svg#equation-086): |\psi|^2 -->
 
 ---
 
@@ -36559,15 +41802,18 @@ For coherent storage, the realistic target is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-089" width="161" height="51" alt="\boxed{ Q = \omega \frac{\text{stored energy}} {\text{power loss}} }">
+<!-- TeX display: \boxed{
 Q
 =
 \omega
 \frac{\text{stored energy}}
 {\text{power loss}}
-}
-```
+} -->
+
+
 
 
 
@@ -36575,9 +41821,12 @@ as large as possible, not:
 
 
 
-```math
-Q=\infty.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-090" width="63" height="21" alt="Q=\infty.">
+<!-- TeX display: Q=\infty. -->
+
+
 
 
 
@@ -36587,11 +41836,14 @@ So the engineering program should be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-091" width="507" height="29" alt="\boxed{ \text{use geometry to suppress unwanted channels and enhance desired ones}, }">
+<!-- TeX display: \boxed{
 \text{use geometry to suppress unwanted channels and enhance desired ones},
-}
-```
+} -->
+
+
 
 
 
@@ -36599,11 +41851,14 @@ not:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-092" width="280" height="29" alt="\boxed{ \text{geometry eliminates thermodynamics}. }">
+<!-- TeX display: \boxed{
 \text{geometry eliminates thermodynamics}.
-}
-```
+} -->
+
+
 
 
 
@@ -36623,11 +41878,14 @@ The stronger research question is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-093" width="625" height="73" alt="\boxed{ \textbf{Can P1 constraints dynamically select a Grassmannian distribution of admissible channel subspaces whose evolution reproduces or simplifies known quantum dynamics?} }">
+<!-- TeX display: \boxed{
 \textbf{Can P1 constraints dynamically select a Grassmannian distribution of admissible channel subspaces whose evolution reproduces or simplifies known quantum dynamics?}
-}
-```
+} -->
+
+
 
 
 
@@ -36637,11 +41895,14 @@ For example, define:
 
 
 
-```math
-D_x
+
+
+<img src="UTC-Math/message-52.svg#equation-094" width="134" height="22" alt="D_x \in \mathrm{Gr}(k,T_xM),">
+<!-- TeX display: D_x
 \in
-\mathrm{Gr}(k,T_xM),
-```
+\mathrm{Gr}(k,T_xM), -->
+
+
 
 
 
@@ -36649,9 +41910,12 @@ an energy functional:
 
 
 
-```math
-\mathcal E(D,x),
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-095" width="64" height="22" alt="\mathcal E(D,x),">
+<!-- TeX display: \mathcal E(D,x), -->
+
+
 
 
 
@@ -36659,9 +41923,12 @@ a conductance:
 
 
 
-```math
-K(D,x),
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-096" width="69" height="22" alt="K(D,x),">
+<!-- TeX display: K(D,x), -->
+
+
 
 
 
@@ -36669,21 +41936,27 @@ and evolution:
 
 
 
-```math
-\dot x
+
+
+<img src="UTC-Math/message-52.svg#equation-097" width="97" height="23" alt="\dot x = F(x,D),">
+<!-- TeX display: \dot x
 =
-F(x,D),
-```
+F(x,D), -->
 
 
 
 
 
-```math
-\dot D
+
+
+
+
+<img src="UTC-Math/message-52.svg#equation-098" width="102" height="27" alt="\dot D = G(x,D).">
+<!-- TeX display: \dot D
 =
-G(x,D).
-```
+G(x,D). -->
+
+
 
 
 
@@ -36691,9 +41964,12 @@ Or in projector language:
 
 
 
-```math
-P_D^2=P_D,
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-099" width="76" height="25" alt="P_D^2=P_D,">
+<!-- TeX display: P_D^2=P_D, -->
+
+
 
 
 
@@ -36701,13 +41977,16 @@ with a candidate channel-relaxation equation such as
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-100" width="174" height="35" alt="\boxed{ \dot P_D = -[P_D,[P_D,H_{\rm eff}]] }">
+<!-- TeX display: \boxed{
 \dot P_D
 =
 -[P_D,[P_D,H_{\rm eff}]]
-}
-```
+} -->
+
+
 
 
 
@@ -36717,9 +41996,12 @@ Then ask whether:
 
 
 
-```math
-P_D(t)\rightarrow P_D^*
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-101" width="94" height="22" alt="P_D(t)\rightarrow P_D^*">
+<!-- TeX display: P_D(t)\rightarrow P_D^* -->
+
+
 
 
 
@@ -36737,9 +42019,12 @@ Ordinary evolution within fixed channel rank:
 
 
 
-```math
-D_t\in\mathrm{Gr}(k,n).
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-102" width="107" height="22" alt="D_t\in\mathrm{Gr}(k,n).">
+<!-- TeX display: D_t\in\mathrm{Gr}(k,n). -->
+
+
 
 
 
@@ -36747,9 +42032,12 @@ Then collapse/filtering may reduce accessible directions:
 
 
 
-```math
-k\rightarrow k'.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-103" width="59" height="20" alt="k\rightarrow k'.">
+<!-- TeX display: k\rightarrow k'. -->
+
+
 
 
 
@@ -36757,9 +42045,12 @@ Stabilization:
 
 
 
-```math
-D_t\rightarrow D_*.
-```
+
+
+<img src="UTC-Math/message-52.svg#equation-104" width="77" height="20" alt="D_t\rightarrow D_*.">
+<!-- TeX display: D_t\rightarrow D_*. -->
+
+
 
 
 
@@ -36767,11 +42058,14 @@ Composition creates:
 
 
 
-```math
-D_A\oplus D_B,
+
+
+<img src="UTC-Math/message-52.svg#equation-105" width="184" height="21" alt="D_A\oplus D_B, \qquad D_A\otimes D_B,">
+<!-- TeX display: D_A\oplus D_B,
 \qquad
-D_A\otimes D_B,
-```
+D_A\otimes D_B, -->
+
+
 
 
 
@@ -36781,14 +42075,17 @@ The whole operation therefore lives on something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-106" width="132" height="50" alt="\boxed{ \mathfrak G = \bigsqcup_k \mathrm{Gr}(k,n), }">
+<!-- TeX display: \boxed{
 \mathfrak G
 =
 \bigsqcup_k
 \mathrm{Gr}(k,n),
-}
-```
+} -->
+
+
 
 
 
@@ -36798,15 +42095,18 @@ That is much closer to a genuine mathematical representation of:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-107" width="295" height="29" alt="\boxed{ \text{collapse} \rightarrow \text{stabilization} \rightarrow \text{composition}. }">
+<!-- TeX display: \boxed{
 \text{collapse}
 \rightarrow
 \text{stabilization}
 \rightarrow
 \text{composition}.
-}
-```
+} -->
+
+
 
 
 
@@ -36818,11 +42118,14 @@ The refined UTC statement is more interesting:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-108" width="638" height="114" alt="\boxed{ \textbf{A quantum state need not itself be a nonlinear Grassmannian fluid. Rather, quantum states, admissible transfer subspaces, phase connections, conductance tensors and environmental couplings can form a coupled Grassmann-bundle/sheaf system whose persistent invariant structures provide a mathematically precise candidate language for P4 and CSC.} }">
+<!-- TeX display: \boxed{
 \textbf{A quantum state need not itself be a nonlinear Grassmannian fluid. Rather, quantum states, admissible transfer subspaces, phase connections, conductance tensors and environmental couplings can form a coupled Grassmann-bundle/sheaf system whose persistent invariant structures provide a mathematically precise candidate language for P4 and CSC.}
-}
-```
+} -->
+
+
 
 
 
@@ -36830,8 +42133,10 @@ And the key conceptual split is now wonderfully clean:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-52.svg#equation-109" width="595" height="177" alt="\boxed{ \begin{aligned} \text{Hilbert/projective geometry} &amp;\rightarrow \text{what the quantum state is},\\ \text{Grassmann geometry} &amp;\rightarrow \text{which subspaces/channels are available},\\ \text{connection/phase geometry} &amp;\rightarrow \text{how phase is transported},\\ \text{sheaf theory} &amp;\rightarrow \text{how local channel data glue globally},\\ \text{P1 energy/conductance} &amp;\rightarrow \text{which channels are favored},\\ \text{P3 dynamics} &amp;\rightarrow \text{how state and channels evolve},\\ \text{P4} &amp;\rightarrow \text{which structures persist},\\ \text{CSC} &amp;\rightarrow \text{how persistent structures change rank and compose}. \end{aligned}}">
+<!-- TeX display: \boxed{
 \begin{aligned}
 \text{Hilbert/projective geometry} &\rightarrow \text{what the quantum state is},\\
 \text{Grassmann geometry} &\rightarrow \text{which subspaces/channels are available},\\
@@ -36841,8 +42146,9 @@ And the key conceptual split is now wonderfully clean:
 \text{P3 dynamics} &\rightarrow \text{how state and channels evolve},\\
 \text{P4} &\rightarrow \text{which structures persist},\\
 \text{CSC} &\rightarrow \text{how persistent structures change rank and compose}.
-\end{aligned}}
-```
+\end{aligned}} -->
+
+
 
 
 
@@ -36874,13 +42180,16 @@ The interesting abstraction is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-001" width="391" height="30" alt="\boxed{ \text{unmanifest possibility} \rightarrow \text{differentiated manifest order} }">
+<!-- TeX display: \boxed{
 \text{unmanifest possibility}
 \rightarrow
 \text{differentiated manifest order}
-}
-```
+} -->
+
+
 
 
 
@@ -36892,9 +42201,12 @@ So I would be careful with:
 
 
 
-```math
-\text{cosmic egg}=\text{Big Bang singularity}.
-```
+
+
+<img src="UTC-Math/message-54.svg#equation-002" width="250" height="21" alt="\text{cosmic egg}=\text{Big Bang singularity}.">
+<!-- TeX display: \text{cosmic egg}=\text{Big Bang singularity}. -->
+
+
 
 
 
@@ -36904,8 +42216,10 @@ But structurally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-003" width="568" height="26" alt="\boxed{ \text{undifferentiated substrate} \rightarrow \text{bounded seed} \rightarrow \text{differentiation} \rightarrow \text{ordered cosmos} }">
+<!-- TeX display: \boxed{
 \text{undifferentiated substrate}
 \rightarrow
 \text{bounded seed}
@@ -36913,8 +42227,9 @@ But structurally:
 \text{differentiation}
 \rightarrow
 \text{ordered cosmos}
-}
-```
+} -->
+
+
 
 
 
@@ -36926,15 +42241,18 @@ That is a gorgeous UTC analogy:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-004" width="521" height="30" alt="\boxed{ \text{substrate} \rightarrow \text{stable emergent manifold} \rightarrow \text{new compositional possibilities}. }">
+<!-- TeX display: \boxed{
 \text{substrate}
 \rightarrow
 \text{stable emergent manifold}
 \rightarrow
 \text{new compositional possibilities}.
-}
-```
+} -->
+
+
 
 
 
@@ -36950,13 +42268,16 @@ UTC has independently arrived at a similar subtlety:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-005" width="230" height="30" alt="\boxed{ \text{stability} \neq \text{nothing happening}. }">
+<!-- TeX display: \boxed{
 \text{stability}
 \neq
 \text{nothing happening}.
-}
-```
+} -->
+
+
 
 
 
@@ -36966,11 +42287,14 @@ So Vishnu maps beautifully onto:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-006" width="406" height="29" alt="\boxed{ \text{maintenance of admissible structure under perturbation}. }">
+<!-- TeX display: \boxed{
 \text{maintenance of admissible structure under perturbation}.
-}
-```
+} -->
+
+
 
 
 
@@ -36986,21 +42310,24 @@ The conch has long been associated with sacred sound. So your connection to our 
 
 
 
-```math
-E
+
+
+<img src="UTC-Math/message-54.svg#equation-007" width="199" height="21" alt="E \leftrightarrow \omega \rightarrow \phi \rightarrow \text{propagation}">
+<!-- TeX display: E
 \leftrightarrow
 \omega
 \rightarrow
 \phi
 \rightarrow
-\text{propagation}
-```
+\text{propagation} -->
+
+
 
 
 
 works as a modern comparative metaphor.
 
-Not “they knew $E=\hbar\omega$,” but something more philosophically interesting:
+Not “they knew <img src="UTC-Math/message-54.svg#equation-008" width="61" height="19" alt="E=\hbar\omega" align="middle"><!-- TeX inline: E=\hbar\omega -->,” but something more philosophically interesting:
 
 > **sound, vibration and rhythm were already being used as symbols for the transition from latent order into manifest order.**
 
@@ -37018,8 +42345,10 @@ That is much closer to CSC than the static Trimurti diagram:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-009" width="414" height="29" alt="\boxed{ \text{collapse} \rightarrow \text{stabilization} \rightarrow \text{composition} \rightarrow \text{new variation}. }">
+<!-- TeX display: \boxed{
 \text{collapse}
 \rightarrow
 \text{stabilization}
@@ -37027,8 +42356,9 @@ That is much closer to CSC than the static Trimurti diagram:
 \text{composition}
 \rightarrow
 \text{new variation}.
-}
-```
+} -->
+
+
 
 
 
@@ -37044,9 +42374,12 @@ The universe in UTC is not:
 
 
 
-```math
-\text{create, stop, preserve, stop, destroy}.
-```
+
+
+<img src="UTC-Math/message-54.svg#equation-010" width="256" height="21" alt="\text{create, stop, preserve, stop, destroy}.">
+<!-- TeX display: \text{create, stop, preserve, stop, destroy}. -->
+
+
 
 
 
@@ -37054,15 +42387,18 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-011" width="286" height="26" alt="\boxed{ \text{creation} \leftrightarrow \text{maintenance} \leftrightarrow \text{dissolution} }">
+<!-- TeX display: \boxed{
 \text{creation}
 \leftrightarrow
 \text{maintenance}
 \leftrightarrow
 \text{dissolution}
-}
-```
+} -->
+
+
 
 
 
@@ -37092,8 +42428,10 @@ But the conceptual rhyme is powerful:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-012" width="491" height="30" alt="\boxed{ \text{undifferentiated possibility} \rightarrow \text{distinction} \rightarrow \text{relation} \rightarrow \text{multiplicity}. }">
+<!-- TeX display: \boxed{
 \text{undifferentiated possibility}
 \rightarrow
 \text{distinction}
@@ -37101,8 +42439,9 @@ But the conceptual rhyme is powerful:
 \text{relation}
 \rightarrow
 \text{multiplicity}.
-}
-```
+} -->
+
+
 
 
 
@@ -37110,9 +42449,12 @@ P2 becomes crucial precisely because the moment you have:
 
 
 
-```math
-A\neq B,
-```
+
+
+<img src="UTC-Math/message-54.svg#equation-013" width="58" height="21" alt="A\neq B,">
+<!-- TeX display: A\neq B, -->
+
+
 
 
 
@@ -37142,13 +42484,16 @@ Science has its own secular version:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-014" width="130" height="30" alt="\boxed{ \text{model} \neq \text{reality}. }">
+<!-- TeX display: \boxed{
 \text{model}
 \neq
 \text{reality}.
-}
-```
+} -->
+
+
 
 
 
@@ -37158,9 +42503,12 @@ We had:
 
 
 
-```math
-P0\rightarrow\cdots\rightarrow P12
-```
+
+
+<img src="UTC-Math/message-54.svg#equation-015" width="125" height="18" alt="P0\rightarrow\cdots\rightarrow P12">
+<!-- TeX display: P0\rightarrow\cdots\rightarrow P12 -->
+
+
 
 
 
@@ -37170,9 +42518,12 @@ Then deeper unrolling showed:
 
 
 
-```math
-P6,P7,P8,P9,\ldots
-```
+
+
+<img src="UTC-Math/message-54.svg#equation-016" width="136" height="21" alt="P6,P7,P8,P9,\ldots">
+<!-- TeX display: P6,P7,P8,P9,\ldots -->
+
+
 
 
 
@@ -37200,11 +42551,14 @@ So:
 
 
 
-```math
-\text{moksha}
+
+
+<img src="UTC-Math/message-54.svg#equation-017" width="202" height="21" alt="\text{moksha} = \text{extended lifespan}">
+<!-- TeX display: \text{moksha}
 =
-\text{extended lifespan}
-```
+\text{extended lifespan} -->
+
+
 
 
 
@@ -37216,8 +42570,10 @@ UTC repeatedly produces:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-018" width="413" height="29" alt="\boxed{ \text{formation} \rightarrow \text{persistence} \rightarrow \text{breakdown} \rightarrow \text{recomposition}. }">
+<!-- TeX display: \boxed{
 \text{formation}
 \rightarrow
 \text{persistence}
@@ -37225,8 +42581,9 @@ UTC repeatedly produces:
 \text{breakdown}
 \rightarrow
 \text{recomposition}.
-}
-```
+} -->
+
+
 
 
 
@@ -37236,15 +42593,18 @@ And our complexity ratchet gives:
 
 
 
-```math
-\Omega_n
+
+
+<img src="UTC-Math/message-54.svg#equation-019" width="184" height="21" alt="\Omega_n \rightarrow \mathcal A_n \rightarrow K_n \rightarrow \Omega_{n+1}.">
+<!-- TeX display: \Omega_n
 \rightarrow
 \mathcal A_n
 \rightarrow
 K_n
 \rightarrow
-\Omega_{n+1}.
-```
+\Omega_{n+1}. -->
+
+
 
 
 
@@ -37270,7 +42630,7 @@ But it is a remarkably similar **abstract grammar of recurrence**.
 | Hiranyagarbha | Bounded seed of manifested order | Not scientifically identical to a singularity |
 | Lotus emergence | New structured level arising from substrate | Symbolic analogy |
 | Vishnu, preservation | P4 persistence, dynamic attractor maintenance | Not literally thermodynamic free-energy optimization |
-| Shankha / sacred sound | Frequency, oscillation, phase | Symbolic, not $E=\hbar\omega$ encoded in scripture |
+| Shankha / sacred sound | Frequency, oscillation, phase | Symbolic, not <img src="UTC-Math/message-54.svg#equation-020" width="61" height="19" alt="E=\hbar\omega" align="middle"><!-- TeX inline: E=\hbar\omega --> encoded in scripture |
 | Shiva/Nataraja | Collapse-stabilization-composition cycle | Very strong structural analogy, not physical derivation |
 | Nonduality | Pre-distinction/unified description | P0 is not Brahman or consciousness |
 | Maya/ignorance | Model/reality mismatch, epistemic limitation | Religious and scientific meanings remain distinct |
@@ -37302,8 +42662,10 @@ Modern science does something related but adds:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-021" width="414" height="30" alt="\boxed{ \text{measurement} + \text{mathematics} + \text{prediction} + \text{falsifiability}. }">
+<!-- TeX display: \boxed{
 \text{measurement}
 +
 \text{mathematics}
@@ -37311,8 +42673,9 @@ Modern science does something related but adds:
 \text{prediction}
 +
 \text{falsifiability}.
-}
-```
+} -->
+
+
 
 
 
@@ -37322,11 +42685,14 @@ I would say something subtler and, frankly, more impressive:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-022" width="591" height="73" alt="\boxed{ \textbf{they identified several extraordinarily deep organizational motifs of reality long before humanity possessed the instruments needed to resolve their physical mechanisms.} }">
+<!-- TeX display: \boxed{
 \textbf{they identified several extraordinarily deep organizational motifs of reality long before humanity possessed the instruments needed to resolve their physical mechanisms.}
-}
-```
+} -->
+
+
 
 
 
@@ -37336,15 +42702,18 @@ We keep rediscovering them as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-023" width="344" height="31" alt="\boxed{ \text{formation}, \quad \text{stability}, \quad \text{transition/dissolution}. }">
+<!-- TeX display: \boxed{
 \text{formation},
 \quad
 \text{stability},
 \quad
 \text{transition/dissolution}.
-}
-```
+} -->
+
+
 
 
 
@@ -37356,12 +42725,15 @@ That is exactly where our uncertainty work led us too:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-54.svg#equation-024" width="595" height="52" alt="\boxed{ \textbf{the static snapshot is not the whole reality. The running transformation is part of what the state is.} }">
+<!-- TeX display: \boxed{
 \textbf{the static snapshot is not the whole reality.
 The running transformation is part of what the state is.}
-}
-```
+} -->
+
+
 
 
 
@@ -37389,9 +42761,12 @@ Your strongest point is the first one:
 
 
 
-```math
-\boxed{\textbf{Every physically usable process we know operates under finite local budgets and finite channel capacity.}}
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-001" width="611" height="52" alt="\boxed{\textbf{Every physically usable process we know operates under finite local budgets and finite channel capacity.}}">
+<!-- TeX display: \boxed{\textbf{Every physically usable process we know operates under finite local budgets and finite channel capacity.}} -->
+
+
 
 
 
@@ -37407,9 +42782,12 @@ So I think the deep principle is not:
 
 
 
-```math
-\boxed{\text{everything is finite}}
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-002" width="146" height="30" alt="\boxed{\text{everything is finite}}">
+<!-- TeX display: \boxed{\text{everything is finite}} -->
+
+
 
 
 
@@ -37417,9 +42795,12 @@ but:
 
 
 
-```math
-\boxed{\textbf{physical accessibility is budgeted.}}
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-003" width="281" height="29" alt="\boxed{\textbf{physical accessibility is budgeted.}}">
+<!-- TeX display: \boxed{\textbf{physical accessibility is budgeted.}} -->
+
+
 
 
 
@@ -37435,9 +42816,12 @@ Mathematically:
 
 
 
-```math
-0\neq\infty.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-004" width="58" height="21" alt="0\neq\infty.">
+<!-- TeX display: 0\neq\infty. -->
+
+
 
 
 
@@ -37451,9 +42835,12 @@ At one extreme:
 
 
 
-```math
-\Omega=\varnothing.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-005" width="58" height="19" alt="\Omega=\varnothing.">
+<!-- TeX display: \Omega=\varnothing. -->
+
+
 
 
 
@@ -37467,13 +42854,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-006" width="433" height="30" alt="\boxed{ \text{null possibility} \quad\text{and}\quad \text{undifferentiated unlimited possibility} }">
+<!-- TeX display: \boxed{
 \text{null possibility}
 \quad\text{and}\quad
 \text{undifferentiated unlimited possibility}
-}
-```
+} -->
+
+
 
 
 
@@ -37481,11 +42871,14 @@ can both yield:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-007" width="305" height="29" alt="\boxed{ \text{zero operationally extractable distinction}. }">
+<!-- TeX display: \boxed{
 \text{zero operationally extractable distinction}.
-}
-```
+} -->
+
+
 
 
 
@@ -37495,11 +42888,14 @@ I would formulate the UTC principle as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-008" width="617" height="52" alt="\boxed{ \textbf{Unbounded possibility without constraint and absent possibility can become operationally indistinguishable to a finite discriminator.} }">
+<!-- TeX display: \boxed{
 \textbf{Unbounded possibility without constraint and absent possibility can become operationally indistinguishable to a finite discriminator.}
-}
-```
+} -->
+
+
 
 
 
@@ -37509,13 +42905,16 @@ And it fits what we've discovered about P0→P1→P2:
 
 
 
-```math
-\text{possibility}
+
+
+<img src="UTC-Math/message-56.svg#equation-009" width="351" height="21" alt="\text{possibility} \rightarrow \text{constraint} \rightarrow \text{resolvable distinction}.">
+<!-- TeX display: \text{possibility}
 \rightarrow
 \text{constraint}
 \rightarrow
-\text{resolvable distinction}.
-```
+\text{resolvable distinction}. -->
+
+
 
 
 
@@ -37535,11 +42934,14 @@ A finite physical system has some resource vector:
 
 
 
-```math
-\mathbf B
+
+
+<img src="UTC-Math/message-56.svg#equation-010" width="169" height="22" alt="\mathbf B = (E,\tau,V,N,C,\ldots)">
+<!-- TeX display: \mathbf B
 =
-(E,\tau,V,N,C,\ldots)
-```
+(E,\tau,V,N,C,\ldots) -->
+
+
 
 
 
@@ -37549,16 +42951,19 @@ Its physically admissible states are:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-011" width="212" height="31" alt="\boxed{ \Omega_{\mathbf B} = \left\{ x\in\Omega: C_i(x)\le B_i \right\}. }">
+<!-- TeX display: \boxed{
 \Omega_{\mathbf B}
 =
 \left\{
 x\in\Omega:
 C_i(x)\le B_i
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -37566,8 +42971,10 @@ Then its admissible transitions satisfy additional constraints:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-012" width="342" height="31" alt="\boxed{ \mathcal T_{\mathbf B} = \left\{ x\rightarrow y: \Delta E,\Delta p,\Delta q,\ldots \text{ are permitted} \right\}. }">
+<!-- TeX display: \boxed{
 \mathcal T_{\mathbf B}
 =
 \left\{
@@ -37575,8 +42982,9 @@ x\rightarrow y:
 \Delta E,\Delta p,\Delta q,\ldots
 \text{ are permitted}
 \right\}.
-}
-```
+} -->
+
+
 
 
 
@@ -37586,13 +42994,16 @@ It is built into the fact that:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-013" width="77" height="30" alt="\boxed{ \Omega_{\mathbf B} \subsetneq \Omega. }">
+<!-- TeX display: \boxed{
 \Omega_{\mathbf B}
 \subsetneq
 \Omega.
-}
-```
+} -->
+
+
 
 
 
@@ -37616,9 +43027,12 @@ For example:
 
 
 
-```math
-F=U-TS.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-014" width="100" height="19" alt="F=U-TS.">
+<!-- TeX display: F=U-TS. -->
+
+
 
 
 
@@ -37628,25 +43042,34 @@ But if:
 
 
 
-```math
-\nabla T=0,
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-015" width="67" height="21" alt="\nabla T=0,">
+<!-- TeX display: \nabla T=0, -->
 
 
 
 
 
-```math
-\nabla\mu=0,
-```
+
+
+
+
+<img src="UTC-Math/message-56.svg#equation-016" width="65" height="21" alt="\nabla\mu=0,">
+<!-- TeX display: \nabla\mu=0, -->
 
 
 
 
 
-```math
-\nabla V=0,
-```
+
+
+
+
+<img src="UTC-Math/message-56.svg#equation-017" width="68" height="21" alt="\nabla V=0,">
+<!-- TeX display: \nabla V=0, -->
+
+
 
 
 
@@ -37654,11 +43077,14 @@ and all relevant gradients disappear, then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-018" width="65" height="26" alt="\boxed{ J\rightarrow0. }">
+<!-- TeX display: \boxed{
 J\rightarrow0.
-}
-```
+} -->
+
+
 
 
 
@@ -37670,9 +43096,12 @@ So physical abundance is not:
 
 
 
-```math
-E\gg0.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-019" width="58" height="18" alt="E\gg0.">
+<!-- TeX display: E\gg0. -->
+
+
 
 
 
@@ -37680,15 +43109,18 @@ It is closer to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-020" width="416" height="29" alt="\boxed{ \text{usable abundance} \sim \text{accessible gradients} \times \text{open channels}. }">
+<!-- TeX display: \boxed{
 \text{usable abundance}
 \sim
 \text{accessible gradients}
 \times
 \text{open channels}.
-}
-```
+} -->
+
+
 
 
 
@@ -37702,33 +43134,45 @@ There are at least four very different notions:
 
 
 
-```math
-\text{amount of stuff},
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-021" width="118" height="21" alt="\text{amount of stuff},">
+<!-- TeX display: \text{amount of stuff}, -->
 
 
 
 
 
-```math
-\text{total energy},
-```
+
+
+
+
+<img src="UTC-Math/message-56.svg#equation-022" width="96" height="21" alt="\text{total energy},">
+<!-- TeX display: \text{total energy}, -->
 
 
 
 
 
-```math
-\text{available free energy},
-```
+
+
+
+
+<img src="UTC-Math/message-56.svg#equation-023" width="154" height="21" alt="\text{available free energy},">
+<!-- TeX display: \text{available free energy}, -->
 
 
 
 
 
-```math
-\text{accessible channel capacity}.
-```
+
+
+
+
+<img src="UTC-Math/message-56.svg#equation-024" width="199" height="21" alt="\text{accessible channel capacity}.">
+<!-- TeX display: \text{accessible channel capacity}. -->
+
+
 
 
 
@@ -37746,13 +43190,16 @@ So from the point of view of an embedded agent:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-025" width="313" height="30" alt="\boxed{ \text{cosmic abundance} \neq \text{accessible abundance}. }">
+<!-- TeX display: \boxed{
 \text{cosmic abundance}
 \neq
 \text{accessible abundance}.
-}
-```
+} -->
+
+
 
 
 
@@ -37770,11 +43217,14 @@ But we do not know that:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-026" width="308" height="30" alt="\boxed{ \text{dark energy is literally infinitely abundant} }">
+<!-- TeX display: \boxed{
 \text{dark energy is literally infinitely abundant}
-}
-```
+} -->
+
+
 
 
 
@@ -37790,9 +43240,12 @@ So I would not make:
 
 
 
-```math
-\text{dark energy}=\text{physical infinity}
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-027" width="223" height="21" alt="\text{dark energy}=\text{physical infinity}">
+<!-- TeX display: \text{dark energy}=\text{physical infinity} -->
+
+
 
 
 
@@ -37808,13 +43261,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-028" width="352" height="30" alt="\boxed{ \text{continuing time} \neq \text{continuing usable abundance}. }">
+<!-- TeX display: \boxed{
 \text{continuing time}
 \neq
 \text{continuing usable abundance}.
-}
-```
+} -->
+
+
 
 
 
@@ -37828,12 +43284,15 @@ Instead of saying the arrow is “infinitely abundant,” UTC could say:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-029" width="124" height="29" alt="\boxed{ P3: x_n\rightarrow x_{n+1} }">
+<!-- TeX display: \boxed{
 P3:
 x_n\rightarrow x_{n+1}
-}
-```
+} -->
+
+
 
 
 
@@ -37843,13 +43302,16 @@ But usable organization requires:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-030" width="299" height="29" alt="\boxed{ \text{nonequilibrium gradient} + \text{open channel}. }">
+<!-- TeX display: \boxed{
 \text{nonequilibrium gradient}
 +
 \text{open channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -37869,9 +43331,12 @@ The entire universe may be:
 
 
 
-```math
-\text{finite but unbounded},
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-031" width="158" height="21" alt="\text{finite but unbounded},">
+<!-- TeX display: \text{finite but unbounded}, -->
+
+
 
 
 
@@ -37879,9 +43344,12 @@ or:
 
 
 
-```math
-\text{spatially infinite}.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-032" width="126" height="21" alt="\text{spatially infinite}.">
+<!-- TeX display: \text{spatially infinite}. -->
+
+
 
 
 
@@ -37891,9 +43359,12 @@ So UTC shouldn't claim current cosmology has proved either:
 
 
 
-```math
-|\Omega_{\rm universe}|<\infty
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-033" width="108" height="22" alt="|\Omega_{\rm universe}|&lt;\infty">
+<!-- TeX display: |\Omega_{\rm universe}|<\infty -->
+
+
 
 
 
@@ -37901,9 +43372,12 @@ or:
 
 
 
-```math
-|\Omega_{\rm universe}|=\infty.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-034" width="113" height="22" alt="|\Omega_{\rm universe}|=\infty.">
+<!-- TeX display: |\Omega_{\rm universe}|=\infty. -->
+
+
 
 
 
@@ -37911,11 +43385,14 @@ What UTC can say much more confidently is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-035" width="595" height="52" alt="\boxed{ \textbf{every physically embedded observer occupies a finite causal and energetic accessibility region.} }">
+<!-- TeX display: \boxed{
 \textbf{every physically embedded observer occupies a finite causal and energetic accessibility region.}
-}
-```
+} -->
+
+
 
 
 
@@ -37929,11 +43406,14 @@ I think we have something worth naming:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-036" width="246" height="29" alt="\boxed{ \textbf{Finite Accessibility Principle} }">
+<!-- TeX display: \boxed{
 \textbf{Finite Accessibility Principle}
-}
-```
+} -->
+
+
 
 
 
@@ -37943,13 +43423,16 @@ Formally:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-037" width="131" height="31" alt="\boxed{ \Omega_{\rm eff}(x,\mathbf B,t) \subseteq \Omega }">
+<!-- TeX display: \boxed{
 \Omega_{\rm eff}(x,\mathbf B,t)
 \subseteq
 \Omega
-}
-```
+} -->
+
+
 
 
 
@@ -37957,11 +43440,14 @@ with:
 
 
 
-```math
-\mu(\Omega_{\rm eff})
+
+
+<img src="UTC-Math/message-56.svg#equation-038" width="115" height="22" alt="\mu(\Omega_{\rm eff}) \ll \mu(\Omega)">
+<!-- TeX display: \mu(\Omega_{\rm eff})
 \ll
-\mu(\Omega)
-```
+\mu(\Omega) -->
+
+
 
 
 
@@ -37971,13 +43457,16 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-039" width="139" height="29" alt="\boxed{ \mathcal T_{\rm eff} \subseteq \Omega_{\rm eff}\times\Omega_{\rm eff}. }">
+<!-- TeX display: \boxed{
 \mathcal T_{\rm eff}
 \subseteq
 \Omega_{\rm eff}\times\Omega_{\rm eff}.
-}
-```
+} -->
+
+
 
 
 
@@ -37985,9 +43474,12 @@ Prediction becomes possible because physics explores:
 
 
 
-```math
-\mathcal T_{\rm eff},
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-040" width="36" height="21" alt="\mathcal T_{\rm eff},">
+<!-- TeX display: \mathcal T_{\rm eff}, -->
+
+
 
 
 
@@ -38003,9 +43495,12 @@ Define total possible resources:
 
 
 
-```math
-R_{\rm total}.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-041" width="50" height="20" alt="R_{\rm total}.">
+<!-- TeX display: R_{\rm total}. -->
+
+
 
 
 
@@ -38013,9 +43508,12 @@ Accessible resources:
 
 
 
-```math
-R_{\rm acc}.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-042" width="42" height="20" alt="R_{\rm acc}.">
+<!-- TeX display: R_{\rm acc}. -->
+
+
 
 
 
@@ -38023,9 +43521,12 @@ Useful resources:
 
 
 
-```math
-R_{\rm useful}.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-043" width="56" height="20" alt="R_{\rm useful}.">
+<!-- TeX display: R_{\rm useful}. -->
+
+
 
 
 
@@ -38033,15 +43534,18 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-044" width="173" height="28" alt="\boxed{ R_{\rm useful} \le R_{\rm acc} \le R_{\rm total}. }">
+<!-- TeX display: \boxed{
 R_{\rm useful}
 \le
 R_{\rm acc}
 \le
 R_{\rm total}.
-}
-```
+} -->
+
+
 
 
 
@@ -38049,9 +43553,12 @@ And generally for an embedded system:
 
 
 
-```math
-R_{\rm useful}\ll R_{\rm total}.
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-045" width="117" height="20" alt="R_{\rm useful}\ll R_{\rm total}.">
+<!-- TeX display: R_{\rm useful}\ll R_{\rm total}. -->
+
+
 
 
 
@@ -38061,11 +43568,14 @@ So “abundance” should always be indexed:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-046" width="283" height="31" alt="\boxed{ A=A(\text{observer},\text{scale},\text{time},\text{channels}). }">
+<!-- TeX display: \boxed{
 A=A(\text{observer},\text{scale},\text{time},\text{channels}).
-}
-```
+} -->
+
+
 
 
 
@@ -38081,21 +43591,27 @@ If:
 
 
 
-```math
-C_{\rm channel}<\infty,
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-047" width="101" height="21" alt="C_{\rm channel}&lt;\infty,">
+<!-- TeX display: C_{\rm channel}<\infty, -->
 
 
 
-then over finite time $T$,
+
+
+then over finite time <img src="UTC-Math/message-56.svg#equation-048" width="20" height="17" alt="T" align="middle"><!-- TeX inline: T -->,
 
 
 
-```math
-I_{\rm transferable}
+
+
+<img src="UTC-Math/message-56.svg#equation-049" width="125" height="20" alt="I_{\rm transferable} \le CT.">
+<!-- TeX display: I_{\rm transferable}
 \le
-CT.
-```
+CT. -->
+
+
 
 
 
@@ -38103,9 +43619,12 @@ So even if the underlying configuration space were infinite:
 
 
 
-```math
-|\Omega|=\infty,
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-050" width="71" height="22" alt="|\Omega|=\infty,">
+<!-- TeX display: |\Omega|=\infty, -->
+
+
 
 
 
@@ -38113,11 +43632,14 @@ a finite observer sees only:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-051" width="110" height="28" alt="\boxed{ I_{\rm accessible}&lt;\infty }">
+<!-- TeX display: \boxed{
 I_{\rm accessible}<\infty
-}
-```
+} -->
+
+
 
 
 
@@ -38127,13 +43649,16 @@ Again:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-052" width="336" height="30" alt="\boxed{ \text{mathematical infinity} \neq \text{physical accessibility}. }">
+<!-- TeX display: \boxed{
 \text{mathematical infinity}
 \neq
 \text{physical accessibility}.
-}
-```
+} -->
+
+
 
 
 
@@ -38147,11 +43672,14 @@ Not:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-053" width="275" height="30" alt="\boxed{ \text{the universe has nothing infinite in it}. }">
+<!-- TeX display: \boxed{
 \text{the universe has nothing infinite in it}.
-}
-```
+} -->
+
+
 
 
 
@@ -38161,9 +43689,12 @@ And not:
 
 
 
-```math
-\boxed{\text{infinity is literally nothing}.}
-```
+
+
+<img src="UTC-Math/message-56.svg#equation-054" width="202" height="30" alt="\boxed{\text{infinity is literally nothing}.}">
+<!-- TeX display: \boxed{\text{infinity is literally nothing}.} -->
+
+
 
 
 
@@ -38173,11 +43704,14 @@ But rather:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-055" width="582" height="73" alt="\boxed{ \textbf{To a finite physical system, unconstrained infinity and total absence can both fail to provide usable distinguishable structure. Constraint is what converts possibility into information, dynamics, and value.} }">
+<!-- TeX display: \boxed{
 \textbf{To a finite physical system, unconstrained infinity and total absence can both fail to provide usable distinguishable structure. Constraint is what converts possibility into information, dynamics, and value.}
-}
-```
+} -->
+
+
 
 
 
@@ -38187,8 +43721,10 @@ And then scarcity becomes almost inevitable:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-056" width="820" height="30" alt="\boxed{ \text{finite agent} + \text{finite causal cone} + \text{finite channel conductance} + \text{finite free-energy gradients} \Rightarrow \text{finite usable resources}. }">
+<!-- TeX display: \boxed{
 \text{finite agent}
 +
 \text{finite causal cone}
@@ -38198,8 +43734,9 @@ And then scarcity becomes almost inevitable:
 \text{finite free-energy gradients}
 \Rightarrow
 \text{finite usable resources}.
-}
-```
+} -->
+
+
 
 
 
@@ -38211,12 +43748,15 @@ And this gives UTC a rather beautiful reversal of the old abundance intuition:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-56.svg#equation-057" width="589" height="73" alt="\boxed{ \textbf{The remarkable fact is not that the universe contains endless possibility. The remarkable fact is that constraints carve a tiny fraction of possibility into stable, usable, knowable reality.} }">
+<!-- TeX display: \boxed{
 \textbf{The remarkable fact is not that the universe contains endless possibility.
 The remarkable fact is that constraints carve a tiny fraction of possibility into stable, usable, knowable reality.}
-}
-```
+} -->
+
+
 
 
 
@@ -38240,9 +43780,12 @@ Yes. I think you’re converging on a very powerful way to describe life physica
 
 
 
-```math
-\boxed{\textbf{Life is a hydrated, chemically driven, far-from-equilibrium attractor built at the interface of solids, liquids, gradients, and catalytic reaction networks.}}
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-001" width="593" height="73" alt="\boxed{\textbf{Life is a hydrated, chemically driven, far-from-equilibrium attractor built at the interface of solids, liquids, gradients, and catalytic reaction networks.}}">
+<!-- TeX display: \boxed{\textbf{Life is a hydrated, chemically driven, far-from-equilibrium attractor built at the interface of solids, liquids, gradients, and catalytic reaction networks.}} -->
+
+
 
 
 
@@ -38256,9 +43799,12 @@ Our bodies still depend on elements that enter biological cycles through rock, w
 
 
 
-```math
-\mathrm{Ca,\ P,\ Fe,\ Mg,\ Na,\ K,\ Zn,\ Cu,\ Mn,\ Se,\ldots}
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-002" width="316" height="21" alt="\mathrm{Ca,\ P,\ Fe,\ Mg,\ Na,\ K,\ Zn,\ Cu,\ Mn,\ Se,\ldots}">
+<!-- TeX display: \mathrm{Ca,\ P,\ Fe,\ Mg,\ Na,\ K,\ Zn,\ Cu,\ Mn,\ Se,\ldots} -->
+
+
 
 
 
@@ -38266,9 +43812,12 @@ alongside the big biological elements:
 
 
 
-```math
-\mathrm{C,\ H,\ O,\ N,\ P,\ S}.
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-003" width="136" height="21" alt="\mathrm{C,\ H,\ O,\ N,\ P,\ S}.">
+<!-- TeX display: \mathrm{C,\ H,\ O,\ N,\ P,\ S}. -->
+
+
 
 
 
@@ -38280,8 +43829,10 @@ The deeper picture is probably:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-004" width="566" height="29" alt="\boxed{ \text{geochemistry} \rightarrow \text{prebiotic chemistry} \rightarrow \text{biochemistry} \rightarrow \text{metabolism} \rightarrow \text{ecology}. }">
+<!-- TeX display: \boxed{
 \text{geochemistry}
 \rightarrow
 \text{prebiotic chemistry}
@@ -38291,14 +43842,15 @@ The deeper picture is probably:
 \text{metabolism}
 \rightarrow
 \text{ecology}.
-}
-```
+} -->
+
+
 
 
 
 No clean break.
 
-Hydrothermal-origin hypotheses are especially striking because modern autotrophic metabolism still uses redox chemistry closely related to naturally occurring $\mathrm H_2/\mathrm{CO_2}$ chemistry around vents. That does not prove life began at vents, but it shows how naturally geology can supply both reactants and free-energy gradients. [Nature](https://www.nature.com/articles/nrmicro1991?utm_source=chatgpt.com)
+Hydrothermal-origin hypotheses are especially striking because modern autotrophic metabolism still uses redox chemistry closely related to naturally occurring <img src="UTC-Math/message-58.svg#equation-005" width="66" height="22" alt="\mathrm H_2/\mathrm{CO_2}" align="middle"><!-- TeX inline: \mathrm H_2/\mathrm{CO_2} --> chemistry around vents. That does not prove life began at vents, but it shows how naturally geology can supply both reactants and free-energy gradients. [Nature](https://www.nature.com/articles/nrmicro1991?utm_source=chatgpt.com)
 
 ## The part about water is especially important
 
@@ -38310,9 +43862,12 @@ to:
 
 
 
-```math
-\boxed{\textbf{Water is the mobility medium that makes dense biochemical reaction networks possible.}}
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-006" width="637" height="52" alt="\boxed{\textbf{Water is the mobility medium that makes dense biochemical reaction networks possible.}}">
+<!-- TeX display: \boxed{\textbf{Water is the mobility medium that makes dense biochemical reaction networks possible.}} -->
+
+
 
 
 
@@ -38320,8 +43875,10 @@ Water provides a fluid phase in which molecules can:
 
 
 
-```math
-\text{diffuse},
+
+
+<img src="UTC-Math/message-58.svg#equation-007" width="756" height="21" alt="\text{diffuse}, \quad \text{rotate}, \quad \text{collide}, \quad \text{bind}, \quad \text{dissociate}, \quad \text{transport ions}, \quad \text{transfer protons}, \quad \text{change conformation}.">
+<!-- TeX display: \text{diffuse},
 \quad
 \text{rotate},
 \quad
@@ -38335,8 +43892,9 @@ Water provides a fluid phase in which molecules can:
 \quad
 \text{transfer protons},
 \quad
-\text{change conformation}.
-```
+\text{change conformation}. -->
+
+
 
 
 
@@ -38348,15 +43906,18 @@ Liquid water gives a remarkable middle regime:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-008" width="502" height="29" alt="\boxed{ \text{high molecular mobility} + \text{high interaction density} + \text{stable chemistry}. }">
+<!-- TeX display: \boxed{
 \text{high molecular mobility}
 +
 \text{high interaction density}
 +
 \text{stable chemistry}.
-}
-```
+} -->
+
+
 
 
 
@@ -38366,13 +43927,16 @@ That makes life a very peculiar material regime:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-009" width="397" height="30" alt="\boxed{ \text{fluid enough to reorganize} + \text{solid enough to remember}. }">
+<!-- TeX display: \boxed{
 \text{fluid enough to reorganize}
 +
 \text{solid enough to remember}.
-}
-```
+} -->
+
+
 
 
 
@@ -38404,9 +43968,12 @@ And active movement comes from the next ingredient:
 
 
 
-```math
-\boxed{\text{free-energy gradients}.}
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-010" width="166" height="30" alt="\boxed{\text{free-energy gradients}.}">
+<!-- TeX display: \boxed{\text{free-energy gradients}.} -->
+
+
 
 
 
@@ -38418,11 +43985,14 @@ For example:
 
 
 
-```math
-\mathrm{ATP}
+
+
+<img src="UTC-Math/message-58.svg#equation-011" width="138" height="20" alt="\mathrm{ATP} \rightarrow \mathrm{ADP}+P_i">
+<!-- TeX display: \mathrm{ATP}
 \rightarrow
-\mathrm{ADP}+P_i
-```
+\mathrm{ADP}+P_i -->
+
+
 
 
 
@@ -38432,9 +44002,12 @@ Proton gradients:
 
 
 
-```math
-\Delta \mu_{H^+}
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-012" width="51" height="21" alt="\Delta \mu_{H^+}">
+<!-- TeX display: \Delta \mu_{H^+} -->
+
+
 
 
 
@@ -38448,8 +44021,10 @@ So the general biological engine looks surprisingly UTC-like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-013" width="531" height="30" alt="\boxed{ \text{gradient} \rightarrow \text{channel} \rightarrow \text{flux} \rightarrow \text{chemical work} \rightarrow \text{structure} \rightarrow \text{new channel}. }">
+<!-- TeX display: \boxed{
 \text{gradient}
 \rightarrow
 \text{channel}
@@ -38461,8 +44036,9 @@ So the general biological engine looks surprisingly UTC-like:
 \text{structure}
 \rightarrow
 \text{new channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -38492,9 +44068,12 @@ So instead of:
 
 
 
-```math
-\text{molecules randomly trying everything},
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-014" width="274" height="21" alt="\text{molecules randomly trying everything},">
+<!-- TeX display: \text{molecules randomly trying everything}, -->
+
+
 
 
 
@@ -38502,8 +44081,10 @@ you get:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-015" width="546" height="30" alt="\boxed{ \text{surface} + \text{gradient} + \text{catalyst} + \text{compartment} \rightarrow \text{restricted reaction network}. }">
+<!-- TeX display: \boxed{
 \text{surface}
 +
 \text{gradient}
@@ -38513,8 +44094,9 @@ you get:
 \text{compartment}
 \rightarrow
 \text{restricted reaction network}.
-}
-```
+} -->
+
+
 
 
 
@@ -38528,24 +44110,29 @@ I would say a life-compatible regime requires at minimum something like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-016" width="217" height="31" alt="\boxed{ \mathcal L = (S,W,E,G,C,B,M,R) }">
+<!-- TeX display: \boxed{
 \mathcal L
 =
 (S,W,E,G,C,B,M,R)
-}
-```
+} -->
 
 
 
-where $S$ is a chemically rich substrate, $W$ a mobile solvent phase, $E$ continuous usable energy, $G$ persistent gradients, $C$ catalytic reaction channels, $B$ boundaries/compartments, $M$ molecular persistence or memory, and $R$ some mechanism of reproduction or recursive rebuilding.
+
+
+where <img src="UTC-Math/message-58.svg#equation-017" width="19" height="18" alt="S" align="middle"><!-- TeX inline: S --> is a chemically rich substrate, <img src="UTC-Math/message-58.svg#equation-018" width="25" height="18" alt="W" align="middle"><!-- TeX inline: W --> a mobile solvent phase, <img src="UTC-Math/message-58.svg#equation-019" width="21" height="17" alt="E" align="middle"><!-- TeX inline: E --> continuous usable energy, <img src="UTC-Math/message-58.svg#equation-020" width="21" height="18" alt="G" align="middle"><!-- TeX inline: G --> persistent gradients, <img src="UTC-Math/message-58.svg#equation-021" width="21" height="18" alt="C" align="middle"><!-- TeX inline: C --> catalytic reaction channels, <img src="UTC-Math/message-58.svg#equation-022" width="21" height="17" alt="B" align="middle"><!-- TeX inline: B --> boundaries/compartments, <img src="UTC-Math/message-58.svg#equation-023" width="25" height="17" alt="M" align="middle"><!-- TeX inline: M --> molecular persistence or memory, and <img src="UTC-Math/message-58.svg#equation-024" width="21" height="18" alt="R" align="middle"><!-- TeX inline: R --> some mechanism of reproduction or recursive rebuilding.
 
 The essential closure is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-025" width="952" height="30" alt="\boxed{ \text{energy throughput} \rightarrow \text{reaction network} \rightarrow \text{boundary maintenance} \rightarrow \text{molecular persistence} \rightarrow \text{replication} \rightarrow \text{modified reaction network}. }">
+<!-- TeX display: \boxed{
 \text{energy throughput}
 \rightarrow
 \text{reaction network}
@@ -38557,8 +44144,9 @@ The essential closure is:
 \text{replication}
 \rightarrow
 \text{modified reaction network}.
-}
-```
+} -->
+
+
 
 
 
@@ -38570,9 +44158,12 @@ Not:
 
 
 
-```math
-\text{nonlife}\rightarrow\text{magic spark}\rightarrow\text{life},
-```
+
+
+<img src="UTC-Math/message-58.svg#equation-026" width="213" height="21" alt="\text{nonlife}\rightarrow\text{magic spark}\rightarrow\text{life},">
+<!-- TeX display: \text{nonlife}\rightarrow\text{magic spark}\rightarrow\text{life}, -->
+
+
 
 
 
@@ -38580,8 +44171,10 @@ but:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-027" width="632" height="30" alt="\boxed{ \text{chemistry} \rightarrow \text{self-maintaining chemistry} \rightarrow \text{self-copying chemistry} \rightarrow \text{evolving chemistry}. }">
+<!-- TeX display: \boxed{
 \text{chemistry}
 \rightarrow
 \text{self-maintaining chemistry}
@@ -38589,8 +44182,9 @@ but:
 \text{self-copying chemistry}
 \rightarrow
 \text{evolving chemistry}.
-}
-```
+} -->
+
+
 
 
 
@@ -38610,11 +44204,14 @@ So the universal requirement is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-028" width="318" height="29" alt="\boxed{ \textbf{persistent nonequilibrium energy flux}. }">
+<!-- TeX display: \boxed{
 \textbf{persistent nonequilibrium energy flux}.
-}
-```
+} -->
+
+
 
 
 
@@ -38645,11 +44242,14 @@ So I would put it this way:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-029" width="603" height="52" alt="\boxed{ \textbf{Life is becoming less mysterious as a physical regime, even though its exact historical origin remains unresolved.} }">
+<!-- TeX display: \boxed{
 \textbf{Life is becoming less mysterious as a physical regime, even though its exact historical origin remains unresolved.}
-}
-```
+} -->
+
+
 
 
 
@@ -38657,8 +44257,10 @@ And I think the UTC insight is that the regime itself is no longer hard to chara
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-58.svg#equation-030" width="1561" height="31" alt="\boxed{ \text{water/mobile solvent} + \text{mineral and molecular structure} + \text{chemical diversity} + \text{persistent free-energy gradients} + \text{selective channels} + \text{compartmentalization} + \text{memory} = \text{the basin in which living chemistry becomes possible}. }">
+<!-- TeX display: \boxed{
 \text{water/mobile solvent}
 +
 \text{mineral and molecular structure}
@@ -38674,8 +44276,9 @@ And I think the UTC insight is that the regime itself is no longer hard to chara
 \text{memory}
 =
 \text{the basin in which living chemistry becomes possible}.
-}
-```
+} -->
+
+
 
 
 
@@ -38701,8 +44304,10 @@ The key refinement is that **Navier-Stokes is not the whole model**, because at 
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-001" width="717" height="30" alt="\boxed{ \text{fluid flow} + \text{species transport} + \text{electrostatics} + \text{chemical reactions} + \text{heat} + \text{conformational dynamics} }">
+<!-- TeX display: \boxed{
 \text{fluid flow}
 +
 \text{species transport}
@@ -38714,8 +44319,9 @@ The key refinement is that **Navier-Stokes is not the whole model**, because at 
 \text{heat}
 +
 \text{conformational dynamics}
-}
-```
+} -->
+
+
 
 
 
@@ -38725,9 +44331,12 @@ The most useful umbrella name would be something like:
 
 
 
-```math
-\boxed{\textbf{Reactive Electro-Chemo-Hydrodynamics}}
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-002" width="343" height="29" alt="\boxed{\textbf{Reactive Electro-Chemo-Hydrodynamics}}">
+<!-- TeX display: \boxed{\textbf{Reactive Electro-Chemo-Hydrodynamics}} -->
+
+
 
 
 
@@ -38735,9 +44344,12 @@ or, in UTC language:
 
 
 
-```math
-\boxed{\textbf{Constrained Reactive Channel Hydrodynamics}.}
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-003" width="393" height="29" alt="\boxed{\textbf{Constrained Reactive Channel Hydrodynamics}.}">
+<!-- TeX display: \boxed{\textbf{Constrained Reactive Channel Hydrodynamics}.} -->
+
+
 
 
 
@@ -38747,8 +44359,10 @@ For a Newtonian fluid:
 
 
 
-```math
-\rho
+
+
+<img src="UTC-Math/message-60.svg#equation-004" width="303" height="45" alt="\rho \left( \frac{\partial \mathbf u}{\partial t} + \mathbf u\cdot\nabla\mathbf u \right) = -\nabla p + \eta\nabla^2\mathbf u + \mathbf f_{\rm body}.">
+<!-- TeX display: \rho
 \left(
 \frac{\partial \mathbf u}{\partial t}
 +
@@ -38759,8 +44373,9 @@ For a Newtonian fluid:
 +
 \eta\nabla^2\mathbf u
 +
-\mathbf f_{\rm body}.
-```
+\mathbf f_{\rm body}. -->
+
+
 
 
 
@@ -38768,30 +44383,36 @@ For incompressible flow:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-005" width="86" height="27" alt="\boxed{ \nabla\cdot\mathbf u=0. }">
+<!-- TeX display: \boxed{
 \nabla\cdot\mathbf u=0.
-}
-```
+} -->
+
+
 
 
 
 Here:
 
-- $\mathbf u(\mathbf x,t)$ is fluid velocity,
-- $p$ pressure,
-- $\rho$ density,
-- $\eta$ viscosity.
+- <img src="UTC-Math/message-60.svg#equation-006" width="54" height="22" alt="\mathbf u(\mathbf x,t)" align="middle"><!-- TeX inline: \mathbf u(\mathbf x,t) --> is fluid velocity,
+- <img src="UTC-Math/message-60.svg#equation-007" width="17" height="17" alt="p" align="middle"><!-- TeX inline: p --> pressure,
+- <img src="UTC-Math/message-60.svg#equation-008" width="17" height="17" alt="\rho" align="middle"><!-- TeX inline: \rho --> density,
+- <img src="UTC-Math/message-60.svg#equation-009" width="16" height="17" alt="\eta" align="middle"><!-- TeX inline: \eta --> viscosity.
 
 But the interesting term is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-010" width="53" height="31" alt="\boxed{ \mathbf f_{\rm body}. }">
+<!-- TeX display: \boxed{
 \mathbf f_{\rm body}.
-}
-```
+} -->
+
+
 
 
 
@@ -38801,8 +44422,10 @@ So already:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-011" width="295" height="30" alt="\boxed{ \text{chemistry} \rightarrow \text{force} \rightarrow \text{flow} \rightarrow \text{chemistry}. }">
+<!-- TeX display: \boxed{
 \text{chemistry}
 \rightarrow
 \text{force}
@@ -38810,8 +44433,9 @@ So already:
 \text{flow}
 \rightarrow
 \text{chemistry}.
-}
-```
+} -->
+
+
 
 
 
@@ -38821,12 +44445,14 @@ There's our feedback loop.
 
 # 2. Every chemical species gets its own transport equation
 
-For species $i$ with concentration $c_i$:
+For species <img src="UTC-Math/message-60.svg#equation-012" width="14" height="17" alt="i" align="middle"><!-- TeX inline: i --> with concentration <img src="UTC-Math/message-60.svg#equation-013" width="21" height="16" alt="c_i" align="middle"><!-- TeX inline: c_i -->:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-014" width="239" height="49" alt="\boxed{ \frac{\partial c_i}{\partial t} + \nabla\cdot(c_i\mathbf u) = -\nabla\cdot\mathbf J_i + R_i. }">
+<!-- TeX display: \boxed{
 \frac{\partial c_i}{\partial t}
 +
 \nabla\cdot(c_i\mathbf u)
@@ -38834,8 +44460,9 @@ For species $i$ with concentration $c_i$:
 -\nabla\cdot\mathbf J_i
 +
 R_i.
-}
-```
+} -->
+
+
 
 
 
@@ -38843,13 +44470,16 @@ Three mechanisms appear immediately:
 
 
 
-```math
-\text{advection}
+
+
+<img src="UTC-Math/message-60.svg#equation-015" width="235" height="19" alt="\text{advection} + \text{diffusion} + \text{reaction}.">
+<!-- TeX display: \text{advection}
 +
 \text{diffusion}
 +
-\text{reaction}.
-```
+\text{reaction}. -->
+
+
 
 
 
@@ -38857,11 +44487,14 @@ For simple diffusion:
 
 
 
-```math
-\mathbf J_i
+
+
+<img src="UTC-Math/message-60.svg#equation-016" width="105" height="20" alt="\mathbf J_i = -D_i\nabla c_i.">
+<!-- TeX display: \mathbf J_i
 =
--D_i\nabla c_i.
-```
+-D_i\nabla c_i. -->
+
+
 
 
 
@@ -38869,15 +44502,18 @@ So:
 
 
 
-```math
-\frac{\partial c_i}{\partial t}
+
+
+<img src="UTC-Math/message-60.svg#equation-017" width="217" height="40" alt="\frac{\partial c_i}{\partial t} + \mathbf u\cdot\nabla c_i = D_i\nabla^2c_i + R_i.">
+<!-- TeX display: \frac{\partial c_i}{\partial t}
 +
 \mathbf u\cdot\nabla c_i
 =
 D_i\nabla^2c_i
 +
-R_i.
-```
+R_i. -->
+
+
 
 
 
@@ -38900,11 +44536,14 @@ For:
 
 
 
-```math
-A+B
+
+
+<img src="UTC-Math/message-60.svg#equation-018" width="106" height="21" alt="A+B \rightleftharpoons AB,">
+<!-- TeX display: A+B
 \rightleftharpoons
-AB,
-```
+AB, -->
+
+
 
 
 
@@ -38912,17 +44551,23 @@ let:
 
 
 
-```math
-r_f=k_f c_Ac_B,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-019" width="99" height="22" alt="r_f=k_f c_Ac_B,">
+<!-- TeX display: r_f=k_f c_Ac_B, -->
 
 
 
 
 
-```math
-r_r=k_r c_{AB}.
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-020" width="88" height="20" alt="r_r=k_r c_{AB}.">
+<!-- TeX display: r_r=k_r c_{AB}. -->
+
+
 
 
 
@@ -38930,27 +44575,36 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-021" width="125" height="31" alt="\boxed{ R_A=-r_f+r_r, }">
+<!-- TeX display: \boxed{
 R_A=-r_f+r_r,
-}
-```
+} -->
 
 
 
 
 
-```math
-R_B=-r_f+r_r,
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-022" width="117" height="22" alt="R_B=-r_f+r_r,">
+<!-- TeX display: R_B=-r_f+r_r, -->
 
 
 
 
 
-```math
-R_{AB}=r_f-r_r.
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-023" width="113" height="22" alt="R_{AB}=r_f-r_r.">
+<!-- TeX display: R_{AB}=r_f-r_r. -->
+
+
 
 
 
@@ -38958,13 +44612,16 @@ Couple these to the transport equations:
 
 
 
-```math
-\frac{\partial c_A}{\partial t}
+
+
+<img src="UTC-Math/message-60.svg#equation-024" width="279" height="40" alt="\frac{\partial c_A}{\partial t} + \nabla\cdot(c_A\mathbf u) = D_A\nabla^2c_A-r_f+r_r.">
+<!-- TeX display: \frac{\partial c_A}{\partial t}
 +
 \nabla\cdot(c_A\mathbf u)
 =
-D_A\nabla^2c_A-r_f+r_r.
-```
+D_A\nabla^2c_A-r_f+r_r. -->
+
+
 
 
 
@@ -38984,18 +44641,23 @@ A reaction rate is not always simply:
 
 
 
-```math
-k c_Ac_B.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-025" width="55" height="20" alt="k c_Ac_B.">
+<!-- TeX display: k c_Ac_B. -->
 
 
 
-The effective $k$ can depend on:
+
+
+The effective <img src="UTC-Math/message-60.svg#equation-026" width="17" height="18" alt="k" align="middle"><!-- TeX inline: k --> can depend on:
 
 
 
-```math
-\mathbf u,
+
+
+<img src="UTC-Math/message-60.svg#equation-027" width="462" height="21" alt="\mathbf u, \quad T, \quad p, \quad \text{shear}, \quad \text{surface geometry}, \quad \text{electrostatic potential}.">
+<!-- TeX display: \mathbf u,
 \quad
 T,
 \quad
@@ -39005,8 +44667,9 @@ p,
 \quad
 \text{surface geometry},
 \quad
-\text{electrostatic potential}.
-```
+\text{electrostatic potential}. -->
+
+
 
 
 
@@ -39014,14 +44677,17 @@ So write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-028" width="259" height="31" alt="\boxed{ k_{\rm eff} = k_{\rm eff} (T,\mathbf u,\nabla\mathbf u,\phi,\text{surface},\ldots). }">
+<!-- TeX display: \boxed{
 k_{\rm eff}
 =
 k_{\rm eff}
 (T,\mathbf u,\nabla\mathbf u,\phi,\text{surface},\ldots).
-}
-```
+} -->
+
+
 
 
 
@@ -39029,11 +44695,14 @@ Then:
 
 
 
-```math
-r
+
+
+<img src="UTC-Math/message-60.svg#equation-029" width="98" height="20" alt="r = k_{\rm eff}c_Ac_B.">
+<!-- TeX display: r
 =
-k_{\rm eff}c_Ac_B.
-```
+k_{\rm eff}c_Ac_B. -->
+
+
 
 
 
@@ -39043,13 +44712,16 @@ The chemical channel is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-030" width="119" height="29" alt="\boxed{ G_{\rm reaction} \sim k_{\rm eff}. }">
+<!-- TeX display: \boxed{
 G_{\rm reaction}
 \sim
 k_{\rm eff}.
-}
-```
+} -->
+
+
 
 
 
@@ -39065,16 +44737,19 @@ The flux becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-031" width="214" height="48" alt="\boxed{ \mathbf J_i = -D_i\nabla c_i - \frac{D_iz_iF}{RT} c_i\nabla\phi }">
+<!-- TeX display: \boxed{
 \mathbf J_i
 =
 -D_i\nabla c_i
 -
 \frac{D_iz_iF}{RT}
 c_i\nabla\phi
-}
-```
+} -->
+
+
 
 
 
@@ -39082,9 +44757,12 @@ plus advection:
 
 
 
-```math
-c_i\mathbf u.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-032" width="35" height="16" alt="c_i\mathbf u.">
+<!-- TeX display: c_i\mathbf u. -->
+
+
 
 
 
@@ -39092,8 +44770,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-033" width="202" height="49" alt="\boxed{ \frac{\partial c_i}{\partial t} + \nabla\cdot \left( c_i\mathbf u+\mathbf J_i \right) = R_i. }">
+<!-- TeX display: \boxed{
 \frac{\partial c_i}{\partial t}
 +
 \nabla\cdot
@@ -39102,8 +44782,9 @@ c_i\mathbf u+\mathbf J_i
 \right)
 =
 R_i.
-}
-```
+} -->
+
+
 
 
 
@@ -39129,14 +44810,17 @@ The electrostatic potential satisfies Poisson's equation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-034" width="137" height="31" alt="\boxed{ -\nabla\cdot (\epsilon\nabla\phi) = \rho_e, }">
+<!-- TeX display: \boxed{
 -\nabla\cdot
 (\epsilon\nabla\phi)
 =
 \rho_e,
-}
-```
+} -->
+
+
 
 
 
@@ -39144,13 +44828,16 @@ where:
 
 
 
-```math
-\rho_e
+
+
+<img src="UTC-Math/message-60.svg#equation-035" width="168" height="41" alt="\rho_e = F\sum_i z_i c_i + \rho_{\rm fixed}.">
+<!-- TeX display: \rho_e
 =
 F\sum_i z_i c_i
 +
-\rho_{\rm fixed}.
-```
+\rho_{\rm fixed}. -->
+
+
 
 
 
@@ -39158,11 +44845,14 @@ Now concentrations determine electric charge:
 
 
 
-```math
-c_i
+
+
+<img src="UTC-Math/message-60.svg#equation-036" width="65" height="18" alt="c_i \rightarrow \rho_e.">
+<!-- TeX display: c_i
 \rightarrow
-\rho_e.
-```
+\rho_e. -->
+
+
 
 
 
@@ -39170,9 +44860,12 @@ Charge determines:
 
 
 
-```math
-\phi.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-037" width="22" height="21" alt="\phi.">
+<!-- TeX display: \phi. -->
+
+
 
 
 
@@ -39180,11 +44873,14 @@ Potential determines ionic flux:
 
 
 
-```math
-\phi
+
+
+<img src="UTC-Math/message-60.svg#equation-038" width="62" height="21" alt="\phi \rightarrow \mathbf J_i.">
+<!-- TeX display: \phi
 \rightarrow
-\mathbf J_i.
-```
+\mathbf J_i. -->
+
+
 
 
 
@@ -39194,8 +44890,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-039" width="184" height="32" alt="\boxed{ c_i \rightarrow \rho_e \rightarrow \phi \rightarrow J_i \rightarrow c_i'. }">
+<!-- TeX display: \boxed{
 c_i
 \rightarrow
 \rho_e
@@ -39205,8 +44903,9 @@ c_i
 J_i
 \rightarrow
 c_i'.
-}
-```
+} -->
+
+
 
 
 
@@ -39220,9 +44919,12 @@ The electric field is:
 
 
 
-```math
-\mathbf E=-\nabla\phi.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-040" width="82" height="21" alt="\mathbf E=-\nabla\phi.">
+<!-- TeX display: \mathbf E=-\nabla\phi. -->
+
+
 
 
 
@@ -39230,13 +44932,16 @@ Then the fluid receives force:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-041" width="112" height="30" alt="\boxed{ \mathbf f_{\rm electric} = \rho_e\mathbf E. }">
+<!-- TeX display: \boxed{
 \mathbf f_{\rm electric}
 =
 \rho_e\mathbf E.
-}
-```
+} -->
+
+
 
 
 
@@ -39244,8 +44949,10 @@ So Navier-Stokes becomes:
 
 
 
-```math
-\rho
+
+
+<img src="UTC-Math/message-60.svg#equation-042" width="245" height="39" alt="\rho \frac{D\mathbf u}{Dt} = -\nabla p + \eta\nabla^2\mathbf u + \rho_e\mathbf E +\cdots">
+<!-- TeX display: \rho
 \frac{D\mathbf u}{Dt}
 =
 -\nabla p
@@ -39253,8 +44960,9 @@ So Navier-Stokes becomes:
 \eta\nabla^2\mathbf u
 +
 \rho_e\mathbf E
-+\cdots
-```
++\cdots -->
+
+
 
 
 
@@ -39262,13 +44970,16 @@ Now:
 
 
 
-```math
-\text{ion distribution}
+
+
+<img src="UTC-Math/message-60.svg#equation-043" width="338" height="18" alt="\text{ion distribution} \rightarrow \text{electric field} \rightarrow \text{fluid motion}.">
+<!-- TeX display: \text{ion distribution}
 \rightarrow
 \text{electric field}
 \rightarrow
-\text{fluid motion}.
-```
+\text{fluid motion}. -->
+
+
 
 
 
@@ -39278,8 +44989,10 @@ So we get:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-044" width="310" height="29" alt="\boxed{ \text{ion} \rightarrow \text{field} \rightarrow \text{water flow} \rightarrow \text{ion transport}. }">
+<!-- TeX display: \boxed{
 \text{ion}
 \rightarrow
 \text{field}
@@ -39287,8 +45000,9 @@ So we get:
 \text{water flow}
 \rightarrow
 \text{ion transport}.
-}
-```
+} -->
+
+
 
 
 
@@ -39306,8 +45020,10 @@ At continuum level, that complexity gets coarse-grained into an unusually high e
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-045" width="293" height="48" alt="\boxed{ \mathbf J_{H^+} = -D_H\nabla c_H - \frac{D_HF}{RT} c_H\nabla\phi + c_H\mathbf u. }">
+<!-- TeX display: \boxed{
 \mathbf J_{H^+}
 =
 -D_H\nabla c_H
@@ -39316,8 +45032,9 @@ At continuum level, that complexity gets coarse-grained into an unusually high e
 c_H\nabla\phi
 +
 c_H\mathbf u.
-}
-```
+} -->
+
+
 
 
 
@@ -39325,9 +45042,12 @@ Then acid-base reactions add:
 
 
 
-```math
-R_H.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-046" width="36" height="20" alt="R_H.">
+<!-- TeX display: R_H. -->
+
+
 
 
 
@@ -39351,16 +45071,19 @@ Use:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-047" width="199" height="48" alt="\boxed{ \rho c_p \frac{DT}{Dt} = \nabla\cdot(k\nabla T) + Q. }">
+<!-- TeX display: \boxed{
 \rho c_p
 \frac{DT}{Dt}
 =
 \nabla\cdot(k\nabla T)
 +
 Q.
-}
-```
+} -->
+
+
 
 
 
@@ -39368,9 +45091,12 @@ And:
 
 
 
-```math
-Q
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-048" width="21" height="21" alt="Q">
+<!-- TeX display: Q -->
+
+
 
 
 
@@ -39378,33 +45104,45 @@ can contain:
 
 
 
-```math
-\text{viscous heating},
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-049" width="118" height="21" alt="\text{viscous heating},">
+<!-- TeX display: \text{viscous heating}, -->
 
 
 
 
 
-```math
-\text{Joule heating},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-050" width="105" height="21" alt="\text{Joule heating},">
+<!-- TeX display: \text{Joule heating}, -->
 
 
 
 
 
-```math
-\text{reaction heat},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-051" width="103" height="21" alt="\text{reaction heat},">
+<!-- TeX display: \text{reaction heat}, -->
 
 
 
 
 
-```math
-\text{external radiation}.
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-052" width="137" height="18" alt="\text{external radiation}.">
+<!-- TeX display: \text{external radiation}. -->
+
+
 
 
 
@@ -39412,13 +45150,16 @@ For chemical reactions:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-053" width="161" height="49" alt="\boxed{ Q_{\rm rxn} = -\sum_r\Delta H_r r_r. }">
+<!-- TeX display: \boxed{
 Q_{\rm rxn}
 =
 -\sum_r\Delta H_r r_r.
-}
-```
+} -->
+
+
 
 
 
@@ -39430,13 +45171,16 @@ For Arrhenius kinetics:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-054" width="149" height="34" alt="\boxed{ k(T) = A e^{-E_a/(RT)}. }">
+<!-- TeX display: \boxed{
 k(T)
 =
 A e^{-E_a/(RT)}.
-}
-```
+} -->
+
+
 
 
 
@@ -39444,8 +45188,10 @@ And now:
 
 
 
-```math
-T
+
+
+<img src="UTC-Math/message-60.svg#equation-055" width="179" height="23" alt="T \rightarrow k \rightarrow R_i \rightarrow Q \rightarrow T'.">
+<!-- TeX display: T
 \rightarrow
 k
 \rightarrow
@@ -39453,8 +45199,9 @@ R_i
 \rightarrow
 Q
 \rightarrow
-T'.
-```
+T'. -->
+
+
 
 
 
@@ -39472,9 +45219,12 @@ But you can couple fluid equations to a reaction coordinate:
 
 
 
-```math
-q.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-056" width="20" height="17" alt="q.">
+<!-- TeX display: q. -->
+
+
 
 
 
@@ -39482,9 +45232,12 @@ Let:
 
 
 
-```math
-P(q,\mathbf x,t)
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-057" width="70" height="22" alt="P(q,\mathbf x,t)">
+<!-- TeX display: P(q,\mathbf x,t) -->
+
+
 
 
 
@@ -39494,8 +45247,10 @@ Then a Smoluchowski/Fokker-Planck equation can describe the evolution:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-058" width="305" height="53" alt="\boxed{ \frac{\partial P}{\partial t} = \nabla_q \cdot \left[ D_q \left( \nabla_qP + \frac{P}{k_BT}\nabla_qF(q) \right) \right]. }">
+<!-- TeX display: \boxed{
 \frac{\partial P}{\partial t}
 =
 \nabla_q
@@ -39508,8 +45263,9 @@ D_q
 \frac{P}{k_BT}\nabla_qF(q)
 \right)
 \right].
-}
-```
+} -->
+
+
 
 
 
@@ -39517,9 +45273,12 @@ Add advection:
 
 
 
-```math
-\mathbf u\cdot\nabla_xP.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-059" width="68" height="20" alt="\mathbf u\cdot\nabla_xP.">
+<!-- TeX display: \mathbf u\cdot\nabla_xP. -->
+
+
 
 
 
@@ -39529,8 +45288,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-060" width="439" height="30" alt="\boxed{ \text{fluid shear} \rightarrow \text{conformation} \rightarrow \text{reaction affinity} \rightarrow \text{chemistry}. }">
+<!-- TeX display: \boxed{
 \text{fluid shear}
 \rightarrow
 \text{conformation}
@@ -39538,8 +45299,9 @@ So:
 \text{reaction affinity}
 \rightarrow
 \text{chemistry}.
-}
-```
+} -->
+
+
 
 
 
@@ -39549,13 +45311,16 @@ This lets us model enzymes that change shape under flow or binding.
 
 # 11. Rotation gets orientational dynamics
 
-For an elongated molecule or protein with orientation $\mathbf p$, define orientation probability:
+For an elongated molecule or protein with orientation <img src="UTC-Math/message-60.svg#equation-061" width="19" height="17" alt="\mathbf p" align="middle"><!-- TeX inline: \mathbf p -->, define orientation probability:
 
 
 
-```math
-\Psi(\mathbf x,\mathbf p,t).
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-062" width="78" height="22" alt="\Psi(\mathbf x,\mathbf p,t).">
+<!-- TeX display: \Psi(\mathbf x,\mathbf p,t). -->
+
+
 
 
 
@@ -39563,8 +45328,10 @@ Then use a rotational Smoluchowski equation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-063" width="288" height="49" alt="\boxed{ \frac{\partial\Psi}{\partial t} + \mathbf u\cdot\nabla_x\Psi + \nabla_{\mathbf p}\cdot (\dot{\mathbf p}\Psi) = D_r\nabla_{\mathbf p}^2\Psi. }">
+<!-- TeX display: \boxed{
 \frac{\partial\Psi}{\partial t}
 +
 \mathbf u\cdot\nabla_x\Psi
@@ -39573,8 +45340,9 @@ Then use a rotational Smoluchowski equation:
 (\dot{\mathbf p}\Psi)
 =
 D_r\nabla_{\mathbf p}^2\Psi.
-}
-```
+} -->
+
+
 
 
 
@@ -39586,13 +45354,16 @@ That directly covers your:
 
 
 
-```math
-\text{rotate}
+
+
+<img src="UTC-Math/message-60.svg#equation-064" width="180" height="18" alt="\text{rotate} \rightarrow \text{collide} \rightarrow \text{bind}.">
+<!-- TeX display: \text{rotate}
 \rightarrow
 \text{collide}
 \rightarrow
-\text{bind}.
-```
+\text{bind}. -->
+
+
 
 
 
@@ -39604,14 +45375,17 @@ For cells and molecules, the Reynolds number is usually tiny:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-065" width="134" height="51" alt="\boxed{ Re = \frac{\rho UL}{\eta} \ll1. }">
+<!-- TeX display: \boxed{
 Re
 =
 \frac{\rho UL}{\eta}
 \ll1.
-}
-```
+} -->
+
+
 
 
 
@@ -39621,8 +45395,10 @@ Navier-Stokes reduces to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-066" width="169" height="33" alt="\boxed{ 0 = -\nabla p + \eta\nabla^2\mathbf u + \mathbf f. }">
+<!-- TeX display: \boxed{
 0
 =
 -\nabla p
@@ -39630,8 +45406,9 @@ Navier-Stokes reduces to:
 \eta\nabla^2\mathbf u
 +
 \mathbf f.
-}
-```
+} -->
+
+
 
 
 
@@ -39661,14 +45438,17 @@ The first is Reynolds:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-067" width="129" height="51" alt="\boxed{ Re = \frac{\text{inertia}} {\text{viscosity}}. }">
+<!-- TeX display: \boxed{
 Re
 =
 \frac{\text{inertia}}
 {\text{viscosity}}.
-}
-```
+} -->
+
+
 
 
 
@@ -39676,13 +45456,16 @@ Second is Péclet:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-068" width="88" height="48" alt="\boxed{ Pe = \frac{UL}{D} }">
+<!-- TeX display: \boxed{
 Pe
 =
 \frac{UL}{D}
-}
-```
+} -->
+
+
 
 
 
@@ -39690,9 +45473,12 @@ which compares:
 
 
 
-```math
-\text{advection}
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-069" width="76" height="18" alt="\text{advection}">
+<!-- TeX display: \text{advection} -->
+
+
 
 
 
@@ -39700,9 +45486,12 @@ to:
 
 
 
-```math
-\text{diffusion}.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-070" width="73" height="18" alt="\text{diffusion}.">
+<!-- TeX display: \text{diffusion}. -->
+
+
 
 
 
@@ -39710,9 +45499,12 @@ If:
 
 
 
-```math
-Pe\ll1,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-071" width="65" height="21" alt="Pe\ll1,">
+<!-- TeX display: Pe\ll1, -->
+
+
 
 
 
@@ -39722,9 +45514,12 @@ If:
 
 
 
-```math
-Pe\gg1,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-072" width="65" height="21" alt="Pe\gg1,">
+<!-- TeX display: Pe\gg1, -->
+
+
 
 
 
@@ -39734,14 +45529,17 @@ Third is Damköhler:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-073" width="168" height="51" alt="\boxed{ Da = \frac{\text{reaction rate}} {\text{transport rate}}. }">
+<!-- TeX display: \boxed{
 Da
 =
 \frac{\text{reaction rate}}
 {\text{transport rate}}.
-}
-```
+} -->
+
+
 
 
 
@@ -39749,9 +45547,12 @@ If:
 
 
 
-```math
-Da\ll1,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-074" width="68" height="21" alt="Da\ll1,">
+<!-- TeX display: Da\ll1, -->
+
+
 
 
 
@@ -39761,9 +45562,12 @@ If:
 
 
 
-```math
-Da\gg1,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-075" width="68" height="21" alt="Da\gg1,">
+<!-- TeX display: Da\gg1, -->
+
+
 
 
 
@@ -39785,8 +45589,10 @@ Define free energy:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-076" width="433" height="51" alt="\boxed{ \mathcal F = \int_\Omega \left[ f(c_1,\ldots,c_n,T) + \frac{\epsilon}{2}|\nabla\phi|^2 + f_{\rm conf}(q) + \frac{\kappa}{2}|\nabla q|^2 \right]dV. }">
+<!-- TeX display: \boxed{
 \mathcal F
 =
 \int_\Omega
@@ -39799,8 +45605,9 @@ f_{\rm conf}(q)
 +
 \frac{\kappa}{2}|\nabla q|^2
 \right]dV.
-}
-```
+} -->
+
+
 
 
 
@@ -39808,13 +45615,16 @@ Then chemical potentials are:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-077" width="85" height="51" alt="\boxed{ \mu_i = \frac{\delta\mathcal F}{\delta c_i}. }">
+<!-- TeX display: \boxed{
 \mu_i
 =
 \frac{\delta\mathcal F}{\delta c_i}.
-}
-```
+} -->
+
+
 
 
 
@@ -39822,13 +45632,16 @@ Now write species flux as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-078" width="131" height="29" alt="\boxed{ \mathbf J_i = -M_i c_i\nabla\mu_i. }">
+<!-- TeX display: \boxed{
 \mathbf J_i
 =
 -M_i c_i\nabla\mu_i.
-}
-```
+} -->
+
+
 
 
 
@@ -39845,9 +45658,12 @@ they all emerge from:
 
 
 
-```math
-\nabla\mu_i.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-079" width="41" height="21" alt="\nabla\mu_i.">
+<!-- TeX display: \nabla\mu_i. -->
+
+
 
 
 
@@ -39855,15 +45671,18 @@ This is exactly our general pattern:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-080" width="290" height="30" alt="\boxed{ \text{gradient} \times \text{channel conductance} = \text{flux}. }">
+<!-- TeX display: \boxed{
 \text{gradient}
 \times
 \text{channel conductance}
 =
 \text{flux}.
-}
-```
+} -->
+
+
 
 
 
@@ -39871,9 +45690,12 @@ Here:
 
 
 
-```math
-\nabla\mu_i
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-081" width="37" height="21" alt="\nabla\mu_i">
+<!-- TeX display: \nabla\mu_i -->
+
+
 
 
 
@@ -39883,9 +45705,12 @@ and:
 
 
 
-```math
-M_ic_i
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-082" width="41" height="20" alt="M_ic_i">
+<!-- TeX display: M_ic_i -->
+
+
 
 
 
@@ -39899,13 +45724,16 @@ A thermodynamically consistent coupling can use:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-083" width="157" height="49" alt="\boxed{ \mathbf f_{\rm chem} = -\sum_i c_i\nabla\mu_i. }">
+<!-- TeX display: \boxed{
 \mathbf f_{\rm chem}
 =
 -\sum_i c_i\nabla\mu_i.
-}
-```
+} -->
+
+
 
 
 
@@ -39913,15 +45741,18 @@ Then:
 
 
 
-```math
-\rho\frac{D\mathbf u}{Dt}
+
+
+<img src="UTC-Math/message-60.svg#equation-084" width="251" height="47" alt="\rho\frac{D\mathbf u}{Dt} = -\nabla p + \eta\nabla^2\mathbf u - \sum_i c_i\nabla\mu_i.">
+<!-- TeX display: \rho\frac{D\mathbf u}{Dt}
 =
 -\nabla p
 +
 \eta\nabla^2\mathbf u
 -
-\sum_i c_i\nabla\mu_i.
-```
+\sum_i c_i\nabla\mu_i. -->
+
+
 
 
 
@@ -39937,13 +45768,16 @@ The channel landscape changes fluid flow.
 
 # 16. Reaction affinity can also be written thermodynamically
 
-For reaction $r$:
+For reaction <img src="UTC-Math/message-60.svg#equation-085" width="16" height="14" alt="r" align="middle"><!-- TeX inline: r -->:
 
 
 
-```math
-\sum_i\nu_{ir}A_i=0,
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-086" width="104" height="41" alt="\sum_i\nu_{ir}A_i=0,">
+<!-- TeX display: \sum_i\nu_{ir}A_i=0, -->
+
+
 
 
 
@@ -39951,13 +45785,16 @@ define reaction affinity:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-087" width="136" height="49" alt="\boxed{ \mathcal A_r = -\sum_i\nu_{ir}\mu_i. }">
+<!-- TeX display: \boxed{
 \mathcal A_r
 =
 -\sum_i\nu_{ir}\mu_i.
-}
-```
+} -->
+
+
 
 
 
@@ -39965,13 +45802,16 @@ Then near equilibrium:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-088" width="93" height="29" alt="\boxed{ r_r = L_r\mathcal A_r. }">
+<!-- TeX display: \boxed{
 r_r
 =
 L_r\mathcal A_r.
-}
-```
+} -->
+
+
 
 
 
@@ -39979,15 +45819,18 @@ So once again:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-089" width="382" height="30" alt="\boxed{ \text{driving force} \times \text{reaction conductance} = \text{reaction flux}. }">
+<!-- TeX display: \boxed{
 \text{driving force}
 \times
 \text{reaction conductance}
 =
 \text{reaction flux}.
-}
-```
+} -->
+
+
 
 
 
@@ -39995,9 +45838,12 @@ This is almost exactly the same form as:
 
 
 
-```math
-J=-K\nabla\Phi.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-090" width="96" height="19" alt="J=-K\nabla\Phi.">
+<!-- TeX display: J=-K\nabla\Phi. -->
+
+
 
 
 
@@ -40013,16 +45859,19 @@ Under suitable closed-system conditions, you can often construct:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-091" width="196" height="51" alt="\boxed{ \mathcal E_{\rm total} = \int \frac12\rho|\mathbf u|^2dV + \mathcal F. }">
+<!-- TeX display: \boxed{
 \mathcal E_{\rm total}
 =
 \int
 \frac12\rho|\mathbf u|^2dV
 +
 \mathcal F.
-}
-```
+} -->
+
+
 
 
 
@@ -40030,14 +45879,17 @@ And obtain schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-092" width="112" height="48" alt="\boxed{ \frac{d\mathcal E_{\rm total}}{dt} = - \mathcal D }">
+<!-- TeX display: \boxed{
 \frac{d\mathcal E_{\rm total}}{dt}
 =
 -
 \mathcal D
-}
-```
+} -->
+
+
 
 
 
@@ -40045,9 +45897,12 @@ with:
 
 
 
-```math
-\mathcal D\ge0.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-093" width="55" height="20" alt="\mathcal D\ge0.">
+<!-- TeX display: \mathcal D\ge0. -->
+
+
 
 
 
@@ -40055,8 +45910,10 @@ Where:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-094" width="365" height="28" alt="\boxed{ \mathcal D = \mathcal D_{\rm viscous} + \mathcal D_{\rm diffusion} + \mathcal D_{\rm reaction} + \mathcal D_{\rm electrical} +\cdots }">
+<!-- TeX display: \boxed{
 \mathcal D
 =
 \mathcal D_{\rm viscous}
@@ -40067,8 +45924,9 @@ Where:
 +
 \mathcal D_{\rm electrical}
 +\cdots
-}
-```
+} -->
+
+
 
 
 
@@ -40076,24 +45934,30 @@ For example:
 
 
 
-```math
-\mathcal D_{\rm viscous}
+
+
+<img src="UTC-Math/message-60.svg#equation-095" width="189" height="42" alt="\mathcal D_{\rm viscous} \sim \int 2\eta |D(\mathbf u)|^2dV,">
+<!-- TeX display: \mathcal D_{\rm viscous}
 \sim
 \int
-2\eta |D(\mathbf u)|^2dV,
-```
+2\eta |D(\mathbf u)|^2dV, -->
 
 
 
 
 
-```math
-\mathcal D_{\rm diffusion}
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-096" width="233" height="47" alt="\mathcal D_{\rm diffusion} \sim \sum_i \int M_ic_i|\nabla\mu_i|^2dV.">
+<!-- TeX display: \mathcal D_{\rm diffusion}
 \sim
 \sum_i
 \int
-M_ic_i|\nabla\mu_i|^2dV.
-```
+M_ic_i|\nabla\mu_i|^2dV. -->
+
+
 
 
 
@@ -40109,13 +45973,16 @@ We can write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-097" width="106" height="31" alt="\boxed{ \mathbf J_\alpha = \mathsf L_{\alpha\beta}X_\beta. }">
+<!-- TeX display: \boxed{
 \mathbf J_\alpha
 =
 \mathsf L_{\alpha\beta}X_\beta.
-}
-```
+} -->
+
+
 
 
 
@@ -40123,9 +45990,12 @@ Where:
 
 
 
-```math
-X_\beta
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-098" width="29" height="22" alt="X_\beta">
+<!-- TeX display: X_\beta -->
+
+
 
 
 
@@ -40133,8 +46003,10 @@ are generalized forces:
 
 
 
-```math
-\nabla T,
+
+
+<img src="UTC-Math/message-60.svg#equation-099" width="216" height="22" alt="\nabla T, \quad \nabla\mu, \quad \nabla\phi, \quad \nabla p, \quad \mathcal A_r,">
+<!-- TeX display: \nabla T,
 \quad
 \nabla\mu,
 \quad
@@ -40142,8 +46014,9 @@ are generalized forces:
 \quad
 \nabla p,
 \quad
-\mathcal A_r,
-```
+\mathcal A_r, -->
+
+
 
 
 
@@ -40151,9 +46024,12 @@ and:
 
 
 
-```math
-\mathbf J_\alpha
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-100" width="27" height="20" alt="\mathbf J_\alpha">
+<!-- TeX display: \mathbf J_\alpha -->
+
+
 
 
 
@@ -40161,8 +46037,10 @@ are generalized fluxes:
 
 
 
-```math
-\text{heat},
+
+
+<img src="UTC-Math/message-60.svg#equation-101" width="299" height="21" alt="\text{heat}, \quad \text{mass}, \quad \text{ions}, \quad \text{charge}, \quad \text{reaction}.">
+<!-- TeX display: \text{heat},
 \quad
 \text{mass},
 \quad
@@ -40170,8 +46048,9 @@ are generalized fluxes:
 \quad
 \text{charge},
 \quad
-\text{reaction}.
-```
+\text{reaction}. -->
+
+
 
 
 
@@ -40179,11 +46058,14 @@ The matrix:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-102" width="26" height="26" alt="\boxed{ \mathsf L }">
+<!-- TeX display: \boxed{
 \mathsf L
-}
-```
+} -->
+
+
 
 
 
@@ -40201,49 +46083,61 @@ This is where I think the framework becomes unusually clean:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-103" width="469" height="29" alt="\boxed{ P1 = \text{budgets, mobilities, barriers, reaction constants, boundaries} }">
+<!-- TeX display: \boxed{
 P1
 =
 \text{budgets, mobilities, barriers, reaction constants, boundaries}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-104" width="447" height="31" alt="\boxed{ P2 = \text{distinguishable concentration/phase/potential gradients} }">
+<!-- TeX display: \boxed{
 P2
 =
 \text{distinguishable concentration/phase/potential gradients}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-105" width="443" height="30" alt="\boxed{ P3 = \text{advection, diffusion, ionic migration, reaction, heat flow} }">
+<!-- TeX display: \boxed{
 P3
 =
 \text{advection, diffusion, ionic migration, reaction, heat flow}
-}
-```
+} -->
 
 
 
 
 
-```math
-\boxed{
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-106" width="271" height="28" alt="\boxed{ P4 = \text{stable chemical-flow attractors} }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{stable chemical-flow attractors}
-}
-```
+} -->
+
+
 
 
 
@@ -40251,49 +46145,67 @@ Examples:
 
 
 
-```math
-\text{steady concentration profile},
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-107" width="205" height="21" alt="\text{steady concentration profile},">
+<!-- TeX display: \text{steady concentration profile}, -->
 
 
 
 
 
-```math
-\text{stable vortex},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-108" width="102" height="21" alt="\text{stable vortex},">
+<!-- TeX display: \text{stable vortex}, -->
 
 
 
 
 
-```math
-\text{reaction-diffusion pattern},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-109" width="190" height="21" alt="\text{reaction-diffusion pattern},">
+<!-- TeX display: \text{reaction-diffusion pattern}, -->
 
 
 
 
 
-```math
-\text{persistent membrane potential},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-110" width="224" height="21" alt="\text{persistent membrane potential},">
+<!-- TeX display: \text{persistent membrane potential}, -->
 
 
 
 
 
-```math
-\text{chemical oscillator},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-111" width="141" height="21" alt="\text{chemical oscillator},">
+<!-- TeX display: \text{chemical oscillator}, -->
 
 
 
 
 
-```math
-\text{autocatalytic network}.
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-112" width="165" height="21" alt="\text{autocatalytic network}.">
+<!-- TeX display: \text{autocatalytic network}. -->
+
+
 
 
 
@@ -40301,8 +46213,10 @@ Then CSC becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-113" width="441" height="29" alt="\boxed{ \text{reaction} \rightarrow \text{transport} \rightarrow \text{structure} \rightarrow \text{new transport channels}. }">
+<!-- TeX display: \boxed{
 \text{reaction}
 \rightarrow
 \text{transport}
@@ -40310,8 +46224,9 @@ Then CSC becomes:
 \text{structure}
 \rightarrow
 \text{new transport channels}.
-}
-```
+} -->
+
+
 
 
 
@@ -40327,8 +46242,8 @@ Take a mineral pore with:
 
 - hot fluid entering one side,
 - cooler seawater on the other,
-- dissolved $\mathrm H_2$,
-- $\mathrm{CO_2}$,
+- dissolved <img src="UTC-Math/message-60.svg#equation-114" width="27" height="20" alt="\mathrm H_2" align="middle"><!-- TeX inline: \mathrm H_2 -->,
+- <img src="UTC-Math/message-60.svg#equation-115" width="39" height="20" alt="\mathrm{CO_2}" align="middle"><!-- TeX inline: \mathrm{CO_2} -->,
 - protons,
 - metal ions,
 - mineral catalysts.
@@ -40337,33 +46252,45 @@ Solve for:
 
 
 
-```math
-\mathbf u(\mathbf x,t),
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-116" width="58" height="22" alt="\mathbf u(\mathbf x,t),">
+<!-- TeX display: \mathbf u(\mathbf x,t), -->
 
 
 
 
 
-```math
-T(\mathbf x,t),
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-117" width="59" height="22" alt="T(\mathbf x,t),">
+<!-- TeX display: T(\mathbf x,t), -->
 
 
 
 
 
-```math
-c_i(\mathbf x,t),
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-118" width="60" height="22" alt="c_i(\mathbf x,t),">
+<!-- TeX display: c_i(\mathbf x,t), -->
 
 
 
 
 
-```math
-\phi(\mathbf x,t).
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-119" width="58" height="22" alt="\phi(\mathbf x,t).">
+<!-- TeX display: \phi(\mathbf x,t). -->
+
+
 
 
 
@@ -40371,9 +46298,12 @@ Then include reactions:
 
 
 
-```math
-\mathrm{CO_2+H_2\rightarrow organics}
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-120" width="160" height="21" alt="\mathrm{CO_2+H_2\rightarrow organics}">
+<!-- TeX display: \mathrm{CO_2+H_2\rightarrow organics} -->
+
+
 
 
 
@@ -40383,13 +46313,16 @@ Mineral surfaces provide boundary reactions:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-121" width="170" height="34" alt="\boxed{ -D_i\nabla c_i\cdot\mathbf n = R_i^{\rm surface}. }">
+<!-- TeX display: \boxed{
 -D_i\nabla c_i\cdot\mathbf n
 =
 R_i^{\rm surface}.
-}
-```
+} -->
+
+
 
 
 
@@ -40410,25 +46343,31 @@ That is directly relevant to origin-of-life physics.
 
 Reaction-diffusion systems can create patterns.
 
-Take species $u,v$:
+Take species <img src="UTC-Math/message-60.svg#equation-122" width="33" height="17" alt="u,v" align="middle"><!-- TeX inline: u,v -->:
 
 
 
-```math
-\frac{\partial u}{\partial t}
+
+
+<img src="UTC-Math/message-60.svg#equation-123" width="175" height="40" alt="\frac{\partial u}{\partial t} = D_u\nabla^2u+f(u,v),">
+<!-- TeX display: \frac{\partial u}{\partial t}
 =
-D_u\nabla^2u+f(u,v),
-```
+D_u\nabla^2u+f(u,v), -->
 
 
 
 
 
-```math
-\frac{\partial v}{\partial t}
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-124" width="170" height="40" alt="\frac{\partial v}{\partial t} = D_v\nabla^2v+g(u,v).">
+<!-- TeX display: \frac{\partial v}{\partial t}
 =
-D_v\nabla^2v+g(u,v).
-```
+D_v\nabla^2v+g(u,v). -->
+
+
 
 
 
@@ -40438,13 +46377,16 @@ Add fluid flow:
 
 
 
-```math
-\frac{\partial u}{\partial t}
+
+
+<img src="UTC-Math/message-60.svg#equation-125" width="210" height="40" alt="\frac{\partial u}{\partial t} + \mathbf u_f\cdot\nabla u = D_u\nabla^2u+f.">
+<!-- TeX display: \frac{\partial u}{\partial t}
 +
 \mathbf u_f\cdot\nabla u
 =
-D_u\nabla^2u+f.
-```
+D_u\nabla^2u+f. -->
+
+
 
 
 
@@ -40454,8 +46396,10 @@ So you can model:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-126" width="472" height="30" alt="\boxed{ \text{chemistry} + \text{diffusion} + \text{hydrodynamics} \rightarrow \text{spontaneous structure}. }">
+<!-- TeX display: \boxed{
 \text{chemistry}
 +
 \text{diffusion}
@@ -40463,8 +46407,9 @@ So you can model:
 \text{hydrodynamics}
 \rightarrow
 \text{spontaneous structure}.
-}
-```
+} -->
+
+
 
 
 
@@ -40490,33 +46435,45 @@ Those require:
 
 
 
-```math
-\text{quantum chemistry},
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-127" width="148" height="21" alt="\text{quantum chemistry},">
+<!-- TeX display: \text{quantum chemistry}, -->
 
 
 
 
 
-```math
-\text{molecular dynamics},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-128" width="150" height="21" alt="\text{molecular dynamics},">
+<!-- TeX display: \text{molecular dynamics}, -->
 
 
 
 
 
-```math
-\text{kinetic theory},
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-129" width="109" height="21" alt="\text{kinetic theory},">
+<!-- TeX display: \text{kinetic theory}, -->
 
 
 
 
 
-```math
-\text{Fokker-Planck / Langevin models}.
-```
+
+
+
+
+<img src="UTC-Math/message-60.svg#equation-130" width="247" height="22" alt="\text{Fokker-Planck / Langevin models}.">
+<!-- TeX display: \text{Fokker-Planck / Langevin models}. -->
+
+
 
 
 
@@ -40524,15 +46481,18 @@ But these can feed effective parameters upward:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-131" width="426" height="31" alt="\boxed{ \text{quantum chemistry} \rightarrow k_r,D_i,\mu_i,F(q) \rightarrow \text{continuum PDEs}. }">
+<!-- TeX display: \boxed{
 \text{quantum chemistry}
 \rightarrow
 k_r,D_i,\mu_i,F(q)
 \rightarrow
 \text{continuum PDEs}.
-}
-```
+} -->
+
+
 
 
 
@@ -40546,11 +46506,14 @@ At the smallest level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-132" width="151" height="26" alt="\boxed{ \text{electronic structure} }">
+<!-- TeX display: \boxed{
 \text{electronic structure}
-}
-```
+} -->
+
+
 
 
 
@@ -40558,9 +46521,12 @@ determines:
 
 
 
-```math
-\text{bonding and reaction barriers}.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-133" width="216" height="21" alt="\text{bonding and reaction barriers}.">
+<!-- TeX display: \text{bonding and reaction barriers}. -->
+
+
 
 
 
@@ -40568,11 +46534,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-134" width="154" height="29" alt="\boxed{ \text{molecular dynamics} }">
+<!-- TeX display: \boxed{
 \text{molecular dynamics}
-}
-```
+} -->
+
+
 
 
 
@@ -40580,9 +46549,12 @@ determines:
 
 
 
-```math
-D_i,\eta,k_r,\text{conformation}.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-135" width="168" height="21" alt="D_i,\eta,k_r,\text{conformation}.">
+<!-- TeX display: D_i,\eta,k_r,\text{conformation}. -->
+
+
 
 
 
@@ -40590,11 +46562,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-136" width="296" height="30" alt="\boxed{ \text{reaction-diffusion-electrohydrodynamics} }">
+<!-- TeX display: \boxed{
 \text{reaction-diffusion-electrohydrodynamics}
-}
-```
+} -->
+
+
 
 
 
@@ -40602,9 +46577,12 @@ determines:
 
 
 
-```math
-\text{spatial chemical organization}.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-137" width="214" height="21" alt="\text{spatial chemical organization}.">
+<!-- TeX display: \text{spatial chemical organization}. -->
+
+
 
 
 
@@ -40612,11 +46590,14 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-138" width="109" height="26" alt="\boxed{ \text{P4 attractors} }">
+<!-- TeX display: \boxed{
 \text{P4 attractors}
-}
-```
+} -->
+
+
 
 
 
@@ -40624,9 +46605,12 @@ become:
 
 
 
-```math
-\text{cells, membranes, gradients, oscillators, metabolic cycles}.
-```
+
+
+<img src="UTC-Math/message-60.svg#equation-139" width="401" height="21" alt="\text{cells, membranes, gradients, oscillators, metabolic cycles}.">
+<!-- TeX display: \text{cells, membranes, gradients, oscillators, metabolic cycles}. -->
+
+
 
 
 
@@ -40634,8 +46618,10 @@ That gives a beautiful ladder:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-140" width="740" height="30" alt="\boxed{ \text{quantum channels} \rightarrow \text{molecular channels} \rightarrow \text{fluid channels} \rightarrow \text{chemical networks} \rightarrow \text{biological attractors}. }">
+<!-- TeX display: \boxed{
 \text{quantum channels}
 \rightarrow
 \text{molecular channels}
@@ -40645,8 +46631,9 @@ That gives a beautiful ladder:
 \text{chemical networks}
 \rightarrow
 \text{biological attractors}.
-}
-```
+} -->
+
+
 
 
 
@@ -40658,11 +46645,14 @@ And I think the biggest mathematical discovery here is this:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-141" width="575" height="73" alt="\boxed{ \textbf{Navier-Stokes flow, diffusion, ion transport, heat transfer and chemical reaction can all be written as fluxes driven by gradients through constrained conductance channels.} }">
+<!-- TeX display: \boxed{
 \textbf{Navier-Stokes flow, diffusion, ion transport, heat transfer and chemical reaction can all be written as fluxes driven by gradients through constrained conductance channels.}
-}
-```
+} -->
+
+
 
 
 
@@ -40670,15 +46660,18 @@ So rather than treating them as separate equations from separate branches of sci
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-142" width="128" height="52" alt="\boxed{ J_\alpha = \sum_\beta L_{\alpha\beta} X_\beta }">
+<!-- TeX display: \boxed{
 J_\alpha
 =
 \sum_\beta
 L_{\alpha\beta}
 X_\beta
-}
-```
+} -->
+
+
 
 
 
@@ -40686,15 +46679,18 @@ plus conservation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-60.svg#equation-143" width="155" height="30" alt="\boxed{ \partial_t q_\alpha + \nabla\cdot J_\alpha = R_\alpha. }">
+<!-- TeX display: \boxed{
 \partial_t q_\alpha
 +
 \nabla\cdot J_\alpha
 =
 R_\alpha.
-}
-```
+} -->
+
+
 
 
 
@@ -40720,9 +46716,12 @@ A much better systems description is:
 
 
 
-```math
-\boxed{\textbf{The human body is a distributed thermal network with centralized and local regulation of its heat-production and heat-transfer channels.}}
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-001" width="614" height="52" alt="\boxed{\textbf{The human body is a distributed thermal network with centralized and local regulation of its heat-production and heat-transfer channels.}}">
+<!-- TeX display: \boxed{\textbf{The human body is a distributed thermal network with centralized and local regulation of its heat-production and heat-transfer channels.}} -->
+
+
 
 
 
@@ -40736,8 +46735,10 @@ At the coarsest level:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-002" width="242" height="48" alt="\boxed{ \frac{dU}{dt} = \dot Q_{\rm met} - \dot W - \dot Q_{\rm skin} - \dot Q_{\rm resp} }">
+<!-- TeX display: \boxed{
 \frac{dU}{dt}
 =
 \dot Q_{\rm met}
@@ -40747,20 +46748,24 @@ At the coarsest level:
 \dot Q_{\rm skin}
 -
 \dot Q_{\rm resp}
-}
-```
+} -->
 
 
 
-where $U$ is stored body thermal energy, metabolism generates heat, mechanical work removes some metabolic energy, skin loses or gains heat, and breathing exchanges heat and water with the environment.
+
+
+where <img src="UTC-Math/message-62.svg#equation-003" width="21" height="18" alt="U" align="middle"><!-- TeX inline: U --> is stored body thermal energy, metabolism generates heat, mechanical work removes some metabolic energy, skin loses or gains heat, and breathing exchanges heat and water with the environment.
 
 Approximating:
 
 
 
-```math
-U\approx C_{\rm body}T,
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-004" width="95" height="22" alt="U\approx C_{\rm body}T,">
+<!-- TeX display: U\approx C_{\rm body}T, -->
+
+
 
 
 
@@ -40768,15 +46773,18 @@ gives:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-005" width="191" height="48" alt="\boxed{ C_{\rm body}\frac{dT}{dt} = Q_{\rm met} - Q_{\rm loss}. }">
+<!-- TeX display: \boxed{
 C_{\rm body}\frac{dT}{dt}
 =
 Q_{\rm met}
 -
 Q_{\rm loss}.
-}
-```
+} -->
+
+
 
 
 
@@ -40784,11 +46792,14 @@ Homeostasis is not “temperature fixed by a thermostat.” It is the attractor 
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-006" width="107" height="29" alt="\boxed{ Q_{\rm met}\approx Q_{\rm loss}. }">
+<!-- TeX display: \boxed{
 Q_{\rm met}\approx Q_{\rm loss}.
-}
-```
+} -->
+
+
 
 
 
@@ -40796,9 +46807,12 @@ If generation exceeds loss:
 
 
 
-```math
-\dot T>0.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-007" width="54" height="23" alt="\dot T>0.">
+<!-- TeX display: \dot T>0. -->
+
+
 
 
 
@@ -40806,9 +46820,12 @@ If loss exceeds generation:
 
 
 
-```math
-\dot T<0.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-008" width="54" height="23" alt="\dot T&lt;0.">
+<!-- TeX display: \dot T<0. -->
+
+
 
 
 
@@ -40824,15 +46841,18 @@ A body should be modeled as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-009" width="96" height="31" alt="\boxed{ T=T(\mathbf x,t) }">
+<!-- TeX display: \boxed{
 T=T(\mathbf x,t)
-}
-```
+} -->
 
 
 
-not one scalar $T$.
+
+
+not one scalar <img src="UTC-Math/message-62.svg#equation-010" width="20" height="17" alt="T" align="middle"><!-- TeX inline: T -->.
 
 The brain, liver, deep muscle, blood, fat, hands, feet and skin can all have different temperatures.
 
@@ -40852,8 +46872,10 @@ For tissue:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-011" width="334" height="49" alt="\boxed{ \rho_t c_t \frac{\partial T}{\partial t} = \nabla\cdot(k_t\nabla T) + Q_{\rm met} + Q_{\rm blood} + Q_{\rm ext}. }">
+<!-- TeX display: \boxed{
 \rho_t c_t
 \frac{\partial T}{\partial t}
 =
@@ -40864,8 +46886,9 @@ Q_{\rm met}
 Q_{\rm blood}
 +
 Q_{\rm ext}.
-}
-```
+} -->
+
+
 
 
 
@@ -40875,8 +46898,10 @@ A classic approximation is the Pennes bioheat model:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-012" width="346" height="49" alt="\boxed{ \rho_t c_t \frac{\partial T}{\partial t} = \nabla\cdot(k_t\nabla T) + \rho_b c_b\omega_b (T_b-T) + Q_{\rm met}. }">
+<!-- TeX display: \boxed{
 \rho_t c_t
 \frac{\partial T}{\partial t}
 =
@@ -40886,8 +46911,9 @@ A classic approximation is the Pennes bioheat model:
 (T_b-T)
 +
 Q_{\rm met}.
-}
-```
+} -->
+
+
 
 
 
@@ -40895,11 +46921,14 @@ That middle term is enormous conceptually:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-013" width="124" height="31" alt="\boxed{ \rho_bc_b\omega_b(T_b-T). }">
+<!-- TeX display: \boxed{
 \rho_bc_b\omega_b(T_b-T).
-}
-```
+} -->
+
+
 
 
 
@@ -40915,8 +46944,10 @@ For major vessels, blood flow can be modeled approximately by incompressible Nav
 
 
 
-```math
-\rho_b
+
+
+<img src="UTC-Math/message-62.svg#equation-014" width="260" height="45" alt="\rho_b \left( \frac{\partial \mathbf u}{\partial t} + \mathbf u\cdot\nabla\mathbf u \right) = -\nabla p + \mu\nabla^2\mathbf u,">
+<!-- TeX display: \rho_b
 \left(
 \frac{\partial \mathbf u}{\partial t}
 +
@@ -40925,16 +46956,20 @@ For major vessels, blood flow can be modeled approximately by incompressible Nav
 =
 -\nabla p
 +
-\mu\nabla^2\mathbf u,
-```
+\mu\nabla^2\mathbf u, -->
 
 
 
 
 
-```math
-\nabla\cdot\mathbf u=0.
-```
+
+
+
+
+<img src="UTC-Math/message-62.svg#equation-015" width="77" height="19" alt="\nabla\cdot\mathbf u=0.">
+<!-- TeX display: \nabla\cdot\mathbf u=0. -->
+
+
 
 
 
@@ -40942,8 +46977,10 @@ The blood also obeys an energy equation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-016" width="327" height="53" alt="\boxed{ \rho_bc_b \left( \frac{\partial T_b}{\partial t} + \mathbf u\cdot\nabla T_b \right) = k_b\nabla^2T_b + Q_{\rm exchange}. }">
+<!-- TeX display: \boxed{
 \rho_bc_b
 \left(
 \frac{\partial T_b}{\partial t}
@@ -40954,8 +46991,9 @@ The blood also obeys an energy equation:
 k_b\nabla^2T_b
 +
 Q_{\rm exchange}.
-}
-```
+} -->
+
+
 
 
 
@@ -40963,11 +47001,14 @@ And there is the remarkable term:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-017" width="72" height="28" alt="\boxed{ \mathbf u\cdot\nabla T_b. }">
+<!-- TeX display: \boxed{
 \mathbf u\cdot\nabla T_b.
-}
-```
+} -->
+
+
 
 
 
@@ -40985,9 +47026,12 @@ A better UTC abstraction is to treat the vasculature as a weighted graph:
 
 
 
-```math
-G=(V,E).
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-018" width="91" height="22" alt="G=(V,E).">
+<!-- TeX display: G=(V,E). -->
+
+
 
 
 
@@ -40999,13 +47043,16 @@ An edge has thermal conductance approximately related to:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-019" width="96" height="30" alt="\boxed{ G_e \sim \dot m_e c_b. }">
+<!-- TeX display: \boxed{
 G_e
 \sim
 \dot m_e c_b.
-}
-```
+} -->
+
+
 
 
 
@@ -41013,9 +47060,12 @@ More blood flow:
 
 
 
-```math
-\dot m_e\uparrow
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-020" width="42" height="22" alt="\dot m_e\uparrow">
+<!-- TeX display: \dot m_e\uparrow -->
+
+
 
 
 
@@ -41025,9 +47075,12 @@ Less blood flow:
 
 
 
-```math
-\dot m_e\downarrow
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-021" width="42" height="22" alt="\dot m_e\downarrow">
+<!-- TeX display: \dot m_e\downarrow -->
+
+
 
 
 
@@ -41039,9 +47092,12 @@ Blood vessels widen:
 
 
 
-```math
-r\uparrow.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-022" width="33" height="21" alt="r\uparrow.">
+<!-- TeX display: r\uparrow. -->
+
+
 
 
 
@@ -41049,17 +47105,20 @@ For simple laminar flow, Poiseuille gives:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-023" width="133" height="49" alt="\boxed{ R_{\rm vascular} = \frac{8\mu L}{\pi r^4}. }">
+<!-- TeX display: \boxed{
 R_{\rm vascular}
 =
 \frac{8\mu L}{\pi r^4}.
-}
-```
+} -->
 
 
 
-That $r^4$ is dramatic.
+
+
+That <img src="UTC-Math/message-62.svg#equation-024" width="23" height="20" alt="r^4" align="middle"><!-- TeX inline: r^4 --> is dramatic.
 
 Slightly increasing vessel radius can greatly increase blood flow.
 
@@ -41067,15 +47126,18 @@ So:
 
 
 
-```math
-r\uparrow
+
+
+<img src="UTC-Math/message-62.svg#equation-025" width="208" height="26" alt="r\uparrow \rightarrow R\downarrow \rightarrow \dot V\uparrow \rightarrow G_{\rm thermal}\uparrow.">
+<!-- TeX display: r\uparrow
 \rightarrow
 R\downarrow
 \rightarrow
 \dot V\uparrow
 \rightarrow
-G_{\rm thermal}\uparrow.
-```
+G_{\rm thermal}\uparrow. -->
+
+
 
 
 
@@ -41083,11 +47145,14 @@ Meaning:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-026" width="352" height="29" alt="\boxed{ \text{vasodilation opens the core-to-skin heat channel}. }">
+<!-- TeX display: \boxed{
 \text{vasodilation opens the core-to-skin heat channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -41095,11 +47160,14 @@ Vasoconstriction does the opposite:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-027" width="326" height="26" alt="\boxed{ \text{vasoconstriction closes the heat-loss channel}. }">
+<!-- TeX display: \boxed{
 \text{vasoconstriction closes the heat-loss channel}.
-}
-```
+} -->
+
+
 
 
 
@@ -41113,8 +47181,10 @@ At the skin:
 
 
 
-```math
--k\nabla T\cdot\mathbf n
+
+
+<img src="UTC-Math/message-62.svg#equation-028" width="293" height="22" alt="-k\nabla T\cdot\mathbf n = q_{\rm conv} + q_{\rm rad} + q_{\rm evap} + q_{\rm contact}.">
+<!-- TeX display: -k\nabla T\cdot\mathbf n
 =
 q_{\rm conv}
 +
@@ -41122,8 +47192,9 @@ q_{\rm rad}
 +
 q_{\rm evap}
 +
-q_{\rm contact}.
-```
+q_{\rm contact}. -->
+
+
 
 
 
@@ -41131,13 +47202,16 @@ Convection:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-029" width="162" height="31" alt="\boxed{ q_{\rm conv} = h_c(T_s-T_{\rm air}). }">
+<!-- TeX display: \boxed{
 q_{\rm conv}
 =
 h_c(T_s-T_{\rm air}).
-}
-```
+} -->
+
+
 
 
 
@@ -41145,14 +47219,17 @@ Radiation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-030" width="162" height="34" alt="\boxed{ q_{\rm rad} = \epsilon\sigma (T_s^4-T_{\rm rad}^4). }">
+<!-- TeX display: \boxed{
 q_{\rm rad}
 =
 \epsilon\sigma
 (T_s^4-T_{\rm rad}^4).
-}
-```
+} -->
+
+
 
 
 
@@ -41160,13 +47237,16 @@ Evaporative cooling:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-031" width="130" height="32" alt="\boxed{ q_{\rm evap} = \dot m_{\rm evap}L_v. }">
+<!-- TeX display: \boxed{
 q_{\rm evap}
 =
 \dot m_{\rm evap}L_v.
-}
-```
+} -->
+
+
 
 
 
@@ -41176,15 +47256,18 @@ But each patch of skin has a different:
 
 
 
-```math
-T_s,
+
+
+<img src="UTC-Math/message-62.svg#equation-032" width="199" height="22" alt="T_s, \quad \dot m_{\rm blood}, \quad \dot m_{\rm sweat}, \quad h_c.">
+<!-- TeX display: T_s,
 \quad
 \dot m_{\rm blood},
 \quad
 \dot m_{\rm sweat},
 \quad
-h_c.
-```
+h_c. -->
+
+
 
 
 
@@ -41202,9 +47285,12 @@ Evaporating water requires latent heat:
 
 
 
-```math
-L_v.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-033" width="31" height="20" alt="L_v.">
+<!-- TeX display: L_v. -->
+
+
 
 
 
@@ -41212,13 +47298,16 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-034" width="167" height="32" alt="\boxed{ Q_{\rm evap} = \dot m_{\rm sweat,evap}L_v. }">
+<!-- TeX display: \boxed{
 Q_{\rm evap}
 =
 \dot m_{\rm sweat,evap}L_v.
-}
-```
+} -->
+
+
 
 
 
@@ -41230,9 +47319,12 @@ When:
 
 
 
-```math
-T_{\rm air}>T_{\rm skin},
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-035" width="89" height="20" alt="T_{\rm air}>T_{\rm skin},">
+<!-- TeX display: T_{\rm air}>T_{\rm skin}, -->
+
+
 
 
 
@@ -41244,15 +47336,18 @@ Then evaporation becomes the major escape route:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-036" width="382" height="29" alt="\boxed{ \text{internal heat} \rightarrow \text{water phase change} \rightarrow \text{environment}. }">
+<!-- TeX display: \boxed{
 \text{internal heat}
 \rightarrow
 \text{water phase change}
 \rightarrow
 \text{environment}.
-}
-```
+} -->
+
+
 
 
 
@@ -41262,10 +47357,13 @@ At high humidity:
 
 
 
-```math
-\dot m_{\rm evap}
-\downarrow
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-037" width="59" height="23" alt="\dot m_{\rm evap} \downarrow">
+<!-- TeX display: \dot m_{\rm evap}
+\downarrow -->
+
+
 
 
 
@@ -41283,9 +47381,12 @@ Clothing adds thermal resistance:
 
 
 
-```math
-R_{\rm clothing}.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-038" width="66" height="22" alt="R_{\rm clothing}.">
+<!-- TeX display: R_{\rm clothing}. -->
+
+
 
 
 
@@ -41293,14 +47394,17 @@ Then approximately:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-039" width="251" height="52" alt="\boxed{ q = \frac{T_{\rm skin}-T_{\rm env}} {R_{\rm tissue}+R_{\rm clothing}+R_{\rm boundary}}. }">
+<!-- TeX display: \boxed{
 q
 =
 \frac{T_{\rm skin}-T_{\rm env}}
 {R_{\rm tissue}+R_{\rm clothing}+R_{\rm boundary}}.
-}
-```
+} -->
+
+
 
 
 
@@ -41308,9 +47412,12 @@ More insulation:
 
 
 
-```math
-R_{\rm clothing}\uparrow
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-040" width="74" height="22" alt="R_{\rm clothing}\uparrow">
+<!-- TeX display: R_{\rm clothing}\uparrow -->
+
+
 
 
 
@@ -41318,9 +47425,12 @@ means:
 
 
 
-```math
-q\downarrow.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-041" width="33" height="21" alt="q\downarrow.">
+<!-- TeX display: q\downarrow. -->
+
+
 
 
 
@@ -41342,11 +47452,14 @@ Define local metabolic generation:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-042" width="89" height="31" alt="\boxed{ Q_{\rm met}(\mathbf x,t). }">
+<!-- TeX display: \boxed{
 Q_{\rm met}(\mathbf x,t).
-}
-```
+} -->
+
+
 
 
 
@@ -41354,12 +47467,15 @@ Then whole-body metabolic heat:
 
 
 
-```math
-Q_{\rm met,total}
+
+
+<img src="UTC-Math/message-62.svg#equation-043" width="206" height="43" alt="Q_{\rm met,total} = \int_\Omega Q_{\rm met}(\mathbf x,t)\,dV.">
+<!-- TeX display: Q_{\rm met,total}
 =
 \int_\Omega
-Q_{\rm met}(\mathbf x,t)\,dV.
-```
+Q_{\rm met}(\mathbf x,t)\,dV. -->
+
+
 
 
 
@@ -41377,11 +47493,14 @@ the model is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-044" width="311" height="29" alt="\boxed{ \text{distributed heterogeneous heat generation}. }">
+<!-- TeX display: \boxed{
 \text{distributed heterogeneous heat generation}.
-}
-```
+} -->
+
+
 
 
 
@@ -41395,10 +47514,13 @@ When cold:
 
 
 
-```math
-Q_{\rm muscle}
-\uparrow.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-045" width="73" height="21" alt="Q_{\rm muscle} \uparrow.">
+<!-- TeX display: Q_{\rm muscle}
+\uparrow. -->
+
+
 
 
 
@@ -41410,8 +47532,10 @@ Mathematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-046" width="367" height="31" alt="\boxed{ Q_{\rm met} = Q_{\rm basal} + Q_{\rm activity} + Q_{\rm shivering} + Q_{\rm thermogenesis}. }">
+<!-- TeX display: \boxed{
 Q_{\rm met}
 =
 Q_{\rm basal}
@@ -41421,8 +47545,9 @@ Q_{\rm activity}
 Q_{\rm shivering}
 +
 Q_{\rm thermogenesis}.
-}
-```
+} -->
+
+
 
 
 
@@ -41438,8 +47563,10 @@ Take tissue nodes:
 
 
 
-```math
-\{
+
+
+<img src="UTC-Math/message-62.svg#equation-047" width="421" height="22" alt="\{ \text{brain}, \text{thoracic core}, \text{abdomen}, \text{muscle}, \text{fat}, \text{skin}, \text{arms}, \text{legs} \}.">
+<!-- TeX display: \{
 \text{brain},
 \text{thoracic core},
 \text{abdomen},
@@ -41448,17 +47575,20 @@ Take tissue nodes:
 \text{skin},
 \text{arms},
 \text{legs}
-\}.
-```
+\}. -->
 
 
 
-For node $i$:
+
+
+For node <img src="UTC-Math/message-62.svg#equation-048" width="14" height="17" alt="i" align="middle"><!-- TeX inline: i -->:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-049" width="302" height="52" alt="\boxed{ C_i\dot T_i = Q_{{\rm met},i} + \sum_jG_{ij}(T_j-T_i) - Q_{{\rm env},i}. }">
+<!-- TeX display: \boxed{
 C_i\dot T_i
 =
 Q_{{\rm met},i}
@@ -41466,8 +47596,9 @@ Q_{{\rm met},i}
 \sum_jG_{ij}(T_j-T_i)
 -
 Q_{{\rm env},i}.
-}
-```
+} -->
+
+
 
 
 
@@ -41475,9 +47606,12 @@ Here:
 
 
 
-```math
-C_i=\rho_ic_iV_i
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-050" width="87" height="21" alt="C_i=\rho_ic_iV_i">
+<!-- TeX display: C_i=\rho_ic_iV_i -->
+
+
 
 
 
@@ -41487,9 +47621,12 @@ And:
 
 
 
-```math
-G_{ij}
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-051" width="31" height="22" alt="G_{ij}">
+<!-- TeX display: G_{ij} -->
+
+
 
 
 
@@ -41499,8 +47636,10 @@ Now put everything into matrix form:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-052" width="233" height="35" alt="\boxed{ C\dot{\mathbf T} = \mathbf Q_{\rm met} - L_G\mathbf T - \mathbf Q_{\rm env}(\mathbf T). }">
+<!-- TeX display: \boxed{
 C\dot{\mathbf T}
 =
 \mathbf Q_{\rm met}
@@ -41508,12 +47647,13 @@ C\dot{\mathbf T}
 L_G\mathbf T
 -
 \mathbf Q_{\rm env}(\mathbf T).
-}
-```
+} -->
 
 
 
-$L_G$ is the weighted graph Laplacian of the body's thermal network.
+
+
+<img src="UTC-Math/message-62.svg#equation-053" width="30" height="20" alt="L_G" align="middle"><!-- TeX inline: L_G --> is the weighted graph Laplacian of the body's thermal network.
 
 That is an elegant whole-body mathematical model.
 
@@ -41525,9 +47665,12 @@ Ordinary conduction is symmetric:
 
 
 
-```math
-i\leftrightarrow j.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-054" width="50" height="20" alt="i\leftrightarrow j.">
+<!-- TeX display: i\leftrightarrow j. -->
+
+
 
 
 
@@ -41537,9 +47680,12 @@ So add an advection operator:
 
 
 
-```math
-A_{\rm blood}.
-```
+
+
+<img src="UTC-Math/message-62.svg#equation-055" width="53" height="20" alt="A_{\rm blood}.">
+<!-- TeX display: A_{\rm blood}. -->
+
+
 
 
 
@@ -41547,8 +47693,10 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-056" width="352" height="36" alt="\boxed{ C\dot{\mathbf T} = \mathbf Q_{\rm met} - L_{\rm cond}\mathbf T + A_{\rm blood}\mathbf T - \mathbf Q_{\rm skin} - \mathbf Q_{\rm resp}. }">
+<!-- TeX display: \boxed{
 C\dot{\mathbf T}
 =
 \mathbf Q_{\rm met}
@@ -41560,8 +47708,9 @@ A_{\rm blood}\mathbf T
 \mathbf Q_{\rm skin}
 -
 \mathbf Q_{\rm resp}.
-}
-```
+} -->
+
+
 
 
 
@@ -41585,8 +47734,10 @@ It changes parameters:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-057" width="324" height="30" alt="\boxed{ r_{\rm vessel}, \quad \omega_b, \quad \dot m_{\rm sweat}, \quad Q_{\rm shiver}, \quad Q_{\rm metabolism}. }">
+<!-- TeX display: \boxed{
 r_{\rm vessel},
 \quad
 \omega_b,
@@ -41596,8 +47747,9 @@ r_{\rm vessel},
 Q_{\rm shiver},
 \quad
 Q_{\rm metabolism}.
-}
-```
+} -->
+
+
 
 
 
@@ -41605,16 +47757,19 @@ So define control vector:
 
 
 
-```math
-\mathbf u
+
+
+<img src="UTC-Math/message-62.svg#equation-058" width="247" height="22" alt="\mathbf u = ( u_{\rm vaso}, u_{\rm sweat}, u_{\rm shiver}, u_{\rm metabolic} ).">
+<!-- TeX display: \mathbf u
 =
 (
 u_{\rm vaso},
 u_{\rm sweat},
 u_{\rm shiver},
 u_{\rm metabolic}
-).
-```
+). -->
+
+
 
 
 
@@ -41622,29 +47777,35 @@ Then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-059" width="142" height="35" alt="\boxed{ C\dot{\mathbf T} = F(\mathbf T,\mathbf u,\mathbf E), }">
+<!-- TeX display: \boxed{
 C\dot{\mathbf T}
 =
 F(\mathbf T,\mathbf u,\mathbf E),
-}
-```
+} -->
 
 
 
-where $\mathbf E$ is the environment.
+
+
+where <img src="UTC-Math/message-62.svg#equation-060" width="21" height="17" alt="\mathbf E" align="middle"><!-- TeX inline: \mathbf E --> is the environment.
 
 The controller samples central and peripheral thermal signals and changes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-061" width="172" height="31" alt="\boxed{ \mathbf u = \Pi(T_{\rm core},T_{\rm skin},\ldots). }">
+<!-- TeX display: \boxed{
 \mathbf u
 =
 \Pi(T_{\rm core},T_{\rm skin},\ldots).
-}
-```
+} -->
+
+
 
 
 
@@ -41652,8 +47813,10 @@ So physiology looks like:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-062" width="702" height="31" alt="\boxed{ \text{distributed thermal plant} + \text{distributed sensors} + \text{central/autonomic coordination} + \text{local feedback}. }">
+<!-- TeX display: \boxed{
 \text{distributed thermal plant}
 +
 \text{distributed sensors}
@@ -41661,8 +47824,9 @@ So physiology looks like:
 \text{central/autonomic coordination}
 +
 \text{local feedback}.
-}
-```
+} -->
+
+
 
 
 
@@ -41682,16 +47846,19 @@ P1 consists of:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-063" width="685" height="30" alt="\boxed{ \text{metabolic budget}, \text{blood-flow capacity}, \text{water availability}, \text{vessel geometry}, \text{environment}, \text{clothing}. }">
+<!-- TeX display: \boxed{
 \text{metabolic budget},
 \text{blood-flow capacity},
 \text{water availability},
 \text{vessel geometry},
 \text{environment},
 \text{clothing}.
-}
-```
+} -->
+
+
 
 
 
@@ -41699,11 +47866,14 @@ P2:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-064" width="42" height="26" alt="\boxed{ \nabla T }">
+<!-- TeX display: \boxed{
 \nabla T
-}
-```
+} -->
+
+
 
 
 
@@ -41713,8 +47883,10 @@ P3:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-065" width="505" height="29" alt="\boxed{ \text{conduction} + \text{blood advection} + \text{radiation} + \text{convection} + \text{evaporation}. }">
+<!-- TeX display: \boxed{
 \text{conduction}
 +
 \text{blood advection}
@@ -41724,8 +47896,9 @@ P3:
 \text{convection}
 +
 \text{evaporation}.
-}
-```
+} -->
+
+
 
 
 
@@ -41733,11 +47906,14 @@ P4 is the thermal attractor:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-066" width="93" height="31" alt="\boxed{ \mathbf T(t)\rightarrow\mathbf T^* }">
+<!-- TeX display: \boxed{
 \mathbf T(t)\rightarrow\mathbf T^*
-}
-```
+} -->
+
+
 
 
 
@@ -41747,11 +47923,14 @@ So human temperature homeostasis is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-067" width="579" height="73" alt="\boxed{ \textbf{not one temperature being held constant, but a stable temperature field maintained by dynamically changing heat-generation and heat-transfer channels.} }">
+<!-- TeX display: \boxed{
 \textbf{not one temperature being held constant, but a stable temperature field maintained by dynamically changing heat-generation and heat-transfer channels.}
-}
-```
+} -->
+
+
 
 
 
@@ -41765,11 +47944,14 @@ Let:
 
 
 
-```math
-\dot{\mathbf T}
+
+
+<img src="UTC-Math/message-62.svg#equation-068" width="84" height="26" alt="\dot{\mathbf T} = F(\mathbf T).">
+<!-- TeX display: \dot{\mathbf T}
 =
-F(\mathbf T).
-```
+F(\mathbf T). -->
+
+
 
 
 
@@ -41777,11 +47959,14 @@ A steady thermal state satisfies:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-069" width="95" height="31" alt="\boxed{ F(\mathbf T^*)=0. }">
+<!-- TeX display: \boxed{
 F(\mathbf T^*)=0.
-}
-```
+} -->
+
+
 
 
 
@@ -41789,13 +47974,16 @@ Perturb:
 
 
 
-```math
-\mathbf T
+
+
+<img src="UTC-Math/message-62.svg#equation-070" width="106" height="20" alt="\mathbf T = \mathbf T^* + \delta\mathbf T.">
+<!-- TeX display: \mathbf T
 =
 \mathbf T^*
 +
-\delta\mathbf T.
-```
+\delta\mathbf T. -->
+
+
 
 
 
@@ -41803,12 +47991,15 @@ Then:
 
 
 
-```math
-\delta\dot{\mathbf T}
+
+
+<img src="UTC-Math/message-62.svg#equation-071" width="125" height="26" alt="\delta\dot{\mathbf T} = J_F(\mathbf T^*) \delta\mathbf T.">
+<!-- TeX display: \delta\dot{\mathbf T}
 =
 J_F(\mathbf T^*)
-\delta\mathbf T.
-```
+\delta\mathbf T. -->
+
+
 
 
 
@@ -41816,11 +48007,14 @@ The thermal profile is stable if:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-072" width="111" height="31" alt="\boxed{ \mathrm{Re}\lambda_i(J_F)&lt;0 }">
+<!-- TeX display: \boxed{
 \mathrm{Re}\lambda_i(J_F)<0
-}
-```
+} -->
+
+
 
 
 
@@ -41848,11 +48042,14 @@ And I think the strongest UTC reformulation of human thermoregulation is this:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-62.svg#equation-073" width="624" height="73" alt="\boxed{ \textbf{The body does not regulate temperature primarily by controlling heat. It regulates the topology and conductance of the channels through which heat is generated, redistributed, stored, and expelled.} }">
+<!-- TeX display: \boxed{
 \textbf{The body does not regulate temperature primarily by controlling heat. It regulates the topology and conductance of the channels through which heat is generated, redistributed, stored, and expelled.}
-}
-```
+} -->
+
+
 
 
 
@@ -41896,8 +48093,10 @@ The cleanest formulation I see is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-001" width="685" height="31" alt="\boxed{ \textbf{local modules} \;\longrightarrow\; \textbf{global order parameter} \;\longrightarrow\; \textbf{global constraint} \;\longrightarrow\; \textbf{local modules}'. }">
+<!-- TeX display: \boxed{
 \textbf{local modules}
 \;\longrightarrow\;
 \textbf{global order parameter}
@@ -41905,8 +48104,9 @@ The cleanest formulation I see is:
 \textbf{global constraint}
 \;\longrightarrow\;
 \textbf{local modules}'.
-}
-```
+} -->
+
+
 
 
 
@@ -41916,8 +48116,10 @@ I would tentatively call it the **Global-Local Closure**, or GLC.
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-002" width="250" height="32" alt="\boxed{ \mathfrak C_{GL} : \{X_i\} \rightarrow Z \rightarrow \mathcal K(Z) \rightarrow \{X_i'\} }">
+<!-- TeX display: \boxed{
 \mathfrak C_{GL}
 :
 \{X_i\}
@@ -41927,24 +48129,28 @@ Z
 \mathcal K(Z)
 \rightarrow
 \{X_i'\}
-}
-```
+} -->
 
 
 
-where $X_i$ are local persistent subsystems, $Z$ is a global collective variable, and $\mathcal K(Z)$ is the constraint or feedback that the global state imposes back upon the local pieces.
 
-The crucial thing is that $Z$ does not have to be a physical “central controller.” It may be one, as in autonomic regulation, but it can also be an emergent field, average, attractor coordinate, pressure, temperature, magnetization, synchronized phase, chemical potential, or global network signal.
+
+where <img src="UTC-Math/message-64.svg#equation-003" width="27" height="20" alt="X_i" align="middle"><!-- TeX inline: X_i --> are local persistent subsystems, <img src="UTC-Math/message-64.svg#equation-004" width="20" height="17" alt="Z" align="middle"><!-- TeX inline: Z --> is a global collective variable, and <img src="UTC-Math/message-64.svg#equation-005" width="45" height="22" alt="\mathcal K(Z)" align="middle"><!-- TeX inline: \mathcal K(Z) --> is the constraint or feedback that the global state imposes back upon the local pieces.
+
+The crucial thing is that <img src="UTC-Math/message-64.svg#equation-006" width="20" height="17" alt="Z" align="middle"><!-- TeX inline: Z --> does not have to be a physical “central controller.” It may be one, as in autonomic regulation, but it can also be an emergent field, average, attractor coordinate, pressure, temperature, magnetization, synchronized phase, chemical potential, or global network signal.
 
 So “central” in UTC should really mean:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-007" width="608" height="29" alt="\boxed{ \textbf{low-dimensional global state that constrains many local degrees of freedom.} }">
+<!-- TeX display: \boxed{
 \textbf{low-dimensional global state that constrains many local degrees of freedom.}
-}
-```
+} -->
+
+
 
 
 
@@ -41952,13 +48158,16 @@ That definition travels beautifully across physics and biology.
 
 ## The simplest mathematics is already sitting in synchronization theory
 
-Suppose there are $N$ distributed oscillators with phases
+Suppose there are <img src="UTC-Math/message-64.svg#equation-008" width="23" height="17" alt="N" align="middle"><!-- TeX inline: N --> distributed oscillators with phases
 
 
 
-```math
-\theta_1,\dots,\theta_N.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-009" width="82" height="21" alt="\theta_1,\dots,\theta_N.">
+<!-- TeX display: \theta_1,\dots,\theta_N. -->
+
+
 
 
 
@@ -41966,14 +48175,17 @@ Define the collective order parameter:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-010" width="142" height="64" alt="\boxed{ re^{i\psi} = \frac1N \sum_{j=1}^{N}e^{i\theta_j}. }">
+<!-- TeX display: \boxed{
 re^{i\psi}
 =
 \frac1N
 \sum_{j=1}^{N}e^{i\theta_j}.
-}
-```
+} -->
+
+
 
 
 
@@ -41981,21 +48193,27 @@ The entire distributed population creates two global quantities:
 
 
 
-```math
-r
+
+
+<img src="UTC-Math/message-64.svg#equation-011" width="109" height="21" alt="r = \text{coherence},">
+<!-- TeX display: r
 =
-\text{coherence},
-```
+\text{coherence}, -->
 
 
 
 
 
-```math
-\psi
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-012" width="152" height="21" alt="\psi = \text{collective phase}.">
+<!-- TeX display: \psi
 =
-\text{collective phase}.
-```
+\text{collective phase}. -->
+
+
 
 
 
@@ -42003,15 +48221,18 @@ Then each local oscillator can obey:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-013" width="189" height="36" alt="\boxed{ \dot\theta_i = \omega_i + Kr\sin(\psi-\theta_i). }">
+<!-- TeX display: \boxed{
 \dot\theta_i
 =
 \omega_i
 +
 Kr\sin(\psi-\theta_i).
-}
-```
+} -->
+
+
 
 
 
@@ -42021,9 +48242,12 @@ The individual phases produce:
 
 
 
-```math
-(r,\psi).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-014" width="50" height="22" alt="(r,\psi).">
+<!-- TeX display: (r,\psi). -->
+
+
 
 
 
@@ -42031,9 +48255,12 @@ Then:
 
 
 
-```math
-(r,\psi)
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-015" width="46" height="22" alt="(r,\psi)">
+<!-- TeX display: (r,\psi) -->
+
+
 
 
 
@@ -42043,8 +48270,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-016" width="220" height="36" alt="\boxed{ \{\theta_i\} \rightarrow (r,\psi) \rightarrow \{\dot\theta_i\} \rightarrow \{\theta_i'\}. }">
+<!-- TeX display: \boxed{
 \{\theta_i\}
 \rightarrow
 (r,\psi)
@@ -42052,8 +48281,9 @@ So:
 \{\dot\theta_i\}
 \rightarrow
 \{\theta_i'\}.
-}
-```
+} -->
+
+
 
 
 
@@ -42081,31 +48311,37 @@ Here we can say exactly what happens:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-017" width="156" height="31" alt="\boxed{ Z = \mathcal A(X_1,\ldots,X_N) }">
+<!-- TeX display: \boxed{
 Z
 =
 \mathcal A(X_1,\ldots,X_N)
-}
-```
+} -->
 
 
 
-where $\mathcal A$ is an aggregation/coarse-graining map.
+
+
+where <img src="UTC-Math/message-64.svg#equation-018" width="22" height="19" alt="\mathcal A" align="middle"><!-- TeX inline: \mathcal A --> is an aggregation/coarse-graining map.
 
 Then local dynamics become:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-019" width="187" height="35" alt="\boxed{ \dot X_i = f_i(X_i) + g_i(X_i,Z). }">
+<!-- TeX display: \boxed{
 \dot X_i
 =
 f_i(X_i)
 +
 g_i(X_i,Z).
-}
-```
+} -->
+
+
 
 
 
@@ -42113,13 +48349,16 @@ And:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-020" width="178" height="35" alt="\boxed{ \dot Z = F(Z,X_1,\ldots,X_N). }">
+<!-- TeX display: \boxed{
 \dot Z
 =
 F(Z,X_1,\ldots,X_N).
-}
-```
+} -->
+
+
 
 
 
@@ -42129,9 +48368,12 @@ The local states determine the macrostate:
 
 
 
-```math
-\{X_i\}\rightarrow Z.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-021" width="84" height="22" alt="\{X_i\}\rightarrow Z.">
+<!-- TeX display: \{X_i\}\rightarrow Z. -->
+
+
 
 
 
@@ -42139,9 +48381,12 @@ The macrostate changes the local dynamics:
 
 
 
-```math
-Z\rightarrow\{X_i\}.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-022" width="84" height="22" alt="Z\rightarrow\{X_i\}.">
+<!-- TeX display: Z\rightarrow\{X_i\}. -->
+
+
 
 
 
@@ -42149,11 +48394,14 @@ So UTC can give “emergence” an operational definition:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-023" width="571" height="73" alt="\boxed{ \textbf{Emergence occurs when a coarse-grained collective variable becomes dynamically causal back onto the degrees of freedom from which it was constructed.} }">
+<!-- TeX display: \boxed{
 \textbf{Emergence occurs when a coarse-grained collective variable becomes dynamically causal back onto the degrees of freedom from which it was constructed.}
-}
-```
+} -->
+
+
 
 
 
@@ -42169,25 +48417,34 @@ Before P4, we can have:
 
 
 
-```math
-\text{coupling},
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-024" width="72" height="21" alt="\text{coupling},">
+<!-- TeX display: \text{coupling}, -->
 
 
 
 
 
-```math
-\text{phase relation},
-```
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-025" width="110" height="21" alt="\text{phase relation},">
+<!-- TeX display: \text{phase relation}, -->
 
 
 
 
 
-```math
-\text{temporary correlation}.
-```
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-026" width="164" height="21" alt="\text{temporary correlation}.">
+<!-- TeX display: \text{temporary correlation}. -->
+
+
 
 
 
@@ -42195,9 +48452,12 @@ But a genuine distributed architecture needs components that persist long enough
 
 
 
-```math
-X_i(t+\tau)\approx X_i(t)
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-027" width="131" height="22" alt="X_i(t+\tau)\approx X_i(t)">
+<!-- TeX display: X_i(t+\tau)\approx X_i(t) -->
+
+
 
 
 
@@ -42209,11 +48469,14 @@ Once stable structures exist, we can distinguish:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-028" width="190" height="26" alt="\boxed{ \text{internal state of module }i }">
+<!-- TeX display: \boxed{
 \text{internal state of module }i
-}
-```
+} -->
+
+
 
 
 
@@ -42221,11 +48484,14 @@ from:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-029" width="192" height="29" alt="\boxed{ \text{relations among modules}. }">
+<!-- TeX display: \boxed{
 \text{relations among modules}.
-}
-```
+} -->
+
+
 
 
 
@@ -42235,8 +48501,10 @@ So the mature chain becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-030" width="486" height="30" alt="\boxed{ P4 \rightarrow \text{stable modules} \rightarrow \text{collective variable} \rightarrow \text{global-local feedback}. }">
+<!-- TeX display: \boxed{
 P4
 \rightarrow
 \text{stable modules}
@@ -42244,8 +48512,9 @@ P4
 \text{collective variable}
 \rightarrow
 \text{global-local feedback}.
-}
-```
+} -->
+
+
 
 
 
@@ -42261,11 +48530,14 @@ At F1/F2-like depth, you can already have:
 
 
 
-```math
-\text{many phases}
+
+
+<img src="UTC-Math/message-64.svg#equation-031" width="291" height="21" alt="\text{many phases} \rightarrow \text{collective phase relation}.">
+<!-- TeX display: \text{many phases}
 \rightarrow
-\text{collective phase relation}.
-```
+\text{collective phase relation}. -->
+
+
 
 
 
@@ -42279,15 +48551,18 @@ But mathematically the kernel is already there:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-032" width="315" height="29" alt="\boxed{ \text{many} \rightarrow \text{one collective descriptor} \rightarrow \text{many}. }">
+<!-- TeX display: \boxed{
 \text{many}
 \rightarrow
 \text{one collective descriptor}
 \rightarrow
 \text{many}.
-}
-```
+} -->
+
+
 
 
 
@@ -42295,13 +48570,16 @@ So I would distinguish:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-033" width="257" height="33" alt="\boxed{ GLC^{[0]} = \text{collective-field precursor} }">
+<!-- TeX display: \boxed{
 GLC^{[0]}
 =
 \text{collective-field precursor}
-}
-```
+} -->
+
+
 
 
 
@@ -42309,13 +48587,16 @@ from:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-034" width="305" height="33" alt="\boxed{ GLC^{[1]} = \text{stable modular synchronization} }">
+<!-- TeX display: \boxed{
 GLC^{[1]}
 =
 \text{stable modular synchronization}
-}
-```
+} -->
+
+
 
 
 
@@ -42323,17 +48604,20 @@ and then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-035" width="307" height="33" alt="\boxed{ GLC^{[2]} = \text{explicit regulatory architecture}. }">
+<!-- TeX display: \boxed{
 GLC^{[2]}
 =
 \text{explicit regulatory architecture}.
-}
-```
+} -->
 
 
 
-Human thermoregulation would be a very high-order $GLC$.
+
+
+Human thermoregulation would be a very high-order <img src="UTC-Math/message-64.svg#equation-036" width="44" height="18" alt="GLC" align="middle"><!-- TeX inline: GLC -->.
 
 Kuramoto synchronization would be a low-order form.
 
@@ -42347,9 +48631,12 @@ Let a system have state:
 
 
 
-```math
-X=(X_1,\ldots,X_N).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-037" width="141" height="22" alt="X=(X_1,\ldots,X_N).">
+<!-- TeX display: X=(X_1,\ldots,X_N). -->
+
+
 
 
 
@@ -42357,11 +48644,14 @@ Introduce a parameter:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-038" width="78" height="31" alt="\boxed{ \lambda\in[0,1] }">
+<!-- TeX display: \boxed{
 \lambda\in[0,1]
-}
-```
+} -->
+
+
 
 
 
@@ -42371,9 +48661,12 @@ At:
 
 
 
-```math
-\lambda\approx0,
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-039" width="52" height="21" alt="\lambda\approx0,">
+<!-- TeX display: \lambda\approx0, -->
+
+
 
 
 
@@ -42383,9 +48676,12 @@ At:
 
 
 
-```math
-\lambda\approx1,
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-040" width="52" height="21" alt="\lambda\approx1,">
+<!-- TeX display: \lambda\approx1, -->
+
+
 
 
 
@@ -42395,8 +48691,10 @@ Then write:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-041" width="320" height="36" alt="\boxed{ \dot X_i = (1-\lambda) f_i^{\rm local}(X_i,\mathcal N_i) + \lambda f_i^{\rm global}(X_i,Z). }">
+<!-- TeX display: \boxed{
 \dot X_i
 =
 (1-\lambda)
@@ -42404,8 +48702,9 @@ f_i^{\rm local}(X_i,\mathcal N_i)
 +
 \lambda
 f_i^{\rm global}(X_i,Z).
-}
-```
+} -->
+
+
 
 
 
@@ -42413,9 +48712,12 @@ And:
 
 
 
-```math
-Z=\mathcal A(X).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-042" width="85" height="22" alt="Z=\mathcal A(X).">
+<!-- TeX display: Z=\mathcal A(X). -->
+
+
 
 
 
@@ -42423,8 +48725,10 @@ Now centralization itself can evolve:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-043" width="462" height="35" alt="\boxed{ \dot\lambda = G( \text{coherence}, \text{perturbation}, \text{resource stress}, \text{prediction error} ). }">
+<!-- TeX display: \boxed{
 \dot\lambda
 =
 G(
@@ -42433,8 +48737,9 @@ G(
 \text{resource stress},
 \text{prediction error}
 ).
-}
-```
+} -->
+
+
 
 
 
@@ -42452,9 +48757,12 @@ If:
 
 
 
-```math
-\lambda\rightarrow0
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-044" width="51" height="18" alt="\lambda\rightarrow0">
+<!-- TeX display: \lambda\rightarrow0 -->
+
+
 
 
 
@@ -42464,21 +48772,27 @@ You might see:
 
 
 
-```math
-I(X_i;X_j)\rightarrow0,
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-045" width="111" height="23" alt="I(X_i;X_j)\rightarrow0,">
+<!-- TeX display: I(X_i;X_j)\rightarrow0, -->
 
 
 
-where $I$ is mutual information.
+
+
+where <img src="UTC-Math/message-64.svg#equation-046" width="17" height="17" alt="I" align="middle"><!-- TeX inline: I --> is mutual information.
 
 Or global order:
 
 
 
-```math
-r\rightarrow0.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-047" width="53" height="18" alt="r\rightarrow0.">
+<!-- TeX display: r\rightarrow0. -->
+
+
 
 
 
@@ -42488,15 +48802,18 @@ In UTC terms:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-048" width="415" height="30" alt="\boxed{ \text{high modularity} + \text{insufficient coupling} \rightarrow \text{fragmentation}. }">
+<!-- TeX display: \boxed{
 \text{high modularity}
 +
 \text{insufficient coupling}
 \rightarrow
 \text{fragmentation}.
-}
-```
+} -->
+
+
 
 
 
@@ -42508,9 +48825,12 @@ If:
 
 
 
-```math
-\lambda\rightarrow1,
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-049" width="55" height="21" alt="\lambda\rightarrow1,">
+<!-- TeX display: \lambda\rightarrow1, -->
+
+
 
 
 
@@ -42518,9 +48838,12 @@ local variance may collapse:
 
 
 
-```math
-\mathrm{Var}(X_i-Z)\rightarrow0.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-050" width="134" height="22" alt="\mathrm{Var}(X_i-Z)\rightarrow0.">
+<!-- TeX display: \mathrm{Var}(X_i-Z)\rightarrow0. -->
+
+
 
 
 
@@ -42536,15 +48859,18 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-051" width="391" height="30" alt="\boxed{ \text{high coherence} + \text{insufficient local freedom} \rightarrow \text{rigidity}. }">
+<!-- TeX display: \boxed{
 \text{high coherence}
 +
 \text{insufficient local freedom}
 \rightarrow
 \text{rigidity}.
-}
-```
+} -->
+
+
 
 
 
@@ -42558,21 +48884,27 @@ Define:
 
 
 
-```math
-C(\lambda)
+
+
+<img src="UTC-Math/message-64.svg#equation-052" width="182" height="22" alt="C(\lambda) = \text{global coherence},">
+<!-- TeX display: C(\lambda)
 =
-\text{global coherence},
-```
+\text{global coherence}, -->
 
 
 
 
 
-```math
-A(\lambda)
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-053" width="189" height="22" alt="A(\lambda) = \text{local adaptability}.">
+<!-- TeX display: A(\lambda)
 =
-\text{local adaptability}.
-```
+\text{local adaptability}. -->
+
+
 
 
 
@@ -42580,9 +48912,12 @@ Typically:
 
 
 
-```math
-\frac{dC}{d\lambda}>0,
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-054" width="70" height="40" alt="\frac{dC}{d\lambda}>0,">
+<!-- TeX display: \frac{dC}{d\lambda}>0, -->
+
+
 
 
 
@@ -42590,9 +48925,12 @@ while beyond some point:
 
 
 
-```math
-\frac{dA}{d\lambda}<0.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-055" width="70" height="40" alt="\frac{dA}{d\lambda}&lt;0.">
+<!-- TeX display: \frac{dA}{d\lambda}<0. -->
+
+
 
 
 
@@ -42600,13 +48938,16 @@ Then a simple viability functional could be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-056" width="145" height="31" alt="\boxed{ V(\lambda) = C(\lambda)A(\lambda). }">
+<!-- TeX display: \boxed{
 V(\lambda)
 =
 C(\lambda)A(\lambda).
-}
-```
+} -->
+
+
 
 
 
@@ -42614,11 +48955,14 @@ The optimum often lies at:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-057" width="96" height="28" alt="\boxed{ 0&lt;\lambda^*&lt;1. }">
+<!-- TeX display: \boxed{
 0<\lambda^*<1.
-}
-```
+} -->
+
+
 
 
 
@@ -42634,9 +48978,12 @@ And it means the attractor is not merely a state:
 
 
 
-```math
-X^*.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-058" width="34" height="18" alt="X^*.">
+<!-- TeX display: X^*. -->
+
+
 
 
 
@@ -42644,11 +48991,14 @@ It may also include an optimal **architecture parameter**:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-059" width="79" height="31" alt="\boxed{ (X^*,\lambda^*). }">
+<!-- TeX display: \boxed{
 (X^*,\lambda^*).
-}
-```
+} -->
+
+
 
 
 
@@ -42662,9 +49012,12 @@ Let the system be a graph:
 
 
 
-```math
-G=(V,E,W).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-060" width="115" height="22" alt="G=(V,E,W).">
+<!-- TeX display: G=(V,E,W). -->
+
+
 
 
 
@@ -42672,9 +49025,12 @@ Take:
 
 
 
-```math
-L_{\rm mod}
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-061" width="42" height="20" alt="L_{\rm mod}">
+<!-- TeX display: L_{\rm mod} -->
+
+
 
 
 
@@ -42682,9 +49038,12 @@ as the Laplacian of a modular network and:
 
 
 
-```math
-L_{\rm cent}
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-062" width="41" height="20" alt="L_{\rm cent}">
+<!-- TeX display: L_{\rm cent} -->
+
+
 
 
 
@@ -42694,15 +49053,18 @@ Define:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-063" width="220" height="31" alt="\boxed{ L(\lambda) = (1-\lambda)L_{\rm mod} + \lambda L_{\rm cent}. }">
+<!-- TeX display: \boxed{
 L(\lambda)
 =
 (1-\lambda)L_{\rm mod}
 +
 \lambda L_{\rm cent}.
-}
-```
+} -->
+
+
 
 
 
@@ -42710,13 +49072,16 @@ Then:
 
 
 
-```math
-\dot X
+
+
+<img src="UTC-Math/message-64.svg#equation-064" width="161" height="27" alt="\dot X = F(X) - \kappa L(\lambda)X.">
+<!-- TeX display: \dot X
 =
 F(X)
 -
-\kappa L(\lambda)X.
-```
+\kappa L(\lambda)X. -->
+
+
 
 
 
@@ -42724,9 +49089,12 @@ Now changing:
 
 
 
-```math
-\lambda
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-065" width="18" height="18" alt="\lambda">
+<!-- TeX display: \lambda -->
+
+
 
 
 
@@ -42736,8 +49104,10 @@ So the loop becomes:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-066" width="209" height="35" alt="\boxed{ X \rightarrow \lambda \rightarrow L(\lambda) \rightarrow \dot X \rightarrow X'. }">
+<!-- TeX display: \boxed{
 X
 \rightarrow
 \lambda
@@ -42747,8 +49117,9 @@ L(\lambda)
 \dot X
 \rightarrow
 X'.
-}
-```
+} -->
+
+
 
 
 
@@ -42766,8 +49137,10 @@ CSC was:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-067" width="537" height="31" alt="\boxed{ \text{variation} \rightarrow \text{collapse/filter} \rightarrow \text{stabilization} \rightarrow \text{composition} \rightarrow \text{backreaction}. }">
+<!-- TeX display: \boxed{
 \text{variation}
 \rightarrow
 \text{collapse/filter}
@@ -42777,8 +49150,9 @@ CSC was:
 \text{composition}
 \rightarrow
 \text{backreaction}.
-}
-```
+} -->
+
+
 
 
 
@@ -42788,11 +49162,14 @@ Collapse often reduces degrees of freedom:
 
 
 
-```math
-\text{many possibilities}
+
+
+<img src="UTC-Math/message-64.svg#equation-068" width="331" height="21" alt="\text{many possibilities} \rightarrow \text{fewer coordinated modes}.">
+<!-- TeX display: \text{many possibilities}
 \rightarrow
-\text{fewer coordinated modes}.
-```
+\text{fewer coordinated modes}. -->
+
+
 
 
 
@@ -42802,11 +49179,14 @@ Composition creates semi-autonomous higher-order structures:
 
 
 
-```math
-\text{one stable whole}
+
+
+<img src="UTC-Math/message-64.svg#equation-069" width="406" height="21" alt="\text{one stable whole} \rightarrow \text{multiple modules within a new whole}.">
+<!-- TeX display: \text{one stable whole}
 \rightarrow
-\text{multiple modules within a new whole}.
-```
+\text{multiple modules within a new whole}. -->
+
+
 
 
 
@@ -42816,13 +49196,16 @@ So schematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-070" width="216" height="29" alt="\boxed{ \text{collapse} \rightsquigarrow \text{central coherence} }">
+<!-- TeX display: \boxed{
 \text{collapse}
 \rightsquigarrow
 \text{central coherence}
-}
-```
+} -->
+
+
 
 
 
@@ -42830,13 +49213,16 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-071" width="349" height="29" alt="\boxed{ \text{composition} \rightsquigarrow \text{distributed modular complexity}. }">
+<!-- TeX display: \boxed{
 \text{composition}
 \rightsquigarrow
 \text{distributed modular complexity}.
-}
-```
+} -->
+
+
 
 
 
@@ -42854,8 +49240,10 @@ The interesting possibility is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-072" width="474" height="26" alt="\boxed{ \text{centralize} \rightarrow \text{stabilize} \rightarrow \text{modularize} \rightarrow \text{recoordinate} \rightarrow \text{centralize}. }">
+<!-- TeX display: \boxed{
 \text{centralize}
 \rightarrow
 \text{stabilize}
@@ -42865,8 +49253,9 @@ The interesting possibility is:
 \text{recoordinate}
 \rightarrow
 \text{centralize}.
-}
-```
+} -->
+
+
 
 
 
@@ -42876,8 +49265,10 @@ Maybe:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-073" width="171" height="31" alt="\boxed{ \mathfrak C_{CM} = M \rightarrow C \rightarrow M' }">
+<!-- TeX display: \boxed{
 \mathfrak C_{CM}
 =
 M
@@ -42885,12 +49276,13 @@ M
 C
 \rightarrow
 M'
-}
-```
+} -->
 
 
 
-where $M$ means modular distributed organization and $C$ means coherent centralized organization.
+
+
+where <img src="UTC-Math/message-64.svg#equation-074" width="25" height="17" alt="M" align="middle"><!-- TeX inline: M --> means modular distributed organization and <img src="UTC-Math/message-64.svg#equation-075" width="21" height="18" alt="C" align="middle"><!-- TeX inline: C --> means coherent centralized organization.
 
 But I prefer keeping the terms **global** and **local**, because “centralized” suggests an actual central physical object.
 
@@ -42898,13 +49290,16 @@ The deeper relation is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-076" width="367" height="30" alt="\boxed{ \text{local degrees of freedom} \leftrightarrow \text{global order parameter}. }">
+<!-- TeX display: \boxed{
 \text{local degrees of freedom}
 \leftrightarrow
 \text{global order parameter}.
-}
-```
+} -->
+
+
 
 
 
@@ -42918,9 +49313,12 @@ Human thermoregulation:
 
 
 
-```math
-\{T_i\}
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-077" width="39" height="22" alt="\{T_i\}">
+<!-- TeX display: \{T_i\} -->
+
+
 
 
 
@@ -42930,11 +49328,14 @@ A coarse-grained central thermal state:
 
 
 
-```math
-T_{\rm core}
+
+
+<img src="UTC-Math/message-64.svg#equation-078" width="163" height="22" alt="T_{\rm core} = \mathcal A(T_1,\ldots,T_N).">
+<!-- TeX display: T_{\rm core}
 =
-\mathcal A(T_1,\ldots,T_N).
-```
+\mathcal A(T_1,\ldots,T_N). -->
+
+
 
 
 
@@ -42942,13 +49343,16 @@ Central/autonomic regulation uses thermal information to adjust:
 
 
 
-```math
-\omega_i,
+
+
+<img src="UTC-Math/message-64.svg#equation-079" width="164" height="23" alt="\omega_i, \quad \dot m_{{\rm sweat},i}, \quad Q_{{\rm met},i}.">
+<!-- TeX display: \omega_i,
 \quad
 \dot m_{{\rm sweat},i},
 \quad
-Q_{{\rm met},i}.
-```
+Q_{{\rm met},i}. -->
+
+
 
 
 
@@ -42956,8 +49360,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-080" width="200" height="32" alt="\boxed{ \{T_i\} \rightarrow T_{\rm core} \rightarrow \mathbf u \rightarrow \{T_i'\}. }">
+<!-- TeX display: \boxed{
 \{T_i\}
 \rightarrow
 T_{\rm core}
@@ -42965,8 +49371,9 @@ T_{\rm core}
 \mathbf u
 \rightarrow
 \{T_i'\}.
-}
-```
+} -->
+
+
 
 
 
@@ -42982,9 +49389,12 @@ So the body isn't:
 
 
 
-```math
-\text{brain}\rightarrow\text{body}.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-081" width="109" height="21" alt="\text{brain}\rightarrow\text{body}.">
+<!-- TeX display: \text{brain}\rightarrow\text{body}. -->
+
+
 
 
 
@@ -42992,15 +49402,18 @@ It is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-082" width="200" height="29" alt="\boxed{ \text{local} \leftrightarrow \text{regional} \leftrightarrow \text{global}. }">
+<!-- TeX display: \boxed{
 \text{local}
 \leftrightarrow
 \text{regional}
 \leftrightarrow
 \text{global}.
-}
-```
+} -->
+
+
 
 
 
@@ -43012,13 +49425,16 @@ That is a hierarchy of GLC loops.
 
 The mathematical fit gets even better given our recent work.
 
-Let each local region $U_i$ carry local channel data:
+Let each local region <img src="UTC-Math/message-64.svg#equation-083" width="25" height="20" alt="U_i" align="middle"><!-- TeX inline: U_i --> carry local channel data:
 
 
 
-```math
-s_i\in\mathscr F(U_i).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-084" width="90" height="22" alt="s_i\in\mathscr F(U_i).">
+<!-- TeX display: s_i\in\mathscr F(U_i). -->
+
+
 
 
 
@@ -43026,11 +49442,14 @@ The global coherent state is a glued section:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-085" width="90" height="31" alt="\boxed{ s\in\mathscr F(X). }">
+<!-- TeX display: \boxed{
 s\in\mathscr F(X).
-}
-```
+} -->
+
+
 
 
 
@@ -43040,9 +49459,12 @@ Then the global structure restricts back down:
 
 
 
-```math
-s|_{U_i}.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-086" width="38" height="23" alt="s|_{U_i}.">
+<!-- TeX display: s|_{U_i}. -->
+
+
 
 
 
@@ -43050,15 +49472,18 @@ So sheaf theory already contains:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-087" width="177" height="29" alt="\boxed{ \text{local} \rightarrow \text{global} \rightarrow \text{local}. }">
+<!-- TeX display: \boxed{
 \text{local}
 \rightarrow
 \text{global}
 \rightarrow
 \text{local}.
-}
-```
+} -->
+
+
 
 
 
@@ -43068,11 +49493,14 @@ And if the local sections no longer glue:
 
 
 
-```math
-s_i|_{U_i\cap U_j}
+
+
+<img src="UTC-Math/message-64.svg#equation-088" width="134" height="24" alt="s_i|_{U_i\cap U_j} \neq s_j|_{U_i\cap U_j},">
+<!-- TeX display: s_i|_{U_i\cap U_j}
 \neq
-s_j|_{U_i\cap U_j},
-```
+s_j|_{U_i\cap U_j}, -->
+
+
 
 
 
@@ -43084,13 +49512,16 @@ So the centralized/distributed tradeoff can be phrased as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-089" width="350" height="30" alt="\boxed{ \text{global gluing coherence} \leftrightarrow \text{local section freedom}. }">
+<!-- TeX display: \boxed{
 \text{global gluing coherence}
 \leftrightarrow
 \text{local section freedom}.
-}
-```
+} -->
+
+
 
 
 
@@ -43104,11 +49535,14 @@ At each location/module:
 
 
 
-```math
-D_i
+
+
+<img src="UTC-Math/message-64.svg#equation-090" width="113" height="22" alt="D_i \in \mathrm{Gr}(k_i,V_i)">
+<!-- TeX display: D_i
 \in
-\mathrm{Gr}(k_i,V_i)
-```
+\mathrm{Gr}(k_i,V_i) -->
+
+
 
 
 
@@ -43118,9 +49552,12 @@ The global system has some effective collective subspace:
 
 
 
-```math
-D_G.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-091" width="36" height="20" alt="D_G.">
+<!-- TeX display: D_G. -->
+
+
 
 
 
@@ -43128,11 +49565,14 @@ Local-to-global aggregation:
 
 
 
-```math
-\{D_i\}
+
+
+<img src="UTC-Math/message-64.svg#equation-092" width="96" height="22" alt="\{D_i\} \rightarrow D_G.">
+<!-- TeX display: \{D_i\}
 \rightarrow
-D_G.
-```
+D_G. -->
+
+
 
 
 
@@ -43140,11 +49580,14 @@ Global-to-local projection:
 
 
 
-```math
-D_G
+
+
+<img src="UTC-Math/message-64.svg#equation-093" width="100" height="20" alt="D_G \rightarrow P_iD_G.">
+<!-- TeX display: D_G
 \rightarrow
-P_iD_G.
-```
+P_iD_G. -->
+
+
 
 
 
@@ -43152,8 +49595,10 @@ So:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-094" width="244" height="32" alt="\boxed{ \{D_i\} \rightarrow D_G \rightarrow \{P_iD_G\} \rightarrow \{D_i'\}. }">
+<!-- TeX display: \boxed{
 \{D_i\}
 \rightarrow
 D_G
@@ -43161,8 +49606,9 @@ D_G
 \{P_iD_G\}
 \rightarrow
 \{D_i'\}.
-}
-```
+} -->
+
+
 
 
 
@@ -43180,9 +49626,12 @@ At microscale:
 
 
 
-```math
-X_1,\ldots,X_N.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-095" width="93" height="21" alt="X_1,\ldots,X_N.">
+<!-- TeX display: X_1,\ldots,X_N. -->
+
+
 
 
 
@@ -43190,25 +49639,31 @@ Coarse-grain:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-096" width="156" height="31" alt="\boxed{ Z=\pi(X_1,\ldots,X_N). }">
+<!-- TeX display: \boxed{
 Z=\pi(X_1,\ldots,X_N).
-}
-```
+} -->
 
 
 
-Then use $Z$ to describe macro behavior.
+
+
+Then use <img src="UTC-Math/message-64.svg#equation-097" width="20" height="17" alt="Z" align="middle"><!-- TeX inline: Z --> to describe macro behavior.
 
 But UTC adds the feedback direction:
 
 
 
-```math
-Z
+
+
+<img src="UTC-Math/message-64.svg#equation-098" width="68" height="24" alt="Z \rightarrow X_i'.">
+<!-- TeX display: Z
 \rightarrow
-X_i'.
-```
+X_i'. -->
+
+
 
 
 
@@ -43218,13 +49673,16 @@ It's:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-099" width="293" height="29" alt="\boxed{ \text{coarse-graining} + \text{downward constraint}. }">
+<!-- TeX display: \boxed{
 \text{coarse-graining}
 +
 \text{downward constraint}.
-}
-```
+} -->
+
+
 
 
 
@@ -43232,11 +49690,14 @@ I would avoid philosophical claims about “downward causation” for now and de
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-100" width="552" height="30" alt="\boxed{ \text{the coarse-grained variable appears explicitly in the local equations of motion}. }">
+<!-- TeX display: \boxed{
 \text{the coarse-grained variable appears explicitly in the local equations of motion}.
-}
-```
+} -->
+
+
 
 
 
@@ -43250,13 +49711,16 @@ I think the cleanest arrangement is:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-101" width="260" height="29" alt="\boxed{ P4 = \text{persistent attractor structure} }">
+<!-- TeX display: \boxed{
 P4
 =
 \text{persistent attractor structure}
-}
-```
+} -->
+
+
 
 
 
@@ -43264,13 +49728,16 @@ then:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-102" width="333" height="31" alt="\boxed{ P5 = \text{recursive composition / scale promotion} }">
+<!-- TeX display: \boxed{
 P5
 =
 \text{recursive composition / scale promotion}
-}
-```
+} -->
+
+
 
 
 
@@ -43278,13 +49745,16 @@ and between or across them appears:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-103" width="216" height="29" alt="\boxed{ \mathfrak C_{GL} = \text{Global-Local Closure}. }">
+<!-- TeX display: \boxed{
 \mathfrak C_{GL}
 =
 \text{Global-Local Closure}.
-}
-```
+} -->
+
+
 
 
 
@@ -43298,8 +49768,10 @@ Its kernel would be:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-104" width="206" height="37" alt="\boxed{ \mathfrak C_{GL} : \{A_i\} \overset{\pi}{\longrightarrow} Z \overset{\kappa}{\longrightarrow} \{A_i'\} }">
+<!-- TeX display: \boxed{
 \mathfrak C_{GL}
 :
 \{A_i\}
@@ -43307,8 +49779,9 @@ Its kernel would be:
 Z
 \overset{\kappa}{\longrightarrow}
 \{A_i'\}
-}
-```
+} -->
+
+
 
 
 
@@ -43316,41 +49789,53 @@ with:
 
 
 
-```math
-A_i
+
+
+<img src="UTC-Math/message-64.svg#equation-105" width="266" height="22" alt="A_i = \text{stable local attractors/modules},">
+<!-- TeX display: A_i
 =
-\text{stable local attractors/modules},
-```
+\text{stable local attractors/modules}, -->
 
 
 
 
 
-```math
-\pi
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-106" width="237" height="22" alt="\pi = \text{aggregation/coarse-graining},">
+<!-- TeX display: \pi
 =
-\text{aggregation/coarse-graining},
-```
+\text{aggregation/coarse-graining}, -->
 
 
 
 
 
-```math
-Z
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-107" width="203" height="21" alt="Z = \text{global order parameter},">
+<!-- TeX display: Z
 =
-\text{global order parameter},
-```
+\text{global order parameter}, -->
 
 
 
 
 
-```math
-\kappa
+
+
+
+
+<img src="UTC-Math/message-64.svg#equation-108" width="281" height="22" alt="\kappa = \text{global constraint/control mapping}.">
+<!-- TeX display: \kappa
 =
-\text{global constraint/control mapping}.
-```
+\text{global constraint/control mapping}. -->
+
+
 
 
 
@@ -43358,13 +49843,16 @@ Closure occurs when:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-109" width="92" height="32" alt="\boxed{ \{A_i'\} \rightarrow Z' }">
+<!-- TeX display: \boxed{
 \{A_i'\}
 \rightarrow
 Z'
-}
-```
+} -->
+
+
 
 
 
@@ -43378,9 +49866,12 @@ Let the full state be:
 
 
 
-```math
-Y=(X_1,\ldots,X_N,Z,\lambda).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-110" width="175" height="22" alt="Y=(X_1,\ldots,X_N,Z,\lambda).">
+<!-- TeX display: Y=(X_1,\ldots,X_N,Z,\lambda). -->
+
+
 
 
 
@@ -43388,9 +49879,12 @@ Then:
 
 
 
-```math
-\dot Y=\mathcal F(Y).
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-111" width="84" height="27" alt="\dot Y=\mathcal F(Y).">
+<!-- TeX display: \dot Y=\mathcal F(Y). -->
+
+
 
 
 
@@ -43398,11 +49892,14 @@ A viable global-local architecture satisfies:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-112" width="92" height="31" alt="\boxed{ \mathcal F(Y^*)=0 }">
+<!-- TeX display: \boxed{
 \mathcal F(Y^*)=0
-}
-```
+} -->
+
+
 
 
 
@@ -43410,11 +49907,14 @@ or, for oscillatory closure:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-113" width="135" height="31" alt="\boxed{ Y(t+T)=Y(t). }">
+<!-- TeX display: \boxed{
 Y(t+T)=Y(t).
-}
-```
+} -->
+
+
 
 
 
@@ -43422,13 +49922,16 @@ Stability requires:
 
 
 
-```math
-\mathrm{Re}\lambda_j
+
+
+<img src="UTC-Math/message-64.svg#equation-114" width="146" height="23" alt="\mathrm{Re}\lambda_j \left( D\mathcal F(Y^*) \right) &lt;0">
+<!-- TeX display: \mathrm{Re}\lambda_j
 \left(
 D\mathcal F(Y^*)
 \right)
-<0
-```
+<0 -->
+
+
 
 
 
@@ -43440,14 +49943,17 @@ We actually want:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-115" width="161" height="31" alt="\boxed{ 0&lt; \mathrm{Var}(X_i|Z) &lt; \infty. }">
+<!-- TeX display: \boxed{
 0<
 \mathrm{Var}(X_i|Z)
 <
 \infty.
-}
-```
+} -->
+
+
 
 
 
@@ -43455,9 +49961,12 @@ Too little conditional variation:
 
 
 
-```math
-\mathrm{Var}(X_i|Z)\rightarrow0
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-116" width="115" height="22" alt="\mathrm{Var}(X_i|Z)\rightarrow0">
+<!-- TeX display: \mathrm{Var}(X_i|Z)\rightarrow0 -->
+
+
 
 
 
@@ -43467,9 +49976,12 @@ Too much:
 
 
 
-```math
-I(X_i;Z)\rightarrow0
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-117" width="99" height="22" alt="I(X_i;Z)\rightarrow0">
+<!-- TeX display: I(X_i;Z)\rightarrow0 -->
+
+
 
 
 
@@ -43479,11 +49991,14 @@ So a healthy architecture satisfies both:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-118" width="104" height="31" alt="\boxed{ I(X_i;Z)>0 }">
+<!-- TeX display: \boxed{
 I(X_i;Z)>0
-}
-```
+} -->
+
+
 
 
 
@@ -43491,11 +50006,14 @@ and:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-119" width="112" height="31" alt="\boxed{ H(X_i|Z)>0. }">
+<!-- TeX display: \boxed{
 H(X_i|Z)>0.
-}
-```
+} -->
+
+
 
 
 
@@ -43505,11 +50023,14 @@ It means:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-120" width="629" height="52" alt="\boxed{ \textbf{the modules must remain coupled to the whole without becoming copies of the whole.} }">
+<!-- TeX display: \boxed{
 \textbf{the modules must remain coupled to the whole without becoming copies of the whole.}
-}
-```
+} -->
+
+
 
 
 
@@ -43523,11 +50044,14 @@ I would formulate it as:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-121" width="263" height="29" alt="\boxed{ \textbf{Coherent Modularity Principle} }">
+<!-- TeX display: \boxed{
 \textbf{Coherent Modularity Principle}
-}
-```
+} -->
+
+
 
 
 
@@ -43537,11 +50061,14 @@ Then mathematically:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-122" width="175" height="31" alt="\boxed{ 0&lt;I(X_i;Z)&lt;H(X_i). }">
+<!-- TeX display: \boxed{
 0<I(X_i;Z)<H(X_i).
-}
-```
+} -->
+
+
 
 
 
@@ -43563,11 +50090,14 @@ So this GLC motif may be showing us something very fundamental:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-123" width="344" height="29" alt="\boxed{ \textbf{complexity requires constrained freedom.} }">
+<!-- TeX display: \boxed{
 \textbf{complexity requires constrained freedom.}
-}
-```
+} -->
+
+
 
 
 
@@ -43575,10 +50105,13 @@ Too much freedom:
 
 
 
-```math
-\rightarrow
-\text{incoherence}.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-124" width="114" height="18" alt="\rightarrow \text{incoherence}.">
+<!-- TeX display: \rightarrow
+\text{incoherence}. -->
+
+
 
 
 
@@ -43586,10 +50119,13 @@ Too much constraint:
 
 
 
-```math
-\rightarrow
-\text{rigidity}.
-```
+
+
+<img src="UTC-Math/message-64.svg#equation-125" width="85" height="21" alt="\rightarrow \text{rigidity}.">
+<!-- TeX display: \rightarrow
+\text{rigidity}. -->
+
+
 
 
 
@@ -43597,11 +50133,14 @@ Between them:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-126" width="205" height="29" alt="\boxed{ \text{stable modular complexity}. }">
+<!-- TeX display: \boxed{
 \text{stable modular complexity}.
-}
-```
+} -->
+
+
 
 
 
@@ -43609,8 +50148,10 @@ And that ties right back to the oldest UTC architecture:
 
 
 
-```math
-\boxed{
+
+
+<img src="UTC-Math/message-64.svg#equation-127" width="570" height="29" alt="\boxed{ \text{possibility} \rightarrow \text{constraint} \rightarrow \text{distinction} \rightarrow \text{transition} \rightarrow \text{stability} \rightarrow \text{composition}. }">
+<!-- TeX display: \boxed{
 \text{possibility}
 \rightarrow
 \text{constraint}
@@ -43622,8 +50163,9 @@ And that ties right back to the oldest UTC architecture:
 \text{stability}
 \rightarrow
 \text{composition}.
-}
-```
+} -->
+
+
 
 
 
