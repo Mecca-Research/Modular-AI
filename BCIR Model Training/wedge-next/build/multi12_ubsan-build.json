@@ -1,0 +1,28 @@
+{
+  "command": [
+    "gcc",
+    "-std=c11",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-O3",
+    "-fPIC",
+    "-shared",
+    "-ffp-contract=off",
+    "-fno-math-errno",
+    "-pthread",
+    "-I",
+    "/workspace/scratch/d4904b8a62c3/wedge-next/vendor",
+    "-DGP_RANK=24",
+    "-DGP_PROJECTOR=0",
+    "-DGP_SYMMETRIC=0",
+    "-DGP_HEADS=2",
+    "/workspace/scratch/d4904b8a62c3/wedge-next/vendor/bcir_tensor.c",
+    "/workspace/scratch/d4904b8a62c3/wedge-next/build/multi12_ubsan.c",
+    "-lm",
+    "-o",
+    "/workspace/scratch/d4904b8a62c3/wedge-next/build/multi12_ubsan.so"
+  ],
+  "bcir_commit": "aaa2e6c0ee0ee15b83fe4d0373b48bd893e80d6d",
+  "source_sha256": "acb2a8089b3c0f521e31d16c26ccbf895abe2ded49dbd4c66580e9368006d342",
+  "stderr": ""
+}
