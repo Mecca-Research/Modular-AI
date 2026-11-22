@@ -1,0 +1,10 @@
+{
+  "schema": "bcir.scaling.extension.v1",
+  "source_sha256": "ff15dc37854ea9d4ae0cd7a92d979732e211ba5e079a3c6e6abec0a440362567",
+  "parent_protocol_sha256": "7d3c700d1faf10f0a62ffa90123c19f4078640d79a4766c57feddeed81128925",
+  "reason": "The first 200-update screen differed by only 0.01159 nats and 1.4% mean training time; insufficient basis for a strong architecture choice.",
+  "declared_before": "Any final-test evaluation and either wide50m 600-step extension/new-seed result.",
+  "design": "Complete both 50M recipes to 600 updates on both seeds, keeping original batches, optimizer, schedule, checkpoint rule and numerical family.",
+  "selection": "Choose lower two-seed mean of validation-selected checkpoint CE. Report time/memory and per-seed directions separately. No claim of globally optimal architecture or statistically resolved winner from two seeds.",
+  "original_tie_break_note": "Original code used mean training time for the tie, although prose said median step time. The independent five-update median also ranked deep50m faster, so original candidate identity was unaffected. This extension removes that timing tie-break from the final recommendation."
+}

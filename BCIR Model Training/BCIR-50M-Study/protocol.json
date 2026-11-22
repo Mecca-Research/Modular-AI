@@ -1,0 +1,122 @@
+{
+  "schema": "bcir.scaling.study.v1",
+  "source_commit": "80e9507531b7597ef81d0348db75f0fd5dcd8134",
+  "source_hashes": {
+    "common.py": "241209123fe255d6a73adc87e1ddb64407dc11908a86b5d8fca3e826ec814e0d",
+    "train.py": "4ae1c5e0c391e28fd5f0db6eb62b75a9282ac26722a07f6a6759e7bec7954a40",
+    "validate.py": "a671284b1f4e48742be4149f5ce82b4ba6064d6ed06ba94353a03b15abd2d6dc"
+  },
+  "architectures": {
+    "pilot1m": {
+      "vocab_size": 260,
+      "d_model": 192,
+      "n_heads": 4,
+      "n_layers": 2,
+      "d_ff": 512,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06,
+      "parameters": 861888
+    },
+    "reference10m": {
+      "vocab_size": 260,
+      "d_model": 384,
+      "n_heads": 8,
+      "n_layers": 6,
+      "d_ff": 1024,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 4,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06,
+      "parameters": 9836928
+    },
+    "wide10m": {
+      "vocab_size": 260,
+      "d_model": 512,
+      "n_heads": 8,
+      "n_layers": 4,
+      "d_ff": 1152,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06,
+      "parameters": 9837056
+    },
+    "wide50m": {
+      "vocab_size": 260,
+      "d_model": 768,
+      "n_heads": 12,
+      "n_layers": 8,
+      "d_ff": 2048,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 4,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06,
+      "parameters": 50544384
+    },
+    "deep50m": {
+      "vocab_size": 260,
+      "d_model": 640,
+      "n_heads": 10,
+      "n_layers": 12,
+      "d_ff": 1664,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06,
+      "parameters": 50317440
+    }
+  },
+  "protocol": "Exploratory CPU early-learning pilot; no claim of converged or compute-optimal pretraining.",
+  "seeds": [
+    20261104,
+    20261105
+  ],
+  "threads": 2,
+  "batch_size": 4,
+  "context_length": 64,
+  "steps": 600,
+  "tokens_per_run": 153600,
+  "optimizer": {
+    "lr": 0.0006,
+    "min_lr": 6e-05,
+    "warmup": 30,
+    "beta1": 0.9,
+    "beta2": 0.95,
+    "epsilon": 1e-08,
+    "weight_decay": 0.1,
+    "grad_clip": 1.0
+  },
+  "contract": "kblock+reduce+attn",
+  "validation_batches": 16,
+  "validation_seed": 671104,
+  "test_batches": 64,
+  "test_seed": 681104,
+  "checkpoint_rule": "minimum validation CE at steps 100,200,...600; initial evaluation is diagnostic",
+  "architecture_selection": "Two 50M candidates run 200 updates on seed 20261104. Prefer lower validation CE; if difference <=.02 nats prefer faster median step. Then finish selected candidate to 600 and independently train second seed. All 10M candidates and sub-million pilot run 600 steps on both seeds.",
+  "comparison": "Matched token/update counts for completed runs; candidate screening is exploratory. Test outcomes cannot select recipes, checkpoints, edits, or learning rates.",
+  "data": {
+    "train": {
+      "bytes": 10951562,
+      "encoded_sha256": "b5c6414c59741cb74d697ed4ed9301eacc744908e147722b2276e67b36da89d6",
+      "parquet_sha256": "e83889baabc497075506f91975be5fac0d45c5290b6b20582c8cd1e853d0c9f7"
+    },
+    "validation": {
+      "bytes": 1148007,
+      "encoded_sha256": "23d95780ba520f32b5fc7bb3ecd86326fac265e2674a6e9636bbf448586e9299",
+      "parquet_sha256": "204929b7ff9d6184953f867dedb860e40aa69c078fc1e54b3baaa8fb28511c4c"
+    },
+    "test": {
+      "bytes": 1292013,
+      "encoded_sha256": "a554d959bde4d5fb576e8bf28b79c30d51d59e637abff488aa0aad1dde2cbada",
+      "parquet_sha256": "5f1bea067869d04849c0f975a2b29c4ff47d867f484f5010ea5e861eab246d91"
+    }
+  },
+  "execution": "Current unmodified native C forward/backward, GQA/RoPE/RMSNorm/SwiGLU/tied byte embeddings and native AdamW. No PyTorch training."
+}

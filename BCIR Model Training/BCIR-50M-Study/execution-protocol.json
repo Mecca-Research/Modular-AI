@@ -1,0 +1,12 @@
+{
+  "schema": "bcir.scaling.execution-check.v1",
+  "source_sha256": "e0a1fd8eac47f6c3766614722f7e18669d938cfa65ddfc9c6fd9b2c12d95b239",
+  "rounds": 8,
+  "kinds": [
+    "dispatch:down.fwd"
+  ],
+  "purpose": "One bounded dispatch site family, not exhaustive tuning; quality checkpoints untouched.",
+  "parity": "Fixed C step versus selected launch program from identical restored full state, one update, all four persistent-array hashes and event equality.",
+  "scaling_checks": "Selected 50M: one maximum-magnitude coordinate per embedding/middle-layer/final-norm span checked by finite differences; causal-prefix equality; forced 850MiB auto-recompute step compared bitwise with ample-buffer step.",
+  "timing": "Choice table intervals from native job clock. No end-to-end speedup inferred from a single changed family."
+}

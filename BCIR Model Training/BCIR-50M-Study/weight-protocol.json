@@ -1,0 +1,25 @@
+{
+  "schema": "bcir.weight-program.study.v1",
+  "source_sha256": "6a30bd82fc65b8a1c29a9774b9ee2928224140c9863da554e1d8dcad31e9aa91",
+  "common_sha256": "241209123fe255d6a73adc87e1ddb64407dc11908a86b5d8fca3e826ec814e0d",
+  "training_protocol_sha256": "7d3c700d1faf10f0a62ffa90123c19f4078640d79a4766c57feddeed81128925",
+  "scope": "Agent-authored algorithms executed in Python with native C inference. No separate Astra calls. Small neural circuit compilation and planted-fault repair are distinct from natural capability improvement.",
+  "circuit": "One fixed 3-8-2 ReLU full-adder, composed across eight input bit pairs. Zero-SGD programmed weights; same circuit compiler control, Gaussian-weight control, three same-architecture Adam/MSE baselines, 2000 full-truth-table updates. Exhaustive 65536 integer pairs. No model feedback before formula is frozen.",
+  "fault": "For reference10m and selected50m, both seeds: one middle-layer MLP down-projection column multiplied by 256. Detector sees only each candidate down matrix, not clean weights or injected index: norm > 8*median(column norms) rescaled to median. No forwards or gradients to choose repair. Clean negative, sham, random-column and same-count same-norm random perturbation controls.",
+  "permutation": "Middle FFN hidden coordinates jointly permuted in gate/up rows and down columns, and both Adam moments. Same weights in new coordinates, FP32 rounding may move. Down-only permutation is a damaging control. Compare logits/CE and one future update after inverse permutation.",
+  "natural": "Deflate one middle MLP down projection along its leading left singular direction, found by 20 weight-only power iterations. Alpha [0,.1,.3,1], select minimum validation CE including no-op. Eight validation batches per candidate: 32 selection forwards. Matched-norm random direction is a control. Independent 20-step native Adam continuation on fresh train batches is an additional, unequal-compute reference. No gradients in edit arm.",
+  "validation": {
+    "split": "validation",
+    "seed": 771104,
+    "batches": 8,
+    "tokens": 2048
+  },
+  "test": {
+    "split": "test",
+    "seed": 681104,
+    "batches": 64,
+    "tokens": 16384
+  },
+  "outcomes": "Held-out CE, token accuracy, KL(clean||edited), top-1 agreement, changed coordinates, validation/inference calls, edit time, and full raw metrics. Test outcomes never choose edits or repeat failed candidates.",
+  "evidence_limits": "Two training seeds; byte language pilot heavily undertrained. Fault repair is deliberately favorable and not new knowledge. Arithmetic program has symbolic bit framing and circuit composition. No claim about factual editing, safety traits, reasoning, or published game/math benchmarks."
+}

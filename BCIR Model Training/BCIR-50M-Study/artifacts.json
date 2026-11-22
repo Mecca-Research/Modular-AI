@@ -1,0 +1,80 @@
+[
+  {
+    "filename": "BCIR_deep50m_20261104_step600_weights.zip",
+    "bytes": 187265135,
+    "sha256": "186a575593856ee2437f8e42c1ef3033ad162504620c365bf08e453b8ccc5a08",
+    "model": "deep50m",
+    "seed": 20261104,
+    "step": 600,
+    "part": "weights"
+  },
+  {
+    "filename": "BCIR_deep50m_20261104_step600_optimizer.zip",
+    "bytes": 372550619,
+    "sha256": "c070a7ba5bb93d093aaa6bb06c023c0eb74d57e0c534353966c771018dd19477",
+    "model": "deep50m",
+    "seed": 20261104,
+    "step": 600,
+    "part": "optimizer"
+  },
+  {
+    "filename": "BCIR_deep50m_20261105_step600_weights.zip",
+    "bytes": 187267453,
+    "sha256": "a1306793ac1bda0cebbd3a8f275e942e6915268a635c0433c9194d10d5b46ada",
+    "model": "deep50m",
+    "seed": 20261105,
+    "step": 600,
+    "part": "weights"
+  },
+  {
+    "filename": "BCIR_deep50m_20261105_step600_optimizer.zip",
+    "bytes": 373040046,
+    "sha256": "6d2b024ad186fa58227b0f11b6464c34382b3dff9d145807b6ecd9004a6df1b5",
+    "model": "deep50m",
+    "seed": 20261105,
+    "step": 600,
+    "part": "optimizer"
+  },
+  {
+    "filename": "BCIR_wide50m_20261104_step600_weights.zip",
+    "bytes": 188112376,
+    "sha256": "606bea0879d96524160fb4e69c673df1a0816dcde6185d68c937f2bc3f610f17",
+    "model": "wide50m",
+    "seed": 20261104,
+    "step": 600,
+    "part": "weights"
+  },
+  {
+    "filename": "BCIR_wide50m_20261104_step600_optimizer.zip",
+    "bytes": 374880237,
+    "sha256": "47393cd99756b662da21cb075e7f42b445f6697f8a09f2d264575ebe02076451",
+    "model": "wide50m",
+    "seed": 20261104,
+    "step": 600,
+    "part": "optimizer"
+  },
+  {
+    "filename": "BCIR_wide50m_20261105_step600_weights.zip",
+    "bytes": 188112469,
+    "sha256": "410a725b433aca73843afcd3be333a51d3c9f4011328126bd99ca205e856cfed",
+    "model": "wide50m",
+    "seed": 20261105,
+    "step": 600,
+    "part": "weights"
+  },
+  {
+    "filename": "BCIR_wide50m_20261105_step600_optimizer.zip",
+    "bytes": 375079951,
+    "sha256": "e47e41af274ec9dc298cc9ec18cc35dc89e6001e4358ae2e2987bb2cda59b0d9",
+    "model": "wide50m",
+    "seed": 20261105,
+    "step": 600,
+    "part": "optimizer"
+  },
+  {
+    "filename": "BCIR_Smaller_Model_States_2026-11-04.zip",
+    "bytes": 456629358,
+    "sha256": "7299fafc2d8c63a3933a7712ca37591e8e00ac0fe52b588a1bd4573d1b38fc6c",
+    "part": "smaller full states"
+  }
+]
