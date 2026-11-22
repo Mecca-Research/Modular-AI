@@ -1,0 +1,87 @@
+{
+  "forward_max_abs_error": 4.726535163257495e-08,
+  "causal_prefix_exact": true,
+  "finite_difference_probes": [
+    {
+      "name": "model.embed_tokens.weight",
+      "index": 128,
+      "analytic": 0.014477752149105072,
+      "numerical": 0.014477752951047584,
+      "absolute_error": 8.01942512396181e-10
+    },
+    {
+      "name": "model.layers.0.input_layernorm.weight",
+      "index": 264,
+      "analytic": -0.0008929095347411931,
+      "numerical": -0.000892753648229494,
+      "absolute_error": 1.5588651169906598e-07
+    },
+    {
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "index": 400,
+      "analytic": -0.00012859268463216722,
+      "numerical": -0.00012851859054752168,
+      "absolute_error": 7.409408464553735e-08
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj.weight",
+      "index": 592,
+      "analytic": -0.00025639761588536203,
+      "numerical": -0.00025566122996423246,
+      "absolute_error": 7.363859211295676e-07
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj.weight",
+      "index": 720,
+      "analytic": -0.029821619391441345,
+      "numerical": -0.02982246831384483,
+      "absolute_error": 8.489224034846643e-07
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj.weight",
+      "index": 912,
+      "analytic": -0.04602822661399841,
+      "numerical": -0.046028705693257344,
+      "absolute_error": 4.79079258930426e-07
+    },
+    {
+      "name": "model.layers.0.post_attention_layernorm.weight",
+      "index": 1048,
+      "analytic": -0.0002741761854849756,
+      "numerical": -0.00027555843662430135,
+      "absolute_error": 1.3822511393257741e-06
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "index": 1248,
+      "analytic": -0.0008964539156295359,
+      "numerical": -0.000896052940735359,
+      "absolute_error": 4.009748941768976e-07
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "index": 1632,
+      "analytic": 0.0023166511673480272,
+      "numerical": 0.002315762956506262,
+      "absolute_error": 8.88210841765158e-07
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "index": 2016,
+      "analytic": 0.00023547071032226086,
+      "numerical": 0.00023727113052096627,
+      "absolute_error": 1.8004201987054103e-06
+    },
+    {
+      "name": "model.norm.weight",
+      "index": 2216,
+      "analytic": 0.0006055586272850633,
+      "numerical": 0.0006060536461571786,
+      "absolute_error": 4.950188721153381e-07
+    }
+  ],
+  "thread_state_identity": true,
+  "resume_identity": true,
+  "insufficient_memory_refused": true,
+  "reference": "BCIR dependency-free scalar decoder, distinct forward implementation; finite differences for VJP"
+}

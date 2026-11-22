@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "archives_crc_checked": 9,
+  "roundtrip_model": "wide50m",
+  "seed": 20261104,
+  "step": 600,
+  "metadata_exact": true,
+  "weights_exact": true,
+  "moment1_exact": true,
+  "moment2_exact": true,
+  "note": "The public restore_checkpoint command verified array hashes and rebuilt an exact selected 50M training state. All state archives passed ZIP checksum reads."
+}

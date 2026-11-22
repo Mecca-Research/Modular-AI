@@ -1,0 +1,142 @@
+{
+  "pilot1m": {
+    "parameters": 861888,
+    "init_s": 0.26426114399987455,
+    "memory_bytes": 23903232,
+    "step_seconds": [
+      0.018353950999880908,
+      0.01831135800011907,
+      0.015467351000097551,
+      0.013526066999929753,
+      0.01838444800000616
+    ],
+    "median_step_seconds": 0.01831135800011907,
+    "rss_max_mib": 257.98046875,
+    "last_loss": 4.5209895369585205,
+    "spec": {
+      "vocab_size": 260,
+      "d_model": 192,
+      "n_heads": 4,
+      "n_layers": 2,
+      "d_ff": 512,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06
+    },
+    "contract": "kblock+reduce+attn"
+  },
+  "reference10m": {
+    "parameters": 9836928,
+    "init_s": 3.022316660999877,
+    "memory_bytes": 202762240,
+    "step_seconds": [
+      0.11600320499996997,
+      0.11409757699993861,
+      0.13130616099988401,
+      0.10859853299984934,
+      0.11046764599996095
+    ],
+    "median_step_seconds": 0.11409757699993861,
+    "rss_max_mib": 398.7734375,
+    "last_loss": 3.7140101074532668,
+    "spec": {
+      "vocab_size": 260,
+      "d_model": 384,
+      "n_heads": 8,
+      "n_layers": 6,
+      "d_ff": 1024,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 4,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06
+    },
+    "contract": "kblock+reduce+attn"
+  },
+  "wide10m": {
+    "parameters": 9837056,
+    "init_s": 3.005253150000044,
+    "memory_bytes": 195297280,
+    "step_seconds": [
+      0.10921741500010285,
+      0.10935848899998746,
+      0.11154725999995208,
+      0.11499646499987648,
+      0.14280403199995817
+    ],
+    "median_step_seconds": 0.11154725999995208,
+    "rss_max_mib": 398.7734375,
+    "last_loss": 3.435592135811962,
+    "spec": {
+      "vocab_size": 260,
+      "d_model": 512,
+      "n_heads": 8,
+      "n_layers": 4,
+      "d_ff": 1152,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06
+    },
+    "contract": "kblock+reduce+attn"
+  },
+  "wide50m": {
+    "parameters": 50544384,
+    "init_s": 15.621719394000138,
+    "memory_bytes": 920145920,
+    "step_seconds": [
+      0.563695485000153,
+      0.7826653629999782,
+      0.5437717760000851,
+      0.5335808539998652,
+      0.5953035969998837
+    ],
+    "median_step_seconds": 0.563695485000153,
+    "rss_max_mib": 1082.828125,
+    "last_loss": 3.2942121223858067,
+    "spec": {
+      "vocab_size": 260,
+      "d_model": 768,
+      "n_heads": 12,
+      "n_layers": 8,
+      "d_ff": 2048,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 4,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06
+    },
+    "contract": "kblock+reduce+attn"
+  },
+  "deep50m": {
+    "parameters": 50317440,
+    "init_s": 14.967904728000121,
+    "memory_bytes": 935127040,
+    "step_seconds": [
+      0.5622699900000043,
+      0.5553301209999972,
+      0.610690077000072,
+      0.5632007240001258,
+      0.5167183600001408
+    ],
+    "median_step_seconds": 0.5622699900000043,
+    "rss_max_mib": 1096.94921875,
+    "last_loss": 3.3120347861148027,
+    "spec": {
+      "vocab_size": 260,
+      "d_model": 640,
+      "n_heads": 10,
+      "n_layers": 12,
+      "d_ff": 1664,
+      "rope_base": 10000.0,
+      "activation": "silu_gate",
+      "n_kv_heads": 2,
+      "tied_embeddings": true,
+      "rms_norm_eps": 1e-06
+    },
+    "contract": "kblock+reduce+attn"
+  }
+}

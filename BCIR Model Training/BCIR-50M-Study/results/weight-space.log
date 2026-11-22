@@ -1,0 +1,15 @@
+baseline deep50m 20261104 2.1170823858115946
+baseline deep50m 20261105 2.143787755489696
+baseline pilot1m 20261104 2.1497261578458486
+baseline pilot1m 20261105 2.1623942959825944
+baseline reference10m 20261104 2.143086981701976
+baseline reference10m 20261105 2.149346829370269
+baseline wide10m 20261104 2.140528137261465
+baseline wide10m 20261105 2.1092747558207634
+baseline wide50m 20261104 2.125169532867006
+baseline wide50m 20261105 2.1261545339465533
+circuit {"parameters": 50, "programmed": {"correct": 65536, "total": 65536, "accuracy": 1.0}, "compiled_control": {"correct": 65536, "total": 65536, "accuracy": 1.0}, "trained": [{"seed": 411, "initial": {"correct": 1, "total": 65536, "accuracy": 1.52587890625e-05}, "exhaustive": {"correct": 65536, "total": 65536, "accuracy": 1.0}, "first_full_adder_truth_table_correct": 137, "updates": 2000, "seconds": 0.10505462800028909, "truth_table_mse": 6.994405055138486e-15}, {"seed": 412, "initial": {"correct": 1, "total": 65536, "accuracy": 1.52587890625e-05}, "exhaustive": {"correct": 65536, "total": 65536, "accuracy": 1.0}, "first_full_adder_truth_table_correct": 61, "updates": 2000, "seconds": 0.1049401520003812, "truth_table_mse": 1.9984014443252818e-15}, {"seed": 413, "initial": {"correct": 1, "total": 65536, "accuracy": 1.52587890625e-05}, "exhaustive": {"correct": 6561, "total": 65536, "accuracy": 0.1001129150390625}, "first_full_adder_truth_table_correct": null, "updates": 2000, "seconds": 0.12255821000053402, "truth_table_mse": 0.1041666716337204}], "off_binary_noise": [{"sigma": 0.01, "accuracy": 1.0}, {"sigma": 0.1, "accuracy": 0.939}, {"sigma": 0.25, "accuracy": 0.67075}]}
+weights {"name": "reference10m", "seed": 20261104, "clean_ce": 2.143086981701975, "fault_ce": 2.175656770065107, "repair_ce": 2.14308753405258, "natural_alpha": 0.0, "natural_ce": 2.143086981701975, "adam20_ce": 2.139863979964832}
+weights {"name": "reference10m", "seed": 20261105, "clean_ce": 2.149346829370269, "fault_ce": 2.1572248932621614, "repair_ce": 2.149346821656705, "natural_alpha": 0.3, "natural_ce": 2.1499850838767425, "adam20_ce": 2.1444271216521775}
+weights {"name": "wide50m", "seed": 20261104, "clean_ce": 2.125169532867006, "fault_ce": 2.1251243628147094, "repair_ce": 2.125169536643625, "natural_alpha": 0.3, "natural_ce": 2.125342975233502, "adam20_ce": 2.1166275884349375}
+weights {"name": "wide50m", "seed": 20261105, "clean_ce": 2.1261545339465533, "fault_ce": 2.1264394570218283, "repair_ce": 2.126154499578538, "natural_alpha": 0.3, "natural_ce": 2.126178047383838, "adam20_ce": 2.1224456165896464}

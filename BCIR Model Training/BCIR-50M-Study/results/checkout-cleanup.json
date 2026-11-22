@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-05T00:21:05.185344+00:00",
+  "note": "Same six temporary paths reappeared after runtime refresh; copies preserved again outside worktree. No tracked changes.",
+  "files": [
+    {
+      "original": "docs/research/wedge-integrated/checkpoints/.ordered_fixed_global-20261018.npz.613thQ",
+      "bytes": 4456448,
+      "sha256": "9a560581209ea035e067f54f039d605d99addbbffdabf01f80df7b41cba5ab3c"
+    },
+    {
+      "original": "docs/research/wedge-integrated/checkpoints/.continuation-long_adaptive-20261019.npz.aeaB0H",
+      "bytes": 4718592,
+      "sha256": "abe70517ccb88d9069c7595d74c5c6928c88f07a3b35d1d88ae0b02904ffbbd6"
+    },
+    {
+      "original": "docs/research/gp-global/baseline-checkpoints/.wikitext2_byte-transformer-20261018.npz.J7Tp8z",
+      "bytes": 4718592,
+      "sha256": "26d4cc29b91e341d2d020e203628a8b3c95909bfdd3d2054a8121e3ad56f1e0d"
+    },
+    {
+      "original": "docs/research/wedge-query-aware/checkpoints/.ordered-query_full-20261018.npz.WbdmNr",
+      "bytes": 5505024,
+      "sha256": "44f5d53ac29d3459c47a59d327954cfba729cbd480cf291e35174045cf0f4075"
+    },
+    {
+      "original": "docs/research/wedge-pr818/checkpoints/.lm-global-20261018.npz.pqSru8",
+      "bytes": 5505024,
+      "sha256": "0a101be719fdadb159c763c6701acc3b77f08e6a80ccfe0faf75d0cac48537b5"
+    },
+    {
+      "original": "docs/research/wedge-pr818/bf16/checkpoints/.ordered-query_full-20261018.npz.w9k7m0",
+      "bytes": 4194304,
+      "sha256": "d726fe6e2accac8b9c00c716ae879f90989986edb1a2ed26f4b1eb11a36fa70f"
+    }
+  ]
+}

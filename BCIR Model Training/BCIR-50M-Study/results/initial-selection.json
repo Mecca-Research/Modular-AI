@@ -1,0 +1,16 @@
+{
+  "chosen": "deep50m",
+  "source": "validation-only seed0 200-step screen",
+  "candidates": [
+    {
+      "name": "wide50m",
+      "ce": 2.3547747345410954,
+      "train_seconds": 121.04515223099975
+    },
+    {
+      "name": "deep50m",
+      "ce": 2.3663604091375414,
+      "train_seconds": 119.38470797500031
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "round": 0,
+    "order": [
+      "default",
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1"
+    ],
+    "total_ns": {
+      "default": 123304423,
+      "dispatch:down.fwd=i1": 848176030,
+      "dispatch:down.fwd=i2": 155953899,
+      "dispatch:down.fwd=t1": 126101856
+    },
+    "site_ns": {
+      "default@dispatch:down.fwd": 7015712,
+      "dispatch:down.fwd=i1": 732363502,
+      "dispatch:down.fwd=i2": 18352572,
+      "dispatch:down.fwd=t1": 13574203
+    }
+  },
+  {
+    "round": 1,
+    "order": [
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1",
+      "default"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=i1": 835453911,
+      "dispatch:down.fwd=i2": 115011544,
+      "dispatch:down.fwd=t1": 151893910,
+      "default": 109301350
+    },
+    "site_ns": {
+      "dispatch:down.fwd=i1": 728869797,
+      "dispatch:down.fwd=i2": 8092374,
+      "dispatch:down.fwd=t1": 12499965,
+      "default@dispatch:down.fwd": 6198810
+    }
+  },
+  {
+    "round": 2,
+    "order": [
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1",
+      "default",
+      "dispatch:down.fwd=i1"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=i2": 110054914,
+      "dispatch:down.fwd=t1": 116124063,
+      "default": 110775633,
+      "dispatch:down.fwd=i1": 743692730
+    },
+    "site_ns": {
+      "dispatch:down.fwd=i2": 7846115,
+      "dispatch:down.fwd=t1": 12445052,
+      "default@dispatch:down.fwd": 6629089,
+      "dispatch:down.fwd=i1": 634095262
+    }
+  },
+  {
+    "round": 3,
+    "order": [
+      "dispatch:down.fwd=t1",
+      "default",
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=t1": 120535831,
+      "default": 114682707,
+      "dispatch:down.fwd=i1": 835763458,
+      "dispatch:down.fwd=i2": 135261964
+    },
+    "site_ns": {
+      "dispatch:down.fwd=t1": 11834931,
+      "default@dispatch:down.fwd": 6432893,
+      "dispatch:down.fwd=i1": 722565148,
+      "dispatch:down.fwd=i2": 8812102
+    }
+  },
+  {
+    "round": 4,
+    "order": [
+      "default",
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1"
+    ],
+    "total_ns": {
+      "default": 152835394,
+      "dispatch:down.fwd=i1": 961643621,
+      "dispatch:down.fwd=i2": 110765990,
+      "dispatch:down.fwd=t1": 113052168
+    },
+    "site_ns": {
+      "default@dispatch:down.fwd": 7665845,
+      "dispatch:down.fwd=i1": 812829338,
+      "dispatch:down.fwd=i2": 7856439,
+      "dispatch:down.fwd=t1": 12242083
+    }
+  },
+  {
+    "round": 5,
+    "order": [
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1",
+      "default"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=i1": 760211794,
+      "dispatch:down.fwd=i2": 175584300,
+      "dispatch:down.fwd=t1": 171969605,
+      "default": 121060211
+    },
+    "site_ns": {
+      "dispatch:down.fwd=i1": 654891930,
+      "dispatch:down.fwd=i2": 10469299,
+      "dispatch:down.fwd=t1": 12047962,
+      "default@dispatch:down.fwd": 6062344
+    }
+  },
+  {
+    "round": 6,
+    "order": [
+      "dispatch:down.fwd=i2",
+      "dispatch:down.fwd=t1",
+      "default",
+      "dispatch:down.fwd=i1"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=i2": 180446930,
+      "dispatch:down.fwd=t1": 152339146,
+      "default": 115087552,
+      "dispatch:down.fwd=i1": 795988029
+    },
+    "site_ns": {
+      "dispatch:down.fwd=i2": 19259188,
+      "dispatch:down.fwd=t1": 12657871,
+      "default@dispatch:down.fwd": 7421134,
+      "dispatch:down.fwd=i1": 691533803
+    }
+  },
+  {
+    "round": 7,
+    "order": [
+      "dispatch:down.fwd=t1",
+      "default",
+      "dispatch:down.fwd=i1",
+      "dispatch:down.fwd=i2"
+    ],
+    "total_ns": {
+      "dispatch:down.fwd=t1": 125313288,
+      "default": 127051508,
+      "dispatch:down.fwd=i1": 737773272,
+      "dispatch:down.fwd=i2": 118517475
+    },
+    "site_ns": {
+      "dispatch:down.fwd=t1": 12277278,
+      "default@dispatch:down.fwd": 7020232,
+      "dispatch:down.fwd=i1": 625978856,
+      "dispatch:down.fwd=i2": 8535354
+    }
+  }
+]

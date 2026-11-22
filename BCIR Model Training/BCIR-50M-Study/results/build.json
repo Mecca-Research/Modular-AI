@@ -1,0 +1,12 @@
+{
+  "seconds": 13.325913647999869,
+  "library_sha256": "7f31e1672da46162e2b5a99b093fb14d37d0b2be4ee4319f2a28db5c1fb4ad1f",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "flags": "NativeDecoder.build: C11 -O3 -ffp-contract=off -fno-math-errno; current production trainer/tensor units",
+  "sources": {
+    "bcir_tensor.c": "18241b181820728c34121d3f0eac79eb73bc7e4bd56690663eeffda1b025b7ec",
+    "bcir_tensor.h": "53dca0c744329e7eee7d0a49c79da7140c3046f8a159bb9389263c86f2103df4",
+    "bcir_decoder_train.c": "12c8b76eaba94cf44c84e6a40cae81cd2a8f2e08511c559b1ec2d0fb32fa48c9",
+    "bcir_decoder_train.h": "33ec9f99f712d965ac0237fd46af7fd754a3c77a3f21b63ba65a0a516c7c37bc"
+  }
+}

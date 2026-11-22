@@ -1,0 +1,51 @@
+{
+  "name": "reference10m",
+  "picks": {},
+  "native_program_state_exact": true,
+  "expected": {
+    "weights": "d14e89d25159f597aff556bb7fb4030672203d41ddf2c8d6e7ee506861b78d16",
+    "gradients": "286e61311a48d7e813f027d3eccff77a55dfeb64791f7052e2ad1732df168469",
+    "moment1": "f71f546d85eb91dc62ab08f461b6252ca756d5c61fca9bbf6d3756ae2c31231c",
+    "moment2": "495ec976b314cbd2dbbb3e02d03815b54564b04d8444b17f4cc84df02eb59a2a"
+  },
+  "actual": {
+    "weights": "d14e89d25159f597aff556bb7fb4030672203d41ddf2c8d6e7ee506861b78d16",
+    "gradients": "286e61311a48d7e813f027d3eccff77a55dfeb64791f7052e2ad1732df168469",
+    "moment1": "f71f546d85eb91dc62ab08f461b6252ca756d5c61fca9bbf6d3756ae2c31231c",
+    "moment2": "495ec976b314cbd2dbbb3e02d03815b54564b04d8444b17f4cc84df02eb59a2a"
+  },
+  "event": [
+    {
+      "step": 601,
+      "loss": 1.9143428782679444,
+      "grad_norm": 1.4353474756684073
+    }
+  ],
+  "instance_families": {
+    "gemm": 7,
+    "attention": 7
+  },
+  "program_words": 10800,
+  "shape": {
+    "vocab": 260,
+    "d_model": 384,
+    "n_heads": 8,
+    "n_layers": 6,
+    "d_ff": 1024,
+    "kv_heads": 4,
+    "batch": 4,
+    "time": 64,
+    "threads": 2,
+    "steps": 1,
+    "recompute": 0,
+    "workspace_bytes": 0,
+    "contract": "kblock+reduce+attn",
+    "instances": {
+      "gemm": 7,
+      "attention": 7
+    }
+  },
+  "clock_library_sha256": "4634a0d295fbac56c7320c53e49a4c67315802dde5a1769ec0ec17433016bba8",
+  "checkpoint_sha256": "cf62a579eafc3d53ddf34a77e2cd463d10adacd31276bea9e452708fabb4a2c5",
+  "measurement_rounds": 8
+}

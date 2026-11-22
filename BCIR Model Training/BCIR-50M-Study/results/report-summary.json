@@ -1,0 +1,14 @@
+{
+  "selected": "wide50m",
+  "total_runs": 10,
+  "total_updates": 6000,
+  "supervised_targets": 1536000,
+  "native_train_seconds": 1758.7814827270045,
+  "selected_test_ce": 2.1256620334067797,
+  "reference_test_ce": 2.1462169055361224,
+  "wide10m_test_ce": 2.1249014465411142,
+  "max_repair_ce_delta": 5.523506048099591e-07,
+  "natural_improved_cases": 0,
+  "weight_cases": 4,
+  "clean_detector_flags": 0
+}

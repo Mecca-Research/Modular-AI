@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "tables": 12,
+  "scripts": 0,
+  "embedded_images": 1,
+  "figure_visually_inspected": true,
+  "headless_browser_render": "Unavailable: browser not installed; normal download returned truncated archive. No browser-render pass claimed."
+}

@@ -1,0 +1,143 @@
+{
+  "name": "wide50m",
+  "picks": {},
+  "native_program_state_exact": true,
+  "expected": {
+    "weights": "df33fd1eb6d57b03be19e4b6331f86d7f101f4ad16ab99bf7d6a1b0c4f9cd173",
+    "gradients": "8c70b62b8b4bd51ab6fee19c91cf0bed183a56749e21dba6c6be8839ec20eb44",
+    "moment1": "a649cc348f5e381970c127dd0c4bb0f959d7f9b6aeb22947c75392367655bafe",
+    "moment2": "f0a2b1ad5f06e88e659fdffb74435c434b3e036fbd46cdade20e735c670877d7"
+  },
+  "actual": {
+    "weights": "df33fd1eb6d57b03be19e4b6331f86d7f101f4ad16ab99bf7d6a1b0c4f9cd173",
+    "gradients": "8c70b62b8b4bd51ab6fee19c91cf0bed183a56749e21dba6c6be8839ec20eb44",
+    "moment1": "a649cc348f5e381970c127dd0c4bb0f959d7f9b6aeb22947c75392367655bafe",
+    "moment2": "f0a2b1ad5f06e88e659fdffb74435c434b3e036fbd46cdade20e735c670877d7"
+  },
+  "event": [
+    {
+      "step": 601,
+      "loss": 1.9192318736355245,
+      "grad_norm": 1.4968208024252383
+    }
+  ],
+  "instance_families": {
+    "gemm": 7,
+    "attention": 7
+  },
+  "program_words": 14160,
+  "shape": {
+    "vocab": 260,
+    "d_model": 768,
+    "n_heads": 12,
+    "n_layers": 8,
+    "d_ff": 2048,
+    "kv_heads": 4,
+    "batch": 4,
+    "time": 64,
+    "threads": 2,
+    "steps": 1,
+    "recompute": 0,
+    "workspace_bytes": 0,
+    "contract": "kblock+reduce+attn",
+    "instances": {
+      "gemm": 7,
+      "attention": 7
+    }
+  },
+  "clock_library_sha256": "4634a0d295fbac56c7320c53e49a4c67315802dde5a1769ec0ec17433016bba8",
+  "checkpoint_sha256": "d560cb06f7c959683dace8a274fa50caf6b160ce860d77e0ea9caf0834a9aeb2",
+  "measurement_rounds": 8,
+  "scale_causal_prefix_exact": true,
+  "scale_finite_difference_probes": [
+    {
+      "tensor": "model.embed_tokens.weight",
+      "index": 88812,
+      "analytic": 0.11255407333374023,
+      "numerical": 0.11257485389249396,
+      "absolute_error": 2.0780558753721867e-05
+    },
+    {
+      "tensor": "model.layers.4.input_layernorm.weight",
+      "index": 25371939,
+      "analytic": -0.00046736380318179727,
+      "numerical": -0.0004561552908894394,
+      "absolute_error": 1.120851229235786e-05
+    },
+    {
+      "tensor": "model.layers.4.self_attn.q_proj.weight",
+      "index": 25938156,
+      "analytic": 0.0028275344520807266,
+      "numerical": 0.002831673800293002,
+      "absolute_error": 4.139348212275212e-06
+    },
+    {
+      "tensor": "model.layers.4.self_attn.k_proj.weight",
+      "index": 26110188,
+      "analytic": 0.0024942082818597555,
+      "numerical": 0.002497441276204678,
+      "absolute_error": 3.2329943449225206e-06
+    },
+    {
+      "tensor": "model.layers.4.self_attn.v_proj.weight",
+      "index": 26297580,
+      "analytic": 0.0016531153814867139,
+      "numerical": 0.0016608025754509363,
+      "absolute_error": 7.687193964222433e-06
+    },
+    {
+      "tensor": "model.layers.4.self_attn.o_proj.weight",
+      "index": 26623344,
+      "analytic": 0.0005579866701737046,
+      "numerical": 0.0005447115147595037,
+      "absolute_error": 1.3275155414200915e-05
+    },
+    {
+      "tensor": "model.layers.4.post_attention_layernorm.weight",
+      "index": 26945772,
+      "analytic": -0.00010445877705933526,
+      "numerical": -9.98403376524899e-05,
+      "absolute_error": 4.618439406845357e-06
+    },
+    {
+      "tensor": "model.layers.4.mlp.gate_proj.weight",
+      "index": 27238380,
+      "analytic": -0.00035466733970679343,
+      "numerical": -0.0003918108915126734,
+      "absolute_error": 3.714355180587997e-05
+    },
+    {
+      "tensor": "model.layers.4.mlp.up_proj.weight",
+      "index": 28889580,
+      "analytic": 0.0004499908827710897,
+      "numerical": 0.00044461780776928203,
+      "absolute_error": 5.373075001807639e-06
+    },
+    {
+      "tensor": "model.layers.4.mlp.down_proj.weight",
+      "index": 31399073,
+      "analytic": -0.0008281242335215211,
+      "numerical": -0.000824196775398124,
+      "absolute_error": 3.927458123397106e-06
+    },
+    {
+      "tensor": "model.norm.weight",
+      "index": 50543757,
+      "analytic": -0.007828740403056145,
+      "numerical": -0.007822371408549375,
+      "absolute_error": 6.36899450676999e-06
+    }
+  ],
+  "recompute": {
+    "budget_mib": 850,
+    "memory_bytes": 885542912,
+    "layer_mask": 15,
+    "state_exact": true,
+    "hashes": {
+      "weights": "df33fd1eb6d57b03be19e4b6331f86d7f101f4ad16ab99bf7d6a1b0c4f9cd173",
+      "gradients": "8c70b62b8b4bd51ab6fee19c91cf0bed183a56749e21dba6c6be8839ec20eb44",
+      "moment1": "a649cc348f5e381970c127dd0c4bb0f959d7f9b6aeb22947c75392367655bafe",
+      "moment2": "f0a2b1ad5f06e88e659fdffb74435c434b3e036fbd46cdade20e735c670877d7"
+    }
+  }
+}

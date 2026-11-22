@@ -1,0 +1,6 @@
+{
+  "observed_utc": "2026-11-05T00:01:08.491743+00:00",
+  "last_completed": "wide50m seed20261104 step600",
+  "remaining_seed_started": false,
+  "note": "Exec session disappeared at runtime/tool refresh. No active training process remained. Resume reuses only completed records and checkpoints."
+}

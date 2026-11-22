@@ -1,0 +1,31 @@
+{
+  "chosen": "wide50m",
+  "source": "pre-test 600-step two-seed extension",
+  "candidates": [
+    {
+      "name": "wide50m",
+      "validation_ce": [
+        2.0758658979206306,
+        2.0820842593871145
+      ],
+      "mean_validation_ce": 2.0789750786538725,
+      "train_seconds": [
+        349.79611181599944,
+        348.7258537010025
+      ]
+    },
+    {
+      "name": "deep50m",
+      "validation_ce": [
+        2.0790196703468276,
+        2.097182125285518
+      ],
+      "mean_validation_ce": 2.088100897816173,
+      "train_seconds": [
+        378.96810023900207,
+        358.5448389589992
+      ]
+    }
+  ],
+  "protocol_sha256": "f1013106e334b38a7e7ba8a15a3435c332f85d4e764aa94ea4576be5b9bf06da"
+}

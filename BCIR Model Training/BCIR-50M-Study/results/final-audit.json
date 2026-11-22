@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "source_commit": "80e9507531b7597ef81d0348db75f0fd5dcd8134",
+  "worktree_clean": true,
+  "runs": 10,
+  "quality_updates": 6000,
+  "supervised_targets": 1536000,
+  "checkpoint_files_checked": 20,
+  "full_state_arrays_finite": true,
+  "moment2_nonnegative": true,
+  "paired_batch_hashes": true,
+  "source_protocol_hashes_match": true,
+  "selected_architecture": "wide50m",
+  "selection_validation_means": {
+    "wide50m": 2.0789750786538725,
+    "deep50m": 2.088100897816173
+  },
+  "test_groups": 10,
+  "weight_edit_groups": 4,
+  "sham_exact": true,
+  "program_state_exact": true
+}

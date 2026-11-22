@@ -1,0 +1,80 @@
+{
+  "parameters": 50,
+  "programmed": {
+    "correct": 65536,
+    "total": 65536,
+    "accuracy": 1.0
+  },
+  "compiled_control": {
+    "correct": 65536,
+    "total": 65536,
+    "accuracy": 1.0
+  },
+  "trained": [
+    {
+      "seed": 411,
+      "initial": {
+        "correct": 1,
+        "total": 65536,
+        "accuracy": 1.52587890625e-05
+      },
+      "exhaustive": {
+        "correct": 65536,
+        "total": 65536,
+        "accuracy": 1.0
+      },
+      "first_full_adder_truth_table_correct": 137,
+      "updates": 2000,
+      "seconds": 0.10505462800028909,
+      "truth_table_mse": 6.994405055138486e-15
+    },
+    {
+      "seed": 412,
+      "initial": {
+        "correct": 1,
+        "total": 65536,
+        "accuracy": 1.52587890625e-05
+      },
+      "exhaustive": {
+        "correct": 65536,
+        "total": 65536,
+        "accuracy": 1.0
+      },
+      "first_full_adder_truth_table_correct": 61,
+      "updates": 2000,
+      "seconds": 0.1049401520003812,
+      "truth_table_mse": 1.9984014443252818e-15
+    },
+    {
+      "seed": 413,
+      "initial": {
+        "correct": 1,
+        "total": 65536,
+        "accuracy": 1.52587890625e-05
+      },
+      "exhaustive": {
+        "correct": 6561,
+        "total": 65536,
+        "accuracy": 0.1001129150390625
+      },
+      "first_full_adder_truth_table_correct": null,
+      "updates": 2000,
+      "seconds": 0.12255821000053402,
+      "truth_table_mse": 0.1041666716337204
+    }
+  ],
+  "off_binary_noise": [
+    {
+      "sigma": 0.01,
+      "accuracy": 1.0
+    },
+    {
+      "sigma": 0.1,
+      "accuracy": 0.939
+    },
+    {
+      "sigma": 0.25,
+      "accuracy": 0.67075
+    }
+  ]
+}

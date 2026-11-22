@@ -1,0 +1,9 @@
+archived BCIR_deep50m_20261104_step600_weights.zip 187265135
+archived BCIR_deep50m_20261104_step600_optimizer.zip 372550619
+archived BCIR_deep50m_20261105_step600_weights.zip 187267453
+archived BCIR_deep50m_20261105_step600_optimizer.zip 373040046
+archived BCIR_wide50m_20261104_step600_weights.zip 188112376
+archived BCIR_wide50m_20261104_step600_optimizer.zip 374880237
+archived BCIR_wide50m_20261105_step600_weights.zip 188112469
+archived BCIR_wide50m_20261105_step600_optimizer.zip 375079951
+{"output": "/workspace/scratch/bc2034b846bf/bcir-checkpoint-roundtrip-xql4grx8/restored.npz", "bytes": 606535312, "step": 600, "verified_arrays": ["weights", "moment1", "moment2"]}
