@@ -24,7 +24,7 @@ Companion BCIR study and roadmaps (pinned base BCIR commit `3fdb708d73371a6e0e1a
 | `src/pillar5_kernel_benchmark.py` | Pillar 5 single-thread kernel sweep (`N = 1..256`) and 2-thread native-C QAT step-time / RAM overhead benchmark |
 | `src/pillar5_packed_batched_bench.py` | Batched prefill & decode crossover benchmark comparing exact 1.0-bit/weight `packed1b_LUT4` and 4-token micro-batched `packed1b_LUT4_mb4` against `LowRank-FP32`, `BCIR FP32 kblock`, `BCIR BF16`, `Unpacked LUT4`, `FP16`, and `Q8 g32` across `wide512`, `wide50m`, `Llama2-7B`, and `Llama2-70B` |
 | `src/make_littlebit_plots.py` | Regenerates `figures/bcir_littlebit_study_results.png` directly from `results/*.json` |
-| `checkpoints/` | Trained FP32 BCIR teacher weights (`pilot192_0.86M.npz`, `wide512_5.50M.npz`, `wedge128_kv4_strong.npz`) and JSON configs |
+| `checkpoints/` | Trained FP32 BCIR teacher weights (`pilot192_0.86M.npz`: `861,888` params; `wide512_5.50M.npz`: legacy filename, exact `6,164,992` total params = `1,310,720` attn + `4,718,592` SwiGLU MLP + `133,120` tied embed + `2,560` norms; `wedge128_kv4_strong.npz`: `525,696` params) and JSON configs |
 | `results/` | Raw JSON/text outputs from every pillar, `verify_gates_output.txt`, and `MANIFEST.json` with SHA-256 checksums for all code, checkpoints, `../wedge-pr818` teachers, and `../gp-global/data/` WikiText-2 splits |
 | `figures/bcir_littlebit_study_results.png` | 6-panel summary figure (Panels A–F) |
 

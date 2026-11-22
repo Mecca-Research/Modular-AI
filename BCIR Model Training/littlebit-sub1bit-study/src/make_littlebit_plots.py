@@ -83,7 +83,7 @@ def make_plots():
                label=f'BCIR ITQ+STE+KL+kv2 ({a7_all["qat_test"]["ppl"]:.2f} @ 0.31b)')
     ax.set_xlabel('Realized Body BPW (incl. FP16 scales)')
     ax.set_ylabel('WikiText-2 Byte Test Perplexity (lower better)')
-    ax.set_title('B. BCIR-wide512 (5.50M GQA) Sub-1-Bit Frontier', fontweight='bold')
+    ax.set_title('B. BCIR-wide512 (6.16M GQA) Sub-1-Bit Frontier', fontweight='bold')
     ax.legend(fontsize=7.2, loc='upper right')
     ax.grid(True, alpha=0.3)
 

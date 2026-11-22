@@ -93,7 +93,7 @@
     },
     "src/make_littlebit_plots.py": {
       "bytes": 13430,
-      "sha256": "694310441881300507f7bef1bd5d743f69834cdf918d9cb5d9884b841836bb46"
+      "sha256": "6f610410751bbb1f977cfb55a722e6d6d167c46128607d394e23affb5362efb9"
     },
     "src/pillar1_setup_and_bpw.py": {
       "bytes": 10632,
@@ -164,12 +164,16 @@
   },
   "study_figures": {
     "figures/bcir_littlebit_study_results.png": {
-      "bytes": 567273,
-      "sha256": "f77ce71c5a009a8f4a922817a04fea3abd7dd971272f8a7e27807038813943c3"
+      "bytes": 567192,
+      "sha256": "63d46a4c93bd319e5929a94beeb1174d1d6c55ea1e8dd5236d26e839b19b61b0"
     }
   },
   "makefile": {
     "bytes": 2050,
     "sha256": "2b10835408ca4e3e9b293334c00654c5da7c14ef5d55da55b213644c2dac1781"
+  },
+  "readme": {
+    "bytes": 5794,
+    "sha256": "55bf49c4294fe7b5e9cd2afb3afc476d1b42b91cd91c64dc26b51d8467868bc9"
   }
 }
