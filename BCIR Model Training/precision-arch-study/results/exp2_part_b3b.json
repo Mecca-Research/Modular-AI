@@ -1,0 +1,254 @@
+{
+  "scale": "wide50m",
+  "geom": {
+    "width": 768,
+    "heads": 12,
+    "kvheads": 4,
+    "layers": 8,
+    "ff": 2048
+  },
+  "steps": 120,
+  "max_lr": 0.001,
+  "policies": {
+    "Region_FP32Attn_MXFP4MLP": {
+      "policy_cfg": {
+        "attn_fwd": 0,
+        "attn_bwd": 0,
+        "mlp_fwd": 5,
+        "mlp_bwd": 4,
+        "opt_kind": 0,
+        "fp64_guard": 1
+      },
+      "test_ce_mean": 2.46821028461208,
+      "test_ce_spread": 0.0,
+      "test_ppl_mean": 11.801306959431034,
+      "median_step_ms": 1026.6215764999506,
+      "persistent_bytes": 808660992,
+      "bytes_per_param": 16.0,
+      "runs": [
+        {
+          "rc": 0,
+          "steps_completed": 120,
+          "best_step": 120,
+          "best_val_ce": 2.4284995843109325,
+          "best_val_ppl": 11.341851814552033,
+          "best_val_acc": 0.32421875,
+          "test_ce": 2.46821028461208,
+          "test_ppl": 11.801306959431034,
+          "test_acc": 0.30419921875,
+          "test_tokens": 4096,
+          "test_nonfinite": 0,
+          "median_step_ms": 1026.6215764999506,
+          "mean_step_ms": 1017.6481389666665,
+          "total_train_s": 137.268,
+          "clip_rate_all": 0.36666666666666664,
+          "clip_rate_post_warmup": 0.2962962962962963,
+          "grad_norm_median": 2.7697765792400046,
+          "grad_norm_max": 30.99332947546308,
+          "telemetry": {
+            "fp64_norm_promotions": 0,
+            "fp64_softmax_promotions": 10,
+            "fp64_wy_solves": 0,
+            "nonfinite_events": 0,
+            "grad_clip_hits": 44,
+            "total_steps": 120,
+            "q8_m2_floor_clamps": 0,
+            "gemm_calls_attn": 13568,
+            "gemm_calls_mlp": 10176,
+            "max_grad_norm": 30.99332947546308,
+            "max_softmax_logit": 21.62650308113836,
+            "min_rms_observed": 0.018727348856099592,
+            "max_wy_offdiag": 0.0
+          },
+          "mem_stats": {
+            "n_params": 50541312,
+            "attn_params": 12582912,
+            "mlp_params": 37748736,
+            "nonlin_params": 209664,
+            "weight_bytes": 202165248,
+            "opt_only_bytes": 606495744,
+            "persistent_bytes": 808660992,
+            "activation_bytes": 94109696,
+            "mixer_prob_bytes": 6291456,
+            "scratch_bytes": 30934272,
+            "total_bytes": 939996416,
+            "infer_kv_bytes_per_tok": 16384,
+            "infer_rec_state_bytes": 0,
+            "init_ms": 531.5859850000124
+          },
+          "curve": [
+            {
+              "step": 0,
+              "wall_s": 0.0,
+              "train_loss": null,
+              "val_ce": 5.718025214318405,
+              "val_ppl": 304.30339522047126,
+              "val_acc": 0.0009765625
+            },
+            {
+              "step": 30,
+              "wall_s": 34.611,
+              "train_loss": 2.885254,
+              "grad_norm_mean": 7.0989,
+              "val_ce": 2.759275956224784,
+              "val_ppl": 15.788407310774971,
+              "val_acc": 0.27587890625,
+              "step_ms_median": 1014.692
+            },
+            {
+              "step": 60,
+              "wall_s": 66.842,
+              "train_loss": 2.741727,
+              "grad_norm_mean": 2.9693,
+              "val_ce": 2.64352347895769,
+              "val_ppl": 14.06266592431865,
+              "val_acc": 0.291015625,
+              "step_ms_median": 1019.702
+            },
+            {
+              "step": 90,
+              "wall_s": 100.118,
+              "train_loss": 2.556651,
+              "grad_norm_mean": 2.6675,
+              "val_ce": 2.4883795131414557,
+              "val_ppl": 12.041746808764357,
+              "val_acc": 0.31689453125,
+              "step_ms_median": 1041.21
+            },
+            {
+              "step": 120,
+              "wall_s": 131.892,
+              "train_loss": 2.501082,
+              "grad_norm_mean": 2.7296,
+              "val_ce": 2.4284995843109325,
+              "val_ppl": 11.341851814552033,
+              "val_acc": 0.32421875,
+              "step_ms_median": 992.605
+            }
+          ],
+          "seed": 42
+        }
+      ]
+    },
+    "Region_FP8Attn_MXFP4MLP_Q8Opt": {
+      "policy_cfg": {
+        "attn_fwd": 3,
+        "attn_bwd": 4,
+        "mlp_fwd": 5,
+        "mlp_bwd": 4,
+        "opt_kind": 2,
+        "fp64_guard": 1
+      },
+      "test_ce_mean": 2.4674458401634904,
+      "test_ce_spread": 0.0,
+      "test_ppl_mean": 11.792288963157548,
+      "median_step_ms": 1785.4734189999872,
+      "persistent_bytes": 406699620,
+      "bytes_per_param": 8.047,
+      "runs": [
+        {
+          "rc": 0,
+          "steps_completed": 120,
+          "best_step": 120,
+          "best_val_ce": 2.4227615133710545,
+          "best_val_ppl": 11.276957825462297,
+          "best_val_acc": 0.330078125,
+          "test_ce": 2.4674458401634904,
+          "test_ppl": 11.792288963157548,
+          "test_acc": 0.30517578125,
+          "test_tokens": 4096,
+          "test_nonfinite": 0,
+          "median_step_ms": 1785.4734189999872,
+          "mean_step_ms": 1763.4910456499997,
+          "total_train_s": 231.842,
+          "clip_rate_all": 0.35,
+          "clip_rate_post_warmup": 0.2777777777777778,
+          "grad_norm_median": 2.7231481185030857,
+          "grad_norm_max": 30.781251066389917,
+          "telemetry": {
+            "fp64_norm_promotions": 0,
+            "fp64_softmax_promotions": 130,
+            "fp64_wy_solves": 0,
+            "nonfinite_events": 0,
+            "grad_clip_hits": 42,
+            "total_steps": 120,
+            "q8_m2_floor_clamps": 10,
+            "gemm_calls_attn": 13568,
+            "gemm_calls_mlp": 10176,
+            "max_grad_norm": 30.781251066389917,
+            "max_softmax_logit": 23.04860885639541,
+            "min_rms_observed": 0.018727348856099592,
+            "max_wy_offdiag": 0.0
+          },
+          "mem_stats": {
+            "n_params": 50541312,
+            "attn_params": 12582912,
+            "mlp_params": 37748736,
+            "nonlin_params": 209664,
+            "weight_bytes": 202165248,
+            "opt_only_bytes": 204534372,
+            "persistent_bytes": 406699620,
+            "activation_bytes": 94109696,
+            "mixer_prob_bytes": 6291456,
+            "scratch_bytes": 30934272,
+            "total_bytes": 538035044,
+            "infer_kv_bytes_per_tok": 16384,
+            "infer_rec_state_bytes": 0,
+            "init_ms": 532.226888999925
+          },
+          "curve": [
+            {
+              "step": 0,
+              "wall_s": 0.0,
+              "train_loss": null,
+              "val_ce": 5.718677508951349,
+              "val_ppl": 304.50195544480425,
+              "val_acc": 0.00146484375
+            },
+            {
+              "step": 30,
+              "wall_s": 56.078,
+              "train_loss": 2.874566,
+              "grad_norm_mean": 7.0442,
+              "val_ce": 2.7643317217119776,
+              "val_ppl": 15.868431917920569,
+              "val_acc": 0.2734375,
+              "step_ms_median": 1675.639
+            },
+            {
+              "step": 60,
+              "wall_s": 111.577,
+              "train_loss": 2.724371,
+              "grad_norm_mean": 3.1574,
+              "val_ce": 2.6036583769844253,
+              "val_ppl": 13.513083671788545,
+              "val_acc": 0.29150390625,
+              "step_ms_median": 1782.978
+            },
+            {
+              "step": 90,
+              "wall_s": 167.63,
+              "train_loss": 2.551287,
+              "grad_norm_mean": 2.5023,
+              "val_ce": 2.4822659084676255,
+              "val_ppl": 11.968352908437634,
+              "val_acc": 0.32080078125,
+              "step_ms_median": 1805.372
+            },
+            {
+              "step": 120,
+              "wall_s": 224.041,
+              "train_loss": 2.493748,
+              "grad_norm_mean": 2.6429,
+              "val_ce": 2.4227615133710545,
+              "val_ppl": 11.276957825462297,
+              "val_acc": 0.330078125,
+              "step_ms_median": 1815.652
+            }
+          ],
+          "seed": 42
+        }
+      ]
+    }
+  }
+}

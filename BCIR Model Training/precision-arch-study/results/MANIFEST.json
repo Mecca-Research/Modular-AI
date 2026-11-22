@@ -1,0 +1,215 @@
+{
+  "study": "bcir-precision-frontier-and-mixer-ext-arch-study",
+  "date": "2026-11-22",
+  "provenance": {
+    "cpu_model": "Intel(R) Xeon(R) 6985P-C",
+    "cores": 2,
+    "clang": "clang version 23.1.6 (https://github.com/conda-forge/clangdev-feedstock 2607ad814147f37fdd84f5bb58ac45576da1a85b)",
+    "python": "3.11.2",
+    "numpy": "2.4.6",
+    "bcir_head_sha": "15c7287e93a968795cf27c31caa7ee5e79cd48f9",
+    "vdp_bf16_variants": 3
+  },
+  "tracked_files": {
+    ".gitignore": {
+      "bytes": 52,
+      "sha256": "07d4f0ab28152b011184e32aca623129c6ac6432c2d5306a727eb976873bb621"
+    },
+    "Makefile": {
+      "bytes": 1732,
+      "sha256": "c52f2ad5ee910e64c2ec6f9ede209d76188419efe2d2b1b9c584ed6a37949acf"
+    },
+    "README.md": {
+      "bytes": 4745,
+      "sha256": "8dccd977a486602b90fd43cac0914ff1ae7c5e2abce09404838dec3d5a3d8671"
+    },
+    "checkpoints/narrow_deep_6m_fp32_s42.npz": {
+      "bytes": 24659212,
+      "sha256": "87950b05b54f38942898fe1b6fe5b286959987d8403758b90169769b2a8b9c61"
+    },
+    "checkpoints/wedge128_kv4_strong.npz": {
+      "bytes": 2103052,
+      "sha256": "1af4fa0916b1dc74a2b94a45927452a90fb0dacf71513e8ee65d8189766695c1"
+    },
+    "checkpoints/wide512_fp32_s42.npz": {
+      "bytes": 24652044,
+      "sha256": "25c31e530f8cb2a8787b0c550f6b8b424a926ce1a94b693bb242d21ad76e7c1d"
+    },
+    "figures/bcir_mixer_ext_architectures.png": {
+      "bytes": 462847,
+      "sha256": "25451ab782394e7b0ee00d81bdf463cf6fd9fdcb792a971e4828f31716780925"
+    },
+    "figures/bcir_precision_frontier_50m.png": {
+      "bytes": 589858,
+      "sha256": "0f46c85ce72133c6d8c1a95fefd7ebf6e8d51c7057d5dfcc070f8853b9b71681"
+    },
+    "results/exp1_part_50m.json": {
+      "bytes": 28819,
+      "sha256": "b2e3a1769fbd55ffc4924b4ff0092f97b215e7df56c7cf173e32c7cd56eefd3c"
+    },
+    "results/exp1_part_small.json": {
+      "bytes": 73281,
+      "sha256": "4aebfbed8410e46a6feb08f94bdd09c332e498bf8311bb21e89553d8acdb2bb5"
+    },
+    "results/exp1_train_opt_1_4.json": {
+      "bytes": 107315,
+      "sha256": "e20b9fb02773e769df3f4c0634df0df819826c8ee569c66d067881e4d8be83a5"
+    },
+    "results/exp2_part_a_pilot.json": {
+      "bytes": 105727,
+      "sha256": "f6c2bdd6f9d8ed6591921da79d1f460a08ce982a8def154184c05c7abe4bc285"
+    },
+    "results/exp2_part_a_wide1.json": {
+      "bytes": 30282,
+      "sha256": "76d0ddcc766eb0da10942c8df5949c26f42e7fc175aab45e99e1cd1749f61568"
+    },
+    "results/exp2_part_a_wide2.json": {
+      "bytes": 30214,
+      "sha256": "808caba1a2880aa208bdbacc40668962ae6aaecda962a5aea26a9a61a556bc0a"
+    },
+    "results/exp2_part_b1.json": {
+      "bytes": 12174,
+      "sha256": "2b4956ab6ea81447391fb100d73d95986beb124c290fd382ab9f665dd075b971"
+    },
+    "results/exp2_part_b2a.json": {
+      "bytes": 8073,
+      "sha256": "215e5f06cb31c77302ef7e6ee37caed83e5124bb717b09c2d95c838e21b003e3"
+    },
+    "results/exp2_part_b2b.json": {
+      "bytes": 4149,
+      "sha256": "d9efcd7456208af655667aa4532ea672449e2006004ccd779bc030771ae745ab"
+    },
+    "results/exp2_part_b3a.json": {
+      "bytes": 8127,
+      "sha256": "7d6df1d56fe13fe42b70768339c6a0c2b9a36407214c23b73dd32d0d15dd094a"
+    },
+    "results/exp2_part_b3b.json": {
+      "bytes": 8126,
+      "sha256": "188fed1f2428d47439b8af1c660b423f76a4c58e07c9cbd1dde998709918e28b"
+    },
+    "results/exp2_part_micro.json": {
+      "bytes": 8936,
+      "sha256": "5cfd527d704ebc2ee7921dc85c7a11b795b02f3f605f3cf21cb40a895d282e19"
+    },
+    "results/exp2_precision_frontier_complete.json": {
+      "bytes": 232123,
+      "sha256": "8b5343d5e28de3ba78a6d57f221e8a579e72188ac244d79f2072959ccacc27bb"
+    },
+    "results/exp3_littlebit_comp1_50m.json": {
+      "bytes": 82537,
+      "sha256": "a8fcfc4184c27ab81e03abd6fb45c86ddbe9120b7f3c057eb4ff467685c71737"
+    },
+    "results/exp3_part_a.json": {
+      "bytes": 30898,
+      "sha256": "1a088577144ca3fe9234a63e92c982fd944917a1bc29ef8694d5fc1ad4b73b92"
+    },
+    "results/exp3_part_b.json": {
+      "bytes": 22752,
+      "sha256": "d44087b944f85265461971a7832117d735d740ca65f1419187359cdc2c7e0866"
+    },
+    "results/exp3_part_c.json": {
+      "bytes": 22693,
+      "sha256": "d0ea504c9a124b34a409d9ae03217a04a927fb12f6036c339259a3ee16b873f9"
+    },
+    "results/exp4_mixer_ext_complete.json": {
+      "bytes": 173302,
+      "sha256": "f222ed0e46b110f68fdcec398f2a5f813bf576f17303a4b2a04cb62425667f4f"
+    },
+    "results/exp4_part_a.json": {
+      "bytes": 86849,
+      "sha256": "d31e9b51e13eca3f78c6fc3a6a38776d533cc141a4004c890f0e786cc02c226a"
+    },
+    "results/exp4_part_a2.json": {
+      "bytes": 33768,
+      "sha256": "fa5bd20819359654ae08bb4e15b0046d2c5eb1f18eeff2574cc3ecaace1cffda"
+    },
+    "results/exp4_part_b1.json": {
+      "bytes": 25348,
+      "sha256": "f49950d65d906d32b5f1ed949114481efd624c81d007abae83694b28d59bd78f"
+    },
+    "results/exp4_part_b2.json": {
+      "bytes": 17060,
+      "sha256": "9e77486c5921cf72e4f864b6dd2c7417e834e71fbfd16e743556f599a8b0e46a"
+    },
+    "results/gate0_verify_output.txt": {
+      "bytes": 1659,
+      "sha256": "47d159b09192ac384134af9768b6ff33c2364a4c2d0270b517cb252cf5266b1a"
+    },
+    "src/bcir_comp1_deploy.c": {
+      "bytes": 42109,
+      "sha256": "50eba5bc7a837c3856000e1cf1948c540811b26e720c8b2c3b7211bd262072f9"
+    },
+    "src/bcir_comp1_deploy.h": {
+      "bytes": 2836,
+      "sha256": "2fecac461069be8c8243f8ae1de2cfce4e5b416f1a00cfd84c146dd3dd0c9319"
+    },
+    "src/bcir_lab_harness.py": {
+      "bytes": 40495,
+      "sha256": "d10301b8ff1343b2b8ecdd783cb123553c45ee8cb35a2e4df46a5ea54896f3d9"
+    },
+    "src/bcir_littlebit.h": {
+      "bytes": 8435,
+      "sha256": "47b7c6bdc1b58eb27780087eb695114cf0610616af54bf3f905643442f18f6c5"
+    },
+    "src/bcir_littlebit_bench.c": {
+      "bytes": 28458,
+      "sha256": "bb52e48f7e7d031a4a14d865b71252b7506916e29be1b6e032d5b69a15cf81d4"
+    },
+    "src/bcir_littlebit_core.c": {
+      "bytes": 40589,
+      "sha256": "48768c06ea46b252a57e35156de8d0e2debe14f67bd43e5df23fca12ec4dba38"
+    },
+    "src/bcir_mixer_ext.c": {
+      "bytes": 72099,
+      "sha256": "15ea46194dbe2ff718f11afd40680edf1b70ecd8f671fe4b3307303cd81e6b7f"
+    },
+    "src/bcir_mixer_ext.h": {
+      "bytes": 3525,
+      "sha256": "2d9698d475fa9ffd10aa57abe36304acca059bed41e58c1901efb31c0d72482b"
+    },
+    "src/bcir_precision.c": {
+      "bytes": 44570,
+      "sha256": "92eabfae4e44c31f1ee0455647efb8fdb46af90f8141c0196b8b5e1592f34743"
+    },
+    "src/bcir_precision.h": {
+      "bytes": 5484,
+      "sha256": "f9d8ab41626855e2e93c9cd7140951b6ac0e19a3ca8aeeca7039f06b314dcc1b"
+    },
+    "src/exp1_train_opt_1_4.py": {
+      "bytes": 11749,
+      "sha256": "bad55105f2ba68e956e00f295e29318ec90ccad986faa81fd2e12b6829341a66"
+    },
+    "src/exp2_precision_frontier.py": {
+      "bytes": 18751,
+      "sha256": "4f2ea6d6968b9833554788aaff64b057eb0ea964f5e34fdf1f33d053034d15fe"
+    },
+    "src/exp3_littlebit_comp1_50m.py": {
+      "bytes": 29280,
+      "sha256": "9aa34134ee7949e4a2ad52ec9a8f747f98e04fb9a49ffe881c9514e4632d4994"
+    },
+    "src/exp4_mixer_ext_architectures.py": {
+      "bytes": 18401,
+      "sha256": "54781cd10da9decfff0d16b7aa76d2efa968a52d99267d2aa85f1a8d867c5a54"
+    },
+    "src/lb_harness.py": {
+      "bytes": 30754,
+      "sha256": "6783172a2320552d11160188671e05c75f1d833057c7ed0967f474b7ea3dd17e"
+    },
+    "src/make_study_plots.py": {
+      "bytes": 17388,
+      "sha256": "7374e8eac1a2ad840774b3600d5826dfd2e093d00ff3ae5ebbe18f45af23c41b"
+    },
+    "src/test_gate0_all.c": {
+      "bytes": 11210,
+      "sha256": "e38ba3ef2a85dedd58677fba412ee9a5a07c22152e12a6a6c1ae712219d2f043"
+    }
+  },
+  "reproducible_omitted_large_artifacts": {
+    "checkpoints/wide50m_fp32_120st.npz": {
+      "bytes": 202165516,
+      "sha256": "28105e3d17514b24476c46b161adaa0e2926319c0224defbb03f5432ec5484e6",
+      "reproduce_cmd": "python src/exp2_precision_frontier.py --part b1",
+      "note": "Omitted from git (>100 MiB GitHub limit); deterministic reproduction via b1."
+    }
+  }
+}
