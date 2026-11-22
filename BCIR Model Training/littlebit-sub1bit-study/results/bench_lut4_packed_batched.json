@@ -1,0 +1,2617 @@
+{
+  "host": "Linux-6.12.105+-x86_64-with-glibc2.36",
+  "machine": "x86_64",
+  "threads": 1,
+  "results": [
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 1,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 151.45,
+          "min_us": 146.75,
+          "gflops_equiv": 10.39,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 223.62,
+          "min_us": 215.83,
+          "gflops_equiv": 7.03,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 40.14,
+          "min_us": 37.42,
+          "gflops_equiv": 39.18,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 43.56,
+          "min_us": 43.5,
+          "gflops_equiv": 36.11,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 27.04,
+          "min_us": 26.69,
+          "gflops_equiv": 58.16,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 3.84,
+          "min_us": 3.81,
+          "gflops_equiv": 409.71,
+          "max_abs_err": 1.7881393432617188e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 3.69,
+          "min_us": 3.67,
+          "gflops_equiv": 426.48,
+          "max_abs_err": 1.7881393432617188e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 3.72,
+          "min_us": 3.69,
+          "gflops_equiv": 422.59,
+          "max_abs_err": 1.7881393432617188e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 7.33,
+        "lr32_over_packed1b_mb4": 7.27,
+        "fp32_over_best_packed_lut4": 41.04,
+        "unpacked_over_packed1b": 1.04
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 4,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 184.65,
+          "min_us": 184.01,
+          "gflops_equiv": 34.07,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 283.75,
+          "min_us": 273.96,
+          "gflops_equiv": 22.17,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 161.76,
+          "min_us": 155.5,
+          "gflops_equiv": 38.89,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 187.95,
+          "min_us": 174.51,
+          "gflops_equiv": 33.47,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 31.23,
+          "min_us": 31.1,
+          "gflops_equiv": 201.48,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 15.28,
+          "min_us": 15.24,
+          "gflops_equiv": 411.83,
+          "max_abs_err": 1.8026912584900856e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 16.1,
+          "min_us": 16.02,
+          "gflops_equiv": 390.68,
+          "max_abs_err": 1.8026912584900856e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 13.69,
+          "min_us": 13.61,
+          "gflops_equiv": 459.63,
+          "max_abs_err": 1.8026912584900856e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.94,
+        "lr32_over_packed1b_mb4": 2.28,
+        "fp32_over_best_packed_lut4": 13.49,
+        "unpacked_over_packed1b": 0.95
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 8,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 248.97,
+          "min_us": 238.48,
+          "gflops_equiv": 50.54,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 363.33,
+          "min_us": 349.82,
+          "gflops_equiv": 34.63,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 296.8,
+          "min_us": 291.5,
+          "gflops_equiv": 42.39,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 392.72,
+          "min_us": 348.98,
+          "gflops_equiv": 32.04,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 43.92,
+          "min_us": 42.8,
+          "gflops_equiv": 286.52,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 33.94,
+          "min_us": 33.9,
+          "gflops_equiv": 370.72,
+          "max_abs_err": 1.9371509552001953e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 37.88,
+          "min_us": 34.89,
+          "gflops_equiv": 332.16,
+          "max_abs_err": 1.9371509552001953e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 26.99,
+          "min_us": 26.88,
+          "gflops_equiv": 466.24,
+          "max_abs_err": 1.9371509552001953e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.16,
+        "lr32_over_packed1b_mb4": 1.63,
+        "fp32_over_best_packed_lut4": 9.22,
+        "unpacked_over_packed1b": 0.9
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 16,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 342.68,
+          "min_us": 323.28,
+          "gflops_equiv": 73.44,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 521.57,
+          "min_us": 497.53,
+          "gflops_equiv": 48.25,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 706.38,
+          "min_us": 624.3,
+          "gflops_equiv": 35.63,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 789.51,
+          "min_us": 783.34,
+          "gflops_equiv": 31.88,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 68.19,
+          "min_us": 62.72,
+          "gflops_equiv": 369.04,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 67.48,
+          "min_us": 67.41,
+          "gflops_equiv": 372.94,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 70.84,
+          "min_us": 70.69,
+          "gflops_equiv": 355.23,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 59.61,
+          "min_us": 59.41,
+          "gflops_equiv": 422.18,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 0.96,
+        "lr32_over_packed1b_mb4": 1.14,
+        "fp32_over_best_packed_lut4": 5.75,
+        "unpacked_over_packed1b": 0.95
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 32,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 517.29,
+          "min_us": 493.29,
+          "gflops_equiv": 97.3,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 849.74,
+          "min_us": 822.39,
+          "gflops_equiv": 59.23,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 1283.55,
+          "min_us": 1272.13,
+          "gflops_equiv": 39.21,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 1591.67,
+          "min_us": 1580.22,
+          "gflops_equiv": 31.62,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 101.99,
+          "min_us": 101.77,
+          "gflops_equiv": 493.52,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 132.15,
+          "min_us": 119.01,
+          "gflops_equiv": 380.87,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 145.18,
+          "min_us": 140.38,
+          "gflops_equiv": 346.69,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 107.49,
+          "min_us": 107.22,
+          "gflops_equiv": 468.26,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "lowrank_fp32",
+        "lr32_over_packed1b": 0.7,
+        "lr32_over_packed1b_mb4": 0.95,
+        "fp32_over_best_packed_lut4": 4.81,
+        "unpacked_over_packed1b": 0.91
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 64,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 906.52,
+          "min_us": 852.1,
+          "gflops_equiv": 111.04,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 1504.24,
+          "min_us": 1481.67,
+          "gflops_equiv": 66.92,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 2583.2,
+          "min_us": 2543.17,
+          "gflops_equiv": 38.97,
+          "max_abs_err": 2.682209014892578e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 3195.35,
+          "min_us": 3171.55,
+          "gflops_equiv": 31.5,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 242.8,
+          "min_us": 195.13,
+          "gflops_equiv": 414.6,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 273.33,
+          "min_us": 268.2,
+          "gflops_equiv": 368.29,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 284.56,
+          "min_us": 280.22,
+          "gflops_equiv": 353.75,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 234.96,
+          "min_us": 234.36,
+          "gflops_equiv": 428.43,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 0.85,
+        "lr32_over_packed1b_mb4": 1.03,
+        "fp32_over_best_packed_lut4": 3.86,
+        "unpacked_over_packed1b": 0.96
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 128,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 1587.46,
+          "min_us": 1558.04,
+          "gflops_equiv": 126.82,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 2828.27,
+          "min_us": 2810.12,
+          "gflops_equiv": 71.18,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 5198.87,
+          "min_us": 4830.04,
+          "gflops_equiv": 38.73,
+          "max_abs_err": 2.682209014892578e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 6389.8,
+          "min_us": 6349.99,
+          "gflops_equiv": 31.51,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 369.51,
+          "min_us": 345.13,
+          "gflops_equiv": 544.85,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 541.6,
+          "min_us": 516.2,
+          "gflops_equiv": 371.73,
+          "max_abs_err": 2.682209014892578e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 569.52,
+          "min_us": 521.25,
+          "gflops_equiv": 353.51,
+          "max_abs_err": 2.682209014892578e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 495.81,
+          "min_us": 442.88,
+          "gflops_equiv": 406.05,
+          "max_abs_err": 2.682209014892578e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "lowrank_fp32",
+        "lr32_over_packed1b": 0.65,
+        "lr32_over_packed1b_mb4": 0.75,
+        "fp32_over_best_packed_lut4": 3.2,
+        "unpacked_over_packed1b": 0.95
+      }
+    },
+    {
+      "label": "wide512_0.30",
+      "din": 512,
+      "dout": 1536,
+      "N": 256,
+      "target_bpw": 0.3,
+      "r_per_path": 41,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 3052.22,
+          "min_us": 3004.98,
+          "gflops_equiv": 131.92,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 5486.89,
+          "min_us": 5457.79,
+          "gflops_equiv": 73.38,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 9692.89,
+          "min_us": 9588.73,
+          "gflops_equiv": 41.54,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 1572864,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 12800.55,
+          "min_us": 11523.05,
+          "gflops_equiv": 31.46,
+          "max_abs_err": 0.0,
+          "weight_bytes": 811008,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 743.56,
+          "min_us": 712.19,
+          "gflops_equiv": 541.52,
+          "max_abs_err": 0.0,
+          "weight_bytes": 671744,
+          "realized_bpw": 6.8333
+        },
+        "unpacked_lut4": {
+          "median_us": 1119.02,
+          "min_us": 1055.74,
+          "gflops_equiv": 359.83,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4": {
+          "median_us": 1161.47,
+          "min_us": 1066.91,
+          "gflops_equiv": 346.68,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 1037.17,
+          "min_us": 970.62,
+          "gflops_equiv": 388.22,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 29348,
+          "realized_bpw": 0.2985
+        }
+      },
+      "summary": {
+        "winner": "lowrank_fp32",
+        "lr32_over_packed1b": 0.64,
+        "lr32_over_packed1b_mb4": 0.72,
+        "fp32_over_best_packed_lut4": 2.94,
+        "unpacked_over_packed1b": 0.96
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 1,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 336.37,
+          "min_us": 326.79,
+          "gflops_equiv": 9.35,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 450.72,
+          "min_us": 441.97,
+          "gflops_equiv": 6.98,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 94.84,
+          "min_us": 93.81,
+          "gflops_equiv": 33.17,
+          "max_abs_err": 2.384185791015625e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 84.62,
+          "min_us": 84.2,
+          "gflops_equiv": 37.17,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 60.3,
+          "min_us": 57.3,
+          "gflops_equiv": 52.17,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 7.36,
+          "min_us": 7.34,
+          "gflops_equiv": 427.47,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 6.93,
+          "min_us": 6.91,
+          "gflops_equiv": 454.06,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 6.95,
+          "min_us": 6.93,
+          "gflops_equiv": 452.75,
+          "max_abs_err": 2.5331974029541016e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 8.7,
+        "lr32_over_packed1b_mb4": 8.68,
+        "fp32_over_best_packed_lut4": 48.54,
+        "unpacked_over_packed1b": 1.06
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 4,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 401.09,
+          "min_us": 391.19,
+          "gflops_equiv": 31.37,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 529.75,
+          "min_us": 514.4,
+          "gflops_equiv": 23.75,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 427.81,
+          "min_us": 420.39,
+          "gflops_equiv": 29.41,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 338.47,
+          "min_us": 337.59,
+          "gflops_equiv": 37.18,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 82.58,
+          "min_us": 80.27,
+          "gflops_equiv": 152.36,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 28.76,
+          "min_us": 28.71,
+          "gflops_equiv": 437.56,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 32.03,
+          "min_us": 30.52,
+          "gflops_equiv": 392.85,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 32.0,
+          "min_us": 26.92,
+          "gflops_equiv": 393.25,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 2.58,
+        "lr32_over_packed1b_mb4": 2.58,
+        "fp32_over_best_packed_lut4": 12.53,
+        "unpacked_over_packed1b": 0.9
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 8,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 511.58,
+          "min_us": 495.4,
+          "gflops_equiv": 49.19,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 692.23,
+          "min_us": 665.69,
+          "gflops_equiv": 36.35,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 883.64,
+          "min_us": 854.85,
+          "gflops_equiv": 28.48,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 689.19,
+          "min_us": 677.42,
+          "gflops_equiv": 36.51,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 114.31,
+          "min_us": 101.99,
+          "gflops_equiv": 220.16,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 64.58,
+          "min_us": 64.54,
+          "gflops_equiv": 389.68,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 58.58,
+          "min_us": 58.48,
+          "gflops_equiv": 429.58,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 63.59,
+          "min_us": 53.21,
+          "gflops_equiv": 395.72,
+          "max_abs_err": 3.2782554626464844e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 1.95,
+        "lr32_over_packed1b_mb4": 1.8,
+        "fp32_over_best_packed_lut4": 8.73,
+        "unpacked_over_packed1b": 1.1
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 16,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 680.86,
+          "min_us": 663.25,
+          "gflops_equiv": 73.92,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 1015.87,
+          "min_us": 1004.67,
+          "gflops_equiv": 49.55,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 1739.3,
+          "min_us": 1706.07,
+          "gflops_equiv": 28.94,
+          "max_abs_err": 4.172325134277344e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 1551.12,
+          "min_us": 1537.88,
+          "gflops_equiv": 32.45,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 154.5,
+          "min_us": 144.46,
+          "gflops_equiv": 325.77,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 133.97,
+          "min_us": 128.74,
+          "gflops_equiv": 375.69,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 133.25,
+          "min_us": 130.85,
+          "gflops_equiv": 377.72,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 110.48,
+          "min_us": 105.42,
+          "gflops_equiv": 455.59,
+          "max_abs_err": 3.5762786865234375e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.16,
+        "lr32_over_packed1b_mb4": 1.4,
+        "fp32_over_best_packed_lut4": 6.16,
+        "unpacked_over_packed1b": 1.01
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 32,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 1030.3,
+          "min_us": 1018.28,
+          "gflops_equiv": 97.7,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 1680.97,
+          "min_us": 1658.59,
+          "gflops_equiv": 59.88,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 3261.5,
+          "min_us": 3100.48,
+          "gflops_equiv": 30.86,
+          "max_abs_err": 4.76837158203125e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 3162.1,
+          "min_us": 3079.2,
+          "gflops_equiv": 31.83,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 238.15,
+          "min_us": 231.76,
+          "gflops_equiv": 422.68,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 261.48,
+          "min_us": 254.66,
+          "gflops_equiv": 384.97,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 264.72,
+          "min_us": 258.2,
+          "gflops_equiv": 380.26,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 214.4,
+          "min_us": 209.94,
+          "gflops_equiv": 469.52,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 0.9,
+        "lr32_over_packed1b_mb4": 1.11,
+        "fp32_over_best_packed_lut4": 4.81,
+        "unpacked_over_packed1b": 0.99
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 64,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 1722.84,
+          "min_us": 1704.62,
+          "gflops_equiv": 116.86,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 2978.47,
+          "min_us": 2952.32,
+          "gflops_equiv": 67.59,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 6595.11,
+          "min_us": 6229.87,
+          "gflops_equiv": 30.53,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 6217.9,
+          "min_us": 6205.86,
+          "gflops_equiv": 32.38,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 426.67,
+          "min_us": 410.91,
+          "gflops_equiv": 471.86,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 517.38,
+          "min_us": 467.41,
+          "gflops_equiv": 389.13,
+          "max_abs_err": 4.470348358154297e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 484.27,
+          "min_us": 467.84,
+          "gflops_equiv": 415.74,
+          "max_abs_err": 4.470348358154297e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 426.35,
+          "min_us": 377.28,
+          "gflops_equiv": 472.21,
+          "max_abs_err": 4.470348358154297e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 0.88,
+        "lr32_over_packed1b_mb4": 1.0,
+        "fp32_over_best_packed_lut4": 4.04,
+        "unpacked_over_packed1b": 1.07
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 128,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 3170.98,
+          "min_us": 3100.3,
+          "gflops_equiv": 126.98,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 5638.59,
+          "min_us": 5617.87,
+          "gflops_equiv": 71.41,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 12733.0,
+          "min_us": 12482.63,
+          "gflops_equiv": 31.62,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 11340.05,
+          "min_us": 11134.5,
+          "gflops_equiv": 35.51,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 817.67,
+          "min_us": 788.84,
+          "gflops_equiv": 492.44,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 999.63,
+          "min_us": 978.2,
+          "gflops_equiv": 402.8,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 1003.02,
+          "min_us": 919.01,
+          "gflops_equiv": 401.44,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 850.04,
+          "min_us": 772.45,
+          "gflops_equiv": 473.69,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "lowrank_fp32",
+        "lr32_over_packed1b": 0.82,
+        "lr32_over_packed1b_mb4": 0.96,
+        "fp32_over_best_packed_lut4": 3.73,
+        "unpacked_over_packed1b": 1.0
+      }
+    },
+    {
+      "label": "wide50m_0.30",
+      "din": 768,
+      "dout": 2048,
+      "N": 256,
+      "target_bpw": 0.3,
+      "r_per_path": 67,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 6151.18,
+          "min_us": 6096.53,
+          "gflops_equiv": 130.92,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 10993.31,
+          "min_us": 10953.53,
+          "gflops_equiv": 73.25,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 25524.2,
+          "min_us": 25161.24,
+          "gflops_equiv": 31.55,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 22459.93,
+          "min_us": 22356.43,
+          "gflops_equiv": 35.86,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 1553.7,
+          "min_us": 1526.68,
+          "gflops_equiv": 518.31,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1509376,
+          "realized_bpw": 7.6771
+        },
+        "unpacked_lut4": {
+          "median_us": 2128.98,
+          "min_us": 2096.87,
+          "gflops_equiv": 378.26,
+          "max_abs_err": 4.76837158203125e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4": {
+          "median_us": 1973.29,
+          "min_us": 1938.06,
+          "gflops_equiv": 408.1,
+          "max_abs_err": 4.76837158203125e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 1699.24,
+          "min_us": 1649.66,
+          "gflops_equiv": 473.92,
+          "max_abs_err": 4.76837158203125e-07,
+          "weight_bytes": 58700,
+          "realized_bpw": 0.2986
+        }
+      },
+      "summary": {
+        "winner": "lowrank_fp32",
+        "lr32_over_packed1b": 0.79,
+        "lr32_over_packed1b_mb4": 0.91,
+        "fp32_over_best_packed_lut4": 3.62,
+        "unpacked_over_packed1b": 1.08
+      }
+    },
+    {
+      "label": "wide50m_0.55",
+      "din": 768,
+      "dout": 2048,
+      "N": 1,
+      "target_bpw": 0.55,
+      "r_per_path": 136,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 333.97,
+          "min_us": 327.83,
+          "gflops_equiv": 9.42,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 450.08,
+          "min_us": 441.94,
+          "gflops_equiv": 6.99,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 102.46,
+          "min_us": 98.08,
+          "gflops_equiv": 30.7,
+          "max_abs_err": 2.980232238769531e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 84.52,
+          "min_us": 84.25,
+          "gflops_equiv": 37.22,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 147.31,
+          "min_us": 146.4,
+          "gflops_equiv": 21.36,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3063808,
+          "realized_bpw": 15.5833
+        },
+        "unpacked_lut4": {
+          "median_us": 11.79,
+          "min_us": 10.96,
+          "gflops_equiv": 266.93,
+          "max_abs_err": 2.384185791015625e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4": {
+          "median_us": 11.01,
+          "min_us": 10.99,
+          "gflops_equiv": 285.69,
+          "max_abs_err": 2.384185791015625e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 11.37,
+          "min_us": 11.04,
+          "gflops_equiv": 276.67,
+          "max_abs_err": 2.384185791015625e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 13.38,
+        "lr32_over_packed1b_mb4": 12.96,
+        "fp32_over_best_packed_lut4": 30.33,
+        "unpacked_over_packed1b": 1.07
+      }
+    },
+    {
+      "label": "wide50m_0.55",
+      "din": 768,
+      "dout": 2048,
+      "N": 16,
+      "target_bpw": 0.55,
+      "r_per_path": 136,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 686.12,
+          "min_us": 664.71,
+          "gflops_equiv": 73.36,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 1017.33,
+          "min_us": 1009.77,
+          "gflops_equiv": 49.47,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 1709.85,
+          "min_us": 1558.01,
+          "gflops_equiv": 29.44,
+          "max_abs_err": 3.8743019104003906e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 1556.91,
+          "min_us": 1542.14,
+          "gflops_equiv": 32.33,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 324.67,
+          "min_us": 315.09,
+          "gflops_equiv": 155.02,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3063808,
+          "realized_bpw": 15.5833
+        },
+        "unpacked_lut4": {
+          "median_us": 215.22,
+          "min_us": 209.95,
+          "gflops_equiv": 233.87,
+          "max_abs_err": 5.662441253662109e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4": {
+          "median_us": 213.62,
+          "min_us": 211.47,
+          "gflops_equiv": 235.61,
+          "max_abs_err": 5.662441253662109e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 163.97,
+          "min_us": 159.25,
+          "gflops_equiv": 306.96,
+          "max_abs_err": 5.662441253662109e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.52,
+        "lr32_over_packed1b_mb4": 1.98,
+        "fp32_over_best_packed_lut4": 4.18,
+        "unpacked_over_packed1b": 1.01
+      }
+    },
+    {
+      "label": "wide50m_0.55",
+      "din": 768,
+      "dout": 2048,
+      "N": 64,
+      "target_bpw": 0.55,
+      "r_per_path": 136,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 1749.16,
+          "min_us": 1702.77,
+          "gflops_equiv": 115.1,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 3015.96,
+          "min_us": 2973.04,
+          "gflops_equiv": 66.75,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 6338.3,
+          "min_us": 6228.9,
+          "gflops_equiv": 31.76,
+          "max_abs_err": 5.364418029785156e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 5542.75,
+          "min_us": 5513.22,
+          "gflops_equiv": 36.32,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 851.76,
+          "min_us": 842.73,
+          "gflops_equiv": 236.37,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3063808,
+          "realized_bpw": 15.5833
+        },
+        "unpacked_lut4": {
+          "median_us": 776.56,
+          "min_us": 765.99,
+          "gflops_equiv": 259.25,
+          "max_abs_err": 5.066394805908203e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4": {
+          "median_us": 777.96,
+          "min_us": 679.34,
+          "gflops_equiv": 258.79,
+          "max_abs_err": 5.066394805908203e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 615.74,
+          "min_us": 570.67,
+          "gflops_equiv": 326.97,
+          "max_abs_err": 5.066394805908203e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.09,
+        "lr32_over_packed1b_mb4": 1.38,
+        "fp32_over_best_packed_lut4": 2.84,
+        "unpacked_over_packed1b": 1.0
+      }
+    },
+    {
+      "label": "wide50m_0.55",
+      "din": 768,
+      "dout": 2048,
+      "N": 256,
+      "target_bpw": 0.55,
+      "r_per_path": 136,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 6084.28,
+          "min_us": 5964.13,
+          "gflops_equiv": 132.36,
+          "max_abs_err": 0.0,
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 10926.94,
+          "min_us": 10869.36,
+          "gflops_equiv": 73.7,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 27888.58,
+          "min_us": 27620.5,
+          "gflops_equiv": 28.88,
+          "max_abs_err": 5.960464477539062e-07,
+          "weight_bytes": 3145728,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 22447.01,
+          "min_us": 22201.92,
+          "gflops_equiv": 35.88,
+          "max_abs_err": 0.0,
+          "weight_bytes": 1622016,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 2997.27,
+          "min_us": 2925.88,
+          "gflops_equiv": 268.68,
+          "max_abs_err": 0.0,
+          "weight_bytes": 3063808,
+          "realized_bpw": 15.5833
+        },
+        "unpacked_lut4": {
+          "median_us": 3339.8,
+          "min_us": 3288.08,
+          "gflops_equiv": 241.12,
+          "max_abs_err": 7.748603820800781e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4": {
+          "median_us": 3066.33,
+          "min_us": 3008.83,
+          "gflops_equiv": 262.63,
+          "max_abs_err": 7.748603820800781e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 2364.6,
+          "min_us": 2354.84,
+          "gflops_equiv": 340.57,
+          "max_abs_err": 7.748603820800781e-07,
+          "weight_bytes": 107552,
+          "realized_bpw": 0.547
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 0.98,
+        "lr32_over_packed1b_mb4": 1.27,
+        "fp32_over_best_packed_lut4": 2.57,
+        "unpacked_over_packed1b": 1.09
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 1,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 18501.48,
+          "min_us": 18274.2,
+          "gflops_equiv": 4.87,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 34205.44,
+          "min_us": 33641.34,
+          "gflops_equiv": 2.64,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 9002.36,
+          "min_us": 8563.51,
+          "gflops_equiv": 10.02,
+          "max_abs_err": 8.046627044677734e-07,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 4645.54,
+          "min_us": 4160.07,
+          "gflops_equiv": 19.41,
+          "max_abs_err": 0.0,
+          "weight_bytes": 46497792,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 4492.44,
+          "min_us": 4143.68,
+          "gflops_equiv": 20.07,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 240.36,
+          "min_us": 226.4,
+          "gflops_equiv": 375.18,
+          "max_abs_err": 1.7285346984863281e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 159.22,
+          "min_us": 158.82,
+          "gflops_equiv": 566.36,
+          "max_abs_err": 1.7285346984863281e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 159.93,
+          "min_us": 159.44,
+          "gflops_equiv": 563.84,
+          "max_abs_err": 1.7285346984863281e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 28.22,
+        "lr32_over_packed1b_mb4": 28.09,
+        "fp32_over_best_packed_lut4": 116.2,
+        "unpacked_over_packed1b": 1.51
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 4,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 20016.93,
+          "min_us": 19637.32,
+          "gflops_equiv": 18.02,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 34858.43,
+          "min_us": 34655.95,
+          "gflops_equiv": 10.35,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 33425.63,
+          "min_us": 32943.02,
+          "gflops_equiv": 10.79,
+          "max_abs_err": 8.046627044677734e-07,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 17058.54,
+          "min_us": 16676.3,
+          "gflops_equiv": 21.15,
+          "max_abs_err": 0.0,
+          "weight_bytes": 46497792,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 5225.94,
+          "min_us": 4715.13,
+          "gflops_equiv": 69.02,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 805.41,
+          "min_us": 777.76,
+          "gflops_equiv": 447.86,
+          "max_abs_err": 1.7881393432617188e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 637.28,
+          "min_us": 622.76,
+          "gflops_equiv": 566.02,
+          "max_abs_err": 1.7881393432617188e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 487.18,
+          "min_us": 471.15,
+          "gflops_equiv": 740.41,
+          "max_abs_err": 1.7881393432617188e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 8.2,
+        "lr32_over_packed1b_mb4": 10.73,
+        "fp32_over_best_packed_lut4": 41.09,
+        "unpacked_over_packed1b": 1.26
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 8,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 23663.83,
+          "min_us": 22939.33,
+          "gflops_equiv": 30.49,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 37898.81,
+          "min_us": 37608.07,
+          "gflops_equiv": 19.04,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 67446.86,
+          "min_us": 66482.89,
+          "gflops_equiv": 10.7,
+          "max_abs_err": 8.046627044677734e-07,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 33542.84,
+          "min_us": 33276.83,
+          "gflops_equiv": 21.51,
+          "max_abs_err": 0.0,
+          "weight_bytes": 46497792,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 5952.88,
+          "min_us": 5454.37,
+          "gflops_equiv": 121.19,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 1496.54,
+          "min_us": 1475.5,
+          "gflops_equiv": 482.06,
+          "max_abs_err": 2.1457672119140625e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 1281.26,
+          "min_us": 1261.36,
+          "gflops_equiv": 563.06,
+          "max_abs_err": 2.1457672119140625e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 937.3,
+          "min_us": 931.81,
+          "gflops_equiv": 769.68,
+          "max_abs_err": 2.1457672119140625e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 4.65,
+        "lr32_over_packed1b_mb4": 6.35,
+        "fp32_over_best_packed_lut4": 25.25,
+        "unpacked_over_packed1b": 1.17
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 16,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 30089.75,
+          "min_us": 27401.46,
+          "gflops_equiv": 47.95,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 54486.05,
+          "min_us": 47720.2,
+          "gflops_equiv": 26.48,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 9057.44,
+          "min_us": 7920.98,
+          "gflops_equiv": 159.3,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 3053.0,
+          "min_us": 2914.51,
+          "gflops_equiv": 472.6,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 2784.95,
+          "min_us": 2550.96,
+          "gflops_equiv": 518.08,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 2118.86,
+          "min_us": 1930.76,
+          "gflops_equiv": 680.95,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 3.25,
+        "lr32_over_packed1b_mb4": 4.27,
+        "fp32_over_best_packed_lut4": 14.2,
+        "unpacked_over_packed1b": 1.1
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 32,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 44692.39,
+          "min_us": 38340.0,
+          "gflops_equiv": 64.57,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 69628.01,
+          "min_us": 66190.9,
+          "gflops_equiv": 41.44,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 10821.79,
+          "min_us": 10645.21,
+          "gflops_equiv": 266.65,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 6111.55,
+          "min_us": 5932.41,
+          "gflops_equiv": 472.17,
+          "max_abs_err": 2.3245811462402344e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 5312.22,
+          "min_us": 5175.61,
+          "gflops_equiv": 543.22,
+          "max_abs_err": 2.3245811462402344e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 3928.12,
+          "min_us": 3691.21,
+          "gflops_equiv": 734.62,
+          "max_abs_err": 2.3245811462402344e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 2.04,
+        "lr32_over_packed1b_mb4": 2.75,
+        "fp32_over_best_packed_lut4": 11.38,
+        "unpacked_over_packed1b": 1.15
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 64,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 61225.24,
+          "min_us": 60564.75,
+          "gflops_equiv": 94.26,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 103845.14,
+          "min_us": 103570.26,
+          "gflops_equiv": 55.58,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 17721.61,
+          "min_us": 17491.12,
+          "gflops_equiv": 325.67,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 11908.73,
+          "min_us": 11567.41,
+          "gflops_equiv": 484.63,
+          "max_abs_err": 2.205371856689453e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 10633.47,
+          "min_us": 10413.18,
+          "gflops_equiv": 542.75,
+          "max_abs_err": 2.205371856689453e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 7650.99,
+          "min_us": 7494.55,
+          "gflops_equiv": 754.33,
+          "max_abs_err": 2.205371856689453e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.67,
+        "lr32_over_packed1b_mb4": 2.32,
+        "fp32_over_best_packed_lut4": 8.0,
+        "unpacked_over_packed1b": 1.12
+      }
+    },
+    {
+      "label": "llama2_7b_0.30",
+      "din": 4096,
+      "dout": 11008,
+      "N": 128,
+      "target_bpw": 0.3,
+      "r_per_path": 431,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 105036.82,
+          "min_us": 104246.15,
+          "gflops_equiv": 109.89,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 181559.41,
+          "min_us": 180371.19,
+          "gflops_equiv": 63.58,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 31185.58,
+          "min_us": 31117.53,
+          "gflops_equiv": 370.13,
+          "max_abs_err": 0.0,
+          "weight_bytes": 52078592,
+          "realized_bpw": 9.2402
+        },
+        "unpacked_lut4": {
+          "median_us": 23674.8,
+          "min_us": 23365.59,
+          "gflops_equiv": 487.55,
+          "max_abs_err": 2.9802322387695312e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4": {
+          "median_us": 21232.42,
+          "min_us": 21078.41,
+          "gflops_equiv": 543.64,
+          "max_abs_err": 2.9802322387695312e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 15946.11,
+          "min_us": 15566.47,
+          "gflops_equiv": 723.86,
+          "max_abs_err": 2.9802322387695312e-06,
+          "weight_bytes": 1689596,
+          "realized_bpw": 0.2998
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.47,
+        "lr32_over_packed1b_mb4": 1.96,
+        "fp32_over_best_packed_lut4": 6.59,
+        "unpacked_over_packed1b": 1.12
+      }
+    },
+    {
+      "label": "llama2_7b_0.55",
+      "din": 4096,
+      "dout": 11008,
+      "N": 1,
+      "target_bpw": 0.55,
+      "r_per_path": 804,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 18022.07,
+          "min_us": 17575.95,
+          "gflops_equiv": 5.0,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 32882.81,
+          "min_us": 32462.23,
+          "gflops_equiv": 2.74,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 8705.13,
+          "min_us": 8479.03,
+          "gflops_equiv": 10.36,
+          "max_abs_err": 7.748603820800781e-07,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 4604.56,
+          "min_us": 4279.03,
+          "gflops_equiv": 19.58,
+          "max_abs_err": 0.0,
+          "weight_bytes": 46497792,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 9882.57,
+          "min_us": 9528.08,
+          "gflops_equiv": 9.12,
+          "max_abs_err": 0.0,
+          "weight_bytes": 97148928,
+          "realized_bpw": 17.2369
+        },
+        "unpacked_lut4": {
+          "median_us": 444.37,
+          "min_us": 427.02,
+          "gflops_equiv": 202.94,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4": {
+          "median_us": 348.93,
+          "min_us": 345.99,
+          "gflops_equiv": 258.44,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 351.51,
+          "min_us": 338.13,
+          "gflops_equiv": 256.54,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 28.32,
+        "lr32_over_packed1b_mb4": 28.11,
+        "fp32_over_best_packed_lut4": 51.65,
+        "unpacked_over_packed1b": 1.27
+      }
+    },
+    {
+      "label": "llama2_7b_0.55",
+      "din": 4096,
+      "dout": 11008,
+      "N": 16,
+      "target_bpw": 0.55,
+      "r_per_path": 804,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 28534.55,
+          "min_us": 28062.4,
+          "gflops_equiv": 50.56,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 47543.49,
+          "min_us": 47230.3,
+          "gflops_equiv": 30.35,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 16193.97,
+          "min_us": 15771.25,
+          "gflops_equiv": 89.1,
+          "max_abs_err": 0.0,
+          "weight_bytes": 97148928,
+          "realized_bpw": 17.2369
+        },
+        "unpacked_lut4": {
+          "median_us": 6424.19,
+          "min_us": 6247.1,
+          "gflops_equiv": 224.6,
+          "max_abs_err": 2.2649765014648438e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4": {
+          "median_us": 4686.66,
+          "min_us": 4628.08,
+          "gflops_equiv": 307.86,
+          "max_abs_err": 2.2649765014648438e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 3297.0,
+          "min_us": 3266.33,
+          "gflops_equiv": 437.62,
+          "max_abs_err": 2.2649765014648438e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 3.46,
+        "lr32_over_packed1b_mb4": 4.91,
+        "fp32_over_best_packed_lut4": 8.65,
+        "unpacked_over_packed1b": 1.37
+      }
+    },
+    {
+      "label": "llama2_7b_0.55",
+      "din": 4096,
+      "dout": 11008,
+      "N": 64,
+      "target_bpw": 0.55,
+      "r_per_path": 804,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 61396.28,
+          "min_us": 60962.05,
+          "gflops_equiv": 94.0,
+          "max_abs_err": 0.0,
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0
+        },
+        "dense_bf16_bcir": {
+          "median_us": 106302.16,
+          "min_us": 104902.61,
+          "gflops_equiv": 54.29,
+          "max_abs_err": 0.0,
+          "weight_bytes": 90177536,
+          "realized_bpw": 16.0
+        },
+        "lowrank_fp32": {
+          "median_us": 33359.45,
+          "min_us": 32923.2,
+          "gflops_equiv": 173.01,
+          "max_abs_err": 0.0,
+          "weight_bytes": 97148928,
+          "realized_bpw": 17.2369
+        },
+        "unpacked_lut4": {
+          "median_us": 25799.54,
+          "min_us": 25509.82,
+          "gflops_equiv": 223.7,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4": {
+          "median_us": 18781.74,
+          "min_us": 18730.75,
+          "gflops_equiv": 307.29,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 13367.09,
+          "min_us": 13224.39,
+          "gflops_equiv": 431.76,
+          "max_abs_err": 2.7418136596679688e-06,
+          "weight_bytes": 3099536,
+          "realized_bpw": 0.5499
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 1.78,
+        "lr32_over_packed1b_mb4": 2.5,
+        "fp32_over_best_packed_lut4": 4.59,
+        "unpacked_over_packed1b": 1.37
+      }
+    },
+    {
+      "label": "llama2_70b_0.55",
+      "din": 8192,
+      "dout": 28672,
+      "N": 1,
+      "target_bpw": 0.55,
+      "r_per_path": 1735,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 105274.79,
+          "min_us": 105005.86,
+          "gflops_equiv": 4.46,
+          "max_abs_err": 0.0,
+          "weight_bytes": 939524096,
+          "realized_bpw": 32.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 47851.11,
+          "min_us": 47622.72,
+          "gflops_equiv": 9.82,
+          "max_abs_err": 1.1920928955078125e-06,
+          "weight_bytes": 469762048,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 27835.66,
+          "min_us": 27706.69,
+          "gflops_equiv": 16.88,
+          "max_abs_err": 0.0,
+          "weight_bytes": 242221056,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 58108.64,
+          "min_us": 57899.3,
+          "gflops_equiv": 8.08,
+          "max_abs_err": 0.0,
+          "weight_bytes": 511672320,
+          "realized_bpw": 17.4275
+        },
+        "unpacked_lut4": {
+          "median_us": 6600.28,
+          "min_us": 5514.26,
+          "gflops_equiv": 71.17,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 16144156,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4": {
+          "median_us": 3159.86,
+          "min_us": 2495.38,
+          "gflops_equiv": 148.67,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 16144156,
+          "realized_bpw": 0.5499
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 2401.65,
+          "min_us": 2116.58,
+          "gflops_equiv": 195.6,
+          "max_abs_err": 2.384185791015625e-06,
+          "weight_bytes": 16144156,
+          "realized_bpw": 0.5499
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 18.39,
+        "lr32_over_packed1b_mb4": 24.2,
+        "fp32_over_best_packed_lut4": 43.83,
+        "unpacked_over_packed1b": 2.09
+      }
+    },
+    {
+      "label": "llama2_70b_0.30",
+      "din": 8192,
+      "dout": 28672,
+      "N": 1,
+      "target_bpw": 0.3,
+      "r_per_path": 939,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 103923.11,
+          "min_us": 103399.85,
+          "gflops_equiv": 4.52,
+          "max_abs_err": 0.0,
+          "weight_bytes": 939524096,
+          "realized_bpw": 32.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 47934.97,
+          "min_us": 47503.89,
+          "gflops_equiv": 9.8,
+          "max_abs_err": 1.1920928955078125e-06,
+          "weight_bytes": 469762048,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 28054.95,
+          "min_us": 27890.24,
+          "gflops_equiv": 16.74,
+          "max_abs_err": 0.0,
+          "weight_bytes": 242221056,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 30866.64,
+          "min_us": 30074.72,
+          "gflops_equiv": 15.22,
+          "max_abs_err": 0.0,
+          "weight_bytes": 276922368,
+          "realized_bpw": 9.4319
+        },
+        "unpacked_lut4": {
+          "median_us": 1490.94,
+          "min_us": 1296.0,
+          "gflops_equiv": 315.08,
+          "max_abs_err": 1.9073486328125e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        },
+        "packed1b_lut4": {
+          "median_us": 1109.16,
+          "min_us": 1072.06,
+          "gflops_equiv": 423.53,
+          "max_abs_err": 1.9073486328125e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 1165.11,
+          "min_us": 1082.19,
+          "gflops_equiv": 403.19,
+          "max_abs_err": 1.9073486328125e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        }
+      },
+      "summary": {
+        "winner": "packed1b",
+        "lr32_over_packed1b": 27.83,
+        "lr32_over_packed1b_mb4": 26.49,
+        "fp32_over_best_packed_lut4": 93.7,
+        "unpacked_over_packed1b": 1.34
+      }
+    },
+    {
+      "label": "llama2_70b_0.30",
+      "din": 8192,
+      "dout": 28672,
+      "N": 16,
+      "target_bpw": 0.3,
+      "r_per_path": 939,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 162781.73,
+          "min_us": 162326.58,
+          "gflops_equiv": 46.17,
+          "max_abs_err": 0.0,
+          "weight_bytes": 939524096,
+          "realized_bpw": 32.0
+        },
+        "lowrank_fp32": {
+          "median_us": 48058.39,
+          "min_us": 47347.39,
+          "gflops_equiv": 156.4,
+          "max_abs_err": 0.0,
+          "weight_bytes": 276922368,
+          "realized_bpw": 9.4319
+        },
+        "unpacked_lut4": {
+          "median_us": 25152.78,
+          "min_us": 24869.07,
+          "gflops_equiv": 298.82,
+          "max_abs_err": 4.410743713378906e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        },
+        "packed1b_lut4": {
+          "median_us": 17675.7,
+          "min_us": 17590.43,
+          "gflops_equiv": 425.23,
+          "max_abs_err": 4.410743713378906e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 11306.72,
+          "min_us": 10993.58,
+          "gflops_equiv": 664.75,
+          "max_abs_err": 4.410743713378906e-06,
+          "weight_bytes": 8805036,
+          "realized_bpw": 0.2999
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 2.72,
+        "lr32_over_packed1b_mb4": 4.25,
+        "fp32_over_best_packed_lut4": 14.4,
+        "unpacked_over_packed1b": 1.42
+      }
+    },
+    {
+      "label": "llama2_70b_0.10",
+      "din": 8192,
+      "dout": 28672,
+      "N": 1,
+      "target_bpw": 0.1,
+      "r_per_path": 302,
+      "kernels": {
+        "dense_fp32_bcir": {
+          "median_us": 104287.73,
+          "min_us": 103648.57,
+          "gflops_equiv": 4.5,
+          "max_abs_err": 0.0,
+          "weight_bytes": 939524096,
+          "realized_bpw": 32.0
+        },
+        "dense_fp16_stream": {
+          "median_us": 47366.24,
+          "min_us": 47121.56,
+          "gflops_equiv": 9.92,
+          "max_abs_err": 9.5367431640625e-07,
+          "weight_bytes": 469762048,
+          "realized_bpw": 16.0
+        },
+        "dense_q8_bcir": {
+          "median_us": 27824.27,
+          "min_us": 27615.61,
+          "gflops_equiv": 16.88,
+          "max_abs_err": 0.0,
+          "weight_bytes": 242221056,
+          "realized_bpw": 8.25
+        },
+        "lowrank_fp32": {
+          "median_us": 9098.5,
+          "min_us": 8901.56,
+          "gflops_equiv": 51.63,
+          "max_abs_err": 0.0,
+          "weight_bytes": 89063424,
+          "realized_bpw": 3.0335
+        },
+        "unpacked_lut4": {
+          "median_us": 452.07,
+          "min_us": 435.08,
+          "gflops_equiv": 1039.12,
+          "max_abs_err": 1.6689300537109375e-06,
+          "weight_bytes": 2931896,
+          "realized_bpw": 0.0999
+        },
+        "packed1b_lut4": {
+          "median_us": 341.79,
+          "min_us": 297.02,
+          "gflops_equiv": 1374.42,
+          "max_abs_err": 1.6689300537109375e-06,
+          "weight_bytes": 2931896,
+          "realized_bpw": 0.0999
+        },
+        "packed1b_lut4_mb4": {
+          "median_us": 340.81,
+          "min_us": 318.25,
+          "gflops_equiv": 1378.35,
+          "max_abs_err": 1.6689300537109375e-06,
+          "weight_bytes": 2931896,
+          "realized_bpw": 0.0999
+        }
+      },
+      "summary": {
+        "winner": "packed1b_mb4",
+        "lr32_over_packed1b": 26.62,
+        "lr32_over_packed1b_mb4": 26.7,
+        "fp32_over_best_packed_lut4": 306.0,
+        "unpacked_over_packed1b": 1.32
+      }
+    }
+  ]
+}

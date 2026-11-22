@@ -1,0 +1,28 @@
+mkdir -p build
+clang -O3 -std=c11 -D_POSIX_C_SOURCE=200809L -march=native -ffp-contract=off -fPIC -shared \
+	-I"$BCIR_REPO/runtime/c" -Isrc \
+	"$BCIR_REPO/runtime/c/bcir_tensor.c" \
+	src/bcir_littlebit_core.c \
+	src/bcir_littlebit_bench.c \
+	-o build/libbcir_littlebit.so -lm -lpthread
+clang -O3 -std=c11 -D_POSIX_C_SOURCE=200809L -march=native -ffp-contract=off -fPIC -shared \
+	-I"$BCIR_REPO/runtime/c" \
+	"$BCIR_REPO/runtime/c/bcir_tensor.c" \
+	"$BCIR_REPO/runtime/c/bcir_decoder_train.c" \
+	-o build/bcir_decoder_train.so -lm -lpthread
+clang -O3 -std=c11 -D_POSIX_C_SOURCE=200809L -march=native -ffp-contract=off src/bench_lut4_packed.c -o build/bench_lut4_packed -lm -lpthread
+BCIR_REPO="$BCIR_REPO" python3 src/lb_harness.py
+[GATE 1 Dense vs BCIR] loss_diff=0.00e+00 max_grad_diff=0.00e+00
+[GATE 2 FiniteDiff LOWRANK_FP16+CE       ] max_abs_err=3.755e-05 max_rel_err=3.339e-03
+[GATE 2 FiniteDiff ONEBIT_FULL+CE        ] max_abs_err=5.451e-05 max_rel_err=4.536e-03
+[GATE 2 FiniteDiff LITTLEBIT_1P+CE       ] max_abs_err=5.314e-05 max_rel_err=2.018e-03
+[GATE 2 FiniteDiff LITTLEBIT_RES+CE      ] max_abs_err=5.172e-05 max_rel_err=2.848e-03
+[GATE 2 FiniteDiff LITTLEBIT_RES+KD_FULL ] max_abs_err=3.851e-06 max_rel_err=5.864e-04
+[GATE 3 Kernel PORTABLE_BITPACK  ] max_abs_err=0.00e+00 median_us=103.3 bpw=0.635
+[GATE 3 Kernel AVX512_SIGNXOR    ] max_abs_err=8.94e-08 median_us=59.2 bpw=0.635
+[GATE 3 Kernel AVX512_LUT4       ] max_abs_err=8.94e-08 median_us=4.3 bpw=0.635
+[GATE 3 Kernel AVX512_LUT4_PACKED1B] max_abs_err=8.94e-08 median_us=4.1 bpw=0.635
+[GATE 3 Kernel AVX512_LUT4_PACKED1B_MB4] max_abs_err=8.94e-08 median_us=3.8 bpw=0.635
+[GATE 3 Kernel DENSE_FP16_STREAM ] max_abs_err=1.49e-07 median_us=19.9 bpw=16.000
+[GATE 3 Kernel DENSE_Q8_BCIR     ] max_abs_err=0.00e+00 median_us=22.9 bpw=8.250
+ALL 3 VERIFICATION GATES PASSED!

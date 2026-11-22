@@ -1,0 +1,2416 @@
+{
+  "A1_residual_vs_1path": [
+    {
+      "label": "A1_1Path_0.80",
+      "mode": 3,
+      "target_bpw": 0.8,
+      "realized_body_bpw": 0.7973,
+      "realized_total_bpw": 1.1319,
+      "deploy_kib": 851.82,
+      "ranks_layer0": [
+        [
+          185,
+          0
+        ],
+        [
+          64,
+          0
+        ],
+        [
+          64,
+          0
+        ],
+        [
+          185,
+          0
+        ],
+        [
+          288,
+          0
+        ],
+        [
+          288,
+          0
+        ],
+        [
+          288,
+          0
+        ]
+      ],
+      "init_seconds": 2.05,
+      "init_mean_frob_err": 0.8072,
+      "ptq_val": {
+        "ce": 3.04865,
+        "ppl": 21.0869,
+        "acc": 0.198,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.02112,
+        "ppl": 20.5142,
+        "acc": 0.1969,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.10341,
+        "ppl": 8.1941,
+        "acc": 0.38062,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.12772,
+        "ppl": 8.3957,
+        "acc": 0.37463,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 274.68,
+        "mean_sign_flip_rate": 0.001952,
+        "early_sign_flip_rate": 0.004931,
+        "late_sign_flip_rate": 0.000432,
+        "mean_active_grad_frac": 0.63918,
+        "final_kl": 0.12275,
+        "final_inter_mse": 6.01109,
+        "mean_grad_norm": 229.5645
+      }
+    },
+    {
+      "label": "A1_Res2Path_0.80",
+      "mode": 4,
+      "target_bpw": 0.8,
+      "realized_body_bpw": 0.7974,
+      "realized_total_bpw": 1.132,
+      "deploy_kib": 851.89,
+      "ranks_layer0": [
+        [
+          85,
+          85
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          85,
+          85
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          136,
+          136
+        ]
+      ],
+      "init_seconds": 3.12,
+      "init_mean_frob_err": 0.7571,
+      "ptq_val": {
+        "ce": 2.36267,
+        "ppl": 10.6193,
+        "acc": 0.33569,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.37452,
+        "ppl": 10.7459,
+        "acc": 0.32941,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 1.98126,
+        "ppl": 7.2519,
+        "acc": 0.41553,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.00874,
+        "ppl": 7.454,
+        "acc": 0.41327,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 288.84,
+        "mean_sign_flip_rate": 0.001773,
+        "early_sign_flip_rate": 0.004214,
+        "late_sign_flip_rate": 0.00053,
+        "mean_active_grad_frac": 0.60791,
+        "final_kl": 0.02448,
+        "final_inter_mse": 2.8472,
+        "mean_grad_norm": 212.4989
+      }
+    },
+    {
+      "label": "A1_1Path_0.55",
+      "mode": 3,
+      "target_bpw": 0.55,
+      "realized_body_bpw": 0.5478,
+      "realized_total_bpw": 0.8879,
+      "deploy_kib": 668.21,
+      "ranks_layer0": [
+        [
+          122,
+          0
+        ],
+        [
+          39,
+          0
+        ],
+        [
+          39,
+          0
+        ],
+        [
+          122,
+          0
+        ],
+        [
+          193,
+          0
+        ],
+        [
+          193,
+          0
+        ],
+        [
+          193,
+          0
+        ]
+      ],
+      "init_seconds": 3.07,
+      "init_mean_frob_err": 0.8343,
+      "ptq_val": {
+        "ce": 3.07395,
+        "ppl": 21.6273,
+        "acc": 0.2002,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.05463,
+        "ppl": 21.2133,
+        "acc": 0.20166,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.13178,
+        "ppl": 8.4298,
+        "acc": 0.37427,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.15217,
+        "ppl": 8.6035,
+        "acc": 0.37061,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 228.08,
+        "mean_sign_flip_rate": 0.001974,
+        "early_sign_flip_rate": 0.004843,
+        "late_sign_flip_rate": 0.000461,
+        "mean_active_grad_frac": 0.60971,
+        "final_kl": 0.13653,
+        "final_inter_mse": 7.17621,
+        "mean_grad_norm": 235.178
+      }
+    },
+    {
+      "label": "A1_Res2Path_0.55",
+      "mode": 4,
+      "target_bpw": 0.55,
+      "realized_body_bpw": 0.5448,
+      "realized_total_bpw": 0.8849,
+      "deploy_kib": 665.94,
+      "ranks_layer0": [
+        [
+          53,
+          53
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          53,
+          53
+        ],
+        [
+          88,
+          88
+        ],
+        [
+          88,
+          88
+        ],
+        [
+          88,
+          88
+        ]
+      ],
+      "init_seconds": 5.37,
+      "init_mean_frob_err": 0.8014,
+      "ptq_val": {
+        "ce": 2.44888,
+        "ppl": 11.5754,
+        "acc": 0.32349,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.45725,
+        "ppl": 11.6727,
+        "acc": 0.31244,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 1.99835,
+        "ppl": 7.3769,
+        "acc": 0.41333,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.02261,
+        "ppl": 7.558,
+        "acc": 0.40771,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 254.92,
+        "mean_sign_flip_rate": 0.001823,
+        "early_sign_flip_rate": 0.004195,
+        "late_sign_flip_rate": 0.00064,
+        "mean_active_grad_frac": 0.57859,
+        "final_kl": 0.03547,
+        "final_inter_mse": 3.83416,
+        "mean_grad_norm": 228.732
+      }
+    },
+    {
+      "label": "A1_1Path_0.30",
+      "mode": 3,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.2984,
+      "realized_total_bpw": 0.6439,
+      "deploy_kib": 484.59,
+      "ranks_layer0": [
+        [
+          59,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          14,
+          0
+        ],
+        [
+          59,
+          0
+        ],
+        [
+          98,
+          0
+        ],
+        [
+          98,
+          0
+        ],
+        [
+          98,
+          0
+        ]
+      ],
+      "init_seconds": 2.71,
+      "init_mean_frob_err": 0.8721,
+      "ptq_val": {
+        "ce": 3.16921,
+        "ppl": 23.7887,
+        "acc": 0.20483,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.15016,
+        "ppl": 23.3397,
+        "acc": 0.20483,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.1897,
+        "ppl": 8.9325,
+        "acc": 0.35913,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.21151,
+        "ppl": 9.1295,
+        "acc": 0.35315,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 155.56,
+        "mean_sign_flip_rate": 0.002036,
+        "early_sign_flip_rate": 0.004731,
+        "late_sign_flip_rate": 0.000558,
+        "mean_active_grad_frac": 0.56547,
+        "final_kl": 0.18502,
+        "final_inter_mse": 9.76571,
+        "mean_grad_norm": 256.1301
+      }
+    },
+    {
+      "label": "A1_Res2Path_0.30",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.81,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 180.53,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    },
+    {
+      "label": "A1_1Path_0.20",
+      "mode": 3,
+      "target_bpw": 0.2,
+      "realized_body_bpw": 0.1987,
+      "realized_total_bpw": 0.5465,
+      "deploy_kib": 411.25,
+      "ranks_layer0": [
+        [
+          34,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          60,
+          0
+        ],
+        [
+          60,
+          0
+        ]
+      ],
+      "init_seconds": 2.35,
+      "init_mean_frob_err": 0.8976,
+      "ptq_val": {
+        "ce": 3.3327,
+        "ppl": 28.0138,
+        "acc": 0.19531,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.30424,
+        "ppl": 27.2279,
+        "acc": 0.19354,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.35449,
+        "ppl": 10.5327,
+        "acc": 0.32324,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.37111,
+        "ppl": 10.7093,
+        "acc": 0.31982,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 124.38,
+        "mean_sign_flip_rate": 0.001999,
+        "early_sign_flip_rate": 0.004558,
+        "late_sign_flip_rate": 0.000626,
+        "mean_active_grad_frac": 0.53466,
+        "final_kl": 0.34853,
+        "final_inter_mse": 15.63411,
+        "mean_grad_norm": 294.5653
+      }
+    },
+    {
+      "label": "A1_Res2Path_0.20",
+      "mode": 4,
+      "target_bpw": 0.2,
+      "realized_body_bpw": 0.2051,
+      "realized_total_bpw": 0.5527,
+      "deploy_kib": 415.94,
+      "ranks_layer0": [
+        [
+          9,
+          9
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          22,
+          22
+        ]
+      ],
+      "init_seconds": 4.42,
+      "init_mean_frob_err": 0.8853,
+      "ptq_val": {
+        "ce": 3.2457,
+        "ppl": 25.6797,
+        "acc": 0.21899,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.20307,
+        "ppl": 24.608,
+        "acc": 0.21515,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.23885,
+        "ppl": 9.3826,
+        "acc": 0.36011,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.25614,
+        "ppl": 9.5462,
+        "acc": 0.3501,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 152.29,
+        "mean_sign_flip_rate": 0.001883,
+        "early_sign_flip_rate": 0.00371,
+        "late_sign_flip_rate": 0.000973,
+        "mean_active_grad_frac": 0.48871,
+        "final_kl": 0.23537,
+        "final_inter_mse": 13.00055,
+        "mean_grad_norm": 328.0849
+      }
+    }
+  ],
+  "A2_multiscale": [
+    {
+      "label": "A2_scales_hgl",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.59,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 183.41,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    },
+    {
+      "label": "A2_scales_hg_only",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.2993,
+      "realized_total_bpw": 0.6448,
+      "deploy_kib": 485.25,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.68,
+      "init_mean_frob_err": 0.8744,
+      "ptq_val": {
+        "ce": 2.98573,
+        "ppl": 19.801,
+        "acc": 0.25586,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.00192,
+        "ppl": 20.1242,
+        "acc": 0.24078,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.15463,
+        "ppl": 8.6247,
+        "acc": 0.37354,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.18151,
+        "ppl": 8.8597,
+        "acc": 0.36707,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 150.61,
+        "mean_sign_flip_rate": 0.001832,
+        "early_sign_flip_rate": 0.004086,
+        "late_sign_flip_rate": 0.000721,
+        "mean_active_grad_frac": 0.5337,
+        "final_kl": 0.16984,
+        "final_inter_mse": 9.17428,
+        "mean_grad_norm": 281.9058
+      }
+    },
+    {
+      "label": "A2_scales_none",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.1987,
+      "realized_total_bpw": 0.5465,
+      "deploy_kib": 411.25,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.87,
+      "init_mean_frob_err": 141.9984,
+      "ptq_val": {
+        "ce": 5.71801,
+        "ppl": 304.2997,
+        "acc": 0.01318,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 5.72554,
+        "ppl": 306.6003,
+        "acc": 0.01453,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 3.56097,
+        "ppl": 35.1973,
+        "acc": 0.07178,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 3.5393,
+        "ppl": 34.4429,
+        "acc": 0.06696,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 159.93,
+        "mean_sign_flip_rate": 0.000769,
+        "early_sign_flip_rate": 0.001814,
+        "late_sign_flip_rate": 0.000104,
+        "mean_active_grad_frac": 0.28153,
+        "final_kl": 1.78176,
+        "final_inter_mse": 3428956433.07213,
+        "mean_grad_norm": 9.730453819978562e+18
+      }
+    }
+  ],
+  "A3_surrogate": [
+    {
+      "label": "A3_SmoothSign_k100",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.9,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 152.21,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    },
+    {
+      "label": "A3_SmoothSign_k10",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.96,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.13878,
+        "ppl": 8.489,
+        "acc": 0.37646,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.17103,
+        "ppl": 8.7673,
+        "acc": 0.36481,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 173.53,
+        "mean_sign_flip_rate": 0.001903,
+        "early_sign_flip_rate": 0.003987,
+        "late_sign_flip_rate": 0.000762,
+        "mean_active_grad_frac": 0.9999,
+        "final_kl": 0.16293,
+        "final_inter_mse": 9.56614,
+        "mean_grad_norm": 149.7694
+      }
+    },
+    {
+      "label": "A3_Clipped_STE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.8,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14331,
+        "ppl": 8.5276,
+        "acc": 0.38037,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.17416,
+        "ppl": 8.7948,
+        "acc": 0.3689,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 147.01,
+        "mean_sign_flip_rate": 0.001904,
+        "early_sign_flip_rate": 0.003957,
+        "late_sign_flip_rate": 0.00076,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.16438,
+        "final_inter_mse": 9.44496,
+        "mean_grad_norm": 134.6
+      }
+    },
+    {
+      "label": "A3_Unclipped_STE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 4.92,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14331,
+        "ppl": 8.5276,
+        "acc": 0.38037,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.17416,
+        "ppl": 8.7948,
+        "acc": 0.3689,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 147.13,
+        "mean_sign_flip_rate": 0.001904,
+        "early_sign_flip_rate": 0.003957,
+        "late_sign_flip_rate": 0.00076,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.16438,
+        "final_inter_mse": 9.44496,
+        "mean_grad_norm": 134.6
+      }
+    },
+    {
+      "label": "A3_ITQ_SmoothSign_k100",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 6.08,
+      "init_mean_frob_err": 0.8363,
+      "ptq_val": {
+        "ce": 2.79931,
+        "ppl": 16.4334,
+        "acc": 0.27441,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.80473,
+        "ppl": 16.5227,
+        "acc": 0.26239,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.10614,
+        "ppl": 8.2165,
+        "acc": 0.38623,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.13171,
+        "ppl": 8.4292,
+        "acc": 0.3775,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 179.03,
+        "mean_sign_flip_rate": 0.001406,
+        "early_sign_flip_rate": 0.002521,
+        "late_sign_flip_rate": 0.000718,
+        "mean_active_grad_frac": 0.48148,
+        "final_kl": 0.14702,
+        "final_inter_mse": 8.37706,
+        "mean_grad_norm": 258.3841
+      }
+    },
+    {
+      "label": "A3_ITQ_Clipped_STE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 6.05,
+      "init_mean_frob_err": 0.8363,
+      "ptq_val": {
+        "ce": 2.79931,
+        "ppl": 16.4334,
+        "acc": 0.27441,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.80473,
+        "ppl": 16.5227,
+        "acc": 0.26239,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.10501,
+        "ppl": 8.2072,
+        "acc": 0.38794,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.12899,
+        "ppl": 8.4064,
+        "acc": 0.3783,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 146.73,
+        "mean_sign_flip_rate": 0.001483,
+        "early_sign_flip_rate": 0.002531,
+        "late_sign_flip_rate": 0.000783,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.13806,
+        "final_inter_mse": 8.14347,
+        "mean_grad_norm": 154.4505
+      }
+    }
+  ],
+  "A4_init_and_objective": [
+    {
+      "label": "A4_FromScratch_Random_CE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 0.07,
+      "init_mean_frob_err": 1.3364,
+      "ptq_val": {
+        "ce": 5.9779,
+        "ppl": 394.6123,
+        "acc": 0.00195,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 5.89931,
+        "ppl": 364.7859,
+        "acc": 0.00287,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.52615,
+        "ppl": 12.5053,
+        "acc": 0.31055,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.55093,
+        "ppl": 12.819,
+        "acc": 0.29346,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 94.55,
+        "mean_sign_flip_rate": 0.001507,
+        "early_sign_flip_rate": 0.00409,
+        "late_sign_flip_rate": 0.00029,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.0,
+        "final_inter_mse": 0.0,
+        "mean_grad_norm": 2.4709
+      }
+    },
+    {
+      "label": "A4_NaiveSVD_KD",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.78,
+      "init_mean_frob_err": 1.1469,
+      "ptq_val": {
+        "ce": 3.88712,
+        "ppl": 48.77,
+        "acc": 0.17285,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 3.8211,
+        "ppl": 45.6543,
+        "acc": 0.17072,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.3621,
+        "ppl": 10.6132,
+        "acc": 0.33032,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.37683,
+        "ppl": 10.7707,
+        "acc": 0.31793,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 148.96,
+        "mean_sign_flip_rate": 0.001247,
+        "early_sign_flip_rate": 0.002492,
+        "late_sign_flip_rate": 0.000497,
+        "mean_active_grad_frac": 0.48271,
+        "final_kl": 0.38727,
+        "final_inter_mse": 16.03216,
+        "mean_grad_norm": 917.7414
+      }
+    },
+    {
+      "label": "A4_DualSVID_CE_only",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.71,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.10835,
+        "ppl": 8.2347,
+        "acc": 0.39355,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.13304,
+        "ppl": 8.4405,
+        "acc": 0.38385,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 133.81,
+        "mean_sign_flip_rate": 0.001059,
+        "early_sign_flip_rate": 0.002463,
+        "late_sign_flip_rate": 0.000204,
+        "mean_active_grad_frac": 0.54476,
+        "final_kl": 0.0,
+        "final_inter_mse": 0.0,
+        "mean_grad_norm": 1.9367
+      }
+    },
+    {
+      "label": "A4_DualSVID_KL_only",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.83,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.07021,
+        "ppl": 7.9265,
+        "acc": 0.40015,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.09396,
+        "ppl": 8.117,
+        "acc": 0.39264,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 154.21,
+        "mean_sign_flip_rate": 0.001097,
+        "early_sign_flip_rate": 0.002704,
+        "late_sign_flip_rate": 0.000184,
+        "mean_active_grad_frac": 0.54242,
+        "final_kl": 0.10011,
+        "final_inter_mse": 0.0,
+        "mean_grad_norm": 0.977
+      }
+    },
+    {
+      "label": "A4_DualSVID_KL_InterMSE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.76,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 152.64,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    },
+    {
+      "label": "A4_DualSVID_CE_KL_MSE",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.93,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14528,
+        "ppl": 8.5444,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.17349,
+        "ppl": 8.7889,
+        "acc": 0.36749,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 156.69,
+        "mean_sign_flip_rate": 0.001823,
+        "early_sign_flip_rate": 0.003951,
+        "late_sign_flip_rate": 0.000736,
+        "mean_active_grad_frac": 0.53091,
+        "final_kl": 0.16358,
+        "final_inter_mse": 9.5047,
+        "mean_grad_norm": 279.8052
+      }
+    },
+    {
+      "label": "A4_DualSVID_300step_check",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.81,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.07059,
+        "ppl": 7.9295,
+        "acc": 0.3894,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.09901,
+        "ppl": 8.1581,
+        "acc": 0.38263,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 300,
+        "median_step_ms": 153.28,
+        "mean_sign_flip_rate": 0.00186,
+        "early_sign_flip_rate": 0.003215,
+        "late_sign_flip_rate": 0.001404,
+        "mean_active_grad_frac": 0.51741,
+        "final_kl": 0.14446,
+        "final_inter_mse": 9.58167,
+        "mean_grad_norm": 234.7512
+      }
+    }
+  ],
+  "A5_gqa_kv_factor": [
+    {
+      "label": "A5_kvfactor_1.0",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.74,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 156.95,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    },
+    {
+      "label": "A5_kvfactor_2.0",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3115,
+      "realized_total_bpw": 0.6568,
+      "deploy_kib": 494.27,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.68,
+      "init_mean_frob_err": 0.835,
+      "ptq_val": {
+        "ce": 2.39333,
+        "ppl": 10.9499,
+        "acc": 0.32617,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.39638,
+        "ppl": 10.9834,
+        "acc": 0.31964,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.01724,
+        "ppl": 7.5176,
+        "acc": 0.40796,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.04075,
+        "ppl": 7.6964,
+        "acc": 0.40295,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 157.46,
+        "mean_sign_flip_rate": 0.001919,
+        "early_sign_flip_rate": 0.003921,
+        "late_sign_flip_rate": 0.000912,
+        "mean_active_grad_frac": 0.52329,
+        "final_kl": 0.05182,
+        "final_inter_mse": 5.51222,
+        "mean_grad_norm": 238.8015
+      }
+    },
+    {
+      "label": "A5_kvfactor_4.0",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3376,
+      "realized_total_bpw": 0.6823,
+      "deploy_kib": 513.49,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          44,
+          44
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.78,
+      "init_mean_frob_err": 0.8074,
+      "ptq_val": {
+        "ce": 2.38551,
+        "ppl": 10.8646,
+        "acc": 0.32471,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.3966,
+        "ppl": 10.9857,
+        "acc": 0.31873,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.00791,
+        "ppl": 7.4477,
+        "acc": 0.40552,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.03363,
+        "ppl": 7.6418,
+        "acc": 0.4021,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 168.8,
+        "mean_sign_flip_rate": 0.001825,
+        "early_sign_flip_rate": 0.00383,
+        "late_sign_flip_rate": 0.000846,
+        "mean_active_grad_frac": 0.52786,
+        "final_kl": 0.04673,
+        "final_inter_mse": 5.32749,
+        "mean_grad_norm": 241.932
+      }
+    }
+  ],
+  "A6_layer_sensitivity": [
+    {
+      "label": "A6_MLP_only_0.30",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 7.1902,
+      "realized_total_bpw": 7.3841,
+      "deploy_kib": 5556.96,
+      "ranks_layer0": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.11,
+      "init_mean_frob_err": 0.3621,
+      "ptq_val": {
+        "ce": 2.52248,
+        "ppl": 12.4595,
+        "acc": 0.34058,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.56794,
+        "ppl": 13.0389,
+        "acc": 0.32959,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 1.96974,
+        "ppl": 7.1688,
+        "acc": 0.42358,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 1.99428,
+        "ppl": 7.3469,
+        "acc": 0.41669,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 145.97,
+        "mean_sign_flip_rate": 0.002029,
+        "early_sign_flip_rate": 0.003827,
+        "late_sign_flip_rate": 0.001135,
+        "mean_active_grad_frac": 0.54942,
+        "final_kl": 0.02151,
+        "final_inter_mse": 2.71396,
+        "mean_grad_norm": 140.7916
+      }
+    },
+    {
+      "label": "A6_Attn_only_0.30",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 25.1109,
+      "realized_total_bpw": 24.9104,
+      "deploy_kib": 18746.62,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "init_seconds": 0.74,
+      "init_mean_frob_err": 0.4972,
+      "ptq_val": {
+        "ce": 2.86953,
+        "ppl": 17.6287,
+        "acc": 0.22827,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.85642,
+        "ppl": 17.3992,
+        "acc": 0.21991,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.05043,
+        "ppl": 7.7713,
+        "acc": 0.39868,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.08227,
+        "ppl": 8.0227,
+        "acc": 0.38794,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 137.49,
+        "mean_sign_flip_rate": 0.001212,
+        "early_sign_flip_rate": 0.002149,
+        "late_sign_flip_rate": 0.000618,
+        "mean_active_grad_frac": 0.41562,
+        "final_kl": 0.09226,
+        "final_inter_mse": 4.55507,
+        "mean_grad_norm": 255.7303
+      }
+    },
+    {
+      "label": "A6_All_layers_0.30",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3011,
+      "realized_total_bpw": 0.6466,
+      "deploy_kib": 486.59,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 2.85,
+      "init_mean_frob_err": 0.8593,
+      "ptq_val": {
+        "ce": 2.99658,
+        "ppl": 20.017,
+        "acc": 0.24902,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.99629,
+        "ppl": 20.0112,
+        "acc": 0.23663,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 2.14407,
+        "ppl": 8.5341,
+        "acc": 0.37988,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 2.16934,
+        "ppl": 8.7525,
+        "acc": 0.36951,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 152.56,
+        "mean_sign_flip_rate": 0.001822,
+        "early_sign_flip_rate": 0.003949,
+        "late_sign_flip_rate": 0.00073,
+        "mean_active_grad_frac": 0.53089,
+        "final_kl": 0.17753,
+        "final_inter_mse": 9.5687,
+        "mean_grad_norm": 279.0624
+      }
+    }
+  ],
+  "A7_bcir_synthesis": [
+    {
+      "label": "A7_BCIR_All_ITQ_STE_KL_kv2",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 0.3115,
+      "realized_total_bpw": 0.6568,
+      "deploy_kib": 494.27,
+      "ranks_layer0": [
+        [
+          22,
+          22
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 3.57,
+      "init_mean_frob_err": 0.8024,
+      "ptq_val": {
+        "ce": 2.12784,
+        "ppl": 8.3967,
+        "acc": 0.38257,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.14181,
+        "ppl": 8.5148,
+        "acc": 0.37988,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 1.96273,
+        "ppl": 7.1187,
+        "acc": 0.42725,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 1.99227,
+        "ppl": 7.3322,
+        "acc": 0.41815,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 120,
+        "median_step_ms": 116.28,
+        "mean_sign_flip_rate": 0.000595,
+        "early_sign_flip_rate": 0.001372,
+        "late_sign_flip_rate": 0.000106,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.0165,
+        "final_inter_mse": 0.0,
+        "mean_grad_norm": 0.2189
+      }
+    },
+    {
+      "label": "A7_COMP1_Q8Attn_ITQ_STE_KL_MLP030",
+      "mode": 4,
+      "target_bpw": 0.3,
+      "realized_body_bpw": 7.1902,
+      "realized_total_bpw": 7.3841,
+      "deploy_kib": 5556.96,
+      "ranks_layer0": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          41,
+          41
+        ]
+      ],
+      "init_seconds": 3.08,
+      "init_mean_frob_err": 0.352,
+      "ptq_val": {
+        "ce": 2.07974,
+        "ppl": 8.0024,
+        "acc": 0.3999,
+        "tokens": 4096
+      },
+      "ptq_test": {
+        "ce": 2.0999,
+        "ppl": 8.1654,
+        "acc": 0.39685,
+        "tokens": 16384
+      },
+      "qat_val": {
+        "ce": 1.95555,
+        "ppl": 7.0678,
+        "acc": 0.43066,
+        "tokens": 4096
+      },
+      "qat_test": {
+        "ce": 1.9828,
+        "ppl": 7.2631,
+        "acc": 0.42365,
+        "tokens": 16384
+      },
+      "qat_telemetry": {
+        "best_step": 100,
+        "median_step_ms": 114.41,
+        "mean_sign_flip_rate": 0.000628,
+        "early_sign_flip_rate": 0.001413,
+        "late_sign_flip_rate": 0.000114,
+        "mean_active_grad_frac": 1.0,
+        "final_kl": 0.00864,
+        "final_inter_mse": 0.0,
+        "mean_grad_norm": 0.1748
+      }
+    }
+  ]
+}
