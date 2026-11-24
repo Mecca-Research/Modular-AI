@@ -14,7 +14,7 @@ LDFLAGS   := -lm -lpthread
 
 .PHONY: all verify clean
 
-all: $(BUILD)/libbcir_lab.so $(BUILD)/test_gate0_all
+all: $(BUILD)/libbcir_lab.so $(BUILD)/test_gate0_all $(BUILD)/bcir_native_deploy_bench
 
 $(BUILD):
 	mkdir -p $(BUILD)
@@ -33,6 +33,12 @@ $(BUILD)/libbcir_lab.so: $(SRC)/bcir_precision.c $(SRC)/bcir_mixer_ext.c $(SRC)/
 $(BUILD)/test_gate0_all: $(SRC)/test_gate0_all.c $(SRC)/bcir_mixer_ext.c $(SRC)/bcir_precision.c \
                          $(BUILD)/bcir_tensor.o $(BUILD)/bcir_decoder_train.o | $(BUILD)
 	$(CC) $(CFLAGS) $(INC) $^ $(LDFLAGS) -o $@
+
+$(BUILD)/bcir_native_deploy_bench: $(SRC)/bcir_native_deploy_bench.c \
+                                   $(BCIR_C)/bcir_q8_model.c $(BCIR_C)/bcir_decode.c \
+                                   $(BCIR_C)/bcir_ai_kernels.c $(BCIR_C)/bcir_llama.c \
+                                   $(BCIR_C)/bcir_tensor.c | $(BUILD)
+	$(CC) -O3 -std=c11 -D_POSIX_C_SOURCE=200809L -ffp-contract=off -Wall -Wextra -Werror $(INC) $^ $(LDFLAGS) -o $@
 
 verify: $(BUILD)/test_gate0_all
 	./$(BUILD)/test_gate0_all

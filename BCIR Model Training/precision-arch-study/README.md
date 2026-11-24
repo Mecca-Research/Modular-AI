@@ -64,13 +64,21 @@ python src/exp4_mixer_ext_architectures.py --part merge
 
 # Regenerate both 6-panel figures
 python src/make_study_plots.py
+
+# Experiment 5: Production BCIR Deployment Policy (COMP-1 / P1-P6) & Permanent Baseline Checkpoint
+# Links directly against BCIR runtime/c/{bcir_q8_model,bcir_decode,bcir_ai_kernels,bcir_llama,bcir_tensor}.c
+python src/exp5_deploy_policy_baseline.py --part kernels
+python src/exp5_deploy_policy_baseline.py --part wide512 --wide512-steps 160 --wide512-qat-steps 80
+python src/exp5_deploy_policy_baseline.py --part wide50m --wide50m-steps 60
+python src/exp5_deploy_policy_baseline.py --part wedge128
+python src/exp5_deploy_policy_baseline.py --part merge
 ```
 
-Note: `checkpoints/wide50m_fp32_120st.npz` (`193 MiB`) exceeds GitHub's `100 MiB` single-file limit and is omitted from git tracking; its exact SHA-256 digest is recorded in `results/MANIFEST.json` and it reproduces deterministically via `python src/exp2_precision_frontier.py --part b1`.
+Note: `checkpoints/wide50m_fp32_120st.npz` (`193 MiB`) exceeds GitHub's `100 MiB` single-file limit and is omitted from git tracking; its exact SHA-256 digest is recorded in `results/MANIFEST.json` and it reproduces deterministically via `python src/exp2_precision_frontier.py --part b1`. Experiment 5's `results/deploy_policy_baseline_checkpoint.json` (`bcir.deploy_baseline.v1` schema) was executed on a 2-core `Intel(R) Xeon(R) CPU @ 2.30GHz` (`avx2_fma`, no `avx512f`) host with `clang 23.1.6` against the production BCIR `BCIRQ8 v2` + `LUT4-LANES` runtime; its full host/compiler/ISA provenance is embedded directly in the JSON record.
 
 ## Directory Layout
 
-- `src/`: Bare-metal C11 precision, `MIXER-EXT`, `COMP-1` deploy, and LittleBit QAT/kernel engines plus Python drivers
-- `results/`: Merged JSON artifacts, slice JSONs, `gate0_verify_output.txt`, and SHA-256 `MANIFEST.json`
+- `src/`: Bare-metal C11 precision, `MIXER-EXT`, `COMP-1` deploy, LittleBit QAT/kernel engines, `bcir_native_deploy_bench.c` (linked directly to BCIR production `runtime/c/`), and Python drivers (`exp1`–`exp5`)
+- `results/`: Merged JSON artifacts, slice JSONs, `deploy_policy_baseline_checkpoint.json` (`bcir.deploy_baseline.v1`), `gate0_verify_output.txt`, and SHA-256 `MANIFEST.json`
 - `checkpoints/`: Saved FP32 checkpoints (`wedge128_kv4_strong.npz`, `wide512_fp32_s42.npz`, `narrow_deep_6m_fp32_s42.npz`)
 - `figures/`: Publication figures (`bcir_precision_frontier_50m.png`, `bcir_mixer_ext_architectures.png`)

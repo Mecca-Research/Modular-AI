@@ -217,6 +217,7 @@ static void lut4_packed_gemv_avx512(const uint8_t *nib_p, uint32_t n_in, uint32_
 
 static void dep_lb_path_eval(const dep_lb_path *p, const float *x, float *xg, float *z,
                              float *y_tmp, float *y, int use_portable, int add_to_y) {
+  (void)use_portable;
   if (p->r == 0u) return;
   for (uint32_t i = 0; i < p->din; ++i) xg[i] = x[i] * p->g[i];
 #if defined(__AVX512F__)

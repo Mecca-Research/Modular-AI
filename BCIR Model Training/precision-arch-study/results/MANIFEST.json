@@ -16,12 +16,12 @@
       "sha256": "07d4f0ab28152b011184e32aca623129c6ac6432c2d5306a727eb976873bb621"
     },
     "Makefile": {
-      "bytes": 1732,
-      "sha256": "c52f2ad5ee910e64c2ec6f9ede209d76188419efe2d2b1b9c584ed6a37949acf"
+      "bytes": 2196,
+      "sha256": "be5f3cae4bc80293461654883829c119e57a07318642cfd4cf033da0a1662510"
     },
     "README.md": {
-      "bytes": 4745,
-      "sha256": "8dccd977a486602b90fd43cac0914ff1ae7c5e2abce09404838dec3d5a3d8671"
+      "bytes": 5816,
+      "sha256": "03e170da723897aae908a872b2e8b86f1ca723ec66647771482635bad655721e"
     },
     "checkpoints/narrow_deep_6m_fp32_s42.npz": {
       "bytes": 24659212,
@@ -42,6 +42,10 @@
     "figures/bcir_precision_frontier_50m.png": {
       "bytes": 589858,
       "sha256": "0f46c85ce72133c6d8c1a95fefd7ebf6e8d51c7057d5dfcc070f8853b9b71681"
+    },
+    "results/deploy_policy_baseline_checkpoint.json": {
+      "bytes": 32905,
+      "sha256": "be5559a73b7e5d485eaa8079d3e4a6727f9e6eb266028a9ee53a6a2e9ee7aec2"
     },
     "results/exp1_part_50m.json": {
       "bytes": 28819,
@@ -136,8 +140,8 @@
       "sha256": "47d159b09192ac384134af9768b6ff33c2364a4c2d0270b517cb252cf5266b1a"
     },
     "src/bcir_comp1_deploy.c": {
-      "bytes": 42109,
-      "sha256": "50eba5bc7a837c3856000e1cf1948c540811b26e720c8b2c3b7211bd262072f9"
+      "bytes": 42131,
+      "sha256": "eced45a6c6d4e738a65287382479b3c083a851397396eebbfd1751978326ac67"
     },
     "src/bcir_comp1_deploy.h": {
       "bytes": 2836,
@@ -152,8 +156,8 @@
       "sha256": "47b7c6bdc1b58eb27780087eb695114cf0610616af54bf3f905643442f18f6c5"
     },
     "src/bcir_littlebit_bench.c": {
-      "bytes": 28458,
-      "sha256": "bb52e48f7e7d031a4a14d865b71252b7506916e29be1b6e032d5b69a15cf81d4"
+      "bytes": 29006,
+      "sha256": "2a5cc2fcbca20f8c6a08b8006bf9ef355154acf1ee9e34fdcc79d0a9d1fcb37b"
     },
     "src/bcir_littlebit_core.c": {
       "bytes": 40589,
@@ -166,6 +170,10 @@
     "src/bcir_mixer_ext.h": {
       "bytes": 3525,
       "sha256": "2d9698d475fa9ffd10aa57abe36304acca059bed41e58c1901efb31c0d72482b"
+    },
+    "src/bcir_native_deploy_bench.c": {
+      "bytes": 22544,
+      "sha256": "ac7b1397410c3f526323eea45c6cdfaf0deaa52bbdd4e5b04d4261eb0d5455e8"
     },
     "src/bcir_precision.c": {
       "bytes": 44570,
@@ -191,6 +199,10 @@
       "bytes": 18401,
       "sha256": "54781cd10da9decfff0d16b7aa76d2efa968a52d99267d2aa85f1a8d867c5a54"
     },
+    "src/exp5_deploy_policy_baseline.py": {
+      "bytes": 45805,
+      "sha256": "8e295a515bd6e7f8f8072466d74b923613c580f3ab36823299507a5d39c88b35"
+    },
     "src/lb_harness.py": {
       "bytes": 30754,
       "sha256": "6783172a2320552d11160188671e05c75f1d833057c7ed0967f474b7ea3dd17e"
@@ -211,5 +223,21 @@
       "reproduce_cmd": "python src/exp2_precision_frontier.py --part b1",
       "note": "Omitted from git (>100 MiB GitHub limit); deterministic reproduction via b1."
     }
+  },
+  "exp5_provenance": {
+    "date": "2026-11-24",
+    "schema": "bcir.deploy_baseline.v1",
+    "host": {
+      "compiler": "clang version 23.1.6 (https://github.com/conda-forge/clangdev-feedstock 2607ad814147f37fdd84f5bb58ac45576da1a85b)",
+      "cores": 2,
+      "cpu_model": "Intel(R) Xeon(R) CPU @ 2.30GHz",
+      "isa": "avx2_fma",
+      "lut4_instances_mask": 3,
+      "numpy": "2.5.5",
+      "python": "3.12.16",
+      "q8_instances_mask": 3
+    },
+    "bcir_base_sha": "58bc1dd3d993016711259a3dc08e29b47d4eb6c4",
+    "note": "Executed against production BCIR BCIRQ8 v2 + LUT4-LANES + deploy_policy.py (P1-P6) on 2-core Haswell AVX2 VM."
   }
 }

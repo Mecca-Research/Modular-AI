@@ -1,4 +1,5 @@
 #include "bcir_littlebit.h"
+#if defined(__AVX512F__)
 #include <immintrin.h>
 #include <math.h>
 #include <stdlib.h>
@@ -600,3 +601,16 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
   free(pool_mem);
   return 0;
 }
+#else
+int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t dout,
+                           uint32_t r, int residual, uint32_t threads, uint32_t iters,
+                           lb_bench_result *out) {
+  (void)kernel_kind; (void)N; (void)din; (void)dout;
+  (void)r; (void)residual; (void)threads; (void)iters;
+  if (out) {
+    out->median_us = 0.0; out->min_us = 0.0; out->gflops_equiv = 0.0;
+    out->max_abs_err = 0.0; out->weight_bytes = 0u; out->realized_bpw = 0.0;
+  }
+  return -1;
+}
+#endif
