@@ -115,20 +115,24 @@ def eval_deploy_configs(
                 st = dm.stats()
                 ev = dm.evaluate(test_tk[:eval_batches], test_tg[:eval_batches], spec.batch, spec.time, spec.time)
                 bn = dm.benchmark(ctx_len=ctx_bench, decode_iters=decode_iters, prefill_iters=prefill_iters)
+                ev_ok = bool(ev.get("rc", 0) == 0 and ev.get("nonfinite", 0) == 0 and math.isfinite(ev["ce"]))
                 if ref_ce is None:
+                    if not ev_ok:
+                        raise RuntimeError(f"Reference deployment config {cname} failed evaluation: {ev}")
                     ref_ce = ev["ce"]
-                dce = ev["ce"] - ref_ce
+                dce = (ev["ce"] - ref_ce) if ev_ok else float("nan")
                 out[cname] = {
                     "stats": st,
                     "eval": ev,
-                    "delta_ce_vs_fp32": round(dce, 5),
-                    "ppl_ratio_vs_fp32": round(math.exp(min(dce, 30.0)), 5),
-                    "within_004_nats_gate": bool(dce <= 0.04),
+                    "eval_ok": ev_ok,
+                    "delta_ce_vs_fp32": round(dce, 5) if ev_ok else None,
+                    "ppl_ratio_vs_fp32": round(math.exp(min(dce, 30.0)), 5) if ev_ok else None,
+                    "within_004_nats_gate": bool(ev_ok and dce <= 0.04),
                     "bench": bn,
                 }
                 print(
                     f"  {cname:28s}: body_bpw={st['realized_body_bpw']:5.2f} art={st['total_artifact_bytes']/1024**2:6.2f}MiB "
-                    f"ce={ev['ce']:.4f} (dCE={dce:+.4f}, x{math.exp(min(dce,20)):.3f}) "
+                    f"ce={ev['ce']:.4f} (dCE={dce:+.4f}, ok={ev_ok}) "
                     f"dec={bn['decode_median_us']:7.1f}us ({bn['decode_tok_per_s']:6.1f}tok/s) "
                     f"q8_viol={st['max_q8_bound_violation']:.1e} avx_diff={bn['max_portable_avx_diff']:.1e}",
                     flush=True,
@@ -305,10 +309,13 @@ def run_part_b() -> Dict[str, Any]:
             rc = lib.lb_bench_linear_kernel(kid, N, 768, 2048, 64, 1, 2, iters, ctypes.byref(res))
             assert rc == 0
             row[kname] = {
+                "threads": 2,
                 "median_us": round(float(res.median_us), 2),
                 "gflops_equiv": round(float(res.gflops_equiv), 2),
                 "weight_bytes": int(res.weight_bytes),
                 "realized_bpw": round(float(res.realized_bpw), 4),
+                "ideal_deploy_weight_bytes": int(res.ideal_deploy_weight_bytes),
+                "ideal_deploy_bpw": round(float(res.ideal_deploy_bpw), 4),
                 "max_abs_err": float(res.max_abs_err),
             }
         crossover[f"N={N}"] = row
@@ -529,17 +536,38 @@ def run_part_c() -> Dict[str, Any]:
         st_mod = LB.LBModel(dspec, 4, 64, pc, surrogate=LB.LB_SURR_SMOOTHSIGN_100, smooth_k=100.0,
                             objective=LB.LB_OBJ_KD_FULL, kd_lambda=10.0, threads=2)
         st_mod.load_from_dense_bcir(w, use_itq=True, itq_iters=15, q8_dense=q8_dense)
+        # Snapshot frozen Q8 attention tensors when q8_dense=True so Q8 attention is guaranteed intact
+        opt_cur = LB.LBAdamWCfg(
+            lr=1.5e-3, lr_scales=3.0e-3, beta1=0.9, beta2=0.95, epsilon=1e-8,
+            weight_decay=0.0, grad_clip=1.0, freeze_non_linear=1,
+            freeze_dense_projs=1 if q8_dense else 0,
+        )
+        attn_snap = {}
+        if q8_dense:
+            wv = st_mod.weights_view()
+            for lyr in range(dspec.n_layers):
+                for p_idx in range(4):
+                    off, cnt = st_mod.span(20, lyr, p_idx, 0)
+                    attn_snap[(lyr, p_idx)] = wv[off : off + cnt].copy()
         evs = (LB.LBStepMetrics * 160)()
         rc = st_mod.lib.lb_model_train_loop(
             st_mod.ptr, teacher_lb.ptr,
             tr_x.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
             tr_y.ctypes.data_as(ctypes.POINTER(ctypes.c_uint32)),
             160, lrs.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
-            ctypes.byref(opt_lb), evs,
+            ctypes.byref(opt_cur), evs,
         )
         assert rc == 0
+        if q8_dense:
+            wv = st_mod.weights_view()
+            for (lyr, p_idx), orig in attn_snap.items():
+                off, cnt = st_mod.span(20, lyr, p_idx, 0)
+                assert np.array_equal(wv[off : off + cnt], orig), (
+                    f"Q8 attention projection L{lyr}.P{p_idx} drifted during {qname}!"
+                )
         s_ev = eval_lb_on_suites(st_mod)
         qat_results[qname] = {
+            "q8_attention_frozen": bool(q8_dense),
             "final_kl": round(float(evs[159].kl_loss), 5),
             "final_inter_mse": round(float(evs[159].inter_mse), 5),
             "median_step_ms": round(float(np.median([evs[i].step_ms for i in range(160)])), 2),

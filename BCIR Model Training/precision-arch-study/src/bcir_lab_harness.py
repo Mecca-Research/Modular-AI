@@ -240,6 +240,13 @@ class BcirDeployStats(ctypes.Structure):
         ("max_weight_rel_frob_attn", ctypes.c_double),
         ("max_weight_rel_frob_mlp", ctypes.c_double),
         ("max_q8_bound_violation", ctypes.c_double),
+        ("projected_fp16_nonlin_bytes", ctypes.c_size_t),
+        ("projected_fp16_artifact_bytes", ctypes.c_size_t),
+        ("projected_fp16_total_bpw", ctypes.c_double),
+        ("projected_fp16_kv_bytes_at_64", ctypes.c_size_t),
+        ("projected_fp16_kv_bytes_at_1024", ctypes.c_size_t),
+        ("projected_fp16_kv_bytes_at_4096", ctypes.c_size_t),
+        ("projected_fp32_rec_state_bytes", ctypes.c_size_t),
     ]
 
 
@@ -264,6 +271,8 @@ class LbBenchResult(ctypes.Structure):
         ("max_abs_err", ctypes.c_double),
         ("weight_bytes", ctypes.c_size_t),
         ("realized_bpw", ctypes.c_double),
+        ("ideal_deploy_weight_bytes", ctypes.c_size_t),
+        ("ideal_deploy_bpw", ctypes.c_double),
     ]
 
 
@@ -706,8 +715,9 @@ class DeployModelHandle:
             n_batches, batch_size, stride_T, active_T, use_portable, ctypes.byref(res),
         )
         d = struct_to_dict(res)
-        d["ppl"] = math.exp(min(d["ce"], 50.0))
         d["rc"] = int(rc)
+        d["ok"] = bool(rc == 0 and d["nonfinite"] == 0 and math.isfinite(d["ce"]))
+        d["ppl"] = math.exp(min(d["ce"], 50.0)) if d["ok"] else float("nan")
         return d
 
     def benchmark(self, ctx_len: int = 64, decode_iters: int = 31, prefill_iters: int = 5) -> Dict[str, Any]:
@@ -799,6 +809,17 @@ def build_kv_dataset(
     Sequence layout: k0=v0,k1=v1,...,k_{p-1}=v_{p-1},[filler...]?q=v_q
     Supervision mask targets ONLY the answer token v_q (or all answers if ordered_query).
     """
+    if ordered_query:
+        if n_pairs <= 0:
+            raise ValueError(f"ordered_query requires n_pairs >= 1, got {n_pairs}")
+        filler_tokens = (filler_len + 1) if filler_len > 0 else 0
+        # 4 tokens per binding + filler + 5 tokens per non-final query + 3 tokens for final query
+        req_len = 4 * n_pairs + filler_tokens + 5 * (n_pairs - 1) + 3
+        if req_len > seq_len:
+            raise ValueError(
+                f"ordered KV probe (n_pairs={n_pairs}, filler_len={filler_len}) requires "
+                f"seq_len >= {req_len}, got {seq_len}"
+            )
     rng = np.random.default_rng(seed)
     toks = np.full((n_seqs, seq_len), _PAD, dtype=np.uint32)
     tgts = np.full((n_seqs, seq_len), BCIR_EXT_IGNORE, dtype=np.uint32)
@@ -828,23 +849,24 @@ def build_kv_dataset(
             seq.extend([_QRY, int(keys[q_idx]), _EQ])
             ans_pos = len(seq) - 1
             ans_val = int(vals[q_idx])
-            if len(seq) >= seq_len:
+            if len(seq) > seq_len:
                 raise ValueError(f"KV seq len {len(seq)} exceeds {seq_len}")
             toks[i, : len(seq)] = seq
             tgts[i, ans_pos] = ans_val
         else:
-            # Ordered query of all n_pairs keys
+            # Ordered query of all n_pairs keys (all n_pairs answers guaranteed to fit)
             for p in range(n_pairs):
                 seq.extend([_QRY, int(keys[p]), _EQ])
                 ans_pos = len(seq) - 1
                 ans_val = int(vals[p])
-                if len(seq) + 1 >= seq_len:
-                    break
                 tgts[i, ans_pos] = ans_val
-                seq.append(ans_val)
-                seq.append(_SEP)
-            L = min(len(seq), seq_len)
-            toks[i, :L] = seq[:L]
+                if p + 1 < n_pairs:
+                    seq.append(ans_val)
+                    seq.append(_SEP)
+            assert len(seq) <= seq_len
+            toks[i, : len(seq)] = seq
+    if ordered_query:
+        assert int((tgts != BCIR_EXT_IGNORE).sum()) == n_seqs * n_pairs
     return toks, tgts
 
 

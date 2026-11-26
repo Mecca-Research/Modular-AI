@@ -17,7 +17,7 @@
       "test_ppl_mean": 9.350182036755337,
       "median_step_ms": 235.1708820000058,
       "infer_kv_bytes_per_tok": 0,
-      "infer_rec_state_bytes": 524288,
+      "infer_rec_state_bytes": 1048576,
       "runs": [
         {
           "rc": 0,
@@ -66,7 +66,7 @@
             "scratch_bytes": 7488512,
             "total_bytes": 248145920,
             "infer_kv_bytes_per_tok": 0,
-            "infer_rec_state_bytes": 524288,
+            "infer_rec_state_bytes": 1048576,
             "init_ms": 157.36314200004563
           },
           "curve": [
@@ -168,7 +168,7 @@
             "scratch_bytes": 7488512,
             "total_bytes": 248145920,
             "infer_kv_bytes_per_tok": 0,
-            "infer_rec_state_bytes": 524288,
+            "infer_rec_state_bytes": 1048576,
             "init_ms": 132.48088099993765
           },
           "curve": [
@@ -232,7 +232,7 @@
       "test_ppl_mean": 9.260104884838302,
       "median_step_ms": 211.63373325020075,
       "infer_kv_bytes_per_tok": 1024,
-      "infer_rec_state_bytes": 393216,
+      "infer_rec_state_bytes": 786432,
       "runs": [
         {
           "rc": 0,
@@ -281,7 +281,7 @@
             "scratch_bytes": 7488512,
             "total_bytes": 235120384,
             "infer_kv_bytes_per_tok": 1024,
-            "infer_rec_state_bytes": 393216,
+            "infer_rec_state_bytes": 786432,
             "init_ms": 134.7817119997926
           },
           "curve": [
@@ -383,7 +383,7 @@
             "scratch_bytes": 7488512,
             "total_bytes": 235120384,
             "infer_kv_bytes_per_tok": 1024,
-            "infer_rec_state_bytes": 393216,
+            "infer_rec_state_bytes": 786432,
             "init_ms": 156.07507000025362
           },
           "curve": [
@@ -444,72 +444,126 @@
   "orthogonality_2x2": {
     "Arch1_DeltaNet": {
       "FP32": {
-        "weight_mib": 43.384,
+        "weight_mib": 43.643,
         "kv_4096_mib": 0.0,
-        "rec_state_mib": 0.5,
-        "total_deploy_4096_mib": 43.884,
+        "rec_state_mib": 1.0,
+        "total_deploy_4096_mib": 44.643,
         "body_bpw": 32.0,
         "test_ce": 2.25808,
         "test_ppl": 9.565,
         "decode_us": 9266.9,
-        "decode_tok_s": 107.9
+        "decode_tok_s": 107.9,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 32.0,
+        "projected_fp16_weight_mib": 43.384,
+        "projected_fp16_kv_4096_mib": 0.0,
+        "projected_fp32_rec_state_mib": 0.5,
+        "projected_fp16_deploy_4096_mib": 43.884,
+        "projected_fp16_total_bpw": 31.81,
+        "eval_ok": true,
+        "nonfinite": 0
       },
       "BCIRQ8_Uniform": {
-        "weight_mib": 11.377,
+        "weight_mib": 11.636,
         "kv_4096_mib": 0.0,
-        "rec_state_mib": 0.5,
-        "total_deploy_4096_mib": 11.877,
+        "rec_state_mib": 1.0,
+        "total_deploy_4096_mib": 12.636,
         "body_bpw": 8.25,
         "test_ce": 2.25794,
         "test_ppl": 9.563,
         "decode_us": 4753.5,
-        "decode_tok_s": 210.4
+        "decode_tok_s": 210.4,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 8.532,
+        "projected_fp16_weight_mib": 11.377,
+        "projected_fp16_kv_4096_mib": 0.0,
+        "projected_fp32_rec_state_mib": 0.5,
+        "projected_fp16_deploy_4096_mib": 11.877,
+        "projected_fp16_total_bpw": 8.342,
+        "eval_ok": true,
+        "nonfinite": 0
       },
       "COMP1_Q8Attn_LBMLP_r48_res": {
-        "weight_mib": 4.723,
+        "weight_mib": 4.982,
         "kv_4096_mib": 0.0,
-        "rec_state_mib": 0.5,
-        "total_deploy_4096_mib": 5.223,
+        "rec_state_mib": 1.0,
+        "total_deploy_4096_mib": 5.982,
         "body_bpw": 3.312,
         "test_ce": 3.52437,
         "test_ppl": 33.933,
         "decode_us": 1880.3,
-        "decode_tok_s": 531.8
+        "decode_tok_s": 531.8,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 3.653,
+        "projected_fp16_weight_mib": 4.723,
+        "projected_fp16_kv_4096_mib": 0.0,
+        "projected_fp32_rec_state_mib": 0.5,
+        "projected_fp16_deploy_4096_mib": 5.223,
+        "projected_fp16_total_bpw": 3.463,
+        "eval_ok": true,
+        "nonfinite": 0
       }
     },
     "Arch2_Hybrid_DN_GQA": {
       "FP32": {
-        "weight_mib": 41.853,
-        "kv_4096_mib": 2.0,
-        "rec_state_mib": 0.375,
-        "total_deploy_4096_mib": 44.228,
+        "weight_mib": 42.112,
+        "kv_4096_mib": 4.0,
+        "rec_state_mib": 0.75,
+        "total_deploy_4096_mib": 46.862,
         "body_bpw": 32.0,
         "test_ce": 2.23668,
         "test_ppl": 9.362,
         "decode_us": 7357.3,
-        "decode_tok_s": 135.9
+        "decode_tok_s": 135.9,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 32.0,
+        "projected_fp16_weight_mib": 41.853,
+        "projected_fp16_kv_4096_mib": 2.0,
+        "projected_fp32_rec_state_mib": 0.375,
+        "projected_fp16_deploy_4096_mib": 44.228,
+        "projected_fp16_total_bpw": 31.804,
+        "eval_ok": true,
+        "nonfinite": 0
       },
       "BCIRQ8_Uniform": {
-        "weight_mib": 10.982,
-        "kv_4096_mib": 2.0,
-        "rec_state_mib": 0.375,
-        "total_deploy_4096_mib": 13.357,
+        "weight_mib": 11.241,
+        "kv_4096_mib": 4.0,
+        "rec_state_mib": 0.75,
+        "total_deploy_4096_mib": 15.991,
         "body_bpw": 8.25,
         "test_ce": 2.23672,
         "test_ppl": 9.363,
         "decode_us": 4810.7,
-        "decode_tok_s": 207.9
+        "decode_tok_s": 207.9,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 8.542,
+        "projected_fp16_weight_mib": 10.982,
+        "projected_fp16_kv_4096_mib": 2.0,
+        "projected_fp32_rec_state_mib": 0.375,
+        "projected_fp16_deploy_4096_mib": 13.357,
+        "projected_fp16_total_bpw": 8.345,
+        "eval_ok": true,
+        "nonfinite": 0
       },
       "COMP1_Q8Attn_LBMLP_r48_res": {
-        "weight_mib": 4.328,
-        "kv_4096_mib": 2.0,
-        "rec_state_mib": 0.375,
-        "total_deploy_4096_mib": 6.703,
+        "weight_mib": 4.587,
+        "kv_4096_mib": 4.0,
+        "rec_state_mib": 0.75,
+        "total_deploy_4096_mib": 9.337,
         "body_bpw": 3.131,
         "test_ce": 3.27148,
         "test_ppl": 26.35,
         "decode_us": 2057.5,
-        "decode_tok_s": 486.0
+        "decode_tok_s": 486.0,
+        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
+        "total_bpw": 3.486,
+        "projected_fp16_weight_mib": 4.328,
+        "projected_fp16_kv_4096_mib": 2.0,
+        "projected_fp32_rec_state_mib": 0.375,
+        "projected_fp16_deploy_4096_mib": 6.703,
+        "projected_fp16_total_bpw": 3.289,
+        "eval_ok": true,
+        "nonfinite": 0
       }
     }
   }

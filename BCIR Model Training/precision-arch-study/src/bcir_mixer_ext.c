@@ -75,7 +75,8 @@ struct bcir_ext_model {
 
   size_t n_params;
   float *weights;
-  float *grads_work; /* allocated only when opt uses grad_bf16 */
+  float *grad_tile; /* single-tensor FP32 scratch tile allocated only when opt uses grad_bf16 */
+  size_t grad_tile_bytes;
   bcir_opt_state *opt;
 
   size_t n_tensors;
@@ -217,7 +218,13 @@ bcir_ext_model *bcir_ext_create(const bcir_ext_spec *spec, const bcir_prec_polic
   }
   m->opt = bcir_opt_create(m->pol.opt_kind, m->n_params, oshapes, m->n_tensors);
   if (m->opt->grad_fp32 == NULL) {
-    m->grads_work = (float *)aligned_calloc(m->n_params, sizeof(float));
+    size_t max_t_elems = 0u;
+    for (size_t s = 0; s < m->n_tensors; ++s) {
+      size_t elems = m->tensors[s].rows * m->tensors[s].cols;
+      if (elems > max_t_elems) max_t_elems = elems;
+    }
+    m->grad_tile_bytes = max_t_elems * sizeof(float);
+    m->grad_tile = (float *)aligned_calloc(max_t_elems > 0u ? max_t_elems : 1u, sizeof(float));
   }
   free(idescs); free(oshapes);
 
@@ -261,7 +268,7 @@ bcir_ext_model *bcir_ext_create(const bcir_ext_spec *spec, const bcir_prec_polic
       a->dn_W = (double *)aligned_calloc(B * H * T * dh, sizeof(double));
       act_b += (5u * N * d + 6u * N * H) * 4u;
       prob_b += (B * H * nc * dh * dh + B * H * T * dh) * sizeof(double);
-      rec_b += H * dh * dh * 4u;
+      rec_b += H * dh * dh * sizeof(double);
     } else if (mx == BCIR_MIXER_MLA) {
       has_mla = 1;
       a->q_c = (float *)aligned_calloc(N * d, 4u); a->q_r = (float *)aligned_calloc(N * H * dr, 4u);
@@ -284,7 +291,7 @@ bcir_ext_model *bcir_ext_create(const bcir_ext_spec *spec, const bcir_prec_polic
   m->rope_dr = (float *)aligned_calloc(T * dr, 4u);
   bcir_tensor_rope_table_pool(m->pool, T, dr, m->sp.rope_base, m->rope_dr);
 
-  size_t scr_b = 0u;
+  size_t scr_b = m->grad_tile_bytes;
   m->d_cur = (float *)aligned_calloc(N * d, 4u); m->d_next = (float *)aligned_calloc(N * d, 4u);
   m->d_n = (float *)aligned_calloc(N * d, 4u); m->d_ctx = (float *)aligned_calloc(N * d, 4u);
   m->d_gate = (float *)aligned_calloc(N * ff, 4u); m->d_up = (float *)aligned_calloc(N * ff, 4u);
@@ -338,7 +345,7 @@ void bcir_ext_destroy(bcir_ext_model *m) {
   if (m->pool) bcir_tensor_pool_stop(m->pool);
   free(m->pool_mem);
   bcir_opt_destroy(m->opt);
-  free(m->weights); free(m->grads_work); free(m->tensors);
+  free(m->weights); free(m->grad_tile); free(m->tensors);
   for (uint32_t l = 0; l < m->sp.layers; ++l) {
     layer_act *a = &m->acts[l];
     free(a->x_in); free(a->n1); free(a->q); free(a->k); free(a->v); free(a->p);
@@ -365,7 +372,7 @@ void bcir_ext_reset_opt(bcir_ext_model *m) { if (m && m->opt) bcir_opt_reset(m->
 float *bcir_ext_weights_ptr(bcir_ext_model *m) { return m ? m->weights : NULL; }
 float *bcir_ext_grads_fp32_ptr(bcir_ext_model *m) {
   if (!m) return NULL;
-  return m->opt->grad_fp32 ? m->opt->grad_fp32 : m->grads_work;
+  return m->opt->grad_fp32;
 }
 size_t bcir_ext_param_count(const bcir_ext_model *m) { return m ? m->n_params : 0u; }
 size_t bcir_ext_tensor_count(const bcir_ext_model *m) { return m ? m->n_tensors : 0u; }
@@ -1215,6 +1222,35 @@ static void emb_scat_worker(void *vctx, size_t task) {
   }
 }
 
+static float *ext_grad_target(bcir_ext_model *m, size_t off, size_t count) {
+  if (m->opt->grad_fp32) return m->opt->grad_fp32 + off;
+  memset(m->grad_tile, 0, count * sizeof(float));
+  return m->grad_tile;
+}
+
+static void ext_grad_commit(bcir_ext_model *m, size_t off, size_t count, int accumulate) {
+  if (!m->opt->grad_fp32) {
+    bcir_opt_commit_grad_span_fp32(m->opt, off, count, m->grad_tile, accumulate);
+  }
+}
+
+static void ext_linear_bwd_grad(bcir_ext_model *m, int region, size_t rows, size_t in, size_t out,
+                                const float *x, const float *w, const float *dy,
+                                float *dx, size_t w_off, float dx_beta, int accumulate) {
+  size_t cnt = out * in;
+  float *dw = ext_grad_target(m, w_off, cnt);
+  ext_linear_bwd(m, region, rows, in, out, x, w, dy, dx, dw, dx_beta, m->opt->grad_fp32 ? 1.0f : 0.0f);
+  ext_grad_commit(m, w_off, cnt, accumulate);
+}
+
+static void ext_rms_bwd_grad(bcir_ext_model *m, size_t rows, size_t width, const float *x,
+                             const float *g, const float *dy, float *dx, size_t g_off,
+                             int dx_add, int accumulate) {
+  float *dg = ext_grad_target(m, g_off, width);
+  ext_rms_bwd(m, rows, width, x, g, dy, dx, dg, dx_add);
+  ext_grad_commit(m, g_off, width, accumulate);
+}
+
 /* ==================== Loss + Full Backward Pass ==================== */
 int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint32_t *targets,
                            uint32_t active_time, int accumulate,
@@ -1236,8 +1272,7 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
   int frc = ext_forward_internal(m, tokens, active_time);
   if (frc != 0) return frc;
 
-  float *G = bcir_ext_grads_fp32_ptr(m);
-  if (!accumulate || m->opt->grad_fp32 == NULL) memset(G, 0, m->n_params * 4u);
+  if (!accumulate) bcir_opt_zero_grad(m->opt);
 
   /* Cross-entropy loss & d_logits in FP64 */
   double loss_sum = 0.0, inv_sup = 1.0 / (double)sup;
@@ -1266,9 +1301,10 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
 
   const float *W = m->weights;
   /* Head & final norm backward */
-  ext_linear_bwd(m, 0, N, d, V, m->norm_final, W + m->off_lm_head, m->d_logits,
-                 m->d_n, G + m->off_lm_head, 0.0f, 1.0f);
-  ext_rms_bwd(m, N, d, m->x_final, W + m->off_final_norm, m->d_n, m->d_cur, G + m->off_final_norm, 0);
+  ext_linear_bwd_grad(m, 0, N, d, V, m->norm_final, W + m->off_lm_head, m->d_logits,
+                      m->d_n, m->off_lm_head, 0.0f, accumulate);
+  ext_rms_bwd_grad(m, N, d, m->x_final, W + m->off_final_norm, m->d_n, m->d_cur,
+                   m->off_final_norm, 0, accumulate);
 
   for (uint32_t l = m->sp.layers; l-- > 0u; ) {
     const layer_offsets *lo = &m->loff[l];
@@ -1276,15 +1312,15 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
     /* Residual copy: d_x2 starts as d_cur (saved in d_next) */
     memcpy(m->d_next, m->d_cur, N * d * 4u);
     /* MLP backward */
-    ext_linear_bwd(m, 2, N, ff, d, a->hidden, W + lo->wdown, m->d_cur, m->d_hid, G + lo->wdown, 0.0f, 1.0f);
+    ext_linear_bwd_grad(m, 2, N, ff, d, a->hidden, W + lo->wdown, m->d_cur, m->d_hid, lo->wdown, 0.0f, accumulate);
     bcir_tensor_swiglu_backward_pool(m->pool, N * ff, a->gate, a->up, m->d_hid, m->d_gate, m->d_up);
-    ext_linear_bwd(m, 2, N, d, ff, a->n2, W + lo->wgate, m->d_gate, m->d_n, G + lo->wgate, 0.0f, 1.0f);
-    ext_linear_bwd(m, 2, N, d, ff, a->n2, W + lo->wup, m->d_up, m->d_n, G + lo->wup, 1.0f, 1.0f);
-    ext_rms_bwd(m, N, d, a->x2, W + lo->norm2, m->d_n, m->d_next, G + lo->norm2, 1);
+    ext_linear_bwd_grad(m, 2, N, d, ff, a->n2, W + lo->wgate, m->d_gate, m->d_n, lo->wgate, 0.0f, accumulate);
+    ext_linear_bwd_grad(m, 2, N, d, ff, a->n2, W + lo->wup, m->d_up, m->d_n, lo->wup, 1.0f, accumulate);
+    ext_rms_bwd_grad(m, N, d, a->x2, W + lo->norm2, m->d_n, m->d_next, lo->norm2, 1, accumulate);
 
     /* Mixer residual split: d_cur = d_next (skip path), plus norm1 backward into d_cur */
     memcpy(m->d_cur, m->d_next, N * d * 4u);
-    ext_linear_bwd(m, 1, N, d, d, a->ctx, W + lo->wo, m->d_next, m->d_ctx, G + lo->wo, 0.0f, 1.0f);
+    ext_linear_bwd_grad(m, 1, N, d, d, a->ctx, W + lo->wo, m->d_next, m->d_ctx, lo->wo, 0.0f, accumulate);
 
     if (lo->mixer == BCIR_MIXER_GQA || lo->mixer == BCIR_MIXER_SWA) {
       if (lo->mixer == BCIR_MIXER_GQA) {
@@ -1298,9 +1334,9 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
         bcir_tensor_rope_lent_pool(m->pool, B, T, H, dh, m->rope_hd, m->d_q, 1);
         bcir_tensor_rope_lent_pool(m->pool, B, T, KH, dh, m->rope_hd, m->d_k, 1);
       }
-      ext_linear_bwd(m, 1, N, d, d, a->n1, W + lo->wq, m->d_q, m->d_n, G + lo->wq, 0.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, kvd, a->n1, W + lo->wk, m->d_k, m->d_n, G + lo->wk, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, kvd, a->n1, W + lo->wv, m->d_v, m->d_n, G + lo->wv, 1.0f, 1.0f);
+      ext_linear_bwd_grad(m, 1, N, d, d, a->n1, W + lo->wq, m->d_q, m->d_n, lo->wq, 0.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, kvd, a->n1, W + lo->wk, m->d_k, m->d_n, lo->wk, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, kvd, a->n1, W + lo->wv, m->d_v, m->d_n, lo->wv, 1.0f, accumulate);
     } else if (lo->mixer == BCIR_MIXER_DELTANET) {
       size_t C = m->sp.delta_chunk, nc = (T + C - 1u) / C;
       dn_bwd_ctx db = { B, T, H, dh, C, nc, a->q, a->k, a->v, a->alpha, a->beta, m->d_ctx,
@@ -1308,18 +1344,23 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
       bcir_tensor_pool_run(m->pool, dn_wy_bwd_worker, &db, B * H);
       dn_l2norm_bwd(N, H, dh, a->q, a->q_inv, m->d_q, m->d_q);
       dn_l2norm_bwd(N, H, dh, a->k, a->k_inv, m->d_k, m->d_k);
-      float *gba = G + lo->balpha, *gbb = G + lo->bbeta;
-      for (size_t i = 0; i < N; ++i) {
-        for (size_t h = 0; h < H; ++h) {
-          gba[h] += m->d_a[i * H + h];
-          gbb[h] += m->d_b[i * H + h];
-        }
+      {
+        float *gba = ext_grad_target(m, lo->balpha, H);
+        for (size_t i = 0; i < N; ++i)
+          for (size_t h = 0; h < H; ++h) gba[h] += m->d_a[i * H + h];
+        ext_grad_commit(m, lo->balpha, H, accumulate);
       }
-      ext_linear_bwd(m, 1, N, d, d, a->n1, W + lo->wq, m->d_q, m->d_n, G + lo->wq, 0.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, d, a->n1, W + lo->wk, m->d_k, m->d_n, G + lo->wk, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, d, a->n1, W + lo->wv, m->d_v, m->d_n, G + lo->wv, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, H, a->n1, W + lo->walpha, m->d_a, m->d_n, G + lo->walpha, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, H, a->n1, W + lo->wbeta, m->d_b, m->d_n, G + lo->wbeta, 1.0f, 1.0f);
+      {
+        float *gbb = ext_grad_target(m, lo->bbeta, H);
+        for (size_t i = 0; i < N; ++i)
+          for (size_t h = 0; h < H; ++h) gbb[h] += m->d_b[i * H + h];
+        ext_grad_commit(m, lo->bbeta, H, accumulate);
+      }
+      ext_linear_bwd_grad(m, 1, N, d, d, a->n1, W + lo->wq, m->d_q, m->d_n, lo->wq, 0.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, d, a->n1, W + lo->wk, m->d_k, m->d_n, lo->wk, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, d, a->n1, W + lo->wv, m->d_v, m->d_n, lo->wv, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, H, a->n1, W + lo->walpha, m->d_a, m->d_n, lo->walpha, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, H, a->n1, W + lo->wbeta, m->d_b, m->d_n, lo->wbeta, 1.0f, accumulate);
     } else if (lo->mixer == BCIR_MIXER_MLA) {
       mla_att_ctx mc = { B, T, H, dh, dr, a->q_c, a->q_r, a->k_c, a->v_c, a->k_r, m->d_ctx,
                          a->mla_p, NULL, m->d_qc, m->d_qr, m->d_kc, m->d_vc, m->d_kr, 0, 0.0, NULL, NULL };
@@ -1329,24 +1370,23 @@ int bcir_ext_loss_backward(bcir_ext_model *m, const uint32_t *tokens, const uint
         bcir_tensor_rope_lent_pool(m->pool, B, T, H, dr, m->rope_dr, m->d_qr, 1);
         bcir_tensor_rope_lent_pool(m->pool, B, T, 1u, dr, m->rope_dr, m->d_kr, 1);
       }
-      ext_linear_bwd(m, 1, N, dc, d, a->c_hat, W + lo->w_uk, m->d_kc, m->d_chat, G + lo->w_uk, 0.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, dc, d, a->c_hat, W + lo->w_uv, m->d_vc, m->d_chat, G + lo->w_uv, 1.0f, 1.0f);
-      ext_rms_bwd(m, N, dc, a->c_raw, W + lo->norm_kv, m->d_chat, m->d_craw, G + lo->norm_kv, 0);
-      ext_linear_bwd(m, 1, N, d, d, a->n1, W + lo->wq_c, m->d_qc, m->d_n, G + lo->wq_c, 0.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, H * dr, a->n1, W + lo->wq_r, m->d_qr, m->d_n, G + lo->wq_r, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, dc, a->n1, W + lo->w_dkv, m->d_craw, m->d_n, G + lo->w_dkv, 1.0f, 1.0f);
-      ext_linear_bwd(m, 1, N, d, dr, a->n1, W + lo->w_kr, m->d_kr, m->d_n, G + lo->w_kr, 1.0f, 1.0f);
+      ext_linear_bwd_grad(m, 1, N, dc, d, a->c_hat, W + lo->w_uk, m->d_kc, m->d_chat, lo->w_uk, 0.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, dc, d, a->c_hat, W + lo->w_uv, m->d_vc, m->d_chat, lo->w_uv, 1.0f, accumulate);
+      ext_rms_bwd_grad(m, N, dc, a->c_raw, W + lo->norm_kv, m->d_chat, m->d_craw, lo->norm_kv, 0, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, d, a->n1, W + lo->wq_c, m->d_qc, m->d_n, lo->wq_c, 0.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, H * dr, a->n1, W + lo->wq_r, m->d_qr, m->d_n, lo->wq_r, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, dc, a->n1, W + lo->w_dkv, m->d_craw, m->d_n, lo->w_dkv, 1.0f, accumulate);
+      ext_linear_bwd_grad(m, 1, N, d, dr, a->n1, W + lo->w_kr, m->d_kr, m->d_n, lo->w_kr, 1.0f, accumulate);
     }
-    ext_rms_bwd(m, N, d, a->x_in, W + lo->norm1, m->d_n, m->d_cur, G + lo->norm1, 1);
+    ext_rms_bwd_grad(m, N, d, a->x_in, W + lo->norm1, m->d_n, m->d_cur, lo->norm1, 1, accumulate);
   }
   /* Deterministic embedding scatter */
   {
     size_t cc = 32u, nt = (d + cc - 1u) / cc;
-    emb_scat_ctx ec = { N, d, cc, tokens, m->d_cur, G + m->off_embed };
+    float *gemb = ext_grad_target(m, m->off_embed, V * d);
+    emb_scat_ctx ec = { N, d, cc, tokens, m->d_cur, gemb };
     bcir_tensor_pool_run(m->pool, emb_scat_worker, &ec, nt);
-  }
-  if (m->opt->grad_fp32 == NULL) {
-    bcir_opt_commit_grad_fp32(m->opt, m->grads_work, accumulate);
+    ext_grad_commit(m, m->off_embed, V * d, accumulate || m->sp.tied);
   }
   return 0;
 }

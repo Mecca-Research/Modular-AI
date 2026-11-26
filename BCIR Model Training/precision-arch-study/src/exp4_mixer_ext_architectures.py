@@ -41,7 +41,7 @@ def arch_defs_4L(swa_w: int, mla_dc: int, mla_dr: int) -> List[Tuple[str, List[i
     ]
 
 
-def run_part_a() -> Dict[str, Any]:
+def run_part_a(arch_subset: List[str] | None = None) -> Dict[str, Any]:
     print("\n=== EXP 4A: MIXER-EXT Associative Recall, Counterfactuals, Long-Filler & Extrapolation ===", flush=True)
     # 4-layer pilot (d=192, h=4, kvh=2, ff=384, ~1.5-1.8M params), SWA W=16 so filler=20 exceeds window!
     B, T = 8, 64
@@ -64,6 +64,7 @@ def run_part_a() -> Dict[str, Any]:
     val_tk, val_tg = H.build_kv_dataset(16 * B, T, n_pairs=4, filler_len=8, seed=7100)
     val_tk, val_tg = val_tk.reshape(16, B, T), val_tg.reshape(16, B, T)
 
+    T_ord8 = 96
     probe_sets = {
         "kv_single": H.build_kv_dataset(16 * B, T, n_pairs=1, filler_len=0, seed=8101),
         "kv_4pair": H.build_kv_dataset(16 * B, T, n_pairs=4, filler_len=0, seed=8104),
@@ -71,16 +72,27 @@ def run_part_a() -> Dict[str, Any]:
         "query_change": H.build_kv_dataset(16 * B, T, n_pairs=4, filler_len=0, seed=8104, mode="query_change"),
         "long_filler24": H.build_kv_dataset(16 * B, T, n_pairs=4, filler_len=24, seed=8124),
         "ordered_6pair": H.build_kv_dataset(16 * B, T, n_pairs=6, filler_len=0, seed=8106, ordered_query=True),
-        "ordered_8pair": H.build_kv_dataset(16 * B, T, n_pairs=8, filler_len=0, seed=8108, ordered_query=True),
     }
     probe_sets_b = {k: (v[0].reshape(16, B, T), v[1].reshape(16, B, T)) for k, v in probe_sets.items()}
+    ord8_tk, ord8_tg = H.build_kv_dataset(16 * B, T_ord8, n_pairs=8, filler_len=0, seed=8108, ordered_query=True)
+    ord8_b = (ord8_tk.reshape(16, B, T_ord8), ord8_tg.reshape(16, B, T_ord8))
+    all_probe_keys = list(probe_sets_b.keys()) + ["ordered_8pair"]
 
     pol = H.make_policy(fp64_guard=H.BCIR_FP64_GUARD_CONDITIONAL)
     lrs = H.cosine_lr_schedule(steps, 2.0e-3, 2.0e-4, warmup=25)
     opt = H.BcirAdamwParams(lr=2.0e-3, beta1=0.9, beta2=0.95, epsilon=1e-8, weight_decay=0.01, grad_clip=3.0)
 
-    out: Dict[str, Any] = {"provenance": H.get_host_provenance(), "steps": steps, "swa_window": 16, "architectures": {}}
-    for aname, mixers, extra in arch_defs_4L(swa_w=16, mla_dc=64, mla_dr=16):
+    out: Dict[str, Any] = {
+        "provenance": H.get_host_provenance(),
+        "steps": steps,
+        "swa_window": 16,
+        "ordered_8pair_seq_len": T_ord8,
+        "architectures": {},
+    }
+    archs = arch_defs_4L(swa_w=16, mla_dc=64, mla_dr=16)
+    if arch_subset is not None:
+        archs = [a for a in archs if a[0] in arch_subset]
+    for aname, mixers, extra in archs:
         runs = []
         for sd in seeds:
             tr_tk, tr_tg = make_curriculum(steps, seed=30000 + sd)
@@ -97,7 +109,15 @@ def run_part_a() -> Dict[str, Any]:
                 # Evaluate validation-selected checkpoint on ALL circuit & counterfactual probes
                 em.load_weights(res["best_weights"])
                 probes_out = {pk: em.evaluate(pv[0], pv[1]) for pk, pv in probe_sets_b.items()}
-                res["probes"] = probes_out
+            sp96 = H.make_spec(
+                width=192, heads=4, kvheads=2, layers=4, ff=384, batch=B, time_len=T_ord8,
+                layer_mixers=mixers, init_policy=H.BCIR_INIT_MUP_V1, mup_d_base=192,
+                seed=sd, threads=2, skip_init=1, **extra,
+            )
+            with H.ExtModelHandle(sp96, pol) as em96:
+                em96.load_weights(res["best_weights"])
+                probes_out["ordered_8pair"] = em96.evaluate(ord8_b[0], ord8_b[1])
+            res["probes"] = probes_out
             res.pop("best_weights", None)
             res.pop("final_weights", None)
             res["seed"] = sd
@@ -112,7 +132,7 @@ def run_part_a() -> Dict[str, Any]:
                 flush=True,
             )
         summary_probes = {}
-        for pk in probe_sets_b:
+        for pk in all_probe_keys:
             summary_probes[pk] = {
                 "acc_mean": round(float(np.mean([r["probes"][pk]["accuracy"] for r in runs])), 4),
                 "ce_mean": round(float(np.mean([r["probes"][pk]["ce"] for r in runs])), 5),
@@ -271,15 +291,30 @@ def run_part_b(arch_subset: List[str]) -> Dict[str, Any]:
                     st = dm.stats()
                     ev = dm.evaluate(test_tk[:6], test_tg[:6], B, T, T)
                     bn = dm.benchmark(ctx_len=64, decode_iters=15, prefill_iters=2)
+                    ev_ok = bool(ev.get("ok", ev["rc"] == 0 and ev["nonfinite"] == 0 and math.isfinite(ev["ce"])))
                     tot_4k = st["total_artifact_bytes"] + st["kv_cache_bytes_at_4096"] + st["rec_state_bytes"]
+                    proj_4k = (
+                        st["projected_fp16_artifact_bytes"]
+                        + st["projected_fp16_kv_bytes_at_4096"]
+                        + st["projected_fp32_rec_state_bytes"]
+                    )
                     ortho_row[dname] = {
+                        "storage_precision": "FP32_nonlin_FP32_KV_FP64_DeltaNet",
                         "weight_mib": round(st["total_artifact_bytes"] / 1024**2, 3),
                         "kv_4096_mib": round(st["kv_cache_bytes_at_4096"] / 1024**2, 3),
                         "rec_state_mib": round(st["rec_state_bytes"] / 1024**2, 3),
                         "total_deploy_4096_mib": round(tot_4k / 1024**2, 3),
                         "body_bpw": round(st["realized_body_bpw"], 3),
-                        "test_ce": round(ev["ce"], 5),
-                        "test_ppl": round(ev["ppl"], 3),
+                        "total_bpw": round(st["realized_total_bpw"], 3),
+                        "projected_fp16_weight_mib": round(st["projected_fp16_artifact_bytes"] / 1024**2, 3),
+                        "projected_fp16_kv_4096_mib": round(st["projected_fp16_kv_bytes_at_4096"] / 1024**2, 3),
+                        "projected_fp32_rec_state_mib": round(st["projected_fp32_rec_state_bytes"] / 1024**2, 3),
+                        "projected_fp16_deploy_4096_mib": round(proj_4k / 1024**2, 3),
+                        "projected_fp16_total_bpw": round(st["projected_fp16_total_bpw"], 3),
+                        "eval_ok": ev_ok,
+                        "nonfinite": int(ev["nonfinite"]),
+                        "test_ce": round(ev["ce"], 5) if ev_ok else float("nan"),
+                        "test_ppl": round(ev["ppl"], 3) if ev_ok else float("nan"),
                         "decode_us": round(bn["decode_median_us"], 1),
                         "decode_tok_s": round(bn["decode_tok_per_s"], 1),
                     }
@@ -288,6 +323,7 @@ def run_part_b(arch_subset: List[str]) -> Dict[str, Any]:
                 f"    [Ortho {aname:19s}] FP32(W+KV4k)={ortho_row['FP32']['total_deploy_4096_mib']:5.2f}MiB "
                 f"(KV={ortho_row['FP32']['kv_4096_mib']:4.2f}MiB) -> "
                 f"COMP1(W+KV4k)={ortho_row['COMP1_Q8Attn_LBMLP_r48_res']['total_deploy_4096_mib']:5.2f}MiB "
+                f"[projFP16={ortho_row['COMP1_Q8Attn_LBMLP_r48_res']['projected_fp16_deploy_4096_mib']:5.2f}MiB] "
                 f"dCE={ortho_row['COMP1_Q8Attn_LBMLP_r48_res']['test_ce']-ortho_row['FP32']['test_ce']:+.4f}",
                 flush=True,
             )
@@ -298,10 +334,21 @@ def run_part_b(arch_subset: List[str]) -> Dict[str, Any]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--part", choices=["a", "a2", "b1", "b2", "merge"], required=True)
+    ap.add_argument("--archs", type=str, default="", help="Optional comma-separated architecture subset for --part a")
+    ap.add_argument("--merge-existing", action="store_true", help="Merge --archs subset into existing exp4_part_a.json")
     args = ap.parse_args()
     H.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     if args.part == "a":
-        H.write_json(H.RESULTS_DIR / "exp4_part_a.json", run_part_a())
+        subset = [s.strip() for s in args.archs.split(",") if s.strip()] if args.archs else None
+        res_a = run_part_a(arch_subset=subset)
+        out_p = H.RESULTS_DIR / "exp4_part_a.json"
+        if args.merge_existing and out_p.exists():
+            prev = json.loads(out_p.read_text())
+            merged_archs = dict(prev.get("architectures", {}))
+            merged_archs.update(res_a["architectures"])
+            order = [a[0] for a in arch_defs_4L(swa_w=16, mla_dc=64, mla_dr=16)]
+            res_a["architectures"] = {k: merged_archs[k] for k in order if k in merged_archs}
+        H.write_json(out_p, res_a)
     elif args.part == "a2":
         H.write_json(H.RESULTS_DIR / "exp4_part_a2.json", run_part_a2())
     elif args.part == "b1":

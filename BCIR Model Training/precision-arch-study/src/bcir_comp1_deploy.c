@@ -551,10 +551,16 @@ void bcir_deploy_get_stats(const bcir_deploy_model *dm, bcir_deploy_stats *out) 
   for (uint32_t l = 0; l < dm->sp.layers; ++l) {
     nonlin_p += 2u * d;
     uint32_t mx = dm->layers[l].mixer;
-    if (mx == BCIR_MIXER_DELTANET) { nonlin_p += 2u * H; out->rec_state_bytes += H * dh * dh * 4u; }
-    else if (mx == BCIR_MIXER_MLA) { nonlin_p += dc; }
+    if (mx == BCIR_MIXER_DELTANET) {
+      nonlin_p += 2u * H;
+      out->rec_state_bytes += H * dh * dh * sizeof(double); /* actual FP64 dn_S */
+      out->projected_fp32_rec_state_bytes += H * dh * dh * sizeof(float);
+    } else if (mx == BCIR_MIXER_MLA) {
+      nonlin_p += dc;
+    }
   }
-  out->nonlin_bytes = nonlin_p * 2u; /* FP16 non-linear deployment storage */
+  out->nonlin_bytes = nonlin_p * sizeof(float); /* actual FP32 non-linear arrays */
+  out->projected_fp16_nonlin_bytes = nonlin_p * 2u; /* hypothetical FP16 non-linear storage */
   for (size_t i = 0; i < dm->n_linears; ++i) {
     const dep_linear *lin = &dm->linears[i];
     size_t np = (size_t)lin->rows * lin->cols;
@@ -570,26 +576,35 @@ void bcir_deploy_get_stats(const bcir_deploy_model *dm, bcir_deploy_stats *out) 
   }
   out->total_params = out->body_params + nonlin_p;
   out->total_artifact_bytes = out->attn_bytes + out->mlp_bytes + out->nonlin_bytes;
+  out->projected_fp16_artifact_bytes = out->attn_bytes + out->mlp_bytes + out->projected_fp16_nonlin_bytes;
   out->realized_body_bpw = (out->body_params > 0u) ? (8.0 * (double)(out->attn_bytes + out->mlp_bytes) / (double)out->body_params) : 0.0;
   out->realized_total_bpw = (out->total_params > 0u) ? (8.0 * (double)out->total_artifact_bytes / (double)out->total_params) : 0.0;
+  out->projected_fp16_total_bpw = (out->total_params > 0u) ? (8.0 * (double)out->projected_fp16_artifact_bytes / (double)out->total_params) : 0.0;
 
-  /* FP16 KV cache footprint at T=64, 1024, 4096 */
-  size_t lens[3] = { 64u, 1024u, 4096u }, kvs[3] = { 0u, 0u, 0u };
+  /* Actual FP32 KV cache footprint & separate hypothetical FP16 projection at T=64, 1024, 4096 */
+  size_t lens[3] = { 64u, 1024u, 4096u }, kvs_f32[3] = { 0u, 0u, 0u }, kvs_f16[3] = { 0u, 0u, 0u };
   for (int k = 0; k < 3; ++k) {
     for (uint32_t l = 0; l < dm->sp.layers; ++l) {
       uint32_t mx = dm->layers[l].mixer;
-      if (mx == BCIR_MIXER_GQA) kvs[k] += lens[k] * 2u * kvd * 2u;
-      else if (mx == BCIR_MIXER_SWA) {
+      if (mx == BCIR_MIXER_GQA) {
+        kvs_f32[k] += lens[k] * 2u * kvd * sizeof(float);
+        kvs_f16[k] += lens[k] * 2u * kvd * 2u;
+      } else if (mx == BCIR_MIXER_SWA) {
         size_t eff = (lens[k] < dm->sp.swa_window) ? lens[k] : dm->sp.swa_window;
-        kvs[k] += eff * 2u * kvd * 2u;
+        kvs_f32[k] += eff * 2u * kvd * sizeof(float);
+        kvs_f16[k] += eff * 2u * kvd * 2u;
       } else if (mx == BCIR_MIXER_MLA) {
-        kvs[k] += lens[k] * (dc + dr) * 2u;
+        kvs_f32[k] += lens[k] * (dc + dr) * sizeof(float);
+        kvs_f16[k] += lens[k] * (dc + dr) * 2u;
       }
     }
   }
-  out->kv_cache_bytes_at_64 = kvs[0];
-  out->kv_cache_bytes_at_1024 = kvs[1];
-  out->kv_cache_bytes_at_4096 = kvs[2];
+  out->kv_cache_bytes_at_64 = kvs_f32[0];
+  out->kv_cache_bytes_at_1024 = kvs_f32[1];
+  out->kv_cache_bytes_at_4096 = kvs_f32[2];
+  out->projected_fp16_kv_bytes_at_64 = kvs_f16[0];
+  out->projected_fp16_kv_bytes_at_1024 = kvs_f16[1];
+  out->projected_fp16_kv_bytes_at_4096 = kvs_f16[2];
 }
 
 void bcir_deploy_reset_cache(bcir_deploy_model *dm) {
@@ -829,19 +844,23 @@ int bcir_deploy_evaluate(bcir_deploy_model *dm, const uint32_t *tokens, const ui
       const uint32_t *seq_tg = targets + (bi * batch_size + b) * stride_T;
       bcir_deploy_reset_cache(dm);
       for (uint32_t t = 0; t < active_T; ++t) {
-        if (dep_decode_step_timed(dm, seq_tk[t], t, use_portable, logits, NULL, NULL) != 0) nf++;
+        int step_bad = (dep_decode_step_timed(dm, seq_tk[t], t, use_portable, logits, NULL, NULL) != 0);
+        if (step_bad) nf++;
         uint32_t y = seq_tg[t];
         if (y == BCIR_EXT_IGNORE) continue;
-        double mx = -1e30; uint32_t best = 0u;
+        if (step_bad || y >= V) { nf++; continue; }
+        double mx = -1e30; uint32_t best = 0u; int logit_bad = 0;
         for (size_t v = 0; v < V; ++v) {
           double lv = (double)logits[v];
-          if (!isfinite(lv)) { nf++; break; }
+          if (!isfinite(lv)) { logit_bad = 1; break; }
           if (lv > mx) { mx = lv; best = (uint32_t)v; }
         }
+        if (logit_bad) { nf++; continue; }
         double se = 0.0;
         for (size_t v = 0; v < V; ++v) se += exp((double)logits[v] - mx);
         double ce = (mx + log(se)) - (double)logits[y];
-        if (!isfinite(ce)) nf++; else loss_sum += ce;
+        if (!isfinite(ce)) { nf++; continue; }
+        loss_sum += ce;
         if (best == y) hits++;
         tok_cnt++;
       }
@@ -849,8 +868,13 @@ int bcir_deploy_evaluate(bcir_deploy_model *dm, const uint32_t *tokens, const ui
   }
   free(logits);
   out->tokens = tok_cnt; out->nonfinite = nf;
-  out->ce = (tok_cnt > 0u) ? (loss_sum / (double)tok_cnt) : 0.0;
-  out->accuracy = (tok_cnt > 0u) ? ((double)hits / (double)tok_cnt) : 0.0;
+  if (nf > 0u || tok_cnt == 0u) {
+    out->ce = (double)NAN;
+    out->accuracy = 0.0;
+  } else {
+    out->ce = loss_sum / (double)tok_cnt;
+    out->accuracy = (double)hits / (double)tok_cnt;
+  }
   out->eval_ms = dep_now_us() * 1e-3 - t0;
   return (nf > 0u) ? 3 : 0;
 }

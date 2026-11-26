@@ -266,6 +266,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 578.4,
       "persistent_mib": 771.2,
+      "scratch_mib": 11.5,
+      "total_mib": 878.45,
       "bytes_per_param": 16.0,
       "saved_vs_fp32_mib": 0.0
     },
@@ -274,6 +276,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 291.46,
       "persistent_mib": 484.26,
+      "scratch_mib": 11.5,
+      "total_mib": 591.51,
       "bytes_per_param": 10.047,
       "saved_vs_fp32_mib": 286.94
     },
@@ -282,6 +286,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 195.06,
       "persistent_mib": 387.86,
+      "scratch_mib": 17.5,
+      "total_mib": 501.11,
       "bytes_per_param": 8.047,
       "saved_vs_fp32_mib": 383.34
     },
@@ -290,6 +296,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 386.07,
       "persistent_mib": 578.87,
+      "scratch_mib": 11.5,
+      "total_mib": 686.12,
       "bytes_per_param": 12.01,
       "saved_vs_fp32_mib": 192.33
     },
@@ -298,6 +306,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 289.67,
       "persistent_mib": 482.47,
+      "scratch_mib": 17.5,
+      "total_mib": 595.72,
       "bytes_per_param": 10.01,
       "saved_vs_fp32_mib": 288.73
     }
@@ -906,8 +916,8 @@
               "persistent_bytes": 6929328,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 3212288,
-              "total_bytes": 17219504,
+              "scratch_bytes": 3605504,
+              "total_bytes": 17612720,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 5.627774000167847
@@ -1028,8 +1038,8 @@
               "persistent_bytes": 6929328,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 3212288,
-              "total_bytes": 17219504,
+              "scratch_bytes": 3605504,
+              "total_bytes": 17612720,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 6.234516999684274
@@ -1438,8 +1448,8 @@
               "persistent_bytes": 8644480,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 3212288,
-              "total_bytes": 18934656,
+              "scratch_bytes": 3605504,
+              "total_bytes": 19327872,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 5.643940000329167
@@ -1560,8 +1570,8 @@
               "persistent_bytes": 8644480,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 3212288,
-              "total_bytes": 18934656,
+              "scratch_bytes": 3605504,
+              "total_bytes": 19327872,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 6.280622999649495
@@ -3300,8 +3310,8 @@
               "persistent_bytes": 6929328,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 4785408,
-              "total_bytes": 18792624,
+              "scratch_bytes": 5178624,
+              "total_bytes": 19185840,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 5.73924700031057
@@ -3422,8 +3432,8 @@
               "persistent_bytes": 6929328,
               "activation_bytes": 6553600,
               "mixer_prob_bytes": 524288,
-              "scratch_bytes": 4785408,
-              "total_bytes": 18792624,
+              "scratch_bytes": 5178624,
+              "total_bytes": 19185840,
               "infer_kv_bytes_per_tok": 1536,
               "infer_rec_state_bytes": 0,
               "init_ms": 5.630219999700785
@@ -3808,8 +3818,8 @@
               "persistent_bytes": 49592440,
               "activation_bytes": 17563648,
               "mixer_prob_bytes": 1048576,
-              "scratch_bytes": 8651776,
-              "total_bytes": 76856440,
+              "scratch_bytes": 11797504,
+              "total_bytes": 80002168,
               "infer_kv_bytes_per_tok": 2048,
               "infer_rec_state_bytes": 0,
               "init_ms": 63.038500000257045
@@ -3910,8 +3920,8 @@
               "persistent_bytes": 49592440,
               "activation_bytes": 17563648,
               "mixer_prob_bytes": 1048576,
-              "scratch_bytes": 8651776,
-              "total_bytes": 76856440,
+              "scratch_bytes": 11797504,
+              "total_bytes": 80002168,
               "infer_kv_bytes_per_tok": 2048,
               "infer_rec_state_bytes": 0,
               "init_ms": 79.3402430000715
@@ -5164,8 +5174,8 @@
               "persistent_bytes": 49592440,
               "activation_bytes": 17563648,
               "mixer_prob_bytes": 1048576,
-              "scratch_bytes": 19662080,
-              "total_bytes": 87866744,
+              "scratch_bytes": 22807808,
+              "total_bytes": 91012472,
               "infer_kv_bytes_per_tok": 2048,
               "infer_rec_state_bytes": 0,
               "init_ms": 45.47658899985254
@@ -5266,8 +5276,8 @@
               "persistent_bytes": 49592440,
               "activation_bytes": 17563648,
               "mixer_prob_bytes": 1048576,
-              "scratch_bytes": 19662080,
-              "total_bytes": 87866744,
+              "scratch_bytes": 22807808,
+              "total_bytes": 91012472,
               "infer_kv_bytes_per_tok": 2048,
               "infer_rec_state_bytes": 0,
               "init_ms": 48.65638600010425
@@ -5530,8 +5540,8 @@
               "persistent_bytes": 406699620,
               "activation_bytes": 94109696,
               "mixer_prob_bytes": 6291456,
-              "scratch_bytes": 12059648,
-              "total_bytes": 519160420,
+              "scratch_bytes": 18351104,
+              "total_bytes": 525451876,
               "infer_kv_bytes_per_tok": 16384,
               "infer_rec_state_bytes": 0,
               "init_ms": 552.4733279999346
@@ -6522,8 +6532,8 @@
               "persistent_bytes": 406699620,
               "activation_bytes": 94109696,
               "mixer_prob_bytes": 6291456,
-              "scratch_bytes": 30934272,
-              "total_bytes": 538035044,
+              "scratch_bytes": 37225728,
+              "total_bytes": 544326500,
               "infer_kv_bytes_per_tok": 16384,
               "infer_rec_state_bytes": 0,
               "init_ms": 532.226888999925

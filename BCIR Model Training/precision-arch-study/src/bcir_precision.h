@@ -157,6 +157,8 @@ void bcir_opt_destroy(bcir_opt_state *opt);
 void bcir_opt_reset(bcir_opt_state *opt);
 void bcir_opt_zero_grad(bcir_opt_state *opt);
 void bcir_opt_commit_grad_fp32(bcir_opt_state *opt, const float *grad_work, int accumulate);
+void bcir_opt_commit_grad_span_fp32(bcir_opt_state *opt, size_t offset, size_t count,
+                                    const float *grad_buf, int accumulate);
 int bcir_opt_step(bcir_tensor_pool *pool, bcir_opt_state *opt, float *weights,
                   const float *grad_work_or_null, const bcir_adamw_params *cfg,
                   double grad_scale, double *out_grad_norm, int *out_clipped,

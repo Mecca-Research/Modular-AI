@@ -82,6 +82,7 @@ class LBAdamWCfg(ct.Structure):
         ('beta1', ct.c_double), ('beta2', ct.c_double),
         ('epsilon', ct.c_double), ('weight_decay', ct.c_double),
         ('grad_clip', ct.c_double), ('freeze_non_linear', ct.c_int),
+        ('freeze_dense_projs', ct.c_int),
     ]
 
 
@@ -100,6 +101,7 @@ class LBBenchResult(ct.Structure):
         ('median_us', ct.c_double), ('min_us', ct.c_double),
         ('gflops_equiv', ct.c_double), ('max_abs_err', ct.c_double),
         ('weight_bytes', ct.c_size_t), ('realized_bpw', ct.c_double),
+        ('ideal_deploy_weight_bytes', ct.c_size_t), ('ideal_deploy_bpw', ct.c_double),
     ]
 
 

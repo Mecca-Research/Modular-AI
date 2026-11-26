@@ -16,7 +16,7 @@ make
 make verify | tee results/gate0_verify_output.txt
 ```
 
-Gate 0 (`src/test_gate0_all.c`) verifies 15 numerical and AD invariants before any training run:
+Gate 0 (`src/test_gate0_all.c`) verifies 20 numerical, AD, memory-accounting, and policy invariants before any training run:
 
 1. `VDPBF16PS` portable C11 vs `AVX512_BF16` hardware bit-exact parity (`bit_mismatches=0`)
 2. `Arch-1 DeltaNet` chunkwise WY (`FP64`) vs exact token-by-token recurrence (`max_abs=0.000e+00`)
@@ -26,8 +26,13 @@ Gate 0 (`src/test_gate0_all.c`) verifies 15 numerical and AD invariants before a
 6. `TRAIN-OPT-2` all-masked refusal and physical suffix-trimming equivalence (`loss_diff=0.000e+00`, `grad_diff=0.000e+00`)
 7. 1-thread vs 2-thread bit-exact hybrid training parity (`bit_diffs=0`)
 8. All 5 `TRAIN-OPT-7` optimizer-state compression contracts (`16.00` down to `8.05 B/param`)
+9. Streaming `BF16`-grad workspace accounting (`[MEM]`): no hidden full-model FP32 gradient buffer; single-tensor `grad_tile` (`6.0 MiB` at 50M) explicitly included in `scratch_bytes` and `total_bytes`
+10. Deployment resident-precision accounting (`[STAT]`): `nonlin_bytes`, `kv_cache_bytes_at_*`, and `rec_state_bytes` reflect actual evaluated `FP32` non-linear/KV and `FP64` DeltaNet buffers, with hypothetical `FP16`/`FP32` compressed projections reported in separate `projected_fp16_*` / `projected_fp32_*` fields
+11. Fail-closed nonfinite deployment evaluation (`[NF]`): nonfinite steps/logits/CE return `rc=3`, `ce=NaN`, and cannot pass precision gates
+12. Frozen dense Q8 attention during LittleBit KD-QAT (`[FRZ]`): `freeze_dense_projs=1` keeps Q8-quantized Attention projections bit-identical throughout `COMP-1` QAT (`exp3 --part c` and `exp5 --part wide512`)
+13. Matched-thread kernel benchmark dispatch (`[BENCH]`): all `bcir_littlebit_bench.c` kernels run at the exact requested thread count via `bcir_tensor_pool_run` and report actual runtime `weight_bytes`/`realized_bpw` separately from `ideal_deploy_weight_bytes`/`ideal_deploy_bpw`
 
-## Reproducing All 4 Experiment Suites
+## Reproducing All 5 Experiment Suites
 
 Use a Python environment with `numpy`, `pyarrow`, and `matplotlib`:
 
@@ -55,7 +60,7 @@ python src/exp3_littlebit_comp1_50m.py --part b
 python src/exp3_littlebit_comp1_50m.py --part c
 python src/exp3_littlebit_comp1_50m.py --part merge
 
-# Experiment 4: MIXER-EXT KV circuits, multi-query phase transition, wide10m LM, and 2x2 COMP-1 x KV orthogonality
+# Experiment 4: MIXER-EXT KV circuits (ordered_8pair at T=96), multi-query phase transition, wide10m LM, and 2x2 COMP-1 x KV orthogonality
 python src/exp4_mixer_ext_architectures.py --part a
 python src/exp4_mixer_ext_architectures.py --part a2
 python src/exp4_mixer_ext_architectures.py --part b1
@@ -74,7 +79,7 @@ python src/exp5_deploy_policy_baseline.py --part wedge128
 python src/exp5_deploy_policy_baseline.py --part merge
 ```
 
-Note: `checkpoints/wide50m_fp32_120st.npz` (`193 MiB`) exceeds GitHub's `100 MiB` single-file limit and is omitted from git tracking; its exact SHA-256 digest is recorded in `results/MANIFEST.json` and it reproduces deterministically via `python src/exp2_precision_frontier.py --part b1`. Experiment 5's `results/deploy_policy_baseline_checkpoint.json` (`bcir.deploy_baseline.v1` schema) was executed on a 2-core `Intel(R) Xeon(R) CPU @ 2.30GHz` (`avx2_fma`, no `avx512f`) host with `clang 23.1.6` against the production BCIR `BCIRQ8 v2` + `LUT4-LANES` runtime; its full host/compiler/ISA provenance is embedded directly in the JSON record.
+Note: `checkpoints/wide50m_fp32_120st.npz` (`193 MiB`) exceeds GitHub's `100 MiB` single-file limit and is omitted from git tracking; its exact SHA-256 digest is recorded in `results/MANIFEST.json` and it reproduces deterministically via `python src/exp2_precision_frontier.py --part b1`. Experiment 5's `results/deploy_policy_baseline_checkpoint.json` (`bcir.deploy_baseline.v1` schema), along with refreshed `exp3 --part c`, `exp4 --part a` (`ordered_8pair` at `T=96`), and `exp4 --part a2` (all 4 queries on `mq_filler20_gtW`), were executed on a 2-core `Intel(R) Xeon(R) CPU @ 2.30GHz` (`avx2_fma`, no `avx512f`) host with `clang 23.1.6`; historical Xeon 6985P-C AVX-512 crossover latencies in `exp3_part_b.json` carry an explicit `crossover_thread_count_note` documenting the pre-fix 1T-vs-2T mismatch while preserving the measured timings without fabrication.
 
 ## Directory Layout
 

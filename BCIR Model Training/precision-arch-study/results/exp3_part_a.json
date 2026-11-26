@@ -588,21 +588,28 @@
   "deploy_wide_shallow_6m": {
     "FP32_Ref": {
       "stats": {
-        "total_artifact_bytes": 24384512,
+        "total_artifact_bytes": 24651776,
         "attn_bytes": 5242880,
         "mlp_bytes": 18874368,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 32.0,
-        "realized_total_bpw": 31.65306970175293,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 32.0,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.0,
         "max_weight_rel_frob_mlp": 0.0,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 24384512,
+        "projected_fp16_total_bpw": 31.65306970175293,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.3541853580038166,
@@ -625,25 +632,33 @@
         "prefill_n64_ms": 265.2669769999981,
         "prefill_n128_ms": 532.2417659999132,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "FP16_Uniform": {
       "stats": {
-        "total_artifact_bytes": 12325888,
+        "total_artifact_bytes": 12593152,
         "attn_bytes": 2621440,
         "mlp_bytes": 9437184,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 16.0,
-        "realized_total_bpw": 16.0,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 16.34693029824707,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.000207855604788235,
         "max_weight_rel_frob_mlp": 0.00020722212932690546,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 12325888,
+        "projected_fp16_total_bpw": 16.0,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.3541829991815035,
@@ -666,25 +681,33 @@
         "prefill_n64_ms": 327.56644999992847,
         "prefill_n128_ms": 674.2255249999762,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "BCIRQ8_Uniform": {
       "stats": {
-        "total_artifact_bytes": 6484992,
+        "total_artifact_bytes": 6752256,
         "attn_bytes": 1351680,
         "mlp_bytes": 4866048,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 8.25,
-        "realized_total_bpw": 8.418044363213426,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 8.764974661460498,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007706775491962351,
         "max_weight_rel_frob_mlp": 0.008243051814461938,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 6484992,
+        "projected_fp16_total_bpw": 8.418044363213426,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.354203080202182,
@@ -707,25 +730,33 @@
         "prefill_n64_ms": 151.05162900006772,
         "prefill_n128_ms": 307.6766089999676,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r64_1p": {
       "stats": {
-        "total_artifact_bytes": 1742592,
+        "total_artifact_bytes": 2009856,
         "attn_bytes": 1351680,
         "mlp_bytes": 123648,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 1.9575407608695652,
-        "realized_total_bpw": 2.262025421616682,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 2.6089557198637534,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007706775491962351,
         "max_weight_rel_frob_mlp": 0.939680608279465,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 1742592,
+        "projected_fp16_total_bpw": 2.262025421616682,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.8936184340401057,
@@ -748,25 +779,33 @@
         "prefill_n64_ms": 35.68273000001908,
         "prefill_n128_ms": 78.1355490000248,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r48_res": {
       "stats": {
-        "total_artifact_bytes": 1816704,
+        "total_artifact_bytes": 2083968,
         "attn_bytes": 1351680,
         "mlp_bytes": 197760,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 2.0558763586956523,
-        "realized_total_bpw": 2.3582287945501372,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 2.7051590927972087,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007706775491962351,
         "max_weight_rel_frob_mlp": 0.9127975169323844,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 1816704,
+        "projected_fp16_total_bpw": 2.3582287945501372,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.787710742422607,
@@ -789,25 +828,33 @@
         "prefill_n64_ms": 37.24708299994469,
         "prefill_n128_ms": 81.11801399993897,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "LB_Uniform_r48_res": {
       "stats": {
-        "total_artifact_bytes": 545920,
+        "total_artifact_bytes": 813184,
         "attn_bytes": 80896,
         "mlp_bytes": 197760,
-        "nonlin_bytes": 267264,
+        "nonlin_bytes": 534528,
         "body_params": 6029312,
         "total_params": 6162944,
         "realized_body_bpw": 0.3697350543478261,
-        "realized_total_bpw": 0.7086483343025671,
-        "kv_cache_bytes_at_64": 65536,
-        "kv_cache_bytes_at_1024": 1048576,
-        "kv_cache_bytes_at_4096": 4194304,
+        "realized_total_bpw": 1.0555786325496386,
+        "kv_cache_bytes_at_64": 131072,
+        "kv_cache_bytes_at_1024": 2097152,
+        "kv_cache_bytes_at_4096": 8388608,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.907311512237342,
         "max_weight_rel_frob_mlp": 0.9127975169323844,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 267264,
+        "projected_fp16_artifact_bytes": 545920,
+        "projected_fp16_total_bpw": 0.7086483343025671,
+        "projected_fp16_kv_bytes_at_64": 65536,
+        "projected_fp16_kv_bytes_at_1024": 1048576,
+        "projected_fp16_kv_bytes_at_4096": 4194304,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.2071000837811963,
@@ -830,27 +877,35 @@
         "prefill_n64_ms": 10.091506000041962,
         "prefill_n128_ms": 26.690236999988556,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     }
   },
   "deploy_narrow_deep_6m": {
     "FP32_Ref": {
       "stats": {
-        "total_artifact_bytes": 24519168,
+        "total_artifact_bytes": 24658944,
         "attn_bytes": 6291456,
         "mlp_bytes": 18087936,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 32.0,
-        "realized_total_bpw": 31.818612183879406,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 32.0,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.0,
         "max_weight_rel_frob_mlp": 0.0,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 24519168,
+        "projected_fp16_total_bpw": 31.818612183879406,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.4645397029952654,
@@ -873,25 +928,33 @@
         "prefill_n64_ms": 260.5825939998627,
         "prefill_n128_ms": 532.7489430000782,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "FP16_Uniform": {
       "stats": {
-        "total_artifact_bytes": 12329472,
+        "total_artifact_bytes": 12469248,
         "attn_bytes": 3145728,
         "mlp_bytes": 9043968,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 16.0,
-        "realized_total_bpw": 16.0,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 16.181387816120594,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.00020980064013743596,
         "max_weight_rel_frob_mlp": 0.0002087279972041362,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 12329472,
+        "projected_fp16_total_bpw": 16.0,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.4645409268805234,
@@ -914,25 +977,33 @@
         "prefill_n64_ms": 354.02252099990847,
         "prefill_n128_ms": 720.3452490000725,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "BCIRQ8_Uniform": {
       "stats": {
-        "total_artifact_bytes": 6425088,
+        "total_artifact_bytes": 6564864,
         "attn_bytes": 1622016,
         "mlp_bytes": 4663296,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 8.25,
-        "realized_total_bpw": 8.337859723433413,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 8.519247539554005,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.008390687675482443,
         "max_weight_rel_frob_mlp": 0.008340878376575682,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 6425088,
+        "projected_fp16_total_bpw": 8.337859723433413,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.4644163784819777,
@@ -955,25 +1026,33 @@
         "prefill_n64_ms": 164.5686660001278,
         "prefill_n128_ms": 334.43099499988557,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r32_1p": {
       "stats": {
-        "total_artifact_bytes": 1906176,
+        "total_artifact_bytes": 2045952,
         "attn_bytes": 1622016,
         "mlp_bytes": 144384,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 2.318548387096774,
-        "realized_total_bpw": 2.4736514264357794,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 2.6550392425563722,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.008390687675482443,
         "max_weight_rel_frob_mlp": 0.9384364852588305,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 1906176,
+        "projected_fp16_total_bpw": 2.4736514264357794,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.1617645035686164,
@@ -996,25 +1075,33 @@
         "prefill_n64_ms": 50.92284300017357,
         "prefill_n128_ms": 118.29714100003243,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r24_res": {
       "stats": {
-        "total_artifact_bytes": 2002176,
+        "total_artifact_bytes": 2141952,
         "attn_bytes": 1622016,
         "mlp_bytes": 240384,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 2.444556451612903,
-        "realized_total_bpw": 2.5982309704746482,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 2.779618786595241,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.008390687675482443,
         "max_weight_rel_frob_mlp": 0.9097553759636543,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 2002176,
+        "projected_fp16_total_bpw": 2.5982309704746482,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.0392377770065586,
@@ -1037,25 +1124,33 @@
         "prefill_n64_ms": 58.52044499993325,
         "prefill_n128_ms": 131.98561899995804,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "LB_Uniform_r24_res": {
       "stats": {
-        "total_artifact_bytes": 496896,
+        "total_artifact_bytes": 636672,
         "attn_bytes": 116736,
         "mlp_bytes": 240384,
-        "nonlin_bytes": 139776,
+        "nonlin_bytes": 279552,
         "body_params": 6094848,
         "total_params": 6164736,
         "realized_body_bpw": 0.46875,
-        "realized_total_bpw": 0.644823719945185,
-        "kv_cache_bytes_at_64": 262144,
-        "kv_cache_bytes_at_1024": 4194304,
-        "kv_cache_bytes_at_4096": 16777216,
+        "realized_total_bpw": 0.826211536065778,
+        "kv_cache_bytes_at_64": 524288,
+        "kv_cache_bytes_at_1024": 8388608,
+        "kv_cache_bytes_at_4096": 33554432,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.9050573252832318,
         "max_weight_rel_frob_mlp": 0.9097553759636543,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 139776,
+        "projected_fp16_artifact_bytes": 496896,
+        "projected_fp16_total_bpw": 0.644823719945185,
+        "projected_fp16_kv_bytes_at_64": 262144,
+        "projected_fp16_kv_bytes_at_1024": 4194304,
+        "projected_fp16_kv_bytes_at_4096": 16777216,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.2996937314719683,
@@ -1078,7 +1173,8 @@
         "prefill_n64_ms": 21.444249000072478,
         "prefill_n128_ms": 56.584812000036244,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     }
   }
 }

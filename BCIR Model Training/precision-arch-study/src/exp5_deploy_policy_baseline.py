@@ -408,6 +408,8 @@ def run_wide512_baseline(
                 "median_step_ms": round(res["median_step_ms"], 2),
                 "n_params": int(ms["n_params"]),
                 "persistent_mib": round(ms["persistent_bytes"] / (1024**2), 3),
+                "scratch_mib": round(ms["scratch_bytes"] / (1024**2), 3),
+                "total_mib": round(ms["total_bytes"] / (1024**2), 3),
                 "bytes_per_param": round(ms["persistent_bytes"] / ms["n_params"], 3),
                 "nonfinite_events": int(res["telemetry"]["nonfinite_events"]),
             }
@@ -491,15 +493,29 @@ def run_wide512_baseline(
         objective=LB.LB_OBJ_KD_KL, kd_lambda=0.0, threads=2,
     )
     student_lb.load_from_dense_bcir(w_teacher, use_itq=True, itq_iters=15, q8_dense=True)
+    # Snapshot frozen Q8 attention weights so KD-QAT updates ONLY the LittleBit MLP projections
+    # and exported BCIRQ8 v2 attention matches the exact evaluated student attention.
+    attn_snap = {}
+    wv_pre = student_lb.weights_view()
+    for lyr in range(dspec.n_layers):
+        for p_idx in range(4):
+            off, cnt = student_lb.span(20, lyr, p_idx, 0)
+            attn_snap[(lyr, p_idx)] = wv_pre[off : off + cnt].copy()
     qat_tk, qat_tg = H.sample_lm_batches(wt_tr, qat_steps, B, T, seed=30042)
     qat_lrs = H.cosine_lr_schedule(qat_steps, 8e-4, 8e-5, warmup=max(4, qat_steps // 10))
     opt_lb = LB.LBAdamWCfg(
         lr=8e-4, lr_scales=1.6e-3, beta1=0.9, beta2=0.95, epsilon=1e-8,
-        weight_decay=0.0, grad_clip=1.0, freeze_non_linear=1,
+        weight_decay=0.0, grad_clip=1.0, freeze_non_linear=1, freeze_dense_projs=1,
     )
     t_qat0 = time.perf_counter()
     qat_evs = student_lb.train_loop(teacher_lb, qat_tk, qat_tg, qat_lrs, opt_lb)
     qat_wall_s = time.perf_counter() - t_qat0
+    wv_post = student_lb.weights_view()
+    for (lyr, p_idx), orig in attn_snap.items():
+        off, cnt = student_lb.span(20, lyr, p_idx, 0)
+        assert np.array_equal(wv_post[off : off + cnt], orig), (
+            f"Q8 attention projection L{lyr}.P{p_idx} drifted during wide512 KD-QAT!"
+        )
     lb_overrides = extract_lbmodel_lut4_overrides(dspec, student_lb)
     student_lb.close()
     teacher_lb.close()
@@ -569,7 +585,8 @@ def run_wide512_baseline(
             "verdict": verdict_ptq.to_dict(),
         },
         "bcirq8_v2_comp1_kdqat": {
-            "qat_recipe": "Joint-ITQ + Clipped-STE + Output KL (lambda=0), MLP-only + Q8 Attention",
+            "qat_recipe": "Joint-ITQ + Clipped-STE + Output KL (lambda=0), MLP-only + Frozen Q8 Attention",
+            "q8_attention_frozen": True,
             "qat_steps": qat_steps,
             "qat_ranks": list(policy.solve_rank(512, 1536)),
             "qat_wall_s": round(qat_wall_s, 2),
@@ -644,6 +661,8 @@ def run_wide50m_baseline(
             "median_step_ms": round(res["median_step_ms"], 2),
             "n_params": int(ms["n_params"]),
             "persistent_mib": round(ms["persistent_bytes"] / (1024**2), 2),
+            "scratch_mib": round(ms["scratch_bytes"] / (1024**2), 2),
+            "total_mib": round(ms["total_bytes"] / (1024**2), 2),
             "bytes_per_param": round(ms["persistent_bytes"] / ms["n_params"], 3),
             "nonfinite_events": int(res["telemetry"]["nonfinite_events"]),
         }

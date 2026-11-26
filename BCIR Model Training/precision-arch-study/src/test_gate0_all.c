@@ -1,5 +1,7 @@
 /*===- test_gate0_all.c - Gate 0 Numerical & AD Verifier for BCIR Lab -------===*/
+#include "bcir_comp1_deploy.h"
 #include "bcir_decoder_train.h"
+#include "bcir_littlebit.h"
 #include "bcir_mixer_ext.h"
 #include "bcir_precision.h"
 #include <math.h>
@@ -189,6 +191,124 @@ int main(void) {
              evs[0].loss, evs[4].loss, ok ? "PASS" : "FAIL");
       if (!ok) fails++;
       bcir_ext_destroy(om);
+    }
+
+    /* [MEM] Streaming BF16-grad workspace accounting: no hidden full-model FP32 grad buffer */
+    {
+      bcir_prec_policy op; bcir_prec_policy_default(&op); op.opt_kind = BCIR_OPT_Q8_MOMENTS_BF16_GRAD;
+      bcir_ext_model *om = bcir_ext_create(&sp, &op);
+      bcir_ext_mem_stats ms; bcir_ext_get_mem_stats(om, &ms);
+      size_t sum_b = ms.persistent_bytes + ms.activation_bytes + ms.mixer_prob_bytes + ms.scratch_bytes;
+      int no_full_fp32 = (bcir_ext_grads_fp32_ptr(om) == NULL);
+      int ok = (no_full_fp32 && ms.persistent_bytes == ms.weight_bytes + ms.opt_only_bytes &&
+                ms.total_bytes == sum_b && ms.scratch_bytes > 0u);
+      printf("  [MEM] BF16-grad streaming (no full FP32 buf=%d):  pers=%zuB scr=%zuB tot=%zuB -> %s\n",
+             no_full_fp32, ms.persistent_bytes, ms.scratch_bytes, ms.total_bytes, ok ? "PASS" : "FAIL");
+      if (!ok) fails++;
+      bcir_ext_destroy(om);
+    }
+
+    /* [STAT] & [NF] Deploy stats match resident FP32/FP64 storage & fail closed on nonfinite weights */
+    {
+      bcir_prec_policy pol; bcir_prec_policy_default(&pol);
+      bcir_ext_model *em = bcir_ext_create(&sp, &pol);
+      bcir_deploy_model *dm = bcir_deploy_create(&sp, 32);
+      bcir_deploy_load_from_ext(dm, em, BCIR_DEPLOY_BCIRQ8_G32, BCIR_DEPLOY_BCIRQ8_G32);
+      bcir_deploy_stats st; bcir_deploy_get_stats(dm, &st);
+      int stat_ok = (st.nonlin_bytes == st.projected_fp16_nonlin_bytes * 2u &&
+                     st.kv_cache_bytes_at_4096 == st.projected_fp16_kv_bytes_at_4096 * 2u &&
+                     st.rec_state_bytes == st.projected_fp32_rec_state_bytes * 2u &&
+                     st.total_artifact_bytes > st.projected_fp16_artifact_bytes);
+      printf("  [STAT] Deploy resident FP32/FP64 vs proj FP16:    nonlin=%zuB kv4k=%zuB rec=%zuB -> %s\n",
+             st.nonlin_bytes, st.kv_cache_bytes_at_4096, st.rec_state_bytes, stat_ok ? "PASS" : "FAIL");
+      if (!stat_ok) fails++;
+
+      /* Inject NaN into first linear tensor and confirm fail-closed evaluation */
+      size_t nt = bcir_ext_tensor_count(em), first_lin = nt;
+      bcir_ext_tensor_info ti;
+      for (size_t i = 0; i < nt; ++i) {
+        bcir_ext_tensor_info_at(em, i, &ti);
+        if (ti.region == 1) { first_lin = i; break; }
+      }
+      float *bad_w = (float *)malloc(ti.rows * ti.cols * 4u);
+      for (size_t i = 0; i < ti.rows * ti.cols; ++i) bad_w[i] = NAN;
+      bcir_deploy_set_linear_dense(dm, first_lin, BCIR_DEPLOY_FP32, bad_w);
+      bcir_ext_eval_result ev_nf;
+      int rc_nf = bcir_deploy_evaluate(dm, tok, tgt, 1, sp.batch, sp.time, sp.time, 0, &ev_nf);
+      int nf_ok = (rc_nf == 3 && ev_nf.nonfinite > 0u && isnan(ev_nf.ce));
+      printf("  [NF] Deploy fail-closed on NaN weights:           rc=%d nf=%llu isnan=%d -> %s\n",
+             rc_nf, (unsigned long long)ev_nf.nonfinite, isnan(ev_nf.ce), nf_ok ? "PASS" : "FAIL");
+      if (!nf_ok) fails++;
+      free(bad_w); bcir_deploy_destroy(dm); bcir_ext_destroy(em);
+    }
+
+    /* [FRZ] LittleBit QAT freeze_dense_projs preserves dense Attention bit-exact while updating MLP */
+    {
+      lb_model_cfg lc; memset(&lc, 0, sizeof(lc));
+      lc.vocab = 32; lc.width = 32; lc.heads = 4; lc.kvheads = 2; lc.layers = 1; lc.ff = 64;
+      lc.batch = 2; lc.time = 8; lc.tied = 1; lc.rope_base = 10000.0; lc.rms_eps = 1e-6;
+      lc.surrogate = LB_SURR_CLIPPED_STE; lc.smooth_k = 1.0; lc.objective = LB_OBJ_CE;
+      lc.threads = 2; lc.use_kblock = 1;
+      uint32_t d = 32, dkv = 16, ff = 64;
+      uint32_t shapes[7][2] = {{d, d}, {dkv, d}, {dkv, d}, {d, d}, {ff, d}, {ff, d}, {d, ff}};
+      lb_proj_cfg pcs[7];
+      for (int p = 0; p < 7; ++p) {
+        memset(&pcs[p], 0, sizeof(pcs[p]));
+        pcs[p].mode = (p < 4) ? LB_MODE_DENSE_FP32 : LB_MODE_LITTLEBIT_RES;
+        pcs[p].din = shapes[p][1]; pcs[p].dout = shapes[p][0];
+        pcs[p].r1 = (p < 4) ? 0u : 4u; pcs[p].r2 = (p < 4) ? 0u : 4u;
+        pcs[p].scale_flags = LB_SCALE_ALL; pcs[p].fp16_round = 1;
+      }
+      lb_model *lm = lb_model_create(&lc, pcs);
+      size_t np_lb = lb_model_param_count(lm);
+      float *wl = lb_model_weights_ptr(lm);
+      uint64_t rng = 1234567ULL;
+      for (size_t i = 0; i < np_lb; ++i) {
+        rng = rng * 6364136223846793005ULL + 1ULL;
+        wl[i] = ((float)(int32_t)(rng >> 40) / (float)(1 << 23) - 1.0f) * 0.1f;
+      }
+      float *snap = (float *)malloc(np_lb * 4u);
+      memcpy(snap, wl, np_lb * 4u);
+      double lrs2[2] = {1e-2, 1e-2};
+      lb_adamw_cfg aopt = {1e-2, 1e-2, 0.9, 0.95, 1e-8, 0.0, 1.0, 1, 1};
+      lb_step_metrics ev2[2];
+      uint32_t tok2[32], tgt2[32];
+      for (int i = 0; i < 32; ++i) { tok2[i] = tok[i]; tgt2[i] = tgt[i]; }
+      int rc_lb = lb_model_train_loop(lm, NULL, tok2, tgt2, 2, lrs2, &aopt, ev2);
+      size_t attn_diffs = 0u, mlp_diffs = 0u;
+      for (int p = 0; p < 4; ++p) {
+        size_t off = 0, cnt = 0; lb_model_tensor_span(lm, 20, 0, p, 0, &off, &cnt);
+        for (size_t k = 0; k < cnt; ++k) if (memcmp(&wl[off + k], &snap[off + k], 4) != 0) attn_diffs++;
+      }
+      for (int p = 4; p < 7; ++p) {
+        size_t off = 0, cnt = 0; lb_model_tensor_span(lm, 20, 0, p, 0, &off, &cnt);
+        for (size_t k = 0; k < cnt; ++k) if (memcmp(&wl[off + k], &snap[off + k], 4) != 0) mlp_diffs++;
+      }
+      int frz_ok = (rc_lb == 0 && attn_diffs == 0u && mlp_diffs > 0u);
+      printf("  [FRZ] LB QAT freeze_dense_projs (Q8 Attn intact): attn_diffs=%zu mlp_diffs=%zu -> %s\n",
+             attn_diffs, mlp_diffs, frz_ok ? "PASS" : "FAIL");
+      if (!frz_ok) fails++;
+      free(snap); lb_model_destroy(lm);
+    }
+
+    /* [BENCH] Matched-thread kernel bench (N=1 row-split & N=16 token-split) + actual vs ideal bytes */
+    {
+      lb_bench_result br1, br16;
+      int rc1 = lb_bench_linear_kernel(LB_KERN_AVX512_LUT4_PACKED1B, 1, 128, 256, 32, 2, 2, 3, &br1);
+      int rc16 = lb_bench_linear_kernel(LB_KERN_AVX512_LUT4_PACKED1B, 16, 128, 256, 32, 2, 2, 3, &br16);
+#if defined(__AVX512F__) && defined(__AVX512DQ__)
+      int b_ok = (rc1 == 0 && rc16 == 0 && br1.max_abs_err < 1e-4 && br16.max_abs_err < 1e-4 &&
+                  br1.weight_bytes > br1.ideal_deploy_weight_bytes);
+      printf("  [BENCH] 2T Packed1b N=1/N=16 actual vs ideal B:   act=%zuB ideal=%zuB err=%.2e -> %s\n",
+             br1.weight_bytes, br1.ideal_deploy_weight_bytes, fmax(br1.max_abs_err, br16.max_abs_err),
+             b_ok ? "PASS" : "FAIL");
+      if (!b_ok) fails++;
+#else
+      int b_ok = (rc1 == -1 && rc16 == -1);
+      printf("  [BENCH] AVX-512 kernel bench (no AVX-512 host):   rc1=%d rc16=%d -> %s (SKIP-EXEC)\n",
+             rc1, rc16, b_ok ? "PASS" : "FAIL");
+      if (!b_ok) fails++;
+#endif
     }
   }
   printf("\nGATE 0 VERDICT: %s (fails=%d)\n", fails == 0 ? "ALL PASSED" : "FAILED", fails);

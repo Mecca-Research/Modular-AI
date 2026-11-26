@@ -31,6 +31,7 @@ $(BUILD)/libbcir_lab.so: $(SRC)/bcir_precision.c $(SRC)/bcir_mixer_ext.c $(SRC)/
 	$(CC) $(CFLAGS) -fPIC -shared $(INC) $^ $(LDFLAGS) -o $@
 
 $(BUILD)/test_gate0_all: $(SRC)/test_gate0_all.c $(SRC)/bcir_mixer_ext.c $(SRC)/bcir_precision.c \
+                         $(SRC)/bcir_comp1_deploy.c $(SRC)/bcir_littlebit_core.c $(SRC)/bcir_littlebit_bench.c \
                          $(BUILD)/bcir_tensor.o $(BUILD)/bcir_decoder_train.o | $(BUILD)
 	$(CC) $(CFLAGS) $(INC) $^ $(LDFLAGS) -o $@
 

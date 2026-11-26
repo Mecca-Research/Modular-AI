@@ -94,6 +94,7 @@ typedef struct lb_adamw_cfg {
   double lr_scales;         /* if > 0, separate LR for h, g, l; else uses lr */
   double beta1, beta2, epsilon, weight_decay, grad_clip;
   int freeze_non_linear;    /* 1: freeze embed & RMSNorm during QAT (paper style) */
+  int freeze_dense_projs;   /* 1: freeze LB_MODE_DENSE_FP32 projections (e.g. Q8 Attention in COMP-1) */
 } lb_adamw_cfg;
 
 typedef struct lb_step_metrics {
@@ -191,8 +192,10 @@ typedef struct lb_bench_result {
   double min_us;
   double gflops_equiv;    /* 2*N*din*dout / time */
   double max_abs_err;     /* vs exact FP32 reference */
-  size_t weight_bytes;    /* exact weight footprint in bytes */
-  double realized_bpw;
+  size_t weight_bytes;    /* actual representation bytes read by timed kernel (incl. padding & runtime scales) */
+  double realized_bpw;    /* 8 * weight_bytes / (din * dout) */
+  size_t ideal_deploy_weight_bytes; /* idealized unpadded + FP16-scale deployment bound */
+  double ideal_deploy_bpw;
 } lb_bench_result;
 
 int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t dout,

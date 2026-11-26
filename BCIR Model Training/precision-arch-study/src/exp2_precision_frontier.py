@@ -168,6 +168,8 @@ def run_micro_and_memory() -> Dict[str, Any]:
                 "weight_mib": round(ms["weight_bytes"] / (1024**2), 2),
                 "opt_only_mib": round(ms["opt_only_bytes"] / (1024**2), 2),
                 "persistent_mib": round(ms["persistent_bytes"] / (1024**2), 2),
+                "scratch_mib": round(ms["scratch_bytes"] / (1024**2), 2),
+                "total_mib": round(ms["total_bytes"] / (1024**2), 2),
                 "bytes_per_param": round(ms["persistent_bytes"] / ms["n_params"], 3),
                 "saved_vs_fp32_mib": round((ms["n_params"] * 16 - ms["persistent_bytes"]) / (1024**2), 2),
             }

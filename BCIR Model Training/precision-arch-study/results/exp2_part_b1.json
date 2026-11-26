@@ -192,8 +192,8 @@
             "persistent_bytes": 406699620,
             "activation_bytes": 94109696,
             "mixer_prob_bytes": 6291456,
-            "scratch_bytes": 12059648,
-            "total_bytes": 519160420,
+            "scratch_bytes": 18351104,
+            "total_bytes": 525451876,
             "infer_kv_bytes_per_tok": 16384,
             "infer_rec_state_bytes": 0,
             "init_ms": 552.4733279999346

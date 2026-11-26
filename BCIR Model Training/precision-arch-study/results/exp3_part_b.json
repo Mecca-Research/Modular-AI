@@ -270,21 +270,28 @@
   "deploy_50m": {
     "FP32_Ref": {
       "stats": {
-        "total_artifact_bytes": 201745920,
+        "total_artifact_bytes": 202165248,
         "attn_bytes": 50331648,
         "mlp_bytes": 150994944,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 32.0,
-        "realized_total_bpw": 31.933626099773587,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 32.0,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.0,
         "max_weight_rel_frob_mlp": 0.0,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 201745920,
+        "projected_fp16_total_bpw": 31.933626099773587,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.501331038190417,
@@ -307,25 +314,33 @@
         "prefill_n64_ms": 5651.8071389999395,
         "prefill_n128_ms": 9582.198585000038,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "FP16_Uniform": {
       "stats": {
-        "total_artifact_bytes": 101082624,
+        "total_artifact_bytes": 101501952,
         "attn_bytes": 25165824,
         "mlp_bytes": 75497472,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 16.0,
-        "realized_total_bpw": 16.0,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 16.066373900226413,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.00020837272723545015,
         "max_weight_rel_frob_mlp": 0.00020798589280560754,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 101082624,
+        "projected_fp16_total_bpw": 16.0,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.50133575781054,
@@ -348,25 +363,33 @@
         "prefill_n64_ms": 4862.03211500001,
         "prefill_n128_ms": 8956.84667600012,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "BCIRQ8_Uniform": {
       "stats": {
-        "total_artifact_bytes": 52323840,
+        "total_artifact_bytes": 52743168,
         "attn_bytes": 12976128,
         "mlp_bytes": 38928384,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 8.25,
-        "realized_total_bpw": 8.28214985792217,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 8.348523758148582,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007903689536315817,
         "max_weight_rel_frob_mlp": 0.007886745420707688,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 52323840,
+        "projected_fp16_total_bpw": 8.28214985792217,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 2.5011615061142733,
@@ -389,25 +412,33 @@
         "prefill_n64_ms": 1338.945046000004,
         "prefill_n128_ms": 3938.146335000038,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r64_1p": {
       "stats": {
-        "total_artifact_bytes": 14074368,
+        "total_artifact_bytes": 14493696,
         "attn_bytes": 12976128,
         "mlp_bytes": 678912,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 2.17041015625,
-        "realized_total_bpw": 2.2277803947788297,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 2.2941542950052423,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007903689536315817,
         "max_weight_rel_frob_mlp": 0.9581689788494353,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 14074368,
+        "projected_fp16_total_bpw": 2.2277803947788297,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.279300777731791,
@@ -430,25 +461,33 @@
         "prefill_n64_ms": 361.3275440001488,
         "prefill_n128_ms": 762.8412990000248,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "COMP1_Q8Attn_LBMLP_r64_res": {
       "stats": {
-        "total_artifact_bytes": 14753280,
+        "total_artifact_bytes": 15172608,
         "attn_bytes": 12976128,
         "mlp_bytes": 1357824,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 2.2783203125,
-        "realized_total_bpw": 2.3352428999073074,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 2.4016168001337204,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.007903689536315817,
         "max_weight_rel_frob_mlp": 0.9206676668053028,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 14753280,
+        "projected_fp16_total_bpw": 2.3352428999073074,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.2061936561049067,
@@ -471,25 +510,33 @@
         "prefill_n64_ms": 365.28116499996185,
         "prefill_n128_ms": 726.5351510000229,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     },
     "LB_Uniform_r64_res": {
       "stats": {
-        "total_artifact_bytes": 2438656,
+        "total_artifact_bytes": 2857984,
         "attn_bytes": 661504,
         "mlp_bytes": 1357824,
-        "nonlin_bytes": 419328,
+        "nonlin_bytes": 838656,
         "body_params": 50331648,
         "total_params": 50541312,
         "realized_body_bpw": 0.3209635416666667,
-        "realized_total_bpw": 0.38600596676239823,
-        "kv_cache_bytes_at_64": 524288,
-        "kv_cache_bytes_at_1024": 8388608,
-        "kv_cache_bytes_at_4096": 33554432,
+        "realized_total_bpw": 0.45237986698881105,
+        "kv_cache_bytes_at_64": 1048576,
+        "kv_cache_bytes_at_1024": 16777216,
+        "kv_cache_bytes_at_4096": 67108864,
         "rec_state_bytes": 0,
         "max_weight_rel_frob_attn": 0.9106612528546496,
         "max_weight_rel_frob_mlp": 0.9206676668053028,
-        "max_q8_bound_violation": 0.0
+        "max_q8_bound_violation": 0.0,
+        "projected_fp16_nonlin_bytes": 419328,
+        "projected_fp16_artifact_bytes": 2438656,
+        "projected_fp16_total_bpw": 0.38600596676239823,
+        "projected_fp16_kv_bytes_at_64": 524288,
+        "projected_fp16_kv_bytes_at_1024": 8388608,
+        "projected_fp16_kv_bytes_at_4096": 33554432,
+        "projected_fp32_rec_state_bytes": 0
       },
       "eval": {
         "ce": 3.5428699585708547,
@@ -512,7 +559,8 @@
         "prefill_n64_ms": 64.7900190000534,
         "prefill_n128_ms": 171.75379800009728,
         "max_portable_avx_diff": 0.0
-      }
+      },
+      "eval_ok": true
     }
   },
   "packed_lut4_crossover_768x2048_r64res": {
@@ -522,42 +570,54 @@
         "gflops_equiv": 18.24,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 126.41,
         "gflops_equiv": 24.89,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 4.76837158203125e-07
+        "max_abs_err": 4.76837158203125e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 77.18,
         "gflops_equiv": 40.76,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 31.11,
         "gflops_equiv": 101.13,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 4.8,
         "gflops_equiv": 655.63,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 2.682209014892578e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 2.682209014892578e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 4.92,
         "gflops_equiv": 639.51,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 2.682209014892578e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 2.682209014892578e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=4": {
@@ -566,42 +626,54 @@
         "gflops_equiv": 66.04,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 546.71,
         "gflops_equiv": 23.02,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 4.76837158203125e-07
+        "max_abs_err": 4.76837158203125e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 325.6,
         "gflops_equiv": 38.64,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 40.41,
         "gflops_equiv": 311.39,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 19.45,
         "gflops_equiv": 646.94,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 2.682209014892578e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 2.682209014892578e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 16.07,
         "gflops_equiv": 783.1,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 2.682209014892578e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 2.682209014892578e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=16": {
@@ -610,42 +682,54 @@
         "gflops_equiv": 161.85,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 2187.25,
         "gflops_equiv": 23.01,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 4.76837158203125e-07
+        "max_abs_err": 4.76837158203125e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 1463.59,
         "gflops_equiv": 34.39,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 350.5,
         "gflops_equiv": 143.6,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 87.14,
         "gflops_equiv": 577.57,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 3.5762786865234375e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 3.5762786865234375e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 62.86,
         "gflops_equiv": 800.68,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 3.5762786865234375e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 3.5762786865234375e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=32": {
@@ -654,42 +738,54 @@
         "gflops_equiv": 211.65,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 4656.47,
         "gflops_equiv": 21.62,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 5.960464477539062e-07
+        "max_abs_err": 5.960464477539062e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 2610.67,
         "gflops_equiv": 38.56,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 135.17,
         "gflops_equiv": 744.73,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 165.15,
         "gflops_equiv": 609.53,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 140.86,
         "gflops_equiv": 714.65,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=64": {
@@ -698,42 +794,54 @@
         "gflops_equiv": 256.14,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 9051.08,
         "gflops_equiv": 22.24,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 5.960464477539062e-07
+        "max_abs_err": 5.960464477539062e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 5263.01,
         "gflops_equiv": 38.25,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 226.47,
         "gflops_equiv": 888.98,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 362.37,
         "gflops_equiv": 555.58,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 264.87,
         "gflops_equiv": 760.09,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=128": {
@@ -742,42 +850,54 @@
         "gflops_equiv": 287.72,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 17945.9,
         "gflops_equiv": 22.44,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 5.960464477539062e-07
+        "max_abs_err": 5.960464477539062e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 10011.2,
         "gflops_equiv": 40.22,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 420.69,
         "gflops_equiv": 957.13,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 792.89,
         "gflops_equiv": 507.83,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 688.09,
         "gflops_equiv": 585.18,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.172325134277344e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.172325134277344e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     },
     "N=256": {
@@ -786,43 +906,56 @@
         "gflops_equiv": 293.91,
         "weight_bytes": 6291456,
         "realized_bpw": 32.0,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 6291456,
+        "ideal_deploy_bpw": 32.0
       },
       "Dense_FP16_Stream": {
         "median_us": 34922.47,
         "gflops_equiv": 23.06,
         "weight_bytes": 3145728,
         "realized_bpw": 16.0,
-        "max_abs_err": 5.960464477539062e-07
+        "max_abs_err": 5.960464477539062e-07,
+        "ideal_deploy_weight_bytes": 3145728,
+        "ideal_deploy_bpw": 16.0
       },
       "Dense_BCIRQ8": {
         "median_us": 20450.06,
         "gflops_equiv": 39.38,
-        "weight_bytes": 1622016,
-        "realized_bpw": 8.25,
-        "max_abs_err": 0.0
+        "weight_bytes": 1769472,
+        "realized_bpw": 9.0,
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1671168,
+        "ideal_deploy_bpw": 8.5
       },
       "LowRank_FP32": {
         "median_us": 688.19,
         "gflops_equiv": 1170.18,
         "weight_bytes": 1441792,
         "realized_bpw": 7.3333,
-        "max_abs_err": 0.0
+        "max_abs_err": 0.0,
+        "ideal_deploy_weight_bytes": 1441792,
+        "ideal_deploy_bpw": 7.3333
       },
       "Packed1b_LUT4": {
         "median_us": 1586.67,
         "gflops_equiv": 507.54,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.76837158203125e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.76837158203125e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       },
       "Packed1b_LUT4_mb4": {
         "median_us": 1488.84,
         "gflops_equiv": 540.89,
-        "weight_bytes": 56576,
-        "realized_bpw": 0.2878,
-        "max_abs_err": 4.76837158203125e-07
+        "weight_bytes": 68096,
+        "realized_bpw": 0.3464,
+        "max_abs_err": 4.76837158203125e-07,
+        "ideal_deploy_weight_bytes": 56576,
+        "ideal_deploy_bpw": 0.2878
       }
     }
-  }
+  },
+  "crossover_thread_count_note": "Historical Xeon 6985P-C latencies above were captured before src/bcir_littlebit_bench.c dispatched FP16/Q8/Packed1b kernels through bcir_tensor_pool_run (so Dense_FP32_BCIR and LowRank_FP32 ran 2T while Dense_FP16_Stream, Dense_BCIRQ8, and Packed1b_LUT4* ran 1T). src/bcir_littlebit_bench.c has now been fixed so all kernels run at matched requested threads and compile-verified with -mavx512f -mavx512dq -mavx512bw -mavx512vl -mavx512bf16 -Wall -Wextra -Werror; AVX-512 latencies were not re-timed on the AVX2-only validation VM and are preserved honestly without fabrication. weight_bytes/realized_bpw now reflect exact actual runtime representation alongside ideal_deploy_weight_bytes/ideal_deploy_bpw."
 }

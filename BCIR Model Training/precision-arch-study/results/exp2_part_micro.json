@@ -266,6 +266,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 578.4,
       "persistent_mib": 771.2,
+      "scratch_mib": 11.5,
+      "total_mib": 878.45,
       "bytes_per_param": 16.0,
       "saved_vs_fp32_mib": 0.0
     },
@@ -274,6 +276,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 291.46,
       "persistent_mib": 484.26,
+      "scratch_mib": 11.5,
+      "total_mib": 591.51,
       "bytes_per_param": 10.047,
       "saved_vs_fp32_mib": 286.94
     },
@@ -282,6 +286,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 195.06,
       "persistent_mib": 387.86,
+      "scratch_mib": 17.5,
+      "total_mib": 501.11,
       "bytes_per_param": 8.047,
       "saved_vs_fp32_mib": 383.34
     },
@@ -290,6 +296,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 386.07,
       "persistent_mib": 578.87,
+      "scratch_mib": 11.5,
+      "total_mib": 686.12,
       "bytes_per_param": 12.01,
       "saved_vs_fp32_mib": 192.33
     },
@@ -298,6 +306,8 @@
       "weight_mib": 192.8,
       "opt_only_mib": 289.67,
       "persistent_mib": 482.47,
+      "scratch_mib": 17.5,
+      "total_mib": 595.72,
       "bytes_per_param": 10.01,
       "saved_vs_fp32_mib": 288.73
     }

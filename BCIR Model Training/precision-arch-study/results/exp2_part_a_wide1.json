@@ -294,8 +294,8 @@
             "persistent_bytes": 49592440,
             "activation_bytes": 17563648,
             "mixer_prob_bytes": 1048576,
-            "scratch_bytes": 8651776,
-            "total_bytes": 76856440,
+            "scratch_bytes": 11797504,
+            "total_bytes": 80002168,
             "infer_kv_bytes_per_tok": 2048,
             "infer_rec_state_bytes": 0,
             "init_ms": 63.038500000257045
@@ -396,8 +396,8 @@
             "persistent_bytes": 49592440,
             "activation_bytes": 17563648,
             "mixer_prob_bytes": 1048576,
-            "scratch_bytes": 8651776,
-            "total_bytes": 76856440,
+            "scratch_bytes": 11797504,
+            "total_bytes": 80002168,
             "infer_kv_bytes_per_tok": 2048,
             "infer_rec_state_bytes": 0,
             "init_ms": 79.3402430000715

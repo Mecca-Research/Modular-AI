@@ -1,4 +1,3 @@
-./build/test_gate0_all
 === GATE 0: BCIR PRECISION & MIXER-EXT VERIFICATION ===
   [VDP] VDPBF16PS portable vs AVX512 (64x128x96):   bit_mismatches=0 -> PASS
   [WY] DeltaNet WY vs exact recurrence (T=73 C=16): max_abs=0.000e+00 -> PASS
@@ -16,5 +15,10 @@
   [OPT7] adamw_q8_moments_bf16_grad  :  8.05 B/param  loss 3.4595 -> 3.2090 -> PASS
   [OPT7] adamw_adafactor_m2          : 12.27 B/param  loss 3.4595 -> 3.1783 -> PASS
   [OPT7] adamw_adafactor_bf16_grad   : 10.27 B/param  loss 3.4595 -> 3.1783 -> PASS
+  [MEM] BF16-grad streaming (no full FP32 buf=1):  pers=252292B scr=85632B tot=563716B -> PASS
+  [STAT] Deploy resident FP32/FP64 vs proj FP16:    nonlin=5088B kv4k=328448B rec=2048B -> PASS
+  [NF] Deploy fail-closed on NaN weights:           rc=3 nf=32 isnan=1 -> PASS
+  [FRZ] LB QAT freeze_dense_projs (Q8 Attn intact): attn_diffs=0 mlp_diffs=598 -> PASS
+  [BENCH] AVX-512 kernel bench (no AVX-512 host):   rc1=-1 rc16=-1 -> PASS (SKIP-EXEC)
 
 GATE 0 VERDICT: ALL PASSED (fails=0)

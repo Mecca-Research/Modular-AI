@@ -579,12 +579,20 @@ void bcir_opt_zero_grad(bcir_opt_state *opt) {
 
 void bcir_opt_commit_grad_fp32(bcir_opt_state *opt, const float *grad_work, int accumulate) {
   if (!opt || !grad_work) return;
+  bcir_opt_commit_grad_span_fp32(opt, 0u, opt->n_params, grad_work, accumulate);
+}
+
+void bcir_opt_commit_grad_span_fp32(bcir_opt_state *opt, size_t offset, size_t count,
+                                    const float *grad_buf, int accumulate) {
+  if (!opt || !grad_buf || count == 0u || offset + count > opt->n_params) return;
   if (opt->grad_fp32) {
-    if (!accumulate) memcpy(opt->grad_fp32, grad_work, opt->n_params * 4u);
-    else for (size_t i = 0; i < opt->n_params; ++i) opt->grad_fp32[i] += grad_work[i];
+    float *dst = opt->grad_fp32 + offset;
+    if (!accumulate) memcpy(dst, grad_buf, count * 4u);
+    else for (size_t i = 0; i < count; ++i) dst[i] += grad_buf[i];
   } else if (opt->grad_bf16) {
-    if (!accumulate) for (size_t i = 0; i < opt->n_params; ++i) opt->grad_bf16[i] = f32_to_bf16(grad_work[i]);
-    else for (size_t i = 0; i < opt->n_params; ++i) opt->grad_bf16[i] = f32_to_bf16(bf16_to_f32(opt->grad_bf16[i]) + grad_work[i]);
+    uint16_t *dst = opt->grad_bf16 + offset;
+    if (!accumulate) for (size_t i = 0; i < count; ++i) dst[i] = f32_to_bf16(grad_buf[i]);
+    else for (size_t i = 0; i < count; ++i) dst[i] = f32_to_bf16(bf16_to_f32(dst[i]) + grad_buf[i]);
   }
 }
 

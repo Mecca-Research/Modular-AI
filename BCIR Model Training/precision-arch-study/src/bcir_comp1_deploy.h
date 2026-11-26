@@ -18,11 +18,17 @@ enum {
 };
 
 typedef struct bcir_deploy_stats {
+  /* Actual evaluated resident storage in bcir_comp1_deploy.c (FP32 non-linear/KV, FP64 DeltaNet state) */
   size_t total_artifact_bytes, attn_bytes, mlp_bytes, nonlin_bytes;
   size_t body_params, total_params;
   double realized_body_bpw, realized_total_bpw;
   size_t kv_cache_bytes_at_64, kv_cache_bytes_at_1024, kv_cache_bytes_at_4096, rec_state_bytes;
   double max_weight_rel_frob_attn, max_weight_rel_frob_mlp, max_q8_bound_violation;
+  /* Hypothetical compressed-state projection (FP16 non-linear/KV, FP32 DeltaNet state), distinct from measured runtime */
+  size_t projected_fp16_nonlin_bytes, projected_fp16_artifact_bytes;
+  double projected_fp16_total_bpw;
+  size_t projected_fp16_kv_bytes_at_64, projected_fp16_kv_bytes_at_1024, projected_fp16_kv_bytes_at_4096;
+  size_t projected_fp32_rec_state_bytes;
 } bcir_deploy_stats;
 
 typedef struct bcir_deploy_model bcir_deploy_model;
