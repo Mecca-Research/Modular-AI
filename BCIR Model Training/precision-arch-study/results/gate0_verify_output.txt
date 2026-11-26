@@ -18,6 +18,7 @@
   [MEM] BF16-grad streaming (no full FP32 buf=1):  pers=252292B scr=85632B tot=563716B -> PASS
   [STAT] Deploy resident FP32/FP64 vs proj FP16:    nonlin=5088B kv4k=328448B rec=2048B -> PASS
   [NF] Deploy fail-closed on NaN weights:           rc=3 nf=32 isnan=1 -> PASS
+  [NF] Ext eval fail-closed on NaN weights:         rc=3 nf=32 isnan=1 -> PASS
   [FRZ] LB QAT freeze_dense_projs (Q8 Attn intact): attn_diffs=0 mlp_diffs=598 -> PASS
   [BENCH] AVX-512 kernel bench (no AVX-512 host):   rc1=-1 rc16=-1 -> PASS (SKIP-EXEC)
 

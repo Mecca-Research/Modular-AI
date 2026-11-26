@@ -588,7 +588,8 @@
         "delta_ce_vs_fp32": 0.0,
         "ppl_ratio_vs_fp32": 1.0,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.0
+        "step_ms_ratio_vs_fp32": 1.0,
+        "eval_ok": true
       },
       "Opt_Q8_Moments": {
         "policy_cfg": {
@@ -854,7 +855,8 @@
         "delta_ce_vs_fp32": 0.00133,
         "ppl_ratio_vs_fp32": 1.00133,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.488
+        "step_ms_ratio_vs_fp32": 1.488,
+        "eval_ok": true
       },
       "Opt_Q8_BF16Grad": {
         "policy_cfg": {
@@ -1120,7 +1122,8 @@
         "delta_ce_vs_fp32": 0.00232,
         "ppl_ratio_vs_fp32": 1.00232,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.692
+        "step_ms_ratio_vs_fp32": 1.692,
+        "eval_ok": true
       },
       "Opt_Adafactor": {
         "policy_cfg": {
@@ -1386,7 +1389,8 @@
         "delta_ce_vs_fp32": -0.01179,
         "ppl_ratio_vs_fp32": 0.98828,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.181
+        "step_ms_ratio_vs_fp32": 1.181,
+        "eval_ok": true
       },
       "Opt_Adafactor_BF16Grad": {
         "policy_cfg": {
@@ -1652,7 +1656,8 @@
         "delta_ce_vs_fp32": -0.00878,
         "ppl_ratio_vs_fp32": 0.99126,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.229
+        "step_ms_ratio_vs_fp32": 1.229,
+        "eval_ok": true
       },
       "Compute_BF16_NDT": {
         "policy_cfg": {
@@ -1918,7 +1923,8 @@
         "delta_ce_vs_fp32": 0.0006,
         "ppl_ratio_vs_fp32": 1.0006,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.355
+        "step_ms_ratio_vs_fp32": 1.355,
+        "eval_ok": true
       },
       "Compute_BF16_VDP": {
         "policy_cfg": {
@@ -2184,7 +2190,8 @@
         "delta_ce_vs_fp32": -0.00325,
         "ppl_ratio_vs_fp32": 0.99675,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.39
+        "step_ms_ratio_vs_fp32": 1.39,
+        "eval_ok": true
       },
       "Compute_FP8_E4M3_E5M2": {
         "policy_cfg": {
@@ -2450,7 +2457,8 @@
         "delta_ce_vs_fp32": 0.00731,
         "ppl_ratio_vs_fp32": 1.00733,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 2.216
+        "step_ms_ratio_vs_fp32": 2.216,
+        "eval_ok": true
       },
       "Compute_MXFP4_Uniform": {
         "policy_cfg": {
@@ -2716,7 +2724,8 @@
         "delta_ce_vs_fp32": 0.04805,
         "ppl_ratio_vs_fp32": 1.04923,
         "within_004_nats_gate": false,
-        "step_ms_ratio_vs_fp32": 1.596
+        "step_ms_ratio_vs_fp32": 1.596,
+        "eval_ok": true
       },
       "Compute_Asym_MXFP4_FP8": {
         "policy_cfg": {
@@ -2982,7 +2991,8 @@
         "delta_ce_vs_fp32": 0.03042,
         "ppl_ratio_vs_fp32": 1.03089,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 2.015
+        "step_ms_ratio_vs_fp32": 2.015,
+        "eval_ok": true
       },
       "Region_FP32Attn_MXFP4MLP": {
         "policy_cfg": {
@@ -3248,7 +3258,8 @@
         "delta_ce_vs_fp32": 0.01399,
         "ppl_ratio_vs_fp32": 1.01409,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.851
+        "step_ms_ratio_vs_fp32": 1.851,
+        "eval_ok": true
       },
       "Region_FP8Attn_MXFP4MLP_Q8Opt": {
         "policy_cfg": {
@@ -3514,7 +3525,8 @@
         "delta_ce_vs_fp32": 0.01375,
         "ppl_ratio_vs_fp32": 1.01384,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 2.576
+        "step_ms_ratio_vs_fp32": 2.576,
+        "eval_ok": true
       }
     }
   },
@@ -3756,7 +3768,8 @@
         "delta_ce_vs_fp32": 0.0,
         "ppl_ratio_vs_fp32": 1.0,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.0
+        "step_ms_ratio_vs_fp32": 1.0,
+        "eval_ok": true
       },
       "Opt_Q8_BF16Grad": {
         "policy_cfg": {
@@ -3982,7 +3995,8 @@
         "delta_ce_vs_fp32": 0.00011,
         "ppl_ratio_vs_fp32": 1.00011,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.613
+        "step_ms_ratio_vs_fp32": 1.613,
+        "eval_ok": true
       },
       "Opt_Adafactor": {
         "policy_cfg": {
@@ -4208,7 +4222,8 @@
         "delta_ce_vs_fp32": 0.0013,
         "ppl_ratio_vs_fp32": 1.0013,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 0.986
+        "step_ms_ratio_vs_fp32": 0.986,
+        "eval_ok": true
       },
       "Compute_BF16_VDP": {
         "policy_cfg": {
@@ -4434,7 +4449,8 @@
         "delta_ce_vs_fp32": -0.0001,
         "ppl_ratio_vs_fp32": 0.9999,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.336
+        "step_ms_ratio_vs_fp32": 1.336,
+        "eval_ok": true
       },
       "Compute_FP8_E4M3_E5M2": {
         "policy_cfg": {
@@ -4660,7 +4676,8 @@
         "delta_ce_vs_fp32": 0.00356,
         "ppl_ratio_vs_fp32": 1.00357,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.806
+        "step_ms_ratio_vs_fp32": 1.806,
+        "eval_ok": true
       },
       "Compute_Asym_MXFP4_FP8": {
         "policy_cfg": {
@@ -4886,7 +4903,8 @@
         "delta_ce_vs_fp32": 0.0078,
         "ppl_ratio_vs_fp32": 1.00783,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.548
+        "step_ms_ratio_vs_fp32": 1.548,
+        "eval_ok": true
       },
       "Region_FP32Attn_MXFP4MLP": {
         "policy_cfg": {
@@ -5112,7 +5130,8 @@
         "delta_ce_vs_fp32": 0.00769,
         "ppl_ratio_vs_fp32": 1.00772,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.457
+        "step_ms_ratio_vs_fp32": 1.457,
+        "eval_ok": true
       },
       "Region_FP8Attn_MXFP4MLP_Q8Opt": {
         "policy_cfg": {
@@ -5338,7 +5357,8 @@
         "delta_ce_vs_fp32": 0.00877,
         "ppl_ratio_vs_fp32": 1.00881,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 2.298
+        "step_ms_ratio_vs_fp32": 2.298,
+        "eval_ok": true
       }
     }
   },
@@ -5478,7 +5498,8 @@
         "delta_ce_vs_fp32": 0.0,
         "ppl_ratio_vs_fp32": 1.0,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.0
+        "step_ms_ratio_vs_fp32": 1.0,
+        "eval_ok": true
       },
       "Opt_Q8_BF16Grad": {
         "policy_cfg": {
@@ -5602,7 +5623,8 @@
         "delta_ce_vs_fp32": -0.00095,
         "ppl_ratio_vs_fp32": 0.99905,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.85
+        "step_ms_ratio_vs_fp32": 1.85,
+        "eval_ok": true
       },
       "Opt_Adafactor": {
         "policy_cfg": {
@@ -5726,7 +5748,8 @@
         "delta_ce_vs_fp32": -0.01059,
         "ppl_ratio_vs_fp32": 0.98946,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.126
+        "step_ms_ratio_vs_fp32": 1.126,
+        "eval_ok": true
       },
       "Compute_BF16_NDT": {
         "policy_cfg": {
@@ -5850,7 +5873,8 @@
         "delta_ce_vs_fp32": 0.00114,
         "ppl_ratio_vs_fp32": 1.00114,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.21
+        "step_ms_ratio_vs_fp32": 1.21,
+        "eval_ok": true
       },
       "Compute_BF16_VDP": {
         "policy_cfg": {
@@ -5974,7 +5998,8 @@
         "delta_ce_vs_fp32": 0.00089,
         "ppl_ratio_vs_fp32": 1.00089,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.372
+        "step_ms_ratio_vs_fp32": 1.372,
+        "eval_ok": true
       },
       "Compute_FP8_E4M3_E5M2": {
         "policy_cfg": {
@@ -6098,7 +6123,8 @@
         "delta_ce_vs_fp32": -0.00157,
         "ppl_ratio_vs_fp32": 0.99843,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.859
+        "step_ms_ratio_vs_fp32": 1.859,
+        "eval_ok": true
       },
       "Compute_MXFP4_Uniform": {
         "policy_cfg": {
@@ -6222,7 +6248,8 @@
         "delta_ce_vs_fp32": 0.00463,
         "ppl_ratio_vs_fp32": 1.00464,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.293
+        "step_ms_ratio_vs_fp32": 1.293,
+        "eval_ok": true
       },
       "Compute_Asym_MXFP4_FP8": {
         "policy_cfg": {
@@ -6346,7 +6373,8 @@
         "delta_ce_vs_fp32": 0.00945,
         "ppl_ratio_vs_fp32": 1.0095,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.605
+        "step_ms_ratio_vs_fp32": 1.605,
+        "eval_ok": true
       },
       "Region_FP32Attn_MXFP4MLP": {
         "policy_cfg": {
@@ -6470,7 +6498,8 @@
         "delta_ce_vs_fp32": 0.00691,
         "ppl_ratio_vs_fp32": 1.00693,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 1.4
+        "step_ms_ratio_vs_fp32": 1.4,
+        "eval_ok": true
       },
       "Region_FP8Attn_MXFP4MLP_Q8Opt": {
         "policy_cfg": {
@@ -6594,7 +6623,8 @@
         "delta_ce_vs_fp32": 0.00614,
         "ppl_ratio_vs_fp32": 1.00616,
         "within_004_nats_gate": true,
-        "step_ms_ratio_vs_fp32": 2.434
+        "step_ms_ratio_vs_fp32": 2.434,
+        "eval_ok": true
       }
     }
   },

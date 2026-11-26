@@ -246,12 +246,17 @@ def run_policy_list(
                 f"nf={res['telemetry']['nonfinite_events']}",
                 flush=True,
             )
+        eval_ok = all(
+            bool(r.get("test_ok", r.get("rc", 0) == 0 and r.get("test_nonfinite", 0) == 0 and math.isfinite(r["test_ce"])))
+            for r in runs
+        )
         tces = [r["test_ce"] for r in runs]
         out["policies"][pname] = {
             "policy_cfg": pkw,
-            "test_ce_mean": float(np.mean(tces)),
-            "test_ce_spread": float(np.max(tces) - np.min(tces)),
-            "test_ppl_mean": float(np.mean([r["test_ppl"] for r in runs])),
+            "eval_ok": eval_ok,
+            "test_ce_mean": float(np.mean(tces)) if eval_ok else float("nan"),
+            "test_ce_spread": float(np.max(tces) - np.min(tces)) if eval_ok else float("nan"),
+            "test_ppl_mean": float(np.mean([r["test_ppl"] for r in runs])) if eval_ok else float("nan"),
             "median_step_ms": float(np.mean([r["median_step_ms"] for r in runs])),
             "persistent_bytes": runs[0]["mem_stats"]["persistent_bytes"],
             "bytes_per_param": round(runs[0]["mem_stats"]["persistent_bytes"] / runs[0]["mem_stats"]["n_params"], 3),
@@ -345,13 +350,30 @@ def main() -> None:
         w50["policies"] = {**b1["policies"], **b2a["policies"], **b2b["policies"], **b3a["policies"], **b3b["policies"]}
         # Compute Delta CE & exp(Delta CE) vs FP32_Ref for every scale!
         for blk in (pilot, wide, w50):
-            ref_ce = blk["policies"]["FP32_Ref"]["test_ce_mean"]
-            ref_ms = blk["policies"]["FP32_Ref"]["median_step_ms"]
+            ref_pol = blk["policies"]["FP32_Ref"]
+            ref_ok = all(
+                bool(r.get("test_ok", r.get("rc", 0) == 0 and r.get("test_nonfinite", 0) == 0 and math.isfinite(r["test_ce"])))
+                for r in ref_pol["runs"]
+            )
+            if not ref_ok or not math.isfinite(ref_pol["test_ce_mean"]):
+                raise RuntimeError(f"Reference FP32_Ref failed evaluation in {blk.get('scale')}")
+            ref_ce = ref_pol["test_ce_mean"]
+            ref_ms = ref_pol["median_step_ms"]
             for pname, p in blk["policies"].items():
-                dce = p["test_ce_mean"] - ref_ce
-                p["delta_ce_vs_fp32"] = round(dce, 5)
-                p["ppl_ratio_vs_fp32"] = round(math.exp(dce), 5)
-                p["within_004_nats_gate"] = bool(dce <= 0.04)
+                p_ok = bool(p.get("eval_ok", True)) and all(
+                    bool(r.get("test_ok", r.get("rc", 0) == 0 and r.get("test_nonfinite", 0) == 0 and math.isfinite(r["test_ce"])))
+                    for r in p["runs"]
+                ) and math.isfinite(p["test_ce_mean"])
+                p["eval_ok"] = p_ok
+                if p_ok:
+                    dce = p["test_ce_mean"] - ref_ce
+                    p["delta_ce_vs_fp32"] = round(dce, 5)
+                    p["ppl_ratio_vs_fp32"] = round(math.exp(min(dce, 30.0)), 5)
+                    p["within_004_nats_gate"] = bool(dce <= 0.04)
+                else:
+                    p["delta_ce_vs_fp32"] = None
+                    p["ppl_ratio_vs_fp32"] = None
+                    p["within_004_nats_gate"] = False
                 p["step_ms_ratio_vs_fp32"] = round(p["median_step_ms"] / max(ref_ms, 1e-6), 3)
         merged = {
             "provenance": micro["provenance"],

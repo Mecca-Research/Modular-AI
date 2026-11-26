@@ -599,8 +599,9 @@ class ExtModelHandle:
         res = BcirExtEvalResult()
         rc = self.lib.bcir_ext_evaluate(self.ptr, tk.ctypes.data, tg.ctypes.data, n_batches, at, ctypes.byref(res))
         d = struct_to_dict(res)
-        d["ppl"] = math.exp(min(d["ce"], 50.0))
         d["rc"] = int(rc)
+        d["ok"] = bool(rc == 0 and d["nonfinite"] == 0 and math.isfinite(d["ce"]))
+        d["ppl"] = math.exp(min(d["ce"], 50.0)) if d["ok"] else float("nan")
         return d
 
     def train_loop(
@@ -903,10 +904,13 @@ def train_with_val_selection(
 
     # Step 0 evaluation
     v0 = model.evaluate(val_tk, val_tg, active_time=val_active_time)
-    best_val_ce = v0["ce"]
+    best_val_ce = v0["ce"] if v0["ok"] else float("inf")
     best_step = 0
     best_w = model.copy_weights()
-    curve.append({"step": 0, "wall_s": 0.0, "train_loss": None, "val_ce": v0["ce"], "val_ppl": v0["ppl"], "val_acc": v0["accuracy"]})
+    curve.append({
+        "step": 0, "wall_s": 0.0, "train_loss": None,
+        "val_ok": v0["ok"], "val_ce": v0["ce"], "val_ppl": v0["ppl"], "val_acc": v0["accuracy"],
+    })
 
     all_step_ms: List[float] = []
     all_gnorms: List[float] = []
@@ -945,12 +949,13 @@ def train_with_val_selection(
             "wall_s": round(wall_s, 3),
             "train_loss": round(float(np.mean([e["loss"] for e in evs[-min(10, len(evs)):]])), 6),
             "grad_norm_mean": round(float(np.mean([e["grad_norm"] for e in evs])), 4),
+            "val_ok": vv["ok"],
             "val_ce": vv["ce"],
             "val_ppl": vv["ppl"],
             "val_acc": vv["accuracy"],
             "step_ms_median": round(float(np.median([e["step_ms"] for e in evs])), 3),
         })
-        if math.isfinite(vv["ce"]) and vv["ce"] < best_val_ce:
+        if vv["ok"] and vv["ce"] < best_val_ce:
             best_val_ce = vv["ce"]
             best_step = s
             best_w = model.copy_weights()
@@ -960,17 +965,21 @@ def train_with_val_selection(
     model.load_weights(best_w)
     test_res = model.evaluate(test_tk, test_tg, active_time=val_active_time)
     val_best_check = model.evaluate(val_tk, val_tg, active_time=val_active_time)
+    best_val_ok = bool(val_best_check["ok"] and math.isfinite(best_val_ce))
+    test_ok = bool(rc_last == 0 and test_res["ok"] and best_val_ok)
 
     return {
         "rc": rc_last,
         "steps_completed": s,
         "best_step": best_step,
-        "best_val_ce": best_val_ce,
-        "best_val_ppl": math.exp(min(best_val_ce, 50.0)),
-        "best_val_acc": val_best_check["accuracy"],
-        "test_ce": test_res["ce"],
+        "best_val_ok": best_val_ok,
+        "best_val_ce": best_val_ce if best_val_ok else float("nan"),
+        "best_val_ppl": math.exp(min(best_val_ce, 50.0)) if best_val_ok else float("nan"),
+        "best_val_acc": val_best_check["accuracy"] if best_val_ok else 0.0,
+        "test_ok": test_ok,
+        "test_ce": test_res["ce"] if test_res["ok"] else float("nan"),
         "test_ppl": test_res["ppl"],
-        "test_acc": test_res["accuracy"],
+        "test_acc": test_res["accuracy"] if test_res["ok"] else 0.0,
         "test_tokens": test_res["tokens"],
         "test_nonfinite": test_res["nonfinite"],
         "median_step_ms": float(np.median(all_step_ms)) if all_step_ms else 0.0,

@@ -20,8 +20,8 @@
       "sha256": "df3c34cbf83081ea9d7dc808f5b2d024614bf884ab686aff869595c1d9c2b30e"
     },
     "README.md": {
-      "bytes": 7244,
-      "sha256": "8870708bf23248ad6194e695e6fc9ca7c488ae34b819fbeeb66394459cdd8b00"
+      "bytes": 7336,
+      "sha256": "34b4f8d51977ac5443cb674a6ff88eeb8daf41cb6f9d2adc15758db576f258b5"
     },
     "checkpoints/narrow_deep_6m_fp32_s42.npz": {
       "bytes": 24659212,
@@ -96,8 +96,8 @@
       "sha256": "ba50e62082ec920c7f2b7ee016b46217ef2ce32a51833fc7cd1f0499b55bda79"
     },
     "results/exp2_precision_frontier_complete.json": {
-      "bytes": 232395,
-      "sha256": "15062699623c38e910953e5866a9cc53c702b9ff869a3b22be3c637640097e59"
+      "bytes": 233146,
+      "sha256": "a02498dbd1bd8151b573e0c12507a8cbe3f8bff850b2e9c81a562a1215e9ec9f"
     },
     "results/exp3_littlebit_comp1_50m.json": {
       "bytes": 96485,
@@ -136,8 +136,8 @@
       "sha256": "bbe934effe545fbfae4257e420d164a284fc0af3647802c594189a58afbd962d"
     },
     "results/gate0_verify_output.txt": {
-      "bytes": 2080,
-      "sha256": "ff0e50290d68546b697db41fd13693bf5a891a9b8a76e3eb750261fe52e9787f"
+      "bytes": 2159,
+      "sha256": "e4336d2ece50854915846990c1930916309f69ed0ec3d7511acaba722a51b6ac"
     },
     "src/bcir_comp1_deploy.c": {
       "bytes": 43292,
@@ -148,8 +148,8 @@
       "sha256": "64d21d9ee9b8a97b5f524d516f6b859ed3e860aee2cf643faa87d75cf7001bdd"
     },
     "src/bcir_lab_harness.py": {
-      "bytes": 41824,
-      "sha256": "6309d69871a094f883f717240cb498efd69f3dc9d73f51d343659ce08f2bd694"
+      "bytes": 42387,
+      "sha256": "069bf7adeca203435a514944692c092b9eca88f2eb169b05b42778c54c2707e1"
     },
     "src/bcir_littlebit.h": {
       "bytes": 8749,
@@ -164,8 +164,8 @@
       "sha256": "c24ede2c5e799a2d43f9ce53024c56d9e1321b40f7646d63d384169c1aadaf25"
     },
     "src/bcir_mixer_ext.c": {
-      "bytes": 74111,
-      "sha256": "2ff20ea6c4adacd0ab582defa6888725e796885107da8f2aea35dc3be42ab65c"
+      "bytes": 74267,
+      "sha256": "84d2b84660d7feadf1400e903605fe14e897a55d244aa75eb0429a0ca44fd90b"
     },
     "src/bcir_mixer_ext.h": {
       "bytes": 3525,
@@ -188,8 +188,8 @@
       "sha256": "bad55105f2ba68e956e00f295e29318ec90ccad986faa81fd2e12b6829341a66"
     },
     "src/exp2_precision_frontier.py": {
-      "bytes": 18895,
-      "sha256": "a2de586e1a329d5ff715964f2e92274cef608b91816853caa27e512775da4b0a"
+      "bytes": 20137,
+      "sha256": "0951e3dda3aa7b95dcc177203a8b833bce6350c19a7650ec71772147c78a2ae6"
     },
     "src/exp3_littlebit_comp1_50m.py": {
       "bytes": 30861,
@@ -212,8 +212,8 @@
       "sha256": "de682d16027287b62c912f98591b2194e45d1f90276ded93e3f244b9cdcdfe36"
     },
     "src/test_gate0_all.c": {
-      "bytes": 17909,
-      "sha256": "eed5d5eed039986dec0856ccff2e528da707c3bb87a97b7b1ca79d55fe66ca28"
+      "bytes": 18544,
+      "sha256": "fbd79d026d82700edd4c758568e18ac89fbd4f120ae55e7e2874ac3f0d8d447f"
     }
   },
   "reproducible_omitted_large_artifacts": {

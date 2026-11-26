@@ -1177,31 +1177,39 @@ int bcir_ext_evaluate(bcir_ext_model *m, const uint32_t *tokens, const uint32_t 
   size_t N = (size_t)m->sp.batch * active_time, V = m->sp.vocab;
   for (size_t bi = 0; bi < n_batches; ++bi) {
     const uint32_t *tk = tokens + bi * N, *tg = targets + bi * N;
-    if (ext_forward_internal(m, tk, active_time) != 0) nf++;
+    if (ext_forward_internal(m, tk, active_time) != 0) { nf++; continue; }
     for (size_t i = 0; i < N; ++i) {
       uint32_t y = tg[i];
       if (y == BCIR_EXT_IGNORE) continue;
       if (y >= V) return 1;
       const float *row = m->logits + i * V;
       double mx = -1e30; uint32_t best = 0u;
+      int row_ok = 1;
       for (size_t v = 0; v < V; ++v) {
         double lv = (double)row[v];
-        if (!isfinite(lv)) { nf++; break; }
+        if (!isfinite(lv)) { nf++; row_ok = 0; break; }
         if (lv > mx) { mx = lv; best = (uint32_t)v; }
       }
+      if (!row_ok) continue;
       double se = 0.0;
       for (size_t v = 0; v < V; ++v) se += exp((double)row[v] - mx);
       double ce = (mx + log(se)) - (double)row[y];
-      if (!isfinite(ce)) nf++; else loss_sum += ce;
+      if (!isfinite(ce)) { nf++; continue; }
+      loss_sum += ce;
       if (best == y) hits++;
       tok_cnt++;
     }
   }
   out->tokens = tok_cnt; out->nonfinite = nf;
-  out->ce = (tok_cnt > 0u) ? (loss_sum / (double)tok_cnt) : 0.0;
-  out->accuracy = (tok_cnt > 0u) ? ((double)hits / (double)tok_cnt) : 0.0;
+  if (nf > 0u || tok_cnt == 0u) {
+    out->ce = NAN;
+    out->accuracy = 0.0;
+  } else {
+    out->ce = loss_sum / (double)tok_cnt;
+    out->accuracy = (double)hits / (double)tok_cnt;
+  }
   out->eval_ms = now_ms() - t0;
-  return (nf > 0u) ? 3 : 0;
+  return (nf > 0u || tok_cnt == 0u) ? 3 : 0;
 }
 
 /* ==================== Deterministic Embedding Scatter ==================== */

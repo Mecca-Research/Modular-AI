@@ -239,6 +239,15 @@ int main(void) {
       printf("  [NF] Deploy fail-closed on NaN weights:           rc=%d nf=%llu isnan=%d -> %s\n",
              rc_nf, (unsigned long long)ev_nf.nonfinite, isnan(ev_nf.ce), nf_ok ? "PASS" : "FAIL");
       if (!nf_ok) fails++;
+      /* Also verify training-model evaluator bcir_ext_evaluate fails closed on NaN weights */
+      float *ew = bcir_ext_weights_ptr(em);
+      for (size_t i = 0; i < ti.rows * ti.cols; ++i) ew[ti.offset + i] = NAN;
+      bcir_ext_eval_result ext_nf;
+      int rc_enf = bcir_ext_evaluate(em, tok, tgt, 1, sp.time, &ext_nf);
+      int enf_ok = (rc_enf == 3 && ext_nf.nonfinite > 0u && isnan(ext_nf.ce));
+      printf("  [NF] Ext eval fail-closed on NaN weights:         rc=%d nf=%llu isnan=%d -> %s\n",
+             rc_enf, (unsigned long long)ext_nf.nonfinite, isnan(ext_nf.ce), enf_ok ? "PASS" : "FAIL");
+      if (!enf_ok) fails++;
       free(bad_w); bcir_deploy_destroy(dm); bcir_ext_destroy(em);
     }
 

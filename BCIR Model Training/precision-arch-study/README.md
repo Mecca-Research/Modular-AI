@@ -16,7 +16,7 @@ make
 make verify | tee results/gate0_verify_output.txt
 ```
 
-Gate 0 (`src/test_gate0_all.c`) verifies 20 numerical, AD, memory-accounting, and policy invariants before any training run:
+Gate 0 (`src/test_gate0_all.c`) verifies 21 numerical, AD, memory-accounting, and policy invariants before any training run:
 
 1. `VDPBF16PS` portable C11 vs `AVX512_BF16` hardware bit-exact parity (`bit_mismatches=0`)
 2. `Arch-1 DeltaNet` chunkwise WY (`FP64`) vs exact token-by-token recurrence (`max_abs=0.000e+00`)
@@ -28,7 +28,7 @@ Gate 0 (`src/test_gate0_all.c`) verifies 20 numerical, AD, memory-accounting, an
 8. All 5 `TRAIN-OPT-7` optimizer-state compression contracts (`16.00` down to `8.05 B/param`)
 9. Streaming `BF16`-grad workspace accounting (`[MEM]`): no hidden full-model FP32 gradient buffer; single-tensor `grad_tile` (`6.0 MiB` at 50M) explicitly included in `scratch_bytes` and `total_bytes`
 10. Deployment resident-precision accounting (`[STAT]`): `nonlin_bytes`, `kv_cache_bytes_at_*`, and `rec_state_bytes` reflect actual evaluated `FP32` non-linear/KV and `FP64` DeltaNet buffers, with hypothetical `FP16`/`FP32` compressed projections reported in separate `projected_fp16_*` / `projected_fp32_*` fields
-11. Fail-closed nonfinite deployment evaluation (`[NF]`): nonfinite steps/logits/CE return `rc=3`, `ce=NaN`, and cannot pass precision gates
+11. Fail-closed nonfinite evaluation (`[NF]`): both `bcir_deploy_evaluate` and `bcir_ext_evaluate` return `rc=3` and `ce=NaN` on nonfinite steps/logits/CE, preventing failed checkpoints from being selected or passing precision gates
 12. Frozen dense Q8 attention during LittleBit KD-QAT (`[FRZ]`): `freeze_dense_projs=1` keeps Q8-quantized Attention projections bit-identical throughout `COMP-1` QAT (`exp3 --part c` and `exp5 --part wide512`)
 13. Matched-thread kernel benchmark dispatch (`[BENCH]`): all `bcir_littlebit_bench.c` kernels run at the exact requested thread count via `bcir_tensor_pool_run` and report actual runtime `weight_bytes`/`realized_bpw` separately from `ideal_deploy_weight_bytes`/`ideal_deploy_bpw`
 
