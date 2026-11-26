@@ -68,10 +68,10 @@
     {
       "label": "w128_LM_Q8_PTQ",
       "mode": 0,
-      "target_bpw": 8.25,
-      "realized_body_bpw": 32.0,
-      "realized_total_bpw": 30.9598,
-      "deploy_kib": 1986.75,
+      "target_bpw": 8.5,
+      "realized_body_bpw": 8.5,
+      "realized_total_bpw": 8.9876,
+      "deploy_kib": 576.75,
       "ranks_layer0": [
         [
           0,
@@ -128,7 +128,8 @@
         "acc": 0.37781,
         "tokens": 16384
       },
-      "qat_telemetry": {}
+      "qat_telemetry": {},
+      "dense_deploy_format": "bcirq8_g32"
     },
     {
       "label": "w128_LM_OneBit",
@@ -601,7 +602,7 @@
     },
     {
       "variant": "BCIR_Q8_PTQ",
-      "realized_body_bpw": 32.0,
+      "realized_body_bpw": 8.5,
       "ptq": {
         "ce": 0.0,
         "acc": 1.0,
@@ -835,7 +836,7 @@
     },
     {
       "variant": "BCIR_Q8_PTQ",
-      "realized_body_bpw": 32.0,
+      "realized_body_bpw": 8.5,
       "ptq": {
         "ce": 3.03581,
         "acc": 0.2344,

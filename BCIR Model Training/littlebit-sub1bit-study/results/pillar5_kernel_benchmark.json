@@ -15,15 +15,19 @@
           "gflops_equiv": 12.04,
           "max_abs_err": 0.0,
           "weight_bytes": 131072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 131072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 8.09,
           "min_us": 8.02,
           "gflops_equiv": 8.1,
           "max_abs_err": 0.0,
-          "weight_bytes": 65536,
-          "realized_bpw": 16.0
+          "weight_bytes": 131072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 65536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 1.84,
@@ -31,15 +35,19 @@
           "gflops_equiv": 35.6,
           "max_abs_err": 4.470348358154297e-08,
           "weight_bytes": 65536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 65536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 2.31,
           "min_us": 2.29,
           "gflops_equiv": 28.38,
           "max_abs_err": 0.0,
-          "weight_bytes": 33792,
-          "realized_bpw": 8.25
+          "weight_bytes": 36864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 34816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 1.61,
@@ -47,31 +55,39 @@
           "gflops_equiv": 40.78,
           "max_abs_err": 0.0,
           "weight_bytes": 24576,
-          "realized_bpw": 6.0
+          "realized_bpw": 6.0,
+          "ideal_deploy_weight_bytes": 24576,
+          "ideal_deploy_bpw": 6.0
         },
         "lb_portable_bitpack": {
           "median_us": 5.13,
           "min_us": 5.09,
           "gflops_equiv": 12.77,
           "max_abs_err": 0.0,
-          "weight_bytes": 2336,
-          "realized_bpw": 0.5703
+          "weight_bytes": 7488,
+          "realized_bpw": 1.8281,
+          "ideal_deploy_weight_bytes": 2336,
+          "ideal_deploy_bpw": 0.5703
         },
         "lb_avx512_signxor": {
           "median_us": 2.92,
           "min_us": 2.88,
           "gflops_equiv": 22.45,
           "max_abs_err": 3.725290298461914e-08,
-          "weight_bytes": 2336,
-          "realized_bpw": 0.5703
+          "weight_bytes": 7488,
+          "realized_bpw": 1.8281,
+          "ideal_deploy_weight_bytes": 2336,
+          "ideal_deploy_bpw": 0.5703
         },
         "lb_avx512_lut4": {
           "median_us": 0.51,
           "min_us": 0.51,
           "gflops_equiv": 128.5,
           "max_abs_err": 3.4924596548080444e-08,
-          "weight_bytes": 2336,
-          "realized_bpw": 0.5703
+          "weight_bytes": 5184,
+          "realized_bpw": 1.2656,
+          "ideal_deploy_weight_bytes": 2336,
+          "ideal_deploy_bpw": 0.5703
         }
       },
       "speedups_lut4": {
@@ -97,15 +113,19 @@
           "gflops_equiv": 12.94,
           "max_abs_err": 0.0,
           "weight_bytes": 393216,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 393216,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 26.79,
           "min_us": 26.76,
           "gflops_equiv": 7.34,
           "max_abs_err": 0.0,
-          "weight_bytes": 196608,
-          "realized_bpw": 16.0
+          "weight_bytes": 393216,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 196608,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 5.49,
@@ -113,15 +133,19 @@
           "gflops_equiv": 35.81,
           "max_abs_err": 1.043081283569336e-07,
           "weight_bytes": 196608,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 196608,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 6.51,
           "min_us": 6.48,
           "gflops_equiv": 30.21,
           "max_abs_err": 0.0,
-          "weight_bytes": 101376,
-          "realized_bpw": 8.25
+          "weight_bytes": 110592,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 104448,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 7.09,
@@ -129,31 +153,39 @@
           "gflops_equiv": 27.73,
           "max_abs_err": 0.0,
           "weight_bytes": 118272,
-          "realized_bpw": 9.625
+          "realized_bpw": 9.625,
+          "ideal_deploy_weight_bytes": 118272,
+          "ideal_deploy_bpw": 9.625
         },
         "lb_portable_bitpack": {
           "median_us": 21.27,
           "min_us": 21.21,
           "gflops_equiv": 9.24,
           "max_abs_err": 0.0,
-          "weight_bytes": 6596,
-          "realized_bpw": 0.5368
+          "weight_bytes": 15000,
+          "realized_bpw": 1.2207,
+          "ideal_deploy_weight_bytes": 6596,
+          "ideal_deploy_bpw": 0.5368
         },
         "lb_avx512_signxor": {
           "median_us": 13.98,
           "min_us": 13.94,
           "gflops_equiv": 14.06,
           "max_abs_err": 4.470348358154297e-08,
-          "weight_bytes": 6596,
-          "realized_bpw": 0.5368
+          "weight_bytes": 15000,
+          "realized_bpw": 1.2207,
+          "ideal_deploy_weight_bytes": 6596,
+          "ideal_deploy_bpw": 0.5368
         },
         "lb_avx512_lut4": {
           "median_us": 1.01,
           "min_us": 1.01,
           "gflops_equiv": 194.47,
           "max_abs_err": 7.450580596923828e-08,
-          "weight_bytes": 6596,
-          "realized_bpw": 0.5368
+          "weight_bytes": 15016,
+          "realized_bpw": 1.222,
+          "ideal_deploy_weight_bytes": 6596,
+          "ideal_deploy_bpw": 0.5368
         }
       },
       "speedups_lut4": {
@@ -179,15 +211,19 @@
           "gflops_equiv": 13.99,
           "max_abs_err": 0.0,
           "weight_bytes": 1048576,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 1048576,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 70.06,
           "min_us": 67.12,
           "gflops_equiv": 7.48,
           "max_abs_err": 0.0,
-          "weight_bytes": 524288,
-          "realized_bpw": 16.0
+          "weight_bytes": 1048576,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 524288,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 13.21,
@@ -195,15 +231,19 @@
           "gflops_equiv": 39.69,
           "max_abs_err": 1.7881393432617188e-07,
           "weight_bytes": 524288,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 524288,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 14.47,
           "min_us": 14.42,
           "gflops_equiv": 36.24,
           "max_abs_err": 0.0,
-          "weight_bytes": 270336,
-          "realized_bpw": 8.25
+          "weight_bytes": 294912,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 278528,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 21.72,
@@ -211,31 +251,39 @@
           "gflops_equiv": 24.14,
           "max_abs_err": 0.0,
           "weight_bytes": 434176,
-          "realized_bpw": 13.25
+          "realized_bpw": 13.25,
+          "ideal_deploy_weight_bytes": 434176,
+          "ideal_deploy_bpw": 13.25
         },
         "lb_portable_bitpack": {
           "median_us": 73.82,
           "min_us": 67.97,
           "gflops_equiv": 7.1,
           "max_abs_err": 1.4901161193847656e-07,
-          "weight_bytes": 17876,
-          "realized_bpw": 0.5455
+          "weight_bytes": 23592,
+          "realized_bpw": 0.72,
+          "ideal_deploy_weight_bytes": 17876,
+          "ideal_deploy_bpw": 0.5455
         },
         "lb_avx512_signxor": {
           "median_us": 31.91,
           "min_us": 31.78,
           "gflops_equiv": 16.43,
           "max_abs_err": 7.683411240577698e-08,
-          "weight_bytes": 17876,
-          "realized_bpw": 0.5455
+          "weight_bytes": 23592,
+          "realized_bpw": 0.72,
+          "ideal_deploy_weight_bytes": 17876,
+          "ideal_deploy_bpw": 0.5455
         },
         "lb_avx512_lut4": {
           "median_us": 2.52,
           "min_us": 2.51,
           "gflops_equiv": 207.8,
           "max_abs_err": 8.195638656616211e-08,
-          "weight_bytes": 17876,
-          "realized_bpw": 0.5455
+          "weight_bytes": 39336,
+          "realized_bpw": 1.2004,
+          "ideal_deploy_weight_bytes": 17876,
+          "ideal_deploy_bpw": 0.5455
         }
       },
       "speedups_lut4": {
@@ -261,15 +309,19 @@
           "gflops_equiv": 10.3,
           "max_abs_err": 0.0,
           "weight_bytes": 3145728,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 232.48,
           "min_us": 227.0,
           "gflops_equiv": 6.77,
           "max_abs_err": 0.0,
-          "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 41.99,
@@ -277,15 +329,19 @@
           "gflops_equiv": 37.46,
           "max_abs_err": 1.4901161193847656e-07,
           "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 43.65,
           "min_us": 43.52,
           "gflops_equiv": 36.03,
           "max_abs_err": 0.0,
-          "weight_bytes": 811008,
-          "realized_bpw": 8.25
+          "weight_bytes": 884736,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 835584,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 46.16,
@@ -293,31 +349,39 @@
           "gflops_equiv": 34.07,
           "max_abs_err": 0.0,
           "weight_bytes": 1441792,
-          "realized_bpw": 14.6667
+          "realized_bpw": 14.6667,
+          "ideal_deploy_weight_bytes": 1441792,
+          "ideal_deploy_bpw": 14.6667
         },
         "lb_portable_bitpack": {
           "median_us": 225.55,
           "min_us": 223.68,
           "gflops_equiv": 6.97,
           "max_abs_err": 1.043081283569336e-07,
-          "weight_bytes": 53600,
-          "realized_bpw": 0.5452
+          "weight_bytes": 77504,
+          "realized_bpw": 0.7884,
+          "ideal_deploy_weight_bytes": 53600,
+          "ideal_deploy_bpw": 0.5452
         },
         "lb_avx512_signxor": {
           "median_us": 68.62,
           "min_us": 67.12,
           "gflops_equiv": 22.92,
           "max_abs_err": 1.6391277313232422e-07,
-          "weight_bytes": 53600,
-          "realized_bpw": 0.5452
+          "weight_bytes": 77504,
+          "realized_bpw": 0.7884,
+          "ideal_deploy_weight_bytes": 53600,
+          "ideal_deploy_bpw": 0.5452
         },
         "lb_avx512_lut4": {
           "median_us": 5.95,
           "min_us": 5.91,
           "gflops_equiv": 264.17,
           "max_abs_err": 1.6391277313232422e-07,
-          "weight_bytes": 53600,
-          "realized_bpw": 0.5452
+          "weight_bytes": 109248,
+          "realized_bpw": 1.1113,
+          "ideal_deploy_weight_bytes": 53600,
+          "ideal_deploy_bpw": 0.5452
         }
       },
       "speedups_lut4": {
@@ -343,15 +407,19 @@
           "gflops_equiv": 10.3,
           "max_abs_err": 0.0,
           "weight_bytes": 3145728,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 229.83,
           "min_us": 226.57,
           "gflops_equiv": 6.84,
           "max_abs_err": 0.0,
-          "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 41.73,
@@ -359,15 +427,19 @@
           "gflops_equiv": 37.7,
           "max_abs_err": 2.5331974029541016e-07,
           "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 43.29,
           "min_us": 43.16,
           "gflops_equiv": 36.33,
           "max_abs_err": 0.0,
-          "weight_bytes": 811008,
-          "realized_bpw": 8.25
+          "weight_bytes": 884736,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 835584,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 24.51,
@@ -375,31 +447,39 @@
           "gflops_equiv": 64.16,
           "max_abs_err": 0.0,
           "weight_bytes": 671744,
-          "realized_bpw": 6.8333
+          "realized_bpw": 6.8333,
+          "ideal_deploy_weight_bytes": 671744,
+          "ideal_deploy_bpw": 6.8333
         },
         "lb_portable_bitpack": {
           "median_us": 105.04,
           "min_us": 104.53,
           "gflops_equiv": 14.97,
           "max_abs_err": 1.7881393432617188e-07,
-          "weight_bytes": 29348,
-          "realized_bpw": 0.2985
+          "weight_bytes": 46536,
+          "realized_bpw": 0.4734,
+          "ideal_deploy_weight_bytes": 29348,
+          "ideal_deploy_bpw": 0.2985
         },
         "lb_avx512_signxor": {
           "median_us": 72.35,
           "min_us": 72.03,
           "gflops_equiv": 21.74,
           "max_abs_err": 1.7881393432617188e-07,
-          "weight_bytes": 29348,
-          "realized_bpw": 0.2985
+          "weight_bytes": 46536,
+          "realized_bpw": 0.4734,
+          "ideal_deploy_weight_bytes": 29348,
+          "ideal_deploy_bpw": 0.2985
         },
         "lb_avx512_lut4": {
           "median_us": 3.75,
           "min_us": 3.7,
           "gflops_equiv": 419.65,
           "max_abs_err": 1.7881393432617188e-07,
-          "weight_bytes": 29348,
-          "realized_bpw": 0.2985
+          "weight_bytes": 62792,
+          "realized_bpw": 0.6388,
+          "ideal_deploy_weight_bytes": 29348,
+          "ideal_deploy_bpw": 0.2985
         }
       },
       "speedups_lut4": {
@@ -425,15 +505,19 @@
           "gflops_equiv": 114.52,
           "max_abs_err": 0.0,
           "weight_bytes": 3145728,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 1503.91,
           "min_us": 1492.94,
           "gflops_equiv": 66.93,
           "max_abs_err": 0.0,
-          "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 2638.78,
@@ -441,15 +525,19 @@
           "gflops_equiv": 38.15,
           "max_abs_err": 2.980232238769531e-07,
           "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 2814.96,
           "min_us": 2797.33,
           "gflops_equiv": 35.76,
           "max_abs_err": 0.0,
-          "weight_bytes": 811008,
-          "realized_bpw": 8.25
+          "weight_bytes": 884736,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 835584,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 381.5,
@@ -457,23 +545,29 @@
           "gflops_equiv": 263.87,
           "max_abs_err": 0.0,
           "weight_bytes": 1441792,
-          "realized_bpw": 14.6667
+          "realized_bpw": 14.6667,
+          "ideal_deploy_weight_bytes": 1441792,
+          "ideal_deploy_bpw": 14.6667
         },
         "lb_avx512_signxor": {
           "median_us": 4447.97,
           "min_us": 4309.26,
           "gflops_equiv": 22.63,
           "max_abs_err": 2.4586915969848633e-07,
-          "weight_bytes": 53600,
-          "realized_bpw": 0.5452
+          "weight_bytes": 77504,
+          "realized_bpw": 0.7884,
+          "ideal_deploy_weight_bytes": 53600,
+          "ideal_deploy_bpw": 0.5452
         },
         "lb_avx512_lut4": {
           "median_us": 429.87,
           "min_us": 381.51,
           "gflops_equiv": 234.17,
           "max_abs_err": 5.811452865600586e-07,
-          "weight_bytes": 53600,
-          "realized_bpw": 0.5452
+          "weight_bytes": 109248,
+          "realized_bpw": 1.1113,
+          "ideal_deploy_weight_bytes": 53600,
+          "ideal_deploy_bpw": 0.5452
         }
       },
       "speedups_lut4": {
@@ -499,15 +593,19 @@
           "gflops_equiv": 116.48,
           "max_abs_err": 0.0,
           "weight_bytes": 3145728,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 1502.62,
           "min_us": 1467.02,
           "gflops_equiv": 66.99,
           "max_abs_err": 0.0,
-          "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "weight_bytes": 3145728,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 2669.54,
@@ -515,15 +613,19 @@
           "gflops_equiv": 37.71,
           "max_abs_err": 2.682209014892578e-07,
           "weight_bytes": 1572864,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 1572864,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 3154.97,
           "min_us": 3146.61,
           "gflops_equiv": 31.91,
           "max_abs_err": 0.0,
-          "weight_bytes": 811008,
-          "realized_bpw": 8.25
+          "weight_bytes": 884736,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 835584,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 188.97,
@@ -531,23 +633,29 @@
           "gflops_equiv": 532.71,
           "max_abs_err": 0.0,
           "weight_bytes": 671744,
-          "realized_bpw": 6.8333
+          "realized_bpw": 6.8333,
+          "ideal_deploy_weight_bytes": 671744,
+          "ideal_deploy_bpw": 6.8333
         },
         "lb_avx512_signxor": {
           "median_us": 4699.46,
           "min_us": 4638.52,
           "gflops_equiv": 21.42,
           "max_abs_err": 2.384185791015625e-07,
-          "weight_bytes": 29348,
-          "realized_bpw": 0.2985
+          "weight_bytes": 46536,
+          "realized_bpw": 0.4734,
+          "ideal_deploy_weight_bytes": 29348,
+          "ideal_deploy_bpw": 0.2985
         },
         "lb_avx512_lut4": {
           "median_us": 270.99,
           "min_us": 244.68,
           "gflops_equiv": 371.47,
           "max_abs_err": 2.980232238769531e-07,
-          "weight_bytes": 29348,
-          "realized_bpw": 0.2985
+          "weight_bytes": 62792,
+          "realized_bpw": 0.6388,
+          "ideal_deploy_weight_bytes": 29348,
+          "ideal_deploy_bpw": 0.2985
         }
       },
       "speedups_lut4": {
@@ -573,15 +681,19 @@
           "gflops_equiv": 9.23,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 537.46,
           "min_us": 518.09,
           "gflops_equiv": 5.85,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 105.03,
@@ -589,15 +701,19 @@
           "gflops_equiv": 29.95,
           "max_abs_err": 2.980232238769531e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 85.92,
           "min_us": 85.49,
           "gflops_equiv": 36.61,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 156.82,
@@ -605,31 +721,39 @@
           "gflops_equiv": 20.06,
           "max_abs_err": 0.0,
           "weight_bytes": 3063808,
-          "realized_bpw": 15.5833
+          "realized_bpw": 15.5833,
+          "ideal_deploy_weight_bytes": 3063808,
+          "ideal_deploy_bpw": 15.5833
         },
         "lb_portable_bitpack": {
           "median_us": 492.73,
           "min_us": 480.44,
           "gflops_equiv": 6.38,
           "max_abs_err": 1.2665987014770508e-07,
-          "weight_bytes": 107552,
-          "realized_bpw": 0.547
+          "weight_bytes": 148032,
+          "realized_bpw": 0.7529,
+          "ideal_deploy_weight_bytes": 107552,
+          "ideal_deploy_bpw": 0.547
         },
         "lb_avx512_signxor": {
           "median_us": 55.11,
           "min_us": 54.95,
           "gflops_equiv": 57.09,
           "max_abs_err": 2.682209014892578e-07,
-          "weight_bytes": 107552,
-          "realized_bpw": 0.547
+          "weight_bytes": 148032,
+          "realized_bpw": 0.7529,
+          "ideal_deploy_weight_bytes": 107552,
+          "ideal_deploy_bpw": 0.547
         },
         "lb_avx512_lut4": {
           "median_us": 11.41,
           "min_us": 11.31,
           "gflops_equiv": 275.77,
           "max_abs_err": 2.384185791015625e-07,
-          "weight_bytes": 107552,
-          "realized_bpw": 0.547
+          "weight_bytes": 218176,
+          "realized_bpw": 1.1097,
+          "ideal_deploy_weight_bytes": 107552,
+          "ideal_deploy_bpw": 0.547
         }
       },
       "speedups_lut4": {
@@ -655,15 +779,19 @@
           "gflops_equiv": 9.17,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 532.28,
           "min_us": 516.67,
           "gflops_equiv": 5.91,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 104.89,
@@ -671,15 +799,19 @@
           "gflops_equiv": 29.99,
           "max_abs_err": 2.384185791015625e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 86.15,
           "min_us": 85.46,
           "gflops_equiv": 36.51,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 58.94,
@@ -687,31 +819,39 @@
           "gflops_equiv": 53.37,
           "max_abs_err": 0.0,
           "weight_bytes": 1509376,
-          "realized_bpw": 7.6771
+          "realized_bpw": 7.6771,
+          "ideal_deploy_weight_bytes": 1509376,
+          "ideal_deploy_bpw": 7.6771
         },
         "lb_portable_bitpack": {
           "median_us": 239.9,
           "min_us": 231.55,
           "gflops_equiv": 13.11,
           "max_abs_err": 2.980232238769531e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_signxor": {
           "median_us": 28.27,
           "min_us": 28.23,
           "gflops_equiv": 111.27,
           "max_abs_err": 2.5331974029541016e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_lut4": {
           "median_us": 7.14,
           "min_us": 7.12,
           "gflops_equiv": 440.64,
           "max_abs_err": 2.5331974029541016e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 123416,
+          "realized_bpw": 0.6277,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         }
       },
       "speedups_lut4": {
@@ -737,15 +877,19 @@
           "gflops_equiv": 8.97,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 529.72,
           "min_us": 517.24,
           "gflops_equiv": 5.94,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 105.0,
@@ -753,15 +897,19 @@
           "gflops_equiv": 29.96,
           "max_abs_err": 2.384185791015625e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 87.14,
           "min_us": 85.25,
           "gflops_equiv": 36.1,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 28.92,
@@ -769,31 +917,39 @@
           "gflops_equiv": 108.78,
           "max_abs_err": 0.0,
           "weight_bytes": 563200,
-          "realized_bpw": 2.8646
+          "realized_bpw": 2.8646,
+          "ideal_deploy_weight_bytes": 563200,
+          "ideal_deploy_bpw": 2.8646
         },
         "lb_portable_bitpack": {
           "median_us": 91.58,
           "min_us": 91.12,
           "gflops_equiv": 34.35,
           "max_abs_err": 1.564621925354004e-07,
-          "weight_bytes": 28964,
-          "realized_bpw": 0.1473
+          "weight_bytes": 60296,
+          "realized_bpw": 0.3067,
+          "ideal_deploy_weight_bytes": 28964,
+          "ideal_deploy_bpw": 0.1473
         },
         "lb_avx512_signxor": {
           "median_us": 59.14,
           "min_us": 58.94,
           "gflops_equiv": 53.19,
           "max_abs_err": 1.4901161193847656e-07,
-          "weight_bytes": 28964,
-          "realized_bpw": 0.1473
+          "weight_bytes": 60296,
+          "realized_bpw": 0.3067,
+          "ideal_deploy_weight_bytes": 28964,
+          "ideal_deploy_bpw": 0.1473
         },
         "lb_avx512_lut4": {
           "median_us": 4.25,
           "min_us": 4.2,
           "gflops_equiv": 740.87,
           "max_abs_err": 1.4901161193847656e-07,
-          "weight_bytes": 28964,
-          "realized_bpw": 0.1473
+          "weight_bytes": 63688,
+          "realized_bpw": 0.3239,
+          "ideal_deploy_weight_bytes": 28964,
+          "ideal_deploy_bpw": 0.1473
         }
       },
       "speedups_lut4": {
@@ -819,15 +975,19 @@
           "gflops_equiv": 72.28,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 1074.22,
           "min_us": 1066.96,
           "gflops_equiv": 46.85,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 1826.6,
@@ -835,15 +995,19 @@
           "gflops_equiv": 27.55,
           "max_abs_err": 4.172325134277344e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 1411.52,
           "min_us": 1387.42,
           "gflops_equiv": 35.66,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 157.75,
@@ -851,31 +1015,39 @@
           "gflops_equiv": 319.06,
           "max_abs_err": 0.0,
           "weight_bytes": 1509376,
-          "realized_bpw": 7.6771
+          "realized_bpw": 7.6771,
+          "ideal_deploy_weight_bytes": 1509376,
+          "ideal_deploy_bpw": 7.6771
         },
         "lb_portable_bitpack": {
           "median_us": 3872.07,
           "min_us": 3852.93,
           "gflops_equiv": 13.0,
           "max_abs_err": 3.2782554626464844e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_signxor": {
           "median_us": 521.86,
           "min_us": 494.91,
           "gflops_equiv": 96.45,
           "max_abs_err": 2.980232238769531e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_lut4": {
           "median_us": 136.56,
           "min_us": 128.59,
           "gflops_equiv": 368.57,
           "max_abs_err": 3.5762786865234375e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 123416,
+          "realized_bpw": 0.6277,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         }
       },
       "speedups_lut4": {
@@ -901,15 +1073,19 @@
           "gflops_equiv": 115.46,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 3056.86,
           "min_us": 3048.1,
           "gflops_equiv": 65.86,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 7195.72,
@@ -917,15 +1093,19 @@
           "gflops_equiv": 27.98,
           "max_abs_err": 5.960464477539062e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 6289.41,
           "min_us": 6263.09,
           "gflops_equiv": 32.01,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 433.63,
@@ -933,23 +1113,29 @@
           "gflops_equiv": 464.28,
           "max_abs_err": 0.0,
           "weight_bytes": 1509376,
-          "realized_bpw": 7.6771
+          "realized_bpw": 7.6771,
+          "ideal_deploy_weight_bytes": 1509376,
+          "ideal_deploy_bpw": 7.6771
         },
         "lb_avx512_signxor": {
           "median_us": 1860.55,
           "min_us": 1832.66,
           "gflops_equiv": 108.21,
           "max_abs_err": 4.172325134277344e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_lut4": {
           "median_us": 516.01,
           "min_us": 467.58,
           "gflops_equiv": 390.16,
           "max_abs_err": 4.470348358154297e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 123416,
+          "realized_bpw": 0.6277,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         }
       },
       "speedups_lut4": {
@@ -975,15 +1161,19 @@
           "gflops_equiv": 131.02,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 11045.22,
           "min_us": 10907.04,
           "gflops_equiv": 72.91,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 27609.94,
@@ -991,15 +1181,19 @@
           "gflops_equiv": 29.17,
           "max_abs_err": 5.960464477539062e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 22838.71,
           "min_us": 22752.34,
           "gflops_equiv": 35.26,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 1606.33,
@@ -1007,23 +1201,29 @@
           "gflops_equiv": 501.33,
           "max_abs_err": 0.0,
           "weight_bytes": 1509376,
-          "realized_bpw": 7.6771
+          "realized_bpw": 7.6771,
+          "ideal_deploy_weight_bytes": 1509376,
+          "ideal_deploy_bpw": 7.6771
         },
         "lb_avx512_signxor": {
           "median_us": 7692.31,
           "min_us": 7565.55,
           "gflops_equiv": 104.69,
           "max_abs_err": 3.948807716369629e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 101464,
+          "realized_bpw": 0.5161,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         },
         "lb_avx512_lut4": {
           "median_us": 2197.72,
           "min_us": 2160.07,
           "gflops_equiv": 366.43,
           "max_abs_err": 4.76837158203125e-07,
-          "weight_bytes": 58700,
-          "realized_bpw": 0.2986
+          "weight_bytes": 123416,
+          "realized_bpw": 0.6277,
+          "ideal_deploy_weight_bytes": 58700,
+          "ideal_deploy_bpw": 0.2986
         }
       },
       "speedups_lut4": {
@@ -1049,15 +1249,19 @@
           "gflops_equiv": 3.71,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 49508.37,
           "min_us": 48926.79,
           "gflops_equiv": 1.82,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 11207.41,
@@ -1065,15 +1269,19 @@
           "gflops_equiv": 8.05,
           "max_abs_err": 7.152557373046875e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 6062.87,
           "min_us": 4229.84,
           "gflops_equiv": 14.87,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 28986.83,
@@ -1081,23 +1289,29 @@
           "gflops_equiv": 3.11,
           "max_abs_err": 0.0,
           "weight_bytes": 178227200,
-          "realized_bpw": 31.6225
+          "realized_bpw": 31.6225,
+          "ideal_deploy_weight_bytes": 178227200,
+          "ideal_deploy_bpw": 31.6225
         },
         "lb_avx512_signxor": {
           "median_us": 1637.78,
           "min_us": 1618.82,
           "gflops_equiv": 55.06,
           "max_abs_err": 1.3113021850585938e-06,
-          "weight_bytes": 5635916,
-          "realized_bpw": 1.0
+          "weight_bytes": 5870104,
+          "realized_bpw": 1.0415,
+          "ideal_deploy_weight_bytes": 5635916,
+          "ideal_deploy_bpw": 1.0
         },
         "lb_avx512_lut4": {
           "median_us": 1019.12,
           "min_us": 1010.21,
           "gflops_equiv": 88.49,
           "max_abs_err": 2.0265579223632812e-06,
-          "weight_bytes": 5635916,
-          "realized_bpw": 1.0
+          "weight_bytes": 11303960,
+          "realized_bpw": 2.0056,
+          "ideal_deploy_weight_bytes": 5635916,
+          "ideal_deploy_bpw": 1.0
         }
       },
       "speedups_lut4": {
@@ -1123,15 +1337,19 @@
           "gflops_equiv": 3.79,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 48703.12,
           "min_us": 47404.61,
           "gflops_equiv": 1.85,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 12085.94,
@@ -1139,15 +1357,19 @@
           "gflops_equiv": 7.46,
           "max_abs_err": 7.748603820800781e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 4498.55,
           "min_us": 3298.67,
           "gflops_equiv": 20.05,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 13677.66,
@@ -1155,23 +1377,29 @@
           "gflops_equiv": 6.59,
           "max_abs_err": 0.0,
           "weight_bytes": 97148928,
-          "realized_bpw": 17.2369
+          "realized_bpw": 17.2369,
+          "ideal_deploy_weight_bytes": 97148928,
+          "ideal_deploy_bpw": 17.2369
         },
         "lb_avx512_signxor": {
           "median_us": 1788.23,
           "min_us": 1686.55,
           "gflops_equiv": 50.43,
           "max_abs_err": 1.9073486328125e-06,
-          "weight_bytes": 3099536,
-          "realized_bpw": 0.5499
+          "weight_bytes": 3240224,
+          "realized_bpw": 0.5749,
+          "ideal_deploy_weight_bytes": 3099536,
+          "ideal_deploy_bpw": 0.5499
         },
         "lb_avx512_lut4": {
           "median_us": 559.48,
           "min_us": 539.82,
           "gflops_equiv": 161.18,
           "max_abs_err": 2.384185791015625e-06,
-          "weight_bytes": 3099536,
-          "realized_bpw": 0.5499
+          "weight_bytes": 6223648,
+          "realized_bpw": 1.1042,
+          "ideal_deploy_weight_bytes": 3099536,
+          "ideal_deploy_bpw": 0.5499
         }
       },
       "speedups_lut4": {
@@ -1197,15 +1425,19 @@
           "gflops_equiv": 3.86,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 35498.11,
           "min_us": 35098.87,
           "gflops_equiv": 2.54,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 10893.73,
@@ -1213,15 +1445,19 @@
           "gflops_equiv": 8.28,
           "max_abs_err": 8.046627044677734e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 4802.93,
           "min_us": 3502.73,
           "gflops_equiv": 18.78,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 5487.33,
@@ -1229,23 +1465,29 @@
           "gflops_equiv": 16.43,
           "max_abs_err": 0.0,
           "weight_bytes": 52078592,
-          "realized_bpw": 9.2402
+          "realized_bpw": 9.2402,
+          "ideal_deploy_weight_bytes": 52078592,
+          "ideal_deploy_bpw": 9.2402
         },
         "lb_avx512_signxor": {
           "median_us": 1452.06,
           "min_us": 1411.04,
           "gflops_equiv": 62.1,
           "max_abs_err": 1.2218952178955078e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 1798520,
+          "realized_bpw": 0.3191,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         },
         "lb_avx512_lut4": {
           "median_us": 238.35,
           "min_us": 229.52,
           "gflops_equiv": 378.34,
           "max_abs_err": 1.7285346984863281e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 3386744,
+          "realized_bpw": 0.6009,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         }
       },
       "speedups_lut4": {
@@ -1271,15 +1513,19 @@
           "gflops_equiv": 4.77,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 35765.18,
           "min_us": 34952.58,
           "gflops_equiv": 2.52,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 9076.89,
@@ -1287,15 +1533,19 @@
           "gflops_equiv": 9.93,
           "max_abs_err": 7.152557373046875e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 4590.63,
           "min_us": 4356.94,
           "gflops_equiv": 19.64,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 969.33,
@@ -1303,23 +1553,29 @@
           "gflops_equiv": 93.03,
           "max_abs_err": 0.0,
           "weight_bytes": 16070656,
-          "realized_bpw": 2.8514
+          "realized_bpw": 2.8514,
+          "ideal_deploy_weight_bytes": 16070656,
+          "ideal_deploy_bpw": 2.8514
         },
         "lb_avx512_signxor": {
           "median_us": 256.1,
           "min_us": 245.94,
           "gflops_equiv": 352.12,
           "max_abs_err": 9.5367431640625e-07,
-          "weight_bytes": 563156,
-          "realized_bpw": 0.0999
+          "weight_bytes": 786472,
+          "realized_bpw": 0.1395,
+          "ideal_deploy_weight_bytes": 563156,
+          "ideal_deploy_bpw": 0.0999
         },
         "lb_avx512_lut4": {
           "median_us": 64.53,
           "min_us": 63.66,
           "gflops_equiv": 1397.41,
           "max_abs_err": 1.3709068298339844e-06,
-          "weight_bytes": 563156,
-          "realized_bpw": 0.0999
+          "weight_bytes": 1165352,
+          "realized_bpw": 0.2068,
+          "ideal_deploy_weight_bytes": 563156,
+          "ideal_deploy_bpw": 0.0999
         }
       },
       "speedups_lut4": {
@@ -1345,15 +1601,19 @@
           "gflops_equiv": 49.19,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 48366.86,
           "min_us": 48136.61,
           "gflops_equiv": 29.83,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 146061.51,
@@ -1361,15 +1621,19 @@
           "gflops_equiv": 9.88,
           "max_abs_err": 8.940696716308594e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 75896.57,
           "min_us": 69645.85,
           "gflops_equiv": 19.01,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 9271.9,
@@ -1377,23 +1641,29 @@
           "gflops_equiv": 155.61,
           "max_abs_err": 0.0,
           "weight_bytes": 52078592,
-          "realized_bpw": 9.2402
+          "realized_bpw": 9.2402,
+          "ideal_deploy_weight_bytes": 52078592,
+          "ideal_deploy_bpw": 9.2402
         },
         "lb_avx512_signxor": {
           "median_us": 23069.82,
           "min_us": 22913.2,
           "gflops_equiv": 62.54,
           "max_abs_err": 2.384185791015625e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 1798520,
+          "realized_bpw": 0.3191,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         },
         "lb_avx512_lut4": {
           "median_us": 3050.63,
           "min_us": 3018.18,
           "gflops_equiv": 472.96,
           "max_abs_err": 2.7418136596679688e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 3386744,
+          "realized_bpw": 0.6009,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         }
       },
       "speedups_lut4": {
@@ -1419,15 +1689,19 @@
           "gflops_equiv": 81.79,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 124659.06,
           "min_us": 121050.92,
           "gflops_equiv": 46.3,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 614424.1,
@@ -1435,15 +1709,19 @@
           "gflops_equiv": 9.39,
           "max_abs_err": 1.0728836059570312e-06,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 243199.7,
           "min_us": 233199.97,
           "gflops_equiv": 23.73,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 19810.78,
@@ -1451,23 +1729,29 @@
           "gflops_equiv": 291.32,
           "max_abs_err": 0.0,
           "weight_bytes": 52078592,
-          "realized_bpw": 9.2402
+          "realized_bpw": 9.2402,
+          "ideal_deploy_weight_bytes": 52078592,
+          "ideal_deploy_bpw": 9.2402
         },
         "lb_avx512_signxor": {
           "median_us": 94871.22,
           "min_us": 92920.65,
           "gflops_equiv": 60.83,
           "max_abs_err": 1.6689300537109375e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 1798520,
+          "realized_bpw": 0.3191,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         },
         "lb_avx512_lut4": {
           "median_us": 12161.74,
           "min_us": 11727.25,
           "gflops_equiv": 474.55,
           "max_abs_err": 2.205371856689453e-06,
-          "weight_bytes": 1689596,
-          "realized_bpw": 0.2998
+          "weight_bytes": 3386744,
+          "realized_bpw": 0.6009,
+          "ideal_deploy_weight_bytes": 1689596,
+          "ideal_deploy_bpw": 0.2998
         }
       },
       "speedups_lut4": {
@@ -1493,7 +1777,9 @@
           "gflops_equiv": 3.46,
           "max_abs_err": 0.0,
           "weight_bytes": 939524096,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 939524096,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_fp16_stream": {
           "median_us": 67568.43,
@@ -1501,15 +1787,19 @@
           "gflops_equiv": 6.95,
           "max_abs_err": 1.1920928955078125e-06,
           "weight_bytes": 469762048,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 469762048,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 38391.8,
           "min_us": 38284.9,
           "gflops_equiv": 12.24,
           "max_abs_err": 0.0,
-          "weight_bytes": 242221056,
-          "realized_bpw": 8.25
+          "weight_bytes": 264241152,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 249561088,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 82517.7,
@@ -1517,23 +1807,29 @@
           "gflops_equiv": 5.69,
           "max_abs_err": 0.0,
           "weight_bytes": 511672320,
-          "realized_bpw": 17.4275
+          "realized_bpw": 17.4275,
+          "ideal_deploy_weight_bytes": 511672320,
+          "ideal_deploy_bpw": 17.4275
         },
         "lb_avx512_signxor": {
           "median_us": 4819.18,
           "min_us": 4816.92,
           "gflops_equiv": 97.48,
           "max_abs_err": 1.9073486328125e-06,
-          "weight_bytes": 16144156,
-          "realized_bpw": 0.5499
+          "weight_bytes": 16707128,
+          "realized_bpw": 0.569,
+          "ideal_deploy_weight_bytes": 16144156,
+          "ideal_deploy_bpw": 0.5499
         },
         "lb_avx512_lut4": {
           "median_us": 6353.7,
           "min_us": 3969.1,
           "gflops_equiv": 73.94,
           "max_abs_err": 2.384185791015625e-06,
-          "weight_bytes": 16144156,
-          "realized_bpw": 0.5499
+          "weight_bytes": 32339512,
+          "realized_bpw": 1.1015,
+          "ideal_deploy_weight_bytes": 16144156,
+          "ideal_deploy_bpw": 0.5499
         }
       },
       "speedups_lut4": {
@@ -1559,7 +1855,9 @@
           "gflops_equiv": 3.46,
           "max_abs_err": 0.0,
           "weight_bytes": 939524096,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 939524096,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_fp16_stream": {
           "median_us": 67555.34,
@@ -1567,15 +1865,19 @@
           "gflops_equiv": 6.95,
           "max_abs_err": 1.1920928955078125e-06,
           "weight_bytes": 469762048,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 469762048,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 38634.64,
           "min_us": 38243.67,
           "gflops_equiv": 12.16,
           "max_abs_err": 0.0,
-          "weight_bytes": 242221056,
-          "realized_bpw": 8.25
+          "weight_bytes": 264241152,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 249561088,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 43438.14,
@@ -1583,23 +1885,29 @@
           "gflops_equiv": 10.81,
           "max_abs_err": 0.0,
           "weight_bytes": 276922368,
-          "realized_bpw": 9.4319
+          "realized_bpw": 9.4319,
+          "ideal_deploy_weight_bytes": 276922368,
+          "ideal_deploy_bpw": 9.4319
         },
         "lb_avx512_signxor": {
           "median_us": 5409.99,
           "min_us": 5390.73,
           "gflops_equiv": 86.83,
           "max_abs_err": 1.4901161193847656e-06,
-          "weight_bytes": 8805036,
-          "realized_bpw": 0.2999
+          "weight_bytes": 9106776,
+          "realized_bpw": 0.3102,
+          "ideal_deploy_weight_bytes": 8805036,
+          "ideal_deploy_bpw": 0.2999
         },
         "lb_avx512_lut4": {
           "median_us": 2778.78,
           "min_us": 1482.38,
           "gflops_equiv": 169.05,
           "max_abs_err": 1.9073486328125e-06,
-          "weight_bytes": 8805036,
-          "realized_bpw": 0.2999
+          "weight_bytes": 17644888,
+          "realized_bpw": 0.601,
+          "ideal_deploy_weight_bytes": 8805036,
+          "ideal_deploy_bpw": 0.2999
         }
       },
       "speedups_lut4": {
@@ -1625,7 +1933,9 @@
           "gflops_equiv": 3.56,
           "max_abs_err": 0.0,
           "weight_bytes": 939524096,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 939524096,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_fp16_stream": {
           "median_us": 66621.21,
@@ -1633,15 +1943,19 @@
           "gflops_equiv": 7.05,
           "max_abs_err": 9.5367431640625e-07,
           "weight_bytes": 469762048,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 469762048,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 38577.83,
           "min_us": 38157.76,
           "gflops_equiv": 12.18,
           "max_abs_err": 0.0,
-          "weight_bytes": 242221056,
-          "realized_bpw": 8.25
+          "weight_bytes": 264241152,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 249561088,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 11397.18,
@@ -1649,23 +1963,29 @@
           "gflops_equiv": 41.22,
           "max_abs_err": 0.0,
           "weight_bytes": 89063424,
-          "realized_bpw": 3.0335
+          "realized_bpw": 3.0335,
+          "ideal_deploy_weight_bytes": 89063424,
+          "ideal_deploy_bpw": 3.0335
         },
         "lb_avx512_signxor": {
           "median_us": 3296.23,
           "min_us": 3253.62,
           "gflops_equiv": 142.52,
           "max_abs_err": 1.1026859283447266e-06,
-          "weight_bytes": 2931896,
-          "realized_bpw": 0.0999
+          "weight_bytes": 3209584,
+          "realized_bpw": 0.1093,
+          "ideal_deploy_weight_bytes": 2931896,
+          "ideal_deploy_bpw": 0.0999
         },
         "lb_avx512_lut4": {
           "median_us": 510.2,
           "min_us": 497.39,
           "gflops_equiv": 920.73,
           "max_abs_err": 1.6689300537109375e-06,
-          "weight_bytes": 2931896,
-          "realized_bpw": 0.0999
+          "weight_bytes": 5900656,
+          "realized_bpw": 0.201,
+          "ideal_deploy_weight_bytes": 2931896,
+          "ideal_deploy_bpw": 0.0999
         }
       },
       "speedups_lut4": {
@@ -1691,15 +2011,19 @@
           "gflops_equiv": 9.16,
           "max_abs_err": 0.0,
           "weight_bytes": 6291456,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 6291456,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 512.98,
           "min_us": 498.91,
           "gflops_equiv": 6.13,
           "max_abs_err": 0.0,
-          "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "weight_bytes": 6291456,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 100.57,
@@ -1707,15 +2031,19 @@
           "gflops_equiv": 31.28,
           "max_abs_err": 2.5331974029541016e-07,
           "weight_bytes": 3145728,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 3145728,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 85.66,
           "min_us": 85.23,
           "gflops_equiv": 36.73,
           "max_abs_err": 0.0,
-          "weight_bytes": 1622016,
-          "realized_bpw": 8.25
+          "weight_bytes": 1769472,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 1671168,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 78.93,
@@ -1723,31 +2051,39 @@
           "gflops_equiv": 39.86,
           "max_abs_err": 0.0,
           "weight_bytes": 1689600,
-          "realized_bpw": 8.5938
+          "realized_bpw": 8.5938,
+          "ideal_deploy_weight_bytes": 1689600,
+          "ideal_deploy_bpw": 8.5938
         },
         "lb_portable_bitpack": {
           "median_us": 268.32,
           "min_us": 267.24,
           "gflops_equiv": 11.72,
           "max_abs_err": 1.043081283569336e-07,
-          "weight_bytes": 58732,
-          "realized_bpw": 0.2987
+          "weight_bytes": 75416,
+          "realized_bpw": 0.3836,
+          "ideal_deploy_weight_bytes": 58732,
+          "ideal_deploy_bpw": 0.2987
         },
         "lb_avx512_signxor": {
           "median_us": 49.81,
           "min_us": 48.27,
           "gflops_equiv": 63.16,
           "max_abs_err": 1.1920928955078125e-07,
-          "weight_bytes": 58732,
-          "realized_bpw": 0.2987
+          "weight_bytes": 75416,
+          "realized_bpw": 0.3836,
+          "ideal_deploy_weight_bytes": 58732,
+          "ideal_deploy_bpw": 0.2987
         },
         "lb_avx512_lut4": {
           "median_us": 6.28,
           "min_us": 6.25,
           "gflops_equiv": 500.83,
           "max_abs_err": 1.1920928955078125e-07,
-          "weight_bytes": 58732,
-          "realized_bpw": 0.2987
+          "weight_bytes": 120408,
+          "realized_bpw": 0.6124,
+          "ideal_deploy_weight_bytes": 58732,
+          "ideal_deploy_bpw": 0.2987
         }
       },
       "speedups_lut4": {
@@ -1773,15 +2109,19 @@
           "gflops_equiv": 3.79,
           "max_abs_err": 0.0,
           "weight_bytes": 180355072,
-          "realized_bpw": 32.0
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 180355072,
+          "ideal_deploy_bpw": 32.0
         },
         "dense_bf16_bcir": {
           "median_us": 46904.92,
           "min_us": 45672.34,
           "gflops_equiv": 1.92,
           "max_abs_err": 0.0,
-          "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "weight_bytes": 180355072,
+          "realized_bpw": 32.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_fp16_stream": {
           "median_us": 11888.08,
@@ -1789,15 +2129,19 @@
           "gflops_equiv": 7.59,
           "max_abs_err": 7.152557373046875e-07,
           "weight_bytes": 90177536,
-          "realized_bpw": 16.0
+          "realized_bpw": 16.0,
+          "ideal_deploy_weight_bytes": 90177536,
+          "ideal_deploy_bpw": 16.0
         },
         "dense_q8_bcir": {
           "median_us": 4957.88,
           "min_us": 3544.83,
           "gflops_equiv": 18.19,
           "max_abs_err": 0.0,
-          "weight_bytes": 46497792,
-          "realized_bpw": 8.25
+          "weight_bytes": 50724864,
+          "realized_bpw": 9.0,
+          "ideal_deploy_weight_bytes": 47906816,
+          "ideal_deploy_bpw": 8.5
         },
         "lowrank_fp32": {
           "median_us": 3417.79,
@@ -1805,23 +2149,29 @@
           "gflops_equiv": 26.38,
           "max_abs_err": 0.0,
           "weight_bytes": 53045248,
-          "realized_bpw": 9.4117
+          "realized_bpw": 9.4117,
+          "ideal_deploy_weight_bytes": 53045248,
+          "ideal_deploy_bpw": 9.4117
         },
         "lb_avx512_signxor": {
           "median_us": 1076.29,
           "min_us": 1072.34,
           "gflops_equiv": 83.79,
           "max_abs_err": 1.3709068298339844e-06,
-          "weight_bytes": 1689628,
-          "realized_bpw": 0.2998
+          "weight_bytes": 1746360,
+          "realized_bpw": 0.3099,
+          "ideal_deploy_weight_bytes": 1689628,
+          "ideal_deploy_bpw": 0.2998
         },
         "lb_avx512_lut4": {
           "median_us": 282.89,
           "min_us": 272.91,
           "gflops_equiv": 318.77,
           "max_abs_err": 1.8477439880371094e-06,
-          "weight_bytes": 1689628,
-          "realized_bpw": 0.2998
+          "weight_bytes": 3386808,
+          "realized_bpw": 0.6009,
+          "ideal_deploy_weight_bytes": 1689628,
+          "ideal_deploy_bpw": 0.2998
         }
       },
       "speedups_lut4": {

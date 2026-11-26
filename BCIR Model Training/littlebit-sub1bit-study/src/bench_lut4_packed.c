@@ -2,6 +2,7 @@
  * for BCIR COMP-1 deployment spec: halves weight DRAM/L3 traffic vs 1-byte/nibble
  * while keeping vpermps 64-binary-MAC/2-instruction compute rate!
  */
+#if defined(__AVX512F__)
 #include <immintrin.h>
 #include <math.h>
 #include <stdint.h>
@@ -113,9 +114,13 @@ static void bench_one(const char *label, uint32_t din, uint32_t dout, uint32_t r
     if (it >= 0) ts[it] = dt;
   }
   qsort(ts, (size_t)iters, sizeof(double), cmp_d);
-  size_t exact_bytes = 2 * ((size_t)(din / 4u) * (r32 / 2u) + (size_t)(r_pad4 / 4u) * (do32 / 2u) + 2u * (din + dout + r));
-  printf("%-20s %4ux%-5u r=%4u | packed1b_LUT4=%7.1fus (min=%7.1fus) | exact_bytes=%8zu (bpw=%.3f) chk=%.2f\n",
-         label, din, dout, r, ts[iters / 2], ts[0], exact_bytes, 8.0 * exact_bytes / ((double)din * dout), Ytot[0]);
+  size_t actual_bytes = 2u * ((size_t)(din / 4u) * (r32 / 2u) + (size_t)(r_pad4 / 4u) * (do32 / 2u) +
+                              sizeof(float) * ((size_t)din + dout + r));
+  size_t ideal_bytes = (2u * ((size_t)r * (din + dout) + 16u * ((size_t)din + dout + r)) + 7u) / 8u;
+  printf("%-20s %4ux%-5u r=%4u | packed1b_LUT4=%7.1fus (min=%7.1fus) | actual_bytes=%8zu (bpw=%.3f) ideal_bytes=%8zu (bpw=%.3f) chk=%.2f\n",
+         label, din, dout, r, ts[iters / 2], ts[0],
+         actual_bytes, 8.0 * actual_bytes / ((double)din * dout),
+         ideal_bytes, 8.0 * ideal_bytes / ((double)din * dout), Ytot[0]);
   free(ts); free(X); free(xg); free(Z); free(Y); free(Ytot); free(luts);
   for (int p = 0; p < 2; p++) { free(g[p]); free(l[p]); free(h[p]); free(Vp[p]); free(Up[p]); }
 }
@@ -130,3 +135,10 @@ int main(void) {
   bench_one("llama2_70b_0.10",8192, 28672,  302,  9);
   return 0;
 }
+#else
+#include <stdio.h>
+int main(void) {
+  fprintf(stderr, "bench_lut4_packed requires an AVX-512F host.\n");
+  return 1;
+}
+#endif

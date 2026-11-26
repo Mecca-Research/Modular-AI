@@ -82,6 +82,7 @@ class LBAdamWCfg(ct.Structure):
         ('beta1', ct.c_double), ('beta2', ct.c_double),
         ('epsilon', ct.c_double), ('weight_decay', ct.c_double),
         ('grad_clip', ct.c_double), ('freeze_non_linear', ct.c_int),
+        ('freeze_dense_projs', ct.c_int),
     ]
 
 
@@ -100,6 +101,7 @@ class LBBenchResult(ct.Structure):
         ('median_us', ct.c_double), ('min_us', ct.c_double),
         ('gflops_equiv', ct.c_double), ('max_abs_err', ct.c_double),
         ('weight_bytes', ct.c_size_t), ('realized_bpw', ct.c_double),
+        ('ideal_deploy_weight_bytes', ct.c_size_t), ('ideal_deploy_bpw', ct.c_double),
     ]
 
 
@@ -177,9 +179,14 @@ def solve_lowrank_fp16_rank(dout, din, target_bpw, min_rank=1):
     return max(min_rank, min(min(din, dout), r))
 
 
-def realized_proj_bits(pcfg: LBProjCfg, scale_bits=16):
+def realized_proj_bits(pcfg: LBProjCfg, scale_bits=16, q8_dense=False, q8_group_size=32):
     din, dout = int(pcfg.din), int(pcfg.dout)
     if pcfg.mode == LB_MODE_DENSE_FP32:
+        if q8_dense:
+            # Exact BCIRQ8 v1 container storage: 1B int8 code per weight + 2B int16 exponent per group (8.50 bpw at g=32)
+            n = din * dout
+            ng = (n + q8_group_size - 1) // q8_group_size
+            return 8 * (n + 2 * ng)
         return 32 * din * dout
     if pcfg.mode == LB_MODE_LOWRANK_FP16:
         return 16 * int(pcfg.r1) * (din + dout)
@@ -310,6 +317,7 @@ class LBModel:
         assert self.ptr, 'lb_model_create failed'
         self.param_count = int(self.lib.lb_model_param_count(self.ptr))
         self.total_bytes = int(self.lib.lb_model_total_bytes(self.ptr))
+        self.q8_dense = False
 
     def close(self):
         if self.ptr:
@@ -338,32 +346,52 @@ class LBModel:
 
     def load_from_dense_bcir(self, dense_weights, init_mode='dual_svid', use_itq=False,
                              itq_iters=50, seed=42, naive_svd=False, q8_dense=False):
-        """Load non-linear weights verbatim and initialize all linear projections from a BCIR FP32 model."""
+        """Load non-linear weights verbatim and initialize all linear projections from a BCIR FP32 model.
+        When init_mode='random', initialize ALL parameters (embeddings, tied/untied head, RMSNorms,
+        and projections) independently from scratch so no trained teacher weights leak into the run.
+        """
+        self.q8_dense = bool(q8_dense)
         layout = parameter_layout(self.spec)
         by_name = {}
         for name, shape, off, cnt in layout:
             by_name[name] = dense_weights[off:off + cnt].reshape(shape).copy()
 
-        self.set_tensor(by_name['model.embed_tokens.weight'], 0)
-        self.set_tensor(by_name['model.norm.weight'], 1)
-        if not self.spec.tied_embeddings:
-            self.set_tensor(by_name['lm_head.weight'], 2)
-
         rng = np.random.default_rng(seed)
+        if init_mode == 'random':
+            emb_shape = by_name['model.embed_tokens.weight'].shape
+            self.set_tensor(rng.normal(0.0, 0.02, emb_shape).astype(np.float32), 0)
+            self.set_tensor(np.ones(by_name['model.norm.weight'].shape, dtype=np.float32), 1)
+            if not self.spec.tied_embeddings:
+                self.set_tensor(rng.normal(0.0, 0.02, by_name['lm_head.weight'].shape).astype(np.float32), 2)
+        else:
+            self.set_tensor(by_name['model.embed_tokens.weight'], 0)
+            self.set_tensor(by_name['model.norm.weight'], 1)
+            if not self.spec.tied_embeddings:
+                self.set_tensor(by_name['lm_head.weight'], 2)
+
         proj_map = [
             'self_attn.q_proj.weight', 'self_attn.k_proj.weight', 'self_attn.v_proj.weight',
             'self_attn.o_proj.weight', 'mlp.gate_proj.weight', 'mlp.up_proj.weight', 'mlp.down_proj.weight',
         ]
         recon_stats = []
         for l in range(self.spec.n_layers):
-            self.set_tensor(by_name[f'model.layers.{l}.input_layernorm.weight'], 10, l)
-            self.set_tensor(by_name[f'model.layers.{l}.post_attention_layernorm.weight'], 11, l)
+            if init_mode == 'random':
+                self.set_tensor(np.ones(by_name[f'model.layers.{l}.input_layernorm.weight'].shape, dtype=np.float32), 10, l)
+                self.set_tensor(np.ones(by_name[f'model.layers.{l}.post_attention_layernorm.weight'].shape, dtype=np.float32), 11, l)
+            else:
+                self.set_tensor(by_name[f'model.layers.{l}.input_layernorm.weight'], 10, l)
+                self.set_tensor(by_name[f'model.layers.{l}.post_attention_layernorm.weight'], 11, l)
             for p_idx, pname in enumerate(proj_map):
                 W = by_name[f'model.layers.{l}.{pname}']
                 pcfg = self.proj_cfgs[l * 7 + p_idx]
                 mode = int(pcfg.mode)
                 if mode == LB_MODE_DENSE_FP32:
-                    Wuse = bcir_q8_quantize_matrix(W) if q8_dense else W
+                    if init_mode == 'random':
+                        Wuse = rng.normal(0.0, 0.02, W.shape).astype(np.float32)
+                        if q8_dense:
+                            Wuse = bcir_q8_quantize_matrix(Wuse)
+                    else:
+                        Wuse = bcir_q8_quantize_matrix(W) if q8_dense else W
                     self.set_tensor(Wuse, 20, l, p_idx, 0)
                     err = float(np.linalg.norm(W - Wuse) / max(np.linalg.norm(W), 1e-12))
                 elif mode == LB_MODE_LOWRANK_FP16:
@@ -478,14 +506,18 @@ class LBModel:
             for e in evs
         ]
 
-    def realized_bpw_summary(self, scale_bits=16):
-        body_bits = sum(realized_proj_bits(p, scale_bits) for p in self.proj_cfgs)
+    def realized_bpw_summary(self, scale_bits=16, q8_dense=None):
+        use_q8 = self.q8_dense if q8_dense is None else bool(q8_dense)
+        body_bits = sum(realized_proj_bits(p, scale_bits, q8_dense=use_q8) for p in self.proj_cfgs)
         body_params = sum(int(p.din) * int(p.dout) for p in self.proj_cfgs)
         emb_params = (1 if self.spec.tied_embeddings else 2) * self.spec.vocab_size * self.spec.d_model
         norm_params = (2 * self.spec.n_layers + 1) * self.spec.d_model
         nonlin_params = emb_params + norm_params
         tot_params = body_params + nonlin_params
+        has_dense = any(int(p.mode) == LB_MODE_DENSE_FP32 for p in self.proj_cfgs)
+        dense_fmt = ('bcirq8_g32' if use_q8 else 'fp32') if has_dense else 'none'
         return {
+            'dense_deploy_format': dense_fmt,
             'body_bpw': body_bits / body_params,
             'total_bpw_fp16_emb': (body_bits + 16 * nonlin_params) / tot_params,
             'body_bytes': body_bits / 8.0,
@@ -613,7 +645,7 @@ def verify_all():
         st.close()
     teacher.close()
 
-    # Gate 3: Bit-packed AVX-512 kernel numerical accuracy check
+    # Gate 3: Bit-packed AVX-512 kernel numerical accuracy check (requires AVX-512F+DQ host)
     lib = get_lib()
     for kname, kkind in [
         ('PORTABLE_BITPACK', LB_KERN_PORTABLE_BITPACK),
@@ -626,10 +658,48 @@ def verify_all():
     ]:
         res = LBBenchResult()
         rc = lib.lb_bench_linear_kernel(kkind, 4, 256, 384, 32, 1, 1, 5, ct.byref(res))
+        if rc == -1:
+            print(f'[GATE 3 Kernel {kname:24s}] SKIP (no AVX-512F+DQ on host)')
+            continue
         assert rc == 0
-        print(f'[GATE 3 Kernel {kname:18s}] max_abs_err={res.max_abs_err:.2e} median_us={res.median_us:.1f} bpw={res.realized_bpw:.3f}')
+        print(
+            f'[GATE 3 Kernel {kname:24s}] max_abs_err={res.max_abs_err:.2e} median_us={res.median_us:.1f} '
+            f'act_bpw={res.realized_bpw:.3f} ideal_bpw={res.ideal_deploy_bpw:.3f}'
+        )
         assert res.max_abs_err < 1e-4, (kname, res.max_abs_err)
-    print('ALL 3 VERIFICATION GATES PASSED!')
+        assert res.weight_bytes >= res.ideal_deploy_weight_bytes
+
+    # Gate 4: Random from-scratch init, Q8 BPW summary, and frozen dense Q8 projections
+    m_rand = LBModel(spec, B, T, make_proj_cfgs(spec, LB_MODE_LITTLEBIT_RES, explicit_r=4), objective=LB_OBJ_CE, threads=2)
+    m_rand.load_from_dense_bcir(w_dense, init_mode='random', seed=99)
+    off_e, cnt_e = m_rand.span(0)
+    off_n, cnt_n = m_rand.span(1)
+    assert not np.allclose(m_rand.weights_view()[off_e:off_e + cnt_e], w_dense[:cnt_e]), 'random init leaked teacher embed!'
+    assert np.allclose(m_rand.weights_view()[off_n:off_n + cnt_n], 1.0), 'random init did not reset final RMSNorm to 1.0!'
+    m_rand.close()
+
+    m_q8 = LBModel(spec, B, T, make_proj_cfgs(spec, LB_MODE_DENSE_FP32), objective=LB_OBJ_CE, threads=2)
+    m_q8.load_from_dense_bcir(w_dense, q8_dense=True)
+    bpw_q8 = m_q8.realized_bpw_summary()
+    assert bpw_q8['dense_deploy_format'] == 'bcirq8_g32' and abs(bpw_q8['body_bpw'] - 8.5) < 1e-9, bpw_q8
+    m_q8.close()
+
+    pc_c1 = make_proj_cfgs(spec, LB_MODE_LITTLEBIT_RES, explicit_r=4, only_mlp=True)
+    m_c1 = LBModel(spec, B, T, pc_c1, surrogate=LB_SURR_CLIPPED_STE, smooth_k=1.0, objective=LB_OBJ_CE, threads=2)
+    m_c1.load_from_dense_bcir(w_dense, use_itq=False, q8_dense=True)
+    bpw_c1 = m_c1.realized_bpw_summary()
+    assert bpw_c1['dense_deploy_format'] == 'bcirq8_g32' and bpw_c1['body_bpw'] < 8.5, bpw_c1
+    off_q, cnt_q = m_c1.span(20, 0, 0, 0)
+    off_g, cnt_g = m_c1.span(20, 0, 4, 0)
+    q_before = m_c1.weights_view()[off_q:off_q + cnt_q].copy()
+    g_before = m_c1.weights_view()[off_g:off_g + cnt_g].copy()
+    opt_frz = LBAdamWCfg(1e-2, 1e-2, 0.9, 0.95, 1e-8, 0.0, 1.0, 1, 1)
+    m_c1.train_loop(None, np.stack([x, x]), np.stack([y, y]), np.array([1e-2, 1e-2]), opt_frz)
+    assert np.array_equal(m_c1.weights_view()[off_q:off_q + cnt_q], q_before), 'Q8 attention drifted!'
+    assert not np.array_equal(m_c1.weights_view()[off_g:off_g + cnt_g], g_before), 'LittleBit MLP failed to update!'
+    m_c1.close()
+    print(f'[GATE 4 Contracts] random_init=PASS q8_bpw={bpw_q8["body_bpw"]:.2f} comp1_bpw={bpw_c1["body_bpw"]:.3f} freeze_dense_projs=PASS')
+    print('ALL VERIFICATION GATES PASSED!')
 
 
 if __name__ == '__main__':

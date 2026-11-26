@@ -1285,6 +1285,8 @@
       "label": "A4_FromScratch_Random_CE",
       "mode": 4,
       "target_bpw": 0.3,
+      "dense_deploy_format": "none",
+      "q8_dense_frozen": false,
       "realized_body_bpw": 0.3011,
       "realized_total_bpw": 0.6466,
       "deploy_kib": 486.59,
@@ -1318,42 +1320,42 @@
           41
         ]
       ],
-      "init_seconds": 0.07,
-      "init_mean_frob_err": 1.3364,
+      "init_seconds": 0.11,
+      "init_mean_frob_err": 1.3363,
       "ptq_val": {
-        "ce": 5.9779,
-        "ppl": 394.6123,
-        "acc": 0.00195,
+        "ce": 5.6995,
+        "ppl": 298.717,
+        "acc": 0.00342,
         "tokens": 4096
       },
       "ptq_test": {
-        "ce": 5.89931,
-        "ppl": 364.7859,
-        "acc": 0.00287,
+        "ce": 5.70633,
+        "ppl": 300.7645,
+        "acc": 0.00354,
         "tokens": 16384
       },
       "qat_val": {
-        "ce": 2.52615,
-        "ppl": 12.5053,
-        "acc": 0.31055,
+        "ce": 2.7347,
+        "ppl": 15.4051,
+        "acc": 0.28198,
         "tokens": 4096
       },
       "qat_test": {
-        "ce": 2.55093,
-        "ppl": 12.819,
-        "acc": 0.29346,
+        "ce": 2.73591,
+        "ppl": 15.4238,
+        "acc": 0.26978,
         "tokens": 16384
       },
       "qat_telemetry": {
         "best_step": 120,
-        "median_step_ms": 94.55,
-        "mean_sign_flip_rate": 0.001507,
-        "early_sign_flip_rate": 0.00409,
-        "late_sign_flip_rate": 0.00029,
+        "median_step_ms": 159.17,
+        "mean_sign_flip_rate": 0.001546,
+        "early_sign_flip_rate": 0.004048,
+        "late_sign_flip_rate": 0.000317,
         "mean_active_grad_frac": 1.0,
         "final_kl": 0.0,
         "final_inter_mse": 0.0,
-        "mean_grad_norm": 2.4709
+        "mean_grad_norm": 2.1279
       }
     },
     {
@@ -2266,6 +2268,8 @@
       "label": "A7_BCIR_All_ITQ_STE_KL_kv2",
       "mode": 4,
       "target_bpw": 0.3,
+      "dense_deploy_format": "none",
+      "q8_dense_frozen": false,
       "realized_body_bpw": 0.3115,
       "realized_total_bpw": 0.6568,
       "deploy_kib": 494.27,
@@ -2299,51 +2303,53 @@
           41
         ]
       ],
-      "init_seconds": 3.57,
-      "init_mean_frob_err": 0.8024,
+      "init_seconds": 5.43,
+      "init_mean_frob_err": 0.8022,
       "ptq_val": {
-        "ce": 2.12784,
-        "ppl": 8.3967,
-        "acc": 0.38257,
+        "ce": 2.13082,
+        "ppl": 8.4217,
+        "acc": 0.37842,
         "tokens": 4096
       },
       "ptq_test": {
-        "ce": 2.14181,
-        "ppl": 8.5148,
-        "acc": 0.37988,
+        "ce": 2.13421,
+        "ppl": 8.4504,
+        "acc": 0.37726,
         "tokens": 16384
       },
       "qat_val": {
-        "ce": 1.96273,
-        "ppl": 7.1187,
-        "acc": 0.42725,
+        "ce": 1.96443,
+        "ppl": 7.1309,
+        "acc": 0.42969,
         "tokens": 4096
       },
       "qat_test": {
-        "ce": 1.99227,
-        "ppl": 7.3322,
-        "acc": 0.41815,
+        "ce": 1.9912,
+        "ppl": 7.3243,
+        "acc": 0.41888,
         "tokens": 16384
       },
       "qat_telemetry": {
         "best_step": 120,
-        "median_step_ms": 116.28,
-        "mean_sign_flip_rate": 0.000595,
-        "early_sign_flip_rate": 0.001372,
-        "late_sign_flip_rate": 0.000106,
+        "median_step_ms": 206.37,
+        "mean_sign_flip_rate": 0.000609,
+        "early_sign_flip_rate": 0.001391,
+        "late_sign_flip_rate": 0.000103,
         "mean_active_grad_frac": 1.0,
-        "final_kl": 0.0165,
+        "final_kl": 0.01646,
         "final_inter_mse": 0.0,
-        "mean_grad_norm": 0.2189
+        "mean_grad_norm": 0.2132
       }
     },
     {
       "label": "A7_COMP1_Q8Attn_ITQ_STE_KL_MLP030",
       "mode": 4,
       "target_bpw": 0.3,
-      "realized_body_bpw": 7.1902,
-      "realized_total_bpw": 7.3841,
-      "deploy_kib": 5556.96,
+      "dense_deploy_format": "bcirq8_g32",
+      "q8_dense_frozen": true,
+      "realized_body_bpw": 2.0815,
+      "realized_total_bpw": 2.3878,
+      "deploy_kib": 1796.96,
       "ranks_layer0": [
         [
           0,
@@ -2374,42 +2380,42 @@
           41
         ]
       ],
-      "init_seconds": 3.08,
-      "init_mean_frob_err": 0.352,
+      "init_seconds": 5.27,
+      "init_mean_frob_err": 0.3518,
       "ptq_val": {
-        "ce": 2.07974,
-        "ppl": 8.0024,
-        "acc": 0.3999,
+        "ce": 2.08169,
+        "ppl": 8.018,
+        "acc": 0.40112,
         "tokens": 4096
       },
       "ptq_test": {
-        "ce": 2.0999,
-        "ppl": 8.1654,
-        "acc": 0.39685,
+        "ce": 2.09826,
+        "ppl": 8.152,
+        "acc": 0.39594,
         "tokens": 16384
       },
       "qat_val": {
-        "ce": 1.95555,
-        "ppl": 7.0678,
-        "acc": 0.43066,
+        "ce": 1.94968,
+        "ppl": 7.0264,
+        "acc": 0.43262,
         "tokens": 4096
       },
       "qat_test": {
-        "ce": 1.9828,
-        "ppl": 7.2631,
-        "acc": 0.42365,
+        "ce": 1.97496,
+        "ppl": 7.2063,
+        "acc": 0.42676,
         "tokens": 16384
       },
       "qat_telemetry": {
-        "best_step": 100,
-        "median_step_ms": 114.41,
-        "mean_sign_flip_rate": 0.000628,
-        "early_sign_flip_rate": 0.001413,
+        "best_step": 120,
+        "median_step_ms": 201.67,
+        "mean_sign_flip_rate": 0.00067,
+        "early_sign_flip_rate": 0.001717,
         "late_sign_flip_rate": 0.000114,
         "mean_active_grad_frac": 1.0,
-        "final_kl": 0.00864,
+        "final_kl": 0.00436,
         "final_inter_mse": 0.0,
-        "mean_grad_norm": 0.1748
+        "mean_grad_norm": 0.0804
       }
     }
   ]

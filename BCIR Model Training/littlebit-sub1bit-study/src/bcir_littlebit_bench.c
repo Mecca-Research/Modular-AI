@@ -1,4 +1,5 @@
 #include "bcir_littlebit.h"
+#if defined(__AVX512F__) && defined(__AVX512DQ__)
 #include <immintrin.h>
 #include <math.h>
 #include <stdlib.h>
@@ -428,7 +429,7 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
   }
 
   double *times = (double *)malloc(iters * sizeof(double));
-  size_t wbytes = 0;
+  size_t wbytes = 0u, ideal_bytes = 0u;
   double max_err = 0.0;
 
   if (kernel_kind == LB_KERN_DENSE_FP32_BCIR || kernel_kind == LB_KERN_DENSE_BF16_BCIR) {
@@ -438,7 +439,8 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
     if (kernel_kind == LB_KERN_DENSE_BF16_BCIR) {
       ws_bytes = bcir_tensor_mm_bf16_workspace(N, dout, din);
       ws = aligned64(ws_bytes);
-      wbytes = (size_t)dout * din * 2;
+      wbytes = (size_t)dout * din * 4u; /* timed API reads FP32 W & converts to BF16 in ws */
+      ideal_bytes = (size_t)dout * din * 2u;
       /* warmup */
       bcir_tensor_mm_bf16_pool(pool, 0, 1, N, dout, din, 1.0f, X, W, 0.0f, Y, ws, ws_bytes);
       for (uint32_t it = 0; it < iters; it++) {
@@ -448,7 +450,8 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
       }
       free(ws);
     } else {
-      wbytes = (size_t)dout * din * 4;
+      wbytes = (size_t)dout * din * 4u;
+      ideal_bytes = wbytes;
       bcir_tensor_mm_kblock_pool(pool, 0, 1, N, dout, din, 1.0f, X, W, 0.0f, Y);
       for (uint32_t it = 0; it < iters; it++) {
         double t0 = now_us();
@@ -464,7 +467,8 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
     float *Z = (float *)aligned64((size_t)N * rtot * sizeof(float));
     for (size_t i = 0; i < (size_t)din * rtot; i++) V[i] = ((float)(xorshift32(&rng) & 1023u) / 512.0f - 1.0f) * 0.05f;
     for (size_t i = 0; i < (size_t)dout * rtot; i++) U[i] = ((float)(xorshift32(&rng) & 1023u) / 512.0f - 1.0f) * 0.05f;
-    wbytes = (size_t)rtot * (din + dout) * 4;
+    wbytes = (size_t)rtot * (din + dout) * 4u;
+    ideal_bytes = wbytes;
     bcir_tensor_mm_kblock_pool(pool, 0, 0, N, rtot, din, 1.0f, X, V, 0.0f, Z);
     bcir_tensor_mm_kblock_pool(pool, 0, 1, N, dout, rtot, 1.0f, Z, U, 0.0f, Y);
     for (uint32_t it = 0; it < iters; it++) {
@@ -481,7 +485,8 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
       _Float16 h = (_Float16)(((float)(xorshift32(&rng) & 1023u) / 512.0f - 1.0f) * 0.05f);
       memcpy(&W16[i], &h, 2); Wf[i] = (float)h;
     }
-    wbytes = (size_t)dout * din * 2;
+    wbytes = (size_t)dout * din * 2u;
+    ideal_bytes = wbytes;
     lb_task_ctx ctx; memset(&ctx, 0, sizeof(ctx));
     ctx.kind = kernel_kind; ctx.N = N; ctx.din = din; ctx.dout = dout; ctx.X = X; ctx.Y = Y; ctx.W16 = W16;
     run_lb_single_thread(&ctx, 0, N, NULL, NULL);
@@ -509,7 +514,9 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
         Wf[(size_t)j * din + c] = (float)q * scales[(size_t)j * ng + (c >> 5)];
       }
     }
-    wbytes = (size_t)dout * din + (size_t)dout * ng; /* 1B code + 1B exponent per 32 weights = 8.25 BPW */
+    /* Actual timed kernel reads 1B int8 codes + 4B FP32 per-group scales; BCIRQ8 container stores 2B int16 exp (8.50 BPW) */
+    wbytes = (size_t)dout * din + (size_t)dout * ng * sizeof(float);
+    ideal_bytes = (size_t)dout * din + (size_t)dout * ng * 2u;
     lb_task_ctx ctx; memset(&ctx, 0, sizeof(ctx));
     ctx.kind = kernel_kind; ctx.N = N; ctx.din = din; ctx.dout = dout; ctx.X = X; ctx.Y = Y; ctx.q8c = codes; ctx.q8s = scales;
     run_lb_single_thread(&ctx, 0, N, NULL, NULL);
@@ -529,6 +536,7 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
     uint32_t paths = residual ? 2 : 1;
     packed_binmat Vp[2], Up[2];
     float *gv[2], *lv[2], *hv[2];
+    size_t actual_mat_bytes = 0u;
     for (uint32_t p = 0; p < paths; p++) {
       Vp[p] = make_packed_binmat(r, din, &rng);     /* [r x din] so X @ V^T = [N x r] */
       Up[p] = make_packed_binmat(dout, r, &rng);    /* [dout x r] so Z @ U^T = [N x dout] */
@@ -538,10 +546,20 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
       for (uint32_t i = 0; i < din; i++) gv[p][i] = 0.25f + 0.05f * (float)(i & 7u);
       for (uint32_t i = 0; i < r; i++)   lv[p][i] = 0.05f / (float)(i + 1u);
       for (uint32_t i = 0; i < dout; i++) hv[p][i] = 0.25f + 0.05f * (float)(i & 7u);
+      if (kernel_kind == LB_KERN_AVX512_LUT4_PACKED1B || kernel_kind == LB_KERN_AVX512_LUT4_PACKED1B_MB4) {
+        actual_mat_bytes += (size_t)Vp[p].groups4 * Vp[p].bytes_per_g + (size_t)Up[p].groups4 * Up[p].bytes_per_g;
+      } else if (kernel_kind == LB_KERN_AVX512_LUT4) {
+        actual_mat_bytes += (size_t)Vp[p].groups4 * Vp[p].rows16 + (size_t)Up[p].groups4 * Up[p].rows16;
+      } else {
+        actual_mat_bytes += (size_t)Vp[p].rows * Vp[p].words_per_row * sizeof(uint64_t) +
+                            (size_t)Up[p].rows * Up[p].words_per_row * sizeof(uint64_t);
+      }
     }
-    /* Exact deployment storage bytes (1-bit packed U,V + FP16 h,g,l) */
+    /* Actual backend representation read by timed kernel (padded binary tables + FP32 g/l/h scales) */
+    wbytes = actual_mat_bytes + (size_t)paths * sizeof(float) * ((size_t)din + r + dout);
+    /* Idealized unpadded deployment storage bound (1-bit U,V + FP16 h,g,l) */
     size_t bits_total = (size_t)paths * ((size_t)r * (din + dout) + 16u * (din + dout + r));
-    wbytes = (bits_total + 7u) / 8u;
+    ideal_bytes = (bits_total + 7u) / 8u;
 
     float *xg = (float *)aligned64((size_t)N * din * 4);
     float *z  = (float *)aligned64((size_t)N * r * 4);
@@ -594,9 +612,25 @@ int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t d
   out->max_abs_err = max_err;
   out->weight_bytes = wbytes;
   out->realized_bpw = 8.0 * (double)wbytes / ((double)din * (double)dout);
+  out->ideal_deploy_weight_bytes = ideal_bytes;
+  out->ideal_deploy_bpw = 8.0 * (double)ideal_bytes / ((double)din * (double)dout);
 
   free(times); free(X); free(Y); free(Yref);
   if (pool) bcir_tensor_pool_stop(pool);
   free(pool_mem);
   return 0;
 }
+#else
+int lb_bench_linear_kernel(int kernel_kind, uint32_t N, uint32_t din, uint32_t dout,
+                           uint32_t r, int residual, uint32_t threads, uint32_t iters,
+                           lb_bench_result *out) {
+  (void)kernel_kind; (void)N; (void)din; (void)dout;
+  (void)r; (void)residual; (void)threads; (void)iters;
+  if (out) {
+    out->median_us = 0.0; out->min_us = 0.0; out->gflops_equiv = 0.0;
+    out->max_abs_err = 0.0; out->weight_bytes = 0u; out->realized_bpw = 0.0;
+    out->ideal_deploy_weight_bytes = 0u; out->ideal_deploy_bpw = 0.0;
+  }
+  return -1;
+}
+#endif

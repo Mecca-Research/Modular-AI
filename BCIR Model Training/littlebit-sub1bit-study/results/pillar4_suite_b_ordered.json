@@ -20,7 +20,7 @@
   },
   {
     "variant": "BCIR_Q8_PTQ",
-    "realized_body_bpw": 32.0,
+    "realized_body_bpw": 8.5,
     "ptq": {
       "ce": 1e-05,
       "acc": 1.0,

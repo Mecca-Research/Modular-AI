@@ -92,6 +92,8 @@ def run_kernel_suite():
                 'max_abs_err': float(res.max_abs_err),
                 'weight_bytes': int(res.weight_bytes),
                 'realized_bpw': round(res.realized_bpw, 4),
+                'ideal_deploy_weight_bytes': int(res.ideal_deploy_weight_bytes),
+                'ideal_deploy_bpw': round(res.ideal_deploy_bpw, 4),
             }
         fp32_us = row['kernels']['dense_fp32_bcir']['median_us']
         fp16_us = row['kernels']['dense_fp16_stream']['median_us']
@@ -125,7 +127,7 @@ def run_kernel_suite():
         toks = rng.integers(0, 256, size=(12, 4 * 64), dtype=np.uint32)
         tgts = rng.integers(0, 256, size=(12, 4 * 64), dtype=np.uint32)
         lrs = np.full(12, 1e-4, dtype=np.float64)
-        opt = LBAdamWCfg(1e-4, 0.0, 0.9, 0.95, 1e-8, 0.0, 1.0, 1)
+        opt = LBAdamWCfg(1e-4, 0.0, 0.9, 0.95, 1e-8, 0.0, 1.0, 1, 0)
         teacher = LBModel(spec, 4, 64, make_proj_cfgs(spec, LB_MODE_DENSE_FP32), objective=LB_OBJ_CE, threads=2)
         teacher.weights_view()[:] = rng.normal(0, 0.02, teacher.param_count).astype(np.float32)
 

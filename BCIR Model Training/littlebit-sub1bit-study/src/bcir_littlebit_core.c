@@ -60,6 +60,7 @@ struct lb_model {
   size_t total_params;
   uint8_t *param_is_scale; /* 1 for h,g,l scales, 0 otherwise */
   uint8_t *param_is_nonlin; /* 1 for embed, norms, lm_head */
+  uint8_t *param_is_dense_proj; /* 1 for LB_MODE_DENSE_FP32 projections */
   uint8_t *param_is_latent; /* 1 for binary-quantized U,V,W */
   int8_t *prev_signs;       /* sign tracking for flip-rate telemetry */
   size_t n_latent_params;
@@ -200,6 +201,7 @@ lb_model *lb_model_create(const lb_model_cfg *cfg, const lb_proj_cfg *projs) {
   m->m2      = (float *)xcalloc(cur, sizeof(float), ab);
   m->param_is_scale  = (uint8_t *)calloc(cur, 1);
   m->param_is_nonlin = (uint8_t *)calloc(cur, 1);
+  m->param_is_dense_proj = (uint8_t *)calloc(cur, 1);
   m->param_is_latent = (uint8_t *)calloc(cur, 1);
   m->prev_signs      = (int8_t  *)calloc(cur, 1);
 
@@ -212,7 +214,9 @@ lb_model *lb_model_create(const lb_model_cfg *cfg, const lb_proj_cfg *projs) {
     memset(m->param_is_nonlin + m->off_norm2[l], 1, cfg->width);
     for (uint32_t p = 0; p < LB_PROJ_COUNT; p++) {
       proj_spans *ps = &m->projs[l * LB_PROJ_COUNT + p];
-      if (ps->cfg.mode == LB_MODE_ONEBIT_FULL) {
+      if (ps->cfg.mode == LB_MODE_DENSE_FP32) {
+        memset(m->param_is_dense_proj + ps->off[0], 1, ps->cnt[0]);
+      } else if (ps->cfg.mode == LB_MODE_ONEBIT_FULL) {
         memset(m->param_is_latent + ps->off[0], 1, ps->cnt[0]); m->n_latent_params += ps->cnt[0];
         memset(m->param_is_scale  + ps->off[1], 1, ps->cnt[1]);
         memset(m->param_is_scale  + ps->off[2], 1, ps->cnt[2]);
@@ -314,7 +318,8 @@ void lb_model_destroy(lb_model *m) {
   if (m->pool) bcir_tensor_pool_stop(m->pool);
   free(m->pool_mem); free(m->attn_ws);
   free(m->projs); free(m->off_norm1); free(m->off_norm2);
-  free(m->param_is_scale); free(m->param_is_nonlin); free(m->param_is_latent); free(m->prev_signs);
+  free(m->param_is_scale); free(m->param_is_nonlin); free(m->param_is_dense_proj);
+  free(m->param_is_latent); free(m->prev_signs);
   free(m->weights); free(m->grads); free(m->m1); free(m->m2);
   free(m->xs); free(m->act_buf); free(m->caches); free(m->final_n); free(m->logits);
   free(m->rope_tbl); free(m->dx); free(m->dx2); free(m->dn1); free(m->dn2);
@@ -800,10 +805,12 @@ int lb_model_train_step(lb_model *m, lb_model *teacher, const uint32_t *tokens,
   int rc = lb_model_loss_backward(m, teacher, tokens, targets, 0, &met);
   if (rc) return rc;
 
-  /* Optionally zero non-linear grads (freeze embed & RMSNorms during QAT) */
-  if (opt->freeze_non_linear) {
+  /* Optionally zero non-linear grads (freeze embed & RMSNorms during QAT) and/or dense projections (e.g. Q8 Attention) */
+  if (opt->freeze_non_linear || opt->freeze_dense_projs) {
     for (size_t i = 0; i < m->total_params; i++)
-      if (m->param_is_nonlin[i]) m->grads[i] = 0.0f;
+      if ((opt->freeze_non_linear && m->param_is_nonlin[i]) ||
+          (opt->freeze_dense_projs && m->param_is_dense_proj[i]))
+        m->grads[i] = 0.0f;
   }
 
   /* Global L2 grad norm & clip */
@@ -826,6 +833,7 @@ int lb_model_train_step(lb_model *m, lb_model *teacher, const uint32_t *tokens,
   size_t flips = 0;
   for (size_t i = 0; i < m->total_params; i++) {
     if (opt->freeze_non_linear && m->param_is_nonlin[i]) continue;
+    if (opt->freeze_dense_projs && m->param_is_dense_proj[i]) continue;
     double g = (double)m->grads[i] * clip;
     double m1 = opt->beta1 * (double)m->m1[i] + (1.0 - opt->beta1) * g;
     double m2 = opt->beta2 * (double)m->m2[i] + (1.0 - opt->beta2) * g * g;

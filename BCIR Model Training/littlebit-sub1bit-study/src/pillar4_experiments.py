@@ -91,7 +91,16 @@ def run_lm_case(label, spec, teacher_model, teacher_w, mode, target_bpw,
 
     if qat_steps > 0:
         lrs = cosine_lrs(qat_steps, peak_lr)
-        opt = LBAdamWCfg(peak_lr, 0.0, 0.9, 0.999, 1e-8, 0.0, 1.0, freeze_non_linear)
+        freeze_dense = 1 if q8_dense else 0
+        opt = LBAdamWCfg(peak_lr, 0.0, 0.9, 0.999, 1e-8, 0.0, 1.0, freeze_non_linear, freeze_dense)
+        dense_snap = {}
+        if freeze_dense:
+            wv = m.weights_view()
+            for lyr in range(spec.n_layers):
+                for p_idx in range(7):
+                    if int(pc[lyr * 7 + p_idx].mode) == LB_MODE_DENSE_FP32:
+                        off, cnt = m.span(20, lyr, p_idx, 0)
+                        dense_snap[(lyr, p_idx)] = wv[off:off + cnt].copy()
         chunk = 50
         all_evs = []
         for s0 in range(0, qat_steps, chunk):
@@ -103,6 +112,13 @@ def run_lm_case(label, spec, teacher_model, teacher_w, mode, target_bpw,
             if vm['ce'] < best_val_ce:
                 best_val_ce = vm['ce']; best_step = s1; best_w = m.weights_view().copy()
         m.weights_view()[:] = best_w
+        if freeze_dense:
+            wv = m.weights_view()
+            for (lyr, p_idx), orig in dense_snap.items():
+                off, cnt = m.span(20, lyr, p_idx, 0)
+                assert np.array_equal(wv[off:off + cnt], orig), (
+                    f"Q8 dense projection L{lyr}.P{p_idx} drifted during {label}!"
+                )
         qat_val = eval_lb_lm(m, val_xy)
         qat_test = eval_lb_lm(m, test_xy)
         evs_summary = {
@@ -120,6 +136,8 @@ def run_lm_case(label, spec, teacher_model, teacher_w, mode, target_bpw,
     mean_frob = float(np.mean([r['rel_frob_err'] for r in recon]))
     out = {
         'label': label, 'mode': mode, 'target_bpw': target_bpw,
+        'dense_deploy_format': bpw_info['dense_deploy_format'],
+        'q8_dense_frozen': bool(q8_dense and qat_steps > 0),
         'realized_body_bpw': round(bpw_info['body_bpw'], 4),
         'realized_total_bpw': round(bpw_info['total_bpw_fp16_emb'], 4),
         'deploy_kib': round(bpw_info['total_bytes_fp16_emb'] / 1024.0, 2),
@@ -226,7 +244,7 @@ def run_suite_a(which='both'):
             out_path.write_text(json.dumps(all_res, indent=2))
 
         maybe_run(f'{mname}_FP32_teacher', spec, teacher, tw, LB_MODE_DENSE_FP32, 32.0, qat_train_xy, val_xy, test_xy, qat_steps=0)
-        maybe_run(f'{mname}_BCIR_Q8_PTQ', spec, teacher, tw, LB_MODE_DENSE_FP32, 8.25, qat_train_xy, val_xy, test_xy, qat_steps=0, q8_dense=True)
+        maybe_run(f'{mname}_BCIR_Q8_PTQ', spec, teacher, tw, LB_MODE_DENSE_FP32, 8.50, qat_train_xy, val_xy, test_xy, qat_steps=0, q8_dense=True)
         maybe_run(f'{mname}_OneBit_1.0_KD', spec, teacher, tw, LB_MODE_ONEBIT_FULL, 1.0, qat_train_xy, val_xy, test_xy, qat_steps=steps_qat, peak_lr=lr_qat)
 
         bpws = (1.00, 0.70, 0.55, 0.30, 0.20) if 'wide512' in mname else (1.00, 0.70, 0.55, 0.35)
@@ -302,6 +320,22 @@ def run_suite_c(part='all'):
         maybe_abl('A6_layer_sensitivity', 'A6_MLP_only_0.30', spec, teacher, tw, LB_MODE_LITTLEBIT_RES, 0.30, tr_xy, val_xy, test_xy, qat_steps=120, peak_lr=8e-4, only_mlp=True, min_rank=2)
         maybe_abl('A6_layer_sensitivity', 'A6_Attn_only_0.30', spec, teacher, tw, LB_MODE_LITTLEBIT_RES, 0.30, tr_xy, val_xy, test_xy, qat_steps=120, peak_lr=8e-4, only_attn=True, min_rank=2)
         maybe_abl('A6_layer_sensitivity', 'A6_All_layers_0.30', spec, teacher, tw, LB_MODE_LITTLEBIT_RES, 0.30, tr_xy, val_xy, test_xy, qat_steps=120, peak_lr=8e-4, min_rank=2)
+
+        print('\n--- A7: BCIR Synthesis (Joint-ITQ + Clipped-STE + Output KL + GQA kv2 / COMP-1 Q8-Attn) ---', flush=True)
+        maybe_abl(
+            'A7_bcir_synthesis', 'A7_BCIR_All_ITQ_STE_KL_kv2', spec, teacher, tw,
+            LB_MODE_LITTLEBIT_RES, 0.30, tr_xy, val_xy, test_xy,
+            qat_steps=120, peak_lr=8e-4, use_itq=True,
+            surrogate=LB_SURR_CLIPPED_STE, smooth_k=1.0,
+            objective=LB_OBJ_KD_KL, kd_lambda=0.0, kv_factor=2.0, min_rank=2,
+        )
+        maybe_abl(
+            'A7_bcir_synthesis', 'A7_COMP1_Q8Attn_ITQ_STE_KL_MLP030', spec, teacher, tw,
+            LB_MODE_LITTLEBIT_RES, 0.30, tr_xy, val_xy, test_xy,
+            qat_steps=120, peak_lr=8e-4, use_itq=True,
+            surrogate=LB_SURR_CLIPPED_STE, smooth_k=1.0,
+            objective=LB_OBJ_KD_KL, kd_lambda=0.0, only_mlp=True, q8_dense=True, min_rank=2,
+        )
 
     teacher.close()
     print(f'Saved Suite C ({part}) into pillar4_suite_c_ablations.json', flush=True)

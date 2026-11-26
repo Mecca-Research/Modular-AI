@@ -75,7 +75,7 @@ def main():
     rows = []
     variants = [
         ('FP32_teacher', LB_MODE_DENSE_FP32, 32.0, 0, False, False, False, False),
-        ('BCIR_Q8_PTQ', LB_MODE_DENSE_FP32, 8.25, 0, False, True, False, False),
+        ('BCIR_Q8_PTQ', LB_MODE_DENSE_FP32, 8.50, 0, False, True, False, False),
         ('OneBit_Full_KD', LB_MODE_ONEBIT_FULL, 1.0, 250, False, False, False, False),
         ('TinyRankFP16_0.75', LB_MODE_LOWRANK_FP16, 0.75, 250, False, False, False, False),
         ('LBv1_1P_1.00', LB_MODE_LITTLEBIT_1P, 1.00, 250, False, False, False, False),
@@ -95,7 +95,7 @@ def main():
         ptq_m, _, _ = eval_ordered(m, test_recs)
         if qsteps > 0:
             lrs = cosine_lrs(qsteps, 8e-4)
-            opt = LBAdamWCfg(8e-4, 0.0, 0.9, 0.999, 1e-8, 0.0, 1.0, 1)
+            opt = LBAdamWCfg(8e-4, 0.0, 0.9, 0.999, 1e-8, 0.0, 1.0, 1, 1 if q8f else 0)
             best_ce = eval_ordered(m, val_recs)[0]['ce']
             best_w = m.weights_view().copy()
             for s0 in range(0, qsteps, 50):

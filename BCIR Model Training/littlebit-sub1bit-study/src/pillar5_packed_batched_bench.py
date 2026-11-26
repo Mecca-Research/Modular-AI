@@ -119,6 +119,8 @@ def main():
                 "max_abs_err": float(res.max_abs_err),
                 "weight_bytes": int(res.weight_bytes),
                 "realized_bpw": round(res.realized_bpw, 4),
+                "ideal_deploy_weight_bytes": int(res.ideal_deploy_weight_bytes),
+                "ideal_deploy_bpw": round(res.ideal_deploy_bpw, 4),
             }
         k = rec["kernels"]
         fp32 = k["dense_fp32_bcir"]["median_us"]
