@@ -1,0 +1,7 @@
+wide50m_0.30          768x2048  r=  67 | packed1b_LUT4=    5.8us (min=    5.8us) | exact_bytes=   64780 (bpw=0.329) chk=-0.91
+llama2_7b_0.55       4096x11008 r= 804 | packed1b_LUT4=  337.4us (min=  328.8us) | exact_bytes= 3128208 (bpw=0.555) chk=-2.00
+llama2_7b_0.30       4096x11008 r= 431 | packed1b_LUT4=  152.6us (min=  151.7us) | exact_bytes= 1709756 (bpw=0.303) chk=-0.16
+llama2_7b_0.10       4096x11008 r= 133 | packed1b_LUT4=   51.9us (min=   51.6us) | exact_bytes=  599060 (bpw=0.106) chk=-1.25
+llama2_70b_0.55      8192x28672 r=1735 | packed1b_LUT4= 2023.9us (min= 1961.7us) | exact_bytes=16202524 (bpw=0.552) chk=-20.09
+llama2_70b_0.30      8192x28672 r= 939 | packed1b_LUT4= 1055.3us (min= 1046.9us) | exact_bytes= 8855212 (bpw=0.302) chk=15.75
+llama2_70b_0.10      8192x28672 r= 302 | packed1b_LUT4=  296.7us (min=  281.5us) | exact_bytes= 2983096 (bpw=0.102) chk=1.94

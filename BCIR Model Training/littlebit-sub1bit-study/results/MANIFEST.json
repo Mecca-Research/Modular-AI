@@ -1,0 +1,179 @@
+{
+  "study": "BCIR Bare-Metal C Evaluation of LittleBit (arXiv:2506.13771v5) & LittleBit-2 (arXiv:2603.00042v2)",
+  "date": "2026-11-22",
+  "bcir_repo_base_commit": "3fdb708d73371a6e0e1abf7dde70b7239fc2fc06",
+  "modular_ai_parent_commit": "949da5e52d65738990c3264d5e0285db73fdf9d8",
+  "host": {
+    "platform": "Linux-6.12.105+-x86_64-with-glibc2.36",
+    "machine": "x86_64",
+    "compiler": "clang version 23.1.6 (https://github.com/conda-forge/clangdev-feedstock 2607ad814147f37fdd84f5bb58ac45576da1a85b)"
+  },
+  "dataset_sources_in_modular_ai": {
+    "BCIR Model Training/gp-global/data/wikitext2-train.parquet": {
+      "bytes": 6357543,
+      "sha256": "e83889baabc497075506f91975be5fac0d45c5290b6b20582c8cd1e853d0c9f7"
+    },
+    "BCIR Model Training/gp-global/data/wikitext2-validation.parquet": {
+      "bytes": 657209,
+      "sha256": "204929b7ff9d6184953f867dedb860e40aa69c078fc1e54b3baaa8fb28511c4c"
+    },
+    "BCIR Model Training/gp-global/data/wikitext2-test.parquet": {
+      "bytes": 732610,
+      "sha256": "5f1bea067869d04849c0f975a2b29c4ff47d867f484f5010ea5e861eab246d91"
+    }
+  },
+  "saved_wedge_pr818_teachers_in_modular_ai": {
+    "BCIR Model Training/wedge-pr818/checkpoints/lm-attention-20261018.npz": {
+      "bytes": 5820797,
+      "sha256": "fe20457e6349c273f9ea4ce96c6417b2a46c1fb6a824c4f60d24eb4d47d63342"
+    },
+    "BCIR Model Training/wedge-pr818/checkpoints/kv_single-attention-20261018.npz": {
+      "bytes": 5830216,
+      "sha256": "aa7fe5cd6f095f6b3ef3af86e1d35614d9f370fb3630106da53490bbdb1e6d0e"
+    },
+    "BCIR Model Training/wedge-pr818/checkpoints/ordered-attention-20261018.npz": {
+      "bytes": 5822428,
+      "sha256": "f86ba66bfe4e82699ddae85a9a62f03e8966872522b98bac621101a65e6467c0"
+    },
+    "BCIR Model Training/wedge-pr818/checkpoints/kv_curriculum-attention-20261018.npz": {
+      "bytes": 5827756,
+      "sha256": "c15dfa5c27b3c61bad5115ed32ea9339daf1c1989564d277f08c99a71b2f0d98"
+    },
+    "BCIR Model Training/wedge-pr818/checkpoints/kv_curriculum-attention-20261019.npz": {
+      "bytes": 5821532,
+      "sha256": "340543d94308275a7e455b0fafc52b441f77205104910aa435a94b8a1b3c6883"
+    },
+    "BCIR Model Training/wedge-pr818/checkpoints/kv_curriculum-attention-20261020.npz": {
+      "bytes": 5822195,
+      "sha256": "a932ea2ba378b389c05cea9e9181f88cf220edfae7bc64ac30ac375651928a72"
+    }
+  },
+  "study_checkpoints": {
+    "checkpoints/pilot192_0.86M.json": {
+      "bytes": 3219,
+      "sha256": "d55de4ee2dfa03fc0637c389198194648cbabe08003d7b65e45cf52b809d4d58"
+    },
+    "checkpoints/pilot192_0.86M.npz": {
+      "bytes": 3447820,
+      "sha256": "eef7bdebdd701387af875c014f451cbff34fe77bbd0ff9e33989f3ca0d5d1cbf"
+    },
+    "checkpoints/wedge128_kv4_strong.npz": {
+      "bytes": 2103052,
+      "sha256": "1af4fa0916b1dc74a2b94a45927452a90fb0dacf71513e8ee65d8189766695c1"
+    },
+    "checkpoints/wide512_5.50M.json": {
+      "bytes": 2499,
+      "sha256": "8539491244889e0f8387a95eb163f2a2268dc102788384e73e053c369e681c93"
+    },
+    "checkpoints/wide512_5.50M.npz": {
+      "bytes": 24660236,
+      "sha256": "a9ef8bde62b3274d9f4bd7a6be8863b0451953673882cdd06fd3fbfa62388d94"
+    }
+  },
+  "study_sources": {
+    "src/bcir_littlebit.h": {
+      "bytes": 8793,
+      "sha256": "d4cb07f462ce27e2e395b34d5847ee6b04af4cb795a9b8b8bb7bf33f1e6274f8"
+    },
+    "src/bcir_littlebit_bench.c": {
+      "bytes": 30410,
+      "sha256": "460e2329276958a681c4faac4c44176fb50f85fe69a8e4558379b056b10508de"
+    },
+    "src/bcir_littlebit_core.c": {
+      "bytes": 41121,
+      "sha256": "be32a3a5ee97b6c6fb33d118799762c1da2b972c697159d698a59af288fd40e7"
+    },
+    "src/bench_lut4_packed.c": {
+      "bytes": 6560,
+      "sha256": "05be0eb01c2b0757de0a6dd66206297518859445b09b84f8ae489280fd8f4737"
+    },
+    "src/lb_harness.py": {
+      "bytes": 35135,
+      "sha256": "da511ec91a3d92ea6a8d143b018341c4e460c6e6111dc3f8d3d594599a2f9513"
+    },
+    "src/make_littlebit_plots.py": {
+      "bytes": 13430,
+      "sha256": "6f610410751bbb1f977cfb55a722e6d6d167c46128607d394e23affb5362efb9"
+    },
+    "src/pillar1_setup_and_bpw.py": {
+      "bytes": 10632,
+      "sha256": "69cd69cefaa350c9b49efb09d3019b3a021e576f4bfeca970dd6066ff8c62226"
+    },
+    "src/pillar2_teachers_and_spectra.py": {
+      "bytes": 13395,
+      "sha256": "0896a4b970ebc7f7b8fc7186745710d6c857458bc74bcf371a3c253f143cd6ad"
+    },
+    "src/pillar4_experiments.py": {
+      "bytes": 21950,
+      "sha256": "32752cd0ff6c7d6eeba83cb83511e40a69889e5dc49a42b1973d3c505e437b5f"
+    },
+    "src/pillar5_kernel_benchmark.py": {
+      "bytes": 9096,
+      "sha256": "49eb159baad7b8e536f6fb8e323b90515124af547b483d08ef3cdc2be7d55ee5"
+    },
+    "src/pillar5_packed_batched_bench.py": {
+      "bytes": 7331,
+      "sha256": "7f13542e59617b557c45e92bad70e74fa8e13ec38d37b1225acde8312d8a2c2a"
+    },
+    "src/suite_b_ordered_addendum.py": {
+      "bytes": 6311,
+      "sha256": "79f4b6b124db9314bfbcf509e0ef69a4c5ed293188adfb619a9151be0c0639c8"
+    }
+  },
+  "study_results": {
+    "results/bench_lut4_packed.txt": {
+      "bytes": 882,
+      "sha256": "943a2630357702920ac0891d941ee5c052893765e49f46b6fd3faf357f8f3be4"
+    },
+    "results/bench_lut4_packed_batched.json": {
+      "bytes": 95769,
+      "sha256": "76b4cb8033ac1408b5f3191ed01e3b1df2ef9641df516de2c84cd904c8991fec"
+    },
+    "results/pillar1_bpw_analysis.json": {
+      "bytes": 22051,
+      "sha256": "cca746d965ff9ae2382de2015cbe9848c218eea16e18c37497593d5ce40878b6"
+    },
+    "results/pillar2_spectra_audit.json": {
+      "bytes": 42892,
+      "sha256": "864d9cfe831eb525f7de57344576bc68e81925456b406ef0e7ddf31f12cbd635"
+    },
+    "results/pillar4_suite_a.json": {
+      "bytes": 47323,
+      "sha256": "c47fe62d07d729c1e19ea0aff05e452f03223bf6b65723e8055f0f3929e7dd15"
+    },
+    "results/pillar4_suite_b_capabilities.json": {
+      "bytes": 23442,
+      "sha256": "710a98785c08c707b1b21ee104d0e6286923970ab329403e003cafa8ffbc662a"
+    },
+    "results/pillar4_suite_b_ordered.json": {
+      "bytes": 3685,
+      "sha256": "6620eec3e0ed7c518c74dcd8ed9f096e6c05b2b090fb52d1454d2ef53dd2e618"
+    },
+    "results/pillar4_suite_c_ablations.json": {
+      "bytes": 47284,
+      "sha256": "878ca6974f18565a7214426123bd5ef6902d05d8d46eaf19faac38f455dd5280"
+    },
+    "results/pillar5_kernel_benchmark.json": {
+      "bytes": 68795,
+      "sha256": "6edb8d82d6eba9b610af2344068ad52f22a355030dc4f487dcccc8945b9e76d8"
+    },
+    "results/verify_gates_output.txt": {
+      "bytes": 1838,
+      "sha256": "833ac13e0319458e840e9ba496708e36e3b96dd6daccaea7f018b806fb287151"
+    }
+  },
+  "study_figures": {
+    "figures/bcir_littlebit_study_results.png": {
+      "bytes": 578204,
+      "sha256": "beffa5f19f385faa9012417276e3d66fc927f3011adae1cd75fc3d25ff82c0eb"
+    }
+  },
+  "makefile": {
+    "bytes": 2050,
+    "sha256": "2b10835408ca4e3e9b293334c00654c5da7c14ef5d55da55b213644c2dac1781"
+  },
+  "readme": {
+    "bytes": 6580,
+    "sha256": "8dcdbf84d107baf5d28f2b021ea99300e9d3b8ac5060fba82dc8447a3b354ceb"
+  }
+}
