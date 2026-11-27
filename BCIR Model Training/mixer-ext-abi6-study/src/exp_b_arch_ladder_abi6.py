@@ -119,11 +119,13 @@ def run_part_b1_recall() -> Dict[str, Any]:
     seeds = [42, 1337]
     steps = 300
     B, T_max = 8, 96
-    # Fixed evaluation suites (identical across all architectures; 4..8 supervised queries/seq)
+    # Fixed evaluation suites (identical across all architectures; 4..8 supervised queries/seq).
+    # mq4, value_swap, and query_change share seed=5001 so they are paired counterfactuals on the
+    # exact same 64 KV contexts.
     eval_probes = {
         "mq4": (build_kv_dataset(64, T_max, 4, 5001, mode="standard", shuffled_query=True), 40),
-        "value_swap": (build_kv_dataset(64, T_max, 4, 5002, mode="value_swap", shuffled_query=True), 40),
-        "query_change": (build_kv_dataset(64, T_max, 4, 5003, mode="query_change", shuffled_query=True), 40),
+        "value_swap": (build_kv_dataset(64, T_max, 4, 5001, mode="value_swap", shuffled_query=True), 40),
+        "query_change": (build_kv_dataset(64, T_max, 4, 5001, mode="query_change", shuffled_query=True), 40),
         "filler20_gtW": (build_kv_dataset(64, T_max, 4, 5004, filler_len=20, shuffled_query=True), 60),
         "extrap_6pair": (build_kv_dataset(64, T_max, 6, 5005, mode="standard", shuffled_query=True), 56),
         "ordered_6pair": (build_kv_dataset(64, T_max, 6, 5006, ordered_query=True), 56),
@@ -170,6 +172,11 @@ def run_part_b1_recall() -> Dict[str, Any]:
                     opt_cfg, lrs, eval_every=50,
                     active_times=active_t, val_active_time=40,
                 )
+                if res["rc"] != 0 or res["steps_completed"] != steps:
+                    raise RuntimeError(
+                        f"[B1] {name} seed={sd} incomplete: rc={res['rc']} "
+                        f"steps={res['steps_completed']}/{steps}"
+                    )
                 probe_acc = {}
                 for pname, ((ptk, ptg), pact_t) in eval_probes.items():
                     er = model.evaluate(ptk.reshape(8, B, T_max), ptg.reshape(8, B, T_max), active_time=pact_t)
@@ -243,6 +250,11 @@ def run_part_b2_wide10m(
                     model, tr_tk, tr_tg, val_tk, val_tg, test_tk, test_tg,
                     opt_cfg, lrs, eval_every=40,
                 )
+                if res["rc"] != 0 or res["steps_completed"] != steps:
+                    raise RuntimeError(
+                        f"[B2] {name} seed={sd} incomplete: rc={res['rc']} "
+                        f"steps={res['steps_completed']}/{steps}"
+                    )
                 base_w = res["best_weights"]
                 # Zero-QAT BCIRQ8 (g=32) evaluation
                 model.set_weights(quantize_bcirq8_g32(base_w))

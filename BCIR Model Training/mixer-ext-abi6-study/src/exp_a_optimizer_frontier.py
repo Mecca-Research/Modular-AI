@@ -117,6 +117,11 @@ def run_suite_subset(
                     model, tr_tk, tr_tg, val_tk, val_tg, test_tk, test_tg,
                     opt_cfg, lrs, eval_every=eval_every,
                 )
+            if res["rc"] != 0 or res["steps_completed"] != steps:
+                raise RuntimeError(
+                    f"[{name}] {label} seed={sd} incomplete: rc={res['rc']} "
+                    f"steps={res['steps_completed']}/{steps}"
+                )
             ms = res["mem_stats"]
             row = {
                 "seed": sd,
@@ -238,7 +243,11 @@ def run_50m_and_amortization() -> Dict[str, Any]:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--part", choices=["a1_base", "a1_muon", "a2_base", "a2_muon", "a3"], required=True)
+    ap.add_argument(
+        "--part",
+        choices=["all", "a1_base", "a1_muon", "a2_base", "a2_muon", "a3"],
+        required=True,
+    )
     ap.add_argument("--only-opt", type=str, default=None)
     ap.add_argument("--only-seed", type=int, default=None)
     args = ap.parse_args()
@@ -247,38 +256,39 @@ def main() -> None:
 
     muon_grid = [x for x in MUON_OPTS if args.only_opt is None or x[0] == args.only_opt]
     seed_list = [args.only_seed] if args.only_seed is not None else [42, 1337]
+    parts = ["a1_base", "a1_muon", "a2_base", "a2_muon", "a3"] if args.part == "all" else [args.part]
 
-    if args.part == "a1_base":
-        data["a1_wide512_gqa"] = run_suite_subset(
-            data.get("a1_wide512_gqa", {}), "wide512_gqa", BASE_OPTS,
-            width=512, heads=8, kvheads=2, layers=2, ff=1536,
-            mixers=[MIXER_GQA, MIXER_GQA], ropes=[1, 1], steps=160, seeds=seed_list, eval_every=40,
-        )
-    elif args.part == "a1_muon":
-        data["a1_wide512_gqa"] = run_suite_subset(
-            data.get("a1_wide512_gqa", {}), "wide512_gqa", muon_grid,
-            width=512, heads=8, kvheads=2, layers=2, ff=1536,
-            mixers=[MIXER_GQA, MIXER_GQA], ropes=[1, 1], steps=160, seeds=seed_list, eval_every=40,
-        )
-    elif args.part == "a2_base":
-        data["a2_wide10m_hybrid_dn_gqa"] = run_suite_subset(
-            data.get("a2_wide10m_hybrid_dn_gqa", {}), "wide10m_hybrid_dn_gqa", BASE_OPTS,
-            width=512, heads=8, kvheads=2, layers=4, ff=1536,
-            mixers=[MIXER_DELTANET, MIXER_DELTANET, MIXER_DELTANET, MIXER_GQA],
-            ropes=[0, 0, 0, 1], steps=120, seeds=seed_list, eval_every=40,
-        )
-    elif args.part == "a2_muon":
-        data["a2_wide10m_hybrid_dn_gqa"] = run_suite_subset(
-            data.get("a2_wide10m_hybrid_dn_gqa", {}), "wide10m_hybrid_dn_gqa", muon_grid,
-            width=512, heads=8, kvheads=2, layers=4, ff=1536,
-            mixers=[MIXER_DELTANET, MIXER_DELTANET, MIXER_DELTANET, MIXER_GQA],
-            ropes=[0, 0, 0, 1], steps=120, seeds=seed_list, eval_every=40,
-        )
-    elif args.part == "a3":
-        data["a3_wide50m_and_amort"] = run_50m_and_amortization()
-
-    save_json(out_path, data)
-    print(f"Saved {out_path} ({args.part})")
+    for part in parts:
+        if part == "a1_base":
+            data["a1_wide512_gqa"] = run_suite_subset(
+                data.get("a1_wide512_gqa", {}), "wide512_gqa", BASE_OPTS,
+                width=512, heads=8, kvheads=2, layers=2, ff=1536,
+                mixers=[MIXER_GQA, MIXER_GQA], ropes=[1, 1], steps=160, seeds=seed_list, eval_every=40,
+            )
+        elif part == "a1_muon":
+            data["a1_wide512_gqa"] = run_suite_subset(
+                data.get("a1_wide512_gqa", {}), "wide512_gqa", muon_grid,
+                width=512, heads=8, kvheads=2, layers=2, ff=1536,
+                mixers=[MIXER_GQA, MIXER_GQA], ropes=[1, 1], steps=160, seeds=seed_list, eval_every=40,
+            )
+        elif part == "a2_base":
+            data["a2_wide10m_hybrid_dn_gqa"] = run_suite_subset(
+                data.get("a2_wide10m_hybrid_dn_gqa", {}), "wide10m_hybrid_dn_gqa", BASE_OPTS,
+                width=512, heads=8, kvheads=2, layers=4, ff=1536,
+                mixers=[MIXER_DELTANET, MIXER_DELTANET, MIXER_DELTANET, MIXER_GQA],
+                ropes=[0, 0, 0, 1], steps=120, seeds=seed_list, eval_every=40,
+            )
+        elif part == "a2_muon":
+            data["a2_wide10m_hybrid_dn_gqa"] = run_suite_subset(
+                data.get("a2_wide10m_hybrid_dn_gqa", {}), "wide10m_hybrid_dn_gqa", muon_grid,
+                width=512, heads=8, kvheads=2, layers=4, ff=1536,
+                mixers=[MIXER_DELTANET, MIXER_DELTANET, MIXER_DELTANET, MIXER_GQA],
+                ropes=[0, 0, 0, 1], steps=120, seeds=seed_list, eval_every=40,
+            )
+        elif part == "a3":
+            data["a3_wide50m_and_amort"] = run_50m_and_amortization()
+        save_json(out_path, data)
+        print(f"Saved {out_path} ({part})", flush=True)
 
 
 if __name__ == "__main__":

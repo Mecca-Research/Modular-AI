@@ -96,29 +96,72 @@ OPT_PRESETS = {
 }
 
 
-def save_ckpt_atomic(path: Path, weights: np.ndarray, meta: Dict[str, Any]) -> str:
+def save_ckpt_atomic(
+    path: Path,
+    weights: np.ndarray,
+    meta: Dict[str, Any],
+    *,
+    opt_state: bytes | None = None,
+    best_weights: np.ndarray | None = None,
+) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     raw = np.ascontiguousarray(weights, dtype=np.float32).tobytes()
     sha = hashlib.sha256(raw).hexdigest()
     bin_p = path.with_suffix(".bin")
     json_p = path.with_suffix(".json")
     tmp_b = bin_p.with_suffix(".bin.tmp")
-    tmp_j = json_p.with_suffix(".json.tmp")
     tmp_b.write_bytes(raw)
     os.replace(tmp_b, bin_p)
     meta_out = dict(meta, weights_sha256=sha, weights_file=bin_p.name)
-    tmp_j.write_text(json.dumps(meta_out, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    if opt_state is not None:
+        opt_p = path.with_suffix(".opt.bin")
+        opt_sha = hashlib.sha256(opt_state).hexdigest()
+        tmp_o = opt_p.with_suffix(".bin.tmp")
+        tmp_o.write_bytes(opt_state)
+        os.replace(tmp_o, opt_p)
+        meta_out["opt_state_file"] = opt_p.name
+        meta_out["opt_state_sha256"] = opt_sha
+        meta_out["opt_state_bytes"] = len(opt_state)
+    if best_weights is not None:
+        best_raw = np.ascontiguousarray(best_weights, dtype=np.float32).tobytes()
+        best_p = path.with_suffix(".best.bin")
+        best_sha = hashlib.sha256(best_raw).hexdigest()
+        tmp_bw = best_p.with_suffix(".bin.tmp")
+        tmp_bw.write_bytes(best_raw)
+        os.replace(tmp_bw, best_p)
+        meta_out["best_weights_file"] = best_p.name
+        meta_out["best_weights_sha256"] = best_sha
+    tmp_j = json_p.with_suffix(".json.tmp")
+    tmp_j.write_text(
+        json.dumps(meta_out, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
     os.replace(tmp_j, json_p)
     return sha
 
 
-def load_ckpt_verified(path: Path) -> tuple[np.ndarray, Dict[str, Any]]:
+def load_ckpt_verified(
+    path: Path,
+) -> tuple[np.ndarray, Dict[str, Any], bytes | None, np.ndarray | None]:
     json_p = path.with_suffix(".json")
     meta = json.loads(json_p.read_text(encoding="utf-8"))
     raw = (json_p.parent / meta["weights_file"]).read_bytes()
     if hashlib.sha256(raw).hexdigest() != meta["weights_sha256"]:
-        raise ValueError(f"SHA-256 mismatch loading {path}")
-    return np.frombuffer(raw, dtype=np.float32).copy(), meta
+        raise ValueError(f"SHA-256 mismatch loading weights from {path}")
+    opt_state: bytes | None = None
+    if "opt_state_file" in meta:
+        opt_raw = (json_p.parent / meta["opt_state_file"]).read_bytes()
+        if hashlib.sha256(opt_raw).hexdigest() != meta["opt_state_sha256"]:
+            raise ValueError(f"SHA-256 mismatch loading optimizer state from {path}")
+        opt_state = opt_raw
+    best_weights: np.ndarray | None = None
+    if "best_weights_file" in meta:
+        best_raw = (json_p.parent / meta["best_weights_file"]).read_bytes()
+        if hashlib.sha256(best_raw).hexdigest() != meta["best_weights_sha256"]:
+            raise ValueError(f"SHA-256 mismatch loading best weights from {path}")
+        best_weights = np.frombuffer(best_raw, dtype=np.float32).copy()
+    return np.frombuffer(raw, dtype=np.float32).copy(), meta, opt_state, best_weights
 
 
 def run_qual(
@@ -136,14 +179,19 @@ def run_qual(
     threads: int,
     max_lr: float,
     eval_every: int,
+    ckpt_every: int = 0,
     save_final_ckpt: bool = False,
+    recovery_ckpt: Path | None = None,
     resume_ckpt: Path | None = None,
+    target_tokens_override: int | None = None,
+    stop_after_steps: int | None = None,
 ) -> Dict[str, Any]:
     cfg = ARCH_PRESETS[arch_name]
     opt_kind, beta1 = OPT_PRESETS[opt_name]
-    target_tokens = TIER_TOKENS[tier]
+    target_tokens = target_tokens_override if target_tokens_override is not None else TIER_TOKENS[tier]
     tok_per_step = batch * seq_len
     total_steps = (target_tokens + tok_per_step - 1) // tok_per_step
+    stop_step = min(total_steps, stop_after_steps) if stop_after_steps is not None else total_steps
 
     tr_stream = load_wikitext_bytes("train")
     va_stream = load_wikitext_bytes("validation")
@@ -167,61 +215,123 @@ def run_qual(
     opt_cfg = AdamWParams(max_lr, beta1, 0.95, 1e-8, 0.01, 3.0)
 
     start_step = 0
+    prev_elapsed_s = 0.0
     curve: List[Dict[str, Any]] = []
+    recovery_path = (
+        recovery_ckpt
+        if recovery_ckpt is not None
+        else (CKPT_DIR / f"tier_{tier}_{arch_name}_{opt_name}_s{seed}_latest" if ckpt_every > 0 else None)
+    )
     with Abi6Model(sp, pol) as model:
+        best_val_ce = float("inf")
+        best_step = 0
+        best_w: np.ndarray | None = None
         if resume_ckpt is not None:
-            w_loaded, meta = load_ckpt_verified(resume_ckpt)
+            w_loaded, meta, opt_loaded, best_loaded = load_ckpt_verified(resume_ckpt)
             model.set_weights(w_loaded)
             start_step = int(meta.get("step", 0))
+            if start_step < stop_step:
+                if opt_loaded is None:
+                    raise ValueError(
+                        f"Cannot resume training from {resume_ckpt}: checkpoint does not contain "
+                        "optimizer state (opt_state_file missing)"
+                    )
+                model.set_opt_state(opt_loaded)
+            elif opt_loaded is not None:
+                model.set_opt_state(opt_loaded)
+            prev_elapsed_s = float(meta.get("elapsed_wall_s", 0.0))
             curve = list(meta.get("curve", []))
+            if "best_val_ce" in meta:
+                best_val_ce = float(meta["best_val_ce"])
+                best_step = int(meta.get("best_step", start_step))
+                best_w = best_loaded if best_loaded is not None else w_loaded.copy()
 
         ms = model.mem_stats()
         t0 = time.perf_counter()
-        v0 = model.evaluate(val_tk, val_tg)
-        best_val_ce = v0["ce"] if v0["ok"] else float("inf")
-        best_step = start_step
-        best_w = model.copy_weights()
-        if not curve:
-            curve.append({
-                "step": 0, "tokens": 0, "wall_s": 0.0,
-                "val_ce": round(v0["ce"], 6), "val_ppl": round(v0["ppl"], 4),
-            })
+        if best_w is None:
+            v0 = model.evaluate(val_tk, val_tg)
+            best_val_ce = v0["ce"] if v0["ok"] else float("inf")
+            best_step = start_step
+            best_w = model.copy_weights()
+            if not curve:
+                curve.append({
+                    "step": 0, "tokens": 0, "wall_s": 0.0,
+                    "val_ce": round(v0["ce"], 6), "val_ppl": round(v0["ppl"], 4),
+                })
 
         step_ms_all: List[float] = []
         s = start_step
-        while s < total_steps:
-            chunk = min(eval_every, total_steps - s)
+        last_recovery_sha: str | None = None
+        while s < stop_step:
+            chunk = min(eval_every, stop_step - s)
+            if ckpt_every > 0:
+                next_ckpt = ((s // ckpt_every) + 1) * ckpt_every
+                chunk = min(chunk, next_ckpt - s)
             tr_tk, tr_tg = sample_lm_batches(tr_stream, chunk, batch, seq_len, seed=70000 + seed * 10000 + s)
             rc, evs = model.train_loop(tr_tk, tr_tg, opt_cfg, lrs=lrs[s : s + chunk])
-            assert rc == 0, f"train_loop failed with rc={rc} at step {s}"
+            if rc != 0:
+                raise RuntimeError(f"train_loop failed with rc={rc} at step {s}")
             for e in evs:
                 step_ms_all.append(float(e["step_ms"]))
             s += chunk
-            vv = model.evaluate(val_tk, val_tg)
-            wall_s = time.perf_counter() - t0
+            run_wall = time.perf_counter() - t0
+            cum_wall = prev_elapsed_s + run_wall
             toks_seen = s * tok_per_step
-            row = {
-                "step": s,
-                "tokens": toks_seen,
-                "wall_s": round(wall_s, 2),
-                "train_loss": round(float(np.mean([e["loss"] for e in evs[-min(16, len(evs)):]])), 6),
-                "val_ce": round(vv["ce"], 6),
-                "val_ppl": round(vv["ppl"], 4),
-                "tok_per_s": round(toks_seen / max(wall_s, 1e-6), 1),
-            }
-            curve.append(row)
-            if vv["ok"] and vv["ce"] < best_val_ce:
-                best_val_ce = vv["ce"]
-                best_step = s
-                best_w = model.copy_weights()
-            print(
-                f"[Tier-{tier}] {arch_name:28s} {opt_name:16s} | st={s:5d}/{total_steps} "
-                f"tok={toks_seen/1e6:5.3f}M | val_ce={row['val_ce']:.4f} ppl={row['val_ppl']:5.2f} "
-                f"| {row['tok_per_s']:6.0f} tok/s ({wall_s:5.1f}s)",
-                flush=True,
-            )
+            new_toks = (s - start_step) * tok_per_step
+            run_tok_s = new_toks / max(run_wall, 1e-6)
+            cum_tok_s = toks_seen / max(cum_wall, 1e-6)
 
-        total_wall = time.perf_counter() - t0
+            if s % eval_every == 0 or s == stop_step:
+                vv = model.evaluate(val_tk, val_tg)
+                row = {
+                    "step": s,
+                    "tokens": toks_seen,
+                    "wall_s": round(cum_wall, 2),
+                    "run_wall_s": round(run_wall, 2),
+                    "train_loss": round(float(np.mean([e["loss"] for e in evs[-min(16, len(evs)):]])), 6),
+                    "val_ce": round(vv["ce"], 6),
+                    "val_ppl": round(vv["ppl"], 4),
+                    "tok_per_s": round(run_tok_s, 1),
+                    "cumulative_tok_per_s": round(cum_tok_s, 1),
+                }
+                curve.append(row)
+                if vv["ok"] and vv["ce"] < best_val_ce:
+                    best_val_ce = vv["ce"]
+                    best_step = s
+                    best_w = model.copy_weights()
+                print(
+                    f"[Tier-{tier}] {arch_name:28s} {opt_name:16s} | st={s:5d}/{total_steps} "
+                    f"tok={toks_seen/1e6:5.3f}M | val_ce={row['val_ce']:.4f} ppl={row['val_ppl']:5.2f} "
+                    f"| {row['tok_per_s']:6.0f} tok/s ({cum_wall:5.1f}s)",
+                    flush=True,
+                )
+
+            if recovery_path is not None and ckpt_every > 0 and (s % ckpt_every == 0 or s == stop_step):
+                last_recovery_sha = save_ckpt_atomic(
+                    recovery_path,
+                    model.copy_weights(),
+                    {
+                        "kind": "recovery_latest",
+                        "arch": arch_name,
+                        "opt": opt_name,
+                        "tier": tier,
+                        "step": s,
+                        "total_steps": total_steps,
+                        "tokens": toks_seen,
+                        "best_step": best_step,
+                        "best_val_ce": best_val_ce,
+                        "elapsed_wall_s": round(cum_wall, 4),
+                        "curve": curve,
+                    },
+                    opt_state=model.copy_opt_state(),
+                    best_weights=best_w,
+                )
+
+        run_wall = time.perf_counter() - t0
+        cum_wall = prev_elapsed_s + run_wall
+        latest_w = model.copy_weights()
+        latest_opt = model.copy_opt_state()
+        assert best_w is not None
         model.set_weights(best_w)
         model.reset_telemetry()
         test_res = model.evaluate(test_tk, test_tg)
@@ -233,14 +343,32 @@ def run_qual(
         ckpt_sha = None
         if save_final_ckpt:
             ckpt_p = CKPT_DIR / f"tier_{tier}_{arch_name}_{opt_name}_s{seed}"
-            ckpt_sha = save_ckpt_atomic(ckpt_p, best_w, {
-                "arch": arch_name, "opt": opt_name, "tier": tier,
-                "step": best_step, "tokens": total_steps * tok_per_step,
-                "test_ce": test_res["ce"], "curve": curve,
-            })
+            ckpt_sha = save_ckpt_atomic(
+                ckpt_p,
+                best_w,
+                {
+                    "kind": "best_val_selected",
+                    "arch": arch_name,
+                    "opt": opt_name,
+                    "tier": tier,
+                    "step": s,
+                    "best_step": best_step,
+                    "best_val_ce": best_val_ce,
+                    "tokens": s * tok_per_step,
+                    "elapsed_wall_s": round(cum_wall, 4),
+                    "test_ce": test_res["ce"],
+                    "curve": curve,
+                },
+                opt_state=latest_opt if s == best_step else None,
+            )
 
+    steps_this_run = max(0, s - start_step)
+    tokens_this_run = steps_this_run * tok_per_step
+    tokens_total = s * tok_per_step
     med_ms = float(np.median(step_ms_all)) if step_ms_all else 0.0
-    tok_s = (total_steps * tok_per_step) / max(total_wall, 1e-6)
+    run_tok_s = (tokens_this_run / max(run_wall, 1e-6)) if tokens_this_run > 0 else 0.0
+    cum_tok_s = (tokens_total / max(cum_wall, 1e-6)) if (tokens_total > 0 and cum_wall > 0.0) else 0.0
+    eff_tok_s = run_tok_s if tokens_this_run > 0 else cum_tok_s
     return {
         "arch": arch_name,
         "opt": opt_name,
@@ -253,8 +381,11 @@ def run_qual(
         "persistent_mib": round(ms["persistent_bytes"] / (1024 * 1024), 2),
         "bytes_per_param": round(ms["persistent_bytes"] / ms["n_params"], 3),
         "prob_mib_online": round(ms["mixer_prob_bytes"] / (1024 * 1024), 3),
-        "steps_executed": total_steps,
-        "tokens_executed": total_steps * tok_per_step,
+        "start_step": start_step,
+        "steps_executed_this_run": steps_this_run,
+        "tokens_executed_this_run": tokens_this_run,
+        "steps_executed": s,
+        "tokens_executed": tokens_total,
         "best_step": best_step,
         "best_val_ce": round(best_val_ce, 6),
         "test_ce": round(test_res["ce"], 6),
@@ -264,18 +395,120 @@ def run_qual(
         "first_tok_attn_mean": round(eval_tel["first_tok_attn_mean"], 4),
         "max_abs_act": round(eval_tel["max_abs_act"], 3),
         "step_ms_median": round(med_ms, 2),
-        "wall_s": round(total_wall, 2),
-        "tok_per_s_2core_avx2": round(tok_s, 1),
-        "projected_tier_m_10m_2core_min": round((10_000_000.0 / max(tok_s, 1.0)) / 60.0, 1),
-        "projected_tier_m_10m_16core_min": round(((10_000_000.0 / max(tok_s, 1.0)) / 6.5) / 60.0, 1),
+        "run_wall_s": round(run_wall, 2),
+        "wall_s": round(cum_wall, 2),
+        "tok_per_s_this_run": round(run_tok_s, 1),
+        "tok_per_s_2core_avx2": round(eff_tok_s, 1),
+        "projected_tier_m_10m_2core_min": (
+            round((10_000_000.0 / eff_tok_s) / 60.0, 1) if eff_tok_s > 0.0 else None
+        ),
+        "projected_tier_m_10m_16core_min": (
+            round(((10_000_000.0 / eff_tok_s) / 6.5) / 60.0, 1) if eff_tok_s > 0.0 else None
+        ),
         "ckpt_sha256": ckpt_sha,
+        "recovery_ckpt_sha256": last_recovery_sha,
+        "latest_weights_sha256": hashlib.sha256(
+            np.ascontiguousarray(latest_w, dtype=np.float32).tobytes()
+        ).hexdigest(),
         "curve": curve,
     }
 
 
+def verify_training_resume_parity(
+    *,
+    width: int = 160,
+    heads: int = 4,
+    kvheads: int = 2,
+    ff: int = 320,
+    batch: int = 8,
+    seq_len: int = 256,
+    seed: int = 42,
+    threads: int = 2,
+    max_lr: float = 3e-3,
+) -> Dict[str, Any]:
+    """Prove 0-bit-drift mid-run interruption & resume across Adafactor and Q8-Muon+BF16Grad,
+    including periodic in-loop recovery checkpoints and accurate resumed throughput accounting."""
+    import tempfile
+
+    arch_name = "arch7d_gdn2_g1nopemla_canon_mhc2"
+    tok_per_step = batch * seq_len
+    total_steps = 8
+    split_step = 4
+    target_tokens = total_steps * tok_per_step
+    report: Dict[str, Any] = {}
+
+    with tempfile.TemporaryDirectory(prefix="bcir_resume_verify_") as td:
+        tdir = Path(td)
+        for opt_name in ("adafactor", "q8_muon_bf16grad"):
+            rec_path = tdir / f"rec_{opt_name}"
+            full = run_qual(
+                arch_name, opt_name, "pilot",
+                width=width, heads=heads, kvheads=kvheads, ff=ff,
+                batch=batch, seq_len=seq_len, seed=seed, threads=threads,
+                max_lr=max_lr, eval_every=4, ckpt_every=0,
+                save_final_ckpt=False, target_tokens_override=target_tokens,
+            )
+            part1 = run_qual(
+                arch_name, opt_name, "pilot",
+                width=width, heads=heads, kvheads=kvheads, ff=ff,
+                batch=batch, seq_len=seq_len, seed=seed, threads=threads,
+                max_lr=max_lr, eval_every=4, ckpt_every=4,
+                recovery_ckpt=rec_path, save_final_ckpt=False,
+                target_tokens_override=target_tokens, stop_after_steps=split_step,
+            )
+            assert part1["recovery_ckpt_sha256"] is not None
+            assert part1["steps_executed_this_run"] == split_step
+            part2 = run_qual(
+                arch_name, opt_name, "pilot",
+                width=width, heads=heads, kvheads=kvheads, ff=ff,
+                batch=batch, seq_len=seq_len, seed=seed, threads=threads,
+                max_lr=max_lr, eval_every=4, ckpt_every=4,
+                recovery_ckpt=rec_path, resume_ckpt=rec_path,
+                save_final_ckpt=False, target_tokens_override=target_tokens,
+            )
+            # Zero-step reload on completed recovery checkpoint must report 0 newly executed tokens
+            noop = run_qual(
+                arch_name, opt_name, "pilot",
+                width=width, heads=heads, kvheads=kvheads, ff=ff,
+                batch=batch, seq_len=seq_len, seed=seed, threads=threads,
+                max_lr=max_lr, eval_every=4, ckpt_every=0,
+                resume_ckpt=rec_path, save_final_ckpt=False,
+                target_tokens_override=target_tokens,
+            )
+            assert part2["steps_executed_this_run"] == total_steps - split_step
+            assert part2["tokens_executed_this_run"] == (total_steps - split_step) * tok_per_step
+            assert noop["steps_executed_this_run"] == 0
+            assert noop["tokens_executed_this_run"] == 0
+            assert noop["tok_per_s_this_run"] == 0.0
+            assert part2["latest_weights_sha256"] == full["latest_weights_sha256"], (
+                f"mid-run resumed weights drifted for {opt_name}"
+            )
+            assert part2["test_ce"] == full["test_ce"], f"test_ce mismatch for {opt_name}"
+            assert part2["best_val_ce"] == full["best_val_ce"], f"best_val_ce mismatch for {opt_name}"
+            report[opt_name] = {
+                "steps_total": total_steps,
+                "interrupted_at_step": split_step,
+                "weights_sha256_exact_match": True,
+                "latest_weights_sha256": part2["latest_weights_sha256"],
+                "test_ce_abs_diff": abs(part2["test_ce"] - full["test_ce"]),
+                "part2_tokens_this_run": part2["tokens_executed_this_run"],
+                "completed_reload_tokens_this_run": noop["tokens_executed_this_run"],
+                "completed_reload_tok_per_s_this_run": noop["tok_per_s_this_run"],
+                "bit_exact_training_resume": True,
+            }
+            print(
+                f"[ResumeVerify] {opt_name:16s} | 4+4 == 8 bits=0 "
+                f"sha={part2['latest_weights_sha256'][:12]} "
+                f"test_ce_diff={report[opt_name]['test_ce_abs_diff']:.1e} "
+                f"part2_toks={part2['tokens_executed_this_run']} noop_toks={noop['tokens_executed_this_run']}",
+                flush=True,
+            )
+    return report
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["pilot_matrix", "single"], default="pilot_matrix")
+    ap.add_argument("--mode", choices=["pilot_matrix", "single", "verify_resume_only"], default="pilot_matrix")
     ap.add_argument("--tier", choices=["pilot", "M", "L"], default="pilot")
     ap.add_argument("--arch", choices=list(ARCH_PRESETS), default="arch7d_gdn2_g1nopemla_canon_mhc2")
     ap.add_argument("--opt", choices=list(OPT_PRESETS), default="adafactor")
@@ -289,18 +522,38 @@ def main() -> None:
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--lr", type=float, default=3e-3)
     ap.add_argument("--eval-every", type=int, default=125)
+    ap.add_argument(
+        "--ckpt-every",
+        type=int,
+        default=None,
+        help="Write periodic latest-state recovery checkpoint every N steps (default: eval-every in single mode, 0 in pilot_matrix)",
+    )
     ap.add_argument("--resume", type=str, default=None)
     ap.add_argument("--only-run", type=str, default=None, help="Run a single key from pilot_matrix and merge")
     ap.add_argument("--verify-resume", action="store_true", help="Verify atomic checkpoint save + resume parity")
     args = ap.parse_args()
 
     out_path = RESULTS_DIR / "exp_c_tier_ml_pilot.json"
+    if args.mode == "verify_resume_only":
+        rep = verify_training_resume_parity(
+            width=args.width, heads=args.heads, kvheads=args.kvheads, ff=args.ff,
+            batch=args.batch, seq_len=args.seq_len, seed=args.seed, threads=args.threads,
+            max_lr=args.lr,
+        )
+        if out_path.exists():
+            payload = json.loads(out_path.read_text(encoding="utf-8"))
+            payload["training_resume_parity_verified"] = rep
+            save_json(out_path, payload)
+            print(f"Updated {out_path} with training_resume_parity_verified")
+        return
+
     if args.mode == "single":
+        ckpt_ev = args.eval_every if args.ckpt_every is None else args.ckpt_every
         res = run_qual(
             args.arch, args.opt, args.tier,
             width=args.width, heads=args.heads, kvheads=args.kvheads, ff=args.ff,
             batch=args.batch, seq_len=args.seq_len, seed=args.seed, threads=args.threads,
-            max_lr=args.lr, eval_every=args.eval_every,
+            max_lr=args.lr, eval_every=args.eval_every, ckpt_every=ckpt_ev,
             save_final_ckpt=True,
             resume_ckpt=Path(args.resume) if args.resume else None,
         )
@@ -325,12 +578,13 @@ def main() -> None:
         matrix = [m for m in matrix if m[0] == args.only_run]
         if not matrix:
             raise SystemExit(f"Unknown --only-run key: {args.only_run}")
+    ckpt_ev = 0 if args.ckpt_every is None else args.ckpt_every
     for key, arch_n, opt_n in matrix:
         runs[key] = run_qual(
             arch_n, opt_n, "pilot",
             width=args.width, heads=args.heads, kvheads=args.kvheads, ff=args.ff,
             batch=args.batch, seq_len=args.seq_len, seed=args.seed, threads=args.threads,
-            max_lr=args.lr, eval_every=args.eval_every,
+            max_lr=args.lr, eval_every=args.eval_every, ckpt_every=ckpt_ev,
             save_final_ckpt=(key == "Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2_Adafactor"),
         )
         payload = dict(existing_payload)
@@ -345,34 +599,11 @@ def main() -> None:
             "runs": runs,
         })
         if args.verify_resume and key == "Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2_Adafactor":
-            ckpt_p = CKPT_DIR / f"tier_pilot_{arch_n}_{opt_n}_s{args.seed}"
-            w_check, meta_check = load_ckpt_verified(ckpt_p)
-            cfg_c = ARCH_PRESETS[arch_n]
-            te_stream = load_wikitext_bytes("test")
-            test_tk, test_tg = make_fixed_eval_batches(te_stream, 12, args.batch, args.seq_len)
-            sp_c = make_spec(
-                vocab=256, width=args.width, heads=args.heads, kvheads=args.kvheads, layers=4, ff=args.ff,
-                batch=args.batch, time_len=args.seq_len,
-                layer_mixers=cfg_c["mixers"], layer_use_rope=cfg_c["ropes"],
-                swa_window=16, delta_chunk=16, mla_dc=args.width // 2, mla_dr=max(16, (args.width // args.heads) // 2),
-                mup_d_base=128, seed=args.seed, threads=args.threads, skip_init=1,
-                gate_mode=cfg_c["gate_mode"], qk_norm=cfg_c["qk_norm"],
-                canon_mode=cfg_c["canon_mode"], mhc_streams=cfg_c["mhc_streams"],
-                online_softmax=1, gate_rank=max(16, args.width // args.heads),
+            payload["training_resume_parity_verified"] = verify_training_resume_parity(
+                width=args.width, heads=args.heads, kvheads=args.kvheads, ff=args.ff,
+                batch=args.batch, seq_len=args.seq_len, seed=args.seed, threads=args.threads,
+                max_lr=args.lr,
             )
-            with Abi6Model(sp_c, make_policy(opt_kind=OPT_ADAFACTOR_M2)) as m_reload:
-                m_reload.set_weights(w_check)
-                r_reload = m_reload.evaluate(test_tk, test_tg)
-            ce_diff = abs(float(r_reload["ce"]) - float(runs[key]["test_ce"]))
-            payload["resume_roundtrip_verified"] = {
-                "ckpt_file": ckpt_p.with_suffix(".bin").name,
-                "weights_sha256": meta_check["weights_sha256"],
-                "n_params": int(w_check.size),
-                "step": int(meta_check["step"]),
-                "sha256_verified": True,
-                "reload_eval_ce_abs_diff": ce_diff,
-                "bit_exact_eval": ce_diff < 1e-6,
-            }
         existing_payload = payload
         save_json(out_path, payload)
     print(f"Saved {out_path}")

@@ -17,7 +17,7 @@ Building directly on the merged [`littlebit-sub1bit-study`](../littlebit-sub1bit
    - **Honest CPU Systems Law (Batch Amortization):** Newton-Schulz carries a fixed `O(5 * d^2 * max(d, ff))` cost per update (`5.92×` vs Adafactor at tiny `N=256` tok/update on `wide512`), amortizing cleanly to `2.23×` at `N=1024`, `1.62×` at `N=2048`, and `~1.15×` at `N=8192` (and `1.07×` on `pilot1m` at `N=2048`). Use `Opt_Adafactor`/`Opt_Q8_BF16Grad` for tiny-batch runs (`N <= 512`), and **`Opt_Q8_Muon_BF16Grad`** whenever `N >= 2048` (via batch size or gradient accumulation).
 2. **New #1 Architecture Family — `Arch-7d` (`3:1 GDN-2 + G1-NoPE-MLA + Canon-AC + DeepSeek mHC C=2`):**
    - Implements `Arch-1 DeltaNet`, `Arch-2 Hybrid-DN+GQA`, `Arch-4 MLA`, plus **five 2025–2026 frontier upgrades**: **Kimi Delta Attention (`KDA`, `arXiv:2510.26692`)**, **Gated DeltaNet-2 (`GDN-2`, `arXiv:2605.22791v2`)**, **G1 SDPA Output Sigmoid Gate + QK-Norm (`arXiv:2505.06708`)**, **Canon-A/C causal `conv1d` `k=4` (`arXiv:2512.17351v2`)**, and **DeepSeek `mHC` Birkhoff doubly-stochastic residual streams (`arXiv:2512.24880v2`)**.
-   - On `wide10m` raw-byte WikiText-2 (2 seeds, `160` steps, `Opt_Adafactor`), every upgrade stacks monotonically (`Arch-7a` `10.11` → `Arch-7b` `9.77` → `Arch-7c` `9.64` → **`Arch-7d` `9.51` PPL**), overtaking previous #1 `Arch-2 Hybrid-DN+GQA` (`9.60`, `-0.0096` nats) and `GQA_Full` (`10.44`, `-0.0927` nats) while cutting `T=4096` streaming state **`4.27×` vs GQA** (`16.00 → 3.75 MiB`), cutting activation outliers **`-35%` vs `Arch-2`** (`16.28 → 10.62`), and cutting zero-QAT `COMP-1` PTQ degradation **`2.22×`** (`+0.2468 → +0.1110` nats).
+   - On `wide10m` raw-byte WikiText-2 (2 seeds, `160` steps, `Opt_Adafactor`), every upgrade stacks monotonically (`Arch-7a` `10.11` → `Arch-7b` `9.77` → `Arch-7c` `9.64` → **`Arch-7d` `9.51` PPL**), overtaking previous #1 `Arch-2 Hybrid-DN+GQA` (`9.60`, `-0.0096` nats) and `GQA_Full` (`10.44`, `-0.0927` nats) while cutting `T=4096` streaming state **`4.27×` vs GQA** (`16.00 → 3.75 MiB`), cutting activation outliers **`-35%` vs `Arch-2`** (`16.28 → 10.62`), and cutting zero-QAT Dual-SVID + Joint-ITQ `COMP-1` PTQ degradation **`2.04×`** (`+0.2214 → +0.1086` nats).
 3. **`TRAIN-OPT-5` Online-Softmax (`512×` Buffer Cut) & Real `1.024M`-Token `T=256` Long-Horizon Pilot:**
    - `TRAIN-OPT-5` (`online_softmax=1`) reduces `GQA_Full` attention probability storage from `O(T^2)` to `O(T)` LSE (`512.00 → 1.00 MiB`, **`512.0×`** at `T=1024`, cutting total arena `1,341.8 → 830.8 MiB`) with `0` bit drift across threads.
    - Across **`1,024,000` real training tokens** at `T=256, B=8` (`online_softmax=1`, `pilot1m` `~1.0–1.2M` params = `~0.85–1.0` tokens/param), **`Arch-7d + Opt_Q8_Muon_BF16Grad`** achieves a **triple Pareto win (equal-token, equal-time, and lower-RAM)**:
@@ -25,7 +25,7 @@ Building directly on the merged [`littlebit-sub1bit-study`](../littlebit-sub1bit
      - **Faster wall-clock time than `GQA_Full + Adafactor`** (`511.0 s` / `2,004 tok/s` vs `526.5 s` / `1,945 tok/s`);
      - **Lowest persistent RAM** (`8.76 MiB` vs `11.55–14.03 MiB`) and **`4.84×` lower peak activation amplitude** (`2.154` vs `10.422` GQA, `8.871` Arch-2).
 
-**Scope & Honesty Disclosure:** Local execution on this 2-core AVX2 VM ran `1,024,000` real tokens per pilot model (`T=256`) and `40,960` tokens per `wide10m` ablation seed (`2` seeds). Full `Tier M` (`10M` tokens at `wide10m`) and `Tier L` (`50M` tokens at `wide50m`) runs are NOT fabricated; Section 4 provides exact measured `tok/s`, calibrated wall-clock projections, and the production resumable SHA-256 CLI (`src/run_tier_ml_qual.py`) ready for 16+ core Xeon/EPYC hosts.
+**Scope & Honesty Disclosure:** Local execution on this 2-core AVX2 VM ran `1,024,000` real tokens per pilot model (`T=256`) and `40,960` tokens per `wide10m` ablation seed (`2` seeds). Full `Tier M` (`10M` tokens at `wide10m`) and `Tier L` (`50M` tokens at `wide50m`) runs are NOT fabricated; Section 4 provides exact measured `tok/s`, calibrated wall-clock projections, and the production resumable SHA-256 CLI (`src/run_tier_ml_qual.py`, with periodic in-loop recovery checkpoints and 0-bit-drift optimizer state restore) ready for 16+ core Xeon/EPYC hosts.
 
 ---
 
@@ -41,8 +41,8 @@ Building directly on the merged [`littlebit-sub1bit-study`](../littlebit-sub1bit
   - `MLA` absorbed vs unabsorbed decode (`T=29`): `max_abs = 2.049e-08` (RoPE), `1.445e-08` (NoPE)
   - `mHC` Sinkhorn-Knopp Birkhoff doubly-stochastic manifold + backward VJP (`t_max=20`): `C=2` (`marg=1.184e-6`, `grad=1.181e-9`), `C=4` (`marg=2.448e-9`, `grad=2.445e-5`)
 - **Central Finite-Difference AD:** Passed across all 9 model suites (`GQA`, `GQA+G1+QKNorm+online`, `SWA`, `DeltaNet`, `KDA+Canon-A`, `GDN-2+Canon-A`, `MLA RoPE/NoPE+online`, and full 53-tensor `Hybrid GDN2+MLA+Canon-AC+mHC` for both `C=2` and `C=4`).
-- **Bitwise Thread Determinism (`1T == 2T`):** `0` bit drift across all 7 optimizers (`FP32`, `Q8`, `Q8+BF16Grad`, `Adafactor`, `Adafactor+BF16Grad`, `Muon_FP32`, `Q8_Muon+BF16Grad`) and `online_softmax` parity (`max_loss_diff = 1.94e-7`, `max_grad_diff = 3.92e-6`, `0` bit drift `1T == 2T`).
-- **Fail-Closed & Suffix Trimming:** All-masked batch refused (`status = -1`); trimmed vs padded gradients `0.000e+00`.
+- **Bitwise Thread Determinism (`1T == 2T`) & Exact Mid-Run Resume (`resume_bits=0`):** `0` bit drift across all 7 optimizers (`FP32`, `Q8`, `Q8+BF16Grad`, `Adafactor`, `Adafactor+BF16Grad`, `Muon_FP32`, `Q8_Muon+BF16Grad`) for both `1T == 2T` parity AND mid-run checkpoint save+load+continue (`bcir_ext_{opt_state_bytes,save_opt_state,load_opt_state}`), plus `online_softmax` parity (`max_loss_diff = 1.94e-7`, `max_grad_diff = 3.92e-6`, `0` bit drift `1T == 2T`).
+- **Fail-Closed & Suffix Trimming:** All-masked batch refused (`status = 1`), bad token ID refused (`status = 1`), NaN weight refused (`status = 3`), truncated/corrupted optimizer state refused fail-closed; trimmed vs padded gradients `0.000e+00`.
 
 ---
 
@@ -82,35 +82,35 @@ Building directly on the merged [`littlebit-sub1bit-study`](../littlebit-sub1bit
 
 ![BCIR ABI 6 10-Architecture Frontier](figures/abi6_architecture_frontier.png)
 
-### 3.1 `wide10m` Raw-Byte WikiText-2 (`B2`: `d=512, ff=1536, L=4`, 2 Seeds, 160 Steps, `Opt_Adafactor`)
+### 3.1 `wide10m` Raw-Byte WikiText-2 (`B2`: `d=512, ff=1536, L=4`, 2 Seeds, 160 Steps, `Opt_Adafactor`, Real Procrustes Joint-ITQ + Dual-SVID `COMP-1` PTQ)
 
 | Architecture (ABI 6 `MIXER-EXT`) | Params | Mean Test CE (`Delta vs GQA`) | Mean PPL | `BCIRQ8` `Delta CE` | Zero-QAT `COMP-1` `Delta CE` | `COMP-1` PTQ CE | Attn Sink | Max `\|Act\|` | `T=4096` State (`MiB`) | Median `ms/step` |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **`Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2`** | `14.30M` | **`2.2526` (`-0.0927`)** | **`9.51`** | **`-0.0001`** | **`+0.1110`** | **`2.3636`** | `0.090` | `10.62` | **`3.75`** | `594.7` |
-| `Arch2_Hybrid_DN_GQA` | `13.53M` | `2.2622` (`-0.0831`) | `9.60` | `+0.0001` | `+0.2468` | `2.5090` | `0.052` | `16.28` | `4.75` | `528.5` |
-| `Arch1_DeltaNet` | `13.93M` | `2.2651` (`-0.0802`) | `9.63` | `+0.0003` | `+0.1500` | `2.4151` | `0.000` | **`7.62`** | **`1.00`** | `562.1` |
-| `Arch7c_GDN2_G1NoPEMLA_CanonAC` | `14.30M` | `2.2662` (`-0.0791`) | `9.64` | `+0.0001` | `+0.1155` | `2.3817` | `0.086` | `10.87` | `3.75` | `562.3` |
-| `Arch7b_GDN2_G1NoPEMLA` | `14.28M` | `2.2796` (`-0.0657`) | `9.77` | `+0.0001` | `+0.1147` | `2.3943` | `0.082` | `9.93` | `3.75` | `553.2` |
-| `Arch7a_KDA_NoPEMLA` | `13.88M` | `2.3136` (`-0.0317`) | `10.11` | `+0.0003` | `+0.1215` | `2.4351` | `0.078` | `13.96` | `3.75` | `527.9` |
-| `GQA_Full_G1_QKNorm` | `12.34M` | `2.3364` (`-0.0089`) | `10.34` | `+0.0001` | `+0.1493` | `2.4857` | `0.040` | `14.13` | `16.00` | `385.9` |
-| `GQA_Full_CanonAC` | `12.34M` | `2.3428` (`-0.0025`) | `10.41` | `-0.0000` | `+0.1126` | `2.4554` | `0.046` | `14.29` | `16.00` | `385.0` |
-| `GQA_Full` (baseline) | `12.33M` | `2.3453` (`+0.0000`) | `10.44` | `+0.0001` | `+0.1076` | `2.4529` | `0.039` | `14.09` | `16.00` | `375.1` |
-| `Arch4_MLA` (decoupled RoPE) | `13.57M` | `2.3972` (`+0.0519`) | `10.99` | `-0.0001` | `+0.1358` | `2.5330` | `0.048` | `11.00` | `14.00` | `437.4` |
+| **`Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2`** | `14.30M` | **`2.2526` (`-0.0927`)** | **`9.51`** | **`-0.0001`** | `+0.1086` | **`2.3612`** | `0.090` | `10.62` | **`3.75`** | `577.5` |
+| `Arch2_Hybrid_DN_GQA` | `13.53M` | `2.2622` (`-0.0830`) | `9.60` | `+0.0001` | `+0.2214` | `2.4836` | `0.052` | `16.28` | `4.75` | `492.9` |
+| `Arch1_DeltaNet` | `13.93M` | `2.2651` (`-0.0802`) | `9.63` | `+0.0003` | `+0.1297` | `2.3948` | `0.000` | **`7.62`** | **`1.00`** | `537.2` |
+| `Arch7c_GDN2_G1NoPEMLA_CanonAC` | `14.30M` | `2.2662` (`-0.0791`) | `9.64` | `+0.0001` | `+0.1105` | `2.3767` | `0.086` | `10.87` | `3.75` | `552.2` |
+| `Arch7b_GDN2_G1NoPEMLA` | `14.28M` | `2.2796` (`-0.0657`) | `9.77` | `+0.0001` | `+0.1043` | `2.3839` | `0.082` | `9.93` | `3.75` | `549.0` |
+| `Arch7a_KDA_NoPEMLA` | `13.88M` | `2.3136` (`-0.0316`) | `10.11` | `+0.0003` | `+0.1166` | `2.4303` | `0.078` | `13.96` | `3.75` | `518.5` |
+| `GQA_Full_G1_QKNorm` | `12.34M` | `2.3364` (`-0.0089`) | `10.34` | `+0.0001` | `+0.1282` | `2.4646` | `0.040` | `14.13` | `16.00` | `370.4` |
+| `GQA_Full_CanonAC` | `12.34M` | `2.3428` (`-0.0025`) | `10.41` | `-0.0000` | `+0.0960` | `2.4388` | `0.046` | `14.29` | `16.00` | `373.5` |
+| `GQA_Full` (baseline) | `12.33M` | `2.3453` (`+0.0000`) | `10.44` | `+0.0001` | **`+0.0885`** | `2.4338` | `0.039` | `14.09` | `16.00` | `359.2` |
+| `Arch4_MLA` (decoupled RoPE) | `13.57M` | `2.3972` (`+0.0519`) | `10.99` | `-0.0001` | `+0.1203` | `2.5175` | `0.048` | `11.00` | `14.00` | `432.1` |
 
-### 3.2 Multi-Query Associative Recall & Counterfactuals (`B1`: 4 shuffled queries/seq, 300 steps, 2 seeds, 10% chance)
+### 3.2 Multi-Query Associative Recall & Paired Counterfactuals (`B1`: 4 shuffled queries/seq, shared seed `5001` for `mq4`/`value_swap`/`query_change`, 300 steps, 2 seeds, 10% chance)
 
-| Architecture (`d=128, L=4`) | `mq4` | `value_swap` | `filler20 (>W)` | `extrap_6pair` | `ordered_8pair @ T=96` | Max `\|Act\|` |
-|---|---:|---:|---:|---:|---:|---:|
-| **`Arch7a_KDA_NoPEMLA`** | **`25.9%`** | `20.4%` | **`20.9%`** | `16.7%` | `14.6%` | `11.33` |
-| **`GQA_Full_CanonAC`** | `25.5%` | `23.1%` | `19.1%` | **`19.9%`** | **`16.0%`** | `18.24` |
-| `Arch7b_GDN2_G1NoPEMLA` | `22.7%` | `15.3%` | `15.3%` | `16.3%` | `14.6%` | `14.48` |
-| `Arch4_MLA` | `21.8%` | `17.6%` | `15.9%` | `15.4%` | `13.4%` | `16.20` |
-| `GQA_Full_G1_QKNorm` | `20.8%` | `18.1%` | `17.5%` | `17.2%` | `14.0%` | `29.91` |
-| `Arch7c_GDN2_G1NoPEMLA_CanonAC` | `20.8%` | `18.5%` | `19.4%` | `14.7%` | `13.2%` | `13.48` |
-| `Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2` | `20.8%` | `19.4%` | `15.3%` | `12.7%` | `13.4%` | **`9.04`** |
-| `GQA_Full` | `20.4%` | **`24.1%`** | `18.4%` | `17.0%` | `12.8%` | `22.97` |
-| `Arch1_DeltaNet` | `18.1%` | `18.5%` | `16.9%` | `17.2%` | `14.6%` | `19.12` |
-| `Arch2_Hybrid_DN_GQA` | `15.7%` | `14.3%` | `11.9%` | `16.3%` | `13.4%` | `28.95` |
+| Architecture (`d=128, L=4`) | `mq4` | `value_swap` | `query_change` | `filler20 (>W)` | `extrap_6pair` | `ordered_8pair @ T=96` | Max `\|Act\|` |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| **`Arch7a_KDA_NoPEMLA`** | **`25.9%`** | `23.1%` | `25.9%` | **`20.9%`** | `16.7%` | `14.6%` | `11.33` |
+| **`GQA_Full_CanonAC`** | `25.5%` | **`26.9%`** | **`26.4%`** | `19.1%` | **`19.9%`** | **`16.0%`** | `18.23` |
+| `Arch7b_GDN2_G1NoPEMLA` | `22.7%` | `19.9%` | `18.1%` | `15.3%` | `16.3%` | `14.6%` | `14.53` |
+| `Arch4_MLA` | `21.8%` | `22.7%` | `21.3%` | `15.9%` | `15.4%` | `13.4%` | `16.20` |
+| `GQA_Full_G1_QKNorm` | `20.8%` | `21.3%` | `21.3%` | `17.5%` | `17.2%` | `14.0%` | `29.91` |
+| `Arch7c_GDN2_G1NoPEMLA_CanonAC` | `20.8%` | `17.6%` | `19.4%` | `19.4%` | `14.7%` | `13.2%` | `13.48` |
+| `Arch7d_GDN2_G1NoPEMLA_CanonAC_mHC2` | `20.8%` | `20.8%` | `20.8%` | `15.3%` | `12.7%` | `13.4%` | **`9.06`** |
+| `GQA_Full` | `20.4%` | `23.1%` | `24.1%` | `18.4%` | `17.0%` | `12.8%` | `22.96` |
+| `Arch1_DeltaNet` | `18.1%` | `17.6%` | `19.9%` | `16.9%` | `17.2%` | `14.6%` | `19.12` |
+| `Arch2_Hybrid_DN_GQA` | `15.7%` | `14.3%` | `17.1%` | `11.9%` | `16.3%` | `13.4%` | `28.96` |
 
 ### 3.3 `TRAIN-OPT-5` Online-Softmax `O(T)` vs `O(T^2)` Memory Scaling (`B3`, `wide10m`, `B=4`)
 
@@ -136,8 +136,10 @@ Executed `500` uninterrupted steps at `B=8, T=256` (`N=2,048` tokens/update, **`
 | `Arch-7d` + `Opt_Adafactor` | `1.22M` | `14.03` / `12.07` | `4.94` | `1.6542` | `5.23` | `+0.0003` | `3.79` | `475.7 s` | `2,153` |
 | **`Arch-7d` + `Opt_Q8_Muon_BF16Grad`** | `1.22M` | **`8.76` / `7.53`** | **`4.57`** | **`1.5716`** | **`4.81`** | `+0.0005` | **`2.15`** | `511.0 s` | `2,004` |
 
-- **Atomic SHA-256 Checkpoint & Reload Parity Verified:** Saved `checkpoints/tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.bin` (`4.7 MiB`, SHA-256 `93555826f1cb2c284af8f041d4a47cd19f854c76e3d2b9b9eafc8faa9a6e7f04`), reloaded into a fresh `Abi6Model(skip_init=1)`, and verified test eval CE parity to `9.93e-8`.
-- **Calibrated Tier M (`10M` tokens) / Tier L (`50M` tokens) Qualification CLI (not run locally due to 2-core Haswell CPU budget; projected `~12.8 min` on 16-core AVX2/AVX-512 for `pilot1m` 10M tokens, or `~3.8 hrs` for `wide10m` 10M tokens):**
+- **Atomic SHA-256 Checkpoint, Periodic In-Loop Recovery & 0-Bit-Drift Training Resume Verified:**
+  - Validation-selected checkpoint: `checkpoints/tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.bin` (`4.7 MiB`, SHA-256 `93555826f1cb2c284af8f041d4a47cd19f854c76e3d2b9b9eafc8faa9a6e7f04`, reload eval CE diff `9.93e-8`).
+  - Full mid-run training resume (`src/run_tier_ml_qual.py --mode verify_resume_only`): interrupted at step `4/8`, persisted periodic recovery checkpoint (weights + full optimizer moments/scales/step/beta powers + best-val weights + cumulative elapsed wall time), restored into a fresh `Abi6Model(skip_init=1)`, and continued steps `5..8`. Both `Opt_Adafactor` (SHA `737929ae7bf0...`) and `Opt_Q8_Muon_BF16Grad` (SHA `aa45c97a785f...`) matched uninterrupted 8-step training to **0 bit drift** (`test_ce_abs_diff = 0.0e+00`), reported exact newly executed tokens (`8,192` on resume, `0` on completed reload), and excluded pre-resume tokens from current-invocation throughput.
+- **Calibrated Tier M (`10M` tokens) / Tier L (`50M` tokens) Qualification CLI (not run locally due to 2-core Haswell CPU budget; projected `~12.8 min` on 16-core AVX2/AVX-512 for `pilot1m` 10M tokens, or `~3.8 hrs` for `wide10m` 10M tokens; writes periodic recovery checkpoints every `--ckpt-every` steps separately from best-val final weights):**
   ```bash
   make && make verify
   python src/run_tier_ml_qual.py --mode single --tier M \

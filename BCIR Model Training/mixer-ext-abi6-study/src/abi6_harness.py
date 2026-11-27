@@ -207,7 +207,7 @@ def load_lib() -> ct.CDLL:
     global _LIB
     if _LIB is not None:
         return _LIB
-    if not LIB_PATH.exists():
+    if not LIB_PATH.exists() or subprocess.run(["make", "-q"], cwd=str(STUDY_DIR)).returncode != 0:
         subprocess.run(["make"], cwd=str(STUDY_DIR), check=True)
     lib = ct.CDLL(str(LIB_PATH))
     lib.bcir_mixer_ext_abi_version.argtypes = []
@@ -227,6 +227,12 @@ def load_lib() -> ct.CDLL:
     lib.bcir_ext_reset_telemetry.restype = None
     lib.bcir_ext_reset_opt.argtypes = [ct.c_void_p]
     lib.bcir_ext_reset_opt.restype = None
+    lib.bcir_ext_opt_state_bytes.argtypes = [ct.c_void_p]
+    lib.bcir_ext_opt_state_bytes.restype = ct.c_size_t
+    lib.bcir_ext_save_opt_state.argtypes = [ct.c_void_p, ct.c_void_p, ct.c_size_t]
+    lib.bcir_ext_save_opt_state.restype = ct.c_int
+    lib.bcir_ext_load_opt_state.argtypes = [ct.c_void_p, ct.c_void_p, ct.c_size_t]
+    lib.bcir_ext_load_opt_state.restype = ct.c_int
     lib.bcir_ext_weights_ptr.argtypes = [ct.c_void_p]
     lib.bcir_ext_weights_ptr.restype = ct.POINTER(ct.c_float)
     lib.bcir_ext_param_count.argtypes = [ct.c_void_p]
@@ -361,6 +367,22 @@ class Abi6Model:
         v = self.weights_view()
         v[:] = np.asarray(arr, dtype=np.float32)
 
+    def copy_opt_state(self) -> bytes:
+        nbytes = int(self.lib.bcir_ext_opt_state_bytes(self.ptr))
+        if nbytes <= 0:
+            raise RuntimeError("bcir_ext_opt_state_bytes returned 0")
+        buf = ct.create_string_buffer(nbytes)
+        rc = self.lib.bcir_ext_save_opt_state(self.ptr, buf, nbytes)
+        if rc != 0:
+            raise RuntimeError(f"bcir_ext_save_opt_state failed with rc={rc}")
+        return buf.raw
+
+    def set_opt_state(self, raw: bytes) -> None:
+        buf = ct.create_string_buffer(raw, len(raw))
+        rc = self.lib.bcir_ext_load_opt_state(self.ptr, buf, len(raw))
+        if rc != 0:
+            raise RuntimeError(f"bcir_ext_load_opt_state failed with rc={rc}")
+
     def mem_stats(self) -> Dict[str, Any]:
         ms = MemStats()
         self.lib.bcir_ext_get_mem_stats(self.ptr, ct.byref(ms))
@@ -478,17 +500,43 @@ def quantize_bcirq8_g32(w: np.ndarray) -> np.ndarray:
     return dst
 
 
-def dual_svid_1bit_ptq(mat: np.ndarray, rank: int = 16, itq_iters: int = 10) -> np.ndarray:
-    """BCIR COMP-1 Dual-SVID + Joint-ITQ packed-1-bit PTQ reconstruction (0.95-1.07 bpw)."""
+def _rank1_mag_svd(abs_mat: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """Exact rank-1 non-negative approximation |A| ~= row_scale[:, None] * col_scale[None, :]."""
+    u, s, vt = np.linalg.svd(abs_mat.astype(np.float64), full_matrices=False)
+    rt = math.sqrt(max(float(s[0]), 0.0)) if s.size else 0.0
+    return np.abs(u[:, 0]) * rt, np.abs(vt[0, :]) * rt
+
+
+def joint_itq_rotate(
+    u_prime: np.ndarray, v_prime: np.ndarray, iters: int = 25, seed: int = 42
+) -> Tuple[np.ndarray, np.ndarray]:
+    """LittleBit-2 (ICML 2026 Alg. 1): Joint Orthogonal Procrustes alignment on Z = [U'; V'].
+    Preserves U' @ V'^T = (U' R)(V' R)^T identically while aligning coordinates with {+-1}^r."""
+    r = u_prime.shape[1]
+    if r <= 1 or iters <= 0:
+        return u_prime.astype(np.float64), v_prime.astype(np.float64)
+    z = np.vstack([u_prime, v_prime]).astype(np.float64)
+    rng = np.random.default_rng(seed)
+    rot, _ = np.linalg.qr(rng.standard_normal((r, r)))
+    for _ in range(iters):
+        b = np.where(z @ rot >= 0.0, 1.0, -1.0)
+        phi, _s, psi_t = np.linalg.svd(b.T @ z, full_matrices=False)
+        rot = psi_t.T @ phi.T
+    return u_prime @ rot, v_prime @ rot
+
+
+def dual_svid_1bit_ptq(
+    mat: np.ndarray, rank: int = 16, itq_iters: int = 25, seed: int = 42
+) -> np.ndarray:
+    """BCIR COMP-1 Dual-SVID + Joint-ITQ packed-1-bit PTQ reconstruction (1-bit base + rank-r residual)."""
     W = np.asarray(mat, dtype=np.float64)
     m, n = W.shape
     r = min(rank, m, n)
     B = np.where(W >= 0.0, 1.0, -1.0)
     # Row/col positive scaling via rank-1 SVD of |W|
-    absW = np.abs(W)
-    u1, s1, vt1 = np.linalg.svd(absW, full_matrices=False)
-    alpha_r = np.abs(u1[:, 0]) * math.sqrt(max(s1[0], 1e-12))
-    alpha_c = np.abs(vt1[0, :]) * math.sqrt(max(s1[0], 1e-12))
+    alpha_r, alpha_c = _rank1_mag_svd(np.abs(W))
+    alpha_r = np.maximum(alpha_r, 1e-8)
+    alpha_c = np.maximum(alpha_c, 1e-8)
     # Iterative binary + scale refinement
     for _ in range(3):
         denom_r = np.sum((B * alpha_c[None, :]) ** 2, axis=1) + 1e-12
@@ -499,19 +547,23 @@ def dual_svid_1bit_ptq(mat: np.ndarray, rank: int = 16, itq_iters: int = 10) -> 
     res = W - base
     if r > 0:
         U, S, Vt = np.linalg.svd(res, full_matrices=False)
-        U_r = U[:, :r] * np.sqrt(np.maximum(S[:r], 0.0))[None, :]
-        V_r = (np.sqrt(np.maximum(S[:r], 0.0))[:, None] * Vt[:r, :])
-        # Joint-ITQ alternating sign + continuous scale update
-        Bu = np.where(U_r >= 0.0, 1.0, -1.0)
-        Bv = np.where(V_r >= 0.0, 1.0, -1.0)
-        su = np.mean(np.abs(U_r), axis=0) + 1e-8
-        sv = np.mean(np.abs(V_r), axis=1) + 1e-8
-        for _ in range(max(1, itq_iters // 2)):
-            Bu = np.where(U_r >= 0.0, 1.0, -1.0)
-            su = np.sum(U_r * Bu, axis=0) / (m + 1e-12)
-            Bv = np.where(V_r >= 0.0, 1.0, -1.0)
-            sv = np.sum(V_r * Bv, axis=1) / (n + 1e-12)
-        recon = base + (Bu * su[None, :]) @ (Bv * sv[:, None])
+        rt_s = np.sqrt(np.maximum(S[:r], 0.0))
+        u_cont = U[:, :r] * rt_s[None, :]          # [m, r]
+        v_cont = Vt[:r, :].T * rt_s[None, :]       # [n, r]
+        u_rot, v_rot = joint_itq_rotate(u_cont, v_cont, iters=itq_iters, seed=seed)
+        bu = np.where(u_rot >= 0.0, 1.0, -1.0)
+        bv = np.where(v_rot >= 0.0, 1.0, -1.0)
+        h_u, l_u = _rank1_mag_svd(np.abs(u_rot))
+        g_v, l_v = _rank1_mag_svd(np.abs(v_rot))
+        lam = l_u * l_v
+        # Refine latent scales via ridge least-squares against residual
+        hu = h_u[:, None] * bu                     # [m, r]
+        vg = (g_v[:, None] * bv).T                 # [r, n]
+        gram = (hu.T @ hu) * (vg @ vg.T)
+        rhs = np.sum(hu * (res @ vg.T), axis=0)
+        ridge = 1e-8 * (float(np.trace(gram)) / max(r, 1) + 1e-12)
+        lam = np.linalg.solve(gram + ridge * np.eye(r), rhs)
+        recon = base + (hu * lam[None, :]) @ vg
     else:
         recon = base
     return recon.astype(np.float32)
@@ -627,18 +679,36 @@ def build_kv_dataset(
         keys = rng.choice(_KEY_TOKS, size=n_pairs, replace=False)
         vals = rng.choice(_VAL_TOKS, size=n_pairs, replace=True)
         q_idx = int(rng.integers(0, n_pairs))
+        filler = (
+            rng.choice(filler_pool, size=filler_len, replace=True)
+            if filler_len > 0
+            else None
+        )
+        q_order = (
+            rng.permutation(n_pairs)
+            if (multi and shuffled_query)
+            else (np.arange(n_pairs) if multi else None)
+        )
         if mode == "value_swap" and n_pairs >= 2:
             other = (q_idx + 1) % n_pairs
-            while vals[other] == vals[q_idx]:
-                vals[other] = rng.choice(_VAL_TOKS)
+            if vals[other] == vals[q_idx]:
+                # Deterministic distinct value without perturbing RNG alignment across paired modes.
+                idx_v = int(vals[other] - _VAL_TOKS[0])
+                vals[other] = _VAL_TOKS[(idx_v + 1) % len(_VAL_TOKS)]
             vals[q_idx], vals[other] = vals[other], vals[q_idx]
         elif mode == "query_change" and n_pairs >= 2:
             q_idx = (q_idx + 1) % n_pairs
+            if q_order is not None:
+                # Rotate query order so every multi-query slot asks for a different key on the same context.
+                q_order = np.roll(q_order, 1)
+        elif mode != "standard":
+            raise ValueError(f"unknown KV probe mode {mode!r}")
+
         seq: List[int] = []
         for p in range(n_pairs):
             seq.extend([int(keys[p]), _EQ, int(vals[p]), _SEP])
-        if filler_len > 0:
-            seq.extend(int(x) for x in rng.choice(filler_pool, size=filler_len, replace=True))
+        if filler is not None:
+            seq.extend(int(x) for x in filler)
             seq.append(_SEP)
         if not multi:
             seq.extend([_QRY, int(keys[q_idx]), _EQ])
@@ -647,7 +717,7 @@ def build_kv_dataset(
             toks[i, : len(seq)] = seq
             tgts[i, len(seq) - 1] = int(vals[q_idx])
         else:
-            q_order = rng.permutation(n_pairs) if shuffled_query else np.arange(n_pairs)
+            assert q_order is not None
             for idx_q, p in enumerate(q_order):
                 seq.extend([_QRY, int(keys[p]), _EQ])
                 tgts[i, len(seq) - 1] = int(vals[p])
@@ -671,6 +741,7 @@ def train_with_val_selection(
     *,
     active_times: Optional[np.ndarray] = None,
     val_active_time: Optional[int] = None,
+    raise_on_error: bool = True,
 ) -> Dict[str, Any]:
     steps = int(train_tk.shape[0])
     curve: List[Dict[str, Any]] = []
@@ -696,22 +767,40 @@ def train_with_val_selection(
             lrs=lrs[s : s + chunk], active_times=at_sl,
         )
         rc_last = rc
-        for e in evs:
+        completed_evs = [e for e in evs if int(e["status"]) == 0 and int(e["step"]) > 0]
+        for e in completed_evs:
             step_ms_all.append(float(e["step_ms"]))
-        s += chunk
+        s += len(completed_evs)
         if rc != 0:
-            break
+            if raise_on_error:
+                raise RuntimeError(f"train_loop failed with rc={rc} after {s}/{steps} steps")
+            return {
+                "rc": rc_last,
+                "failed": True,
+                "steps_completed": s,
+                "best_step": best_step,
+                "best_val_ce": best_val_ce,
+                "test_ce": float("nan"),
+                "test_ppl": float("nan"),
+                "test_acc": float("nan"),
+                "wall_s": round(time.perf_counter() - t0, 3),
+                "step_ms_median": round(float(np.median(step_ms_all)) if step_ms_all else 0.0, 3),
+                "eval_telemetry": model.telemetry(),
+                "mem_stats": model.mem_stats(),
+                "curve": curve,
+                "best_weights": best_w,
+            }
         vv = model.evaluate(val_tk, val_tg, active_time=val_active_time)
         wall_s = time.perf_counter() - t0
         curve.append({
             "step": s,
             "wall_s": round(wall_s, 3),
-            "train_loss": round(float(np.mean([e["loss"] for e in evs[-min(8, len(evs)):]])), 6),
-            "grad_norm_mean": round(float(np.mean([e["grad_norm"] for e in evs])), 4),
+            "train_loss": round(float(np.mean([e["loss"] for e in completed_evs[-min(8, len(completed_evs)):]])), 6),
+            "grad_norm_mean": round(float(np.mean([e["grad_norm"] for e in completed_evs])), 4),
             "val_ce": vv["ce"],
             "val_ppl": vv["ppl"],
             "val_acc": vv["accuracy"],
-            "step_ms_median": round(float(np.median([e["step_ms"] for e in evs])), 3),
+            "step_ms_median": round(float(np.median([e["step_ms"] for e in completed_evs])), 3),
         })
         if vv["ok"] and vv["ce"] < best_val_ce:
             best_val_ce = vv["ce"]
@@ -724,6 +813,7 @@ def train_with_val_selection(
     eval_tel = model.telemetry()
     return {
         "rc": rc_last,
+        "failed": False,
         "steps_completed": s,
         "best_step": best_step,
         "best_val_ce": best_val_ce,
