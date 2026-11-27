@@ -1,0 +1,4 @@
+build/
+checkpoints/wide50m_*.npz
+__pycache__/
+*.pyc

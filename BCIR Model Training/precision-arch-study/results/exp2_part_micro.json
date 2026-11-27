@@ -1,0 +1,315 @@
+{
+  "provenance": {
+    "cpu_model": "Intel(R) Xeon(R) 6985P-C",
+    "cores": 2,
+    "clang": "clang version 23.1.6 (https://github.com/conda-forge/clangdev-feedstock 2607ad814147f37fdd84f5bb58ac45576da1a85b)",
+    "python": "3.11.2",
+    "numpy": "2.4.6",
+    "bcir_head_sha": "15c7287e93a968795cf27c31caa7ee5e79cd48f9",
+    "vdp_bf16_variants": 3
+  },
+  "contracts": {
+    "0": {
+      "kind": 0,
+      "name": "fp32_kblock",
+      "operand_fmt": "IEEE binary32",
+      "exponent_policy": "8-bit bias 127",
+      "rounding_mode": "RNE (fused kblock=448)",
+      "accumulator_type": "FP32",
+      "reduction_order": "ascending KBLOCK=448",
+      "subnormal_handling": "IEEE subnormal",
+      "overflow_behavior": "IEEE +/-Inf",
+      "max_rel_err_bound": 1e-06,
+      "block_size": 1,
+      "bits_per_elem": 32.0
+    },
+    "1": {
+      "kind": 1,
+      "name": "bf16_ndt_amx",
+      "operand_fmt": "BF16 (1s8e7m)",
+      "exponent_policy": "8-bit bias 127",
+      "rounding_mode": "RNE (VCVTNEPS2BF16)",
+      "accumulator_type": "FP32 (even/odd TDPBF16PS)",
+      "reduction_order": "32-depth blocks",
+      "subnormal_handling": "FTZ/DAZ",
+      "overflow_behavior": "IEEE +/-Inf",
+      "max_rel_err_bound": 0.01,
+      "block_size": 32,
+      "bits_per_elem": 16.0
+    },
+    "2": {
+      "kind": 2,
+      "name": "bf16_vdp_avx512",
+      "operand_fmt": "BF16 (1s8e7m)",
+      "exponent_policy": "8-bit bias 127",
+      "rounding_mode": "RNE (VCVTNEPS2BF16)",
+      "accumulator_type": "FP32 (exact pair VDPBF16PS fma1->fma0)",
+      "reduction_order": "ascending 2-term pairs",
+      "subnormal_handling": "FTZ/DAZ",
+      "overflow_behavior": "IEEE +/-Inf",
+      "max_rel_err_bound": 0.01,
+      "block_size": 2,
+      "bits_per_elem": 16.0
+    },
+    "3": {
+      "kind": 3,
+      "name": "fp8_e4m3_blk32",
+      "operand_fmt": "FP8 E4M3FN (1s4e3m)",
+      "exponent_policy": "4-bit bias 7 + FP32 blk32 scale",
+      "rounding_mode": "RNE",
+      "accumulator_type": "FP32 (kblock)",
+      "reduction_order": "ascending KBLOCK=448",
+      "subnormal_handling": "FP8 subnormal",
+      "overflow_behavior": "saturate +/-448",
+      "max_rel_err_bound": 0.0625,
+      "block_size": 32,
+      "bits_per_elem": 9.0
+    },
+    "4": {
+      "kind": 4,
+      "name": "fp8_e5m2_blk32",
+      "operand_fmt": "FP8 E5M2 (1s5e2m)",
+      "exponent_policy": "5-bit bias 15 + FP32 blk32 scale",
+      "rounding_mode": "RNE",
+      "accumulator_type": "FP32 (kblock)",
+      "reduction_order": "ascending KBLOCK=448",
+      "subnormal_handling": "FP8 subnormal",
+      "overflow_behavior": "saturate +/-57344",
+      "max_rel_err_bound": 0.125,
+      "block_size": 32,
+      "bits_per_elem": 9.0
+    },
+    "5": {
+      "kind": 5,
+      "name": "mxfp4_e2m1_blk32",
+      "operand_fmt": "MXFP4 E2M1 (1s2e1m)",
+      "exponent_policy": "2-bit + shared E8M0 blk32",
+      "rounding_mode": "RNE",
+      "accumulator_type": "FP32 (kblock)",
+      "reduction_order": "ascending KBLOCK=448",
+      "subnormal_handling": "E2M1 {0, 0.5}",
+      "overflow_behavior": "saturate +/-6.0",
+      "max_rel_err_bound": 0.25,
+      "block_size": 32,
+      "bits_per_elem": 4.25
+    },
+    "6": {
+      "kind": 6,
+      "name": "bcirq8_g32_pow2",
+      "operand_fmt": "INT8 [-127,127]",
+      "exponent_policy": "shared pow2 2^e blk32",
+      "rounding_mode": "RNE (|w-w_hat|<=2^(e-1))",
+      "accumulator_type": "FP32 (kblock)",
+      "reduction_order": "ascending KBLOCK=448",
+      "subnormal_handling": "zero",
+      "overflow_behavior": "saturate +/-127",
+      "max_rel_err_bound": 0.008,
+      "block_size": 32,
+      "bits_per_elem": 8.5
+    }
+  },
+  "gemm_microbench_2t": {
+    "wide50m_mlp_gate_up": {
+      "fp32_kblock": {
+        "median_ms": 2.947,
+        "gflops": 273.25,
+        "rel_frob_err_vs_fp32": 0.0,
+        "max_abs_err_vs_fp32": 0.0
+      },
+      "bf16_ndt": {
+        "median_ms": 4.996,
+        "gflops": 161.19,
+        "rel_frob_err_vs_fp32": 0.002355,
+        "max_abs_err_vs_fp32": 0.020562
+      },
+      "bf16_vdp_avx512": {
+        "median_ms": 6.653,
+        "gflops": 121.04,
+        "rel_frob_err_vs_fp32": 0.002355,
+        "max_abs_err_vs_fp32": 0.020562
+      },
+      "bf16_vdp_portable": {
+        "median_ms": 940.256,
+        "gflops": 0.86,
+        "rel_frob_err_vs_fp32": 0.002355,
+        "max_abs_err_vs_fp32": 0.020562
+      },
+      "fp8_e4m3_blk32": {
+        "median_ms": 10.658,
+        "gflops": 75.56,
+        "rel_frob_err_vs_fp32": 0.033942,
+        "max_abs_err_vs_fp32": 0.323639
+      },
+      "fp8_e5m2_blk32": {
+        "median_ms": 10.486,
+        "gflops": 76.8,
+        "rel_frob_err_vs_fp32": 0.067833,
+        "max_abs_err_vs_fp32": 0.561228
+      },
+      "mxfp4_e2m1_blk32": {
+        "median_ms": 5.336,
+        "gflops": 150.91,
+        "rel_frob_err_vs_fp32": 0.163131,
+        "max_abs_err_vs_fp32": 1.349882
+      },
+      "bcirq8_g32": {
+        "median_ms": 6.325,
+        "gflops": 127.33,
+        "rel_frob_err_vs_fp32": 0.011784,
+        "max_abs_err_vs_fp32": 0.106021
+      }
+    },
+    "wide50m_attn_qo": {
+      "fp32_kblock": {
+        "median_ms": 1.047,
+        "gflops": 288.47,
+        "rel_frob_err_vs_fp32": 0.0,
+        "max_abs_err_vs_fp32": 0.0
+      },
+      "bf16_ndt": {
+        "median_ms": 2.052,
+        "gflops": 147.2,
+        "rel_frob_err_vs_fp32": 0.002352,
+        "max_abs_err_vs_fp32": 0.021021
+      },
+      "bf16_vdp_avx512": {
+        "median_ms": 2.111,
+        "gflops": 143.06,
+        "rel_frob_err_vs_fp32": 0.002352,
+        "max_abs_err_vs_fp32": 0.021021
+      },
+      "bf16_vdp_portable": {
+        "median_ms": 348.991,
+        "gflops": 0.87,
+        "rel_frob_err_vs_fp32": 0.002352,
+        "max_abs_err_vs_fp32": 0.021021
+      },
+      "fp8_e4m3_blk32": {
+        "median_ms": 3.96,
+        "gflops": 76.26,
+        "rel_frob_err_vs_fp32": 0.033909,
+        "max_abs_err_vs_fp32": 0.322209
+      },
+      "fp8_e5m2_blk32": {
+        "median_ms": 3.948,
+        "gflops": 76.49,
+        "rel_frob_err_vs_fp32": 0.067799,
+        "max_abs_err_vs_fp32": 0.586682
+      },
+      "mxfp4_e2m1_blk32": {
+        "median_ms": 2.021,
+        "gflops": 149.43,
+        "rel_frob_err_vs_fp32": 0.163224,
+        "max_abs_err_vs_fp32": 1.335704
+      },
+      "bcirq8_g32": {
+        "median_ms": 2.426,
+        "gflops": 124.47,
+        "rel_frob_err_vs_fp32": 0.011763,
+        "max_abs_err_vs_fp32": 0.109347
+      }
+    },
+    "wide50m_mlp_down": {
+      "fp32_kblock": {
+        "median_ms": 2.82,
+        "gflops": 285.62,
+        "rel_frob_err_vs_fp32": 0.0,
+        "max_abs_err_vs_fp32": 0.0
+      },
+      "bf16_ndt": {
+        "median_ms": 4.377,
+        "gflops": 183.99,
+        "rel_frob_err_vs_fp32": 0.002357,
+        "max_abs_err_vs_fp32": 0.036266
+      },
+      "bf16_vdp_avx512": {
+        "median_ms": 5.544,
+        "gflops": 145.25,
+        "rel_frob_err_vs_fp32": 0.002357,
+        "max_abs_err_vs_fp32": 0.036265
+      },
+      "bf16_vdp_portable": {
+        "median_ms": 938.733,
+        "gflops": 0.86,
+        "rel_frob_err_vs_fp32": 0.002357,
+        "max_abs_err_vs_fp32": 0.036265
+      },
+      "fp8_e4m3_blk32": {
+        "median_ms": 11.052,
+        "gflops": 72.86,
+        "rel_frob_err_vs_fp32": 0.034027,
+        "max_abs_err_vs_fp32": 0.47554
+      },
+      "fp8_e5m2_blk32": {
+        "median_ms": 10.712,
+        "gflops": 75.18,
+        "rel_frob_err_vs_fp32": 0.067668,
+        "max_abs_err_vs_fp32": 0.817008
+      },
+      "mxfp4_e2m1_blk32": {
+        "median_ms": 5.598,
+        "gflops": 143.86,
+        "rel_frob_err_vs_fp32": 0.163068,
+        "max_abs_err_vs_fp32": 2.155607
+      },
+      "bcirq8_g32": {
+        "median_ms": 6.522,
+        "gflops": 123.48,
+        "rel_frob_err_vs_fp32": 0.011749,
+        "max_abs_err_vs_fp32": 0.163724
+      }
+    }
+  },
+  "mem_50m_optimizer_vs_infer": {
+    "adamw_fp32": {
+      "n_params": 50541312,
+      "weight_mib": 192.8,
+      "opt_only_mib": 578.4,
+      "persistent_mib": 771.2,
+      "scratch_mib": 11.5,
+      "total_mib": 878.45,
+      "bytes_per_param": 16.0,
+      "saved_vs_fp32_mib": 0.0
+    },
+    "adamw_q8_moments": {
+      "n_params": 50541312,
+      "weight_mib": 192.8,
+      "opt_only_mib": 291.46,
+      "persistent_mib": 484.26,
+      "scratch_mib": 11.5,
+      "total_mib": 591.51,
+      "bytes_per_param": 10.047,
+      "saved_vs_fp32_mib": 286.94
+    },
+    "adamw_q8_moments_bf16_grad": {
+      "n_params": 50541312,
+      "weight_mib": 192.8,
+      "opt_only_mib": 195.06,
+      "persistent_mib": 387.86,
+      "scratch_mib": 17.5,
+      "total_mib": 501.11,
+      "bytes_per_param": 8.047,
+      "saved_vs_fp32_mib": 383.34
+    },
+    "adamw_adafactor_m2": {
+      "n_params": 50541312,
+      "weight_mib": 192.8,
+      "opt_only_mib": 386.07,
+      "persistent_mib": 578.87,
+      "scratch_mib": 11.5,
+      "total_mib": 686.12,
+      "bytes_per_param": 12.01,
+      "saved_vs_fp32_mib": 192.33
+    },
+    "adamw_adafactor_bf16_grad": {
+      "n_params": 50541312,
+      "weight_mib": 192.8,
+      "opt_only_mib": 289.67,
+      "persistent_mib": 482.47,
+      "scratch_mib": 17.5,
+      "total_mib": 595.72,
+      "bytes_per_param": 10.01,
+      "saved_vs_fp32_mib": 288.73
+    }
+  }
+}
