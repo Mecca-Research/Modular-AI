@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-27",
+  "file_count": 17,
+  "files": {
+    ".gitignore": {
+      "bytes": 32,
+      "sha256": "0f2330440837fae632d2901fe883453991e83272cd197e08a1e3dcda52714f22"
+    },
+    "Makefile": {
+      "bytes": 744,
+      "sha256": "a6f37522d06e336735e255de55e8caedfd7c1235f237c9508a37aca4f91beac1"
+    },
+    "README.md": {
+      "bytes": 19196,
+      "sha256": "6b9ac09a9882a7bbe61036287453bea0edb4a685ad59370ead71516723012b1a"
+    },
+    "checkpoints/tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.bin": {
+      "bytes": 4876800,
+      "sha256": "93555826f1cb2c284af8f041d4a47cd19f854c76e3d2b9b9eafc8faa9a6e7f04"
+    },
+    "checkpoints/tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.json": {
+      "bytes": 1218,
+      "sha256": "5eac8116052348d6b4120c8144d27dcbcb14ffd17439ee6124661cccace2b623"
+    },
+    "figures/abi6_architecture_frontier.png": {
+      "bytes": 334248,
+      "sha256": "cd340dd0d70aed7e40d14987bc68b0513bbcb25a93b69571260dd84e33d39a99"
+    },
+    "figures/abi6_optimizer_frontier.png": {
+      "bytes": 223182,
+      "sha256": "0fdb3aa294cd3384ea121ec82e6aae6fa75512c7a214e895eb6622a26d8c4120"
+    },
+    "figures/abi6_tier_pilot_1m_curve.png": {
+      "bytes": 203901,
+      "sha256": "dca2657af8e98eb81f416f5a9071b02e9d77a5c836f8ae03657b247bd097ff4b"
+    },
+    "results/exp_a_optimizer_frontier.json": {
+      "bytes": 42385,
+      "sha256": "ceac68d063333e06fa17a8cbc8a695ee6ff09a5a9c9e20aec708a01166ad82bc"
+    },
+    "results/exp_b_arch_ladder_abi6.json": {
+      "bytes": 73428,
+      "sha256": "fc6c1efca4c152fa7c4c3330e6966627f54a148a1d75b203c649e9b9696bde3b"
+    },
+    "results/exp_c_tier_ml_pilot.json": {
+      "bytes": 9837,
+      "sha256": "5d6fff9a6026cd23f5d0b6e4485f18a1daca3032e102c1d9dade19d6a0acfeb3"
+    },
+    "results/gate0_abi6_verify_output.txt": {
+      "bytes": 2280,
+      "sha256": "e702c9cfd516738ed5ea22bfde75206b30e3a16a94f08a6213c22dc426abc0a2"
+    },
+    "src/abi6_harness.py": {
+      "bytes": 34602,
+      "sha256": "1fab8c002cee7f0b7643f17d40645cdbed5e962df86a1f22a6ef895b1c54716d"
+    },
+    "src/exp_a_optimizer_frontier.py": {
+      "bytes": 12760,
+      "sha256": "f3f816487b983c5060e233a689452877279cf5a9ba550e07adb0eb66b7afb62f"
+    },
+    "src/exp_b_arch_ladder_abi6.py": {
+      "bytes": 19207,
+      "sha256": "e4cbc3ab5078ec7b04476794ffd4f98672e9a453efc88b1dc2e75139c8426eb0"
+    },
+    "src/make_abi6_plots.py": {
+      "bytes": 14770,
+      "sha256": "05cfe84f7eb380490d7a693452068676a0963362eb22629e786ab019dc9ca03a"
+    },
+    "src/run_tier_ml_qual.py": {
+      "bytes": 30856,
+      "sha256": "1d977e09acff556b797a64d1ad6dd54661621940c56284222921d6f029e34f1d"
+    }
+  },
+  "study": "mixer-ext-abi6-study"
+}

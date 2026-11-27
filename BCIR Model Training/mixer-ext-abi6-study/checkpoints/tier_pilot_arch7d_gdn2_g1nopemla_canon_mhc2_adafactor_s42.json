@@ -1,0 +1,55 @@
+{
+  "arch": "arch7d_gdn2_g1nopemla_canon_mhc2",
+  "curve": [
+    {
+      "step": 0,
+      "tokens": 0,
+      "val_ce": 5.577308,
+      "val_ppl": 264.3591,
+      "wall_s": 0.0
+    },
+    {
+      "step": 125,
+      "tok_per_s": 2102.1,
+      "tokens": 256000,
+      "train_loss": 2.171651,
+      "val_ce": 2.124631,
+      "val_ppl": 8.3698,
+      "wall_s": 121.78
+    },
+    {
+      "step": 250,
+      "tok_per_s": 2137.7,
+      "tokens": 512000,
+      "train_loss": 1.885863,
+      "val_ce": 1.839637,
+      "val_ppl": 6.2943,
+      "wall_s": 239.51
+    },
+    {
+      "step": 375,
+      "tok_per_s": 2156.2,
+      "tokens": 768000,
+      "train_loss": 1.729634,
+      "val_ce": 1.672052,
+      "val_ppl": 5.3231,
+      "wall_s": 356.18
+    },
+    {
+      "step": 500,
+      "tok_per_s": 2152.5,
+      "tokens": 1024000,
+      "train_loss": 1.606995,
+      "val_ce": 1.597678,
+      "val_ppl": 4.9415,
+      "wall_s": 475.73
+    }
+  ],
+  "opt": "adafactor",
+  "step": 500,
+  "test_ce": 1.6542420992868339,
+  "tier": "pilot",
+  "tokens": 1024000,
+  "weights_file": "tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.bin",
+  "weights_sha256": "93555826f1cb2c284af8f041d4a47cd19f854c76e3d2b9b9eafc8faa9a6e7f04"
+}
