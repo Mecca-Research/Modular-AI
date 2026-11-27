@@ -318,22 +318,38 @@
   "training_resume_parity_verified": {
     "adafactor": {
       "bit_exact_training_resume": true,
+      "ckpt_every": 3,
       "completed_reload_tok_per_s_this_run": 0.0,
       "completed_reload_tokens_this_run": 0,
-      "interrupted_at_step": 4,
-      "latest_weights_sha256": "737929ae7bf05aeba967952a62cd94dbb62a3dc543c58347eca3ca1cd2e5246f",
-      "part2_tokens_this_run": 8192,
+      "crash_overwrite_preserves_prev_gen": true,
+      "eval_every": 4,
+      "eval_steps_verified": [
+        0,
+        4,
+        8
+      ],
+      "interrupted_at_step": 3,
+      "latest_weights_sha256": "2261bf460a464ef84faaa984c21e77350f12f05bb9c9113ea37d890a5ff4ca9e",
+      "part2_tokens_this_run": 10240,
       "steps_total": 8,
       "test_ce_abs_diff": 0.0,
       "weights_sha256_exact_match": true
     },
     "q8_muon_bf16grad": {
       "bit_exact_training_resume": true,
+      "ckpt_every": 3,
       "completed_reload_tok_per_s_this_run": 0.0,
       "completed_reload_tokens_this_run": 0,
-      "interrupted_at_step": 4,
-      "latest_weights_sha256": "aa45c97a785fb919a9e77ed67ee56abec252e8e43ea69d63b3e4741a1527701d",
-      "part2_tokens_this_run": 8192,
+      "crash_overwrite_preserves_prev_gen": true,
+      "eval_every": 4,
+      "eval_steps_verified": [
+        0,
+        4,
+        8
+      ],
+      "interrupted_at_step": 3,
+      "latest_weights_sha256": "505c6806227409bf0ccec0bcb24877fc730bf3959752f6dbf128fff6dd472a3a",
+      "part2_tokens_this_run": 10240,
       "steps_total": 8,
       "test_ce_abs_diff": 0.0,
       "weights_sha256_exact_match": true

@@ -35,12 +35,14 @@ from abi6_harness import (
     AdamWParams,
     apply_comp1_ptq_weights,
     build_kv_dataset,
+    comp1_weight_bytes,
     cosine_lr_schedule,
     host_info,
     load_wikitext_bytes,
     make_fixed_eval_batches,
     make_policy,
     make_spec,
+    q8_weight_bytes,
     quantize_bcirq8_g32,
     sample_lm_batches,
     save_json,
@@ -259,18 +261,20 @@ def run_part_b2_wide10m(
                 # Zero-QAT BCIRQ8 (g=32) evaluation
                 model.set_weights(quantize_bcirq8_g32(base_w))
                 q8_res = model.evaluate(test_tk, test_tg)
-                # Zero-QAT COMP-1 PTQ (Q8 Attention + Dual-SVID 1-bit MLP) evaluation
-                comp1_w = apply_comp1_ptq_weights(model, base_w, rank=16)
+                # Zero-QAT COMP-1 PTQ (Q8 Attention + Dual-SVID + Joint-ITQ 1-bit MLP) evaluation
+                comp1_w = apply_comp1_ptq_weights(model, base_w, rank=16, scale_bits=32)
                 model.set_weights(comp1_w)
                 c1_res = model.evaluate(test_tk, test_tg)
+                q8_bytes = q8_weight_bytes(model)
+                c1_info = comp1_weight_bytes(model, rank=16, scale_bits=32)
                 ms = res["mem_stats"]
                 tel = res["eval_telemetry"]
 
             kv4k_mib = (ms["infer_kv_bytes_per_tok"] * 4096) / (1024 * 1024)
             rec_mib = ms["infer_rec_state_bytes"] / (1024 * 1024)
             w_fp32_mib = ms["weight_bytes"] / (1024 * 1024)
-            w_q8_mib = (ms["n_params"] * 8.25 / 8.0) / (1024 * 1024)
-            w_c1_mib = ((ms["n_params"] - ms["mlp_params"]) * 8.25 / 8.0 + ms["mlp_params"] * 1.04 / 8.0) / (1024 * 1024)
+            w_q8_mib = q8_bytes / (1024 * 1024)
+            w_c1_mib = c1_info["total_bytes"] / (1024 * 1024)
             seed_rows.append({
                 "seed": sd,
                 "n_params": ms["n_params"],
@@ -280,6 +284,9 @@ def run_part_b2_wide10m(
                 "q8_delta_ce": round(q8_res["ce"] - res["test_ce"], 6),
                 "comp1_ptq_ce": round(c1_res["ce"], 6),
                 "comp1_ptq_delta_ce": round(c1_res["ce"] - res["test_ce"], 6),
+                "comp1_mlp_bpw": c1_info["mlp_comp1_bpw"],
+                "comp1_scale_bits": c1_info["scale_bits"],
+                "comp1_rank": c1_info["rank"],
                 "step_ms_median": res["step_ms_median"],
                 "wall_s": res["wall_s"],
                 "first_tok_attn_mean": round(tel["first_tok_attn_mean"], 4),
@@ -300,6 +307,9 @@ def run_part_b2_wide10m(
             "mean_test_ppl": round(float(math.exp(mean_ce)), 4),
             "mean_q8_delta_ce": round(float(np.mean([r["q8_delta_ce"] for r in seed_rows])), 6),
             "mean_comp1_ptq_delta_ce": round(float(np.mean([r["comp1_ptq_delta_ce"] for r in seed_rows])), 6),
+            "comp1_mlp_bpw": seed_rows[0]["comp1_mlp_bpw"],
+            "comp1_scale_bits": seed_rows[0]["comp1_scale_bits"],
+            "comp1_rank": seed_rows[0]["comp1_rank"],
             "mean_step_ms": round(float(np.mean([r["step_ms_median"] for r in seed_rows])), 2),
             "mean_wall_s": round(float(np.mean([r["wall_s"] for r in seed_rows])), 2),
             "first_tok_attn_mean": round(float(np.mean([r["first_tok_attn_mean"] for r in seed_rows])), 4),

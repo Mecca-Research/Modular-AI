@@ -51,7 +51,7 @@ from abi6_harness import (
     make_policy,
     make_spec,
     quantize_bcirq8_g32,
-    sample_lm_batches,
+    sample_lm_steps,
     save_json,
 )
 
@@ -96,6 +96,11 @@ OPT_PRESETS = {
 }
 
 
+def _ckpt_stem_and_json(path: Path) -> tuple[str, Path]:
+    base_stem = path.stem if path.suffix in (".json", ".bin") else path.name
+    return base_stem, path.parent / f"{base_stem}.json"
+
+
 def save_ckpt_atomic(
     path: Path,
     weights: np.ndarray,
@@ -103,48 +108,82 @@ def save_ckpt_atomic(
     *,
     opt_state: bytes | None = None,
     best_weights: np.ndarray | None = None,
+    _abort_before_commit: bool = False,
 ) -> str:
+    """Crash-atomic multi-file checkpoint save with generation-tagged payloads.
+
+    Writes new generation-tagged `.bin`/`.opt.bin`/`.best.bin` payloads first,
+    switches the `.json` pointer atomically via `os.replace`, and only then
+    removes the previous generation's payload files so an interruption mid-save
+    never corrupts or overwrites the last valid checkpoint generation.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
+    base_stem, json_p = _ckpt_stem_and_json(path)
+    prev_meta: Dict[str, Any] | None = None
+    prev_gen = 0
+    if json_p.exists():
+        try:
+            prev_meta = json.loads(json_p.read_text(encoding="utf-8"))
+            prev_gen = int(prev_meta.get("generation", 0))
+        except Exception:
+            prev_meta = None
+            prev_gen = 0
+    gen = prev_gen + 1
+
     raw = np.ascontiguousarray(weights, dtype=np.float32).tobytes()
     sha = hashlib.sha256(raw).hexdigest()
-    bin_p = path.with_suffix(".bin")
-    json_p = path.with_suffix(".json")
-    tmp_b = bin_p.with_suffix(".bin.tmp")
+    gen_prefix = f"{base_stem}.g{gen}_{sha[:8]}"
+    bin_p = path.parent / f"{gen_prefix}.bin"
+    tmp_b = path.parent / f".{gen_prefix}.bin.tmp"
     tmp_b.write_bytes(raw)
     os.replace(tmp_b, bin_p)
-    meta_out = dict(meta, weights_sha256=sha, weights_file=bin_p.name)
+
+    meta_out = dict(meta, generation=gen, weights_sha256=sha, weights_file=bin_p.name)
+    new_files = {bin_p.name}
+    if _abort_before_commit:
+        raise RuntimeError("simulated mid-save crash before metadata commit")
+
     if opt_state is not None:
-        opt_p = path.with_suffix(".opt.bin")
+        opt_p = path.parent / f"{gen_prefix}.opt.bin"
         opt_sha = hashlib.sha256(opt_state).hexdigest()
-        tmp_o = opt_p.with_suffix(".bin.tmp")
+        tmp_o = path.parent / f".{gen_prefix}.opt.bin.tmp"
         tmp_o.write_bytes(opt_state)
         os.replace(tmp_o, opt_p)
         meta_out["opt_state_file"] = opt_p.name
         meta_out["opt_state_sha256"] = opt_sha
         meta_out["opt_state_bytes"] = len(opt_state)
+        new_files.add(opt_p.name)
     if best_weights is not None:
         best_raw = np.ascontiguousarray(best_weights, dtype=np.float32).tobytes()
-        best_p = path.with_suffix(".best.bin")
+        best_p = path.parent / f"{gen_prefix}.best.bin"
         best_sha = hashlib.sha256(best_raw).hexdigest()
-        tmp_bw = best_p.with_suffix(".bin.tmp")
+        tmp_bw = path.parent / f".{gen_prefix}.best.bin.tmp"
         tmp_bw.write_bytes(best_raw)
         os.replace(tmp_bw, best_p)
         meta_out["best_weights_file"] = best_p.name
         meta_out["best_weights_sha256"] = best_sha
-    tmp_j = json_p.with_suffix(".json.tmp")
+        new_files.add(best_p.name)
+
+    tmp_j = path.parent / f".{base_stem}.g{gen}.json.tmp"
     tmp_j.write_text(
         json.dumps(meta_out, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
         newline="\n",
     )
     os.replace(tmp_j, json_p)
+
+    if prev_meta is not None:
+        for key in ("weights_file", "opt_state_file", "best_weights_file"):
+            old_name = prev_meta.get(key)
+            if isinstance(old_name, str) and old_name not in new_files:
+                (path.parent / old_name).unlink(missing_ok=True)
     return sha
 
 
 def load_ckpt_verified(
     path: Path,
 ) -> tuple[np.ndarray, Dict[str, Any], bytes | None, np.ndarray | None]:
-    json_p = path.with_suffix(".json")
+    _, json_p = _ckpt_stem_and_json(path)
     meta = json.loads(json_p.read_text(encoding="utf-8"))
     raw = (json_p.parent / meta["weights_file"]).read_bytes()
     if hashlib.sha256(raw).hexdigest() != meta["weights_sha256"]:
@@ -186,6 +225,10 @@ def run_qual(
     target_tokens_override: int | None = None,
     stop_after_steps: int | None = None,
 ) -> Dict[str, Any]:
+    if eval_every <= 0:
+        raise ValueError(f"eval_every must be > 0, got {eval_every}")
+    if ckpt_every < 0:
+        raise ValueError(f"ckpt_every must be >= 0, got {ckpt_every}")
     cfg = ARCH_PRESETS[arch_name]
     opt_kind, beta1 = OPT_PRESETS[opt_name]
     target_tokens = target_tokens_override if target_tokens_override is not None else TIER_TOKENS[tier]
@@ -217,6 +260,7 @@ def run_qual(
     start_step = 0
     prev_elapsed_s = 0.0
     curve: List[Dict[str, Any]] = []
+    recent_losses: List[float] = []
     recovery_path = (
         recovery_ckpt
         if recovery_ckpt is not None
@@ -241,6 +285,7 @@ def run_qual(
                 model.set_opt_state(opt_loaded)
             prev_elapsed_s = float(meta.get("elapsed_wall_s", 0.0))
             curve = list(meta.get("curve", []))
+            recent_losses = [float(x) for x in meta.get("recent_losses", [])][-16:]
             if "best_val_ce" in meta:
                 best_val_ce = float(meta["best_val_ce"])
                 best_step = int(meta.get("best_step", start_step))
@@ -263,16 +308,22 @@ def run_qual(
         s = start_step
         last_recovery_sha: str | None = None
         while s < stop_step:
-            chunk = min(eval_every, stop_step - s)
+            next_eval = ((s // eval_every) + 1) * eval_every
+            chunk = min(next_eval - s, stop_step - s)
             if ckpt_every > 0:
                 next_ckpt = ((s // ckpt_every) + 1) * ckpt_every
                 chunk = min(chunk, next_ckpt - s)
-            tr_tk, tr_tg = sample_lm_batches(tr_stream, chunk, batch, seq_len, seed=70000 + seed * 10000 + s)
+            tr_tk, tr_tg = sample_lm_steps(
+                tr_stream, s, chunk, batch, seq_len, base_seed=70000 + seed * 10000
+            )
             rc, evs = model.train_loop(tr_tk, tr_tg, opt_cfg, lrs=lrs[s : s + chunk])
             if rc != 0:
                 raise RuntimeError(f"train_loop failed with rc={rc} at step {s}")
             for e in evs:
                 step_ms_all.append(float(e["step_ms"]))
+                recent_losses.append(float(e["loss"]))
+            if len(recent_losses) > 16:
+                recent_losses = recent_losses[-16:]
             s += chunk
             run_wall = time.perf_counter() - t0
             cum_wall = prev_elapsed_s + run_wall
@@ -281,14 +332,14 @@ def run_qual(
             run_tok_s = new_toks / max(run_wall, 1e-6)
             cum_tok_s = toks_seen / max(cum_wall, 1e-6)
 
-            if s % eval_every == 0 or s == stop_step:
+            if s % eval_every == 0 or s == total_steps:
                 vv = model.evaluate(val_tk, val_tg)
                 row = {
                     "step": s,
                     "tokens": toks_seen,
                     "wall_s": round(cum_wall, 2),
                     "run_wall_s": round(run_wall, 2),
-                    "train_loss": round(float(np.mean([e["loss"] for e in evs[-min(16, len(evs)):]])), 6),
+                    "train_loss": round(float(np.mean(recent_losses)), 6),
                     "val_ce": round(vv["ce"], 6),
                     "val_ppl": round(vv["ppl"], 4),
                     "tok_per_s": round(run_tok_s, 1),
@@ -322,6 +373,7 @@ def run_qual(
                         "best_val_ce": best_val_ce,
                         "elapsed_wall_s": round(cum_wall, 4),
                         "curve": curve,
+                        "recent_losses": recent_losses,
                     },
                     opt_state=model.copy_opt_state(),
                     best_weights=best_w,
@@ -427,13 +479,16 @@ def verify_training_resume_parity(
     max_lr: float = 3e-3,
 ) -> Dict[str, Any]:
     """Prove 0-bit-drift mid-run interruption & resume across Adafactor and Q8-Muon+BF16Grad,
-    including periodic in-loop recovery checkpoints and accurate resumed throughput accounting."""
+    including misaligned eval_every=4 / ckpt_every=3 boundaries, crash-atomic generation commits
+    preserving the previous valid generation on mid-save interruption, and exact resumed throughput."""
     import tempfile
 
     arch_name = "arch7d_gdn2_g1nopemla_canon_mhc2"
     tok_per_step = batch * seq_len
     total_steps = 8
-    split_step = 4
+    eval_every = 4
+    ckpt_every = 3
+    split_step = 3
     target_tokens = total_steps * tok_per_step
     report: Dict[str, Any] = {}
 
@@ -445,24 +500,46 @@ def verify_training_resume_parity(
                 arch_name, opt_name, "pilot",
                 width=width, heads=heads, kvheads=kvheads, ff=ff,
                 batch=batch, seq_len=seq_len, seed=seed, threads=threads,
-                max_lr=max_lr, eval_every=4, ckpt_every=0,
+                max_lr=max_lr, eval_every=eval_every, ckpt_every=0,
                 save_final_ckpt=False, target_tokens_override=target_tokens,
             )
             part1 = run_qual(
                 arch_name, opt_name, "pilot",
                 width=width, heads=heads, kvheads=kvheads, ff=ff,
                 batch=batch, seq_len=seq_len, seed=seed, threads=threads,
-                max_lr=max_lr, eval_every=4, ckpt_every=4,
+                max_lr=max_lr, eval_every=eval_every, ckpt_every=ckpt_every,
                 recovery_ckpt=rec_path, save_final_ckpt=False,
                 target_tokens_override=target_tokens, stop_after_steps=split_step,
             )
             assert part1["recovery_ckpt_sha256"] is not None
             assert part1["steps_executed_this_run"] == split_step
+            # Simulate an interrupted overwrite of generation 2 BEFORE metadata commit:
+            # the previous generation (step=3) must remain intact and pass SHA-256 verification.
+            w_g1, meta_g1, opt_g1, best_g1 = load_ckpt_verified(rec_path)
+            assert int(meta_g1["step"]) == split_step and int(meta_g1["generation"]) == 1
+            try:
+                save_ckpt_atomic(
+                    rec_path,
+                    np.zeros_like(w_g1),
+                    dict(meta_g1, step=999),
+                    opt_state=opt_g1,
+                    best_weights=best_g1,
+                    _abort_before_commit=True,
+                )
+            except RuntimeError:
+                pass
+            else:
+                raise AssertionError("simulated mid-save crash did not abort")
+            w_after_crash, meta_after_crash, opt_after_crash, _ = load_ckpt_verified(rec_path)
+            assert int(meta_after_crash["generation"]) == 1
+            assert int(meta_after_crash["step"]) == split_step
+            assert np.array_equal(w_after_crash, w_g1) and opt_after_crash == opt_g1
+
             part2 = run_qual(
                 arch_name, opt_name, "pilot",
                 width=width, heads=heads, kvheads=kvheads, ff=ff,
                 batch=batch, seq_len=seq_len, seed=seed, threads=threads,
-                max_lr=max_lr, eval_every=4, ckpt_every=4,
+                max_lr=max_lr, eval_every=eval_every, ckpt_every=ckpt_every,
                 recovery_ckpt=rec_path, resume_ckpt=rec_path,
                 save_final_ckpt=False, target_tokens_override=target_tokens,
             )
@@ -471,10 +548,21 @@ def verify_training_resume_parity(
                 arch_name, opt_name, "pilot",
                 width=width, heads=heads, kvheads=kvheads, ff=ff,
                 batch=batch, seq_len=seq_len, seed=seed, threads=threads,
-                max_lr=max_lr, eval_every=4, ckpt_every=0,
+                max_lr=max_lr, eval_every=eval_every, ckpt_every=0,
                 resume_ckpt=rec_path, save_final_ckpt=False,
                 target_tokens_override=target_tokens,
             )
+            eval_steps_full = [int(r["step"]) for r in full["curve"]]
+            eval_steps_resumed = [int(r["step"]) for r in part2["curve"]]
+            assert eval_steps_full == [0, 4, 8], f"unexpected full eval steps {eval_steps_full}"
+            assert eval_steps_resumed == [0, 4, 8], (
+                f"misaligned ckpt_every={ckpt_every} altered eval steps: {eval_steps_resumed}"
+            )
+            for rf, rr in zip(full["curve"], part2["curve"]):
+                assert rf["val_ce"] == rr["val_ce"], f"val_ce curve mismatch at step {rf['step']}"
+                assert rf.get("train_loss") == rr.get("train_loss"), (
+                    f"train_loss curve mismatch at step {rf['step']}"
+                )
             assert part2["steps_executed_this_run"] == total_steps - split_step
             assert part2["tokens_executed_this_run"] == (total_steps - split_step) * tok_per_step
             assert noop["steps_executed_this_run"] == 0
@@ -487,7 +575,11 @@ def verify_training_resume_parity(
             assert part2["best_val_ce"] == full["best_val_ce"], f"best_val_ce mismatch for {opt_name}"
             report[opt_name] = {
                 "steps_total": total_steps,
+                "eval_every": eval_every,
+                "ckpt_every": ckpt_every,
                 "interrupted_at_step": split_step,
+                "eval_steps_verified": eval_steps_resumed,
+                "crash_overwrite_preserves_prev_gen": True,
                 "weights_sha256_exact_match": True,
                 "latest_weights_sha256": part2["latest_weights_sha256"],
                 "test_ce_abs_diff": abs(part2["test_ce"] - full["test_ce"]),
@@ -497,7 +589,8 @@ def verify_training_resume_parity(
                 "bit_exact_training_resume": True,
             }
             print(
-                f"[ResumeVerify] {opt_name:16s} | 4+4 == 8 bits=0 "
+                f"[ResumeVerify] {opt_name:16s} | {split_step}+{total_steps - split_step} == {total_steps} "
+                f"(eval={eval_steps_resumed}, ckpt_every={ckpt_every}) bits=0 crash_safe=1 "
                 f"sha={part2['latest_weights_sha256'][:12]} "
                 f"test_ce_diff={report[opt_name]['test_ce_abs_diff']:.1e} "
                 f"part2_toks={part2['tokens_executed_this_run']} noop_toks={noop['tokens_executed_this_run']}",

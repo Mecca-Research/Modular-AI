@@ -526,9 +526,16 @@ def joint_itq_rotate(
 
 
 def dual_svid_1bit_ptq(
-    mat: np.ndarray, rank: int = 16, itq_iters: int = 25, seed: int = 42
+    mat: np.ndarray, rank: int = 16, itq_iters: int = 25, seed: int = 42, scale_bits: int = 32
 ) -> np.ndarray:
-    """BCIR COMP-1 Dual-SVID + Joint-ITQ packed-1-bit PTQ reconstruction (1-bit base + rank-r residual)."""
+    """BCIR COMP-1 Dual-SVID + Joint-ITQ packed-1-bit PTQ reconstruction (1-bit base + rank-r residual).
+
+    Scale vectors (base alpha_r/alpha_c and residual h_u/g_v/lam) are rounded to explicit
+    `scale_bits` precision (16=float16 or 32=float32) so evaluated CE matches exact counted storage.
+    """
+    if scale_bits not in (16, 32):
+        raise ValueError(f"scale_bits must be 16 or 32, got {scale_bits}")
+    scale_dtype = np.float16 if scale_bits == 16 else np.float32
     W = np.asarray(mat, dtype=np.float64)
     m, n = W.shape
     r = min(rank, m, n)
@@ -543,6 +550,8 @@ def dual_svid_1bit_ptq(
         alpha_r = np.maximum(np.sum(W * B * alpha_c[None, :], axis=1) / denom_r, 1e-8)
         denom_c = np.sum((B * alpha_r[:, None]) ** 2, axis=0) + 1e-12
         alpha_c = np.maximum(np.sum(W * B * alpha_r[:, None], axis=0) / denom_c, 1e-8)
+    alpha_r = alpha_r.astype(scale_dtype).astype(np.float64)
+    alpha_c = alpha_c.astype(scale_dtype).astype(np.float64)
     base = (alpha_r[:, None] * B) * alpha_c[None, :]
     res = W - base
     if r > 0:
@@ -555,7 +564,6 @@ def dual_svid_1bit_ptq(
         bv = np.where(v_rot >= 0.0, 1.0, -1.0)
         h_u, l_u = _rank1_mag_svd(np.abs(u_rot))
         g_v, l_v = _rank1_mag_svd(np.abs(v_rot))
-        lam = l_u * l_v
         # Refine latent scales via ridge least-squares against residual
         hu = h_u[:, None] * bu                     # [m, r]
         vg = (g_v[:, None] * bv).T                 # [r, n]
@@ -563,22 +571,87 @@ def dual_svid_1bit_ptq(
         rhs = np.sum(hu * (res @ vg.T), axis=0)
         ridge = 1e-8 * (float(np.trace(gram)) / max(r, 1) + 1e-12)
         lam = np.linalg.solve(gram + ridge * np.eye(r), rhs)
-        recon = base + (hu * lam[None, :]) @ vg
+        h_u_q = h_u.astype(scale_dtype).astype(np.float64)
+        g_v_q = g_v.astype(scale_dtype).astype(np.float64)
+        lam_q = lam.astype(scale_dtype).astype(np.float64)
+        recon = base + ((h_u_q[:, None] * bu) * lam_q[None, :]) @ (g_v_q[:, None] * bv).T
     else:
         recon = base
     return recon.astype(np.float32)
 
 
-def apply_comp1_ptq_weights(model: Abi6Model, base_w: np.ndarray, rank: int = 16) -> np.ndarray:
+def q8_weight_bytes(model: Abi6Model) -> int:
+    """Exact per-tensor BCIRQ8 (g=32) payload size: int8 codes + int8 group exponents."""
+    total = 0
+    for ti in model.tensor_infos():
+        sz = ti["rows"] * ti["cols"]
+        total += sz + (sz + 31) // 32
+    return total
+
+
+def comp1_weight_bytes(
+    model: Abi6Model, rank: int = 16, scale_bits: int = 32
+) -> Dict[str, Any]:
+    """Exact per-tensor COMP-1 storage accounting matching apply_comp1_ptq_weights.
+
+    Eligible MLP tensors (`region == 2` and `min(rows, cols) >= 512`) store:
+      - 1-bit packed base sign matrix `B [m, n]`
+      - base row/col scales `alpha_r [m]`, `alpha_c [n]` at `scale_bits`
+      - rank-r binary residual factors `Bu [m, r]`, `Bv [n, r]`
+      - residual scales `h_u [m]`, `g_v [n]`, `lam [r]` at `scale_bits`
+    All other tensors store exact per-tensor `BCIRQ8 (g=32)` (`sz + ceil(sz/32)` bytes).
+    """
+    if scale_bits not in (16, 32):
+        raise ValueError(f"scale_bits must be 16 or 32, got {scale_bits}")
+    scale_bytes_per_elem = scale_bits // 8
+    mlp_comp1_bytes = 0
+    mlp_comp1_params = 0
+    other_q8_bytes = 0
+    eligible_tensors = 0
+    for ti in model.tensor_infos():
+        m, n = int(ti["rows"]), int(ti["cols"])
+        sz = m * n
+        if ti["region"] == 2 and min(m, n) >= 512:
+            r = min(rank, m, n)
+            bin_bytes = (sz + 7) // 8
+            if r > 0:
+                bin_bytes += (r * m + 7) // 8 + (r * n + 7) // 8
+                n_scales = 2 * (m + n) + r
+            else:
+                n_scales = m + n
+            mlp_comp1_bytes += bin_bytes + n_scales * scale_bytes_per_elem
+            mlp_comp1_params += sz
+            eligible_tensors += 1
+        else:
+            other_q8_bytes += sz + (sz + 31) // 32
+    total_bytes = mlp_comp1_bytes + other_q8_bytes
+    mlp_bpw = (8.0 * mlp_comp1_bytes / mlp_comp1_params) if mlp_comp1_params > 0 else 0.0
+    return {
+        "total_bytes": total_bytes,
+        "mlp_comp1_bytes": mlp_comp1_bytes,
+        "other_q8_bytes": other_q8_bytes,
+        "mlp_comp1_params": mlp_comp1_params,
+        "mlp_comp1_bpw": round(mlp_bpw, 4),
+        "eligible_tensors": eligible_tensors,
+        "rank": rank,
+        "scale_bits": scale_bits,
+    }
+
+
+def apply_comp1_ptq_weights(
+    model: Abi6Model, base_w: np.ndarray, rank: int = 16, scale_bits: int = 32
+) -> np.ndarray:
     """Apply BCIR Deployment Policy COMP-1: Q8 g=32 on Attention/Norms/Embed/Head,
-    1-bit Dual-SVID on MLP (region==2) tensors with min(rows, cols) >= 512."""
+    1-bit Dual-SVID + Joint-ITQ on MLP (region==2) tensors with min(rows, cols) >= 512."""
     out = quantize_bcirq8_g32(base_w)
     for ti in model.tensor_infos():
         if ti["region"] == 2 and min(ti["rows"], ti["cols"]) >= 512:
             off = ti["offset"]
             sz = ti["rows"] * ti["cols"]
             mat = base_w[off : off + sz].reshape(ti["rows"], ti["cols"])
-            out[off : off + sz] = dual_svid_1bit_ptq(mat, rank=rank).reshape(-1)
+            out[off : off + sz] = dual_svid_1bit_ptq(
+                mat, rank=rank, scale_bits=scale_bits
+            ).reshape(-1)
     return out
 
 
@@ -615,6 +688,23 @@ def sample_lm_batches(
     rng = np.random.default_rng(seed)
     max_off = len(stream) - seq_len - 2
     offs = rng.integers(0, max_off, size=(n_steps, batch))
+    idx = offs[:, :, None] + np.arange(seq_len + 1, dtype=np.int64)[None, None, :]
+    seqs = stream[idx]
+    return (
+        np.ascontiguousarray(seqs[:, :, :-1], dtype=np.uint32),
+        np.ascontiguousarray(seqs[:, :, 1:], dtype=np.uint32),
+    )
+
+
+def sample_lm_steps(
+    stream: np.ndarray, start_step: int, n_steps: int, batch: int, seq_len: int, base_seed: int
+) -> Tuple[np.ndarray, np.ndarray]:
+    """Deterministic per-step batch sampler invariant to chunk/eval/checkpoint boundaries."""
+    max_off = len(stream) - seq_len - 2
+    offs = np.empty((n_steps, batch), dtype=np.int64)
+    for k in range(n_steps):
+        rng = np.random.default_rng(base_seed + start_step + k)
+        offs[k] = rng.integers(0, max_off, size=batch)
     idx = offs[:, :, None] + np.arange(seq_len + 1, dtype=np.int64)[None, None, :]
     seqs = stream[idx]
     return (

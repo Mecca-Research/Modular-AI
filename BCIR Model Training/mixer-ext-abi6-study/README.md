@@ -97,6 +97,8 @@ Building directly on the merged [`littlebit-sub1bit-study`](../littlebit-sub1bit
 | `GQA_Full` (baseline) | `12.33M` | `2.3453` (`+0.0000`) | `10.44` | `+0.0001` | **`+0.0885`** | `2.4338` | `0.039` | `14.09` | `16.00` | `359.2` |
 | `Arch4_MLA` (decoupled RoPE) | `13.57M` | `2.3972` (`+0.0519`) | `10.99` | `-0.0001` | `+0.1203` | `2.5175` | `0.048` | `11.00` | `14.00` | `432.1` |
 
+*Exact per-tensor `COMP-1` footprint (`comp1_weight_bytes`, `rank=16`, explicit `scale_bits=32` matching `dual_svid_1bit_ptq`: packed `B [m,n]` + `Bu [m,r]` + `Bv [n,r]` + `2*(m+n)+r` scales = `1.2090 bpw` on `512×1536` MLPs, or `1.1253 bpw` with `scale_bits=16`, plus per-tensor `BCIRQ8 g=32` on non-MLP tensors): total `T=4096` deployment footprint is `6.78 MiB` (`Arch1_DeltaNet`), `9.89 MiB` (`Arch7d`), `10.13 MiB` (`Arch2_Hybrid_DN_GQA`), and `20.20 MiB` (`GQA_Full`).*
+
 ### 3.2 Multi-Query Associative Recall & Paired Counterfactuals (`B1`: 4 shuffled queries/seq, shared seed `5001` for `mq4`/`value_swap`/`query_change`, 300 steps, 2 seeds, 10% chance)
 
 | Architecture (`d=128, L=4`) | `mq4` | `value_swap` | `query_change` | `filler20 (>W)` | `extrap_6pair` | `ordered_8pair @ T=96` | Max `\|Act\|` |
@@ -136,9 +138,9 @@ Executed `500` uninterrupted steps at `B=8, T=256` (`N=2,048` tokens/update, **`
 | `Arch-7d` + `Opt_Adafactor` | `1.22M` | `14.03` / `12.07` | `4.94` | `1.6542` | `5.23` | `+0.0003` | `3.79` | `475.7 s` | `2,153` |
 | **`Arch-7d` + `Opt_Q8_Muon_BF16Grad`** | `1.22M` | **`8.76` / `7.53`** | **`4.57`** | **`1.5716`** | **`4.81`** | `+0.0005` | **`2.15`** | `511.0 s` | `2,004` |
 
-- **Atomic SHA-256 Checkpoint, Periodic In-Loop Recovery & 0-Bit-Drift Training Resume Verified:**
+- **Crash-Atomic Generation Checkpoints, Misaligned Interval Resume & 0-Bit-Drift Parity Verified:**
   - Validation-selected checkpoint: `checkpoints/tier_pilot_arch7d_gdn2_g1nopemla_canon_mhc2_adafactor_s42.bin` (`4.7 MiB`, SHA-256 `93555826f1cb2c284af8f041d4a47cd19f854c76e3d2b9b9eafc8faa9a6e7f04`, reload eval CE diff `9.93e-8`).
-  - Full mid-run training resume (`src/run_tier_ml_qual.py --mode verify_resume_only`): interrupted at step `4/8`, persisted periodic recovery checkpoint (weights + full optimizer moments/scales/step/beta powers + best-val weights + cumulative elapsed wall time), restored into a fresh `Abi6Model(skip_init=1)`, and continued steps `5..8`. Both `Opt_Adafactor` (SHA `737929ae7bf0...`) and `Opt_Q8_Muon_BF16Grad` (SHA `aa45c97a785f...`) matched uninterrupted 8-step training to **0 bit drift** (`test_ce_abs_diff = 0.0e+00`), reported exact newly executed tokens (`8,192` on resume, `0` on completed reload), and excluded pre-resume tokens from current-invocation throughput.
+  - Full mid-run training resume (`src/run_tier_ml_qual.py --mode verify_resume_only`): exercises misaligned `--eval-every 4 --ckpt-every 3` over 8 steps using chunk-invariant per-step batch draws (`sample_lm_steps`) and generation-tagged payloads (`{stem}.g{gen}_{sha[:8]}.{bin,opt.bin,best.bin}` committed atomically via `.json` pointer swap before unlinking the prior generation). Interrupts at step `3/8`, simulates a mid-overwrite crash before metadata commit (confirming generation 1 remains intact with valid SHA-256), restores into a fresh `Abi6Model(skip_init=1)`, and continues steps `4..8`. Both `Opt_Adafactor` (SHA `2261bf460a46...`) and `Opt_Q8_Muon_BF16Grad` (SHA `505c68062274...`) hit exact validation boundaries `[0, 4, 8]`, match uninterrupted `ckpt_every=0` training to **0 bit drift** (`test_ce_abs_diff = 0.0e+00`, identical validation curves), report exact newly executed tokens (`10,240` on resume, `0` on completed reload), and exclude pre-resume tokens from current-invocation throughput.
 - **Calibrated Tier M (`10M` tokens) / Tier L (`50M` tokens) Qualification CLI (not run locally due to 2-core Haswell CPU budget; projected `~12.8 min` on 16-core AVX2/AVX-512 for `pilot1m` 10M tokens, or `~3.8 hrs` for `wide10m` 10M tokens; writes periodic recovery checkpoints every `--ckpt-every` steps separately from best-val final weights):**
   ```bash
   make && make verify
