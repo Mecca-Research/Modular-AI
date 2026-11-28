@@ -333,9 +333,16 @@ def main() -> None:
         print(f"  [10M COMP-1]  CE={c1_te['ce']:.4f} PPL={c1_te['ppl']:.2f} (dCE={c1_te['delta_ce']:+.4f}) | "
               f"loop={c1_te['loop_seq_rate']*100:.1f}% dist4={c1_te['distinct_4']*100:.1f}% (fac={c1_fac_sec:.2f}s)", flush=True)
         cache["comp1"] = {"factorize_seconds": round(c1_fac_sec, 2), "q8_v1_baseline": q8_te, "comp1_r16_fp16s": c1_te}
-        write_json(partial_p, cache)
         p10.close()
         m10.close()
+        s2_final = RESULTS_DIR / "stage2_hybrid_train_editability.json"
+        if args.only == "comp1" and s2_final.exists() and len(cache["architectures"]) < 3:
+            existing = json.loads(s2_final.read_text(encoding="utf-8"))
+            existing["comp1_10m_shift_diagnosis"] = cache["comp1"]
+            write_json(s2_final, existing)
+            print("=== Stage 2 (comp1) updated comp1_10m_shift_diagnosis -> results/stage2_hybrid_train_editability.json ===", flush=True)
+        else:
+            write_json(partial_p, cache)
 
     if len(cache["architectures"]) == 3 and cache["comp1"] is not None:
         all_steps = [r for k in ("Arch7d_2M", "Arch2_Hybrid_2M", "GQA_Full_2M") for r in cache["steps"][k]]

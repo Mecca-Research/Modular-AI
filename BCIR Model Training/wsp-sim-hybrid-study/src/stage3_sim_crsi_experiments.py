@@ -297,6 +297,14 @@ class RealTaskEnv:
         self.diag = compute_layer_diagnostics(self.model, contrast, self.w_base)
         self._ce_cache: Dict[str, Dict[str, Any]] = {}
         self._eval_cache: Dict[str, Dict[str, Any]] = {}
+        self.n_uncached_evals: int = 0
+        self.n_cache_hits: int = 0
+
+    def reset_caches(self) -> None:
+        self._ce_cache.clear()
+        self._eval_cache.clear()
+        self.n_uncached_evals = 0
+        self.n_cache_hits = 0
 
     def close(self) -> None:
         self.probe.close()
@@ -311,7 +319,9 @@ class RealTaskEnv:
     def evaluate(self, h: HybridHarness, split: str = "evolve") -> Dict[str, Any]:
         h_key = f"{split}:{json.dumps(asdict(h), sort_keys=True)}"
         if h_key in self._eval_cache:
+            self.n_cache_hits += 1
             return self._eval_cache[h_key]
+        self.n_uncached_evals += 1
         w_cand, ssp = materialize_harness(self.model, self.w_base, self.diag, h)
         self.model.set_weights(w_cand)
         self.probe.sync()
@@ -590,24 +600,35 @@ def run_4_conditions_transition(
 
     cond_out: Dict[str, Any] = {}
     for cname, h0, sim0 in cond_specs:
+        tgt_env.reset_caches()
         t_c = time.monotonic()
         res = run_crsi_session(
             env=tgt_env, h_init=h0, sim_init=sim0,
             n_rounds=tgt_rounds, k_cands=k_cands, seed=seed + 500,
             eval_heldout_each_round=eval_heldout_each_round,
         )
+        cond_elapsed_s = time.monotonic() - t_c
+        cond_uncached = tgt_env.n_uncached_evals
+        cond_hits = tgt_env.n_cache_hits
+        r0_score = (
+            res["history"][0]["heldout_score"]
+            if eval_heldout_each_round
+            else round(tgt_env.evaluate(h0, split="heldout")["score"], 3)
+        )
         ret_score = None
         if eval_source_retention:
             ret_score = round(src_env.evaluate(res["final_harness_obj"], split="heldout")["score"], 3)
-        print(f"    [{trans_id} / {cname:16s}] ({time.monotonic()-t_c:.1f}s) "
+        print(f"    [{trans_id} / {cname:16s}] ({cond_elapsed_s:.1f}s, evals={cond_uncached}, hits={cond_hits}) "
               f"r0={res['history'][0]['heldout_score']} -> final={res['final_heldout']['score']:.2f} "
               f"(loop={res['final_heldout']['loop_seq_rate']*100:.0f}%, KL={res['final_heldout']['kl_from_clean']:.4f}, "
               f"ret={ret_score})", flush=True)
         cond_out[cname] = {
-            "round0_heldout_score": res["history"][0]["heldout_score"] if eval_heldout_each_round
-                                    else round(tgt_env.evaluate(h0, split="heldout")["score"], 3),
+            "round0_heldout_score": r0_score,
             "final_heldout": res["final_heldout"],
             "source_retention_heldout": ret_score,
+            "elapsed_s": round(cond_elapsed_s, 2),
+            "uncached_evals": int(cond_uncached),
+            "cache_hits_within_cond": int(cond_hits),
             "history": res["history"],
             "action_counts": res["action_counts"],
             "final_harness": res["final_harness"],
@@ -838,6 +859,8 @@ def main() -> None:
                         "final_delta_ce": round(fh["delta_ce"], 5),
                         "final_kl": round(fh["kl_from_clean"], 6),
                         "source_retention": cd["source_retention_heldout"],
+                        "elapsed_s": cd.get("elapsed_s"),
+                        "uncached_evals": cd.get("uncached_evals"),
                         "sim_attempts": cd["sim_summary"]["n_attempts"],
                     })
                     for hrow in cd["history"]:

@@ -371,12 +371,21 @@ def plot_fig5_unified_architecture_diagram() -> None:
         ax.text(x + 1.8, y + h - 6.8, body, ha="left", va="top", fontsize=8.4, color="#1e293b", linespacing=1.35)
 
     # Tier 3: Outer-Loop Meta-Memory (SIM)
+    td = d3["transitions_detail"]
+    t1a_d = td["T1a_CrossDataset_10M_Prose_to_Structured"]["conditions"]
+    t2b_d = td["T2b_CrossFamily_GQA2M_to_Arch7d10M"]["conditions"]
+    t3_d = td["T3_CrossPrecision_Q8_to_COMP1_10M"]["conditions"]
+    t1a_g = t1a_d["Full_SIM"]["final_heldout"]["score"] - t1a_d["Harness_Transfer"]["final_heldout"]["score"]
+    t2b_g = t2b_d["Full_SIM"]["final_heldout"]["score"] - t2b_d["Harness_Transfer"]["final_heldout"]["score"]
+    t3_g = t3_d["Full_SIM"]["final_heldout"]["score"] - t3_d["Harness_Transfer"]["final_heldout"]["score"]
+    t2b_sp = t2b_d["Harness_Transfer"]["elapsed_s"] / max(t2b_d["Full_SIM"]["elapsed_s"], 1e-6)
+    t3_sp = t3_d["Harness_Transfer"]["elapsed_s"] / max(t3_d["Full_SIM"]["elapsed_s"], 1e-6)
     box(3, 76, 94, 23, "#ecfdf5", "#059669",
         "TIER 3: OUTER-LOOP META-MEMORY — Self-Improvement Memory (SIM, arXiv:2611.18856, bcir.sim.v1)",
         "• Governs the OPTIMIZER (Proposer + Selector), NOT the policy context window. Problem-grouped JSON ledger storing:\n"
         "  {problem_id, root_cause_hypothesis, locus, rationale, predicted_outcome (pre-eval), observed_outcome, failed/regressed attempts, provenance}.\n"
-        "• 5/5 real BCIR continual shifts #1 (or 99+ tie, 1.4–1.9× faster): T1a +4.20 pts | T2b GQA→Arch7d +6.24 pts (ret 78.3 vs 8.4) | T3 Q8→COMP-1 +27.35 pts.\n"
-        f"• 10-seed paired (n=6 evolve): Full SIM leads all 4 conditions (81.7 vs 72.8, {s10['wins']}/10 wins, Δ={s10['mean_diff']:+.2f}, p={s10['p_two_sided']:.3f}, ret +9.7 pts); cuts trap loci 2.1–2.6×.",
+        f"• 5/5 real BCIR shifts #1 (cold-cache timed): T1a {t1a_g:+.2f} | T2b GQA→Arch7d {t2b_g:+.2f} ({t2b_sp:.2f}× faster, ret {t2b_d['Full_SIM']['source_retention_heldout']:.1f} vs {t2b_d['Harness_Transfer']['source_retention_heldout']:.1f}) | T3 Q8→COMP-1 {t3_g:+.2f} ({t3_sp:.2f}×, ret {t3_d['Full_SIM']['source_retention_heldout']:.1f} vs {t3_d['Harness_Transfer']['source_retention_heldout']:.1f}).\n"
+        f"• 10-seed paired (n=6 evolve): Full SIM leads all 4 conditions (81.7 vs 72.8, {s10['wins']}/10 wins, Δ={s10['mean_diff']:+.2f}, p={s10['p_two_sided']:.3f}, ret +9.7 pts); cuts trap loci 2.0–2.6×.",
         title_col="#065f46")
 
     # Tier 2: Persistent Surgical Weight-Space Programming (WSP-1..4)

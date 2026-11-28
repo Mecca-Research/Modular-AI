@@ -774,58 +774,135 @@ def load_arch7d_10m_tracked(*, batch: int = 4, time_len: int = 256, threads: int
 
 
 # ==================== COMP-1 Dual-SVID + Joint-ITQ Factorizer ====================
-def _dual_svid_joint_itq(w2d: np.ndarray, rank: int = 16, itq_iters: int = 5, fp16_scales: bool = True) -> np.ndarray:
-    W = np.asarray(w2d, dtype=np.float64)
+# Matches BCIR's established COMP-1 factorization in
+# `arch7d-10m-training-study/src/common_10m.py` (`dual_svid_1bit_factorize` +
+# `dual_svid_1bit_reconstruct`): row/col-scaled sign base plus Joint-ITQ
+# binarized signed residual correction.
+def _rank1_mag_svd(abs_mat: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    u, s, vt = np.linalg.svd(abs_mat.astype(np.float64), full_matrices=False)
+    rt = math.sqrt(max(float(s[0]), 0.0)) if s.size else 0.0
+    return np.abs(u[:, 0]) * rt, np.abs(vt[0, :]) * rt
+
+
+def joint_itq_rotate(
+    u_prime: np.ndarray, v_prime: np.ndarray, iters: int = 25, seed: int = 42
+) -> Tuple[np.ndarray, np.ndarray]:
+    """LittleBit-2 (ICML 2026 Alg. 1): Joint Orthogonal Procrustes alignment on Z = [U'; V']."""
+    r = u_prime.shape[1]
+    if r <= 1 or iters <= 0:
+        return u_prime.astype(np.float64), v_prime.astype(np.float64)
+    z = np.vstack([u_prime, v_prime]).astype(np.float64)
+    rng = np.random.default_rng(seed)
+    rot, _ = np.linalg.qr(rng.standard_normal((r, r)))
+    for _ in range(iters):
+        b = np.where(z @ rot >= 0.0, 1.0, -1.0)
+        phi, _s, psi_t = np.linalg.svd(b.T @ z, full_matrices=False)
+        rot = psi_t.T @ phi.T
+    return u_prime @ rot, v_prime @ rot
+
+
+def dual_svid_1bit_factorize(
+    mat: np.ndarray, rank: int = 16, itq_iters: int = 25, seed: int = 42, scale_bits: int = 16
+) -> Dict[str, Any]:
+    """Return exact BCIR COMP-1 Dual-SVID + Joint-ITQ binary factors and rounded continuous scales."""
+    if scale_bits not in (16, 32):
+        raise ValueError(f"scale_bits must be 16 or 32, got {scale_bits}")
+    scale_dtype = np.float16 if scale_bits == 16 else np.float32
+    W = np.asarray(mat, dtype=np.float64)
     m, n = W.shape
     r = min(rank, m, n)
     B = np.where(W >= 0.0, 1.0, -1.0)
-    absW = np.abs(W)
-    U, S, Vt = np.linalg.svd(absW, full_matrices=False)
-    sq = np.sqrt(np.maximum(S[:r], 1e-12))
-    Au = U[:, :r] * sq[None, :]
-    Av = Vt[:r, :].T * sq[None, :]
+    alpha_r, alpha_c = _rank1_mag_svd(np.abs(W))
+    alpha_r = np.maximum(alpha_r, 1e-8)
+    alpha_c = np.maximum(alpha_c, 1e-8)
+    for _ in range(3):
+        denom_r = np.sum((B * alpha_c[None, :]) ** 2, axis=1) + 1e-12
+        alpha_r = np.maximum(np.sum(W * B * alpha_c[None, :], axis=1) / denom_r, 1e-8)
+        denom_c = np.sum((B * alpha_r[:, None]) ** 2, axis=0) + 1e-12
+        alpha_c = np.maximum(np.sum(W * B * alpha_r[:, None], axis=0) / denom_c, 1e-8)
+    alpha_r_q = alpha_r.astype(scale_dtype).astype(np.float64)
+    alpha_c_q = alpha_c.astype(scale_dtype).astype(np.float64)
+    base = (alpha_r_q[:, None] * B) * alpha_c_q[None, :]
+    res = W - base
+    bu = np.zeros((m, 0), dtype=np.float64)
+    bv = np.zeros((n, 0), dtype=np.float64)
+    h_u_q = np.zeros(m, dtype=np.float64)
+    g_v_q = np.zeros(n, dtype=np.float64)
+    lam_q = np.zeros(0, dtype=np.float64)
+    if r > 0:
+        U, S, Vt = np.linalg.svd(res, full_matrices=False)
+        rt_s = np.sqrt(np.maximum(S[:r], 0.0))
+        u_cont = U[:, :r] * rt_s[None, :]
+        v_cont = Vt[:r, :].T * rt_s[None, :]
+        u_rot, v_rot = joint_itq_rotate(u_cont, v_cont, iters=itq_iters, seed=seed)
+        bu = np.where(u_rot >= 0.0, 1.0, -1.0)
+        bv = np.where(v_rot >= 0.0, 1.0, -1.0)
+        h_u, _ = _rank1_mag_svd(np.abs(u_rot))
+        g_v, _ = _rank1_mag_svd(np.abs(v_rot))
+        hu = h_u[:, None] * bu
+        vg = (g_v[:, None] * bv).T
+        gram = (hu.T @ hu) * (vg @ vg.T)
+        rhs = np.sum(hu * (res @ vg.T), axis=0)
+        ridge = 1e-8 * (float(np.trace(gram)) / max(r, 1) + 1e-12)
+        lam = np.linalg.solve(gram + ridge * np.eye(r), rhs)
+        h_u_q = h_u.astype(scale_dtype).astype(np.float64)
+        g_v_q = g_v.astype(scale_dtype).astype(np.float64)
+        lam_q = lam.astype(scale_dtype).astype(np.float64)
+    return {
+        "B": B,
+        "alpha_r": alpha_r_q,
+        "alpha_c": alpha_c_q,
+        "bu": bu,
+        "bv": bv,
+        "h_u": h_u_q,
+        "g_v": g_v_q,
+        "lam": lam_q,
+        "rank": r,
+        "scale_bits": scale_bits,
+    }
 
-    # Joint-ITQ orthogonal rotation
-    R = np.eye(r, dtype=np.float64)
-    for _ in range(itq_iters):
-        Zu = Au @ R
-        Zv = Av @ R
-        Bu = np.where(Zu >= 0.0, 1.0, -1.0)
-        Bv = np.where(Zv >= 0.0, 1.0, -1.0)
-        C = Au.T @ Bu + Av.T @ Bv
-        Uc, _, Vtc = np.linalg.svd(C, full_matrices=False)
-        R = Uc @ Vtc
-    Zu = Au @ R
-    Zv = Av @ R
-    Bu = np.where(Zu >= 0.0, 1.0, -1.0)
-    Bv = np.where(Zv >= 0.0, 1.0, -1.0)
-    # Optimal row/col positive scale fit
-    su = np.maximum(np.sum(Zu * Bu, axis=1) / max(1, r), 1e-6)
-    sv = np.maximum(np.sum(Zv * Bv, axis=1) / max(1, r), 1e-6)
-    if fp16_scales:
-        su = su.astype(np.float16).astype(np.float64)
-        sv = sv.astype(np.float16).astype(np.float64)
-    M_approx = np.maximum((su[:, None] * Bu) @ (sv[:, None] * Bv).T, 0.0)
-    # Global least-squares scale alignment
-    W_hat = B * M_approx
-    denom = float(np.sum(W_hat * W_hat))
-    if denom > 1e-12:
-        g = float(np.sum(W * W_hat) / denom)
-        if fp16_scales:
-            g = float(np.float16(g))
-        W_hat = W_hat * g
-    return W_hat.astype(np.float32)
+
+def dual_svid_1bit_reconstruct(fac: Dict[str, Any], *, round_scales: bool = True) -> np.ndarray:
+    scale_dtype = np.float16 if fac["scale_bits"] == 16 else np.float32
+    ar = fac["alpha_r"].astype(scale_dtype).astype(np.float64) if round_scales else fac["alpha_r"]
+    ac = fac["alpha_c"].astype(scale_dtype).astype(np.float64) if round_scales else fac["alpha_c"]
+    base = (ar[:, None] * fac["B"]) * ac[None, :]
+    if fac["rank"] > 0:
+        hu = fac["h_u"].astype(scale_dtype).astype(np.float64) if round_scales else fac["h_u"]
+        gv = fac["g_v"].astype(scale_dtype).astype(np.float64) if round_scales else fac["g_v"]
+        lm = fac["lam"].astype(scale_dtype).astype(np.float64) if round_scales else fac["lam"]
+        recon = base + ((hu[:, None] * fac["bu"]) * lm[None, :]) @ (gv[:, None] * fac["bv"]).T
+    else:
+        recon = base
+    return recon.astype(np.float32)
 
 
-def build_comp1_weights(model: Abi6Model, w_base: np.ndarray, rank: int = 16, fp16_scales: bool = True) -> np.ndarray:
-    """Apply BCIR COMP-1 (Dual-SVID + Joint-ITQ) strictly to MLP tensors (region==2, min(m,n)>=512);
-    Attention/Embed/Norms stay in deterministic BCIRQ8 v1."""
+def dual_svid_1bit_ptq(
+    mat: np.ndarray, rank: int = 16, itq_iters: int = 25, seed: int = 42, scale_bits: int = 16
+) -> np.ndarray:
+    fac = dual_svid_1bit_factorize(mat, rank=rank, itq_iters=itq_iters, seed=seed, scale_bits=scale_bits)
+    return dual_svid_1bit_reconstruct(fac, round_scales=True)
+
+
+def build_comp1_weights(
+    model: Abi6Model,
+    w_base: np.ndarray,
+    rank: int = 16,
+    fp16_scales: bool = True,
+    itq_iters: int = 25,
+    seed: int = 42,
+) -> np.ndarray:
+    """Apply established BCIR COMP-1 (Dual-SVID + Joint-ITQ signed-residual 1-bit PTQ)
+    strictly to MLP tensors (region==2, min(m,n)>=512); Attention/Embed/Norms stay in BCIRQ8 v1."""
+    scale_bits = 16 if fp16_scales else 32
     w_out = w_base.copy()
     for ti in model.tensor_infos():
         if ti["region"] == 2 and min(ti["rows"], ti["cols"]) >= 512:
             off, r, c = ti["offset"], ti["rows"], ti["cols"]
             mat = w_out[off:off + r * c].reshape(r, c)
-            w_out[off:off + r * c] = _dual_svid_joint_itq(mat, rank=rank, fp16_scales=fp16_scales).ravel()
+            w_out[off:off + r * c] = dual_svid_1bit_ptq(
+                mat, rank=rank, itq_iters=itq_iters, seed=seed, scale_bits=scale_bits
+            ).ravel()
     return w_out
 
 

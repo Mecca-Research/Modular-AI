@@ -23,11 +23,11 @@
    - Pairing with the **Tier 1 Decoding Harness (`NgramGuard`, Arm 15)** reaches **`78.93` (`loop 100% → 40.6%`, `rep4 65.7% → 6.7%`, `distinct-4 93.3%`, `0` KL)**, while 8 steps of native C11 `Opt_Q8_Muon_BF16Grad` continuation (Arm 18, `26.2s`, `100%` weights) improves CE `-0.0067` nats and reaches `34.51`.
    - **Design Law:** Use **Tier 1 (`SSP-Live` + Decoding Harness)** for ephemeral runtime/decoding attractors (`0` KL); reserve **Tier 2 (`WSP-1..4` on `L3 NoPE-MLA` `wdown` / `G1` or `COMP-1` scales)** for persistent structural defects, quantization calibration, or pre-output reasoning faults; never use static WSP as a pretraining substitute.
 3. **Where Google's Self-Improvement Memory (`SIM`, `arXiv:2611.18856`) Fits (`Tier 3` Outer-Loop Optimizer):**
-   - Faithful `bcir.sim.v1` problem-grouped ledger governing the **Proposer + Selector** (storing `root_cause_hypothesis`, `rationale`, pre-evaluation `predicted_outcome`, post-evaluation `observed_outcome`, failed/high-KL attempts, and `provenance`) evaluated across **5 real BCIR continual shifts** (`Cold_Start` vs `Harness_Transfer` vs `Problem_Only` vs `Full_SIM`) plus a **`n = 10` paired-seed reproducibility study**:
-   - **`Full_SIM` finished #1 (or tied at the `99+` ceiling while running `1.44–1.90×` faster) across ALL `5/5` real BCIR transitions** (`mean = 98.93` vs `Harness_Transfer = 91.37`, `Problem_Only = 91.87`, `Cold_Start = 62.45`), with `0%` held-out loops on all 5 shifts:
-     - `T1a` (`Cross-Dataset 10M Prose → Structured`): **`99.47`** vs `95.27` Transfer (**`+4.20` pts**).
-     - `T2b` (`Cross-Family GQA-2M → Arch7d-10M`): **`98.09`** vs `91.84` Transfer (**`+6.24` pts**; `Problem_Only` regressed to `89.58`; source retention **`78.28` vs `8.41`** = **`9.3×`** higher!).
-     - `T3` (`Cross-Precision Q8 v1 → COMP-1 1-bit`): **`98.76`** vs `71.41` Transfer (**`+27.35` pts**; source retention **`88.73` vs `24.11`** = **`3.68×`** higher!).
+   - Faithful `bcir.sim.v1` problem-grouped ledger governing the **Proposer + Selector** (storing `root_cause_hypothesis`, `rationale`, pre-evaluation `predicted_outcome`, post-evaluation `observed_outcome`, failed/high-KL attempts, and `provenance`) evaluated with **strictly isolated cold evaluation caches per condition** across **5 real BCIR continual shifts** (`Cold_Start` vs `Harness_Transfer` vs `Problem_Only` vs `Full_SIM`) plus a **`n = 10` paired-seed reproducibility study**:
+   - **`Full_SIM` finished #1 (or tied at the `99+` ceiling) across ALL `5/5` real BCIR transitions** (`mean = 98.19` vs `Harness_Transfer = 86.57` [`+11.62`], `Problem_Only = 85.36`, `Cold_Start = 59.72`), cutting mean held-out loop rate **`21.7% → 1.7%`** (`0%` on 4/5 shifts, `8%` vs `92%` on `T3`), raising mean source retention **`65.62 → 94.07` (`+28.45` pts)**, and lowering mean cold-cache wall time **`82.9s → 73.9s` (`1.12×` vs Transfer, `1.28×` vs Cold Start)**:
+     - `T1a` (`Cross-Dataset 10M Prose → Structured`): **`99.47`** vs `95.27` Transfer (**`+4.20` pts**, `0%` vs `8%` loops, matched budget `72.1s / 15 evals` vs `68.0s / 14 evals`).
+     - `T2b` (`Cross-Family GQA-2M → Arch7d-10M`): **`98.09`** vs `91.84` Transfer (**`+6.24` pts**; `Problem_Only` regressed to `89.58`; source retention **`78.28` vs `8.41`** = **`9.3×`** higher; **`1.37×` faster** on cold cache `65.6s / 13 evals` vs `89.9s / 15 evals` by avoiding weight-mutating CE/KL evaluations).
+     - `T3` (`Cross-Precision Q8 v1 → established BCIR COMP-1 1-bit`, `CE 1.5175 → 2.1575` / `PPL 4.56 → 8.65`): blind `Harness_Transfer` (`47.42`, `92%` loops) and `Problem_Only` (`43.45`, `100%` loops) suffered **negative transfer** below `Cold_Start` (`53.23`), whereas **`Full_SIM` rescued adaptation to `95.07` (`+47.65` over Transfer, `8%` loops, `-0.0267` nats `COMP-1` CE recovery, `4.58×` stronger source retention `97.45` vs `21.26`, `1.28×` faster on cold cache `82.7s / 16 evals` vs `106.1s / 18 evals`)**.
    - **Honest 10-Seed Small-Split Finding (`S10`, `Arch7d_2M`, `n=6` Evolve prompts):** `Full_SIM` still leads all 4 conditions (`mean 81.71` vs `Problem_Only 76.73`, `Harness_Transfer 72.79`, `Cold_Start 69.46`; **`6/10` wins**, mean **`+8.92` pts**, source retention **`85.12` vs `75.39` [`+9.74`]**), cuts wasted candidate budget on `Canon-AC` (`14.9% → 5.7%`, `2.6×`), `mHC` (`7.9% → 3.8%`, `2.1×`), and static `GDN-2` gates (`12.9% → 6.7%`, `2.0×`) — while transparently showing that `n=6` Evolve prompts yields high selection variance (`std = 20.27`, `t(9) = 1.392`, `p = 0.197`, `95% CI [-5.58, +23.42]`, `d_z = 0.44`), proving empirically why `SIM` needs `>= 30–50` Evolve tasks (`WSP-3`) and trace-reading proposers.
 
 ---
@@ -36,7 +36,7 @@
 
 ![Stage 1 18-Arm WSP/SSP Locus Audit](figures/fig1_arch7d_10m_locus_audit.png)
 
-- **Gate 0 Stateful Parity vs Unmodified `bcir_ext_forward`:** `Arch7d-10M` (`10.037M`) = `1.29e-5`, `GQA+RoPE` = `9.83e-7`, `Arch-2 (DeltaNet+GQA)` = `1.56e-6` (`ALL PASS`).
+- **Gate 0 Stateful Parity vs Unmodified `bcir_ext_forward`:** `Arch7d-10M` (`10.037M`) = `1.29e-5`, `GQA+RoPE` = `9.83e-7`, `Arch-2 (DeltaNet+GQA)` = `1.56e-6` (`ALL PASS`, plus dynamic vocab-sized logits verification at `vocab=1024 > 512`).
 - **`WSP-2` Zero-Inference Health Sentinel on `BCIR-Arch7d-10M`:** `PASS` (`0` nonfinites, `0` outliers `> 8× median`, `max/med ∈ [1.14, 1.43]`, `3.7 ms`).
 
 | # | Arm ID | Tier | Selected Evolve Config | Test Score ↑ | Loop % ↓ | Rep-4 % ↓ | Distinct-4 ↑ | Test `ΔCE` | Test `KL` ↓ | Top-1 Agree | Changed Coords (`%`) |
@@ -74,7 +74,7 @@ Full `WSP-1` provenance manifests are archived in `checkpoints/wsp1_patch_L3_mla
 | **`Arch2_Hybrid_2M`** (`3×DN+GQA`) | `2,629,912` | `18.05 MiB` | `4.38 MiB` | `1,181` | `6.77` | **`6.84`** | `1.94` | `+0.07` | `+0.12` | `-1.21` | **`+3.19`** | **`+6.02`** (`0` KL) |
 | **`GQA_Full_2M`** (`4×GQA+RoPE`) | `2,722,048` | `18.66 MiB` | `16.00 MiB` | `1,338` | `8.09` | `8.16` | `2.02` | `-7.77` | `-2.77` | `-0.55` | `-3.54` | `+0.56` (`0` KL) |
 
-Full 480-row training telemetry is archived in `results/stage2_train_steps.csv` and `results/stage2_layer_editability.csv`. Tracked `BCIRQ8 v1` checkpoints (`checkpoints/{arch7d_2m,gqa_full_2m}_bcirq8.bin`) feed Stage 3's Cross-Model transitions.
+Full 480-row training telemetry is archived in `results/stage2_train_steps.csv` and `results/stage2_layer_editability.csv`. Tracked `BCIRQ8 v1` checkpoints (`checkpoints/{arch7d_2m,gqa_full_2m}_bcirq8.bin`) feed Stage 3's Cross-Model transitions. Applying BCIR's established `COMP-1` Dual-SVID + Joint-ITQ signed-residual 1-bit PTQ (`r=16, FP16 scales`, bit-exact parity with `arch7d-10m-training-study/src/common_10m.py`) to `BCIR-Arch7d-10M` shifts test `CE 1.5175 → 2.1575` (`PPL 4.56 → 8.65`, `+0.6399` nats) and greedy rollout dynamics (`loop 100.0% → 90.6%`, `distinct-4 34.3% → 67.3%`).
 
 ---
 
@@ -82,16 +82,16 @@ Full 480-row training telemetry is archived in `results/stage2_train_steps.csv` 
 
 ![Stage 3 SIM 5 Transitions](figures/fig3_sim_crsi_transitions.png)
 
-### 3.1 Five Real BCIR Continual Shifts (Matched Rounds & Budgets, Strict Evolve/Held-Out Isolation)
+### 3.1 Five Real BCIR Continual Shifts (Matched Budgets, Isolated Cold Caches & Strict Evolve/Held-Out Split)
 
-| Transition | Shift Type | `Cold_Start` | `Harness_Transfer` | `Problem_Only` | **`Full_SIM`** | `SIM − Transfer` | Held-Out Loop (`SIM` / `Tr`) | Source Retention (`SIM` / `Tr`) |
-|---|---|---:|---:|---:|---:|---:|---:|---:|
-| `T1a` (`10M Prose → Structured`) | Cross-Dataset | `94.12` | `95.27` | `95.46` | **`99.47`** | **`+4.20`** | **`0%`** / `8%` | `95.52` / `99.33` |
-| `T1b` (`10M Prose → LongCtx`) | Cross-Dataset | `93.03` | `99.37` | `99.37` | **`99.37`** | `+0.00` (`1.44×` faster) | **`0%`** / `0%` | `99.52` / `99.52` |
-| `T2a` (`Arch7d 2M → 10M`) | Cross-Scale | `27.79` | `98.95` | `98.95` | **`98.95`** | `+0.00` (`1.53×` faster) | **`0%`** / `0%` | `99.57` / `99.57` |
-| `T2b` (`GQA-2M → Arch7d-10M`) | **Cross-Family** | `30.44` | `91.84` | `89.58` | **`98.09`** | **`+6.24`** (`1.90×` faster) | **`0%`** / `8%` | **`78.28`** / `8.41` |
-| `T3` (`10M Q8 v1 → COMP-1 1b`) | **Cross-Precision** | `66.87` | `71.41` | `76.01` | **`98.76`** | **`+27.35`** | **`0%`** / `33%` | **`88.73`** / `24.11` |
-| **5-Transition Mean** | — | `62.45` | `91.37` | `91.87` | **`98.93`** | **`+7.56`** | **`0.0%`** / `9.8%` | **`92.32`** / `66.19` |
+| Transition | Shift Type | `Cold_Start` | `Harness_Transfer` | `Problem_Only` | **`Full_SIM`** | `SIM − Transfer` | Held-Out Loop (`SIM` / `Tr`) | Source Retention (`SIM` / `Tr`) | Cold Wall (`SIM` / `Tr`) |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| `T1a` (`10M Prose → Structured`) | Cross-Dataset | `94.12` | `95.27` | `95.46` | **`99.47`** | **`+4.20`** | **`0%`** / `8%` | `95.52` / `99.33` | `72.1s` / `68.0s` |
+| `T1b` (`10M Prose → LongCtx`) | Cross-Dataset | `93.03` | `99.37` | `99.37` | **`99.37`** | `+0.00` | **`0%`** / `0%` | `99.52` / `99.52` | `84.0s` / `83.1s` |
+| `T2a` (`Arch7d 2M → 10M`) | Cross-Scale | `27.79` | `98.95` | `98.95` | **`98.95`** | `+0.00` | **`0%`** / `0%` | `99.57` / `99.57` | `65.1s` / `67.6s` |
+| `T2b` (`GQA-2M → Arch7d-10M`) | **Cross-Family** | `30.44` | `91.84` | `89.58` | **`98.09`** | **`+6.24`** | **`0%`** / `8%` | **`78.28`** / `8.41` | **`65.6s`** / `89.9s` (`1.37×`) |
+| `T3` (`10M Q8 v1 → COMP-1 1b`) | **Cross-Precision** | `53.23` | `47.42` | `43.45` | **`95.07`** | **`+47.65`** | **`8%`** / `92%` | **`97.45`** / `21.26` | **`82.7s`** / `106.1s` (`1.28×`) |
+| **5-Transition Mean** | — | `59.72` | `86.57` | `85.36` | **`98.19`** | **`+11.62`** | **`1.7%`** / `21.7%` | **`94.07`** / `65.62` | **`73.9s`** / `82.9s` (`1.12×`) |
 
 All 5 full `bcir.sim.v1` JSON ledgers (containing every accepted and rejected attempt, pre-evaluation `predicted_outcome`, post-evaluation `observed_outcome`, and `provenance`) are archived in `results/sim_ledger_*.json`.
 

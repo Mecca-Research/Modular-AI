@@ -12,9 +12,9 @@
       "sha256": "1156233d03e264b7750057ebced66785ff00f47c2231228943e9bec39a937a78"
     },
     {
-      "bytes": 16589,
+      "bytes": 17992,
       "path": "README.md",
-      "sha256": "ead45dc3f1c459a26cf5b9af6f1a73e99007e7e095e8239e1e2b5945341dcea2"
+      "sha256": "c92d9b206a0334b112e3485a3229384cbae9daa45b038f5b37f1e74a697511bf"
     },
     {
       "bytes": 2755014,
@@ -57,9 +57,9 @@
       "sha256": "3ebf029a770ba8dd3b9f31e4569223b928a9b5cdc37d51f198edeba1da8e48c1"
     },
     {
-      "bytes": 410023,
+      "bytes": 408606,
       "path": "figures/fig3_sim_crsi_transitions.png",
-      "sha256": "e2f286bc7f7660413f66a0a46ccde8c29b2fd39ff3426f5598db9b63e2945dff"
+      "sha256": "9aaa4f7a83bad55d4ccddca992b5f9fb3fe750ad75a92d44c3bf9cd29cf90447"
     },
     {
       "bytes": 215899,
@@ -67,9 +67,9 @@
       "sha256": "e6634ddf569c2a89002728f37c8e0b9e468ecebc44cdbbdedd216a8758e0d3da"
     },
     {
-      "bytes": 462658,
+      "bytes": 466306,
       "path": "figures/fig5_unified_3tier_hybrid_architecture.png",
-      "sha256": "b4ba4edf0ac82653880a31c6229bc709a7725c94253dddbb2a0c28b54fc51a99"
+      "sha256": "2a91739dfc76410f1da9da145444bcb23f82fd496196da0ae51664c13ad37478"
     },
     {
       "bytes": 28071,
@@ -92,9 +92,9 @@
       "sha256": "47b8cb3d4c84615b270304391bae6af3a14648b69f76d84f71dfa58b6f7e5b4f"
     },
     {
-      "bytes": 27924,
+      "bytes": 28219,
       "path": "results/sim_ledger_T3_CrossPrecision_Q8_to_COMP1_10M.json",
-      "sha256": "8878f18a3403f378b4da405336dafab65b9d5ea9e56ff95e7f08dde960e09816"
+      "sha256": "b4d66c9ec5c0b664b66692d0e2d61fa1df886e19646d8c96867c9deb929811c7"
     },
     {
       "bytes": 4669,
@@ -107,9 +107,9 @@
       "sha256": "4076bd86bbbb2cb5c2bf7c7e46994acf9e2d8ee07a1dd2a1dd0a661984441fba"
     },
     {
-      "bytes": 27250,
+      "bytes": 27251,
       "path": "results/stage2_hybrid_train_editability.json",
-      "sha256": "5e7617393df913ee626f456c830a4bb95eca731bc13f8dd0d4338e9e692d380b"
+      "sha256": "00b2071a334f590e020a10eb52dc0baa334870ec3a7fe8c35ef2d06609aec0b2"
     },
     {
       "bytes": 1060,
@@ -127,24 +127,24 @@
       "sha256": "0a5c872bb3c6a83cf7d2bec44395a93a8bc55f428f43bb3f4265d87579c226c4"
     },
     {
-      "bytes": 95693,
+      "bytes": 98883,
       "path": "results/stage3_sim_crsi_experiments.json",
-      "sha256": "bbf40b4b21657d6e8e872c977bb02456beb22d7207b9c6236bd27ebdf1e9b84f"
+      "sha256": "98b6d612bff9c9c796698d130dda990b2848476e274d8789368f53167e9f6302"
     },
     {
-      "bytes": 7634,
+      "bytes": 7632,
       "path": "results/stage3_sim_round_curves.csv",
-      "sha256": "902d460e2182879b23251ec9b03892200658bdf0697efe90b16d9d0779d2c1fb"
+      "sha256": "5615100a2439d0fcf01f588f36da68243d855a4ffef3d80d88845dd525d9208b"
     },
     {
-      "bytes": 2053,
+      "bytes": 2270,
       "path": "results/stage3_sim_transitions.csv",
-      "sha256": "fde032b14f0a2e81b1c2af1d069490d92a6d22edb234d3392fca83433828587f"
+      "sha256": "68bdee6b32c37edadf8b5233d6eec9d1832965ff115714638763acfea2693c04"
     },
     {
-      "bytes": 49274,
+      "bytes": 50146,
       "path": "src/bcir_stateful_probe.c",
-      "sha256": "91e0bb2b3a42ac34148cf7e83fc49e707a61f50cceddf3a466121183484dedd2"
+      "sha256": "c55b75657b6308c6e48c4e46236d5fd7db7ed2293ea8d6d9e94d59df672df793"
     },
     {
       "bytes": 7814,
@@ -152,14 +152,14 @@
       "sha256": "78ece6f6251f829f2aa7b0c2f3ca1940b77d5e492ec04f546da4cec4436aafc1"
     },
     {
-      "bytes": 45528,
+      "bytes": 49213,
       "path": "src/common_wsp_sim.py",
-      "sha256": "ac13dc83366dbf2e5e136afc1f44b12e2a35c6d629aa52fa5ac5ac8d1913b9c8"
+      "sha256": "1cb5efc74a12b28f16fa433c8c8fb26e69a02512342c5187915b57d255c778ba"
     },
     {
-      "bytes": 25673,
+      "bytes": 26672,
       "path": "src/make_wsp_sim_plots.py",
-      "sha256": "a800f9905c93ed5a061d0c44fff329e75f6ddeaeba6a3f5c06d74d2706c02750"
+      "sha256": "5de12c925d1a0f424d54e78a955247a5ccd85948d97c9594aadb71266755f233"
     },
     {
       "bytes": 31814,
@@ -167,14 +167,14 @@
       "sha256": "6224c9cf60023a80e0537c5decbab187eac40e3d7f7f4ff05b69d08089f73a1e"
     },
     {
-      "bytes": 18459,
+      "bytes": 18961,
       "path": "src/stage2_hybrid_train_editability.py",
-      "sha256": "f5fa75e1db6a72abf69b56d85388035500e1f09f0adf8b23e71bc7520a7afce6"
+      "sha256": "1c26bc1ad9a101a814db2ed1553f84c6e3deaa704e0a5427af8a5af0dd58801c"
     },
     {
-      "bytes": 44168,
+      "bytes": 45002,
       "path": "src/stage3_sim_crsi_experiments.py",
-      "sha256": "8a7bca4dafc9a1cbf62df01a9162a9caac488aeefee118791184f80c26fc6da4"
+      "sha256": "95bcd370a08876643e840a0402878338d47d12da8c3f59dbb1828fe0621e1977"
     }
   ],
   "schema": "bcir.study.manifest.v1",

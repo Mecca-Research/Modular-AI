@@ -170,6 +170,9 @@ struct bcir_stateful_ctx {
   float *ctx_raw, *ctx_buf, *mix_out;
   float *gate_buf, *up_buf, *hid_buf, *mlp_out, *x_final, *norm_final;
   double *scores, *kS_buf;
+  float *gen_logits;
+  double *sel_logits;
+  uint8_t *sel_seen;
 };
 
 static int lookup_off(const bcir_ext_model *m, const char *name, size_t *out) {
@@ -188,7 +191,7 @@ static int lookup_off(const bcir_ext_model *m, const char *name, size_t *out) {
 bcir_stateful_ctx *bcir_stateful_create(const bcir_ext_model *m,
                                         const bcir_ext_spec *spec,
                                         uint32_t max_seq) {
-  if (!m || !spec || max_seq == 0u || spec->layers > BCIR_EXT_MAX_LAYERS) return NULL;
+  if (!m || !spec || max_seq == 0u || spec->vocab == 0u || spec->layers > BCIR_EXT_MAX_LAYERS) return NULL;
   bcir_stateful_ctx *c = (bcir_stateful_ctx *)calloc(1u, sizeof(*c));
   if (!c) return NULL;
   c->sp = *spec;
@@ -351,6 +354,13 @@ bcir_stateful_ctx *bcir_stateful_create(const bcir_ext_model *m,
   c->norm_final = (float *)calloc(d, sizeof(float));
   c->scores = (double *)calloc(max_seq, sizeof(double));
   c->kS_buf = (double *)calloc(dh, sizeof(double));
+  c->gen_logits = (float *)calloc(spec->vocab, sizeof(float));
+  c->sel_logits = (double *)calloc(spec->vocab, sizeof(double));
+  c->sel_seen = (uint8_t *)calloc(spec->vocab, sizeof(uint8_t));
+  if (!c->gen_logits || !c->sel_logits || !c->sel_seen) {
+    bcir_stateful_destroy(c);
+    return NULL;
+  }
   return c;
 }
 
@@ -379,6 +389,7 @@ void bcir_stateful_destroy(bcir_stateful_ctx *c) {
   free(c->gate_buf); free(c->up_buf); free(c->hid_buf);
   free(c->mlp_out); free(c->x_final); free(c->norm_final);
   free(c->scores); free(c->kS_buf);
+  free(c->gen_logits); free(c->sel_logits); free(c->sel_seen);
   free(c);
 }
 
@@ -836,20 +847,19 @@ int bcir_stateful_step(bcir_stateful_ctx *c,
 
 static uint32_t select_next_token(const float *raw_logits,
                                   size_t V,
+                                  double *logits,
+                                  uint8_t *seen,
                                   const uint32_t *hist,
                                   uint32_t hist_len,
                                   const bcir_ssp_config *ssp,
                                   float *out_ent,
                                   uint8_t *out_echo) {
-  double logits[512];
-  if (V > 512u) V = 512u;
   for (size_t v = 0; v < V; ++v) logits[v] = (double)raw_logits[v];
 
   if (ssp) {
     uint32_t w = ssp->rep_window ? ssp->rep_window : 32u;
     uint32_t start = (hist_len > w) ? (hist_len - w) : 0u;
     if (ssp->rep_penalty > 1.0f || ssp->presence_penalty > 0.0f) {
-      uint8_t seen[512];
       memset(seen, 0, V);
       for (uint32_t i = start; i < hist_len; ++i) {
         if (hist[i] < V) seen[hist[i]] = 1u;
@@ -990,6 +1000,13 @@ static bcir_stateful_ctx *bcir_stateful_clone(const bcir_stateful_ctx *src) {
   c->norm_final = (float *)calloc(d, sizeof(float));
   c->scores = (double *)calloc(max_seq, sizeof(double));
   c->kS_buf = (double *)calloc(dh, sizeof(double));
+  c->gen_logits = (float *)calloc(c->sp.vocab, sizeof(float));
+  c->sel_logits = (double *)calloc(c->sp.vocab, sizeof(double));
+  c->sel_seen = (uint8_t *)calloc(c->sp.vocab, sizeof(uint8_t));
+  if (!c->gen_logits || !c->sel_logits || !c->sel_seen) {
+    bcir_stateful_destroy(c);
+    return NULL;
+  }
   return c;
 }
 
@@ -1007,7 +1024,7 @@ typedef struct gen_worker_arg {
 
 static void *gen_worker_fn(void *vp) {
   gen_worker_arg *a = (gen_worker_arg *)vp;
-  float logits[512];
+  float *logits = a->ctx->gen_logits;
   size_t V = a->ctx->sp.vocab;
   uint32_t total = a->prompt_len + a->gen_len;
   a->rc = 0;
@@ -1022,7 +1039,8 @@ static void *gen_worker_fn(void *vp) {
     for (uint32_t g = 0; g < a->gen_len; ++g) {
       float ent = 0.0f;
       uint8_t ec = 0u;
-      uint32_t nxt = select_next_token(logits, V, ot, a->prompt_len + g, a->ssp, &ent, &ec);
+      uint32_t nxt = select_next_token(logits, V, a->ctx->sel_logits, a->ctx->sel_seen,
+                                       ot, a->prompt_len + g, a->ssp, &ent, &ec);
       ot[a->prompt_len + g] = nxt;
       if (a->out_entropy) a->out_entropy[p * a->gen_len + g] = ent;
       if (a->out_echo) a->out_echo[p * a->gen_len + g] = ec;
