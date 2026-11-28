@@ -1050,6 +1050,101 @@ def make_fixed_eval_batches(
     )
 
 
+def make_fixed_target_context_batches(
+    stream: np.ndarray,
+    *,
+    horizons: Sequence[int],
+    target_window: int = 64,
+    n_windows: int = 32,
+    max_context: Optional[int] = None,
+) -> Tuple[Dict[int, Tuple[np.ndarray, np.ndarray]], str, List[int]]:
+    """Build fixed-target-window evaluation batches across varying context horizons.
+
+    Selects `n_windows` evenly spaced anchor end positions `e_i` in `stream` and scores
+    STRICTLY the identical trailing `target_window` bytes `stream[e_i - target_window : e_i]`
+    at every horizon `T` in `horizons`, masking all earlier positions with `BCIR_EXT_IGNORE`.
+    Asserts byte-for-byte SHA-256 identity of the scored targets across all horizons.
+    """
+    max_t = int(max(horizons) if max_context is None else max_context)
+    if min(horizons) < target_window:
+        raise ValueError(f"All horizons must be >= target_window ({target_window})")
+    if len(stream) <= max_t + 2:
+        raise ValueError(f"Stream too short ({len(stream)}) for max_context={max_t}")
+
+    # Evenly spaced disjoint anchor ends e_i in [max_t + 1, len(stream) - 1]
+    avail_start = max_t + 1
+    avail_end = len(stream) - 1
+    stride = (avail_end - avail_start) // n_windows
+    if stride < max_t:
+        stride = max(target_window, (avail_end - avail_start) // n_windows)
+    anchors = [int(avail_start + i * stride) for i in range(n_windows)]
+
+    out: Dict[int, Tuple[np.ndarray, np.ndarray]] = {}
+    ref_sha: Optional[str] = None
+    for T in horizons:
+        tk = np.empty((n_windows, T), dtype=np.uint32)
+        tg = np.full((n_windows, T), BCIR_EXT_IGNORE, dtype=np.uint32)
+        scored_buf = np.empty((n_windows, target_window), dtype=np.uint32)
+        for i, e in enumerate(anchors):
+            tk[i] = stream[e - T - 1 : e - 1]
+            tail = stream[e - target_window : e]
+            tg[i, T - target_window :] = tail
+            scored_buf[i] = tail
+        sha = hashlib.sha256(scored_buf.tobytes()).hexdigest()
+        if ref_sha is None:
+            ref_sha = sha
+        elif sha != ref_sha:
+            raise AssertionError(f"Fixed target SHA mismatch at T={T}: {sha} != {ref_sha}")
+        out[int(T)] = (np.ascontiguousarray(tk, dtype=np.uint32), np.ascontiguousarray(tg, dtype=np.uint32))
+    assert ref_sha is not None
+    return out, ref_sha, anchors
+
+
+def make_fixed_span_partition_batches(
+    stream: np.ndarray,
+    *,
+    horizons: Sequence[int],
+    span_len: int = 2048,
+    n_spans: int = 8,
+) -> Tuple[Dict[int, Tuple[np.ndarray, np.ndarray]], str, List[int]]:
+    """Partition `n_spans` fixed `span_len`-byte test spans into non-overlapping `T`-byte blocks.
+
+    Every horizon `T` (which must divide `span_len`) scores the EXACT same `n_spans * span_len`
+    target bytes; SHA-256 identity of the flattened target stream is asserted across all horizons.
+    """
+    for T in horizons:
+        if span_len % T != 0:
+            raise ValueError(f"Horizon T={T} does not divide span_len={span_len}")
+    usable = len(stream) - span_len - 2
+    stride = usable // n_spans
+    if stride < span_len:
+        raise ValueError(f"Stream too short for {n_spans} disjoint spans of {span_len}")
+    starts = [int(1 + i * stride) for i in range(n_spans)]
+
+    out: Dict[int, Tuple[np.ndarray, np.ndarray]] = {}
+    ref_sha: Optional[str] = None
+    for T in horizons:
+        blocks_per_span = span_len // T
+        total_seqs = n_spans * blocks_per_span
+        tk = np.empty((total_seqs, T), dtype=np.uint32)
+        tg = np.empty((total_seqs, T), dtype=np.uint32)
+        row = 0
+        for st in starts:
+            for b in range(blocks_per_span):
+                p = st + b * T
+                tk[row] = stream[p - 1 : p - 1 + T]
+                tg[row] = stream[p : p + T]
+                row += 1
+        sha = hashlib.sha256(tg.tobytes()).hexdigest()
+        if ref_sha is None:
+            ref_sha = sha
+        elif sha != ref_sha:
+            raise AssertionError(f"Fixed span partition SHA mismatch at T={T}: {sha} != {ref_sha}")
+        out[int(T)] = (np.ascontiguousarray(tk, dtype=np.uint32), np.ascontiguousarray(tg, dtype=np.uint32))
+    assert ref_sha is not None
+    return out, ref_sha, starts
+
+
 def cosine_lr_schedule(steps: int, max_lr: float, min_lr: float, warmup: int) -> np.ndarray:
     lrs = np.empty(steps, dtype=np.float64)
     for s in range(steps):
@@ -1059,6 +1154,67 @@ def cosine_lr_schedule(steps: int, max_lr: float, min_lr: float, warmup: int) ->
             prog = (s - warmup) / max(1, steps - warmup - 1)
             lrs[s] = min_lr + 0.5 * (max_lr - min_lr) * (1.0 + math.cos(math.pi * min(1.0, prog)))
     return lrs
+
+
+def cosine_lr_schedule_by_tokens(
+    steps: int,
+    tok_per_step: int,
+    max_lr: float,
+    min_lr: float,
+    warmup_tokens: int,
+    total_tokens: int,
+) -> np.ndarray:
+    """Token-indexed cosine LR schedule invariant to (batch, seq_len) step granularity."""
+    lrs = np.empty(steps, dtype=np.float64)
+    decay_span = max(1, total_tokens - warmup_tokens)
+    for s in range(steps):
+        tok_end = (s + 1) * tok_per_step
+        if tok_end <= warmup_tokens:
+            lrs[s] = max_lr * (tok_end / max(1, warmup_tokens))
+        else:
+            prog = (tok_end - warmup_tokens) / decay_span
+            lrs[s] = min_lr + 0.5 * (max_lr - min_lr) * (1.0 + math.cos(math.pi * min(1.0, prog)))
+    return lrs
+
+
+_TEL_SUM_KEYS = (
+    "fp64_norm_promotions",
+    "fp64_softmax_promotions",
+    "fp64_wy_solves",
+    "nonfinite_events",
+    "grad_clip_hits",
+    "total_steps",
+    "q8_m2_floor_clamps",
+    "gemm_calls_attn",
+    "gemm_calls_mlp",
+    "muon_ns_calls",
+)
+_TEL_MAX_KEYS = (
+    "max_grad_norm",
+    "max_softmax_logit",
+    "max_wy_offdiag",
+    "max_abs_act",
+)
+
+
+def merge_telemetry(acc: Optional[Dict[str, Any]], cur: Dict[str, Any]) -> Dict[str, Any]:
+    """Aggregate BCIR ABI 6 PrecTelemetry counters and extrema across checkpoint resumes."""
+    if acc is None:
+        return dict(cur)
+    out: Dict[str, Any] = {}
+    for k in _TEL_SUM_KEYS:
+        out[k] = int(acc.get(k, 0)) + int(cur.get(k, 0))
+    for k in _TEL_MAX_KEYS:
+        out[k] = float(max(float(acc.get(k, 0.0)), float(cur.get(k, 0.0))))
+    a_rms = float(acc.get("min_rms_observed", 0.0))
+    c_rms = float(cur.get("min_rms_observed", 0.0))
+    if a_rms > 0.0 and c_rms > 0.0:
+        out["min_rms_observed"] = min(a_rms, c_rms)
+    else:
+        out["min_rms_observed"] = c_rms if c_rms > 0.0 else a_rms
+    c_sink = float(cur.get("first_tok_attn_mean", 0.0))
+    out["first_tok_attn_mean"] = c_sink if (int(cur.get("total_steps", 0)) > 0 or c_sink > 0.0) else float(acc.get("first_tok_attn_mean", 0.0))
+    return out
 
 
 # ==================== Forensics & Diagnostics ====================

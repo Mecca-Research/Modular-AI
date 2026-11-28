@@ -30,6 +30,8 @@ from common_10m import (
     load_ckpt_verified,
     load_wikitext_bytes,
     make_fixed_eval_batches,
+    make_fixed_span_partition_batches,
+    make_fixed_target_context_batches,
     make_policy,
     make_spec,
     process_rss_mib,
@@ -198,9 +200,149 @@ def run_comp1_factor_qat(
     }
 
 
+def run_fixed_target_extrapolation(
+    sd: Dict[str, Any],
+    weights: np.ndarray,
+    te_stream: np.ndarray,
+    *,
+    weights_source: str,
+    horizons: Tuple[int, ...] = (64, 128, 256, 512, 1024, 2048),
+) -> Dict[str, Any]:
+    """Evaluate zero-shot context extrapolation across `horizons` while holding target bytes
+    STRICTLY IDENTICAL across every horizon (verified by SHA-256).
+
+    Protocol A (Fixed Target Window): 32 evenly spaced test anchors, scoring strictly the
+      identical trailing W=64 bytes (2,048 total target bytes) while varying preceding context
+      T in {64, 128, 256, 512, 1024, 2048}.
+    Protocol B (Fixed Contiguous Span Partition): 8 disjoint 2048-byte test spans (16,384
+      identical target bytes) partitioned into non-overlapping T-byte blocks for every T.
+    """
+    win_batches, win_sha, win_anchors = make_fixed_target_context_batches(
+        te_stream, horizons=horizons, target_window=64, n_windows=32, max_context=max(horizons)
+    )
+    span_batches, span_sha, span_starts = make_fixed_span_partition_batches(
+        te_stream, horizons=horizons, span_len=2048, n_spans=8
+    )
+
+    fixed_window_rows: List[Dict[str, Any]] = []
+    fixed_span_rows: List[Dict[str, Any]] = []
+    pos_ce_512: Dict[str, Any] = {}
+    pos_ce_1024: Dict[str, Any] = {}
+    pos_ce_2048: Dict[str, Any] = {}
+
+    for T in horizons:
+        B = 8 if T <= 256 else (4 if T == 512 else 1)
+        sp = build_spec(sd, batch=B, seq_len=T, threads=2)
+        tk_w, tg_w = win_batches[T]
+        tk_s, tg_s = span_batches[T]
+        assert tk_w.shape[0] % B == 0 and tk_s.shape[0] % B == 0
+        tk_w_b = tk_w.reshape(-1, B, T)
+        tg_w_b = tg_w.reshape(-1, B, T)
+        tk_s_b = tk_s.reshape(-1, B, T)
+        tg_s_b = tg_s.reshape(-1, B, T)
+
+        with Abi6Model(sp, make_policy(opt_kind=OPT_ADAFACTOR_M2)) as m:
+            m.set_weights(weights)
+            ms = m.mem_stats()
+            kv_t_mib = (ms["infer_kv_bytes_per_tok"] * T) / 1048576.0
+            rec_mib = ms["infer_rec_state_bytes"] / 1048576.0
+
+            # Protocol A: Fixed-target-window (identical 2,048 trailing target bytes)
+            m.reset_telemetry()
+            ev_w = m.evaluate(tk_w_b, tg_w_b)
+            tel_w = m.telemetry()
+            assert ev_w["tokens"] == 32 * 64, f"Expected 2048 fixed target bytes, got {ev_w['tokens']}"
+
+            # Protocol B: Fixed contiguous span partition (identical 16,384 target bytes)
+            m.reset_telemetry()
+            ev_s = m.evaluate(tk_s_b, tg_s_b)
+            tel_s = m.telemetry()
+            assert ev_s["tokens"] == 8 * 2048, f"Expected 16384 fixed span bytes, got {ev_s['tokens']}"
+
+            if T == 512:
+                pos_ce_512 = eval_per_position_ce(m, tk_s_b, tg_s_b)
+            elif T == 1024:
+                pos_ce_1024 = eval_per_position_ce(m, tk_s_b, tg_s_b)
+            elif T == 2048:
+                pos_ce_2048 = eval_per_position_ce(m, tk_s_b, tg_s_b)
+
+        regime = "in_dist" if T <= 512 else f"zeroshot_{T // 512}x_extrap"
+        row_w = {
+            "seq_len": T,
+            "preceding_context_bytes": T - 64,
+            "regime": regime,
+            "protocol": "fixed_target_window_w64_n32",
+            "target_bytes_sha256": win_sha,
+            "tokens_evaluated": ev_w["tokens"],
+            "test_ce": round(ev_w["ce"], 6),
+            "test_ppl": round(ev_w["ppl"], 4),
+            "test_bpb": round(ev_w["bpb"], 5),
+            "test_acc": round(ev_w["accuracy"], 5),
+            "eval_ms": round(ev_w["eval_ms"], 1),
+            "max_abs_act": round(tel_w["max_abs_act"], 3),
+            "first_tok_attn_mean": round(tel_w["first_tok_attn_mean"], 4),
+            "infer_state_mib_at_T": round(kv_t_mib + rec_mib, 3),
+            "eval_arena_mib": round(ms["total_bytes"] / 1048576.0, 2),
+        }
+        row_s = {
+            "seq_len": T,
+            "regime": regime,
+            "protocol": "fixed_span_partition_2048x8",
+            "target_bytes_sha256": span_sha,
+            "tokens_evaluated": ev_s["tokens"],
+            "test_ce": round(ev_s["ce"], 6),
+            "test_ppl": round(ev_s["ppl"], 4),
+            "test_bpb": round(ev_s["bpb"], 5),
+            "test_acc": round(ev_s["accuracy"], 5),
+            "eval_ms": round(ev_s["eval_ms"], 1),
+            "eval_tok_per_s": round(ev_s["tokens"] / max(ev_s["eval_ms"] / 1000.0, 1e-6), 1),
+            "max_abs_act": round(tel_s["max_abs_act"], 3),
+            "first_tok_attn_mean": round(tel_s["first_tok_attn_mean"], 4),
+            "infer_state_mib_at_T": round(kv_t_mib + rec_mib, 3),
+            "eval_arena_mib": round(ms["total_bytes"] / 1048576.0, 2),
+        }
+        fixed_window_rows.append(row_w)
+        fixed_span_rows.append(row_s)
+        print(
+            f"[Stage 5 Fixed-Target] T={T:4d} ({regime:18s}) | "
+            f"Win64(2kB): CE={row_w['test_ce']:.4f} PPL={row_w['test_ppl']:5.2f} acc={row_w['test_acc']*100:4.1f}% | "
+            f"Span16kB: CE={row_s['test_ce']:.4f} PPL={row_s['test_ppl']:5.2f} acc={row_s['test_acc']*100:4.1f}% | "
+            f"act={row_s['max_abs_act']:4.2f} sink={row_s['first_tok_attn_mean']:.3f}",
+            flush=True,
+        )
+
+    return {
+        "weights_source": weights_source,
+        "fixed_target_window_meta": {
+            "n_windows": 32,
+            "target_window_bytes": 64,
+            "scored_target_bytes": 2048,
+            "target_bytes_sha256": win_sha,
+            "anchor_ends_first_last": [win_anchors[0], win_anchors[-1]],
+        },
+        "fixed_span_partition_meta": {
+            "n_spans": 8,
+            "span_len_bytes": 2048,
+            "scored_target_bytes": 16384,
+            "target_bytes_sha256": span_sha,
+            "span_starts_first_last": [span_starts[0], span_starts[-1]],
+        },
+        "fixed_target_window_rows": fixed_window_rows,
+        "fixed_span_partition_rows": fixed_span_rows,
+        "per_position_ce_t512": pos_ce_512,
+        "per_position_ce_t1024": pos_ce_1024,
+        "per_position_ce_t2048": pos_ce_2048,
+    }
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--qat-only", action="store_true", help="Run only exact differentiable COMP-1 Factor-QAT and update stage5 JSON")
+    ap.add_argument(
+        "--fixed-target-extrap-only",
+        action="store_true",
+        help="Run only fixed-target-span context extrapolation (T=64..2048) and update stage5 JSON",
+    )
     args = ap.parse_args()
 
     s1 = json.loads((RESULTS_DIR / "stage1_warmup_t128.json").read_text(encoding="utf-8"))
@@ -208,12 +350,39 @@ def main() -> None:
     s3 = json.loads((RESULTS_DIR / "stage3_longctx_t512.json").read_text(encoding="utf-8"))
     sd = s3["spec"]
 
-    # Load best FP32 weights from Stage 3 end checkpoint
-    w_end, meta3, _opt3, w_best = load_ckpt_verified(CKPT_DIR / "stage3_end")
-    assert w_best is not None
     tr_stream = load_wikitext_bytes("train")
     va_stream = load_wikitext_bytes("validation")
     te_stream = load_wikitext_bytes("test")
+
+    # Prefer Stage 3 FP32 best weights when present; fall back to tracked deterministic BCIRQ8 v1 (+0.0001 nats)
+    stage3_fp32_json = CKPT_DIR / "stage3_end.json"
+    if stage3_fp32_json.exists():
+        _w_end, _meta3, _opt3, w_best = load_ckpt_verified(CKPT_DIR / "stage3_end")
+        assert w_best is not None
+        weights_source = "stage3_end_fp32_best"
+    else:
+        sp_ld = build_spec(sd, batch=1, seq_len=64, threads=2)
+        with Abi6Model(sp_ld, make_policy(opt_kind=OPT_ADAFACTOR_M2)) as m_ld:
+            w_best, q8_meta = load_bcirq8_ckpt(CKPT_DIR / "arch7d_10m_stage3_best_bcirq8", m_ld)
+        weights_source = f"arch7d_10m_stage3_best_bcirq8 (sha256={q8_meta['weights_sha256'][:12]})"
+
+    if args.fixed_target_extrap_only:
+        out_p = RESULTS_DIR / "stage5_deep_eval_and_deploy.json"
+        payload = json.loads(out_p.read_text(encoding="utf-8"))
+        ext = run_fixed_target_extrapolation(sd, w_best, te_stream, weights_source=weights_source)
+        payload["context_extrapolation_protocol"] = {
+            "weights_source": ext["weights_source"],
+            "fixed_target_window": ext["fixed_target_window_meta"],
+            "fixed_span_partition": ext["fixed_span_partition_meta"],
+        }
+        payload["context_extrapolation_t64_to_t2048"] = ext["fixed_target_window_rows"]
+        payload["context_extrapolation_fixed_span_16kb"] = ext["fixed_span_partition_rows"]
+        payload["per_position_ce_t512"] = ext["per_position_ce_t512"]
+        payload["per_position_ce_t1024"] = ext["per_position_ce_t1024"]
+        payload["per_position_ce_t2048"] = ext["per_position_ce_t2048"]
+        save_json(out_p, payload)
+        print(f"[Stage 5 Fixed-Target Extrap DONE] Updated {out_p}", flush=True)
+        return
 
     if args.qat_only:
         out_p = RESULTS_DIR / "stage5_deep_eval_and_deploy.json"
@@ -240,49 +409,13 @@ def main() -> None:
         )
         return
 
-    # 1. Context-length scaling & zero-shot extrapolation across T=64..2048 (4x beyond max train T=512)
-    extrap_rows: List[Dict[str, Any]] = []
-    pos_ce_512: Dict[str, Any] = {}
-    pos_ce_1024: Dict[str, Any] = {}
-    for T in (64, 128, 256, 512, 1024, 2048):
-        B = 8 if T <= 256 else (4 if T == 512 else 1)
-        nb = 12 if T <= 256 else (8 if T == 512 else (8 if T == 1024 else 4))
-        tk, tg = make_fixed_eval_batches(te_stream, nb, B, T)
-        sp = build_spec(sd, batch=B, seq_len=T, threads=2)
-        with Abi6Model(sp, make_policy(opt_kind=OPT_ADAFACTOR_M2)) as m:
-            m.set_weights(w_best)
-            m.reset_telemetry()
-            ev = m.evaluate(tk, tg)
-            tel = m.telemetry()
-            ms = m.mem_stats()
-            if T == 512:
-                pos_ce_512 = eval_per_position_ce(m, tk, tg)
-            elif T == 1024:
-                pos_ce_1024 = eval_per_position_ce(m, tk, tg)
-        kv_t_mib = (ms["infer_kv_bytes_per_tok"] * T) / 1048576.0
-        rec_mib = ms["infer_rec_state_bytes"] / 1048576.0
-        row = {
-            "seq_len": T,
-            "regime": "in_dist" if T <= 512 else f"zeroshot_{T // 512}x_extrap",
-            "tokens_evaluated": ev["tokens"],
-            "test_ce": round(ev["ce"], 6),
-            "test_ppl": round(ev["ppl"], 4),
-            "test_bpb": round(ev["bpb"], 5),
-            "test_acc": round(ev["accuracy"], 5),
-            "eval_ms": round(ev["eval_ms"], 1),
-            "eval_tok_per_s": round(ev["tokens"] / max(ev["eval_ms"] / 1000.0, 1e-6), 1),
-            "max_abs_act": round(tel["max_abs_act"], 3),
-            "first_tok_attn_mean": round(tel["first_tok_attn_mean"], 4),
-            "infer_state_mib_at_T": round(kv_t_mib + rec_mib, 3),
-            "eval_arena_mib": round(ms["total_bytes"] / 1048576.0, 2),
-        }
-        extrap_rows.append(row)
-        print(
-            f"[Stage 5 Extrap] T={T:4d} ({row['regime']:18s}) | CE={row['test_ce']:.4f} "
-            f"PPL={row['test_ppl']:5.2f} BPB={row['test_bpb']:.3f} acc={row['test_acc']*100:4.1f}% | "
-            f"act={row['max_abs_act']:5.2f} sink={row['first_tok_attn_mean']:.3f} | state={row['infer_state_mib_at_T']:.2f}M",
-            flush=True,
-        )
+    # 1. Fixed-target context-length scaling & zero-shot extrapolation across T=64..2048
+    ext = run_fixed_target_extrapolation(sd, w_best, te_stream, weights_source=weights_source)
+    extrap_rows = ext["fixed_target_window_rows"]
+    extrap_span_rows = ext["fixed_span_partition_rows"]
+    pos_ce_512 = ext["per_position_ce_t512"]
+    pos_ce_1024 = ext["per_position_ce_t1024"]
+    pos_ce_2048 = ext["per_position_ce_t2048"]
 
     # 2. Deployment Policy (P1-P6) sweep: FP32 vs BCIRQ8 v1 vs COMP-1 (r=16/32 x scale=16/32)
     test_tk_256, test_tg_256 = make_fixed_eval_batches(te_stream, 8, 4, 256)
@@ -431,9 +564,16 @@ def main() -> None:
         "tokens_trained": s3["tokens_cumulative"],
         "host": host_info(),
         "rss": process_rss_mib(),
+        "context_extrapolation_protocol": {
+            "weights_source": ext["weights_source"],
+            "fixed_target_window": ext["fixed_target_window_meta"],
+            "fixed_span_partition": ext["fixed_span_partition_meta"],
+        },
         "context_extrapolation_t64_to_t2048": extrap_rows,
+        "context_extrapolation_fixed_span_16kb": extrap_span_rows,
         "per_position_ce_t512": pos_ce_512,
         "per_position_ce_t1024": pos_ce_1024,
+        "per_position_ce_t2048": pos_ce_2048,
         "deployment_policy_qualification": deploy_rows,
         "comp1_ste_qat_recovery": ste_qat,
         "spectral_and_structural_evolution": spectral_evolution,

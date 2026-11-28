@@ -99,19 +99,19 @@
   "telemetry": {
     "fp64_norm_promotions": 0,
     "fp64_softmax_promotions": 0,
-    "fp64_wy_solves": 319488,
+    "fp64_wy_solves": 1253376,
     "nonfinite_events": 0,
     "grad_clip_hits": 0,
-    "total_steps": 80,
+    "total_steps": 320,
     "q8_m2_floor_clamps": 0,
-    "gemm_calls_attn": 10296,
-    "gemm_calls_mlp": 3168,
-    "muon_ns_calls": 4080,
-    "max_grad_norm": 1.8885657914901428,
+    "gemm_calls_attn": 40872,
+    "gemm_calls_mlp": 12576,
+    "muon_ns_calls": 16320,
+    "max_grad_norm": 2.80686,
     "max_softmax_logit": 8.724674426486109,
     "min_rms_observed": 0.003162285636442874,
     "max_wy_offdiag": 0.46158751154209454,
-    "max_abs_act": 2.1323208808898926,
+    "max_abs_act": 2.249,
     "first_tok_attn_mean": 0.024668152396060124
   },
   "best_val_ce": 1.43727,
@@ -2407,7 +2407,7 @@
       "global_step": 384,
       "local_step": 192,
       "lr": 0.001283,
-      "max_abs_act": 2.129,
+      "max_abs_act": 2.249,
       "stage": 2,
       "stage_wall_s": 1081.25,
       "tok_per_s": 363.7,
@@ -2416,7 +2416,8 @@
       "val_acc": 0.5614,
       "val_bpb": 2.19151,
       "val_ce": 1.51904,
-      "val_ppl": 4.5678
+      "val_ppl": 4.5678,
+      "chunk_max_abs_act": 2.129
     },
     {
       "clip_rate_pct": 0.0,
@@ -2425,7 +2426,7 @@
       "global_step": 416,
       "local_step": 224,
       "lr": 0.00106,
-      "max_abs_act": 2.129,
+      "max_abs_act": 2.249,
       "stage": 2,
       "stage_wall_s": 1268.41,
       "tok_per_s": 361.7,
@@ -2434,7 +2435,8 @@
       "val_acc": 0.56689,
       "val_bpb": 2.16162,
       "val_ce": 1.498318,
-      "val_ppl": 4.4742
+      "val_ppl": 4.4742,
+      "chunk_max_abs_act": 2.129
     },
     {
       "stage": 2,
@@ -2450,9 +2452,10 @@
       "val_bpb": 2.12779,
       "val_acc": 0.57404,
       "tok_per_s": 360.8,
-      "max_abs_act": 2.132,
+      "max_abs_act": 2.249,
       "first_tok_attn_mean": 0.0249,
-      "clip_rate_pct": 0.0
+      "clip_rate_pct": 0.0,
+      "chunk_max_abs_act": 2.132
     },
     {
       "stage": 2,
@@ -2468,9 +2471,10 @@
       "val_bpb": 2.10616,
       "val_acc": 0.57532,
       "tok_per_s": 359.4,
-      "max_abs_act": 2.132,
+      "max_abs_act": 2.249,
       "first_tok_attn_mean": 0.0248,
-      "clip_rate_pct": 0.0
+      "clip_rate_pct": 0.0,
+      "chunk_max_abs_act": 2.132
     },
     {
       "stage": 2,
@@ -2486,10 +2490,30 @@
       "val_bpb": 2.07354,
       "val_acc": 0.58276,
       "tok_per_s": 358.7,
-      "max_abs_act": 2.132,
+      "max_abs_act": 2.249,
       "first_tok_attn_mean": 0.0247,
-      "clip_rate_pct": 0.0
+      "clip_rate_pct": 0.0,
+      "chunk_max_abs_act": 2.132
     }
   ],
-  "steps_csv": "results/stage2_steps.csv"
+  "steps_csv": "results/stage2_steps.csv",
+  "telemetry_final_chunk": {
+    "fp64_norm_promotions": 0,
+    "fp64_softmax_promotions": 0,
+    "fp64_wy_solves": 319488,
+    "nonfinite_events": 0,
+    "grad_clip_hits": 0,
+    "total_steps": 80,
+    "q8_m2_floor_clamps": 0,
+    "gemm_calls_attn": 10296,
+    "gemm_calls_mlp": 3168,
+    "muon_ns_calls": 4080,
+    "max_grad_norm": 1.8885657914901428,
+    "max_softmax_logit": 8.724674426486109,
+    "min_rms_observed": 0.003162285636442874,
+    "max_wy_offdiag": 0.46158751154209454,
+    "max_abs_act": 2.1323208808898926,
+    "first_tok_attn_mean": 0.024668152396060124
+  },
+  "telemetry_aggregation_note": "Aggregated across multi-chunk checkpoint resumes (320 total steps vs 80 in final chunk): total_steps, grad_clip_hits, nonfinite_events, max_grad_norm, fp64_norm_promotions, fp64_softmax_promotions, fp64_wy_solves, gemm_calls_attn, gemm_calls_mlp, muon_ns_calls, and max_abs_act are full-stage aggregates reconstructed from steps_csv + eval curve; C-internal extrema (max_softmax_logit, min_rms_observed, max_wy_offdiag, q8_m2_floor_clamps) reflect telemetry_final_chunk. Future runs of stage1_3_curriculum_train.py persist and merge all 16 fields natively."
 }

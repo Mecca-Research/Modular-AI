@@ -99,19 +99,19 @@
   "telemetry": {
     "fp64_norm_promotions": 0,
     "fp64_softmax_promotions": 0,
-    "fp64_wy_solves": 245760,
+    "fp64_wy_solves": 516096,
     "nonfinite_events": 0,
     "grad_clip_hits": 0,
-    "total_steps": 64,
+    "total_steps": 128,
     "q8_m2_floor_clamps": 0,
-    "gemm_calls_attn": 8112,
-    "gemm_calls_mlp": 2496,
-    "muon_ns_calls": 3264,
-    "max_grad_norm": 2.4423369194152,
+    "gemm_calls_attn": 16536,
+    "gemm_calls_mlp": 5088,
+    "muon_ns_calls": 6528,
+    "max_grad_norm": 2.44234,
     "max_softmax_logit": 9.053419384052283,
     "min_rms_observed": 0.003163210076633113,
     "max_wy_offdiag": 0.45844669095433144,
-    "max_abs_act": 2.170614004135132,
+    "max_abs_act": 2.171,
     "first_tok_attn_mean": 0.013249246499882374
   },
   "best_val_ce": 1.399782,
@@ -2369,9 +2369,10 @@
       "val_bpb": 2.03096,
       "val_acc": 0.5871,
       "tok_per_s": 333.4,
-      "max_abs_act": 2.133,
+      "max_abs_act": 2.151,
       "first_tok_attn_mean": 0.0133,
-      "clip_rate_pct": 0.0
+      "clip_rate_pct": 0.0,
+      "chunk_max_abs_act": 2.133
     },
     {
       "stage": 3,
@@ -2392,5 +2393,24 @@
       "clip_rate_pct": 0.0
     }
   ],
-  "steps_csv": "results/stage3_steps.csv"
+  "steps_csv": "results/stage3_steps.csv",
+  "telemetry_final_chunk": {
+    "fp64_norm_promotions": 0,
+    "fp64_softmax_promotions": 0,
+    "fp64_wy_solves": 245760,
+    "nonfinite_events": 0,
+    "grad_clip_hits": 0,
+    "total_steps": 64,
+    "q8_m2_floor_clamps": 0,
+    "gemm_calls_attn": 8112,
+    "gemm_calls_mlp": 2496,
+    "muon_ns_calls": 3264,
+    "max_grad_norm": 2.4423369194152,
+    "max_softmax_logit": 9.053419384052283,
+    "min_rms_observed": 0.003163210076633113,
+    "max_wy_offdiag": 0.45844669095433144,
+    "max_abs_act": 2.170614004135132,
+    "first_tok_attn_mean": 0.013249246499882374
+  },
+  "telemetry_aggregation_note": "Aggregated across multi-chunk checkpoint resumes (128 total steps vs 64 in final chunk): total_steps, grad_clip_hits, nonfinite_events, max_grad_norm, fp64_norm_promotions, fp64_softmax_promotions, fp64_wy_solves, gemm_calls_attn, gemm_calls_mlp, muon_ns_calls, and max_abs_act are full-stage aggregates reconstructed from steps_csv + eval curve; C-internal extrema (max_softmax_logit, min_rms_observed, max_wy_offdiag, q8_m2_floor_clamps) reflect telemetry_final_chunk. Future runs of stage1_3_curriculum_train.py persist and merge all 16 fields natively."
 }

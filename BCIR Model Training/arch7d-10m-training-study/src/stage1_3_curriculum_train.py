@@ -30,6 +30,7 @@ from common_10m import (
     make_fixed_eval_batches,
     make_policy,
     make_spec,
+    merge_telemetry,
     process_rss_mib,
     quantize_bcirq8_per_tensor,
     sample_lm_steps,
@@ -210,6 +211,7 @@ def run_stage(
     best_global_step = g_start
     best_w: Optional[np.ndarray] = None
     handoff_sha_in: Optional[str] = None
+    prev_telemetry: Optional[Dict[str, Any]] = None
 
     with Abi6Model(sp, pol) as model:
         if resume_mid:
@@ -227,6 +229,7 @@ def run_stage(
             best_global_step = int(meta["best_global_step"])
             best_w = best_ld if best_ld is not None else w_ld.copy()
             handoff_sha_in = meta.get("handoff_sha_in")
+            prev_telemetry = meta.get("telemetry_accum")
             print(f"[Stage {snum}] Resumed mid-stage at local_step={local_start}/{steps}", flush=True)
         elif prev_stage_ckpt is not None:
             w_ld, meta, opt_ld, _ = load_ckpt_verified(prev_stage_ckpt)
@@ -267,6 +270,15 @@ def run_stage(
                 f"arena={ms['total_bytes']/1048576:.1f} MiB",
                 flush=True,
             )
+
+        prev_fp64_base = (
+            int(prev_telemetry.get("fp64_norm_promotions", 0))
+            + int(prev_telemetry.get("fp64_softmax_promotions", 0))
+            + int(prev_telemetry.get("fp64_wy_solves", 0))
+            if prev_telemetry is not None
+            else 0
+        )
+        prev_nonfin_base = int(prev_telemetry.get("nonfinite_events", 0)) if prev_telemetry is not None else 0
 
         stop_local = (
             min(steps, local_start + max_steps_this_call)
@@ -311,8 +323,8 @@ def run_stage(
                     "clipped": int(ev["clipped"]),
                     "step_ms": round(st_ms, 2),
                     "tok_per_s": round(tok_per_step / max(st_ms / 1000.0, 1e-6), 1),
-                    "fp64_promotions": int(ev["fp64_promotions"]),
-                    "nonfinite_events": int(ev["nonfinite_events"]),
+                    "fp64_promotions": prev_fp64_base + int(ev["fp64_promotions"]),
+                    "nonfinite_events": prev_nonfin_base + int(ev["nonfinite_events"]),
                     "rss_mib": rss_now,
                 })
                 recent_losses.append(float(ev["loss"]))
@@ -327,7 +339,7 @@ def run_stage(
 
             if s % eval_every == 0 or s == steps:
                 vv = model.evaluate(val_tk, val_tg)
-                tel = model.telemetry()
+                tel = merge_telemetry(prev_telemetry, model.telemetry())
                 row = {
                     "stage": snum,
                     "local_step": s,
@@ -361,6 +373,7 @@ def run_stage(
                 )
 
             if ckpt_every > 0 and (s % ckpt_every == 0 or s == stop_local):
+                tel_accum = merge_telemetry(prev_telemetry, model.telemetry())
                 save_ckpt_atomic(
                     stage_rec_ckpt,
                     model.copy_weights(),
@@ -377,6 +390,7 @@ def run_stage(
                         "best_global_step": best_global_step,
                         "handoff_sha_in": handoff_sha_in,
                         "init_forensics": init_forensics,
+                        "telemetry_accum": tel_accum,
                         "curve": curve,
                         "recent_losses": recent_losses,
                         "step_rows": step_rows,
@@ -396,7 +410,7 @@ def run_stage(
         stage_wall_s = stage_prev_wall + (time.perf_counter() - t0)
         end_w = model.copy_weights()
         end_opt = model.copy_opt_state()
-        end_tel = model.telemetry()
+        end_tel = merge_telemetry(prev_telemetry, model.telemetry())
         assert best_w is not None
         end_forensics = analyze_weights_forensics(model, end_w)
 

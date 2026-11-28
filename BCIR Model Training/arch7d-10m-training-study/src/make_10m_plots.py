@@ -139,25 +139,27 @@ def plot_fig2_controls_pareto() -> None:
     s4 = json.loads((RESULTS_DIR / "stage4_10m_controls.json").read_text(encoding="utf-8"))
     runs = s4["runs"]
 
-    fig, axes = plt.subplots(1, 3, figsize=(16.5, 5.2), dpi=150)
+    fig, axes = plt.subplots(1, 3, figsize=(17.0, 5.4), dpi=150)
     styles = {
-        "GQA_Full_10M_Adafactor": ("#4C78A8", "o-", "GQA_Full 10M (Adafactor)"),
-        "Arch2_Hybrid_10M_Adafactor": ("#F58518", "s-", "Arch-2 Hybrid 10M (Adafactor)"),
-        "Arch7d_10M_Adafactor": ("#54A24B", "^-", "Arch-7d 10M (Adafactor)"),
-        "Arch7d_10M_Q8Muon_FlatT256": ("#B279A2", "D-", "Arch-7d 10M (Q8-Muon)"),
+        "GQA_Full_10M_Adafactor": ("#4C78A8", "o-", "GQA_Full 10M (Adafactor, T=256)"),
+        "Arch2_Hybrid_10M_Adafactor": ("#F58518", "s-", "Arch-2 Hybrid 10M (Adafactor, T=256)"),
+        "Arch7d_10M_Adafactor": ("#54A24B", "^-", "Arch-7d 10M (Adafactor, T=256)"),
+        "Arch7d_10M_Q8Muon_FlatT256": ("#B279A2", "D-", "Arch-7d 10M (Q8-Muon, Flat T=256)"),
+        "Arch7d_10M_Q8Muon_MatchedLR_T128": ("#E45756", "*-", "Arch-7d 10M (Q8-Muon, Matched-LR T=128)"),
     }
 
-    # Panel A: Equal-token curves
+    # Panel A: Equal-token curves (identical LR(tokens) & val_t256)
     ax = axes[0]
     for k, (col, mk, lbl) in styles.items():
         if k not in runs:
             continue
         pts = [c for c in runs[k]["curve"] if c["tokens"] > 0]
-        ax.plot([c["tokens"] / 1e3 for c in pts], [c["val_ppl"] for c in pts], mk, color=col, linewidth=2.2, markersize=6, label=f"{lbl}\n(test {runs[k]['test_ppl_t256']:.2f})")
-    ax.set_xlabel("Training Tokens Executed (Thousands, T=256)")
-    ax.set_ylabel("Validation PPL (lower is better)")
-    ax.set_title("A. Equal-Token 10M Comparison (196.6k tok)")
-    ax.legend(fontsize=7.8)
+        msz = 8.5 if "*" in mk else 6.0
+        ax.plot([c["tokens"] / 1e3 for c in pts], [c["val_ppl"] for c in pts], mk, color=col, linewidth=2.2, markersize=msz, label=f"{lbl}\n(test T256: {runs[k]['test_ppl_t256']:.2f})")
+    ax.set_xlabel("Training Tokens Executed (Thousands, Identical LR(tokens))")
+    ax.set_ylabel("Validation PPL @ T=256 (lower is better)")
+    ax.set_title("A. Equal-Token & Equal-LR(tokens) 10M Controls (196.6k tok)")
+    ax.legend(fontsize=7.2, loc="upper right")
     ax.grid(True, alpha=0.25)
 
     # Panel B: Equal-wall-time curves
@@ -166,11 +168,12 @@ def plot_fig2_controls_pareto() -> None:
         if k not in runs:
             continue
         pts = [c for c in runs[k]["curve"] if c["wall_s"] > 0]
-        ax.plot([c["wall_s"] for c in pts], [c["val_ppl"] for c in pts], mk, color=col, linewidth=2.2, markersize=6, label=lbl)
+        msz = 8.5 if "*" in mk else 6.0
+        ax.plot([c["wall_s"] for c in pts], [c["val_ppl"] for c in pts], mk, color=col, linewidth=2.2, markersize=msz, label=lbl)
     ax.set_xlabel("Wall-Clock Time on 2-Core Haswell AVX2 (seconds)")
-    ax.set_ylabel("Validation PPL (lower is better)")
+    ax.set_ylabel("Validation PPL @ T=256 (lower is better)")
     ax.set_title("B. Equal-Wall-Time 10M Pareto Trajectory")
-    ax.legend(fontsize=7.8)
+    ax.legend(fontsize=7.2, loc="upper right")
     ax.grid(True, alpha=0.25)
 
     # Panel C: All-7 Optimizer RAM audit on 10M model
@@ -192,7 +195,7 @@ def plot_fig2_controls_pareto() -> None:
     ax.legend(fontsize=8)
     ax.grid(axis="y", alpha=0.25)
 
-    fig.suptitle("Stage 4: Parameter-Matched 10M Architecture & Optimizer Controls (B=8, T=256, online_softmax=1)", fontsize=12.5, fontweight="bold")
+    fig.suptitle("Stage 4: Parameter-Matched 10M Architecture, Optimizer & Matched-LR Context Controls (196.6k tok, online_softmax=1)", fontsize=12.2, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.93])
     out = FIG_DIR / "fig2_10m_matched_controls_pareto.png"
     fig.savefig(out, dpi=150)
@@ -202,55 +205,74 @@ def plot_fig2_controls_pareto() -> None:
 
 def plot_fig3_extrapolation() -> None:
     s5 = json.loads((RESULTS_DIR / "stage5_deep_eval_and_deploy.json").read_text(encoding="utf-8"))
-    ext = s5["context_extrapolation_t64_to_t2048"]
+    ext_win = s5["context_extrapolation_t64_to_t2048"]
+    ext_span = s5.get("context_extrapolation_fixed_span_16kb", [])
     pos512 = s5["per_position_ce_t512"]
     pos1024 = s5["per_position_ce_t1024"]
+    pos2048 = s5.get("per_position_ce_t2048", {})
 
-    fig, axes = plt.subplots(1, 2, figsize=(15.0, 5.2), dpi=150)
+    fig, axes = plt.subplots(1, 2, figsize=(15.5, 5.4), dpi=150)
 
-    # Panel A: T=64..2048 zero-shot extrapolation
+    # Panel A: Fixed-target T=64..2048 zero-shot extrapolation (identical SHA-256 target bytes)
     ax = axes[0]
-    ts = [r["seq_len"] for r in ext]
-    ppls = [r["test_ppl"] for r in ext]
-    states = [r["infer_state_mib_at_T"] for r in ext]
-    ax.plot(ts, ppls, "o-", color="#54A24B", linewidth=2.4, markersize=7, label="Untouched Test PPL")
-    for t, p in zip(ts, ppls):
-        ax.annotate(f"{p:.2f}", (t, p), xytext=(0, 7), textcoords="offset points", ha="center", fontsize=8.5, fontweight="bold")
+    ts = [r["seq_len"] for r in ext_win]
+    win_ppls = [r["test_ppl"] for r in ext_win]
+    states = [r["infer_state_mib_at_T"] for r in ext_win]
+    ax.plot(ts, win_ppls, "o-", color="#54A24B", linewidth=2.4, markersize=7, label="Fixed Tail Targets (W=64 x 32 = 2 kB identical)")
+    for t, p in zip(ts, win_ppls):
+        ax.annotate(f"{p:.2f}", (t, p), xytext=(0, -14), textcoords="offset points", ha="center", fontsize=8.0, fontweight="bold", color="#2E6B27")
+    if ext_span:
+        span_ppls = [r["test_ppl"] for r in ext_span]
+        ax.plot(ts, span_ppls, "D-", color="#B279A2", linewidth=2.2, markersize=6, label="Fixed 16 kB Span Partition (8 x 2048 B identical)")
+        for t, p in zip(ts, span_ppls):
+            ax.annotate(f"{p:.2f}", (t, p), xytext=(0, 8), textcoords="offset points", ha="center", fontsize=8.0, fontweight="bold", color="#7A3E6B")
     ax.axvline(512, color="#E45756", linestyle="--", linewidth=1.5, label="Max Train Context (T=512)")
     ax.axvspan(512, 2200, color="#F58518", alpha=0.08, label="Zero-Shot Extrapolation (2x–4x)")
     ax.set_xscale("log", base=2)
     ax.set_xticks(ts)
     ax.set_xticklabels([str(t) for t in ts])
-    ax.set_xlabel("Evaluation Sequence Length T (bytes)")
-    ax.set_ylabel("Untouched WikiText-2 Test PPL (lower is better)", color="#54A24B")
-    ax.tick_params(axis="y", labelcolor="#54A24B")
+    ax.set_ylim(4.10, 4.58)
+    ax.set_xlabel("Evaluation Context Length T (bytes)")
+    ax.set_ylabel("Untouched WikiText-2 Test PPL (lower is better)", color="#2E6B27")
+    ax.tick_params(axis="y", labelcolor="#2E6B27")
     ax_r = ax.twinx()
     ax_r.plot(ts, states, "s--", color="#4C78A8", linewidth=1.8, label="Inference State (MiB)")
     ax_r.set_ylabel("KV + Recurrent State (MiB)", color="#4C78A8")
     ax_r.tick_params(axis="y", labelcolor="#4C78A8")
-    ax.set_title("A. Zero-Shot Context Scaling (T=64 to T=2048 = 4x Train T)")
+    ax_r.set_ylim(0.72, 2.75)
+    ax.set_title("A. Fixed-Target Context Extrapolation (Identical Target SHA-256)")
     l1, lb1 = ax.get_legend_handles_labels()
     l2, lb2 = ax_r.get_legend_handles_labels()
-    ax.legend(l1 + l2, lb1 + lb2, fontsize=7.8, loc="upper right")
+    ax.legend(l1 + l2, lb1 + lb2, fontsize=7.3, loc="upper right")
     ax.grid(True, alpha=0.25)
 
-    # Panel B: Per-position byte CE curve
+    # Panel B: Per-position byte CE curve on the fixed 16 kB test spans (32-byte MA preserving bin 0 cold start)
     ax = axes[1]
-    ce512 = pos512["per_pos_ce_stride8"]
-    x512 = np.arange(len(ce512)) * 8 + 4
-    ax.plot(x512, ce512, "-", color="#4C78A8", linewidth=2.1, label=f"T=512 Eval (overall {pos512['overall_ce']:.3f} nats)")
+    def _smooth_pos(bins: List[float]) -> tuple[np.ndarray, np.ndarray]:
+        arr = np.array(bins, dtype=float)
+        if len(arr) <= 4:
+            return np.arange(len(arr)) * 8 + 4, arr
+        sm = np.convolve(arr[1:], np.ones(4) / 4.0, mode="valid")
+        xs = np.concatenate(([4.0], np.arange(len(sm)) * 8 + 20.0))
+        ys = np.concatenate(([arr[0]], sm))
+        return xs, ys
+
+    x512, y512 = _smooth_pos(pos512["per_pos_ce_stride8"])
+    ax.plot(x512, y512, "-", color="#4C78A8", linewidth=2.1, label=f"T=512 In-Dist (overall {pos512['overall_ce']:.3f} nats)")
     if pos1024 and pos1024.get("per_pos_ce_stride8"):
-        ce1024 = pos1024["per_pos_ce_stride8"]
-        x1024 = np.arange(len(ce1024)) * 8 + 4
-        ax.plot(x1024, ce1024, "-", color="#F58518", linewidth=1.8, alpha=0.85, label=f"T=1024 Zero-Shot Eval (overall {pos1024['overall_ce']:.3f} nats)")
+        x1024, y1024 = _smooth_pos(pos1024["per_pos_ce_stride8"])
+        ax.plot(x1024, y1024, "-", color="#F58518", linewidth=1.9, alpha=0.88, label=f"T=1024 2x Zero-Shot (overall {pos1024['overall_ce']:.3f} nats)")
+    if pos2048 and pos2048.get("per_pos_ce_stride8"):
+        x2048, y2048 = _smooth_pos(pos2048["per_pos_ce_stride8"])
+        ax.plot(x2048, y2048, "-", color="#54A24B", linewidth=1.9, alpha=0.92, label=f"T=2048 4x Zero-Shot (overall {pos2048['overall_ce']:.3f} nats)")
     ax.axvline(512, color="#E45756", linestyle="--", linewidth=1.3, label="Train Horizon (pos=512)")
-    ax.set_xlabel("Byte Position in Sequence (8-byte bins)")
+    ax.set_xlabel("Byte Position in Sequence (32-byte MA + pos 0–7 cold start)")
     ax.set_ylabel("Per-Position Cross-Entropy (nats/byte)")
-    ax.set_title("B. In-Context Adaptation: Per-Position Byte CE Profile")
-    ax.legend(fontsize=8.2)
+    ax.set_title("B. Per-Position Byte CE Profile Across 4x Extrapolation")
+    ax.legend(fontsize=7.6, loc="upper right")
     ax.grid(True, alpha=0.25)
 
-    fig.suptitle("Stage 5: BCIR-Arch7d-10M Context Extrapolation & In-Context Position Profile (GDN-2 + G1-NoPE-MLA)", fontsize=12.5, fontweight="bold")
+    fig.suptitle("Stage 5: BCIR-Arch7d-10M Fixed-Target Context Extrapolation & Position Profile (BCIRQ8 v1, GDN-2 + G1-NoPE-MLA)", fontsize=12.2, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.93])
     out = FIG_DIR / "fig3_10m_context_extrapolation_and_position_ce.png"
     fig.savefig(out, dpi=150)

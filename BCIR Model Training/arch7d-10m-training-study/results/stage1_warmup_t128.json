@@ -99,19 +99,19 @@
   "telemetry": {
     "fp64_norm_promotions": 0,
     "fp64_softmax_promotions": 0,
-    "fp64_wy_solves": 184320,
+    "fp64_wy_solves": 380928,
     "nonfinite_events": 0,
-    "grad_clip_hits": 0,
-    "total_steps": 96,
+    "grad_clip_hits": 51,
+    "total_steps": 192,
     "q8_m2_floor_clamps": 0,
-    "gemm_calls_attn": 12168,
-    "gemm_calls_mlp": 3744,
-    "muon_ns_calls": 4896,
-    "max_grad_norm": 2.9063844014077973,
+    "gemm_calls_attn": 24648,
+    "gemm_calls_mlp": 7584,
+    "muon_ns_calls": 9792,
+    "max_grad_norm": 9.77884,
     "max_softmax_logit": 7.964283073538256,
     "min_rms_observed": 0.00316228275607316,
     "max_wy_offdiag": 0.4596984180982615,
-    "max_abs_act": 1.7970428466796875,
+    "max_abs_act": 1.797043,
     "first_tok_attn_mean": 0.0411192922268145
   },
   "best_val_ce": 1.88056,
@@ -4519,5 +4519,24 @@
       "clip_rate_pct": 26.56
     }
   ],
-  "steps_csv": "results/stage1_steps.csv"
+  "steps_csv": "results/stage1_steps.csv",
+  "telemetry_final_chunk": {
+    "fp64_norm_promotions": 0,
+    "fp64_softmax_promotions": 0,
+    "fp64_wy_solves": 184320,
+    "nonfinite_events": 0,
+    "grad_clip_hits": 0,
+    "total_steps": 96,
+    "q8_m2_floor_clamps": 0,
+    "gemm_calls_attn": 12168,
+    "gemm_calls_mlp": 3744,
+    "muon_ns_calls": 4896,
+    "max_grad_norm": 2.9063844014077973,
+    "max_softmax_logit": 7.964283073538256,
+    "min_rms_observed": 0.00316228275607316,
+    "max_wy_offdiag": 0.4596984180982615,
+    "max_abs_act": 1.7970428466796875,
+    "first_tok_attn_mean": 0.0411192922268145
+  },
+  "telemetry_aggregation_note": "Aggregated across multi-chunk checkpoint resumes (192 total steps vs 96 in final chunk): total_steps, grad_clip_hits, nonfinite_events, max_grad_norm, fp64_norm_promotions, fp64_softmax_promotions, fp64_wy_solves, gemm_calls_attn, gemm_calls_mlp, muon_ns_calls, and max_abs_act are full-stage aggregates reconstructed from steps_csv + eval curve; C-internal extrema (max_softmax_logit, min_rms_observed, max_wy_offdiag, q8_m2_floor_clamps) reflect telemetry_final_chunk. Future runs of stage1_3_curriculum_train.py persist and merge all 16 fields natively."
 }

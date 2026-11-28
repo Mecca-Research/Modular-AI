@@ -8,7 +8,7 @@
 
 ## 0. Executive Summary & Optimized 10M Architecture Specification
 
-Synthesizing all empirical findings across [`littlebit-sub1bit-study`](../littlebit-sub1bit-study) (`3ec7ee5`), [`precision-arch-study`](../precision-arch-study) (`8cc3f23`), and [`mixer-ext-abi6-study`](../mixer-ext-abi6-study) (`529f3f2` / `c707873`), this study designs, ablates, trains across a **3-stage progressive context curriculum (`T=128 → T=256 → T=512`, `1,114,112` real WikiText-2 raw-byte tokens)**, benchmarks against **4 parameter-matched 10M controls**, probes out to **`T=2048` (`4×` zero-shot extrapolation)**, and qualifies under BCIR's `P1–P6` Deployment Policy the new reference 10M model: **`BCIR-Arch7d-10M` (`Arch7d_10M_B_ff928_gr32_dc128`)**.
+Synthesizing all empirical findings across [`littlebit-sub1bit-study`](../littlebit-sub1bit-study) (`3ec7ee5`), [`precision-arch-study`](../precision-arch-study) (`8cc3f23`), and [`mixer-ext-abi6-study`](../mixer-ext-abi6-study) (`529f3f2` / `c707873`), this study designs, ablates, trains across a **3-stage progressive context curriculum (`T=128 → T=256 → T=512`, `1,114,112` real WikiText-2 raw-byte tokens)**, benchmarks against **5 parameter-matched 10M controls** (including an exact `LR(tokens)`-matched `T=128` vs `T=256` ablation), probes out to **`T=2048` (`4×` zero-shot extrapolation on SHA-256-verified identical target bytes)**, and qualifies under BCIR's `P1–P6` Deployment Policy the new reference 10M model: **`BCIR-Arch7d-10M` (`Arch7d_10M_B_ff928_gr32_dc128`)**.
 
 ### Canonical `BCIR-Arch7d-10M` Configuration (`10,036,768` Parameters)
 
@@ -17,18 +17,20 @@ Synthesizing all empirical findings across [`littlebit-sub1bit-study`](../little
 | Width `d` / Depth `L` / Heads | `d=512`, `L=4`, `h=8` (`dh=64`), `kvh=2` | Wide-shallow `d=512` clears BCIR `P4` width gate (`min(m,n) >= 512` on all 12 MLPs); narrow-deep `d=384, L=8` fails `P4` (`0/24` MLPs eligible, `2.2×` larger 4K footprint) |
 | Hybrid Mixer Stack (`3:1`) | `[GDN-2, GDN-2, GDN-2, NoPE-MLA]` | Decoupled channel-wise erase/write `GDN-2` (`arXiv:2605.22791v2`, `delta_chunk=16`) + 1 global `NoPE-MLA` layer (`arXiv:2510.26692`, `layer_use_rope=[0,0,0,0]`) |
 | SwiGLU FFN / Latent / Gate Rank | `ff=928`, `mla_dc=128`, `mla_dr=32`, `gate_rank=32`, `tied=1` | Stage 0 micro-ablation winner: shifting `~100k` params from `mla_dc` (`192→128`) into `ff` (`896→928`) improved both `T=128` (`11.40` vs `11.51`) & zero-shot `T=256` (`10.60` vs `10.73`) while cutting `T=4096` state `33%` (`3.75→2.75 MiB`) |
-| Orthogonal Upgrades | `G1` headwise sigmoid gate + `QK-Norm` + `Canon-AC` (`k=4`) + `mHC` (`C=2`) + `online_softmax=1` | Caps `max_abs_act` at **`2.13–2.19`**, drives attention sink down to **`0.005`** at `T=2048`, keeps `T=512 B=4` arena at **`829.8 MiB`** (`< T=256 B=8`'s `850.7 MiB`) |
+| Orthogonal Upgrades | `G1` headwise sigmoid gate + `QK-Norm` + `Canon-AC` (`k=4`) + `mHC` (`C=2`) + `online_softmax=1` | Caps `max_abs_act` at **`2.17–2.25`** across all training/eval stages, drives attention sink down to **`0.005`** at `T=2048`, keeps `T=512 B=4` arena at **`829.8 MiB`** (`< T=256 B=8`'s `850.7 MiB`) |
 | Training Stack (`P1–P6`) | `mup_v1` (`d_base=128`), `grad_clip=3.0`, **`Opt_Q8_Muon_BF16Grad`** (`7.13 B/p`, `68.2 MiB` pers.) | Saves **`84.1 MiB` (`-55.5%`)** vs FP32 AdamW (`151.7 MiB`); `0.0%` clip hits across all 448 steps of Stages 2–3; `0` bit drift across mid-stage & cross-stage resumes |
 
 ### Headline Results
 
 1. **Progressive 3-Stage Curriculum (`1.114M` Real Tokens, `T=128 → T=256 → T=512`):**
    - Untouched WikiText-2 test perplexity drops smoothly across stages: **`6.74` (`Stage 1`, `197k` tok) → `4.47` (`Stage 2`, `852k` tok) → `4.32` (`T=256`) / `4.30` (`T=512`, `BPB 2.103`, `57.8%` raw-byte top-1 accuracy)** at `1.114M` tokens (`val PPL 4.05`, `BPB 2.019`, `58.9%` acc) — beating our previous `1.22M` `pilot1m` model (`4.81` PPL at `1.024M` tok) by **`-0.1092` nats (`-10.2%` PPL)** with zero nonfinite events and `0.0%` clip rate across Stages 2 & 3.
-2. **`4×` Zero-Shot Context Extrapolation (`T=64 → T=2048`):**
-   - Untouched test perplexity improves monotonically out to **4× max training length**: `T=64` (`4.50`) → `T=128` (`4.44`) → `T=256` (`4.28`) → `T=512` (`4.30`) → **`T=1024` (`4.29`, 2× zero-shot)** → **`T=2048` (`4.13` PPL, `2.048` BPB, `58.5%` accuracy, 4× zero-shot)** with flat peak activations (`2.13`), decaying attention sink (`0.067 → 0.005`), and only **`1.75 MiB`** inference state at `T=2048`.
-3. **Architecture × Optimizer × Curriculum Co-Design Proof (Stage 4 Matched 10M Controls @ `196,608` Tokens):**
+2. **`4×` Zero-Shot Context Extrapolation on Identical Target Bytes (`T=64 → T=2048`):**
+   - Evaluated on the tracked `BCIRQ8 v1` checkpoint (`+0.0001` nats vs FP32) under two SHA-256-verified identical-target protocols (zero sample-difficulty confounding):
+     - **Fixed Tail Targets (`W=64 × 32 = 2,048` identical bytes, `sha256=79ffbbc2ca7f`):** improves `-0.0360` nats from `T=64` (`4.36` PPL) to `T=128` (`4.21` PPL) and holds rock-steady **`4.21` PPL** with zero drift through `T=512` (`1.4381` CE), **`T=1024` (`1.4380` CE, 2×)**, and **`T=2048` (`1.4377` CE, `-0.0004` nats vs `T=512`, 4× zero-shot)**.
+     - **Fixed Contiguous Span Partition (`8 × 2048 = 16,384` identical bytes, `sha256=22da92d8dcbc`):** improves **strictly monotonically across every doubling**: `T=64` (`4.43`) → `T=128` (`4.31`) → `T=256` (`4.26`) → `T=512` (`4.23`) → **`T=1024` (`4.21`, 2×)** → **`T=2048` (`4.21` PPL / `1.4373` CE / `57.9%` acc, `-0.0517` nats vs `T=64`, `-0.0053` nats vs `T=512`)**, with flat `max_abs_act = 2.17`, decaying attention sink (`0.079 → 0.005`), and **`1.75 MiB`** inference state at `T=2048`.
+3. **Architecture × Optimizer × Matched-LR Context Controls (Stage 4 @ `196,608` Tokens):**
    - At identical `B=8, T=256` (`96` steps), `Arch7d_10M + Opt_Q8_Muon_BF16Grad` wins #1 (`test PPL 7.84`, `68.2 MiB` RAM) over parameter-matched `Arch2_Hybrid + Adafactor` (`7.95`, `113.0 MiB`), `Arch7d_10M + Adafactor` (`8.39`, `115.1 MiB`), and `GQA_Full + Adafactor` (`9.56`, `112.7 MiB`, `-0.1981` nats).
-   - **Curriculum Bonus:** Running the exact same `196,608` tokens as progressive `T=128` (`192 × 1024` updates, Stage 1) pushes zero-shot `T=256` untouched test PPL all the way down to **`6.74` (`-0.1511` nats / `-14.0%` PPL better than flat `T=256` `7.84`!)** because `2×` more orthogonalized Muon updates transfer cleanly across context lengths on `GDN-2 + NoPE-MLA`.
+   - **Exact `LR(tokens)`-Matched Short-Context Ablation:** Running `Arch7d_10M + Q8-Muon` at `B=8, T=128` (`192` steps = `196,608` tokens) with the **exact same token-indexed LR schedule** (`warmup = 32,768` tok, cosine `3.0e-3 → 3.0e-4` over `196,608` tok) cuts untouched `T=256` test CE by **`-0.1788` nats (`6.56` vs `7.84` PPL, `-16.4%` PPL)** and zero-shot `T=512` test CE by **`-0.1829` nats (`6.53` vs `7.84` PPL)**, while beating `Flat T=256` on **both equal tokens AND equal wall time** (`val_ce = 1.9233` at `497.0 s` vs `Flat T=256`'s final `2.0185` at `575.4 s`) at `43%` smaller arena RAM (`484.6` vs `850.7 MiB`). (Stage 1 of the 640-step recipe reached `6.74` PPL at `196.6k` tokens — `+0.0277` nats behind `Matched-LR T=128` because its cosine schedule intentionally holds LR high at `0.002583` to continue smoothly into Stages 2–3.)
 4. **Deployment Qualification (`BCIRQ8 v1` & Exact Differentiable `COMP-1` Factor-QAT):**
    - **Permanent tracked `BCIRQ8 v1` artifact** (`checkpoints/arch7d_10m_stage3_best_bcirq8.bin`, **`9.87 MiB`**, `3.88×` smaller than FP32 `38.29 MiB`, `12.62 MiB` total at `T=4096`): untouched test CE `1.4679` vs FP32 `1.4677` (**`+0.0001` nats**, exact bit-match reload verified).
    - **Zero-QAT `COMP-1` PTQ** (`5.04 MiB` weights, `7.59×` smaller than FP32, **`7.79 MiB`** total `T=4096` footprint, `1.1460 bpw` MLP @ `r=16, FP16 scales`): incurs `+0.6782` nats (`PPL 8.55`) because Muon orthogonalization preserves high MLP spectral rank (`r90 = 64.50%`, `stable_rank = 167.58`).
@@ -80,12 +82,12 @@ Gate 0 C verification (`results/gate0_abi6_verify_output.txt`) passed 100% (`mix
 
 ![BCIR-Arch7d-10M 3-Stage Curriculum Training Dynamics](figures/fig1_10m_curriculum_dynamics.png)
 
-Full per-step logs are archived in `results/stage1_steps.csv` (`192` rows), `results/stage2_steps.csv` (`320` rows), and `results/stage3_steps.csv` (`128` rows), with structured stage summaries in `results/stage{1_warmup_t128,2_core_t256,3_longctx_t512}.json`.
+Full per-step logs are archived in `results/stage1_steps.csv` (`192` rows), `results/stage2_steps.csv` (`320` rows), and `results/stage3_steps.csv` (`128` rows), with full-stage resume-aggregated telemetry and summaries in `results/stage{1_warmup_t128,2_core_t256,3_longctx_t512}.json`.
 
-| Stage | Context / Batch (`N`) | Global Steps | Tokens (`Stage` / `Cum.`) | LR Range | Wall (`s`) / `tok/s` | Grad Norm (`Mean` / `Max`) | Clip % | Best Val (`CE` / `PPL` / `BPB`) | Test `T=128` (`PPL`) | Test `T=256` (`PPL`) | Test `T=512` (`PPL`) | Max `\|Act\|` / Sink |
+| Stage | Context / Batch (`N`) | Global Steps | Tokens (`Stage` / `Cum.`) | LR Range | Wall (`s`) / `tok/s` | Grad Norm (`Mean` / `Max`) | Clip % | Best Val (`CE` / `PPL` / `BPB`) | Test `T=128` (`PPL`) | Test `T=256` (`PPL`) | Test `T=512` (`PPL`) | Peak `\|Act\|` / Sink |
 |---|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | **Stage 1** | `T=128, B=8` (`1,024`) | `0 → 192` | `196.6k` / `0.197M` | `7.5e-5 → 3.0e-3 → 2.6e-3` | `648.2` / `303.3` | `3.09` / `9.78` | `26.6%` | `1.8806` / `6.56` / `2.713` | `6.84` | `6.74` | `6.65` | `1.80` / `0.041` |
-| **Stage 2** | `T=256, B=8` (`2,048`) | `192 → 512` | `655.4k` / `0.852M` | `2.6e-3 → 4.9e-4` | `1,841.5` / `355.9` | `1.49` / `2.81` | **`0.0%`** | `1.4373` / `4.21` / `2.074` | `4.58` | `4.47` | `4.46` | `2.13` / `0.025` |
+| **Stage 2** | `T=256, B=8` (`2,048`) | `192 → 512` | `655.4k` / `0.852M` | `2.6e-3 → 4.9e-4` | `1,841.5` / `355.9` | `1.49` / `2.81` | **`0.0%`** | `1.4373` / `4.21` / `2.074` | `4.58` | `4.47` | `4.46` | `2.25` / `0.025` |
 | **Stage 3** | `T=512, B=4` (`2,048`) | `512 → 640` | `262.1k` / **`1.114M`** | `4.9e-4 → 2.0e-4` | `810.0` / `323.6` | `1.53` / `2.44` | **`0.0%`** | **`1.3998` / `4.05` / `2.019`** | **`4.44`** | **`4.32`** | **`4.30`** | **`2.17` / `0.013`** |
 
 - **Cross-Stage 0-Bit-Drift Optimizer Handoff:** Stage 1 (`sha=a3d7e89e4c70`) → Stage 2 (`sha=e51cf1df5d45`) → Stage 3 (`sha=38830b9ab218`) persisted and restored the full `10.77 MiB` `Opt_Q8_Muon_BF16Grad` state (`opt_step = 192 → 512 → 640`) across both mid-stage recovery chunks and context-length transitions (`T=128 → 256 → 512`) with zero loss spikes and zero nonfinite events.
@@ -93,42 +95,46 @@ Full per-step logs are archived in `results/stage1_steps.csv` (`192` rows), `res
 
 ---
 
-## 3. Stage 4: Parameter-Matched 10M Architecture & Optimizer Controls (`results/stage4_10m_controls.json`)
+## 3. Stage 4: Parameter-Matched 10M Architecture, Optimizer & Matched-LR Context Controls (`results/stage4_10m_controls.json`)
 
 ![Stage 4 Parameter-Matched 10M Controls](figures/fig2_10m_matched_controls_pareto.png)
 
-All 4 flat-`T=256` controls ran identical `96` steps (`B=8, T=256`, **`196,608` real tokens**, identical byte batches), compared alongside Stage 1 progressive `T=128` (`192 × 1,024 = 196,608` tokens):
+All 5 Stage 4 controls execute **identical `196,608` real tokens** under the **identical token-indexed LR schedule** (`warmup = 32,768` tokens, half-cosine `3.0e-3 → 3.0e-4` over the remaining `163,840` tokens) and are evaluated on identical `val_t256`, `test_t256`, and `test_t512` batches (shown alongside the un-decayed Stage 1 640-step recipe snapshot for reference):
 
-| Model + Optimizer (`196,608` Tokens) | Params | Pers. RAM (`MiB` / `B/p`) | `T=4096` State | Val CE (`T=256`) | Untouched Test `T=256` (`CE` / `PPL` / `BPB` / `Acc`) | Zero-Shot Test `T=512` (`PPL`) | `BCIRQ8` `Delta` | `COMP-1` PTQ `Delta` | Max `\|Act\|` | Wall (`s`) / `tok/s` |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| `GQA_Full_10M + Adafactor` | `9.835M` | `112.7` / `12.02` | `16.00 MiB` | `2.2308` | `2.2574` / `9.56` / `3.257` / `35.2%` | `9.53` | `-0.0001` | `+0.1367` | `5.39` | `389.5` / `505` |
-| `Arch7d_10M + Adafactor` | `10.037M` | `115.1` / `12.02` | **`2.75 MiB`** | `2.0916` | `2.1267` / `8.39` / `3.068` / `38.8%` | `8.34` | `+0.0003` | `+0.1884` | `2.31` | `437.5` / `449` |
-| `Arch2_Hybrid_10M + Adafactor` | `9.860M` | `113.0` / `12.02` | `4.75 MiB` | `2.0425` | `2.0738` / `7.95` / `2.992` / `40.4%` | `7.92` | `+0.0003` | `+0.3237` | `3.54` | **`359.6` / `547`** |
-| **`Arch7d_10M + Q8-Muon (Flat T=256)`** | `10.037M` | **`68.2` / `7.13`** | **`2.75 MiB`** | **`2.0185`** | **`2.0593` / `7.84` / `2.971` / `41.0%`** | **`7.84`** | **`-0.0000`** | `+0.4721` | **`1.40`** | `575.4` / `342` |
-| **`Arch7d_10M + Q8-Muon (Stage 1 T=128)`** | `10.037M` | **`68.2` / `7.13`** | **`2.75 MiB`** | **`1.8551`** | **`1.9082` / `6.74` / `2.753` / `46.0%`** | **`6.65`** | `+0.0002` | — | `1.80` | `648.2` / `303` |
+| Model + Optimizer (`196,608` Tokens) | Schedule (`Steps × N`, `LR_end`) | Pers. RAM (`MiB` / `B/p`) | `T=4096` State | Val CE (`T=256`) | Untouched Test `T=256` (`CE` / `PPL` / `BPB` / `Acc`) | Zero-Shot Test `T=512` (`PPL`) | `BCIRQ8` `Delta` | `COMP-1` PTQ `Delta` | Max `\|Act\|` | Wall (`s`) / `tok/s` |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `GQA_Full_10M + Adafactor` | `96 × 2048`, `3.0e-4` | `112.7` / `12.02` | `16.00 MiB` | `2.2308` | `2.2574` / `9.56` / `3.257` / `35.2%` | `9.53` | `-0.0001` | `+0.1367` | `5.39` | `389.5` / `505` |
+| `Arch7d_10M + Adafactor` | `96 × 2048`, `3.0e-4` | `115.1` / `12.02` | **`2.75 MiB`** | `2.0916` | `2.1267` / `8.39` / `3.068` / `38.8%` | `8.34` | `+0.0003` | `+0.1884` | `2.31` | `437.5` / `449` |
+| `Arch2_Hybrid_10M + Adafactor` | `96 × 2048`, `3.0e-4` | `113.0` / `12.02` | `4.75 MiB` | `2.0425` | `2.0738` / `7.95` / `2.992` / `40.4%` | `7.92` | `+0.0003` | `+0.3237` | `3.54` | **`359.6` / `547`** |
+| `Arch7d_10M + Q8-Muon (Flat T=256)` | `96 × 2048`, `3.0e-4` | **`68.2` / `7.13`** | **`2.75 MiB`** | `2.0185` | `2.0593` / `7.84` / `2.971` / `41.0%` | `7.84` | **`-0.0000`** | `+0.4721` | **`1.40`** | `575.4` / `342` |
+| **`Arch7d_10M + Q8-Muon (Matched-LR T=128)`** | **`192 × 1024`, `3.0e-4`** | **`68.2` / `7.13`** | **`2.75 MiB`** | **`1.8355`** | **`1.8805` / `6.56` / `2.713` / `46.4%`** | **`6.53`** | **`+0.0001`** | `+0.4709` | `1.45` | `689.3` / `285` |
+| *Ref: Stage 1 Recipe (`640`-st schedule)* | *`192 × 1024`, `2.58e-3`* | *`68.2` / `7.13`* | *`2.75 MiB`* | *`1.8551`* | *`1.9082` / `6.74` / `2.753` / `46.0%`* | *`6.65`* | *`+0.0002`* | *—* | *`1.80`* | *`648.2` / `303`* |
 
 **Key Controlled Takeaways:**
-- **Co-design synergy:** Under diagonal `Adafactor` at 96 steps, `Arch-7d` (`8.39` PPL) slightly trails `Arch-2` (`7.95`); pairing `Arch-7d` with **`Opt_Q8_Muon_BF16Grad`** flips the ranking (`7.84` PPL #1, `2.52×` lower peak activation `1.40` vs `3.54`, `1.73×` smaller `T=4K` state, and `40%` less persistent RAM!).
-- **Progressive curriculum multiplier:** At the exact same `196,608` token count, Stage 1 `T=128` (`192` Muon steps) beats flat `T=256` (`96` Muon steps) by **`-0.1511` nats (`6.74` vs `7.84` PPL)** on zero-shot `T=256` test (and `6.65` vs `7.84` on `T=512`), proving `NoPE-MLA + GDN-2` unlocks cheap short-context warmup before medium/long-context scaling.
+- **Co-design synergy:** Under diagonal `Adafactor` at 96 steps (`T=256`), `Arch-7d` (`8.39` PPL) slightly trails `Arch-2` (`7.95`); pairing `Arch-7d` with **`Opt_Q8_Muon_BF16Grad`** flips the ranking (`7.84` PPL #1 among `T=256` controls, `2.52×` lower peak activation `1.40` vs `3.54`, `1.73×` smaller `T=4K` state, and `40%` less persistent RAM).
+- **Isolated equal-`LR(tokens)` short-context / step-frequency advantage:** Holding both token budget (`196,608` tok) and `LR(tokens)` (`warmup = 32,768` tok, cosine `3.0e-3 → 3.0e-4`) strictly identical, `Arch7d_10M + Q8-Muon (Matched-LR T=128)` (`192 × 1,024`) beats `Flat T=256` (`96 × 2,048`) by **`-0.1788` nats (`6.56` vs `7.84` PPL)** on `T=256` test and **`-0.1829` nats (`6.53` vs `7.84` PPL)** on zero-shot `T=512` test, while also beating `Flat T=256` at equal wall time (`val_ce = 1.9233` at `497.0 s` vs `2.0185` at `575.4 s`) and cutting arena RAM `43%` (`484.6` vs `850.7 MiB`). Comparing Stage 1 (`6.74` PPL, `LR_end = 2.58e-3`) against `Matched-LR T=128` (`6.56` PPL, `LR_end = 3.0e-4`) isolates the schedule difference (`+0.0277` nats due to intentionally keeping LR high at the Stage 1 → Stage 2 boundary).
 
 ---
 
-## 4. Stage 5: `4×` Context Extrapolation, Per-Position CE, Structural Forensics & Deployment Qualification (`results/stage5_deep_eval_and_deploy.json`)
+## 4. Stage 5: `4×` Fixed-Target Context Extrapolation, Per-Position CE, Structural Forensics & Deployment Qualification (`results/stage5_deep_eval_and_deploy.json`)
 
-### 4.1 Zero-Shot Context-Length Extrapolation (`T=64 → T=2048`) & Per-Position Adaptation
+### 4.1 SHA-256-Verified Fixed-Target Context Extrapolation (`T=64 → T=2048`) & Per-Position Adaptation
 
 ![Context Extrapolation and Per-Position Byte CE](figures/fig3_10m_context_extrapolation_and_position_ce.png)
 
-| Evaluation Horizon `T` | Regime | Test CE | Test PPL | Test BPB | Top-1 Acc | Max `\|Act\|` | Attn Sink | Inference State (`MiB`) | Eval Arena (`MiB`) |
-|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| `64` | In-distribution | `1.5042` | `4.50` | `2.170` | `55.9%` | `2.15` | `0.067` | `0.78` | `204.2` |
-| `128` | In-distribution | `1.4897` | `4.44` | `2.149` | `57.0%` | `2.17` | `0.044` | `0.81` | `293.0` |
-| `256` | In-distribution | `1.4538` | `4.28` | `2.097` | `57.4%` | `2.19` | `0.025` | `0.88` | `471.2` |
-| `512` | Max Train `T` | `1.4580` | `4.30` | `2.103` | `57.8%` | `2.17` | `0.013` | `1.00` | `486.0` |
-| **`1024`** | **Zero-Shot `2×`** | **`1.4560`** | **`4.29`** | **`2.101`** | `57.3%` | `2.17` | `0.007` | **`1.25`** | `488.3` |
-| **`2048`** | **Zero-Shot `4×`** | **`1.4192`** | **`4.13`** | **`2.048`** | **`58.5%`** | **`2.13`** | **`0.005`** | **`1.75`** | `854.0` |
+To eliminate sample-difficulty confounding across sequence lengths, the tracked deterministic `BCIRQ8 v1` checkpoint (`sha256=bc67f32a2a1a`, `+0.0001` nats vs FP32) is evaluated on **strictly identical target bytes** across all six horizons `T ∈ {64, 128, 256, 512, 1024, 2048}` under two complementary SHA-256-asserted protocols:
 
-- **Per-Position In-Context Learning (`T=512`):** `pos 0–15` (`1.6511` CE / `5.21` PPL / `52.3%` acc) → `pos 16–31` (`1.5436` / `4.68`) → `pos 128–255` (`1.4580` / `4.30`) → **`pos 384–511` (`1.4170` CE / `4.12` PPL / `58.8%` acc, `-0.2341` nats in-context drop!)**. On zero-shot `T=1024`, positions `512–767` maintain `1.4185` CE (`4.13` PPL, `57.7%` acc).
+| Evaluation Horizon `T` | Regime | Fixed Tail `Win64` (`2,048` Identical Bytes, `sha=79ffbbc2ca7f`): CE / PPL / Acc | Fixed Span `16 kB` (`16,384` Identical Bytes, `sha=22da92d8dcbc`): CE / PPL / BPB / Acc | Max `\|Act\|` | Attn Sink | Inference State (`MiB`) | Eval Arena (`MiB`) |
+|---:|---|---|---|---:|---:|---:|---:|
+| `64` | In-distribution | `1.4723` / `4.36` / `57.5%` | `1.4890` / `4.43` / `2.148` / `56.8%` | `2.16` | `0.079` | `0.78` | `204.2` |
+| `128` | In-distribution | `1.4363` / `4.21` / `58.8%` | `1.4604` / `4.31` / `2.107` / `57.6%` | `2.17` | `0.043` | `0.81` | `293.0` |
+| `256` | In-distribution | `1.4378` / `4.21` / `58.9%` | `1.4490` / `4.26` / `2.091` / `57.8%` | `2.17` | `0.026` | `0.88` | `471.2` |
+| `512` | Max Train `T` | `1.4381` / `4.21` / `58.7%` | `1.4426` / `4.23` / `2.081` / `57.9%` | `2.17` | `0.014` | `1.00` | `486.0` |
+| **`1024`** | **Zero-Shot `2×`** | **`1.4380` / `4.21` / `58.8%`** | **`1.4385` / `4.21` / `2.075` / `57.9%`** | `2.17` | `0.008` | **`1.25`** | `488.3` |
+| **`2048`** | **Zero-Shot `4×`** | **`1.4377` / `4.21` / `58.8%`** | **`1.4373` / `4.21` / `2.074` / `57.9%`** | **`2.17`** | **`0.005`** | **`1.75`** | `854.0` |
+
+- **Zero Extrapolation Collapse on Identical Targets:** On the fixed 2,048 tail target bytes (`Win64`), extending preceding context from `T=512` to `T=1024` (`2×`) and `T=2048` (`4×`) produces **zero degradation (`-0.0004` nats: `1.4381 → 1.4377`, flat `4.21` PPL)**. Across the fixed 16,384-byte contiguous test spans (`Span16kB`), longer windows eliminate cold-start chunk resets cleanly for **strictly monotonic improvement across all six doublings (`4.43 → 4.31 → 4.26 → 4.23 → 4.21 → 4.21` PPL, `-0.0517` nats total, `-0.0053` nats beyond `T=512`)**.
+- **Per-Position In-Context Profile (Fixed `16 kB` Spans):** At `T=512`, byte CE drops `-0.2719` nats from `pos 0–15` (`1.7142` / `5.55` PPL / `53.1%` acc) to `pos 384–511` (`1.4423` / `4.23` PPL / `57.3%` acc). At zero-shot `T=2048`, positions `1024–2047` (`8,192` bytes, `2×–4×` past max training horizon) sustain **`1.4187` CE (`4.13` PPL, `2.047` BPB, `58.2%` acc)** with flat activations (`2.17`).
 
 ### 4.2 Spectral Rank, `Canon-AC` & DeepSeek `mHC` Structural Forensics
 
