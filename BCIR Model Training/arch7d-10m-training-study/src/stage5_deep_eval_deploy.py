@@ -354,17 +354,24 @@ def main() -> None:
     va_stream = load_wikitext_bytes("validation")
     te_stream = load_wikitext_bytes("test")
 
-    # Prefer Stage 3 FP32 best weights when present; fall back to tracked deterministic BCIRQ8 v1 (+0.0001 nats)
+    # Require original FP32 Stage 3 best weights for deployment qualification (FP32_Ref / PTQ / QAT).
+    # Only --fixed-target-extrap-only may fall back to the tracked deterministic BCIRQ8 v1 artifact.
     stage3_fp32_json = CKPT_DIR / "stage3_end.json"
     if stage3_fp32_json.exists():
         _w_end, _meta3, _opt3, w_best = load_ckpt_verified(CKPT_DIR / "stage3_end")
         assert w_best is not None
         weights_source = "stage3_end_fp32_best"
-    else:
+    elif args.fixed_target_extrap_only:
         sp_ld = build_spec(sd, batch=1, seq_len=64, threads=2)
         with Abi6Model(sp_ld, make_policy(opt_kind=OPT_ADAFACTOR_M2)) as m_ld:
             w_best, q8_meta = load_bcirq8_ckpt(CKPT_DIR / "arch7d_10m_stage3_best_bcirq8", m_ld)
         weights_source = f"arch7d_10m_stage3_best_bcirq8 (sha256={q8_meta['weights_sha256'][:12]})"
+    else:
+        raise FileNotFoundError(
+            f"Original FP32 checkpoint {stage3_fp32_json} is required for FP32_Ref deployment "
+            "qualification, COMP-1 PTQ, and --qat-only (refusing to substitute already-quantized "
+            "BCIRQ8 v1 weights). Re-run stage1_3_curriculum_train.py or pass --fixed-target-extrap-only."
+        )
 
     if args.fixed_target_extrap_only:
         out_p = RESULTS_DIR / "stage5_deep_eval_and_deploy.json"
