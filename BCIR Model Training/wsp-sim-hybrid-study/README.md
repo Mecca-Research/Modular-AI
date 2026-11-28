@@ -70,9 +70,9 @@ Full `WSP-1` provenance manifests are archived in `checkpoints/wsp1_patch_L3_mla
 
 | Architecture (`Opt_Q8_Muon_BF16Grad`) | Params | Pers. RAM | `T=4096` State | Train `tok/s` | Val PPL | Test PPL | Peak `\|Act\|` | `L0` ΔScore | `L1` ΔScore | `L2` ΔScore | `L3` ΔScore | `SSP-Live` ΔScore |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **`Arch7d_2M`** (`3×GDN2+MLA+G1+Canon+mHC`) | `2,671,504` | `18.40 MiB` | **`1.38 MiB`** | `1,003` | **`6.70`** | **`6.84`** | **`1.50`** | **`+6.06`** | `-3.74` | `-4.49` | `-4.11` | **`+2.76`** (`0` KL) |
-| **`Arch2_Hybrid_2M`** (`3×DN+GQA`) | `2,629,912` | `18.05 MiB` | `4.38 MiB` | `1,181` | `6.77` | **`6.84`** | `1.94` | `+0.07` | `+0.12` | `-1.21` | **`+3.19`** | **`+6.02`** (`0` KL) |
-| **`GQA_Full_2M`** (`4×GQA+RoPE`) | `2,722,048` | `18.66 MiB` | `16.00 MiB` | `1,338` | `8.09` | `8.16` | `2.02` | `-7.77` | `-2.77` | `-0.55` | `-3.54` | `+0.56` (`0` KL) |
+| **`Arch7d_2M`** (`3×GDN2+MLA+G1+Canon+mHC`) | `2,671,504` | `18.40 MiB` | **`1.38 MiB`** | `1,142` | **`6.70`** | **`6.84`** | **`1.50`** | **`+6.06`** | `-3.74` | `-4.49` | `-4.11` | **`+2.76`** (`0` KL) |
+| **`Arch2_Hybrid_2M`** (`3×DN+GQA`) | `2,629,912` | `18.05 MiB` | `4.38 MiB` | `1,334` | `6.77` | **`6.84`** | `1.94` | `+0.07` | `+0.12` | `-1.21` | **`+3.19`** | **`+6.02`** (`0` KL) |
+| **`GQA_Full_2M`** (`4×GQA+RoPE`) | `2,722,048` | `18.66 MiB` | `16.00 MiB` | `1,527` | `8.09` | `8.16` | `2.02` | `-7.77` | `-2.77` | `-0.55` | `-3.54` | `+0.56` (`0` KL) |
 
 Full 480-row training telemetry is archived in `results/stage2_train_steps.csv` and `results/stage2_layer_editability.csv`. Tracked `BCIRQ8 v1` checkpoints (`checkpoints/{arch7d_2m,gqa_full_2m}_bcirq8.bin`) feed Stage 3's Cross-Model transitions. Applying BCIR's established `COMP-1` Dual-SVID + Joint-ITQ signed-residual 1-bit PTQ (`r=16, FP16 scales`, bit-exact parity with `arch7d-10m-training-study/src/common_10m.py`) to `BCIR-Arch7d-10M` shifts test `CE 1.5175 → 2.1575` (`PPL 4.56 → 8.65`, `+0.6399` nats) and greedy rollout dynamics (`loop 100.0% → 90.6%`, `distinct-4 34.3% → 67.3%`).
 

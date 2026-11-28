@@ -152,8 +152,8 @@
         "top1_agreement": 1.0
       },
       "t4096_state_mib": 4.375,
-      "tok_per_s": 1181.1,
-      "train_seconds": 138.72,
+      "tok_per_s": 1334.4,
+      "train_seconds": 122.78,
       "trajectory": [
         {
           "attn_sink": 0.0413,
@@ -207,7 +207,8 @@
           "wsp2_max_over_med": 1.186,
           "wsp2_pass": true
         }
-      ]
+      ],
+      "train_plus_diag_seconds": 138.72
     },
     "Arch7d_2M": {
       "bcirq8_sha256": "ff4f270d21e6623dcd43b93aab9b48c05405f298118f8b54ee42def3ab9321b0",
@@ -361,8 +362,8 @@
         "top1_agreement": 1.0
       },
       "t4096_state_mib": 1.375,
-      "tok_per_s": 1002.8,
-      "train_seconds": 163.39,
+      "tok_per_s": 1142.2,
+      "train_seconds": 143.44,
       "trajectory": [
         {
           "attn_sink": 0.0441,
@@ -416,7 +417,8 @@
           "wsp2_max_over_med": 1.17,
           "wsp2_pass": true
         }
-      ]
+      ],
+      "train_plus_diag_seconds": 163.39
     },
     "GQA_Full_2M": {
       "bcirq8_sha256": "8d487d54c73286040e2d16287d3f42c20199697c701c1affbd4a501dc794a0b5",
@@ -570,8 +572,8 @@
         "top1_agreement": 1.0
       },
       "t4096_state_mib": 16.0,
-      "tok_per_s": 1337.7,
-      "train_seconds": 122.48,
+      "tok_per_s": 1527.3,
+      "train_seconds": 107.28,
       "trajectory": [
         {
           "attn_sink": 0.0365,
@@ -625,7 +627,8 @@
           "wsp2_max_over_med": 1.282,
           "wsp2_pass": true
         }
-      ]
+      ],
+      "train_plus_diag_seconds": 122.48
     }
   },
   "comp1_10m_shift_diagnosis": {

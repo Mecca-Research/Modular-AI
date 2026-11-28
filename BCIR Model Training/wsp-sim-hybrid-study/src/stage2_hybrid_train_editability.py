@@ -174,9 +174,12 @@ def main() -> None:
         traj = []
         arch_steps = []
         t_arch = time.monotonic()
+        train_only_sec = 0.0
         for c_start in range(0, total_steps, chunk_steps):
             c_end = min(total_steps, c_start + chunk_steps)
+            t_tr = time.monotonic()
             rc, evs = model.train_loop(tr_xs[c_start:c_end], tr_ys[c_start:c_end], opt_cfg, lrs=lrs[c_start:c_end])
+            train_only_sec += time.monotonic() - t_tr
             assert rc == 0, f"{arch_name} train_loop failed rc={rc}"
             for i, e in enumerate(evs):
                 gs = c_start + i + 1
@@ -208,7 +211,8 @@ def main() -> None:
                   f"dist4={snap['evolve_distinct4']*100:.1f}% | max|act|={snap['max_abs_act']:.2f} "
                   f"sink={snap['attn_sink']:.3f}", flush=True)
 
-        train_sec = time.monotonic() - t_arch
+        train_plus_diag_sec = time.monotonic() - t_arch
+        train_sec = train_only_sec
         w_final = model.copy_weights()
 
         ckpt_sha = None
@@ -307,6 +311,7 @@ def main() -> None:
             "persistent_mib": round(ms["persistent_bytes"] / 1048576.0, 2),
             "t4096_state_mib": round((ms["infer_kv_bytes_per_tok"] * 4096 + ms["infer_rec_state_bytes"]) / 1048576.0, 3),
             "train_seconds": round(train_sec, 2),
+            "train_plus_diag_seconds": round(train_plus_diag_sec, 2),
             "tok_per_s": round(total_steps * B * T / max(train_sec, 1e-6), 1),
             "bcirq8_sha256": ckpt_sha, "trajectory": traj,
             "final_test_baseline": base_te, "per_layer_wsp": per_layer_results,
