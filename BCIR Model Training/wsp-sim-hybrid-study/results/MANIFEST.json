@@ -1,0 +1,182 @@
+{
+  "file_count": 35,
+  "files": [
+    {
+      "bytes": 81,
+      "path": ".gitignore",
+      "sha256": "33b6cc14516c6e4b4673fb29aec162678fbb25a88ad084df74380a9cb7e523ee"
+    },
+    {
+      "bytes": 884,
+      "path": "Makefile",
+      "sha256": "1156233d03e264b7750057ebced66785ff00f47c2231228943e9bec39a937a78"
+    },
+    {
+      "bytes": 16589,
+      "path": "README.md",
+      "sha256": "ead45dc3f1c459a26cf5b9af6f1a73e99007e7e095e8239e1e2b5945341dcea2"
+    },
+    {
+      "bytes": 2755014,
+      "path": "checkpoints/arch7d_2m_bcirq8.bin",
+      "sha256": "ff4f270d21e6623dcd43b93aab9b48c05405f298118f8b54ee42def3ab9321b0"
+    },
+    {
+      "bytes": 727,
+      "path": "checkpoints/arch7d_2m_bcirq8.json",
+      "sha256": "f2b035ca9222877bb8767707aa1dc1d4ab199e5580af5322ec2557f585e194fe"
+    },
+    {
+      "bytes": 2807112,
+      "path": "checkpoints/gqa_full_2m_bcirq8.bin",
+      "sha256": "8d487d54c73286040e2d16287d3f42c20199697c701c1affbd4a501dc794a0b5"
+    },
+    {
+      "bytes": 731,
+      "path": "checkpoints/gqa_full_2m_bcirq8.json",
+      "sha256": "49adea395fcff07bf44f7479c91c4dad02bdf58e45d1447966f679fbdc52fe60"
+    },
+    {
+      "bytes": 1897,
+      "path": "checkpoints/wsp1_patch_L3_mla_g1.json",
+      "sha256": "51136b9b0d85e58fa45fa7b93fd35dd81ec87eaa3001007046e8aecb61931c53"
+    },
+    {
+      "bytes": 1931,
+      "path": "checkpoints/wsp1_patch_L3_mla_wdown.json",
+      "sha256": "d23adc2c64ceae468ef137fc9b6db44460853c682ee26b451f3d2b5fa517c94e"
+    },
+    {
+      "bytes": 602377,
+      "path": "figures/fig1_arch7d_10m_locus_audit.png",
+      "sha256": "0d041edf8fb11e6a56a6e70db502d64556d57ccb27b70bf82c9d6cc768474fef"
+    },
+    {
+      "bytes": 298963,
+      "path": "figures/fig2_hybrid_train_and_editability.png",
+      "sha256": "3ebf029a770ba8dd3b9f31e4569223b928a9b5cdc37d51f198edeba1da8e48c1"
+    },
+    {
+      "bytes": 410023,
+      "path": "figures/fig3_sim_crsi_transitions.png",
+      "sha256": "e2f286bc7f7660413f66a0a46ccde8c29b2fd39ff3426f5598db9b63e2945dff"
+    },
+    {
+      "bytes": 215899,
+      "path": "figures/fig4_sim_10seed_paired_stats.png",
+      "sha256": "e6634ddf569c2a89002728f37c8e0b9e468ecebc44cdbbdedd216a8758e0d3da"
+    },
+    {
+      "bytes": 462658,
+      "path": "figures/fig5_unified_3tier_hybrid_architecture.png",
+      "sha256": "b4ba4edf0ac82653880a31c6229bc709a7725c94253dddbb2a0c28b54fc51a99"
+    },
+    {
+      "bytes": 28071,
+      "path": "results/sim_ledger_T1a_CrossDataset_10M_Prose_to_Structured.json",
+      "sha256": "4eff01ab334711049145a8820d55f959ca769d11614efbadf4e5900f0e5a3c57"
+    },
+    {
+      "bytes": 27722,
+      "path": "results/sim_ledger_T1b_CrossDataset_10M_Prose_to_LongCtx.json",
+      "sha256": "7185f9af3fff8d99bd42d71c29d6c37033b12f26645d73f5c25f747606012254"
+    },
+    {
+      "bytes": 31052,
+      "path": "results/sim_ledger_T2a_CrossScale_2M_to_10M_Arch7d.json",
+      "sha256": "3e08b2af56fc57ec29f6edd210508095965403883ccba164e7169603b56a4e96"
+    },
+    {
+      "bytes": 30914,
+      "path": "results/sim_ledger_T2b_CrossFamily_GQA2M_to_Arch7d10M.json",
+      "sha256": "47b8cb3d4c84615b270304391bae6af3a14648b69f76d84f71dfa58b6f7e5b4f"
+    },
+    {
+      "bytes": 27924,
+      "path": "results/sim_ledger_T3_CrossPrecision_Q8_to_COMP1_10M.json",
+      "sha256": "8878f18a3403f378b4da405336dafab65b9d5ea9e56ff95e7f08dde960e09816"
+    },
+    {
+      "bytes": 4669,
+      "path": "results/stage1_wsp_ssp_locus_audit.csv",
+      "sha256": "70845b2a9dd80a0e402d81ac07bfec0fd15b0b4f52213caf1d7ea86eb5a5f927"
+    },
+    {
+      "bytes": 92879,
+      "path": "results/stage1_wsp_ssp_locus_audit.json",
+      "sha256": "4076bd86bbbb2cb5c2bf7c7e46994acf9e2d8ee07a1dd2a1dd0a661984441fba"
+    },
+    {
+      "bytes": 27250,
+      "path": "results/stage2_hybrid_train_editability.json",
+      "sha256": "5e7617393df913ee626f456c830a4bb95eca731bc13f8dd0d4338e9e692d380b"
+    },
+    {
+      "bytes": 1060,
+      "path": "results/stage2_layer_editability.csv",
+      "sha256": "4dca8f35d7fb35d63e3461f1c3d547442d7658ea2a28443118586c4637ef3b32"
+    },
+    {
+      "bytes": 26785,
+      "path": "results/stage2_train_steps.csv",
+      "sha256": "1ae2ae326f01b86f6e879f92b923585672a410a81b5abb8456d81ab61c06b534"
+    },
+    {
+      "bytes": 859,
+      "path": "results/stage3_sim_10seed_paired.csv",
+      "sha256": "0a5c872bb3c6a83cf7d2bec44395a93a8bc55f428f43bb3f4265d87579c226c4"
+    },
+    {
+      "bytes": 95693,
+      "path": "results/stage3_sim_crsi_experiments.json",
+      "sha256": "bbf40b4b21657d6e8e872c977bb02456beb22d7207b9c6236bd27ebdf1e9b84f"
+    },
+    {
+      "bytes": 7634,
+      "path": "results/stage3_sim_round_curves.csv",
+      "sha256": "902d460e2182879b23251ec9b03892200658bdf0697efe90b16d9d0779d2c1fb"
+    },
+    {
+      "bytes": 2053,
+      "path": "results/stage3_sim_transitions.csv",
+      "sha256": "fde032b14f0a2e81b1c2af1d069490d92a6d22edb234d3392fca83433828587f"
+    },
+    {
+      "bytes": 49274,
+      "path": "src/bcir_stateful_probe.c",
+      "sha256": "91e0bb2b3a42ac34148cf7e83fc49e707a61f50cceddf3a466121183484dedd2"
+    },
+    {
+      "bytes": 7814,
+      "path": "src/bcir_stateful_probe.h",
+      "sha256": "78ece6f6251f829f2aa7b0c2f3ca1940b77d5e492ec04f546da4cec4436aafc1"
+    },
+    {
+      "bytes": 45528,
+      "path": "src/common_wsp_sim.py",
+      "sha256": "ac13dc83366dbf2e5e136afc1f44b12e2a35c6d629aa52fa5ac5ac8d1913b9c8"
+    },
+    {
+      "bytes": 25673,
+      "path": "src/make_wsp_sim_plots.py",
+      "sha256": "a800f9905c93ed5a061d0c44fff329e75f6ddeaeba6a3f5c06d74d2706c02750"
+    },
+    {
+      "bytes": 31814,
+      "path": "src/stage1_wsp_ssp_locus_audit.py",
+      "sha256": "6224c9cf60023a80e0537c5decbab187eac40e3d7f7f4ff05b69d08089f73a1e"
+    },
+    {
+      "bytes": 18459,
+      "path": "src/stage2_hybrid_train_editability.py",
+      "sha256": "f5fa75e1db6a72abf69b56d85388035500e1f09f0adf8b23e71bc7520a7afce6"
+    },
+    {
+      "bytes": 44168,
+      "path": "src/stage3_sim_crsi_experiments.py",
+      "sha256": "8a7bca4dafc9a1cbf62df01a9162a9caac488aeefee118791184f80c26fc6da4"
+    }
+  ],
+  "schema": "bcir.study.manifest.v1",
+  "study": "wsp-sim-hybrid-study"
+}

@@ -1,0 +1,3005 @@
+{
+  "arms_detail": {
+    "01_Baseline_Clean": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "mode": "clean"
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4589280844875987,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.3658008658008658,
+        "distinct_8": 0.4246575342465753,
+        "edit_l2": 0.0,
+        "eval_seconds": 9.565664922003634,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.333333333333333,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.3015475273132324,
+        "n_sequences": 12,
+        "ppl": 4.301346376427262,
+        "rep4_rate": 0.6341991341991342,
+        "rep8_rate": 0.5753424657534246,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 21.29618098796181,
+        "top1_agreement": 1.0
+      },
+      "heldout_test": {
+        "ce": 1.5175388460510497,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.3429383116883117,
+        "distinct_8": 0.40881849315068497,
+        "edit_l2": 0.0,
+        "eval_seconds": 23.942633219005074,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.78125,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.3170747756958008,
+        "n_sequences": 32,
+        "ppl": 4.560986081315537,
+        "rep4_rate": 0.6570616883116883,
+        "rep8_rate": 0.5911815068493151,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dia . \n\n = = = = = = Commission = = = \n\n The complete of the second of the contr"
+        ],
+        "score": 20.179210772104604,
+        "top1_agreement": 1.0
+      },
+      "locus": "None",
+      "selected_cfg": {
+        "mode": "clean"
+      },
+      "tier": "Baseline"
+    },
+    "02_Control_50M_ExpD_BlindSVD_L2": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 0.1,
+            "layer": 2
+          },
+          "evolve_delta_ce": -8e-05,
+          "evolve_kl": 2.6e-05,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.751
+        },
+        {
+          "cfg": {
+            "alpha": 0.3,
+            "layer": 2
+          },
+          "evolve_delta_ce": -8e-05,
+          "evolve_kl": 0.00024,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 23.08
+        },
+        {
+          "cfg": {
+            "alpha": 1.0,
+            "layer": 2
+          },
+          "evolve_delta_ce": 0.00167,
+          "evolve_kl": 0.002829,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 35.7
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4605984898256488,
+        "changed_params": 475136,
+        "changed_pct": 4.733984383718002,
+        "delta_ce": 0.0016704053380500739,
+        "distinct_4": 0.5941558441558441,
+        "distinct_8": 0.7557077625570776,
+        "edit_l2": 0.8502380382051926,
+        "eval_seconds": 11.829627744999016,
+        "kl_from_clean": 0.0028286681293145616,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.0,
+        "max_abs_logit_delta": 1.0966129302978516,
+        "mean_entropy": 1.1954659223556519,
+        "n_sequences": 12,
+        "ppl": 4.308537372642421,
+        "rep4_rate": 0.40584415584415573,
+        "rep8_rate": 0.2442922374429224,
+        "sample_generations": [
+          "arch 1967 . \n\n = = = = = = Company = = = \n\n The complete of the second control o",
+          "r , and the second of the second season . \n\n = = = = = = Company = = = \n\n = = = ",
+          " and the second of the second of the second season . \n\n = = = = = = Company = = "
+        ],
+        "score": 35.700279694936626,
+        "top1_agreement": 0.9638671875
+      },
+      "heldout_test": {
+        "ce": 1.518120595966236,
+        "changed_params": 475136,
+        "changed_pct": 4.733984383718002,
+        "delta_ce": 0.0005817499151863359,
+        "distinct_4": 0.5409902597402597,
+        "distinct_8": 0.6964897260273972,
+        "edit_l2": 0.8502380382051926,
+        "eval_seconds": 29.375100965000456,
+        "kl_from_clean": 0.0029542204736889115,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.03125,
+        "max_abs_logit_delta": 1.042125940322876,
+        "mean_entropy": 1.2199149131774902,
+        "n_sequences": 32,
+        "ppl": 4.563640206525212,
+        "rep4_rate": 0.4590097402597403,
+        "rep8_rate": 0.3035102739726028,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t the second of the second season . \n\n = = = = = = Company = = = \n\n = = = = = = ",
+          "dia . \n\n = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = ="
+        ],
+        "score": 32.79760556417827,
+        "top1_agreement": 0.959716796875
+      },
+      "locus": "L2.wdown (100% dense, blind SVD)",
+      "selected_cfg": {
+        "alpha": 1.0,
+        "layer": 2
+      },
+      "tier": "Control_50M_ExpD"
+    },
+    "03_WSP_L0_GDN2_wdown_SparseTopK": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 1.0,
+            "k": 16,
+            "layer": 0
+          },
+          "evolve_delta_ce": -3e-05,
+          "evolve_kl": 0.000386,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.116
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 32,
+            "layer": 0
+          },
+          "evolve_delta_ce": -0.00025,
+          "evolve_kl": 0.000428,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.116
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 32,
+            "layer": 0
+          },
+          "evolve_delta_ce": 9e-05,
+          "evolve_kl": 0.001324,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.951
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 64,
+            "layer": 0
+          },
+          "evolve_delta_ce": 7e-05,
+          "evolve_kl": 0.000767,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.362
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 64,
+            "layer": 0
+          },
+          "evolve_delta_ce": 0.00106,
+          "evolve_kl": 0.00238,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 23.017
+        },
+        {
+          "cfg": {
+            "alpha": 1.2,
+            "k": 128,
+            "layer": 0
+          },
+          "evolve_delta_ce": 0.00125,
+          "evolve_kl": 0.00326,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 24.703
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.460173358130448,
+        "changed_params": 65536,
+        "changed_pct": 0.6529633632714484,
+        "delta_ce": 0.0012452736428492095,
+        "distinct_4": 0.42316017316017324,
+        "distinct_8": 0.5,
+        "edit_l2": 0.5172724170968441,
+        "eval_seconds": 11.78718677500001,
+        "kl_from_clean": 0.0032604305556166633,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.333333333333333,
+        "max_abs_logit_delta": 1.9659085273742676,
+        "mean_entropy": 1.1873664855957031,
+        "n_sequences": 12,
+        "ppl": 4.306706066146154,
+        "rep4_rate": 0.5768398268398269,
+        "rep8_rate": 0.5,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The complete of the second control o",
+          "r , and the second of the second of the second of the second of the second of th",
+          " and the second of the second of the second of the second of the second of the s"
+        ],
+        "score": 24.7027053933974,
+        "top1_agreement": 0.9602864583333334
+      },
+      "heldout_test": {
+        "ce": 1.520193991836106,
+        "changed_params": 65536,
+        "changed_pct": 0.6529633632714484,
+        "delta_ce": 0.002655145785056323,
+        "distinct_4": 0.325487012987013,
+        "distinct_8": 0.3672945205479452,
+        "edit_l2": 0.5172724170968441,
+        "eval_seconds": 29.684183578996453,
+        "kl_from_clean": 0.0034794611956645402,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.53125,
+        "max_abs_logit_delta": 2.053133964538574,
+        "mean_entropy": 1.2395076751708984,
+        "n_sequences": 32,
+        "ppl": 4.573112255541311,
+        "rep4_rate": 0.674512987012987,
+        "rep8_rate": 0.6327054794520548,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = R",
+          "t of the second of the second of the second of the second of the second of the s",
+          "dier , and the second of the second of the second of the second of the second of"
+        ],
+        "score": 18.564610639399376,
+        "top1_agreement": 0.9613037109375
+      },
+      "locus": "L0.wdown (sparse top-k)",
+      "selected_cfg": {
+        "alpha": 1.2,
+        "k": 128,
+        "layer": 0
+      },
+      "tier": "Tier2_WSP"
+    },
+    "04_WSP_L1_GDN2_wdown_SparseTopK": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 1.0,
+            "k": 16,
+            "layer": 1
+          },
+          "evolve_delta_ce": -0.00034,
+          "evolve_kl": 0.000455,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.592
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 32,
+            "layer": 1
+          },
+          "evolve_delta_ce": -0.00037,
+          "evolve_kl": 0.000401,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.592
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 32,
+            "layer": 1
+          },
+          "evolve_delta_ce": -0.00016,
+          "evolve_kl": 0.001225,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.546
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 64,
+            "layer": 1
+          },
+          "evolve_delta_ce": -0.00055,
+          "evolve_kl": 0.000742,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.592
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 64,
+            "layer": 1
+          },
+          "evolve_delta_ce": -3e-05,
+          "evolve_kl": 0.002283,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.971
+        },
+        {
+          "cfg": {
+            "alpha": 1.2,
+            "k": 128,
+            "layer": 1
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.002216,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 19.08
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4588967718995045,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": -3.131258809419002e-05,
+        "distinct_4": 0.37987012987012986,
+        "distinct_8": 0.4337899543378996,
+        "edit_l2": 0.48654989053612036,
+        "eval_seconds": 12.159713499000645,
+        "kl_from_clean": 0.0022832694362428644,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 4.75,
+        "max_abs_logit_delta": 1.4994935989379883,
+        "mean_entropy": 1.256292700767517,
+        "n_sequences": 12,
+        "ppl": 4.301211692248593,
+        "rep4_rate": 0.6201298701298702,
+        "rep8_rate": 0.5662100456621004,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The complete of the second control o",
+          "r , and the second of the second of the second of the second of the second of th",
+          " and the second of the second of the second of the second of the second of the s"
+        ],
+        "score": 21.971253632212534,
+        "top1_agreement": 0.96484375
+      },
+      "heldout_test": {
+        "ce": 1.5175334492771673,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": -5.396773882448969e-06,
+        "distinct_4": 0.29667207792207795,
+        "distinct_8": 0.3377568493150685,
+        "edit_l2": 0.48654989053612036,
+        "eval_seconds": 29.19130337599927,
+        "kl_from_clean": 0.0023417352237114406,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.75,
+        "max_abs_logit_delta": 1.5972909927368164,
+        "mean_entropy": 1.264519453048706,
+        "n_sequences": 32,
+        "ppl": 4.560961466771395,
+        "rep4_rate": 0.703327922077922,
+        "rep8_rate": 0.6622431506849316,
+        "sample_generations": [
+          "\n\n = = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = =",
+          "t , and the second of the second of the second of the second of the second of th",
+          "dier , and the second of the second of the second of the second of the second of"
+        ],
+        "score": 17.138659713574096,
+        "top1_agreement": 0.9688720703125
+      },
+      "locus": "L1.wdown (sparse top-k)",
+      "selected_cfg": {
+        "alpha": 1.4,
+        "k": 64,
+        "layer": 1
+      },
+      "tier": "Tier2_WSP"
+    },
+    "05_WSP_L2_GDN2_wdown_SparseTopK": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 1.0,
+            "k": 16,
+            "layer": 2
+          },
+          "evolve_delta_ce": -0.00036,
+          "evolve_kl": 0.000486,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.812
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 32,
+            "layer": 2
+          },
+          "evolve_delta_ce": -0.0004,
+          "evolve_kl": 0.000445,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.812
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 32,
+            "layer": 2
+          },
+          "evolve_delta_ce": -0.0001,
+          "evolve_kl": 0.001388,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 23.611
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 64,
+            "layer": 2
+          },
+          "evolve_delta_ce": -0.0004,
+          "evolve_kl": 0.000847,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.966
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 64,
+            "layer": 2
+          },
+          "evolve_delta_ce": 0.00046,
+          "evolve_kl": 0.00266,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 29.002
+        },
+        {
+          "cfg": {
+            "alpha": 1.2,
+            "k": 128,
+            "layer": 2
+          },
+          "evolve_delta_ce": 0.00032,
+          "evolve_kl": 0.00329,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 29.022
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4592491375682517,
+        "changed_params": 65536,
+        "changed_pct": 0.6529633632714484,
+        "delta_ce": 0.00032105308065299987,
+        "distinct_4": 0.4837662337662338,
+        "distinct_8": 0.6061643835616438,
+        "edit_l2": 0.519455741642942,
+        "eval_seconds": 11.600037365002208,
+        "kl_from_clean": 0.0032901371765368093,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 4.833333333333333,
+        "max_abs_logit_delta": 1.0302696228027344,
+        "mean_entropy": 1.192694902420044,
+        "n_sequences": 12,
+        "ppl": 4.302727558636907,
+        "rep4_rate": 0.5162337662337663,
+        "rep8_rate": 0.39383561643835624,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Cross = = = \n\n = = = = = = Reception = = = \n\n The sec",
+          "r , and the second of the second of the second . \n\n = = = = = = Company = = = \n\n",
+          " and the second of the second of the second . \n\n = = = = = = = Cross = = \n\n = = "
+        ],
+        "score": 29.022475380333773,
+        "top1_agreement": 0.9619140625
+      },
+      "heldout_test": {
+        "ce": 1.5187148890285913,
+        "changed_params": 65536,
+        "changed_pct": 0.6529633632714484,
+        "delta_ce": 0.0011760429775415915,
+        "distinct_4": 0.4508928571428571,
+        "distinct_8": 0.5779109589041096,
+        "edit_l2": 0.519455741642942,
+        "eval_seconds": 29.478301556002407,
+        "kl_from_clean": 0.0036606109702756132,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.46875,
+        "max_abs_logit_delta": 1.2873878479003906,
+        "mean_entropy": 1.2210400104522705,
+        "n_sequences": 32,
+        "ppl": 4.566353152301615,
+        "rep4_rate": 0.5491071428571428,
+        "rep8_rate": 0.42208904109589046,
+        "sample_generations": [
+          "\n\n = = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = =",
+          "t , and the second of the second of the second . \n\n = = = = = = Cross = = = \n\n =",
+          "dia . \n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n The secon"
+        ],
+        "score": 27.22716709519527,
+        "top1_agreement": 0.9630126953125
+      },
+      "locus": "L2.wdown (sparse top-k)",
+      "selected_cfg": {
+        "alpha": 1.2,
+        "k": 128,
+        "layer": 2
+      },
+      "tier": "Tier2_WSP"
+    },
+    "06_WSP_L3_MLA_wdown_SparseTopK": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 1.0,
+            "k": 16,
+            "layer": 3
+          },
+          "evolve_delta_ce": -6e-05,
+          "evolve_kl": 0.002043,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 25.845
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 32,
+            "layer": 3
+          },
+          "evolve_delta_ce": -0.00049,
+          "evolve_kl": 0.002089,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 26.126
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 32,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.00198,
+          "evolve_kl": 0.006673,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 25.236
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 64,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.00027,
+          "evolve_kl": 0.003577,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 26.905
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 64,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.00547,
+          "evolve_kl": 0.01154,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 27.567
+        },
+        {
+          "cfg": {
+            "alpha": 1.2,
+            "k": 128,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.00627,
+          "evolve_kl": 0.012041,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 26.51
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4644028938232472,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": 0.005474809335648478,
+        "distinct_4": 0.4577922077922078,
+        "distinct_8": 0.6038812785388128,
+        "edit_l2": 0.5824689766583657,
+        "eval_seconds": 11.982278616000258,
+        "kl_from_clean": 0.011539656062719459,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 7.083333333333333,
+        "max_abs_logit_delta": 1.4552545547485352,
+        "mean_entropy": 1.2161240577697754,
+        "n_sequences": 12,
+        "ppl": 4.324960008810315,
+        "rep4_rate": 0.5422077922077922,
+        "rep8_rate": 0.3961187214611872,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = = Cross = = \n\n = = = = = = = = Reception = = = \n\n = =",
+          "r , and the second of the second , and the second of the second , and the second",
+          " and the second of the state of the second , and the second of the state of the "
+        ],
+        "score": 27.567024675440837,
+        "top1_agreement": 0.9342447916666666
+      },
+      "heldout_test": {
+        "ce": 1.5250894059074107,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": 0.007550559856360994,
+        "distinct_4": 0.4691558441558441,
+        "distinct_8": 0.5976027397260273,
+        "edit_l2": 0.5824689766583657,
+        "eval_seconds": 30.732753477001097,
+        "kl_from_clean": 0.01174998163979667,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 6.375,
+        "max_abs_logit_delta": 1.5007638931274414,
+        "mean_entropy": 1.279144287109375,
+        "n_sequences": 32,
+        "ppl": 4.59555442065318,
+        "rep4_rate": 0.5308441558441559,
+        "rep8_rate": 0.4023972602739726,
+        "sample_generations": [
+          "\n\n = = = = = = = = = = = = \n\n The second started = = = \n\n = = = = = = = = = = = ",
+          "t , and the second starts . \n\n = = = = = = = = Crossing = = = \n\n = = = = = = = =",
+          "dia . \n\n = = = = = = = = Cross = = = \n\n = = = = = = = = Reception = = = \n\n = = ="
+        ],
+        "score": 27.6325309396851,
+        "top1_agreement": 0.936767578125
+      },
+      "locus": "L3.wdown (sparse top-k)",
+      "selected_cfg": {
+        "alpha": 1.4,
+        "k": 64,
+        "layer": 3
+      },
+      "tier": "Tier2_WSP"
+    },
+    "07_WSP_L3_MLA_wdown_DenseRank1": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "alpha": 0.4,
+            "k": 928,
+            "layer": 3
+          },
+          "evolve_delta_ce": -3e-05,
+          "evolve_kl": 0.002078,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 30.824
+        },
+        {
+          "cfg": {
+            "alpha": 0.8,
+            "k": 928,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.0043,
+          "evolve_kl": 0.008748,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 29.159
+        },
+        {
+          "cfg": {
+            "alpha": 1.4,
+            "k": 928,
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.02026,
+          "evolve_kl": 0.028616,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 25.284
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4588984251720536,
+        "changed_params": 475135,
+        "changed_pct": 4.733974420287776,
+        "delta_ce": -2.9659315545105258e-05,
+        "distinct_4": 0.5108225108225107,
+        "distinct_8": 0.6472602739726027,
+        "edit_l2": 0.26549022420403845,
+        "eval_seconds": 11.999643577000825,
+        "kl_from_clean": 0.0020784008408579603,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.25,
+        "max_abs_logit_delta": 0.5636377334594727,
+        "mean_entropy": 1.228605031967163,
+        "n_sequences": 12,
+        "ppl": 4.301218803329689,
+        "rep4_rate": 0.4891774891774892,
+        "rep8_rate": 0.3527397260273973,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n The s",
+          "r , and the second of the second of the second . \n\n = = = = = = = Cross = = \n\n =",
+          " and the second of the second of the second of the second . \n\n = = = = = = = Cro"
+        ],
+        "score": 30.82399335823993,
+        "top1_agreement": 0.9661458333333334
+      },
+      "heldout_test": {
+        "ce": 1.518254628214446,
+        "changed_params": 475135,
+        "changed_pct": 4.733974420287776,
+        "delta_ce": 0.0007157821633962946,
+        "distinct_4": 0.40665584415584416,
+        "distinct_8": 0.5136986301369864,
+        "edit_l2": 0.26549022420403845,
+        "eval_seconds": 30.025975667995226,
+        "kl_from_clean": 0.002144454196073017,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.8125,
+        "max_abs_logit_delta": 0.5701451301574707,
+        "mean_entropy": 1.2433912754058838,
+        "n_sequences": 32,
+        "ppl": 4.56425192247603,
+        "rep4_rate": 0.5933441558441558,
+        "rep8_rate": 0.4863013698630137,
+        "sample_generations": [
+          "\n\n = = = = = = = = = Cross = = = \n\n = = = = = = = = Reception = = = \n\n = = = = =",
+          "t , and the second of the second of the second of the second . \n\n = = = = = = = ",
+          "dia . \n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = ="
+        ],
+        "score": 24.445608314724705,
+        "top1_agreement": 0.967041015625
+      },
+      "locus": "L3.wdown (100% dense, act-contrast)",
+      "selected_cfg": {
+        "alpha": 0.4,
+        "k": 928,
+        "layer": 3
+      },
+      "tier": "Tier2_WSP_Ablation"
+    },
+    "08_WSP_L3_MLA_G1_HeadGate": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "delta_bg": -0.8,
+            "heads": [
+              0
+            ],
+            "layer": 3
+          },
+          "evolve_delta_ce": -0.00026,
+          "evolve_kl": 2.8e-05,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        },
+        {
+          "cfg": {
+            "delta_bg": -1.8,
+            "heads": [
+              0
+            ],
+            "layer": 3
+          },
+          "evolve_delta_ce": -0.00045,
+          "evolve_kl": 0.000123,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.693
+        },
+        {
+          "cfg": {
+            "delta_bg": -0.8,
+            "heads": [
+              0,
+              2
+            ],
+            "layer": 3
+          },
+          "evolve_delta_ce": -0.00024,
+          "evolve_kl": 9.2e-05,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        },
+        {
+          "cfg": {
+            "delta_bg": -1.8,
+            "heads": [
+              0,
+              2
+            ],
+            "layer": 3
+          },
+          "evolve_delta_ce": -0.00035,
+          "evolve_kl": 0.000368,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.693
+        },
+        {
+          "cfg": {
+            "delta_bg": -1.2,
+            "heads": [
+              0,
+              2,
+              3
+            ],
+            "layer": 3
+          },
+          "evolve_delta_ce": 0.00016,
+          "evolve_kl": 0.000286,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 23.81
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4590921403917563,
+        "changed_params": 3,
+        "changed_pct": 2.989029067709878e-05,
+        "delta_ce": 0.00016405590415757842,
+        "distinct_4": 0.408008658008658,
+        "distinct_8": 0.47716894977168955,
+        "edit_l2": 2.0784610516732713,
+        "eval_seconds": 11.691563380001753,
+        "kl_from_clean": 0.00028639203951279246,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.083333333333333,
+        "max_abs_logit_delta": 0.9279537200927734,
+        "mean_entropy": 1.3098175525665283,
+        "n_sequences": 12,
+        "ppl": 4.302052095583256,
+        "rep4_rate": 0.591991341991342,
+        "rep8_rate": 0.5228310502283104,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 23.810006497394262,
+        "top1_agreement": 0.9908854166666666
+      },
+      "heldout_test": {
+        "ce": 1.5177390829799307,
+        "changed_params": 3,
+        "changed_pct": 2.989029067709878e-05,
+        "delta_ce": 0.00020023692888093692,
+        "distinct_4": 0.3612012987012987,
+        "distinct_8": 0.4259417808219178,
+        "edit_l2": 2.0784610516732713,
+        "eval_seconds": 29.96547028799978,
+        "kl_from_clean": 0.00031430183464443875,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.15625,
+        "max_abs_logit_delta": 1.0208168029785156,
+        "mean_entropy": 1.3445334434509277,
+        "n_sequences": 32,
+        "ppl": 4.561899450603207,
+        "rep4_rate": 0.6387987012987013,
+        "rep8_rate": 0.5740582191780822,
+        "sample_generations": [
+          "\n\n = = = = = = = Company = = = \n\n The complete of the second of the control of t",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dier , and the song of the song of the song of the song of the song of the song "
+        ],
+        "score": 21.1460561020433,
+        "top1_agreement": 0.986083984375
+      },
+      "locus": "L3.bg (1-3 scalars)",
+      "selected_cfg": {
+        "delta_bg": -1.2,
+        "heads": [
+          0,
+          2,
+          3
+        ],
+        "layer": 3
+      },
+      "tier": "Tier2_WSP"
+    },
+    "09_WSP_L3_MLA_HeadOut_Scale": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "heads": [
+              0
+            ],
+            "layer": 3,
+            "scale": 0.0
+          },
+          "evolve_delta_ce": -0.00048,
+          "evolve_kl": 0.000357,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.693
+        },
+        {
+          "cfg": {
+            "heads": [
+              0
+            ],
+            "layer": 3,
+            "scale": 0.4
+          },
+          "evolve_delta_ce": -0.00037,
+          "evolve_kl": 0.000127,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.693
+        },
+        {
+          "cfg": {
+            "heads": [
+              0,
+              2
+            ],
+            "layer": 3,
+            "scale": 0.4
+          },
+          "evolve_delta_ce": -0.00033,
+          "evolve_kl": 0.000339,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.693
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.458447907280209,
+        "changed_params": 32430,
+        "changed_pct": 0.3231140422194378,
+        "delta_ce": -0.00048017720738968706,
+        "distinct_4": 0.3906926406926407,
+        "distinct_8": 0.4509132420091324,
+        "edit_l2": 3.299414510878759,
+        "eval_seconds": 11.469688988996495,
+        "kl_from_clean": 0.0003567989634981365,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.083333333333333,
+        "max_abs_logit_delta": 1.0572834014892578,
+        "mean_entropy": 1.302406907081604,
+        "n_sequences": 12,
+        "ppl": 4.299281463737893,
+        "rep4_rate": 0.6093073593073592,
+        "rep8_rate": 0.5490867579908676,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 22.692507264425075,
+        "top1_agreement": 0.9853515625
+      },
+      "heldout_test": {
+        "ce": 1.5172479305624273,
+        "changed_params": 32430,
+        "changed_pct": 0.3231140422194378,
+        "delta_ce": -0.0002909154886223675,
+        "distinct_4": 0.351461038961039,
+        "distinct_8": 0.4178082191780822,
+        "edit_l2": 3.299414510878759,
+        "eval_seconds": 29.6699404280007,
+        "kl_from_clean": 0.00039305125874263436,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.1875,
+        "max_abs_logit_delta": 0.8311100006103516,
+        "mean_entropy": 1.3344289064407349,
+        "n_sequences": 32,
+        "ppl": 4.559659412804657,
+        "rep4_rate": 0.648538961038961,
+        "rep8_rate": 0.5821917808219178,
+        "sample_generations": [
+          "\n\n = = = = = = = Company = = = \n\n The complete of the second of the control of t",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dier , and the song of the song of the song of the song of the song of the song "
+        ],
+        "score": 20.657300747198008,
+        "top1_agreement": 0.98388671875
+      },
+      "locus": "L3.wo (head columns)",
+      "selected_cfg": {
+        "heads": [
+          0
+        ],
+        "layer": 3,
+        "scale": 0.0
+      },
+      "tier": "Tier2_WSP"
+    },
+    "10_SSP_Weight_GDN2_StateGates": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "delta_alpha": -0.4,
+            "delta_erase": 0.4,
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "top_k_chans": 32
+          },
+          "evolve_delta_ce": 0.00027,
+          "evolve_kl": 0.000262,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.671
+        },
+        {
+          "cfg": {
+            "delta_alpha": -0.4,
+            "delta_erase": 0.6,
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "top_k_chans": 64
+          },
+          "evolve_delta_ce": 0.00033,
+          "evolve_kl": 0.00047,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.128
+        },
+        {
+          "cfg": {
+            "delta_alpha": -0.8,
+            "delta_erase": 1.0,
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "top_k_chans": 64
+          },
+          "evolve_delta_ce": 0.00108,
+          "evolve_kl": 0.001536,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 22.1
+        },
+        {
+          "cfg": {
+            "delta_alpha": -0.6,
+            "delta_erase": 0.8,
+            "layers": [
+              0,
+              1,
+              2
+            ],
+            "top_k_chans": 128
+          },
+          "evolve_delta_ce": 0.00275,
+          "evolve_kl": 0.001976,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.264
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4592017274831803,
+        "changed_params": 192,
+        "changed_pct": 0.0019129786033343218,
+        "delta_ce": 0.0002736429955816355,
+        "distinct_4": 0.3906926406926407,
+        "distinct_8": 0.4509132420091324,
+        "edit_l2": 5.542562967922716,
+        "eval_seconds": 11.656645470000512,
+        "kl_from_clean": 0.0002620231937884941,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.083333333333333,
+        "max_abs_logit_delta": 0.4259343147277832,
+        "mean_entropy": 1.3065083026885986,
+        "n_sequences": 12,
+        "ppl": 4.302523570792892,
+        "rep4_rate": 0.6093073593073592,
+        "rep8_rate": 0.5490867579908676,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 22.670783909034864,
+        "top1_agreement": 0.9892578125
+      },
+      "heldout_test": {
+        "ce": 1.5178984164772933,
+        "changed_params": 192,
+        "changed_pct": 0.0019129786033343218,
+        "delta_ce": 0.0003595704262435717,
+        "distinct_4": 0.32589285714285715,
+        "distinct_8": 0.386986301369863,
+        "edit_l2": 5.542562967922716,
+        "eval_seconds": 30.23830790899956,
+        "kl_from_clean": 0.00028747054724052304,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.75,
+        "max_abs_logit_delta": 0.5128259658813477,
+        "mean_entropy": 1.3178331851959229,
+        "n_sequences": 32,
+        "ppl": 4.562626371907207,
+        "rep4_rate": 0.6741071428571429,
+        "rep8_rate": 0.613013698630137,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dia . \n\n = = = = = = Commission = = = \n\n The complete of the second of the contr"
+        ],
+        "score": 19.121896039202205,
+        "top1_agreement": 0.98828125
+      },
+      "locus": "L0-L2 ba_chan/be_chan",
+      "selected_cfg": {
+        "delta_alpha": -0.4,
+        "delta_erase": 0.4,
+        "layers": [
+          0,
+          1,
+          2
+        ],
+        "top_k_chans": 32
+      },
+      "tier": "Tier2_SSP_Weight"
+    },
+    "11_WSP_CanonAC_Taps": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "layers": [
+              3
+            ],
+            "tap_scale": 0.6
+          },
+          "evolve_delta_ce": 0.00293,
+          "evolve_kl": 0.000785,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 25.565
+        },
+        {
+          "cfg": {
+            "layers": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "tap_scale": 0.6
+          },
+          "evolve_delta_ce": 0.02957,
+          "evolve_kl": 0.02833,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 19.055
+        },
+        {
+          "cfg": {
+            "layers": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "tap_scale": 0.85
+          },
+          "evolve_delta_ce": 0.00431,
+          "evolve_kl": 0.003148,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 26.376
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4632335642136305,
+        "changed_params": 12133,
+        "changed_pct": 0.12088629892841316,
+        "delta_ce": 0.004305479726031791,
+        "distinct_4": 0.4545454545454546,
+        "distinct_8": 0.5433789954337899,
+        "edit_l2": 1.8831866990468737,
+        "eval_seconds": 11.835689810999611,
+        "kl_from_clean": 0.003148439203706201,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 4.666666666666667,
+        "max_abs_logit_delta": 1.1820030212402344,
+        "mean_entropy": 1.309201955795288,
+        "n_sequences": 12,
+        "ppl": 4.319905660686978,
+        "rep4_rate": 0.5454545454545454,
+        "rep8_rate": 0.4566210045662101,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = = Company = = = \n\n The complete of the second of the ",
+          "r , and the second of the second of the second of the second of the second of th",
+          " and the second of the second of the second of the second of the second of the s"
+        ],
+        "score": 26.37619338252027,
+        "top1_agreement": 0.9674479166666666
+      },
+      "heldout_test": {
+        "ce": 1.522358832751912,
+        "changed_params": 12133,
+        "changed_pct": 0.12088629892841316,
+        "delta_ce": 0.0048199867008622554,
+        "distinct_4": 0.34009740259740256,
+        "distinct_8": 0.3835616438356164,
+        "edit_l2": 1.8831866990468737,
+        "eval_seconds": 29.570034845004557,
+        "kl_from_clean": 0.0034045796133792697,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.25,
+        "max_abs_logit_delta": 1.1583003997802734,
+        "mean_entropy": 1.32285475730896,
+        "n_sequences": 32,
+        "ppl": 4.583023039829745,
+        "rep4_rate": 0.6599025974025974,
+        "rep8_rate": 0.6164383561643836,
+        "sample_generations": [
+          "\n\n = = = = = = = = = = = = = \n\n The complete of the control of the control of th",
+          "t and the second of the second of the second of the second of the second of the ",
+          "dia . \n\n = = = = = = = = Company = = = \n\n The complete of the second of the cont"
+        ],
+        "score": 19.24718849711145,
+        "top1_agreement": 0.9627685546875
+      },
+      "locus": "Canon-A/C delayed taps",
+      "selected_cfg": {
+        "layers": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "tap_scale": 0.85
+      },
+      "tier": "Tier2_WSP"
+    },
+    "12_WSP_mHC_Streams": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "delta_offdiag": -0.4
+          },
+          "evolve_delta_ce": -0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        },
+        {
+          "cfg": {
+            "delta_offdiag": 0.4
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        },
+        {
+          "cfg": {
+            "delta_offdiag": 0.9
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.296
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4589274684136615,
+        "changed_params": 16,
+        "changed_pct": 0.00015941488361119347,
+        "delta_ce": -6.160739371985358e-07,
+        "distinct_4": 0.3658008658008658,
+        "distinct_8": 0.4246575342465753,
+        "edit_l2": 1.5999999791383754,
+        "eval_seconds": 11.59398113899806,
+        "kl_from_clean": 6.2083798714675574e-09,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.333333333333333,
+        "max_abs_logit_delta": 0.002555251121520996,
+        "mean_entropy": 1.3015332221984863,
+        "n_sequences": 12,
+        "ppl": 4.301343726480681,
+        "rep4_rate": 0.6341991341991342,
+        "rep8_rate": 0.5753424657534246,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 21.29618098796181,
+        "top1_agreement": 1.0
+      },
+      "heldout_test": {
+        "ce": 1.517537840850765,
+        "changed_params": 16,
+        "changed_pct": 0.00015941488361119347,
+        "delta_ce": -1.0052002847871222e-06,
+        "distinct_4": 0.3429383116883117,
+        "distinct_8": 0.40881849315068497,
+        "edit_l2": 1.5999999791383754,
+        "eval_seconds": 29.751662647002377,
+        "kl_from_clean": 6.677236030041534e-09,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.78125,
+        "max_abs_logit_delta": 0.0023717880249023438,
+        "mean_entropy": 1.317060112953186,
+        "n_sequences": 32,
+        "ppl": 4.5609814966133335,
+        "rep4_rate": 0.6570616883116883,
+        "rep8_rate": 0.5911815068493151,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dia . \n\n = = = = = = Commission = = = \n\n The complete of the second of the contr"
+        ],
+        "score": 20.179210772104604,
+        "top1_agreement": 1.0
+      },
+      "locus": "L0-L3 mhc_hres (32 params)",
+      "selected_cfg": {
+        "delta_offdiag": -0.4
+      },
+      "tier": "Tier2_WSP"
+    },
+    "13_SSP_Live_GDN2_EchoDamp": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -0.6,
+            "gdn_erase_shift": 0.9,
+            "state_echo_damp": 0.25
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 18.199
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -1.0,
+            "gdn_erase_shift": 1.5,
+            "state_echo_damp": 0.4
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.396
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -1.4,
+            "gdn_erase_shift": 2.0,
+            "state_echo_damp": 0.55
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 24.076
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 0,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -0.8,
+            "gdn_erase_shift": 1.2,
+            "state_echo_damp": 0.35
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 14.299
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4589280844875987,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.40151515151515144,
+        "distinct_8": 0.5011415525114156,
+        "edit_l2": 0.0,
+        "eval_seconds": 9.57541407399549,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 11.333333333333334,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.4032409191131592,
+        "n_sequences": 12,
+        "ppl": 4.301346376427262,
+        "rep4_rate": 0.5984848484848485,
+        "rep8_rate": 0.49885844748858443,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =",
+          "r , and the services and the ser and the ser and the ser and the ser and the ser",
+          " and the song of the second and the served as a secure the ser and the ser and t"
+        ],
+        "score": 24.075861353258613,
+        "top1_agreement": 1.0
+      },
+      "heldout_test": {
+        "ce": 1.5175388460510497,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.48133116883116883,
+        "distinct_8": 0.6113013698630136,
+        "edit_l2": 0.0,
+        "eval_seconds": 23.4665725379964,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 31,
+        "loop_seq_rate": 0.96875,
+        "max_8gram_repeats_mean": 7.71875,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.5117162466049194,
+        "n_sequences": 32,
+        "ppl": 4.560986081315537,
+        "rep4_rate": 0.5186688311688312,
+        "rep8_rate": 0.38869863013698636,
+        "sample_generations": [
+          "\n\n = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =",
+          "t and the served as a second of the ser and the ser and the ser and the ser and ",
+          "dia . \n\n = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+        ],
+        "score": 30.47886830635118,
+        "top1_agreement": 1.0
+      },
+      "locus": "Live GDN-2 S_t + gates (0 weight edits)",
+      "selected_cfg": {
+        "adaptive_echo_only": 1,
+        "echo_ngram": 4,
+        "echo_window": 48,
+        "gdn_alpha_shift": -1.4,
+        "gdn_erase_shift": 2.0,
+        "state_echo_damp": 0.55
+      },
+      "tier": "Tier1_SSP_Live"
+    },
+    "14_SSP_Live_MLA_RepeatBias": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "mla_repeat_logit_bias": -1.0
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.752
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "mla_repeat_logit_bias": -2.5
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.752
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "mla_repeat_logit_bias": -4.0
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.752
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 0,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "mla_repeat_logit_bias": -2.0
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.752
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4589280844875987,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.3722943722943723,
+        "distinct_8": 0.43607305936073054,
+        "edit_l2": 0.0,
+        "eval_seconds": 9.18964213700383,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.333333333333333,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.300029993057251,
+        "n_sequences": 12,
+        "ppl": 4.301346376427262,
+        "rep4_rate": 0.6277056277056278,
+        "rep8_rate": 0.5639269406392694,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 21.751764217517643,
+        "top1_agreement": 1.0
+      },
+      "heldout_test": {
+        "ce": 1.5175388460510497,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.3445616883116883,
+        "distinct_8": 0.41267123287671237,
+        "edit_l2": 0.0,
+        "eval_seconds": 23.322798014996806,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.8125,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.3167965412139893,
+        "n_sequences": 32,
+        "ppl": 4.560986081315537,
+        "rep4_rate": 0.6554383116883117,
+        "rep8_rate": 0.5873287671232876,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dia . \n\n = = = = = = Commission = = = \n\n The complete of the second of the contr"
+        ],
+        "score": 20.31308374844334,
+        "top1_agreement": 1.0
+      },
+      "locus": "Live L3 MLA repeat-key bias (0 weight edits)",
+      "selected_cfg": {
+        "adaptive_echo_only": 1,
+        "echo_ngram": 4,
+        "echo_window": 48,
+        "mla_repeat_logit_bias": -1.0
+      },
+      "tier": "Tier1_SSP_Live"
+    },
+    "15_Harness_Decoding_NgramGuard": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "ngram_block_penalty": 1.5,
+            "presence_penalty": 0.0,
+            "rep_window": 32
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 0.5833,
+          "evolve_score": 68.832
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "ngram_block_penalty": 3.5,
+            "presence_penalty": 0.0,
+            "rep_window": 32
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 0.25,
+          "evolve_score": 84.178
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "ngram_block_penalty": 5.0,
+            "presence_penalty": 0.15,
+            "rep_window": 32
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 0.1667,
+          "evolve_score": 90.499
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 3,
+            "echo_window": 48,
+            "ngram_block_penalty": 5.0,
+            "presence_penalty": 0.25,
+            "rep_window": 48
+          },
+          "evolve_delta_ce": 0.0,
+          "evolve_kl": 0.0,
+          "evolve_loop_rate": 0.3333,
+          "evolve_score": 82.05
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4589280844875987,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.9512987012987012,
+        "distinct_8": 0.9851598173515982,
+        "edit_l2": 0.0,
+        "eval_seconds": 9.063882649999869,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 2,
+        "loop_seq_rate": 0.16666666666666666,
+        "max_8gram_repeats_mean": 1.1666666666666667,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.2424553632736206,
+        "n_sequences": 12,
+        "ppl": 4.301346376427262,
+        "rep4_rate": 0.04870129870129871,
+        "rep8_rate": 0.01484018264840183,
+        "sample_generations": [
+          "arch 1960 . \n\n = = Reception = \n\n The first season of the company off @-@ produc",
+          "r , and this was a second of the series . \n\n = = Reception = \n\n The first season",
+          " and the song of this was a second several started that the song of this were se"
+        ],
+        "score": 90.4986508924865,
+        "top1_agreement": 1.0
+      },
+      "heldout_test": {
+        "ce": 1.5175388460510497,
+        "changed_params": 0,
+        "changed_pct": 0.0,
+        "delta_ce": 0.0,
+        "distinct_4": 0.9326298701298701,
+        "distinct_8": 0.9785958904109588,
+        "edit_l2": 0.0,
+        "eval_seconds": 23.438980329003243,
+        "kl_from_clean": 0.0,
+        "loop_seq_count": 13,
+        "loop_seq_rate": 0.40625,
+        "max_8gram_repeats_mean": 1.40625,
+        "max_abs_logit_delta": 0.0,
+        "mean_entropy": 1.2604395151138306,
+        "n_sequences": 32,
+        "ppl": 4.560986081315537,
+        "rep4_rate": 0.06737012987012989,
+        "rep8_rate": 0.02140410958904111,
+        "sample_generations": [
+          "\n\n = = Company = \n\n The complete of the second official started in this , and th",
+          "t off to this producer . \n\n = = Company = \n\n The second control of the complete ",
+          "dita . \n\n = = Reception = \n\n The second season , and the producers of this star "
+        ],
+        "score": 78.93271326276462,
+        "top1_agreement": 1.0
+      },
+      "locus": "Logit n-gram/presence guard (0 weight edits)",
+      "selected_cfg": {
+        "adaptive_echo_only": 1,
+        "echo_ngram": 4,
+        "echo_window": 48,
+        "ngram_block_penalty": 5.0,
+        "presence_penalty": 0.15,
+        "rep_window": 32
+      },
+      "tier": "Tier1_Harness"
+    },
+    "16_Hybrid_Tier2WSP_plus_Tier1SSP": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -1.4,
+            "gdn_erase_shift": 2.0,
+            "mla_repeat_logit_bias": -2.0,
+            "ngram_block_penalty": 0.0,
+            "state_echo_damp": 0.55,
+            "wsp_base": "L3.wdown_k64"
+          },
+          "evolve_delta_ce": 0.00547,
+          "evolve_kl": 0.01154,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 23.187
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -1.4,
+            "gdn_erase_shift": 2.0,
+            "mla_repeat_logit_bias": -1.5,
+            "ngram_block_penalty": 2.5,
+            "state_echo_damp": 0.55,
+            "wsp_base": "L3.wdown_k64"
+          },
+          "evolve_delta_ce": 0.00547,
+          "evolve_kl": 0.01154,
+          "evolve_loop_rate": 0.5,
+          "evolve_score": 71.129
+        },
+        {
+          "cfg": {
+            "adaptive_echo_only": 1,
+            "echo_ngram": 4,
+            "echo_window": 48,
+            "gdn_alpha_shift": -1.4,
+            "gdn_erase_shift": 2.0,
+            "mla_repeat_logit_bias": -1.5,
+            "ngram_block_penalty": 5.0,
+            "state_echo_damp": 0.55,
+            "wsp_base": "L3.wdown_k64"
+          },
+          "evolve_delta_ce": 0.00547,
+          "evolve_kl": 0.01154,
+          "evolve_loop_rate": 0.5,
+          "evolve_score": 71.298
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4644028938232472,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": 0.005474809335648478,
+        "distinct_4": 0.8896103896103895,
+        "distinct_8": 0.952054794520548,
+        "edit_l2": 0.5824689766583657,
+        "eval_seconds": 11.559763474004285,
+        "kl_from_clean": 0.011539656062719459,
+        "loop_seq_count": 6,
+        "loop_seq_rate": 0.5,
+        "max_8gram_repeats_mean": 1.5,
+        "max_abs_logit_delta": 1.4552545547485352,
+        "mean_entropy": 1.29060697555542,
+        "n_sequences": 12,
+        "ppl": 4.324960008810315,
+        "rep4_rate": 0.11038961038961038,
+        "rep8_rate": 0.04794520547945205,
+        "sample_generations": [
+          "arch 1960 . \n\n = = Reception = \n\n The Chicago , and the second of this , though ",
+          "r , and this started to three tour . \n\n = = Reception = \n\n The Commander , and t",
+          " and the second of this , though three @-@ time , and the second of this , thoug"
+        ],
+        "score": 71.29808409456089,
+        "top1_agreement": 0.9342447916666666
+      },
+      "heldout_test": {
+        "ce": 1.5250894059074107,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": 0.007550559856360994,
+        "distinct_4": 0.8766233766233766,
+        "distinct_8": 0.9297945205479452,
+        "edit_l2": 0.5824689766583657,
+        "eval_seconds": 30.151564947002043,
+        "kl_from_clean": 0.01174998163979667,
+        "loop_seq_count": 19,
+        "loop_seq_rate": 0.59375,
+        "max_8gram_repeats_mean": 1.59375,
+        "max_abs_logit_delta": 1.5007638931274414,
+        "mean_entropy": 1.2714742422103882,
+        "n_sequences": 32,
+        "ppl": 4.59555442065318,
+        "rep4_rate": 0.12337662337662339,
+        "rep8_rate": 0.07020547945205481,
+        "sample_generations": [
+          "\n\n = = Reception = \n\n The Chicago , and the second started to this , though thre",
+          "t , this started the second of their structure . \n\n = = Reception = \n\n The Chica",
+          "dia . \n\n = = Reception = \n\n The Chicago , and the second of this , though three "
+        ],
+        "score": 65.7969653370623,
+        "top1_agreement": 0.936767578125
+      },
+      "locus": "L3.wdown_k64 + Live SSP + NgramGuard",
+      "selected_cfg": {
+        "adaptive_echo_only": 1,
+        "echo_ngram": 4,
+        "echo_window": 48,
+        "gdn_alpha_shift": -1.4,
+        "gdn_erase_shift": 2.0,
+        "mla_repeat_logit_bias": -1.5,
+        "ngram_block_penalty": 5.0,
+        "state_echo_damp": 0.55,
+        "wsp_base": "L3.wdown_k64"
+      },
+      "tier": "Hybrid_Tier1_Tier2"
+    },
+    "17_Control_Random_MatchedNorm": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "k": 64,
+            "layer": 3,
+            "matched_l2": 0.58247
+          },
+          "evolve_delta_ce": -0.00021,
+          "evolve_kl": 4.4e-05,
+          "evolve_loop_rate": 1.0,
+          "evolve_score": 21.76
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4587139831317293,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": -0.0002141013558694116,
+        "distinct_4": 0.37121212121212127,
+        "distinct_8": 0.4383561643835616,
+        "edit_l2": 0.5824689756368826,
+        "eval_seconds": 12.741888190997997,
+        "kl_from_clean": 4.354259438288626e-05,
+        "loop_seq_count": 12,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.333333333333333,
+        "max_abs_logit_delta": 0.4605083465576172,
+        "mean_entropy": 1.3004460334777832,
+        "n_sequences": 12,
+        "ppl": 4.300425550914518,
+        "rep4_rate": 0.6287878787878788,
+        "rep8_rate": 0.5616438356164383,
+        "sample_generations": [
+          "arch 1960 . \n\n = = = = = = Company = = = \n\n The first season of the control of t",
+          "r , and the song of the song of the song of the song of the song of the song of ",
+          " and the song of the song of the song of the song of the song of the song of the"
+        ],
+        "score": 21.75954753009548,
+        "top1_agreement": 0.9973958333333334
+      },
+      "heldout_test": {
+        "ce": 1.5176613400334686,
+        "changed_params": 32768,
+        "changed_pct": 0.3264816816357242,
+        "delta_ce": 0.00012249398241892528,
+        "distinct_4": 0.3429383116883117,
+        "distinct_8": 0.40881849315068497,
+        "edit_l2": 0.5824689756368826,
+        "eval_seconds": 30.957825427001808,
+        "kl_from_clean": 4.72358185171865e-05,
+        "loop_seq_count": 32,
+        "loop_seq_rate": 1.0,
+        "max_8gram_repeats_mean": 5.78125,
+        "max_abs_logit_delta": 0.7076587677001953,
+        "mean_entropy": 1.3169708251953125,
+        "n_sequences": 32,
+        "ppl": 4.561544808884078,
+        "rep4_rate": 0.6570616883116883,
+        "rep8_rate": 0.5911815068493151,
+        "sample_generations": [
+          "\n\n = = = = = = = Cross = = = \n\n = = = = = = = Reception = = = \n\n = = = = = = = =",
+          "t and the second of the song of the song of the song of the song of the song of ",
+          "dia . \n\n = = = = = = Commission = = = \n\n The complete of the second of the contr"
+        ],
+        "score": 20.170561214781447,
+        "top1_agreement": 0.9962158203125
+      },
+      "locus": "L3.wdown random k=64, matched L2",
+      "selected_cfg": {
+        "k": 64,
+        "layer": 3,
+        "matched_l2": 0.58247
+      },
+      "tier": "Control_WSP3"
+    },
+    "18_Control_SGD_MicroFT_8steps": {
+      "evolve_candidates": [
+        {
+          "cfg": {
+            "lr": 0.00025,
+            "steps": 8,
+            "tokens": 8192,
+            "train_s": 26.23
+          },
+          "evolve_delta_ce": -0.00872,
+          "evolve_kl": 0.004769,
+          "evolve_loop_rate": 0.9167,
+          "evolve_score": 46.441
+        }
+      ],
+      "evolve_selected": {
+        "ce": 1.4502048938776406,
+        "changed_params": 10036499,
+        "changed_pct": 99.99795749680374,
+        "delta_ce": -0.008723190609958076,
+        "distinct_4": 0.7305194805194805,
+        "distinct_8": 0.8561643835616438,
+        "edit_l2": 0.44599672837795434,
+        "eval_seconds": 11.542499230999965,
+        "kl_from_clean": 0.004769129466352713,
+        "loop_seq_count": 11,
+        "loop_seq_rate": 0.9166666666666666,
+        "max_8gram_repeats_mean": 2.5833333333333335,
+        "max_abs_logit_delta": 2.636162519454956,
+        "mean_entropy": 1.3497816324234009,
+        "n_sequences": 12,
+        "ppl": 4.263988090724742,
+        "rep4_rate": 0.2694805194805195,
+        "rep8_rate": 0.14383561643835618,
+        "sample_generations": [
+          "arch 1961 . The first season was a star an experience of the state of the second",
+          "r . The produced to the second started that the state of the second structure . ",
+          " and the second of the state of the state of the second . The first season , and"
+        ],
+        "score": 46.44146948941469,
+        "top1_agreement": 0.9479166666666666
+      },
+      "heldout_test": {
+        "ce": 1.5108035247488683,
+        "changed_params": 10036499,
+        "changed_pct": 99.99795749680374,
+        "delta_ce": -0.006735321302181463,
+        "distinct_4": 0.560064935064935,
+        "distinct_8": 0.6750856164383562,
+        "edit_l2": 0.44599672837795434,
+        "eval_seconds": 30.00106918700476,
+        "kl_from_clean": 0.004942604400858223,
+        "loop_seq_count": 31,
+        "loop_seq_rate": 0.96875,
+        "max_8gram_repeats_mean": 3.34375,
+        "max_abs_logit_delta": 2.6566860675811768,
+        "mean_entropy": 1.3504655361175537,
+        "n_sequences": 32,
+        "ppl": 4.530369596276881,
+        "rep4_rate": 0.43993506493506496,
+        "rep8_rate": 0.32491438356164387,
+        "sample_generations": [
+          "The produced to the second structure of the state of the second structure . The ",
+          "t , and the second of the star . The second structure of the state of the second",
+          "dita . The first season , and the song of the song , and the song of the song , "
+        ],
+        "score": 34.51023505603985,
+        "top1_agreement": 0.9427490234375
+      },
+      "locus": "All tensors (8-step Q8-Muon FT)",
+      "selected_cfg": {
+        "lr": 0.00025,
+        "steps": 8,
+        "tokens": 8192,
+        "train_s": 26.23
+      },
+      "tier": "Control_WSP3"
+    }
+  },
+  "arms_table": [
+    {
+      "arm_id": "01_Baseline_Clean",
+      "arm_num": 1,
+      "changed_params": 0,
+      "changed_pct": 0.0,
+      "edit_l2": 0.0,
+      "evolve_score": 21.296,
+      "locus": "None",
+      "selected_cfg": "{\"mode\": \"clean\"}",
+      "test_ce": 1.51754,
+      "test_delta_ce": 0.0,
+      "test_distinct4": 0.3429,
+      "test_eval_s": 23.94,
+      "test_kl": 0.0,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.6571,
+      "test_rep8_rate": 0.5912,
+      "test_score": 20.179,
+      "test_top1_agree": 1.0,
+      "tier": "Baseline"
+    },
+    {
+      "arm_id": "02_Control_50M_ExpD_BlindSVD_L2",
+      "arm_num": 2,
+      "changed_params": 475136,
+      "changed_pct": 4.733984,
+      "edit_l2": 0.85024,
+      "evolve_score": 35.7,
+      "locus": "L2.wdown (100% dense, blind SVD)",
+      "selected_cfg": "{\"alpha\": 1.0, \"layer\": 2}",
+      "test_ce": 1.51812,
+      "test_delta_ce": 0.00058,
+      "test_distinct4": 0.541,
+      "test_eval_s": 29.38,
+      "test_kl": 0.002954,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5636,
+      "test_rep4_rate": 0.459,
+      "test_rep8_rate": 0.3035,
+      "test_score": 32.798,
+      "test_top1_agree": 0.95972,
+      "tier": "Control_50M_ExpD"
+    },
+    {
+      "arm_id": "03_WSP_L0_GDN2_wdown_SparseTopK",
+      "arm_num": 3,
+      "changed_params": 65536,
+      "changed_pct": 0.652963,
+      "edit_l2": 0.51727,
+      "evolve_score": 24.703,
+      "locus": "L0.wdown (sparse top-k)",
+      "selected_cfg": "{\"alpha\": 1.2, \"k\": 128, \"layer\": 0}",
+      "test_ce": 1.52019,
+      "test_delta_ce": 0.00266,
+      "test_distinct4": 0.3255,
+      "test_eval_s": 29.68,
+      "test_kl": 0.003479,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5731,
+      "test_rep4_rate": 0.6745,
+      "test_rep8_rate": 0.6327,
+      "test_score": 18.565,
+      "test_top1_agree": 0.9613,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "04_WSP_L1_GDN2_wdown_SparseTopK",
+      "arm_num": 4,
+      "changed_params": 32768,
+      "changed_pct": 0.326482,
+      "edit_l2": 0.48655,
+      "evolve_score": 21.971,
+      "locus": "L1.wdown (sparse top-k)",
+      "selected_cfg": "{\"alpha\": 1.4, \"k\": 64, \"layer\": 1}",
+      "test_ce": 1.51753,
+      "test_delta_ce": -1e-05,
+      "test_distinct4": 0.2967,
+      "test_eval_s": 29.19,
+      "test_kl": 0.002342,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.7033,
+      "test_rep8_rate": 0.6622,
+      "test_score": 17.139,
+      "test_top1_agree": 0.96887,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "05_WSP_L2_GDN2_wdown_SparseTopK",
+      "arm_num": 5,
+      "changed_params": 65536,
+      "changed_pct": 0.652963,
+      "edit_l2": 0.51946,
+      "evolve_score": 29.022,
+      "locus": "L2.wdown (sparse top-k)",
+      "selected_cfg": "{\"alpha\": 1.2, \"k\": 128, \"layer\": 2}",
+      "test_ce": 1.51871,
+      "test_delta_ce": 0.00118,
+      "test_distinct4": 0.4509,
+      "test_eval_s": 29.48,
+      "test_kl": 0.003661,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5664,
+      "test_rep4_rate": 0.5491,
+      "test_rep8_rate": 0.4221,
+      "test_score": 27.227,
+      "test_top1_agree": 0.96301,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "06_WSP_L3_MLA_wdown_SparseTopK",
+      "arm_num": 6,
+      "changed_params": 32768,
+      "changed_pct": 0.326482,
+      "edit_l2": 0.58247,
+      "evolve_score": 27.567,
+      "locus": "L3.wdown (sparse top-k)",
+      "selected_cfg": "{\"alpha\": 1.4, \"k\": 64, \"layer\": 3}",
+      "test_ce": 1.52509,
+      "test_delta_ce": 0.00755,
+      "test_distinct4": 0.4692,
+      "test_eval_s": 30.73,
+      "test_kl": 0.01175,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5956,
+      "test_rep4_rate": 0.5308,
+      "test_rep8_rate": 0.4024,
+      "test_score": 27.633,
+      "test_top1_agree": 0.93677,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "07_WSP_L3_MLA_wdown_DenseRank1",
+      "arm_num": 7,
+      "changed_params": 475135,
+      "changed_pct": 4.733974,
+      "edit_l2": 0.26549,
+      "evolve_score": 30.824,
+      "locus": "L3.wdown (100% dense, act-contrast)",
+      "selected_cfg": "{\"alpha\": 0.4, \"k\": 928, \"layer\": 3}",
+      "test_ce": 1.51825,
+      "test_delta_ce": 0.00072,
+      "test_distinct4": 0.4067,
+      "test_eval_s": 30.03,
+      "test_kl": 0.002144,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5643,
+      "test_rep4_rate": 0.5933,
+      "test_rep8_rate": 0.4863,
+      "test_score": 24.446,
+      "test_top1_agree": 0.96704,
+      "tier": "Tier2_WSP_Ablation"
+    },
+    {
+      "arm_id": "08_WSP_L3_MLA_G1_HeadGate",
+      "arm_num": 8,
+      "changed_params": 3,
+      "changed_pct": 3e-05,
+      "edit_l2": 2.07846,
+      "evolve_score": 23.81,
+      "locus": "L3.bg (1-3 scalars)",
+      "selected_cfg": "{\"delta_bg\": -1.2, \"heads\": [0, 2, 3], \"layer\": 3}",
+      "test_ce": 1.51774,
+      "test_delta_ce": 0.0002,
+      "test_distinct4": 0.3612,
+      "test_eval_s": 29.97,
+      "test_kl": 0.000314,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5619,
+      "test_rep4_rate": 0.6388,
+      "test_rep8_rate": 0.5741,
+      "test_score": 21.146,
+      "test_top1_agree": 0.98608,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "09_WSP_L3_MLA_HeadOut_Scale",
+      "arm_num": 9,
+      "changed_params": 32430,
+      "changed_pct": 0.323114,
+      "edit_l2": 3.29941,
+      "evolve_score": 22.693,
+      "locus": "L3.wo (head columns)",
+      "selected_cfg": "{\"heads\": [0], \"layer\": 3, \"scale\": 0.0}",
+      "test_ce": 1.51725,
+      "test_delta_ce": -0.00029,
+      "test_distinct4": 0.3515,
+      "test_eval_s": 29.67,
+      "test_kl": 0.000393,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5597,
+      "test_rep4_rate": 0.6485,
+      "test_rep8_rate": 0.5822,
+      "test_score": 20.657,
+      "test_top1_agree": 0.98389,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "10_SSP_Weight_GDN2_StateGates",
+      "arm_num": 10,
+      "changed_params": 192,
+      "changed_pct": 0.001913,
+      "edit_l2": 5.54256,
+      "evolve_score": 22.671,
+      "locus": "L0-L2 ba_chan/be_chan",
+      "selected_cfg": "{\"delta_alpha\": -0.4, \"delta_erase\": 0.4, \"layers\": [0, 1, 2], \"top_k_chans\": 32}",
+      "test_ce": 1.5179,
+      "test_delta_ce": 0.00036,
+      "test_distinct4": 0.3259,
+      "test_eval_s": 30.24,
+      "test_kl": 0.000287,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5626,
+      "test_rep4_rate": 0.6741,
+      "test_rep8_rate": 0.613,
+      "test_score": 19.122,
+      "test_top1_agree": 0.98828,
+      "tier": "Tier2_SSP_Weight"
+    },
+    {
+      "arm_id": "11_WSP_CanonAC_Taps",
+      "arm_num": 11,
+      "changed_params": 12133,
+      "changed_pct": 0.120886,
+      "edit_l2": 1.88319,
+      "evolve_score": 26.376,
+      "locus": "Canon-A/C delayed taps",
+      "selected_cfg": "{\"layers\": [0, 1, 2, 3], \"tap_scale\": 0.85}",
+      "test_ce": 1.52236,
+      "test_delta_ce": 0.00482,
+      "test_distinct4": 0.3401,
+      "test_eval_s": 29.57,
+      "test_kl": 0.003405,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.583,
+      "test_rep4_rate": 0.6599,
+      "test_rep8_rate": 0.6164,
+      "test_score": 19.247,
+      "test_top1_agree": 0.96277,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "12_WSP_mHC_Streams",
+      "arm_num": 12,
+      "changed_params": 16,
+      "changed_pct": 0.000159,
+      "edit_l2": 1.6,
+      "evolve_score": 21.296,
+      "locus": "L0-L3 mhc_hres (32 params)",
+      "selected_cfg": "{\"delta_offdiag\": -0.4}",
+      "test_ce": 1.51754,
+      "test_delta_ce": -0.0,
+      "test_distinct4": 0.3429,
+      "test_eval_s": 29.75,
+      "test_kl": 0.0,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.6571,
+      "test_rep8_rate": 0.5912,
+      "test_score": 20.179,
+      "test_top1_agree": 1.0,
+      "tier": "Tier2_WSP"
+    },
+    {
+      "arm_id": "13_SSP_Live_GDN2_EchoDamp",
+      "arm_num": 13,
+      "changed_params": 0,
+      "changed_pct": 0.0,
+      "edit_l2": 0.0,
+      "evolve_score": 24.076,
+      "locus": "Live GDN-2 S_t + gates (0 weight edits)",
+      "selected_cfg": "{\"adaptive_echo_only\": 1, \"echo_ngram\": 4, \"echo_window\": 48, \"gdn_alpha_shift\": -1.4, \"gdn_erase_shift\": 2.0, \"state_echo_damp\": 0.55}",
+      "test_ce": 1.51754,
+      "test_delta_ce": 0.0,
+      "test_distinct4": 0.4813,
+      "test_eval_s": 23.47,
+      "test_kl": 0.0,
+      "test_loop_seq_rate": 0.9688,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.5187,
+      "test_rep8_rate": 0.3887,
+      "test_score": 30.479,
+      "test_top1_agree": 1.0,
+      "tier": "Tier1_SSP_Live"
+    },
+    {
+      "arm_id": "14_SSP_Live_MLA_RepeatBias",
+      "arm_num": 14,
+      "changed_params": 0,
+      "changed_pct": 0.0,
+      "edit_l2": 0.0,
+      "evolve_score": 21.752,
+      "locus": "Live L3 MLA repeat-key bias (0 weight edits)",
+      "selected_cfg": "{\"adaptive_echo_only\": 1, \"echo_ngram\": 4, \"echo_window\": 48, \"mla_repeat_logit_bias\": -1.0}",
+      "test_ce": 1.51754,
+      "test_delta_ce": 0.0,
+      "test_distinct4": 0.3446,
+      "test_eval_s": 23.32,
+      "test_kl": 0.0,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.6554,
+      "test_rep8_rate": 0.5873,
+      "test_score": 20.313,
+      "test_top1_agree": 1.0,
+      "tier": "Tier1_SSP_Live"
+    },
+    {
+      "arm_id": "15_Harness_Decoding_NgramGuard",
+      "arm_num": 15,
+      "changed_params": 0,
+      "changed_pct": 0.0,
+      "edit_l2": 0.0,
+      "evolve_score": 90.499,
+      "locus": "Logit n-gram/presence guard (0 weight edits)",
+      "selected_cfg": "{\"adaptive_echo_only\": 1, \"echo_ngram\": 4, \"echo_window\": 48, \"ngram_block_penalty\": 5.0, \"presence_penalty\": 0.15, \"rep_window\": 32}",
+      "test_ce": 1.51754,
+      "test_delta_ce": 0.0,
+      "test_distinct4": 0.9326,
+      "test_eval_s": 23.44,
+      "test_kl": 0.0,
+      "test_loop_seq_rate": 0.4062,
+      "test_ppl": 4.561,
+      "test_rep4_rate": 0.0674,
+      "test_rep8_rate": 0.0214,
+      "test_score": 78.933,
+      "test_top1_agree": 1.0,
+      "tier": "Tier1_Harness"
+    },
+    {
+      "arm_id": "16_Hybrid_Tier2WSP_plus_Tier1SSP",
+      "arm_num": 16,
+      "changed_params": 32768,
+      "changed_pct": 0.326482,
+      "edit_l2": 0.58247,
+      "evolve_score": 71.298,
+      "locus": "L3.wdown_k64 + Live SSP + NgramGuard",
+      "selected_cfg": "{\"adaptive_echo_only\": 1, \"echo_ngram\": 4, \"echo_window\": 48, \"gdn_alpha_shift\": -1.4, \"gdn_erase_shift\": 2.0, \"mla_repeat_logit_bias\": -1.5, \"ngram_block_penalty\": 5.0, \"state_echo_damp\": 0.55, \"wsp_base\": \"L3.wdown_k64\"}",
+      "test_ce": 1.52509,
+      "test_delta_ce": 0.00755,
+      "test_distinct4": 0.8766,
+      "test_eval_s": 30.15,
+      "test_kl": 0.01175,
+      "test_loop_seq_rate": 0.5938,
+      "test_ppl": 4.5956,
+      "test_rep4_rate": 0.1234,
+      "test_rep8_rate": 0.0702,
+      "test_score": 65.797,
+      "test_top1_agree": 0.93677,
+      "tier": "Hybrid_Tier1_Tier2"
+    },
+    {
+      "arm_id": "17_Control_Random_MatchedNorm",
+      "arm_num": 17,
+      "changed_params": 32768,
+      "changed_pct": 0.326482,
+      "edit_l2": 0.58247,
+      "evolve_score": 21.76,
+      "locus": "L3.wdown random k=64, matched L2",
+      "selected_cfg": "{\"k\": 64, \"layer\": 3, \"matched_l2\": 0.58247}",
+      "test_ce": 1.51766,
+      "test_delta_ce": 0.00012,
+      "test_distinct4": 0.3429,
+      "test_eval_s": 30.96,
+      "test_kl": 4.7e-05,
+      "test_loop_seq_rate": 1.0,
+      "test_ppl": 4.5615,
+      "test_rep4_rate": 0.6571,
+      "test_rep8_rate": 0.5912,
+      "test_score": 20.171,
+      "test_top1_agree": 0.99622,
+      "tier": "Control_WSP3"
+    },
+    {
+      "arm_id": "18_Control_SGD_MicroFT_8steps",
+      "arm_num": 18,
+      "changed_params": 10036499,
+      "changed_pct": 99.997957,
+      "edit_l2": 0.446,
+      "evolve_score": 46.441,
+      "locus": "All tensors (8-step Q8-Muon FT)",
+      "selected_cfg": "{\"lr\": 0.00025, \"steps\": 8, \"tokens\": 8192, \"train_s\": 26.23}",
+      "test_ce": 1.5108,
+      "test_delta_ce": -0.00674,
+      "test_distinct4": 0.5601,
+      "test_eval_s": 30.0,
+      "test_kl": 0.004943,
+      "test_loop_seq_rate": 0.9688,
+      "test_ppl": 4.5304,
+      "test_rep4_rate": 0.4399,
+      "test_rep8_rate": 0.3249,
+      "test_score": 34.51,
+      "test_top1_agree": 0.94275,
+      "tier": "Control_WSP3"
+    }
+  ],
+  "base_checkpoint": {
+    "arch_id": "Arch7d_10M_B_ff928_gr32_dc128",
+    "best_global_step": 640,
+    "best_val_ce_t512": 1.399782,
+    "format": "bcirq8_v1_per_tensor_g32",
+    "fp32_source_sha256": "38830b9ab2184baee075eb8c204078d9c303e831f01793c9b1c8e79c176bd37e",
+    "global_step": 640,
+    "optimizer": "Opt_Q8_Muon_BF16Grad",
+    "spec": {
+      "batch": 8,
+      "canon_mode": 2,
+      "delta_chunk": 16,
+      "ff": 928,
+      "gate_mode": 1,
+      "gate_rank": 32,
+      "heads": 8,
+      "init_policy": 2,
+      "kvheads": 2,
+      "layer_mixer": [
+        5,
+        5,
+        5,
+        4
+      ],
+      "layer_use_rope": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "layers": 4,
+      "mhc_streams": 2,
+      "mla_dc": 128,
+      "mla_dr": 32,
+      "mup_d_base": 128,
+      "online_softmax": 1,
+      "qk_norm": 1,
+      "rms_eps": 1e-05,
+      "rope_base": 10000.0,
+      "seed": 42,
+      "swa_window": 16,
+      "threads": 2,
+      "tied": 1,
+      "time": 128,
+      "vocab": 256,
+      "width": 512
+    },
+    "stage": 3,
+    "tokens_trained": 1114112,
+    "weights_bytes": 10350376,
+    "weights_file": "arch7d_10m_stage3_best_bcirq8.bin",
+    "weights_sha256": "bc67f32a2a1a0fb7e886cda0b2eae138c0ce454b56e0578a3c59ba976ce65294"
+  },
+  "evolve_diagnosis": {
+    "clean_tokens": 360,
+    "layers": {
+      "L0": {
+        "alpha_clean_mean": 0.7195712533983584,
+        "alpha_loop_mean": 0.7119684765222545,
+        "attn_rep_clean": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attn_rep_loop": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "erase_clean_mean": 0.26686521875977876,
+        "erase_loop_mean": 0.27400091527985976,
+        "g1_clean_mean": [
+          0.6567157608042988,
+          0.6500921271327469,
+          0.638042357408752,
+          0.8576264234725386,
+          0.6347807803501685,
+          0.6307087582329081,
+          0.4737693840223882,
+          0.6875894877438744
+        ],
+        "g1_diff": [
+          0.031716479315526014,
+          0.0009916249331500815,
+          -0.06919875160480538,
+          0.046073360856001555,
+          0.005405651355783192,
+          0.011981909034980753,
+          -0.01262007957531347,
+          0.017626181220014914
+        ],
+        "g1_loop_mean": [
+          0.6884322401198248,
+          0.651083752065897,
+          0.5688436058039467,
+          0.9036997843285401,
+          0.6401864317059517,
+          0.6426906672678888,
+          0.46114930444707475,
+          0.7052156689638893
+        ],
+        "head_loop_scores": [
+          0.5300545548801294,
+          0.5140292621632127,
+          0.42387869040373577,
+          0.5981495297549417,
+          0.5110155049608982,
+          0.4762472835082368,
+          0.36986170571984606,
+          0.5376883089965735
+        ],
+        "mixer": 5,
+        "resid_contrast_norm": 1.8665753358924806,
+        "st_echo_clean": [
+          0.7584074183470673,
+          0.7489686518079705,
+          0.7620566728214423,
+          0.7019102480676439,
+          0.7673219281766149,
+          0.7611022385458152,
+          0.7667276836103863,
+          0.7542037294142776
+        ],
+        "st_echo_loop": [
+          0.765090539753437,
+          0.7718930846452713,
+          0.7530634252230326,
+          0.6761450449625651,
+          0.7846755970517795,
+          0.7498078240454197,
+          0.7836717396974564,
+          0.7590261206030846
+        ],
+        "top_cols_16": [
+          500,
+          806,
+          196,
+          149,
+          249,
+          849,
+          546,
+          767,
+          751,
+          899,
+          823,
+          80,
+          289,
+          561,
+          676,
+          491
+        ],
+        "top_heads": [
+          3,
+          7,
+          0,
+          1,
+          4,
+          5,
+          2,
+          6
+        ]
+      },
+      "L1": {
+        "alpha_clean_mean": 0.8123979101267764,
+        "alpha_loop_mean": 0.807430680698814,
+        "attn_rep_clean": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attn_rep_loop": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "erase_clean_mean": 0.22538615646152763,
+        "erase_loop_mean": 0.22952471737228325,
+        "g1_clean_mean": [
+          0.4762922341650766,
+          0.45983684899078475,
+          0.39011407778080964,
+          0.4412657023148818,
+          0.6025356315076351,
+          0.37630364069094263,
+          0.3650385650392208,
+          0.4022142427042127
+        ],
+        "g1_diff": [
+          0.05145606204608655,
+          -0.02834127696644928,
+          -0.01565265009904071,
+          0.023506957622658864,
+          0.02982439659535885,
+          -0.016678418206671874,
+          -0.010550210592854325,
+          -0.08092747222632174
+        ],
+        "g1_loop_mean": [
+          0.5277482962111631,
+          0.43149557202433547,
+          0.37446142768176893,
+          0.4647726599375407,
+          0.632360028102994,
+          0.35962522248427076,
+          0.35448835444636645,
+          0.32128677047789095
+        ],
+        "head_loop_scores": [
+          0.46887559153349684,
+          0.3806914755498169,
+          0.3466308291827212,
+          0.42312205790112195,
+          0.5279780938669447,
+          0.3412571201264721,
+          0.3441939454120842,
+          0.2895819775742782
+        ],
+        "mixer": 5,
+        "resid_contrast_norm": 3.08046554632593,
+        "st_echo_clean": [
+          0.8763900716271665,
+          0.8623554133706622,
+          0.862289679216014,
+          0.8597723963359992,
+          0.8194171024693383,
+          0.8660161832968394,
+          0.8789519757032395,
+          0.8400083735585213
+        ],
+        "st_echo_loop": [
+          0.8825805216034254,
+          0.8715759973724683,
+          0.8894339351852735,
+          0.8841546734174093,
+          0.8280817247430483,
+          0.9007009002566337,
+          0.917121841609478,
+          0.8639931749304136
+        ],
+        "top_cols_16": [
+          146,
+          156,
+          278,
+          3,
+          500,
+          18,
+          25,
+          802,
+          434,
+          579,
+          557,
+          168,
+          627,
+          619,
+          8,
+          133
+        ],
+        "top_heads": [
+          4,
+          0,
+          3,
+          1,
+          2,
+          6,
+          5,
+          7
+        ]
+      },
+      "L2": {
+        "alpha_clean_mean": 0.798505832081135,
+        "alpha_loop_mean": 0.7877327119703315,
+        "attn_rep_clean": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "attn_rep_loop": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "erase_clean_mean": 0.22146621875123648,
+        "erase_loop_mean": 0.22926302804933632,
+        "g1_clean_mean": [
+          0.2915375062523203,
+          0.49594346784676113,
+          0.6054923220020202,
+          0.6293222746294406,
+          0.5022493578597076,
+          0.6513394830334518,
+          0.7241055784177863,
+          0.7226268425169918
+        ],
+        "g1_diff": [
+          -0.07041825603176322,
+          -0.026980982826401767,
+          0.03586692938788061,
+          -0.019686682551271373,
+          0.06815631735655991,
+          0.04129975355954629,
+          0.018364063073984416,
+          0.02483315350280868
+        ],
+        "g1_loop_mean": [
+          0.22111925022055706,
+          0.46896248502035937,
+          0.6413592513899008,
+          0.6096355920781692,
+          0.5704056752162675,
+          0.6926392365929981,
+          0.7424696414917707,
+          0.7474599960198005
+        ],
+        "head_loop_scores": [
+          0.19372574526646458,
+          0.40732450130670445,
+          0.5341313496208906,
+          0.47854809445178514,
+          0.5009164797805198,
+          0.5835045333638504,
+          0.6640673504482087,
+          0.6230271858120193
+        ],
+        "mixer": 5,
+        "resid_contrast_norm": 4.699860877739523,
+        "st_echo_clean": [
+          0.8315414713488685,
+          0.8422010678384039,
+          0.8286330204870965,
+          0.7945365776618322,
+          0.8479709691471524,
+          0.8394972222546736,
+          0.8528286995159255,
+          0.8126514666610294
+        ],
+        "st_echo_loop": [
+          0.8452090008060137,
+          0.8549608968695005,
+          0.8309810068209966,
+          0.7892828866839409,
+          0.8640667606393496,
+          0.8412042080362638,
+          0.8776727123061816,
+          0.8251590611537297
+        ],
+        "top_cols_16": [
+          537,
+          299,
+          21,
+          4,
+          284,
+          775,
+          808,
+          455,
+          461,
+          760,
+          189,
+          618,
+          106,
+          452,
+          564,
+          289
+        ],
+        "top_heads": [
+          6,
+          7,
+          5,
+          2,
+          4,
+          3,
+          1,
+          0
+        ]
+      },
+      "L3": {
+        "alpha_clean_mean": 0.0,
+        "alpha_loop_mean": 0.0,
+        "attn_rep_clean": [
+          0.13481163452508757,
+          0.07237861372268525,
+          0.06010587612787883,
+          0.06187075444532739,
+          0.05148059565269957,
+          0.05499710099215412,
+          0.0488746790483775,
+          0.05060137266344908
+        ],
+        "attn_rep_loop": [
+          0.13488978291008,
+          0.08348095498688053,
+          0.0976444941565084,
+          0.0835713180193367,
+          0.07015713116289893,
+          0.06759034930029884,
+          0.0683868593070656,
+          0.05927180290959465
+        ],
+        "erase_clean_mean": 0.0,
+        "erase_loop_mean": 0.0,
+        "g1_clean_mean": [
+          0.42931923896281254,
+          0.2537320065208607,
+          0.3146191691565845,
+          0.3526151216071513,
+          0.611735429500954,
+          0.3502291285122434,
+          0.5087055014135937,
+          0.40389424613159564
+        ],
+        "g1_diff": [
+          -0.014098470411780806,
+          -0.07917110027331442,
+          -0.007996008435471214,
+          -0.005942548734860276,
+          0.07497830974765951,
+          -0.004316167073945165,
+          0.03015999587252738,
+          0.01495903523224923
+        ],
+        "g1_loop_mean": [
+          0.41522076855103174,
+          0.17456090624754628,
+          0.3066231607211133,
+          0.34667257287229103,
+          0.6867137392486136,
+          0.34591296143829825,
+          0.5388654972861211,
+          0.41885328136384486
+        ],
+        "head_loop_scores": [
+          0.1349288571025762,
+          0.08903212561897816,
+          0.11641380317082319,
+          0.09442159980634136,
+          0.08475566202933761,
+          0.07388697345437119,
+          0.08020549683084585,
+          0.064493667020671
+        ],
+        "mixer": 4,
+        "resid_contrast_norm": 6.121103502499754,
+        "st_echo_clean": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "st_echo_loop": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "top_cols_16": [
+          873,
+          185,
+          127,
+          347,
+          518,
+          912,
+          667,
+          856,
+          134,
+          691,
+          821,
+          640,
+          422,
+          506,
+          904,
+          418
+        ],
+        "top_heads": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          6,
+          5,
+          7
+        ]
+      }
+    },
+    "loop_tokens": 600,
+    "probe_seconds": 17.253
+  },
+  "gate0_stateful_parity": {
+    "all_pass": true,
+    "arch2_deltanet_gqa_max_abs_diff": 1.564621925354004e-06,
+    "arch7d_10m_max_abs_diff": 1.2874603271484375e-05,
+    "gqa_rope_max_abs_diff": 9.834766387939453e-07
+  },
+  "provenance": {
+    "bcir_commit": "7da46cfc73d16cf086fba8834b3e6baf5919419a",
+    "cpu_count": 2,
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.30GHz",
+    "date": "2026-11-28T06:00:04Z",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39"
+  },
+  "schema": "bcir.wsp_ssp.stage1_locus_audit.v1",
+  "splits": {
+    "evolve_ce_tokens": 3072,
+    "evolve_prompts": {
+      "gen_len": 80,
+      "n": 12,
+      "prompt_len": 48,
+      "source": "wikitext2_val"
+    },
+    "heldout_ce_tokens": 8192,
+    "heldout_prompts": {
+      "gen_len": 80,
+      "n": 32,
+      "prompt_len": 48,
+      "source": "wikitext2_test"
+    }
+  },
+  "wsp2_health_sentinel": {
+    "dead_columns": [],
+    "elapsed_ms": 41.99751000123797,
+    "nonfinite_count": 0,
+    "outliers_8x": [],
+    "pass": true,
+    "schema": "bcir.wsp2.health_sentinel.v1",
+    "wdown_stats": {
+      "L0.wdown": {
+        "max_col_norm": 0.4210243125383047,
+        "max_over_median": 1.1533171600467975,
+        "median_col_norm": 0.3650551011668126,
+        "min_col_norm": 0.3082836862923147,
+        "n_dead": 0,
+        "n_outliers_8x": 0
+      },
+      "L1.wdown": {
+        "max_col_norm": 0.4245192698001719,
+        "max_over_median": 1.1596803371385878,
+        "median_col_norm": 0.36606576502593546,
+        "min_col_norm": 0.29947885706788796,
+        "n_dead": 0,
+        "n_outliers_8x": 0
+      },
+      "L2.wdown": {
+        "max_col_norm": 0.4382195005929342,
+        "max_over_median": 1.1852239783633083,
+        "median_col_norm": 0.3697356015342158,
+        "min_col_norm": 0.2927511806057026,
+        "n_dead": 0,
+        "n_outliers_8x": 0
+      },
+      "L3.wdown": {
+        "max_col_norm": 0.45566982064531103,
+        "max_over_median": 1.2978807444809113,
+        "median_col_norm": 0.3510875884267446,
+        "min_col_norm": 0.296041221287227,
+        "n_dead": 0,
+        "n_outliers_8x": 0
+      }
+    }
+  }
+}

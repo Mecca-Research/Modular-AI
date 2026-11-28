@@ -1,0 +1,41 @@
+{
+  "arch_name": "GQA_Full_2M",
+  "n_params": 2722048,
+  "spec": {
+    "batch": 8,
+    "canon_mode": 0,
+    "delta_chunk": 16,
+    "ff": 608,
+    "gate_mode": 0,
+    "gate_rank": 32,
+    "heads": 4,
+    "kvheads": 2,
+    "layer_mixer": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "layer_use_rope": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "layers": 4,
+    "mhc_streams": 1,
+    "mla_dc": 64,
+    "mla_dr": 32,
+    "online_softmax": 1,
+    "qk_norm": 0,
+    "seed": 42,
+    "threads": 2,
+    "tied": 1,
+    "time": 128,
+    "vocab": 256,
+    "width": 256
+  },
+  "tokens_trained": 163840,
+  "weights_file": "gqa_full_2m_bcirq8.bin",
+  "weights_sha256": "8d487d54c73286040e2d16287d3f42c20199697c701c1affbd4a501dc794a0b5"
+}
