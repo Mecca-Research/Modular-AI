@@ -1,0 +1,7 @@
+build/
+src/__pycache__/
+*.pyc
+*.so
+*.o
+checkpoints/*.tmp
+checkpoints/untracked_*

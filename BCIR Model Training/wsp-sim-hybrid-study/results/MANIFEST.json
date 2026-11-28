@@ -1,0 +1,168 @@
+{
+  "file_count": 32,
+  "files": [
+    {
+      "path": "src/bcir_stateful_probe.c",
+      "bytes": 50146,
+      "sha256": "c55b75657b6308c6e48c4e46236d5fd7db7ed2293ea8d6d9e94d59df672df793"
+    },
+    {
+      "path": "src/bcir_stateful_probe.h",
+      "bytes": 7814,
+      "sha256": "78ece6f6251f829f2aa7b0c2f3ca1940b77d5e492ec04f546da4cec4436aafc1"
+    },
+    {
+      "path": "src/common_wsp_sim.py",
+      "bytes": 49213,
+      "sha256": "1cb5efc74a12b28f16fa433c8c8fb26e69a02512342c5187915b57d255c778ba"
+    },
+    {
+      "path": "src/make_wsp_sim_plots.py",
+      "bytes": 26672,
+      "sha256": "5de12c925d1a0f424d54e78a955247a5ccd85948d97c9594aadb71266755f233"
+    },
+    {
+      "path": "src/stage1_wsp_ssp_locus_audit.py",
+      "bytes": 31814,
+      "sha256": "6224c9cf60023a80e0537c5decbab187eac40e3d7f7f4ff05b69d08089f73a1e"
+    },
+    {
+      "path": "src/stage2_hybrid_train_editability.py",
+      "bytes": 19195,
+      "sha256": "0b9b0def79e20e1c265dd2231bc2bdf777fe735c1944ecf4986b3f08c9255ebf"
+    },
+    {
+      "path": "src/stage3_sim_crsi_experiments.py",
+      "bytes": 45002,
+      "sha256": "95bcd370a08876643e840a0402878338d47d12da8c3f59dbb1828fe0621e1977"
+    },
+    {
+      "path": "results/sim_ledger_T1a_CrossDataset_10M_Prose_to_Structured.json",
+      "bytes": 28071,
+      "sha256": "4eff01ab334711049145a8820d55f959ca769d11614efbadf4e5900f0e5a3c57"
+    },
+    {
+      "path": "results/sim_ledger_T1b_CrossDataset_10M_Prose_to_LongCtx.json",
+      "bytes": 27722,
+      "sha256": "7185f9af3fff8d99bd42d71c29d6c37033b12f26645d73f5c25f747606012254"
+    },
+    {
+      "path": "results/sim_ledger_T2a_CrossScale_2M_to_10M_Arch7d.json",
+      "bytes": 31052,
+      "sha256": "3e08b2af56fc57ec29f6edd210508095965403883ccba164e7169603b56a4e96"
+    },
+    {
+      "path": "results/sim_ledger_T2b_CrossFamily_GQA2M_to_Arch7d10M.json",
+      "bytes": 30914,
+      "sha256": "47b8cb3d4c84615b270304391bae6af3a14648b69f76d84f71dfa58b6f7e5b4f"
+    },
+    {
+      "path": "results/sim_ledger_T3_CrossPrecision_Q8_to_COMP1_10M.json",
+      "bytes": 28219,
+      "sha256": "b4d66c9ec5c0b664b66692d0e2d61fa1df886e19646d8c96867c9deb929811c7"
+    },
+    {
+      "path": "results/stage1_wsp_ssp_locus_audit.csv",
+      "bytes": 4669,
+      "sha256": "70845b2a9dd80a0e402d81ac07bfec0fd15b0b4f52213caf1d7ea86eb5a5f927"
+    },
+    {
+      "path": "results/stage1_wsp_ssp_locus_audit.json",
+      "bytes": 92879,
+      "sha256": "4076bd86bbbb2cb5c2bf7c7e46994acf9e2d8ee07a1dd2a1dd0a661984441fba"
+    },
+    {
+      "path": "results/stage2_hybrid_train_editability.json",
+      "bytes": 27374,
+      "sha256": "c27474e08df3bf892e8a07a02b321c29d8f05bc3804271eec3a2b8515d03149b"
+    },
+    {
+      "path": "results/stage2_layer_editability.csv",
+      "bytes": 1060,
+      "sha256": "4dca8f35d7fb35d63e3461f1c3d547442d7658ea2a28443118586c4637ef3b32"
+    },
+    {
+      "path": "results/stage2_train_steps.csv",
+      "bytes": 26785,
+      "sha256": "1ae2ae326f01b86f6e879f92b923585672a410a81b5abb8456d81ab61c06b534"
+    },
+    {
+      "path": "results/stage3_sim_10seed_paired.csv",
+      "bytes": 859,
+      "sha256": "0a5c872bb3c6a83cf7d2bec44395a93a8bc55f428f43bb3f4265d87579c226c4"
+    },
+    {
+      "path": "results/stage3_sim_crsi_experiments.json",
+      "bytes": 98883,
+      "sha256": "98b6d612bff9c9c796698d130dda990b2848476e274d8789368f53167e9f6302"
+    },
+    {
+      "path": "results/stage3_sim_round_curves.csv",
+      "bytes": 7632,
+      "sha256": "5615100a2439d0fcf01f588f36da68243d855a4ffef3d80d88845dd525d9208b"
+    },
+    {
+      "path": "results/stage3_sim_transitions.csv",
+      "bytes": 2270,
+      "sha256": "68bdee6b32c37edadf8b5233d6eec9d1832965ff115714638763acfea2693c04"
+    },
+    {
+      "path": "figures/fig1_arch7d_10m_locus_audit.png",
+      "bytes": 602377,
+      "sha256": "0d041edf8fb11e6a56a6e70db502d64556d57ccb27b70bf82c9d6cc768474fef"
+    },
+    {
+      "path": "figures/fig2_hybrid_train_and_editability.png",
+      "bytes": 298963,
+      "sha256": "3ebf029a770ba8dd3b9f31e4569223b928a9b5cdc37d51f198edeba1da8e48c1"
+    },
+    {
+      "path": "figures/fig3_sim_crsi_transitions.png",
+      "bytes": 408606,
+      "sha256": "9aaa4f7a83bad55d4ccddca992b5f9fb3fe750ad75a92d44c3bf9cd29cf90447"
+    },
+    {
+      "path": "figures/fig4_sim_10seed_paired_stats.png",
+      "bytes": 215899,
+      "sha256": "e6634ddf569c2a89002728f37c8e0b9e468ecebc44cdbbdedd216a8758e0d3da"
+    },
+    {
+      "path": "figures/fig5_unified_3tier_hybrid_architecture.png",
+      "bytes": 466306,
+      "sha256": "2a91739dfc76410f1da9da145444bcb23f82fd496196da0ae51664c13ad37478"
+    },
+    {
+      "path": "checkpoints/arch7d_2m_bcirq8.bin",
+      "bytes": 2755014,
+      "sha256": "ff4f270d21e6623dcd43b93aab9b48c05405f298118f8b54ee42def3ab9321b0"
+    },
+    {
+      "path": "checkpoints/arch7d_2m_bcirq8.json",
+      "bytes": 727,
+      "sha256": "f2b035ca9222877bb8767707aa1dc1d4ab199e5580af5322ec2557f585e194fe"
+    },
+    {
+      "path": "checkpoints/gqa_full_2m_bcirq8.bin",
+      "bytes": 2807112,
+      "sha256": "8d487d54c73286040e2d16287d3f42c20199697c701c1affbd4a501dc794a0b5"
+    },
+    {
+      "path": "checkpoints/gqa_full_2m_bcirq8.json",
+      "bytes": 731,
+      "sha256": "49adea395fcff07bf44f7479c91c4dad02bdf58e45d1447966f679fbdc52fe60"
+    },
+    {
+      "path": "checkpoints/wsp1_patch_L3_mla_g1.json",
+      "bytes": 1897,
+      "sha256": "51136b9b0d85e58fa45fa7b93fd35dd81ec87eaa3001007046e8aecb61931c53"
+    },
+    {
+      "path": "checkpoints/wsp1_patch_L3_mla_wdown.json",
+      "bytes": 1931,
+      "sha256": "d23adc2c64ceae468ef137fc9b6db44460853c682ee26b451f3d2b5fa517c94e"
+    }
+  ],
+  "schema": "bcir.study.manifest.v1",
+  "study": "wsp-sim-hybrid-study",
+  "total_bytes": 8197808
+}

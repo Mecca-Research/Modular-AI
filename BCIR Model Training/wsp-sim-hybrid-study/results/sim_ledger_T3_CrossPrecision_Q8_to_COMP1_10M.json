@@ -1,0 +1,848 @@
+{
+  "memory_mode": "full",
+  "n_attempts": 24,
+  "n_problems": 8,
+  "problems": [
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_g1",
+          "candidate_id": "r1_c0",
+          "mutation_desc": "L3.bg top-1 d=-0.4",
+          "observed_outcome": {
+            "delta_ce": -8e-05,
+            "distinct4_delta": -0.0109,
+            "evolve_score_after": 20.443,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 8e-06,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -1.084
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Damp global attention repeat-copy head via G1 bias",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wo",
+          "candidate_id": "r2_c0",
+          "mutation_desc": "L3.wo top-1 scale=0.65",
+          "observed_outcome": {
+            "delta_ce": -6e-05,
+            "distinct4_delta": -0.0328,
+            "evolve_score_after": 19.211,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 4.2e-05,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -2.317
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Scale diagnosed copy-head output projection",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wo",
+          "candidate_id": "r1_c1",
+          "mutation_desc": "L3.wo top-1 scale=0.85",
+          "observed_outcome": {
+            "delta_ce": 0.00042,
+            "distinct4_delta": -0.0219,
+            "evolve_score_after": 42.239,
+            "evolve_score_before": 43.3,
+            "fixed_seqs": 0,
+            "kl_from_clean": 3.7e-05,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -1.061
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 4e-05,
+            "expected_score_delta": -2.317
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 1
+          },
+          "rationale": "Scale diagnosed copy-head output projection",
+          "round": 1
+        }
+      ],
+      "id": "P03_L3_COPY_HEAD_GATE",
+      "name": "P03 L3 Copy Head Gate",
+      "opened_round": 1,
+      "root_cause_hypothesis": "Global attention headwise G1 sigmoid output gate bias (1-3 scalars)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_mhc",
+          "candidate_id": "r1_c1",
+          "mutation_desc": "mHC offdiag_delta=-0.4",
+          "observed_outcome": {
+            "delta_ce": -0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 21.528,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Perturb DeepSeek mHC Birkhoff stream mixing",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_mhc",
+          "candidate_id": "r3_c1",
+          "mutation_desc": "mHC offdiag_delta=-0.4",
+          "observed_outcome": {
+            "delta_ce": -0.00041,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 21.602,
+            "evolve_score_before": 21.602,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000603,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0,
+            "expected_score_delta": 0.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Perturb DeepSeek mHC Birkhoff stream mixing",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_canon",
+          "candidate_id": "r4_c2",
+          "mutation_desc": "Canon-AC tap_scale=0.7",
+          "observed_outcome": {
+            "delta_ce": 0.01218,
+            "distinct4_delta": -0.0656,
+            "evolve_score_after": 43.814,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 1,
+            "kl_from_clean": 0.020726,
+            "loop_delta": 0.0,
+            "missed_seqs": 4,
+            "regressed_seqs": 1,
+            "score_delta": -7.602
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 4
+          },
+          "rationale": "Attenuate delayed Canon-AC causal conv taps",
+          "round": 4
+        }
+      ],
+      "id": "P07_STRUCTURAL_COLLATERAL",
+      "name": "P07 Structural Collateral",
+      "opened_round": 1,
+      "root_cause_hypothesis": "DeepSeek mHC Birkhoff stream off-diagonal mixing perturbation"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r1_c2",
+          "mutation_desc": "COMP1 mlp_gain=1.04",
+          "observed_outcome": {
+            "delta_ce": -0.00104,
+            "distinct4_delta": -0.0273,
+            "evolve_score_after": 19.519,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000169,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -2.009
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 1
+        },
+        {
+          "accepted": true,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r1_c2",
+          "mutation_desc": "COMP1 mlp_gain=1.1",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": 0.0109,
+            "evolve_score_after": 51.417,
+            "evolve_score_before": 43.3,
+            "fixed_seqs": 1,
+            "kl_from_clean": 0.003223,
+            "loop_delta": -0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 0,
+            "score_delta": 8.116
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00017,
+            "expected_score_delta": -2.009
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 1
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r2_c0",
+          "mutation_desc": "COMP1 mlp_gain=1.04",
+          "observed_outcome": {
+            "delta_ce": -0.0135,
+            "distinct4_delta": 0.0328,
+            "evolve_score_after": 45.591,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000547,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -5.826
+          },
+          "predicted_outcome": {
+            "confidence": 0.6,
+            "expected_kl": 0.0017,
+            "expected_score_delta": 3.32
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 2
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r3_c0",
+          "mutation_desc": "COMP1 mlp_gain=0.94",
+          "observed_outcome": {
+            "delta_ce": 0.02224,
+            "distinct4_delta": -0.0492,
+            "evolve_score_after": 38.332,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.001316,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -13.084
+          },
+          "predicted_outcome": {
+            "confidence": 0.75,
+            "expected_kl": 0.00131,
+            "expected_score_delta": 0.166
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 3
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 3
+        }
+      ],
+      "id": "P08_QUANT_LOGIT_SHIFT",
+      "name": "P08 Quant Logit Shift",
+      "opened_round": 1,
+      "root_cause_hypothesis": "Global MLP down-projection scale recalibration for 1-bit COMP-1 shift"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": true,
+          "action_family": "wsp_l3_wdown",
+          "candidate_id": "r2_c1",
+          "mutation_desc": "L3.wdown top-96 alpha=0.35",
+          "observed_outcome": {
+            "delta_ce": -0.00041,
+            "distinct4_delta": 0.0055,
+            "evolve_score_after": 21.602,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000602,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.074
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Deflate loop-writing subspace on global attention FFN",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wdown",
+          "candidate_id": "r4_c2",
+          "mutation_desc": "L3.wdown top-64 alpha=1.05",
+          "observed_outcome": {
+            "delta_ce": 0.00135,
+            "distinct4_delta": 0.0355,
+            "evolve_score_after": 41.329,
+            "evolve_score_before": 46.788,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003909,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -5.459
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0006,
+            "expected_score_delta": 0.074
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Deflate loop-writing subspace on global attention FFN",
+          "round": 4
+        }
+      ],
+      "id": "P01_L3_RESIDUAL_LOOP",
+      "name": "P01 L3 Residual Loop",
+      "opened_round": 2,
+      "root_cause_hypothesis": "Global attention layer FFN sparse top-k loop-writing columns"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r2_c2",
+          "mutation_desc": "SSP-Live GDN2 damp=0.15 a=-0.5 e=0.8",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": -0.0383,
+            "evolve_score_after": 18.668,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -2.859
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 2
+        },
+        {
+          "accepted": true,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r3_c0",
+          "mutation_desc": "SSP-Live GDN2 damp=0.227 a=-0.2 e=0.325",
+          "observed_outcome": {
+            "delta_ce": -0.00041,
+            "distinct4_delta": 0.2814,
+            "evolve_score_after": 46.788,
+            "evolve_score_before": 21.602,
+            "fixed_seqs": 1,
+            "kl_from_clean": 0.000602,
+            "loop_delta": -0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 0,
+            "score_delta": 25.186
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0,
+            "expected_score_delta": -2.859
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r4_c1",
+          "mutation_desc": "SSP-Live GDN2 damp=0.39 a=-0.525 e=0.845",
+          "observed_outcome": {
+            "delta_ce": -0.00041,
+            "distinct4_delta": -0.1694,
+            "evolve_score_after": 28.739,
+            "evolve_score_before": 46.788,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000602,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -18.049
+          },
+          "predicted_outcome": {
+            "confidence": 0.6,
+            "expected_kl": 0.0003,
+            "expected_score_delta": 11.164
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 4
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r1_c0",
+          "mutation_desc": "SSP-Live GDN2 damp=0.162 a=-0.525 e=0.3",
+          "observed_outcome": {
+            "delta_ce": -0.00011,
+            "distinct4_delta": -0.0273,
+            "evolve_score_after": 41.759,
+            "evolve_score_before": 43.3,
+            "fixed_seqs": 0,
+            "kl_from_clean": 5e-06,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -1.541
+          },
+          "predicted_outcome": {
+            "confidence": 0.75,
+            "expected_kl": 0.0004,
+            "expected_score_delta": 1.426
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 1
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r2_c1",
+          "mutation_desc": "SSP-Live GDN2 damp=0.455 a=-0.525 e=0.845",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": -0.1831,
+            "evolve_score_after": 33.591,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003223,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -17.825
+          },
+          "predicted_outcome": {
+            "confidence": 0.9,
+            "expected_kl": 0.0003,
+            "expected_score_delta": 0.624
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 2
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_gdn2",
+          "candidate_id": "r3_c1",
+          "mutation_desc": "SSP-Live GDN2 damp=0.39 a=-0.2 e=0.845",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": -0.1066,
+            "evolve_score_after": 37.439,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003223,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -13.978
+          },
+          "predicted_outcome": {
+            "confidence": 0.95,
+            "expected_kl": 0.00089,
+            "expected_score_delta": -3.301
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 3
+          },
+          "rationale": "Adaptive online state-echo damping on GDN-2 (0 weight drift)",
+          "round": 3
+        }
+      ],
+      "id": "P04_GDN2_STATE_CYCLE",
+      "name": "P04 Gdn2 State Cycle",
+      "opened_round": 2,
+      "root_cause_hypothesis": "Adaptive live GDN-2 recurrent state-echo damping & erase boost (0 weight drift)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_gdn_wdown",
+          "candidate_id": "r3_c2",
+          "mutation_desc": "L2.wdown top-64 alpha=0.6",
+          "observed_outcome": {
+            "delta_ce": 8e-05,
+            "distinct4_delta": 0.1503,
+            "evolve_score_after": 30.947,
+            "evolve_score_before": 21.602,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.001453,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 9.345
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Deflate loop columns in recurrent GDN-2 FFN",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_gdn_wdown",
+          "candidate_id": "r4_c0",
+          "mutation_desc": "L2.wdown top-64 alpha=0.39",
+          "observed_outcome": {
+            "delta_ce": -0.00015,
+            "distinct4_delta": -0.0574,
+            "evolve_score_after": 35.935,
+            "evolve_score_before": 46.788,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0011,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -10.853
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00145,
+            "expected_score_delta": 9.345
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Deflate loop columns in recurrent GDN-2 FFN",
+          "round": 4
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_gdn_wdown",
+          "candidate_id": "r2_c2",
+          "mutation_desc": "L1.wdown top-32 alpha=0.65",
+          "observed_outcome": {
+            "delta_ce": -0.03196,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 43.917,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003257,
+            "loop_delta": 0.1667,
+            "missed_seqs": 5,
+            "regressed_seqs": 1,
+            "score_delta": -7.5
+          },
+          "predicted_outcome": {
+            "confidence": 0.6,
+            "expected_kl": 0.00128,
+            "expected_score_delta": -0.754
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 2
+          },
+          "rationale": "Deflate loop columns in recurrent GDN-2 FFN",
+          "round": 2
+        }
+      ],
+      "id": "P02_GDN_RECURRENT_FFN",
+      "name": "P02 Gdn Recurrent Ffn",
+      "opened_round": 3,
+      "root_cause_hypothesis": "Recurrent layer FFN sparse columns (collateral state disturbance risk)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "ssp_live_mla",
+          "candidate_id": "r3_c2",
+          "mutation_desc": "SSP-Live MLA repeat_bias=-2.0",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": -0.0137,
+            "evolve_score_after": 50.705,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003223,
+            "loop_delta": 0.0,
+            "missed_seqs": 5,
+            "regressed_seqs": 0,
+            "score_delta": -0.712
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 3
+          },
+          "rationale": "Adaptive global-attention repeat-key logit bias (0 weight drift)",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_mla",
+          "candidate_id": "r4_c1",
+          "mutation_desc": "SSP-Live MLA repeat_bias=-1.2",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 51.417,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.003223,
+            "loop_delta": 0.0,
+            "missed_seqs": 5,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00322,
+            "expected_score_delta": -0.712
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 4
+          },
+          "rationale": "Adaptive global-attention repeat-key logit bias (0 weight drift)",
+          "round": 4
+        }
+      ],
+      "id": "P05_GLOBAL_ATTN_ECHO",
+      "name": "P05 Global Attn Echo",
+      "opened_round": 3,
+      "root_cause_hypothesis": "Adaptive live global-attention repeat-position logit bias (0 weight drift)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": true,
+          "action_family": "harness_ngram",
+          "candidate_id": "r4_c0",
+          "mutation_desc": "NgramGuard pen=2.2 pres=0.0 ng=4",
+          "observed_outcome": {
+            "delta_ce": -0.03157,
+            "distinct4_delta": 0.2268,
+            "evolve_score_after": 98.374,
+            "evolve_score_before": 51.417,
+            "fixed_seqs": 5,
+            "kl_from_clean": 0.003223,
+            "loop_delta": -0.8333,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 46.958
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_COMP1_1Bit",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "comp1_1bit",
+            "round": 4
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 4
+        }
+      ],
+      "id": "P06_DECODING_ATTRACTOR",
+      "name": "P06 Decoding Attractor",
+      "opened_round": 4,
+      "root_cause_hypothesis": "Decoding harness n-gram echo guard & presence penalty (0 weight drift)"
+    }
+  ],
+  "schema": "bcir.sim.v1"
+}

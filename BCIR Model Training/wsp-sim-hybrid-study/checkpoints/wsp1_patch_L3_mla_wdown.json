@@ -1,0 +1,53 @@
+{
+  "base_checkpoint_sha256": "bc67f32a2a1a0fb7e886cda0b2eae138c0ce454b56e0578a3c59ba976ce65294",
+  "changed_params": 32768,
+  "changed_pct": 0.3264816816357242,
+  "edit_l2_norm": 0.5824689766583657,
+  "edited_weights_sha256": "b05e5f392301613c7aa58dd485cddae9576bde0c044560b5bb5615a234db06d6",
+  "eval_summary": {
+    "ce": 1.5250894059074107,
+    "changed_params": 32768,
+    "changed_pct": 0.3264816816357242,
+    "delta_ce": 0.007550559856360994,
+    "distinct_4": 0.4691558441558441,
+    "distinct_8": 0.5976027397260273,
+    "edit_l2": 0.5824689766583657,
+    "eval_seconds": 30.732753477001097,
+    "kl_from_clean": 0.01174998163979667,
+    "loop_seq_count": 32,
+    "loop_seq_rate": 1.0,
+    "max_8gram_repeats_mean": 6.375,
+    "max_abs_logit_delta": 1.5007638931274414,
+    "mean_entropy": 1.279144287109375,
+    "n_sequences": 32,
+    "ppl": 4.59555442065318,
+    "rep4_rate": 0.5308441558441559,
+    "rep8_rate": 0.4023972602739726,
+    "sample_generations": [
+      "\n\n = = = = = = = = = = = = \n\n The second started = = = \n\n = = = = = = = = = = = ",
+      "t , and the second starts . \n\n = = = = = = = = Crossing = = = \n\n = = = = = = = =",
+      "dia . \n\n = = = = = = = = Cross = = = \n\n = = = = = = = = Reception = = = \n\n = = ="
+    ],
+    "score": 27.6325309396851,
+    "top1_agreement": 0.936767578125
+  },
+  "locus": "L3.wdown (NoPE-MLA global layer sparse top-k columns)",
+  "opt_state_policy": "inference_only",
+  "patch_id": "wsp1_arch7d10m_L3_mla_wdown_sparse",
+  "patch_kind": "low_rank_edit",
+  "rationale": "Activation-contrast loop direction deflated strictly on top-k loop-writing columns of global NoPE-MLA FFN.",
+  "schema": "bcir.wsp1.weight_patch.v1",
+  "total_params": 10036704,
+  "touched_tensors": [
+    {
+      "changed_coords": 32768,
+      "delta_l2": 0.5824689766583669,
+      "layer": 3,
+      "shape": [
+        512,
+        928
+      ],
+      "tensor": "L3.wdown"
+    }
+  ]
+}

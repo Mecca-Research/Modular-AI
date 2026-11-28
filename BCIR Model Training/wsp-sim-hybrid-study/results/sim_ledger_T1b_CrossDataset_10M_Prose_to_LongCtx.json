@@ -1,0 +1,839 @@
+{
+  "memory_mode": "full",
+  "n_attempts": 24,
+  "n_problems": 7,
+  "problems": [
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "ssp_live_mla",
+          "candidate_id": "r1_c0",
+          "mutation_desc": "SSP-Live MLA repeat_bias=-0.4",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 21.528,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Adaptive global-attention repeat-key logit bias (0 weight drift)",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "ssp_live_mla",
+          "candidate_id": "r2_c0",
+          "mutation_desc": "SSP-Live MLA repeat_bias=-0.4",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 21.528,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0,
+            "expected_score_delta": 0.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Adaptive global-attention repeat-key logit bias (0 weight drift)",
+          "round": 2
+        }
+      ],
+      "id": "P05_GLOBAL_ATTN_ECHO",
+      "name": "P05 Global Attn Echo",
+      "opened_round": 1,
+      "root_cause_hypothesis": "Adaptive live global-attention repeat-position logit bias (0 weight drift)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r1_c1",
+          "mutation_desc": "COMP1 mlp_gain=1.1",
+          "observed_outcome": {
+            "delta_ce": -0.00195,
+            "distinct4_delta": -0.0328,
+            "evolve_score_after": 19.211,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.00096,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -2.317
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "comp1_scale_calib",
+          "candidate_id": "r3_c2",
+          "mutation_desc": "COMP1 mlp_gain=1.04",
+          "observed_outcome": {
+            "delta_ce": -0.00104,
+            "distinct4_delta": -0.0082,
+            "evolve_score_after": 98.661,
+            "evolve_score_before": 98.948,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000169,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -0.287
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00096,
+            "expected_score_delta": -2.317
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Recalibrate global MLP down-projection scale under 1-bit COMP-1 shift",
+          "round": 3
+        }
+      ],
+      "id": "P08_QUANT_LOGIT_SHIFT",
+      "name": "P08 Quant Logit Shift",
+      "opened_round": 1,
+      "root_cause_hypothesis": "Global MLP down-projection scale recalibration for 1-bit COMP-1 shift"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_canon",
+          "candidate_id": "r1_c2",
+          "mutation_desc": "Canon-AC tap_scale=0.7",
+          "observed_outcome": {
+            "delta_ce": 0.01769,
+            "distinct4_delta": 0.0082,
+            "evolve_score_after": 20.505,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.014476,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": -1.023
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Attenuate delayed Canon-AC causal conv taps",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_mhc",
+          "candidate_id": "r2_c2",
+          "mutation_desc": "mHC offdiag_delta=-0.4",
+          "observed_outcome": {
+            "delta_ce": -0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 21.528,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 6,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Perturb DeepSeek mHC Birkhoff stream mixing",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_mhc",
+          "candidate_id": "r3_c2",
+          "mutation_desc": "mHC offdiag_delta=-0.4",
+          "observed_outcome": {
+            "delta_ce": -0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 100.0,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0,
+            "expected_score_delta": 0.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Perturb DeepSeek mHC Birkhoff stream mixing",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_canon",
+          "candidate_id": "r4_c2",
+          "mutation_desc": "Canon-AC tap_scale=0.7",
+          "observed_outcome": {
+            "delta_ce": 0.01769,
+            "distinct4_delta": -0.0246,
+            "evolve_score_after": 85.972,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.014476,
+            "loop_delta": 0.1667,
+            "missed_seqs": 0,
+            "regressed_seqs": 1,
+            "score_delta": -14.028
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.01448,
+            "expected_score_delta": -1.023
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Attenuate delayed Canon-AC causal conv taps",
+          "round": 4
+        }
+      ],
+      "id": "P07_STRUCTURAL_COLLATERAL",
+      "name": "P07 Structural Collateral",
+      "opened_round": 1,
+      "root_cause_hypothesis": "Canon-AC 4-tap causal conv delayed-tap scaling"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": true,
+          "action_family": "harness_ngram",
+          "candidate_id": "r2_c1",
+          "mutation_desc": "NgramGuard pen=3.2 pres=0.2 ng=3",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.6038,
+            "evolve_score_after": 98.948,
+            "evolve_score_before": 21.528,
+            "fixed_seqs": 6,
+            "kl_from_clean": 0.0,
+            "loop_delta": -1.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 77.42
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 2
+        },
+        {
+          "accepted": true,
+          "action_family": "harness_ngram",
+          "candidate_id": "r3_c0",
+          "mutation_desc": "NgramGuard pen=5.28 pres=0.3 ng=3",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.0191,
+            "evolve_score_after": 99.617,
+            "evolve_score_before": 98.948,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.669
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.0,
+            "expected_score_delta": 77.42
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 3
+        },
+        {
+          "accepted": true,
+          "action_family": "harness_ngram",
+          "candidate_id": "r4_c0",
+          "mutation_desc": "NgramGuard pen=6.0 pres=0.3 ng=3",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.0082,
+            "evolve_score_after": 99.904,
+            "evolve_score_before": 99.617,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.287
+          },
+          "predicted_outcome": {
+            "confidence": 0.6,
+            "expected_kl": 0.0,
+            "expected_score_delta": 39.044
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 4
+        },
+        {
+          "accepted": false,
+          "action_family": "harness_ngram",
+          "candidate_id": "r1_c0",
+          "mutation_desc": "NgramGuard pen=5.48 pres=0.3 ng=4",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": -0.0219,
+            "evolve_score_after": 99.235,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -0.765
+          },
+          "predicted_outcome": {
+            "confidence": 0.75,
+            "expected_kl": 0.0,
+            "expected_score_delta": 26.125
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "harness_ngram",
+          "candidate_id": "r2_c0",
+          "mutation_desc": "NgramGuard pen=6.0 pres=0.2 ng=4",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": -0.0246,
+            "evolve_score_after": 91.581,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.1667,
+            "missed_seqs": 0,
+            "regressed_seqs": 1,
+            "score_delta": -8.419
+          },
+          "predicted_outcome": {
+            "confidence": 0.9,
+            "expected_kl": 0.0,
+            "expected_score_delta": 17.851
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "harness_ngram",
+          "candidate_id": "r3_c0",
+          "mutation_desc": "NgramGuard pen=6.0 pres=0.1 ng=3",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": -0.0109,
+            "evolve_score_after": 99.617,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -0.383
+          },
+          "predicted_outcome": {
+            "confidence": 0.95,
+            "expected_kl": 0.0,
+            "expected_score_delta": 11.67
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "harness_ngram",
+          "candidate_id": "r4_c0",
+          "mutation_desc": "NgramGuard pen=6.0 pres=0.2 ng=3",
+          "observed_outcome": {
+            "delta_ce": 0.0,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 100.0,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.0,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.95,
+            "expected_kl": 0.0,
+            "expected_score_delta": 9.374
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Decoding n-gram echo guard & presence damping (0 weight drift)",
+          "round": 4
+        }
+      ],
+      "id": "P06_DECODING_ATTRACTOR",
+      "name": "P06 Decoding Attractor",
+      "opened_round": 2,
+      "root_cause_hypothesis": "Decoding harness n-gram echo guard & presence penalty (0 weight drift)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_gdn_wdown",
+          "candidate_id": "r3_c1",
+          "mutation_desc": "L0.wdown top-32 alpha=1.0",
+          "observed_outcome": {
+            "delta_ce": -0.00017,
+            "distinct4_delta": -0.0082,
+            "evolve_score_after": 98.661,
+            "evolve_score_before": 98.948,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000707,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -0.287
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Deflate loop columns in recurrent GDN-2 FFN",
+          "round": 3
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_gdn_wdown",
+          "candidate_id": "r1_c1",
+          "mutation_desc": "L1.wdown top-32 alpha=1.0",
+          "observed_outcome": {
+            "delta_ce": 0.00139,
+            "distinct4_delta": -0.0082,
+            "evolve_score_after": 99.228,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.000739,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -0.772
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00071,
+            "expected_score_delta": -0.287
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Deflate loop columns in recurrent GDN-2 FFN",
+          "round": 1
+        }
+      ],
+      "id": "P02_GDN_RECURRENT_FFN",
+      "name": "P02 Gdn Recurrent Ffn",
+      "opened_round": 3,
+      "root_cause_hypothesis": "Recurrent layer FFN sparse columns (collateral state disturbance risk)"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wdown",
+          "candidate_id": "r4_c1",
+          "mutation_desc": "L3.wdown top-96 alpha=0.7",
+          "observed_outcome": {
+            "delta_ce": 0.0004,
+            "distinct4_delta": 0.0055,
+            "evolve_score_after": 99.669,
+            "evolve_score_before": 99.617,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.002478,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.052
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Deflate loop-writing subspace on global attention FFN",
+          "round": 4
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wdown",
+          "candidate_id": "r2_c1",
+          "mutation_desc": "L3.wdown top-96 alpha=1.0",
+          "observed_outcome": {
+            "delta_ce": 0.00741,
+            "distinct4_delta": -0.0082,
+            "evolve_score_after": 97.16,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.004886,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -2.84
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 0.00248,
+            "expected_score_delta": 0.052
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Deflate loop-writing subspace on global attention FFN",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wdown",
+          "candidate_id": "r4_c1",
+          "mutation_desc": "L3.wdown top-96 alpha=0.7",
+          "observed_outcome": {
+            "delta_ce": 0.00411,
+            "distinct4_delta": -0.0082,
+            "evolve_score_after": 98.29,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 0.002343,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": -1.71
+          },
+          "predicted_outcome": {
+            "confidence": 0.6,
+            "expected_kl": 0.00368,
+            "expected_score_delta": -1.601
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Deflate loop-writing subspace on global attention FFN",
+          "round": 4
+        }
+      ],
+      "id": "P01_L3_RESIDUAL_LOOP",
+      "name": "P01 L3 Residual Loop",
+      "opened_round": 4,
+      "root_cause_hypothesis": "Global attention layer FFN sparse top-k loop-writing columns"
+    },
+    {
+      "aliases": [],
+      "attempts": [
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_g1",
+          "candidate_id": "r4_c2",
+          "mutation_desc": "L3.bg top-1 d=-0.4",
+          "observed_outcome": {
+            "delta_ce": -8e-05,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 99.617,
+            "evolve_score_before": 99.617,
+            "fixed_seqs": 0,
+            "kl_from_clean": 8e-06,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D1_Prose",
+            "domain": "prose_unloop",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 4
+          },
+          "rationale": "Damp global attention repeat-copy head via G1 bias",
+          "round": 4
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wo",
+          "candidate_id": "r1_c2",
+          "mutation_desc": "L3.wo top-1 scale=0.65",
+          "observed_outcome": {
+            "delta_ce": -6e-05,
+            "distinct4_delta": -0.0301,
+            "evolve_score_after": 91.039,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 4.2e-05,
+            "loop_delta": 0.1667,
+            "missed_seqs": 0,
+            "regressed_seqs": 1,
+            "score_delta": -8.961
+          },
+          "predicted_outcome": {
+            "confidence": 0.3,
+            "expected_kl": 0.01,
+            "expected_score_delta": 2.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 1
+          },
+          "rationale": "Scale diagnosed copy-head output projection",
+          "round": 1
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_wo",
+          "candidate_id": "r2_c2",
+          "mutation_desc": "L3.wo top-1 scale=0.65",
+          "observed_outcome": {
+            "delta_ce": -6e-05,
+            "distinct4_delta": -0.0301,
+            "evolve_score_after": 91.039,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 4.2e-05,
+            "loop_delta": 0.1667,
+            "missed_seqs": 0,
+            "regressed_seqs": 1,
+            "score_delta": -8.961
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 4e-05,
+            "expected_score_delta": -8.961
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 2
+          },
+          "rationale": "Scale diagnosed copy-head output projection",
+          "round": 2
+        },
+        {
+          "accepted": false,
+          "action_family": "wsp_l3_g1",
+          "candidate_id": "r3_c1",
+          "mutation_desc": "L3.bg top-2 d=-0.8",
+          "observed_outcome": {
+            "delta_ce": -0.00028,
+            "distinct4_delta": 0.0,
+            "evolve_score_after": 100.0,
+            "evolve_score_before": 100.0,
+            "fixed_seqs": 0,
+            "kl_from_clean": 9.2e-05,
+            "loop_delta": 0.0,
+            "missed_seqs": 0,
+            "regressed_seqs": 0,
+            "score_delta": 0.0
+          },
+          "predicted_outcome": {
+            "confidence": 0.45,
+            "expected_kl": 1e-05,
+            "expected_score_delta": 0.0
+          },
+          "provenance": {
+            "benchmark": "Arch7d_10M_D3_LongCtxEcho",
+            "domain": "longctx_echo",
+            "policy_model": "BCIR-Arch7d-10M",
+            "precision_regime": "bcirq8_v1",
+            "round": 3
+          },
+          "rationale": "Damp global attention repeat-copy head via G1 bias",
+          "round": 3
+        }
+      ],
+      "id": "P03_L3_COPY_HEAD_GATE",
+      "name": "P03 L3 Copy Head Gate",
+      "opened_round": 4,
+      "root_cause_hypothesis": "Global attention headwise G1 sigmoid output gate bias (1-3 scalars)"
+    }
+  ],
+  "schema": "bcir.sim.v1"
+}

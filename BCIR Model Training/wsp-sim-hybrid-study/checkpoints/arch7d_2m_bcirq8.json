@@ -1,0 +1,41 @@
+{
+  "arch_name": "Arch7d_2M",
+  "n_params": 2671504,
+  "spec": {
+    "batch": 8,
+    "canon_mode": 2,
+    "delta_chunk": 16,
+    "ff": 480,
+    "gate_mode": 1,
+    "gate_rank": 32,
+    "heads": 4,
+    "kvheads": 2,
+    "layer_mixer": [
+      5,
+      5,
+      5,
+      4
+    ],
+    "layer_use_rope": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "layers": 4,
+    "mhc_streams": 2,
+    "mla_dc": 64,
+    "mla_dr": 32,
+    "online_softmax": 1,
+    "qk_norm": 1,
+    "seed": 42,
+    "threads": 2,
+    "tied": 1,
+    "time": 128,
+    "vocab": 256,
+    "width": 256
+  },
+  "tokens_trained": 163840,
+  "weights_file": "arch7d_2m_bcirq8.bin",
+  "weights_sha256": "ff4f270d21e6623dcd43b93aab9b48c05405f298118f8b54ee42def3ab9321b0"
+}
