@@ -1,0 +1,10 @@
+build/
+__pycache__/
+*.pyc
+checkpoints/*.fp32.bin
+checkpoints/*.opt.bin
+checkpoints/*.best.bin
+checkpoints/*.g*.bin
+checkpoints/*.g*.opt.bin
+checkpoints/*.g*.best.bin
+checkpoints/.*.tmp

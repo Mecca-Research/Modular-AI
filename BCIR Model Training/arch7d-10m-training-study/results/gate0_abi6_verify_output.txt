@@ -1,0 +1,23 @@
+PASS abi_version=6
+PASS identities wy_dn wy_kda wy_gdn2 mla_rope mla_nope mhc2 mhc4 ns5
+PASS ad.gqa_qknorm_g1h tensors=16 probes=32
+PASS ad.swa_canon_ac tensors=14 probes=28
+PASS ad.deltanet tensors=16 probes=32
+PASS ad.kda_g1lr tensors=21 probes=42
+PASS ad.gdn2_canon_a tensors=23 probes=46
+PASS ad.mla_rope_g1h tensors=19 probes=38
+PASS ad.mla_nope_online tensors=14 probes=28
+PASS ad.hybrid_gdn2_mla_canon_mhc2 tensors=53 probes=106
+PASS ad.hybrid_gdn2_mla_canon_mhc4 tensors=53 probes=106
+PASS online_softmax.gqa prob_bytes_mat=12800 prob_bytes_online=1280
+PASS online_softmax.mla_rope prob_bytes_mat=12800 prob_bytes_online=1280
+PASS online_softmax.mla_nope prob_bytes_mat=12800 prob_bytes_online=1280
+PASS opt.adamw_fp32 1T==2T_bits=0 resume_bits=0 opt_state_bytes=382704 persistent_bytes=765248
+PASS opt.adamw_q8_moments 1T==2T_bits=0 resume_bits=0 opt_state_bytes=97980 persistent_bytes=480524
+PASS opt.adamw_q8_moments_bf16_grad 1T==2T_bits=0 resume_bits=0 opt_state_bytes=97980 persistent_bytes=384868
+PASS opt.adamw_adafactor_m2 1T==2T_bits=0 resume_bits=0 opt_state_bytes=207352 persistent_bytes=589896
+PASS opt.adamw_adafactor_bf16_grad 1T==2T_bits=0 resume_bits=0 opt_state_bytes=207352 persistent_bytes=494240
+PASS opt.muon_fp32 1T==2T_bits=0 resume_bits=0 opt_state_bytes=202992 persistent_bytes=585536
+PASS opt.muon_q8_bf16_grad 1T==2T_bits=0 resume_bits=0 opt_state_bytes=68916 persistent_bytes=355804
+PASS fail_closed all_masked=1 bad_tok=1 nan_weight=3
+mixer_ext: ALL CHECKS PASSED
