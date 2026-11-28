@@ -1,0 +1,53 @@
+{
+  "arch_id": "Arch7d_10M_B_ff928_gr32_dc128",
+  "best_global_step": 640,
+  "best_val_ce_t512": 1.399782,
+  "format": "bcirq8_v1_per_tensor_g32",
+  "fp32_source_sha256": "38830b9ab2184baee075eb8c204078d9c303e831f01793c9b1c8e79c176bd37e",
+  "global_step": 640,
+  "optimizer": "Opt_Q8_Muon_BF16Grad",
+  "spec": {
+    "batch": 8,
+    "canon_mode": 2,
+    "delta_chunk": 16,
+    "ff": 928,
+    "gate_mode": 1,
+    "gate_rank": 32,
+    "heads": 8,
+    "init_policy": 2,
+    "kvheads": 2,
+    "layer_mixer": [
+      5,
+      5,
+      5,
+      4
+    ],
+    "layer_use_rope": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "layers": 4,
+    "mhc_streams": 2,
+    "mla_dc": 128,
+    "mla_dr": 32,
+    "mup_d_base": 128,
+    "online_softmax": 1,
+    "qk_norm": 1,
+    "rms_eps": 1e-05,
+    "rope_base": 10000.0,
+    "seed": 42,
+    "swa_window": 16,
+    "threads": 2,
+    "tied": 1,
+    "time": 128,
+    "vocab": 256,
+    "width": 512
+  },
+  "stage": 3,
+  "tokens_trained": 1114112,
+  "weights_bytes": 10350376,
+  "weights_file": "arch7d_10m_stage3_best_bcirq8.bin",
+  "weights_sha256": "bc67f32a2a1a0fb7e886cda0b2eae138c0ce454b56e0578a3c59ba976ce65294"
+}

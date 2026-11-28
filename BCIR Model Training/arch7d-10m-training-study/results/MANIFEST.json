@@ -1,0 +1,116 @@
+{
+  "study": "arch7d-10m-training-study",
+  "date": "2026-11-27",
+  "bcir_runtime_commit": "8fa8aedc308d575ed11b747d80a25f77d5b73835",
+  "file_count": 27,
+  "files": {
+    ".gitignore": {
+      "bytes": 185,
+      "sha256": "f2749920e9723838bebecabb7a83649fe71078d988863b255a029d3dd66ac999"
+    },
+    "Makefile": {
+      "bytes": 756,
+      "sha256": "619af200f942e37bcf1ad57d0f676c482272875cfea5eeeb09d9e14fe520ad26"
+    },
+    "README.md": {
+      "bytes": 23901,
+      "sha256": "7519afc74fb6e1b4bbc07dd9e662c5a51ee54a0cac0f854cbe1af130a6b6cbae"
+    },
+    "checkpoints/arch7d_10m_stage3_best_bcirq8.bin": {
+      "bytes": 10350376,
+      "sha256": "bc67f32a2a1a0fb7e886cda0b2eae138c0ce454b56e0578a3c59ba976ce65294"
+    },
+    "checkpoints/arch7d_10m_stage3_best_bcirq8.json": {
+      "bytes": 1147,
+      "sha256": "a0c71688a6954e2f6e94d94934a21449a049741dae2afe70a45492420872e27b"
+    },
+    "figures/fig1_10m_curriculum_dynamics.png": {
+      "bytes": 410122,
+      "sha256": "d0ba58ed67388a0a92ee26ff38a766b5ed176bb71c9c6f2ff72b491015830951"
+    },
+    "figures/fig2_10m_matched_controls_pareto.png": {
+      "bytes": 336771,
+      "sha256": "e2602b14df2a82ec07665793e353c69ba4f99dde468a8b3e05bb04950614c733"
+    },
+    "figures/fig3_10m_context_extrapolation_and_position_ce.png": {
+      "bytes": 300922,
+      "sha256": "24b5e6c78c727a282124b49fd738a832aa3d7a09dc4e4a9a4306cc07225b180f"
+    },
+    "figures/fig4_10m_spectral_mhc_canon_forensics.png": {
+      "bytes": 323994,
+      "sha256": "1ea393837ffc0fac1fd651cd241941d004cc2e9af704e26725040a7fdfd1fdfa"
+    },
+    "figures/fig5_10m_comp1_deployment_frontier.png": {
+      "bytes": 187623,
+      "sha256": "a962435492514f24202fc27aa053e3f14949b74bebe2fde2eca77c5591c3e89a"
+    },
+    "results/gate0_abi6_verify_output.txt": {
+      "bytes": 1502,
+      "sha256": "2d49090aadc7166ecc5532ecb0edb8d4b3f6744f3473250a6e724913fa3c10fb"
+    },
+    "results/stage0_sizing_and_ablation.json": {
+      "bytes": 14480,
+      "sha256": "3ae8313846966b247afb47e16bce83acaf946c97ce5a1419a4e1ec92c069e87e"
+    },
+    "results/stage1_steps.csv": {
+      "bytes": 17542,
+      "sha256": "cce4b23f00a7bccb1f4547451170d3c0d0b9d0f541e2cb41bddaeb3255c36cfe"
+    },
+    "results/stage1_warmup_t128.json": {
+      "bytes": 90618,
+      "sha256": "d4853ce5597b654081264308318f9f8b9a0904e3ddb08545264df8dd0db732c4"
+    },
+    "results/stage2_core_t256.json": {
+      "bytes": 52334,
+      "sha256": "cd969249d3b1f464b7424b9e85f8ac360cfd1b89d025a0f0fee430d5cbf54159"
+    },
+    "results/stage2_steps.csv": {
+      "bytes": 30293,
+      "sha256": "947d80df8983db76aaa7434dcb6f80882e6d1a74c336a1f22a9886d2e4d4850e"
+    },
+    "results/stage3_longctx_t512.json": {
+      "bytes": 49915,
+      "sha256": "0e49017f413f782209258a7e4f4b3e01519305e1e3fed0ddb313b9d82cc9a4ec"
+    },
+    "results/stage3_steps.csv": {
+      "bytes": 12146,
+      "sha256": "eeb3f81463ed95600ce9958b9c532c4bb24472da7c665849ae6c3c15c75accba"
+    },
+    "results/stage4_10m_controls.json": {
+      "bytes": 12305,
+      "sha256": "ea843bb578ebc0e15a42b6a7bd549937bdc009b9136eae76210788a258a41e56"
+    },
+    "results/stage4_controls_steps.csv": {
+      "bytes": 55806,
+      "sha256": "39b4fa751bde0b74fe846b839b53b1913a88f63dddcecfb932fa548ccb8d6fa7"
+    },
+    "results/stage5_deep_eval_and_deploy.json": {
+      "bytes": 56355,
+      "sha256": "99cf32a1599bc98e2b7813aab820fe029d696f3f3444f57102bb72be83e6d143"
+    },
+    "src/common_10m.py": {
+      "bytes": 54596,
+      "sha256": "88e22755957bb7c54307e1adf3839b6f538b6c28d8bfc9f0d5566cb4a6124b9e"
+    },
+    "src/make_10m_plots.py": {
+      "bytes": 23671,
+      "sha256": "ba2cdc5707cd36d29872b0ed90558bfc37195954f2f689864ded9f029481ef51"
+    },
+    "src/stage0_arch_sizing_ablation.py": {
+      "bytes": 15509,
+      "sha256": "3afb825f89c1ef826217e1a3108af7f8cde2b0fadd8bd7bd107890254a51dce6"
+    },
+    "src/stage1_3_curriculum_train.py": {
+      "bytes": 23529,
+      "sha256": "76fa9345bf1c105307e74c3e2205f28b08b8dd17264e88bdc0c91ee2b18fc42b"
+    },
+    "src/stage4_10m_controls.py": {
+      "bytes": 18594,
+      "sha256": "f75681ec610c551c62ff753d14f7a3df9481bacf8a2bf8343a65a05912a5e023"
+    },
+    "src/stage5_deep_eval_deploy.py": {
+      "bytes": 27597,
+      "sha256": "7142fa0ecd19dab17fe21446070e40a3e77a043ad212094cf0ffc0321c2c9298"
+    }
+  }
+}
